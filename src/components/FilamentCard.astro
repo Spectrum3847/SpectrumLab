@@ -1,0 +1,126 @@
+---
+/**
+ * Detailed settings card for one filament material.
+ * <FilamentCard id="pa-cf" /> reads src/data/filaments.json.
+ */
+import filaments from '../data/filaments.json';
+
+interface Props {
+  id: string;
+}
+const data = (filaments as any[]).find((f) => f.id === Astro.props.id);
+if (!data) throw new Error(`FilamentCard: unknown filament id "${Astro.props.id}"`);
+---
+
+<div class="filament-card">
+  <div class="fc-header">
+    <span class="fc-name">{data.name}</span>
+    <span class="fc-price">{data.pricePerKg} / kg</span>
+  </div>
+  <div class="fc-grid">
+    <div class="fc-stat"><span class="fc-label">Nozzle</span><span class="fc-value">{data.nozzleTemp}</span></div>
+    <div class="fc-stat"><span class="fc-label">Bed</span><span class="fc-value">{data.bedTemp}</span></div>
+    <div class="fc-stat"><span class="fc-label">Plate</span><span class="fc-value">{data.plate}</span></div>
+    <div class="fc-stat"><span class="fc-label">Part Fan</span><span class="fc-value">{data.fanSpeed}</span></div>
+    <div class="fc-stat"><span class="fc-label">Drying</span><span class="fc-value">{data.drying}</span></div>
+    <div class="fc-stat"><span class="fc-label">Enclosure</span><span class="fc-value">{data.enclosure}</span></div>
+  </div>
+  {data.hardenedNozzle && (
+    <p class="fc-flag">⚙️ Requires hardened nozzle &amp; extruder gears</p>
+  )}
+  <p class="fc-uses"><strong>Use for:</strong> {data.useCases}</p>
+  {data.notes && <p class="fc-notes">{data.notes}</p>}
+  <div class="fc-actions">
+    {data.brands && <span class="fc-brands">Stocked: {data.brands}</span>}
+    {data.reorderUrl && (
+      <a class="fc-buy" href={data.reorderUrl} target="_blank" rel="noopener noreferrer">Reorder ↗</a>
+    )}
+  </div>
+</div>
+
+<style>
+  .filament-card {
+    margin: 1.25rem 0;
+    padding: 1.15rem 1.3rem;
+    border: 1px solid var(--sl-color-border);
+    border-radius: 0.85rem;
+    background: var(--sl-color-bg);
+    box-shadow: 0 2px 10px rgba(31, 27, 35, 0.04);
+  }
+  .fc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+  }
+  .fc-name {
+    font-family: var(--font-heading, 'Outfit', sans-serif);
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: var(--sl-color-text);
+  }
+  .fc-price {
+    font-family: var(--font-heading, 'Outfit', sans-serif);
+    font-weight: 800;
+    color: var(--sl-color-accent);
+  }
+  .fc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.5rem;
+  }
+  .fc-stat {
+    padding: 0.5rem 0.65rem;
+    border-radius: 0.5rem;
+    background: var(--sl-color-bg-sidebar);
+    border: 1px solid var(--sl-color-border);
+    display: flex;
+    flex-direction: column;
+  }
+  .fc-label {
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sl-color-gray-3);
+  }
+  .fc-value { font-size: 0.83rem; font-weight: 700; line-height: 1.35; }
+  .fc-flag {
+    margin: 0.7rem 0 0 0 !important;
+    font-size: 0.83rem;
+    font-weight: 700;
+    color: #B45309;
+    background: #FFFBEB;
+    border: 1px solid #FDE68A;
+    padding: 0.4rem 0.7rem;
+    border-radius: 0.5rem;
+    width: fit-content;
+  }
+  .fc-uses { margin: 0.7rem 0 0 0 !important; font-size: 0.9rem; line-height: 1.55; }
+  .fc-notes { margin: 0.45rem 0 0 0 !important; font-size: 0.83rem; color: var(--sl-color-gray-3); line-height: 1.5; }
+  .fc-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.85rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--sl-color-border);
+  }
+  .fc-brands { font-size: 0.78rem; color: var(--sl-color-gray-3); font-weight: 600; }
+  .fc-buy {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    border-radius: 0.5rem;
+    background: var(--sl-color-accent);
+    color: #fff !important;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none !important;
+    border-bottom: none !important;
+  }
+  .fc-buy:hover { background: #58117A; }
+</style>

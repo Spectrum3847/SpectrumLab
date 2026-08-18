@@ -1,0 +1,183 @@
+---
+/**
+ * Lab photo with caption, lightbox preview, and a link to the original
+ * SmugMug page (photos.spectrum3847.org).
+ *
+ * <LabGalleryImage src="wazer-pro-station.jpg" alt="WAZER Pro station" caption="..." />
+ * `src` is a filename inside src/assets/lab/ (downloaded from SmugMug), or a
+ * full https:// URL to hotlink. `smugmugUrl` overrides the "view original"
+ * link; if omitted it falls back to the lab-photos.json mapping, then the
+ * main gallery.
+ */
+import { Image } from 'astro:assets';
+import photoIndex from '../data/lab-photos.json';
+
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  smugmugUrl?: string;
+  width?: number;
+}
+const { src, alt, caption, smugmugUrl, width = 900 } = Astro.props;
+
+const GALLERY_URL = 'https://photos.spectrum3847.org/The-Lab/Aug-18-2026-Photos';
+
+const localImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/lab/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}'
+);
+
+const isRemote = src.startsWith('http');
+const entry = (photoIndex as Array<{ file: string; smugmugUrl?: string; description?: string }>).find(
+  (p) => p.file === src
+);
+const originalUrl = smugmugUrl ?? entry?.smugmugUrl ?? GALLERY_URL;
+
+let imageModule: { default: ImageMetadata } | undefined;
+if (!isRemote) {
+  const key = `../assets/lab/${src}`;
+  const loader = localImages[key];
+  if (loader) imageModule = await loader();
+}
+---
+
+<figure class="lab-gallery-image">
+  <a href={originalUrl} class="lgi-link" data-lightbox-caption={caption ?? alt} target="_blank" rel="noopener noreferrer" title="Click to enlarge">
+    {isRemote ? (
+      <img src={src} alt={alt} loading="lazy" />
+    ) : imageModule ? (
+      <Image src={imageModule.default} alt={alt} width={width} />
+    ) : (
+      <span class="lgi-missing">Photo not found: {src}</span>
+    )}
+  </a>
+  {caption && (
+    <figcaption>
+      {caption}
+      <a class="lgi-orig" href={originalUrl} target="_blank" rel="noopener noreferrer">View on photos.spectrum3847.org ↗</a>
+    </figcaption>
+  )}
+</figure>
+
+<style>
+  .lab-gallery-image {
+    margin: 1.5rem 0;
+  }
+  .lgi-link {
+    display: block;
+    border-radius: 0.85rem;
+    overflow: hidden;
+    border: 1px solid var(--sl-color-border);
+    box-shadow: 0 4px 14px rgba(60, 0, 96, 0.07);
+    cursor: zoom-in;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    border-bottom: 1px solid var(--sl-color-border) !important;
+  }
+  .lgi-link:hover {
+    border-color: var(--sl-color-accent) !important;
+    box-shadow: 0 8px 24px rgba(107, 17, 153, 0.14);
+  }
+  .lgi-link :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .lgi-missing {
+    display: block;
+    padding: 2rem;
+    text-align: center;
+    color: var(--sl-color-gray-3);
+    background: var(--sl-color-bg-sidebar);
+  }
+  figcaption {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--sl-color-gray-3);
+    line-height: 1.5;
+  }
+  .lgi-orig {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--sl-color-accent);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .lgi-orig:hover { text-decoration: underline; }
+</style>
+
+<script>
+  /**
+   * Shared lightbox singleton: clicking a lab image opens a full-screen
+   * preview instead of navigating; the SmugMug page stays reachable from the
+   * caption link and the lightbox's own "open original" link.
+   */
+  function ensureLightbox(): HTMLElement {
+    let lb = document.getElementById('lab-lightbox');
+    if (lb) return lb;
+    lb = document.createElement('div');
+    lb.id = 'lab-lightbox';
+    lb.innerHTML = `
+      <div class="llb-backdrop"></div>
+      <figure class="llb-frame">
+        <button type="button" class="llb-close" aria-label="Close">×</button>
+        <img alt="" />
+        <figcaption><span class="llb-caption"></span> <a class="llb-orig" target="_blank" rel="noopener noreferrer">Open original ↗</a></figcaption>
+      </figure>`;
+    const style = document.createElement('style');
+    style.textContent = `
+      #lab-lightbox { position: fixed; inset: 0; z-index: 999; display: none; align-items: center; justify-content: center; padding: 3vh 3vw; }
+      #lab-lightbox.open { display: flex; }
+      #lab-lightbox .llb-backdrop { position: absolute; inset: 0; background: rgba(10, 6, 14, 0.88); backdrop-filter: blur(2px); }
+      #lab-lightbox .llb-frame { position: relative; margin: 0; max-width: min(1500px, 94vw); max-height: 92vh; display: flex; flex-direction: column; }
+      #lab-lightbox img { max-width: 100%; max-height: 84vh; object-fit: contain; border-radius: 0.6rem; box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
+      #lab-lightbox figcaption { color: #fff; font-size: 0.9rem; margin-top: 0.6rem; display: flex; justify-content: space-between; gap: 1rem; }
+      #lab-lightbox .llb-orig { color: #d8b4fe; font-weight: 600; text-decoration: none; white-space: nowrap; }
+      #lab-lightbox .llb-orig:hover { text-decoration: underline; }
+      #lab-lightbox .llb-close { position: absolute; top: -2.5rem; right: 0; width: 2.25rem; height: 2.25rem; border: 0; border-radius: 9999px; background: rgba(255,255,255,0.14); color: #fff; font-size: 1.5rem; line-height: 1; cursor: pointer; }
+      #lab-lightbox .llb-close:hover { background: rgba(255,255,255,0.28); }
+      body.llb-locked { overflow: hidden; }
+    `;
+    document.head.appendChild(style);
+    document.body.appendChild(lb);
+
+    const close = () => {
+      lb!.classList.remove('open');
+      document.body.classList.remove('llb-locked');
+    };
+    lb.querySelector('.llb-backdrop')!.addEventListener('click', close);
+    lb.querySelector('.llb-close')!.addEventListener('click', close);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') close();
+    });
+    return lb;
+  }
+
+  function initGalleryLightbox() {
+    document.querySelectorAll<HTMLAnchorElement>('.lab-gallery-image .lgi-link').forEach((a) => {
+      if (a.dataset.llbBound) return;
+      a.dataset.llbBound = 'true';
+      a.addEventListener('click', (e) => {
+        const img = a.querySelector('img');
+        if (!img) return; // missing image: let the link navigate
+        e.preventDefault();
+        const lb = ensureLightbox();
+        const lbImg = lb.querySelector('img')!;
+        // Use the natural source; for optimized <Image> this is the built asset.
+        lbImg.src = img.currentSrc || img.src;
+        lbImg.alt = img.alt;
+        (lb.querySelector('.llb-caption') as HTMLElement).textContent = a.dataset.lightboxCaption ?? img.alt;
+        (lb.querySelector('.llb-orig') as HTMLAnchorElement).href = a.href;
+        lb.classList.add('open');
+        document.body.classList.add('llb-locked');
+      });
+    });
+  }
+  document.addEventListener('DOMContentLoaded', initGalleryLightbox);
+  document.addEventListener('astro:page-load', initGalleryLightbox);
+  initGalleryLightbox();
+</script>

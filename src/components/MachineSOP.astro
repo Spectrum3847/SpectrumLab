@@ -1,0 +1,131 @@
+---
+/**
+ * Standard header block for machine SOP pages: spec grid, PPE badges, and
+ * required training level. Page content flows below as normal MDX.
+ *
+ * <MachineSOP
+ *   specs={{ 'Cut Area': '12" × 18"', 'Max Pressure': '7,400 PSI' }}
+ *   ppe={['glasses', 'hearing', 'no-gloves', 'closed-shoes']}
+ *   training="Green — staff sign-off required"
+ * />
+ */
+interface Props {
+  specs?: Record<string, string>;
+  ppe?: string[];
+  training?: string;
+}
+const { specs = {}, ppe = [], training } = Astro.props;
+
+const PPE_BADGES: Record<string, { icon: string; label: string; critical?: boolean }> = {
+  glasses: { icon: '🥽', label: 'Safety Glasses' },
+  hearing: { icon: '🎧', label: 'Hearing Protection' },
+  respirator: { icon: '😷', label: 'Respirator' },
+  'dust-mask': { icon: '😷', label: 'Dust Mask' },
+  gloves: { icon: '🧤', label: 'Gloves Required' },
+  'no-gloves': { icon: '🚫', label: 'NO GLOVES — rotating machinery', critical: true },
+  'heat-gloves': { icon: '🧤', label: 'Heat-Resistant Gloves' },
+  'closed-shoes': { icon: '👟', label: 'Closed-Toe Shoes' },
+  'tie-hair': { icon: '💇', label: 'Tie Back Hair / No Loose Clothing', critical: true },
+  apron: { icon: '🦺', label: 'Apron' },
+  'face-shield': { icon: '🛡️', label: 'Face Shield' },
+  'laser-glasses': { icon: '🕶️', label: 'Laser Safety Glasses', critical: true },
+};
+---
+
+<div class="sop-header">
+  {Object.keys(specs).length > 0 && (
+    <div class="sop-specs">
+      {Object.entries(specs).map(([k, v]) => (
+        <div class="sop-spec">
+          <span class="sop-spec-label">{k}</span>
+          <span class="sop-spec-value">{v}</span>
+        </div>
+      ))}
+    </div>
+  )}
+  {(ppe.length > 0 || training) && (
+    <div class="sop-meta">
+      {ppe.length > 0 && (
+        <div class="sop-ppe">
+          {ppe.map((p) => {
+            const badge = PPE_BADGES[p] ?? { icon: '⚠️', label: p };
+            return (
+              <span class={`ppe-badge ${badge.critical ? 'ppe-critical' : ''}`}>
+                <span aria-hidden="true">{badge.icon}</span> {badge.label}
+              </span>
+            );
+          })}
+        </div>
+      )}
+      {training && (
+        <div class="sop-training">
+          <span class="sop-training-label">Training Required:</span> {training}
+        </div>
+      )}
+    </div>
+  )}
+</div>
+
+<style>
+  .sop-header { margin: 1.5rem 0 2rem; }
+  .sop-specs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+  .sop-spec {
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--sl-color-border);
+    border-radius: 0.6rem;
+    background: var(--sl-color-bg);
+    display: flex;
+    flex-direction: column;
+  }
+  .sop-spec-label {
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sl-color-gray-3);
+  }
+  .sop-spec-value {
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: var(--sl-color-text);
+    font-family: var(--font-heading, 'Outfit', sans-serif);
+  }
+  .sop-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .sop-ppe { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .ppe-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 9999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    background: var(--sl-color-accent-low);
+    color: var(--sl-color-accent-high);
+    border: 1px solid transparent;
+  }
+  .ppe-critical {
+    background: #FEF2F2;
+    color: #B91C1C;
+    border-color: #FCA5A5;
+  }
+  .sop-training {
+    font-size: 0.88rem;
+    color: var(--sl-color-text);
+    padding: 0.5rem 0.8rem;
+    border-radius: 0.6rem;
+    background: var(--sl-color-bg-sidebar);
+    border: 1px solid var(--sl-color-border);
+    width: fit-content;
+  }
+  .sop-training-label { font-weight: 800; color: var(--sl-color-accent); }
+</style>

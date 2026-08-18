@@ -1,0 +1,107 @@
+---
+/**
+ * Embeds the official lab tour video with interactive timestamp markers that
+ * jump the player to each shop zone.
+ *
+ * <LabTourEmbed /> uses the default zone markers; pass `markers` to override.
+ */
+interface Marker {
+  seconds: number;
+  label: string;
+}
+interface Props {
+  markers?: Marker[];
+}
+
+const VIDEO_ID = 'yZNJGcsSCnM';
+
+const defaultMarkers: Marker[] = [
+  { seconds: 0, label: 'Intro' },
+];
+
+const { markers = defaultMarkers } = Astro.props;
+
+function fmt(s: number): string {
+  const m = Math.floor(s / 60);
+  const sec = s % 60;
+  return `${m}:${String(sec).padStart(2, '0')}`;
+}
+---
+
+<div class="lab-tour-embed">
+  <div class="embed-container-video">
+    <iframe
+      id="lab-tour-iframe"
+      src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?enablejsapi=1`}
+      title="Spectrum 3847 Lab Tour"
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+  </div>
+  {markers.length > 1 && (
+    <div class="tour-markers" data-video-id={VIDEO_ID}>
+      {markers.map((m) => (
+        <button type="button" class="tour-marker" data-seconds={m.seconds}>
+          <span class="tm-time">{fmt(m.seconds)}</span>
+          <span class="tm-label">{m.label}</span>
+        </button>
+      ))}
+    </div>
+  )}
+</div>
+
+<style>
+  .tour-markers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin: 0.85rem 0 1.5rem;
+  }
+  .tour-marker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.75rem;
+    border: 1px solid var(--sl-color-border);
+    border-radius: 9999px;
+    background: var(--sl-color-bg);
+    font: inherit;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: border-color 0.15s, background-color 0.15s, transform 0.15s;
+  }
+  .tour-marker:hover {
+    border-color: var(--sl-color-accent);
+    background: var(--sl-color-accent-low);
+    transform: translateY(-1px);
+  }
+  .tm-time {
+    font-weight: 800;
+    font-family: var(--font-heading, 'Outfit', sans-serif);
+    color: var(--sl-color-accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .tm-label { font-weight: 600; color: var(--sl-color-text); }
+</style>
+
+<script>
+  function initTourMarkers() {
+    const wrap = document.querySelector('.tour-markers');
+    const iframe = document.getElementById('lab-tour-iframe') as HTMLIFrameElement | null;
+    if (!wrap || !iframe) return;
+    const videoId = wrap.getAttribute('data-video-id');
+    wrap.querySelectorAll<HTMLButtonElement>('.tour-marker').forEach((btn) => {
+      if (btn.dataset.bound) return;
+      btn.dataset.bound = 'true';
+      btn.addEventListener('click', () => {
+        const s = btn.getAttribute('data-seconds') ?? '0';
+        iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?start=${s}&autoplay=1`;
+        iframe.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+  }
+  document.addEventListener('DOMContentLoaded', initTourMarkers);
+  document.addEventListener('astro:page-load', initTourMarkers);
+  initTourMarkers();
+</script>

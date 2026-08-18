@@ -1,0 +1,131 @@
+---
+/**
+ * Product card for a single consumable: price, part number, storage
+ * location, and a direct buy link.
+ *
+ * <ConsumableCard id="garnet-80" /> reads src/data/consumables.json by id;
+ * or pass all props inline for one-offs.
+ */
+import consumables from '../data/consumables.json';
+
+interface Props {
+  id?: string;
+  name?: string;
+  vendor?: string;
+  price?: string;
+  unit?: string;
+  partNumber?: string;
+  url?: string;
+  location?: string;
+  category?: string;
+  notes?: string;
+}
+
+const fromData = Astro.props.id
+  ? (consumables as any[]).find((c) => c.id === Astro.props.id) ?? {}
+  : {};
+const merged = { ...fromData, ...Object.fromEntries(Object.entries(Astro.props).filter(([, v]) => v !== undefined)) };
+const { name, vendor, price, unit, partNumber, url, location, category, notes } = merged;
+---
+
+<div class="consumable-card">
+  <div class="cc-main">
+    <div class="cc-title-row">
+      <span class="cc-name">{name}</span>
+      {category && <span class="cc-cat">{category}</span>}
+    </div>
+    <div class="cc-meta">
+      {vendor && <span><strong>Vendor:</strong> {vendor}</span>}
+      {partNumber && <span><strong>P/N:</strong> <code>{partNumber}</code></span>}
+      {location && <span class="cc-loc"><strong>📍 Location:</strong> {location}</span>}
+    </div>
+    {notes && <p class="cc-notes">{notes}</p>}
+  </div>
+  <div class="cc-side">
+    {price && (
+      <span class="cc-price">{price}{unit && <span class="cc-unit"> / {unit}</span>}</span>
+    )}
+    {url && (
+      <a class="cc-buy" href={url} target="_blank" rel="noopener noreferrer">Reorder ↗</a>
+    )}
+  </div>
+</div>
+
+<style>
+  .consumable-card {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0.75rem 0;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid var(--sl-color-border);
+    border-radius: 0.7rem;
+    background: var(--sl-color-bg);
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .consumable-card:hover {
+    border-color: var(--sl-color-accent);
+    box-shadow: 0 4px 14px rgba(107, 17, 153, 0.09);
+  }
+  .cc-main { min-width: 0; flex: 1 1 auto; }
+  .cc-title-row { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+  .cc-name { font-weight: 800; font-size: 0.98rem; color: var(--sl-color-text); }
+  .cc-cat {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    background: var(--sl-color-accent-low);
+    color: var(--sl-color-accent-high);
+  }
+  .cc-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.1rem;
+    margin-top: 0.3rem;
+    font-size: 0.83rem;
+    color: var(--sl-color-gray-2);
+  }
+  .cc-meta strong { color: var(--sl-color-gray-3); font-weight: 700; }
+  .cc-notes {
+    margin: 0.4rem 0 0 0 !important;
+    font-size: 0.83rem;
+    color: var(--sl-color-gray-3);
+    line-height: 1.5;
+  }
+  .cc-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0.45rem;
+    flex-shrink: 0;
+  }
+  .cc-price {
+    font-family: var(--font-heading, 'Outfit', sans-serif);
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: var(--sl-color-accent);
+    white-space: nowrap;
+  }
+  .cc-unit { font-size: 0.75rem; color: var(--sl-color-gray-3); font-weight: 600; }
+  .cc-buy {
+    display: inline-block;
+    padding: 0.35rem 0.8rem;
+    border-radius: 0.5rem;
+    background: var(--sl-color-accent);
+    color: #fff !important;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none !important;
+    border-bottom: none !important;
+    white-space: nowrap;
+  }
+  .cc-buy:hover { background: #58117A; }
+  @media (max-width: 540px) {
+    .consumable-card { flex-direction: column; }
+    .cc-side { flex-direction: row; align-items: center; justify-content: space-between; }
+  }
+</style>

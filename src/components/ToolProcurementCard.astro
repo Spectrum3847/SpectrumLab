@@ -1,0 +1,128 @@
+---
+/**
+ * Procurement/provenance badge shown at the top of tool pages: original
+ * vendor, purchase price, order date, and direct purchase/reorder link.
+ *
+ * <ToolProcurementCard tool="wazer-pro" /> reads src/data/tools-procurement.json;
+ * any prop can be overridden inline.
+ */
+import procurement from '../data/tools-procurement.json';
+
+interface Props {
+  tool?: string;
+  name?: string;
+  vendor?: string | null;
+  price?: string | null;
+  orderDate?: string | null;
+  purchaseUrl?: string | null;
+  sku?: string | null;
+  manualUrl?: string | null;
+}
+
+const data = Astro.props.tool
+  ? (procurement as Record<string, any>)[Astro.props.tool] ?? {}
+  : {};
+const merged = { ...data, ...Object.fromEntries(Object.entries(Astro.props).filter(([, v]) => v !== undefined)) };
+const { vendor, price, orderDate, purchaseUrl, sku, manualUrl } = merged;
+---
+
+<div class="proc-card">
+  <div class="proc-grid">
+    {vendor && (
+      <div class="proc-item">
+        <span class="proc-label">Purchased From</span>
+        <span class="proc-value">{vendor}</span>
+      </div>
+    )}
+    {price && (
+      <div class="proc-item">
+        <span class="proc-label">Original Price</span>
+        <span class="proc-value proc-price">{price}</span>
+      </div>
+    )}
+    {orderDate && (
+      <div class="proc-item">
+        <span class="proc-label">Acquired</span>
+        <span class="proc-value">{orderDate}</span>
+      </div>
+    )}
+    {sku && (
+      <div class="proc-item">
+        <span class="proc-label">Model / SKU</span>
+        <span class="proc-value proc-sku">{sku}</span>
+      </div>
+    )}
+  </div>
+  <div class="proc-actions">
+    {purchaseUrl && (
+      <a class="proc-btn proc-btn-primary" href={purchaseUrl} target="_blank" rel="noopener noreferrer">
+        Buy Again / Product Page ↗
+      </a>
+    )}
+    {manualUrl && (
+      <a class="proc-btn proc-btn-ghost" href={manualUrl} target="_blank" rel="noopener noreferrer">
+        Official Manual ↗
+      </a>
+    )}
+  </div>
+</div>
+
+<style>
+  .proc-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    padding: 1.1rem 1.35rem;
+    border: 1px solid var(--sl-color-border);
+    border-left: 4px solid var(--sl-color-accent);
+    border-radius: 0.85rem;
+    background: var(--sl-color-bg-sidebar);
+  }
+  .proc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 2rem;
+  }
+  .proc-item { display: flex; flex-direction: column; }
+  .proc-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sl-color-gray-3);
+  }
+  .proc-value {
+    font-weight: 700;
+    font-size: 0.98rem;
+    color: var(--sl-color-text);
+  }
+  .proc-price { color: var(--sl-color-accent); font-family: var(--font-heading, 'Outfit', sans-serif); }
+  .proc-sku { font-family: var(--sl-font-mono, ui-monospace, monospace); font-size: 0.88rem; }
+  .proc-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .proc-btn {
+    display: inline-block;
+    padding: 0.5rem 0.95rem;
+    border-radius: 0.55rem;
+    font-size: 0.83rem;
+    font-weight: 700;
+    text-decoration: none !important;
+    border-bottom: none !important;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .proc-btn-primary {
+    background: var(--sl-color-accent);
+    color: #fff !important;
+    box-shadow: 0 3px 10px rgba(107, 17, 153, 0.22);
+  }
+  .proc-btn-primary:hover { background: #58117A; transform: translateY(-1px); }
+  .proc-btn-ghost {
+    border: 1px solid var(--sl-color-border) !important;
+    color: var(--sl-color-text) !important;
+    background: var(--sl-color-bg);
+  }
+  .proc-btn-ghost:hover { border-color: var(--sl-color-accent) !important; color: var(--sl-color-accent) !important; }
+</style>

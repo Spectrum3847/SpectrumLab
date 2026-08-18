@@ -1,0 +1,111 @@
+---
+/**
+ * Interactive drawer/compartment map for a storage unit (StackTech tower,
+ * toolbox, or small-parts case) from src/data/storage-locations.json.
+ *
+ * <DrawerLayoutMap unit="stacktech-tower-1" />
+ * Click a drawer to expand its contents.
+ */
+import storage from '../data/storage-locations.json';
+
+interface Props {
+  unit: string;
+}
+const unit = (storage as any).units?.find((u: any) => u.id === Astro.props.unit);
+if (!unit) throw new Error(`DrawerLayoutMap: unknown unit "${Astro.props.unit}"`);
+---
+
+<div class="drawer-map">
+  <div class="dm-header">
+    <span class="dm-name">{unit.name}</span>
+    {unit.location && <span class="dm-loc">📍 {unit.location}</span>}
+  </div>
+  <div class="dm-stack">
+    {unit.drawers.map((d: any, i: number) => (
+      <details class="dm-drawer">
+        <summary>
+          <span class="dm-drawer-num">{i + 1}</span>
+          <span class="dm-drawer-label">{d.label}</span>
+          <span class="dm-count">{d.contents.length} item{d.contents.length === 1 ? '' : 's'}</span>
+        </summary>
+        <ul class="dm-contents">
+          {d.contents.map((c: string) => (
+            <li>{c}</li>
+          ))}
+        </ul>
+        {d.notes && <p class="dm-notes">{d.notes}</p>}
+      </details>
+    ))}
+  </div>
+</div>
+
+<style>
+  .drawer-map {
+    margin: 1.5rem 0;
+    border: 1px solid var(--sl-color-border);
+    border-radius: 0.85rem;
+    overflow: hidden;
+    background: var(--sl-color-bg);
+  }
+  .dm-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 0.8rem 1.1rem;
+    background: rgb(60, 0, 96);
+  }
+  .dm-name {
+    font-family: var(--font-heading, 'Outfit', sans-serif);
+    font-weight: 800;
+    color: #fff;
+    font-size: 1rem;
+  }
+  .dm-loc { font-size: 0.8rem; color: rgba(255, 255, 255, 0.75); font-weight: 600; }
+  .dm-stack { padding: 0.6rem; display: flex; flex-direction: column; gap: 0.4rem; }
+  .dm-drawer {
+    border: 1.5px solid var(--sl-color-border);
+    border-radius: 0.55rem;
+    background: var(--sl-color-bg-sidebar);
+    transition: border-color 0.15s;
+  }
+  .dm-drawer:hover { border-color: var(--sl-color-accent); }
+  .dm-drawer[open] { border-color: var(--sl-color-accent); background: var(--sl-color-bg); }
+  .dm-drawer summary {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.55rem 0.85rem;
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+  }
+  .dm-drawer summary::-webkit-details-marker { display: none; }
+  .dm-drawer-num {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: grid;
+    place-items: center;
+    border-radius: 0.4rem;
+    background: var(--sl-color-accent);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.78rem;
+  }
+  .dm-drawer-label { flex: 1 1 auto; font-weight: 700; font-size: 0.92rem; }
+  .dm-count { font-size: 0.75rem; font-weight: 700; color: var(--sl-color-gray-3); white-space: nowrap; }
+  .dm-contents {
+    margin: 0 !important;
+    padding: 0.25rem 1rem 0.75rem 3rem !important;
+    font-size: 0.88rem;
+  }
+  .dm-contents li { margin-bottom: 0.15rem !important; }
+  .dm-notes {
+    margin: 0 !important;
+    padding: 0 1rem 0.75rem 3rem;
+    font-size: 0.8rem;
+    color: var(--sl-color-gray-3);
+  }
+</style>

@@ -1,0 +1,103 @@
+{
+  "units": [
+    {
+      "id": "stacktech-power-tower",
+      "name": "StackTech Tower — Power Tools",
+      "location": "Machine shop, rolling — usually parked by the assembly tables",
+      "drawers": [
+        {
+          "label": "Drills",
+          "contents": ["Milwaukee M12 FUEL 1/2\" drill/drivers (3403-20)", "Drill bit index", "M12 batteries + charger"],
+          "notes": "Return drills with a battery ≥ 1 bar; dead batteries go to the charging shelf."
+        },
+        {
+          "label": "Impact Drivers",
+          "contents": ["Milwaukee M12 FUEL 1/4\" hex impact drivers (3453-20)", "Impact-rated bit sets", "Magnetic bit holders"]
+        },
+        {
+          "label": "Rivet Tools",
+          "contents": ["M12 Rivet Tool (2550-20)", "6\" long nose extension (48-95-0100)", "Rivet size chart", "Spent-mandrel cup"]
+        },
+        {
+          "label": "Sanders & Cut-Off",
+          "contents": ["M12 FUEL Orbital Detail Sander (2531-20)", "M12 FUEL 3\" Cut-Off Tool (2522-20)", "Sanding pads", "Cut-off wheels"]
+        },
+        {
+          "label": "Jigsaw & Nibbler",
+          "contents": ["M12 FUEL Jig Saw (2545-20)", "M12 FUEL 16 Ga Nibbler (2476-20)", "T-shank blade assortment"]
+        },
+        {
+          "label": "Rotary & USB Tools",
+          "contents": ["M12 Rotary Tool (2525-20)", "Rotary bit kit", "USB-rechargeable tools & cables"]
+        },
+        {
+          "label": "Stapler",
+          "contents": ["M12 3/8\" Crown Stapler (2447-20)", "T50 staple boxes"]
+        }
+      ]
+    },
+    {
+      "id": "stacktech-saw-tower",
+      "name": "StackTech Tower — Saws & Portable Cutting",
+      "location": "Machine shop, rolling",
+      "drawers": [
+        { "label": "Hackzall", "contents": ["M12 FUEL Hackzall (2520-20)", "Recip blade assortment"] },
+        { "label": "Compact Bandsaw", "contents": ["M12 FUEL Compact Band Saw (2529-20)", "Spare 12/14 TPI blades"] },
+        { "label": "Batteries & Chargers", "contents": ["M12 battery fleet", "Dual chargers"] }
+      ]
+    },
+    {
+      "id": "red-toolbox",
+      "name": "Red Toolbox — Hand Tools",
+      "location": "Machine shop wall",
+      "drawers": [
+        { "label": "Layout & Measuring", "contents": ["Combination squares", "Digital calipers", "Center punches", "Precision rulers", "Scribes"] },
+        { "label": "Hex & Torx", "contents": ["Allen key sets (SAE + metric)", "T-handle hex sets", "Torx drivers"] },
+        { "label": "Wrenches", "contents": ["Combination wrench sets", "Ratcheting wrenches", "Adjustable wrenches"] },
+        { "label": "Sockets", "contents": ["1/4\" and 3/8\" socket sets", "Nut drivers"] },
+        { "label": "Screwdrivers", "contents": ["Phillips/flat assortments", "Precision screwdriver kits"] },
+        { "label": "Pliers & Cutters", "contents": ["Flush cutters", "Needle nose pliers", "Locking pliers", "Deburring tools"] }
+      ]
+    },
+    {
+      "id": "blue-toolbox",
+      "name": "Blue Toolbox — Fabrication Support",
+      "location": "Machine shop, next to the WAZER",
+      "drawers": [
+        { "label": "Taps & Dies", "contents": ["Tap and die sets", "Tap handles", "Cutting fluid"] },
+        { "label": "Riveting", "contents": ["Hand rivet guns", "Manual rivnut tools", "Rivet assortments"] },
+        { "label": "Clamps", "contents": ["C-clamps", "Kant-Twist clamps", "90° corner clamps"] }
+      ]
+    },
+    {
+      "id": "lathe-toolbox",
+      "name": "Lathe Toolbox",
+      "location": "Next to the PM-1130V",
+      "drawers": [
+        { "label": "Turning Tools", "contents": ["Indexable turning tools", "Carbide inserts", "Boring bars"] },
+        { "label": "Workholding", "contents": ["Chuck jaws", "Live centers", "Drill chucks"] },
+        { "label": "Measuring", "contents": ["Micrometers", "Dial indicators", "Edge finders"] }
+      ]
+    }
+  ],
+  "smallParts": {
+    "name": "Small Parts Modular Storage (3D-printed grid bins)",
+    "location": "Machine shop wall shelving",
+    "categories": [
+      "1/2\" hex bearings",
+      "Spacers (aluminum, nylon)",
+      "Snap rings",
+      "Shaft collars",
+      "Standoffs",
+      "Bolts (#10-32, 1/4-20) by length",
+      "Nuts & lock nuts",
+      "Washers"
+    ],
+    "standard": "Bins are printed from the team's parametric grid-bin models; every bin gets a Brother TZe label on the front face."
+  },
+  "pitKits": {
+    "name": "T-Stak Competition Pit Kits",
+    "location": "Storage room, stacked by the door",
+    "notes": "Pre-packed duplicates of the most-used tools so the shop set never leaves the building."
+  }
+}

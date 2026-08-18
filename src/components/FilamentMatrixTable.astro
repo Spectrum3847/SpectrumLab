@@ -1,0 +1,56 @@
+---
+/**
+ * Comparison matrix of all filaments from src/data/filaments.json.
+ */
+import filaments from '../data/filaments.json';
+const items = filaments as any[];
+---
+
+<div class="filament-matrix">
+  <table>
+    <thead>
+      <tr>
+        <th>Material</th>
+        <th>Nozzle</th>
+        <th>Bed</th>
+        <th>Plate</th>
+        <th>Fan</th>
+        <th>Drying</th>
+        <th>Enclosure</th>
+        <th>$ / kg</th>
+      </tr>
+    </thead>
+    <tbody>
+      {items.map((f) => (
+        <tr>
+          <td>
+            <strong>{f.name}</strong>
+            {f.hardenedNozzle && <span class="fm-flag" title="Requires hardened nozzle">⚙️ hardened</span>}
+          </td>
+          <td>{f.nozzleTemp}</td>
+          <td>{f.bedTemp}</td>
+          <td>{f.plate}</td>
+          <td>{f.fanSpeed}</td>
+          <td>{f.drying}</td>
+          <td>{f.enclosure}</td>
+          <td class="fm-price">
+            {f.reorderUrl ? <a href={f.reorderUrl} target="_blank" rel="noopener noreferrer">{f.pricePerKg}</a> : f.pricePerKg}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .filament-matrix { overflow-x: auto; margin: 1.5rem 0; }
+  .filament-matrix table { font-size: 0.83rem; min-width: 780px; }
+  .fm-flag {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #B45309;
+    white-space: nowrap;
+  }
+  .fm-price { font-weight: 800; white-space: nowrap; }
+</style>

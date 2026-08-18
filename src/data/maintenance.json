@@ -1,0 +1,72 @@
+{
+  "daily": {
+    "opening": [
+      "Unlock and walk the shop — check nothing was left powered overnight",
+      "Turn on shop air compressor; verify regulator at 120 PSI",
+      "Check 3D printer farm for overnight failures; clear plates",
+      "Empty any full scrap/waste bins from yesterday",
+      "Verify first-aid kit and fire extinguisher are in place"
+    ],
+    "closing": [
+      "Power down every machine at its switch (not just the controller)",
+      "Drain air from pneumatic lines; compressor off",
+      "All tools back to their labeled drawers/bins — StackTech drawers closed",
+      "Sweep floors; vacuum machine chip trays",
+      "Take out trash if > half full; sort scrap metal into the recycle bin",
+      "Last mentor out checks the curing oven and heat press are OFF and cool"
+    ]
+  },
+  "weekly": [
+    "WAZER: check tank abrasive level, drain used-abrasive buckets if > half full",
+    "Laser optics: inspect (clean only if hazy) on Nova 35 and MetalFab",
+    "ShopSabre: vacuum spoilboard and rails; check for loose bits in collets",
+    "Blow dust out of powder booth filters; replace box-fan filter if caked",
+    "Printer farm: wipe PEI plates with IPA; check nozzle wear on CF printers",
+    "Charge all M12/DeWalt batteries; report any that won't hold charge",
+    "Restock small-parts bins from bulk stock; note anything below reorder point"
+  ],
+  "monthly": [
+    "WAZER: full maintenance per the maintenance manual (nozzle, mixing tube, tank clean-out)",
+    "Lathe: oil ways and leadscrew, check belt tension",
+    "Bandsaws: check blade tension, tracking, and tire condition",
+    "Press brake: grease ram guides; verify backgauge calibration",
+    "Curing oven: inspect door seal and thermocouple reading vs. a reference thermometer",
+    "Test emergency stops on every CNC machine",
+    "Inventory pass on the consumables ledger — reorder anything below minimum"
+  ],
+  "perMachine": {
+    "wazer-pro": [
+      { "task": "Top off abrasive hopper", "interval": "Every session" },
+      { "task": "Drain used abrasive from tank buckets", "interval": "Weekly or every ~10 hrs cutting" },
+      { "task": "Replace nozzle/mixing tube", "interval": "When kerf quality degrades (~30-60 hrs)" },
+      { "task": "Clean cut bed slats and flip/replace", "interval": "Monthly" }
+    ],
+    "thunder-nova-35": [
+      { "task": "Clean lens and mirrors", "interval": "Weekly with heavy use" },
+      { "task": "Empty exhaust/debris tray", "interval": "Weekly" },
+      { "task": "Check coolant level and temperature", "interval": "Every session" }
+    ],
+    "shopsabre-23": [
+      { "task": "Vacuum spoilboard + rails", "interval": "Every session" },
+      { "task": "Surface spoilboard", "interval": "When cutting depth varies" },
+      { "task": "Check collet and endmill wear", "interval": "Every session" }
+    ],
+    "hp-t630": [
+      { "task": "Run printhead alignment", "interval": "If banding appears" },
+      { "task": "Check ink levels before large prints", "interval": "Every session" }
+    ],
+    "light-armor-oven": [
+      { "task": "Verify PID temp vs reference thermometer", "interval": "Monthly" },
+      { "task": "Inspect door seal", "interval": "Monthly" }
+    ],
+    "bambu-fleet": [
+      { "task": "Wipe plates with 90%+ IPA", "interval": "Every few prints" },
+      { "task": "Clean/replace nozzle wiper pad", "interval": "Monthly" },
+      { "task": "Run full calibration (lidar + vibration)", "interval": "After nozzle changes" }
+    ],
+    "prusa-farm": [
+      { "task": "Wash sheets with dish soap when adhesion drops", "interval": "As needed" },
+      { "task": "Check Live-Z after sheet swaps", "interval": "Per sheet change" }
+    ]
+  }
+}

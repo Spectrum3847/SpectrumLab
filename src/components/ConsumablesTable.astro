@@ -1,0 +1,181 @@
+---
+/**
+ * Filterable, searchable table of consumables from src/data/consumables.json.
+ *
+ * <ConsumablesTable />                    — everything
+ * <ConsumablesTable category="Waterjet" /> — pre-filtered, filter UI hidden
+ * <ConsumablesTable machine="wazer-pro" /> — items tagged for a machine
+ */
+import consumables from '../data/consumables.json';
+
+interface Props {
+  category?: string;
+  machine?: string;
+  showFilters?: boolean;
+}
+const { category, machine, showFilters } = Astro.props;
+
+type Item = {
+  id: string;
+  name: string;
+  category: string;
+  vendor: string;
+  price: string;
+  unit?: string;
+  partNumber?: string;
+  url?: string;
+  location?: string;
+  machines?: string[];
+  notes?: string;
+};
+
+let items = consumables as Item[];
+if (category) items = items.filter((c) => c.category === category);
+if (machine) items = items.filter((c) => c.machines?.includes(machine));
+const categories = [...new Set(items.map((c) => c.category))].sort();
+const filtersVisible = showFilters ?? (!category && !machine);
+const uid = `ct-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div class="consumables-table" id={uid}>
+  {filtersVisible && (
+    <div class="ct-controls">
+      <input type="search" placeholder="Search items, part numbers, locations…" class="ct-search" data-ct-search />
+      <div class="ct-cats" data-ct-cats>
+        <button type="button" class="ct-cat active" data-cat="">All</button>
+        {categories.map((c) => (
+          <button type="button" class="ct-cat" data-cat={c}>{c}</button>
+        ))}
+      </div>
+    </div>
+  )}
+  <div class="ct-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Category</th>
+          <th>Location</th>
+          <th>Price</th>
+          <th>Buy</th>
+        </tr>
+      </thead>
+      <tbody>
+        {items.map((c) => (
+          <tr data-cat={c.category} data-search={`${c.name} ${c.partNumber ?? ''} ${c.location ?? ''} ${c.vendor} ${c.notes ?? ''}`.toLowerCase()}>
+            <td>
+              <span class="ct-name">{c.name}</span>
+              {c.partNumber && <span class="ct-pn"><code>{c.partNumber}</code></span>}
+              {c.notes && <span class="ct-notes">{c.notes}</span>}
+            </td>
+            <td><span class="ct-cat-chip">{c.category}</span></td>
+            <td class="ct-loc">{c.location ?? '—'}</td>
+            <td class="ct-price">{c.price}{c.unit && <span class="ct-unit"> / {c.unit}</span>}</td>
+            <td>
+              {c.url ? (
+                <a class="ct-buy" href={c.url} target="_blank" rel="noopener noreferrer" title={`Reorder from ${c.vendor}`}>
+                  {c.vendor} ↗
+                </a>
+              ) : (
+                c.vendor
+              )}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <p class="ct-empty" data-ct-empty hidden>No items match your filter.</p>
+  </div>
+</div>
+
+<style>
+  .consumables-table { margin: 1.5rem 0; }
+  .ct-controls { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 0.9rem; }
+  .ct-search {
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    font: inherit;
+    font-size: 0.92rem;
+    border: 1px solid var(--sl-color-border);
+    border-radius: 0.6rem;
+    background: var(--sl-color-bg);
+    color: var(--sl-color-text);
+  }
+  .ct-search:focus { outline: none; border-color: var(--sl-color-accent); }
+  .ct-cats { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .ct-cat {
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.3rem 0.7rem;
+    border-radius: 9999px;
+    border: 1px solid var(--sl-color-border);
+    background: var(--sl-color-bg);
+    color: var(--sl-color-gray-2);
+    cursor: pointer;
+    transition: all 0.12s;
+  }
+  .ct-cat:hover { border-color: var(--sl-color-accent); color: var(--sl-color-accent); }
+  .ct-cat.active { background: var(--sl-color-accent); border-color: var(--sl-color-accent); color: #fff; }
+  .ct-wrap { overflow-x: auto; }
+  .ct-name { display: block; font-weight: 700; }
+  .ct-pn { display: block; margin-top: 0.1rem; }
+  .ct-notes { display: block; font-size: 0.78rem; color: var(--sl-color-gray-3); margin-top: 0.15rem; }
+  .ct-cat-chip {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    background: var(--sl-color-accent-low);
+    color: var(--sl-color-accent-high);
+    white-space: nowrap;
+  }
+  .ct-loc { font-size: 0.85rem; }
+  .ct-price { font-weight: 800; color: var(--sl-color-accent); white-space: nowrap; }
+  .ct-unit { font-weight: 600; font-size: 0.75rem; color: var(--sl-color-gray-3); }
+  .ct-buy {
+    font-weight: 700;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+  .ct-empty { color: var(--sl-color-gray-3); padding: 1rem; text-align: center; }
+</style>
+
+<script>
+  function initConsumableTables() {
+    document.querySelectorAll<HTMLElement>('.consumables-table').forEach((root) => {
+      if (root.dataset.bound) return;
+      root.dataset.bound = 'true';
+      const search = root.querySelector<HTMLInputElement>('[data-ct-search]');
+      const catBtns = Array.from(root.querySelectorAll<HTMLButtonElement>('.ct-cat'));
+      const rows = Array.from(root.querySelectorAll<HTMLTableRowElement>('tbody tr'));
+      const empty = root.querySelector<HTMLElement>('[data-ct-empty]');
+      let activeCat = '';
+      const apply = () => {
+        const q = (search?.value ?? '').toLowerCase().trim();
+        let visible = 0;
+        rows.forEach((r) => {
+          const matchCat = !activeCat || r.dataset.cat === activeCat;
+          const matchQ = !q || (r.dataset.search ?? '').includes(q);
+          const show = matchCat && matchQ;
+          r.hidden = !show;
+          if (show) visible++;
+        });
+        if (empty) empty.hidden = visible !== 0;
+      };
+      search?.addEventListener('input', apply);
+      catBtns.forEach((b) =>
+        b.addEventListener('click', () => {
+          activeCat = b.dataset.cat ?? '';
+          catBtns.forEach((x) => x.classList.toggle('active', x === b));
+          apply();
+        })
+      );
+    });
+  }
+  document.addEventListener('DOMContentLoaded', initConsumableTables);
+  document.addEventListener('astro:page-load', initConsumableTables);
+  initConsumableTables();
+</script>

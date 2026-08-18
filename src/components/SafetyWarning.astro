@@ -1,0 +1,61 @@
+---
+/**
+ * High-visibility safety callout.
+ * <SafetyWarning type="critical" title="No gloves near rotating machinery">...</SafetyWarning>
+ * Types: critical (red), warning (amber), tip (purple).
+ */
+interface Props {
+  type?: 'critical' | 'warning' | 'tip';
+  title?: string;
+}
+const { type = 'warning', title } = Astro.props;
+
+const config = {
+  critical: { icon: '⛔', label: 'CRITICAL SAFETY RULE' },
+  warning: { icon: '⚠️', label: 'WARNING' },
+  tip: { icon: '💡', label: 'SHOP TIP' },
+}[type];
+---
+
+<div class={`sw-callout sw-${type}`}>
+  <div class="sw-header">
+    <span class="sw-icon" aria-hidden="true">{config.icon}</span>
+    <span class="sw-label">{title ?? config.label}</span>
+  </div>
+  <div class="sw-body"><slot /></div>
+</div>
+
+<style>
+  .sw-callout {
+    margin: 1.5rem 0;
+    border-radius: 0.85rem;
+    padding: 1rem 1.25rem;
+    border: 1.5px solid;
+  }
+  .sw-critical { background: #FEF2F2; border-color: #DC2626; }
+  .sw-warning { background: #FFFBEB; border-color: #D97706; }
+  .sw-tip { background: var(--sl-color-accent-low, #F3E8FF); border-color: var(--sl-color-accent, #6B1199); }
+
+  .sw-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.35rem;
+  }
+  .sw-icon { font-size: 1.15rem; line-height: 1; }
+  .sw-label {
+    font-family: var(--font-heading, 'Outfit', sans-serif);
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .sw-critical .sw-label { color: #B91C1C; }
+  .sw-warning .sw-label { color: #B45309; }
+  .sw-tip .sw-label { color: var(--sl-color-accent-high, #3C0060); }
+
+  .sw-body { font-size: 0.95rem; line-height: 1.6; }
+  .sw-body :global(p) { margin: 0 0 0.5rem 0 !important; }
+  .sw-body :global(p:last-child) { margin-bottom: 0 !important; }
+  .sw-body :global(ul) { margin: 0.25rem 0 0 0 !important; }
+</style>

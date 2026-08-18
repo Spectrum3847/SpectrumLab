@@ -1,0 +1,165 @@
+---
+/**
+ * Interactive "Before You Run" checklist. Checked state is per-page and
+ * resets on reload (a fresh checklist for every session) — there's a reset
+ * button for mid-session re-runs.
+ *
+ * <PreFlightChecklist title="Before You Cut" items={[ 'Grounding clamp attached', ... ]} />
+ */
+interface Props {
+  title?: string;
+  items: string[];
+}
+const { title = 'Pre-Flight Checklist', items } = Astro.props;
+const uid = `pfc-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div class="preflight" id={uid}>
+  <div class="pf-header">
+    <span class="pf-icon" aria-hidden="true">✅</span>
+    <span class="pf-title">{title}</span>
+    <span class="pf-progress" data-progress>0 / {items.length}</span>
+    <button type="button" class="pf-reset" data-reset>Reset</button>
+  </div>
+  <ul class="pf-list">
+    {items.map((item, i) => (
+      <li>
+        <label class="pf-item">
+          <input type="checkbox" data-pf-check data-index={i} />
+          <span class="pf-check" aria-hidden="true"></span>
+          <span class="pf-text">{item}</span>
+        </label>
+      </li>
+    ))}
+  </ul>
+  <p class="pf-done" data-done hidden>All checks complete — you are GO. 🚀</p>
+</div>
+
+<style>
+  .preflight {
+    margin: 1.75rem 0;
+    border: 1.5px solid var(--sl-color-accent);
+    border-radius: 0.85rem;
+    overflow: hidden;
+    background: var(--sl-color-bg);
+  }
+  .pf-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.1rem;
+    background: var(--sl-color-accent-low);
+  }
+  .pf-icon { font-size: 1.05rem; }
+  .pf-title {
+    flex: 1 1 auto;
+    font-family: var(--font-heading, 'Outfit', sans-serif);
+    font-weight: 800;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    color: var(--sl-color-accent-high);
+    text-transform: uppercase;
+  }
+  .pf-progress {
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: var(--sl-color-accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .pf-reset {
+    border: 1px solid var(--sl-color-border);
+    background: var(--sl-color-bg);
+    border-radius: 0.45rem;
+    font: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.6rem;
+    cursor: pointer;
+    color: var(--sl-color-gray-2);
+  }
+  .pf-reset:hover { border-color: var(--sl-color-accent); color: var(--sl-color-accent); }
+  .pf-list {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0.5rem 0.75rem 0.75rem !important;
+  }
+  .pf-list li { margin: 0 !important; }
+  .pf-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.12s;
+  }
+  .pf-item:hover { background: var(--sl-color-bg-sidebar); }
+  .pf-item input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .pf-check {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.1rem;
+    border: 2px solid var(--sl-color-gray-4);
+    border-radius: 0.35rem;
+    display: grid;
+    place-items: center;
+    transition: all 0.15s;
+  }
+  .pf-item input:checked + .pf-check {
+    background: var(--sl-color-accent);
+    border-color: var(--sl-color-accent);
+  }
+  .pf-item input:checked + .pf-check::after {
+    content: '✓';
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .pf-text { font-size: 0.95rem; line-height: 1.5; }
+  .pf-item input:checked ~ .pf-text {
+    color: var(--sl-color-gray-3);
+    text-decoration: line-through;
+    text-decoration-color: var(--sl-color-gray-4);
+  }
+  .pf-done {
+    margin: 0 !important;
+    padding: 0.65rem 1.1rem;
+    background: #ECFDF5;
+    color: #047857;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-top: 1px solid #A7F3D0;
+  }
+</style>
+
+<script>
+  function initPreflights() {
+    document.querySelectorAll<HTMLElement>('.preflight').forEach((root) => {
+      if (root.dataset.bound) return;
+      root.dataset.bound = 'true';
+      const checks = Array.from(root.querySelectorAll<HTMLInputElement>('[data-pf-check]'));
+      const progress = root.querySelector<HTMLElement>('[data-progress]')!;
+      const done = root.querySelector<HTMLElement>('[data-done]')!;
+      const update = () => {
+        const n = checks.filter((c) => c.checked).length;
+        progress.textContent = `${n} / ${checks.length}`;
+        done.hidden = n !== checks.length;
+      };
+      checks.forEach((c) => c.addEventListener('change', update));
+      root.querySelector('[data-reset]')?.addEventListener('click', () => {
+        checks.forEach((c) => (c.checked = false));
+        update();
+      });
+      update();
+    });
+  }
+  document.addEventListener('DOMContentLoaded', initPreflights);
+  document.addEventListener('astro:page-load', initPreflights);
+  initPreflights();
+</script>

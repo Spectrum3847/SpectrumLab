@@ -1,0 +1,127 @@
+---
+/**
+ * Quick-copy block for slicer preset values.
+ *
+ * <PrintSettingPreset title="Structural PETG" slicer="Bambu Studio"
+ *   settings={{ 'Layer height': '0.2 mm', 'Walls': '4', 'Infill': '40% gyroid' }}
+ *   notes="For load-bearing brackets" />
+ */
+interface Props {
+  title: string;
+  slicer?: string;
+  settings: Record<string, string>;
+  notes?: string;
+}
+const { title, slicer, settings, notes } = Astro.props;
+const copyText = Object.entries(settings)
+  .map(([k, v]) => `${k}: ${v}`)
+  .join('\n');
+---
+
+<div class="print-preset">
+  <div class="pp-header">
+    <span class="pp-title">{title}</span>
+    {slicer && <span class="pp-slicer">{slicer}</span>}
+    <button type="button" class="pp-copy" data-copy={copyText}>Copy</button>
+  </div>
+  <dl class="pp-settings">
+    {Object.entries(settings).map(([k, v]) => (
+      <div class="pp-row">
+        <dt>{k}</dt>
+        <dd>{v}</dd>
+      </div>
+    ))}
+  </dl>
+  {notes && <p class="pp-notes">{notes}</p>}
+</div>
+
+<style>
+  .print-preset {
+    margin: 1.25rem 0;
+    border: 1px solid var(--sl-color-border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: var(--sl-color-bg);
+  }
+  .pp-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1rem;
+    background: var(--sl-color-bg-sidebar);
+    border-bottom: 1px solid var(--sl-color-border);
+  }
+  .pp-title {
+    flex: 1 1 auto;
+    font-weight: 800;
+    font-size: 0.92rem;
+    font-family: var(--font-heading, 'Outfit', sans-serif);
+  }
+  .pp-slicer {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.2rem 0.55rem;
+    border-radius: 9999px;
+    background: var(--sl-color-accent-low);
+    color: var(--sl-color-accent-high);
+  }
+  .pp-copy {
+    font: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.28rem 0.7rem;
+    border-radius: 0.45rem;
+    border: 1px solid var(--sl-color-border);
+    background: var(--sl-color-bg);
+    color: var(--sl-color-gray-2);
+    cursor: pointer;
+    transition: all 0.12s;
+  }
+  .pp-copy:hover { border-color: var(--sl-color-accent); color: var(--sl-color-accent); }
+  .pp-copy.copied { background: var(--sl-color-accent); border-color: var(--sl-color-accent); color: #fff; }
+  .pp-settings { margin: 0 !important; padding: 0.5rem 1rem 0.7rem; }
+  .pp-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.32rem 0;
+    border-bottom: 1px dashed var(--sl-color-border);
+    font-size: 0.88rem;
+  }
+  .pp-row:last-child { border-bottom: none; }
+  .pp-row dt { color: var(--sl-color-gray-2); font-weight: 600; margin: 0; }
+  .pp-row dd { margin: 0; font-weight: 800; text-align: right; }
+  .pp-notes {
+    margin: 0 !important;
+    padding: 0.55rem 1rem 0.8rem;
+    font-size: 0.8rem;
+    color: var(--sl-color-gray-3);
+  }
+</style>
+
+<script>
+  function initPresetCopy() {
+    document.querySelectorAll<HTMLButtonElement>('.pp-copy').forEach((btn) => {
+      if (btn.dataset.bound) return;
+      btn.dataset.bound = 'true';
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(btn.dataset.copy ?? '');
+          btn.classList.add('copied');
+          btn.textContent = 'Copied!';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.textContent = 'Copy';
+          }, 1600);
+        } catch {
+          btn.textContent = 'Copy failed';
+        }
+      });
+    });
+  }
+  document.addEventListener('DOMContentLoaded', initPresetCopy);
+  document.addEventListener('astro:page-load', initPresetCopy);
+  initPresetCopy();
+</script>

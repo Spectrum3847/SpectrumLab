@@ -1,0 +1,32 @@
+---
+/**
+ * Privacy-friendly YouTube embed.
+ * <VideoEmbed id="yZNJGcsSCnM" title="Lab Tour" start={120} />
+ * Accepts a full URL via `url` instead of `id` if easier.
+ */
+interface Props {
+  id?: string;
+  url?: string;
+  title?: string;
+  start?: number;
+}
+const { id, url, title = 'YouTube video', start } = Astro.props;
+
+function extractId(u?: string): string | undefined {
+  if (!u) return undefined;
+  const m = u.match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([A-Za-z0-9_-]{6,})/);
+  return m?.[1];
+}
+const videoId = id ?? extractId(url);
+const src = `https://www.youtube-nocookie.com/embed/${videoId}${start ? `?start=${start}` : ''}`;
+---
+
+<div class="embed-container-video">
+  <iframe
+    src={src}
+    title={title}
+    loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
+</div>
