@@ -1,0 +1,559 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+/* Custom CSS for Spectrum 3847 Lab Portal — adapted from spectrum3847.org's
+   Starlight theme. Same palette, fonts, and header; unlike the main site this
+   portal KEEPS Starlight's left docs sidebar and right "On this page" TOC. */
+
+html, body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   THEME TOKENS
+   ========================================================================== */
+:root,
+:root[data-theme='dark'] {
+  --sl-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+
+  --sl-color-accent-low: #F3E8FF;
+  --sl-color-accent: #6B1199;
+  --sl-color-accent-high: #3C0060;
+
+  --sl-color-white: #1F1B23;
+  --sl-color-gray-1: #2D2735;
+  --sl-color-gray-2: #4A4255;
+  --sl-color-gray-3: #635A72;
+  --sl-color-gray-4: #B4A9C3;
+  --sl-color-gray-5: #E9DDF7;
+  --sl-color-gray-6: #F8F5FC;
+  --sl-color-black: #FFFFFF;
+
+  --sl-color-bg: #FFFFFF;
+  --sl-color-bg-nav: #3C0060;
+  --sl-color-bg-sidebar: #F8F5FC;
+  --sl-color-text: #1F1B23;
+  --sl-color-text-accent: #6B1199;
+  --sl-color-border: #E9DDF7;
+
+  --sl-color-bg-inline-code: #F3E8FF;
+  --sl-color-text-invert: #FFFFFF;
+
+  --sl-nav-height: 4rem;
+
+  /* Wider than Starlight's 45rem default: SOP pages carry wide spec and
+     consumable tables that need the room. */
+  --sl-content-width: 52rem;
+}
+
+/* Apply display heading font across structural titles */
+h1, h2, h3, h4, .hero-title, .page-header h1 {
+  font-family: var(--font-heading) !important;
+}
+
+/* Starlight ships dark-tuned shadows; soften them for a light page. */
+:root {
+  --sl-shadow-sm: 0 1px 2px rgba(31, 27, 35, 0.06);
+  --sl-shadow-md: 0 4px 12px rgba(31, 27, 35, 0.08);
+  --sl-shadow-lg: 0 12px 30px rgba(76, 0, 112, 0.12);
+}
+
+/* ==========================================================================
+   HEADER NAVBAR — solid dark purple top bar, matching spectrum3847.org
+   ========================================================================== */
+header.header {
+  background: rgb(60, 0, 96) !important;
+  border-bottom: none !important;
+  padding: 0 !important;
+}
+
+/* Header layout containing title, top nav menu, search & social icons */
+.site-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: 100%;
+  height: 100%;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.top-nav-desktop {
+  display: contents;
+}
+
+.header-tools-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* On narrow screens Starlight's own docs-drawer hamburger (right edge) is the
+   navigation entry point; hide the marketing top-nav to avoid two hamburgers. */
+@media (max-width: 1240px) {
+  .top-nav-desktop {
+    display: none !important;
+  }
+  /* Leave room for Starlight's fixed mobile menu button at inline-end. */
+  .site-header-inner {
+    padding-inline-end: 4rem;
+  }
+}
+@media (min-width: 50rem) and (max-width: 1240px) {
+  .site-header-inner {
+    padding-inline-end: 1.5rem;
+  }
+}
+
+/* Social icons — bigger with an obvious hover affordance. */
+header.header a[rel="me"] {
+  padding: 0.6rem !important;
+  margin: -0.35rem !important;
+  border-radius: 9999px !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  transition: background-color 0.15s ease, transform 0.15s ease !important;
+}
+header.header a[rel="me"]:hover {
+  background-color: rgba(255, 255, 255, 0.16) !important;
+  transform: translateY(-1px);
+  color: #ffffff !important;
+}
+header.header a[rel="me"] svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* Search button — icon-only compact button matching the header icon set. */
+header.header site-search {
+  display: flex !important;
+  align-items: center !important;
+}
+
+header.header button[data-open-modal] {
+  display: grid !important;
+  place-items: center !important;
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 9999px !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  cursor: pointer !important;
+  transition: background-color 0.15s ease !important;
+}
+
+header.header button[data-open-modal]:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
+  color: #ffffff !important;
+}
+
+header.header button[data-open-modal] svg {
+  width: 20px !important;
+  height: 20px !important;
+  color: inherit !important;
+  fill: currentColor !important;
+  margin: 0 !important;
+}
+
+header.header button[data-open-modal] span,
+header.header button[data-open-modal] kbd {
+  display: none !important;
+}
+
+/* Site Title Logo */
+.site-title img,
+.site-title-logo,
+a.site-title img {
+  display: block !important;
+  height: 38px !important;
+  width: auto !important;
+  max-width: 260px !important;
+  object-fit: contain !important;
+}
+
+/* ==========================================================================
+   LEFT DOCS SIDEBAR — kept (unlike the main site) and restyled
+   ========================================================================== */
+nav.sidebar .sidebar-pane {
+  background-color: var(--sl-color-bg-sidebar);
+  border-right: 1px solid var(--sl-color-border);
+}
+
+/* Sidebar group label titles */
+.sidebar-group .group-label,
+nav.sidebar .group-label {
+  font-family: var(--font-heading, 'Outfit', sans-serif) !important;
+  font-size: 0.76rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: var(--sl-color-gray-3) !important;
+}
+
+/* Active sidebar item */
+nav.sidebar a[aria-current="page"] {
+  background-color: var(--sl-color-accent-low) !important;
+  color: var(--sl-color-accent-high) !important;
+  font-weight: 700 !important;
+  border-left: 3.5px solid var(--sl-color-accent) !important;
+  padding-left: 0.75rem !important;
+  border-radius: 0 0.4rem 0.4rem 0 !important;
+}
+
+/* ==========================================================================
+   CONTENT TYPOGRAPHY & PROSE
+   ========================================================================== */
+
+.sl-markdown-content p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--sl-color-text);
+}
+
+.sl-markdown-content h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--sl-color-border);
+  color: var(--sl-color-white);
+  letter-spacing: -0.01em;
+}
+.sl-markdown-content h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--sl-color-white);
+}
+.sl-markdown-content h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--sl-color-gray-2);
+  letter-spacing: 0.01em;
+}
+
+/* Links in content */
+.sl-markdown-content a:not(.sl-anchor-link) {
+  color: var(--sl-color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s, color 0.15s;
+}
+.sl-markdown-content a:not(.sl-anchor-link):hover {
+  color: var(--sl-color-accent-high);
+  border-bottom-color: var(--sl-color-accent);
+}
+
+/* Horizontal rules — soft fade-edge divider */
+.sl-markdown-content hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--sl-color-border) 15%, var(--sl-color-border) 85%, transparent);
+  margin: 2.75rem 0;
+}
+
+/* Lists */
+.sl-markdown-content ul,
+.sl-markdown-content ol {
+  line-height: 1.75;
+}
+.sl-markdown-content li::marker {
+  color: var(--sl-color-accent);
+  font-weight: bold;
+}
+
+/* Blockquotes */
+.sl-markdown-content blockquote {
+  border-left: 4px solid var(--sl-color-accent);
+  background: var(--sl-color-accent-low);
+  padding: 0.85rem 1.35rem;
+  border-radius: 0 0.6rem 0.6rem 0;
+  box-shadow: 0 2px 8px rgba(107, 17, 153, 0.05);
+}
+.sl-markdown-content blockquote p {
+  margin: 0;
+}
+
+.sl-markdown-content strong {
+  color: var(--sl-color-white);
+  font-weight: 700;
+}
+
+/* Inline code */
+.sl-markdown-content code {
+  background: var(--sl-color-bg-inline-code);
+  color: var(--sl-color-accent-high);
+  border-radius: 0.35em;
+  border: 1px solid rgba(168, 85, 247, 0.15);
+}
+
+/* Tables */
+.sl-markdown-content table {
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.9rem;
+  border-radius: 0.6rem;
+  overflow: hidden;
+  border: 1px solid var(--sl-color-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+.sl-markdown-content th {
+  background: var(--sl-color-accent-low);
+  font-weight: 700;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  color: var(--sl-color-accent-high);
+  border-bottom: 2px solid var(--sl-color-border);
+}
+.sl-markdown-content td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--sl-color-border);
+  vertical-align: top;
+}
+.sl-markdown-content tr:last-child td {
+  border-bottom: none;
+}
+.sl-markdown-content tr:nth-child(even) td {
+  background: var(--sl-color-bg-sidebar);
+}
+.sl-markdown-content tr:hover td {
+  background: rgba(243, 232, 255, 0.4);
+}
+
+/* ==========================================================================
+   HEADING ANCHOR LINKS
+   ========================================================================== */
+.sl-anchor-link {
+  color: var(--sl-color-accent) !important;
+  opacity: 0;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+.sl-heading-wrapper:hover .sl-anchor-link {
+  opacity: 0.65;
+}
+.sl-anchor-link:hover {
+  opacity: 1 !important;
+  color: var(--sl-color-accent-high) !important;
+}
+
+/* ==========================================================================
+   CARDS & GRIDS (dashboard/index pages)
+   ========================================================================== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.card-grid > *,
+.card,
+article.card,
+.sl-link-card,
+a.sl-link-card,
+.starlight-aside,
+.sl-markdown-content blockquote {
+  border-radius: 0.85rem !important;
+}
+
+.feature-card-link {
+  text-decoration: none !important;
+  color: inherit !important;
+  border-bottom: none !important;
+}
+
+.feature-card {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  margin-top: 0;
+  border-radius: 0.85rem;
+  border: 1px solid var(--sl-color-border);
+  background-color: var(--sl-color-bg-sidebar);
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.feature-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--sl-color-accent);
+  box-shadow: 0 8px 24px rgba(107, 17, 153, 0.15);
+}
+
+.card-tag {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  background-color: var(--sl-color-accent);
+  color: #FFFFFF;
+  margin-bottom: 0.75rem;
+}
+
+.feature-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--sl-color-text);
+  margin: 0 0 0.5rem 0 !important;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  color: var(--sl-color-gray-2);
+  line-height: 1.5;
+  margin-bottom: 1.25rem !important;
+  flex-grow: 1;
+}
+
+.card-arrow {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--sl-color-accent);
+}
+
+/* ==========================================================================
+   HERO (dashboard homepage)
+   ========================================================================== */
+.homepage-hero {
+  background-color: #3C0060;
+  background-image: radial-gradient(circle at 20% 80%, rgba(107,17,153,0.4) 0%, transparent 50%),
+                     radial-gradient(circle at 80% 20%, rgba(107,17,153,0.3) 0%, transparent 50%);
+  padding: 3rem 2rem 2.5rem;
+  border-radius: 1rem;
+  margin: 0 0 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #C084FC;
+  margin-bottom: 0.75rem !important;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3rem) !important;
+  font-weight: 800 !important;
+  color: #FFFFFF !important;
+  line-height: 1.1 !important;
+  margin: 0 0 1rem 0 !important;
+  border-bottom: none !important;
+}
+
+.hero-tagline {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.72) !important;
+  line-height: 1.6;
+  max-width: 640px;
+  margin-bottom: 1.5rem !important;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.hero-btn-primary {
+  display: inline-block;
+  padding: 0.65rem 1.3rem;
+  border-radius: 0.6rem;
+  font-size: 0.875rem;
+  font-weight: 800;
+  background-color: #FFFFFF;
+  color: #58117A !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  transition: all 0.15s ease;
+}
+.hero-btn-primary:hover {
+  background-color: #F3E8FF;
+  color: #4A0E66 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.hero-btn-secondary {
+  display: inline-block;
+  padding: 0.65rem 1.3rem;
+  border-radius: 0.6rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 1.5px solid rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.85) !important;
+  text-decoration: none !important;
+  border-bottom: 1.5px solid rgba(255,255,255,0.35) !important;
+  transition: all 0.15s;
+  background: transparent;
+}
+.hero-btn-secondary:hover {
+  border-color: #FFFFFF;
+  color: #FFFFFF !important;
+  background: rgba(255,255,255,0.08);
+}
+
+/* ==========================================================================
+   VIDEO EMBEDS
+   ========================================================================== */
+.embed-container-video {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.85rem;
+  overflow: hidden;
+  border: 1px solid var(--sl-color-border);
+  box-shadow: 0 6px 20px rgba(60, 0, 96, 0.08);
+  margin: 1.75rem 0;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.embed-container-video:hover {
+  border-color: var(--sl-color-accent);
+  box-shadow: 0 8px 28px rgba(107, 17, 153, 0.14);
+}
+
+.embed-container-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* A single external-link call-to-action inside markdown content. */
+.sl-markdown-content .content-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.25rem 0 1.5rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 0.55rem;
+  background: #6B1199;
+  color: #ffffff !important;
+  font-weight: 700;
+  border-bottom: none !important;
+  box-shadow: 0 4px 12px rgba(107, 17, 153, 0.2);
+  transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.sl-markdown-content .content-button:hover {
+  background: #58117A;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(88, 17, 122, 0.3);
+}

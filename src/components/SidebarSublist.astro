@@ -1,0 +1,180 @@
+---
+import SidebarRestorePoint from '@astrojs/starlight/components/SidebarRestorePoint.astro';
+
+const { sublist, nested } = Astro.props;
+
+function hasCurrent(entries: any[]): boolean {
+  if (!entries) return false;
+  return entries.some((i) => i.isCurrent || (i.entries && hasCurrent(i.entries)));
+}
+---
+
+<ul class:list={{ 'top-level': !nested }}>
+	{
+		sublist.map((entry: any) => {
+			if (entry.type === 'link') {
+				return (
+					<li>
+						<a
+							href={entry.href}
+							aria-current={entry.isCurrent ? 'page' : undefined}
+							class:list={[{ large: !nested }, entry.attrs?.class]}
+							{...entry.attrs}
+						>
+							<span>{entry.label}</span>
+						</a>
+					</li>
+				);
+			}
+
+			// For groups: check if the first item in entries is a link (the section overview/index page).
+			// If it is, we use it as the clickable target for the group heading and remove it from the dropdown list.
+			const overviewLink = (entry.entries && entry.entries.length > 0 && entry.entries[0].type === 'link') ? entry.entries[0] : null;
+			const remainingEntries = overviewLink ? entry.entries.slice(1) : entry.entries;
+			const isOpen = hasCurrent(entry.entries) || !entry.collapsed;
+
+			return (
+				<li>
+					<details open={isOpen}>
+						<summary>
+							{overviewLink ? (
+								<a
+									href={overviewLink.href}
+									aria-current={overviewLink.isCurrent ? 'page' : undefined}
+									class:list={["group-header-link", { large: !nested }]}
+								>
+									<span>{entry.label}</span>
+								</a>
+							) : (
+								<span class="group-label">
+									<span class:list={[{ large: !nested }]}>{entry.label}</span>
+								</span>
+							)}
+							<svg aria-hidden="true" class="caret" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="width: 1.25rem; height: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg>
+						</summary>
+						<SidebarRestorePoint />
+						<Astro.self sublist={remainingEntries} nested />
+					</details>
+				</li>
+			);
+		})
+	}
+</ul>
+
+<style>
+	@layer starlight.core {
+		ul {
+			--sl-sidebar-item-padding-inline: 0.5rem;
+			list-style: none;
+			padding: 0;
+		}
+
+		li {
+			overflow-wrap: anywhere;
+		}
+
+		ul ul li {
+			margin-inline-start: var(--sl-sidebar-item-padding-inline);
+			border-inline-start: 1px solid var(--sl-color-hairline-light);
+			padding-inline-start: var(--sl-sidebar-item-padding-inline);
+		}
+
+		.large {
+			font-size: var(--sl-text-lg);
+			font-weight: 600;
+			color: var(--sl-color-white);
+		}
+
+		.top-level > li + li {
+			margin-top: 0.75rem;
+		}
+
+		summary {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0.2em var(--sl-sidebar-item-padding-inline);
+			line-height: 1.4;
+			cursor: pointer;
+			user-select: none;
+		}
+		summary::marker,
+		summary::-webkit-details-marker {
+			display: none;
+		}
+		.caret {
+			transition: transform 0.2s ease-in-out;
+			flex-shrink: 0;
+		}
+		:global([dir='rtl']) .caret {
+			transform: rotateZ(180deg);
+		}
+		[open] > summary .caret {
+			transform: rotateZ(90deg);
+		}
+		:global([dir='rtl']) [open] > summary .caret {
+			transform: rotateZ(-90deg);
+		}
+
+		a {
+			display: block;
+			border-radius: 0.25rem;
+			text-decoration: none;
+			color: var(--sl-color-gray-2);
+			padding: 0.3em var(--sl-sidebar-item-padding-inline);
+			line-height: 1.4;
+		}
+		a:hover,
+		a:focus {
+			color: var(--sl-color-white);
+		}
+		[aria-current='page'],
+		[aria-current='page']:hover,
+		[aria-current='page']:focus {
+			font-weight: 600;
+			color: var(--sl-color-text-invert);
+			background-color: var(--sl-color-text-accent);
+		}
+
+		a > *:not(:last-child),
+		.group-label > *:not(:last-child) {
+			margin-inline-end: 0.25em;
+		}
+
+		/* Custom styles for group header link */
+		a.group-header-link {
+			display: flex;
+			align-items: center;
+			flex: 1;
+			color: var(--sl-color-white);
+			font-weight: 600;
+			padding: 0;
+			margin: 0;
+			border-radius: 0.25rem;
+		}
+		a.group-header-link:hover,
+		a.group-header-link:focus {
+			color: var(--sl-color-text-accent);
+			background-color: transparent;
+		}
+		a.group-header-link[aria-current='page'],
+		a.group-header-link[aria-current='page']:hover,
+		a.group-header-link[aria-current='page']:focus {
+			color: var(--sl-color-text-invert);
+			background-color: var(--sl-color-text-accent);
+			padding: 0.1em 0.3em;
+			margin-inline-start: -0.3em;
+		}
+		@media (min-width: 50rem) {
+			.top-level > li + li {
+				margin-top: 0.5rem;
+			}
+			.large {
+				font-size: var(--sl-text-base);
+			}
+			a {
+				font-size: var(--sl-text-sm);
+			}
+		}
+	}
+</style>

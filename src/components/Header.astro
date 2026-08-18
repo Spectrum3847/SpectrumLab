@@ -1,0 +1,26 @@
+---
+/**
+ * Custom Starlight Header override featuring the spectrum3847.org top
+ * navigation menu with hover dropdowns, next to the default search and
+ * social icons.
+ */
+import SiteTitle from 'virtual:starlight/components/SiteTitle';
+import Search from 'virtual:starlight/components/Search';
+import SocialIcons from 'virtual:starlight/components/SocialIcons';
+import NavMenu from './NavMenu.astro';
+---
+
+<div class="site-header-inner">
+  <div class="brand-wrap">
+    <SiteTitle {...Astro.props} />
+  </div>
+
+  <div class="header-tools-wrap">
+    <Search {...Astro.props} />
+    <SocialIcons {...Astro.props} />
+  </div>
+
+  <nav class="top-nav-desktop" aria-label="Main Navigation">
+    <NavMenu />
+  </nav>
+</div>

@@ -1,0 +1,582 @@
+---
+/**
+ * Shared top-nav menu used by both the Starlight header (Header.astro) and
+ * the standalone homepage (LandingLayout.astro).
+ *
+ * Desktop (> 1240px):
+ *   - Multi-column mega-menu flyouts for categories with many items (e.g. FRC Seasons).
+ *   - Clean 2-column grid layout so links aren't crammed into a single long vertical list.
+ *
+ * Mobile (<= 1240px):
+ *   - Cloudflare-style slide-out sub-panel navigation.
+ *   - Tapping a category (e.g. FRC Seasons) slides in a dedicated sub-panel listing
+ *     all items (e.g. all 15 seasons) with a top header bar containing `< Back` on the
+ *     left and `All [Category] ↗` on the right.
+ */
+import { navigationMenu } from '../data/navigation';
+---
+
+<div class="nav-root">
+  <button
+    type="button"
+    class="nav-toggle"
+    id="navToggle"
+    aria-expanded="false"
+    aria-controls="navPanel"
+    aria-label="Toggle navigation"
+  >
+    <svg class="icon-menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" /></svg>
+    <svg class="icon-close" viewBox="0 0 24 24" aria-hidden="true"><path d="m6.4 4.98 5.6 5.61 5.6-5.61 1.42 1.42L13.41 12l5.61 5.6-1.42 1.42L12 13.41l-5.6 5.61-1.42-1.42L10.59 12 4.98 6.4z" /></svg>
+  </button>
+
+  {/* Desktop Navigation Menu */}
+  <ul class="top-nav-list" id="navPanel">
+    {navigationMenu.map((cat) => (
+      cat.items ? (
+        <li class={`nav-item-dropdown ${cat.align === 'right' ? 'align-right' : cat.align === 'center' ? 'align-center' : 'align-left'}`}>
+          <div class="dropdown-row">
+            <a href={cat.href ?? cat.items[0]?.href ?? '#'} class="top-nav-trigger">{cat.label}</a>
+            <button type="button" class="dropdown-toggle" aria-expanded="false" aria-label={`Show ${cat.label} submenu`}>
+              <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+              </svg>
+            </button>
+          </div>
+          <div class="dropdown-flyout">
+            <div class={`dropdown-content ${cat.items.length > 4 ? 'multi-column' : ''} ${cat.label === 'Seasons' || cat.label === 'Spectrum Resources' ? 'seasons-grid' : ''}`}>
+              {cat.items.map((sub) => (
+                <a href={sub.href} class="dropdown-link">
+                  <span class="dropdown-label">{sub.label}</span>
+                  {sub.blurb && <span class="dropdown-blurb">{sub.blurb}</span>}
+                </a>
+              ))}
+            </div>
+          </div>
+        </li>
+      ) : (
+        <li class="nav-item-single">
+          <a href={cat.href} class="top-nav-trigger">{cat.label}</a>
+        </li>
+      )
+    ))}
+  </ul>
+
+  {/* Mobile Slide-Out Panel Drawer */}
+  <div class="mobile-nav-panel" id="mobileNavPanel">
+    <div class="mobile-menu-wrapper" id="mobileMenuWrapper">
+      {/* Root Level Main Menu */}
+      <div class="mobile-main-view" id="mobileMainView">
+        <ul class="mobile-main-list">
+          {navigationMenu.map((cat, idx) => (
+            <li class="mobile-main-item">
+              {cat.items ? (
+                <button
+                  type="button"
+                  class="mobile-cat-trigger"
+                  data-target={`subpanel-${idx}`}
+                >
+                  <span class="mobile-cat-label">{cat.label}</span>
+                  <svg class="chevron-right" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+              ) : (
+                <a href={cat.href} class="mobile-cat-link">
+                  <span class="mobile-cat-label">{cat.label}</span>
+                </a>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Sub-Panels for each category */}
+      {navigationMenu.map((cat, idx) => (
+        cat.items && (
+          <div class="mobile-subpanel" id={`subpanel-${idx}`}>
+            <div class="subpanel-header">
+              <button type="button" class="subpanel-back-btn" data-back>
+                <svg class="arrow-left" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
+                </svg>
+                <span>Back</span>
+              </button>
+            </div>
+
+            <div class="subpanel-content">
+              {cat.href && cat.label !== 'About' && (
+                <a href={cat.href} class="mobile-sub-link mobile-overview-link">
+                  <span class="mobile-sub-label">{cat.label} Overview</span>
+                  <span class="mobile-sub-blurb">Main {cat.label} overview page</span>
+                </a>
+              )}
+              {cat.items.map((sub) => (
+                <a href={sub.href} class="mobile-sub-link">
+                  <span class="mobile-sub-label">{sub.label}</span>
+                  {sub.blurb && <span class="mobile-sub-blurb">{sub.blurb}</span>}
+                </a>
+              ))}
+            </div>
+          </div>
+        )
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .nav-root {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    margin-right: auto;
+  }
+
+  @media (min-width: 1241px) {
+    .nav-root { order: 1; }
+    :global(.header-tools-wrap),
+    :global(.header-tools) {
+      order: 2;
+    }
+    .mobile-nav-panel {
+      display: none !important;
+    }
+  }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    color: inherit;
+    padding: 0;
+  }
+  .icon-close { display: none; }
+
+  /* Desktop Menu Styles */
+  .top-nav-list {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .top-nav-list li { position: relative; margin: 0; }
+
+  .dropdown-row {
+    display: flex;
+    align-items: center;
+    border-radius: 0.45rem;
+    transition: background-color 0.15s ease;
+  }
+  .dropdown-row:hover,
+  .nav-item-dropdown:focus-within .dropdown-row {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .top-nav-trigger {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0.6rem;
+    border-radius: 0.45rem;
+    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif !important;
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    color: rgba(255, 255, 255, 0.88);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  li.nav-item-single .top-nav-trigger:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+  }
+  .dropdown-row:hover .top-nav-trigger,
+  .nav-item-dropdown:focus-within .top-nav-trigger {
+    color: #fff;
+  }
+
+  .dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.7rem;
+    height: 1.7rem;
+    margin-right: 0.25rem;
+    border-radius: 0.35rem;
+    color: rgba(255, 255, 255, 0.7);
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+  .dropdown-row:hover .dropdown-toggle,
+  .nav-item-dropdown:focus-within .dropdown-toggle {
+    color: #fff;
+  }
+
+  .chevron-icon {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s ease;
+  }
+  .nav-item-dropdown:hover .chevron-icon,
+  .nav-item-dropdown:focus-within .chevron-icon {
+    transform: rotate(180deg);
+  }
+
+  /* Desktop Flyout Positioning & Multi-column */
+  .dropdown-flyout {
+    position: absolute;
+    top: 100%;
+    padding-top: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+    z-index: 100;
+  }
+  .nav-item-dropdown.align-left .dropdown-flyout {
+    left: 0;
+    right: auto;
+  }
+  .nav-item-dropdown.align-right .dropdown-flyout {
+    right: 0;
+    left: auto;
+  }
+  /* Centered anchor for wide (seasons-grid) dropdowns whose trigger sits
+     mid-row - neither edge anchor keeps a 780px-wide panel fully
+     on-screen from a middle position, so it's centered under the trigger
+     instead. Combined with the hover translateY below in a single
+     transform, since a plain override would drop the centering offset. */
+  .nav-item-dropdown.align-center .dropdown-flyout {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%) translateY(6px);
+  }
+
+  .nav-item-dropdown:hover .dropdown-flyout,
+  .nav-item-dropdown:focus-within .dropdown-flyout {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .nav-item-dropdown.align-center:hover .dropdown-flyout,
+  .nav-item-dropdown.align-center:focus-within .dropdown-flyout {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .dropdown-content {
+    background: #ffffff;
+    border: 1px solid #e9ddf7;
+    border-radius: 0.85rem;
+    padding: 0.6rem;
+    box-shadow: 0 16px 36px rgba(42, 0, 68, 0.18);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    width: 290px;
+  }
+
+  /* Desktop Multi-column Layout */
+  .dropdown-content.multi-column {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(230px, 1fr));
+    gap: 0.25rem 0.5rem;
+    width: 530px;
+  }
+  .dropdown-content.seasons-grid {
+    width: 780px;
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+    max-height: none;
+    overflow: visible;
+  }
+
+  /* Hide scrollbars across all menu panels */
+  .dropdown-content,
+  .mobile-main-view,
+  .subpanel-content,
+  .mobile-nav-panel {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .dropdown-content::-webkit-scrollbar,
+  .mobile-main-view::-webkit-scrollbar,
+  .subpanel-content::-webkit-scrollbar,
+  .mobile-nav-panel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dropdown-link {
+    display: flex;
+    flex-direction: column;
+    padding: 0.55rem 0.75rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+  }
+  .dropdown-link:hover { background: #f3e8ff; }
+  .dropdown-label {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #3c0060;
+  }
+  .dropdown-blurb {
+    font-size: 0.75rem;
+    line-height: 1.35;
+    color: #635a72;
+    margin-top: 0.1rem;
+  }
+
+  /* Mobile Slide-Out Panel Styles (<= 1240px) */
+  @media (max-width: 1240px) {
+    .nav-root { margin-left: 0; margin-right: 0; }
+
+    .nav-toggle {
+      display: grid;
+      place-items: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 0.4rem;
+      color: #fff;
+    }
+    .nav-toggle svg { width: 22px; height: 22px; fill: currentColor; }
+    .nav-root[data-open] .icon-menu { display: none; }
+    .nav-root[data-open] .icon-close { display: block; }
+
+    .top-nav-list { display: none !important; }
+
+    .mobile-nav-panel {
+      display: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      background: #2e004a;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      height: calc(100vh - 4rem);
+      max-height: calc(100vh - 4rem);
+      overflow: hidden;
+      z-index: 999;
+    }
+    .nav-root[data-open] .mobile-nav-panel { display: block; }
+
+    .mobile-menu-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* Main View */
+    .mobile-main-view {
+      position: absolute;
+      inset: 0;
+      overflow-y: auto;
+      padding: 0.5rem 1rem 2rem;
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease;
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .mobile-main-view.is-hidden {
+      transform: translateX(-30%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .mobile-main-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .mobile-main-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .mobile-cat-trigger,
+    .mobile-cat-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 1rem 0.5rem;
+      background: none;
+      border: 0;
+      color: #ffffff;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      text-align: left;
+    }
+    .mobile-cat-trigger:hover,
+    .mobile-cat-link:hover {
+      color: #d8b4fe;
+    }
+    .chevron-right {
+      width: 20px;
+      height: 20px;
+      opacity: 0.7;
+    }
+
+    /* Sub-Panels */
+    .mobile-subpanel {
+      position: absolute;
+      inset: 0;
+      background: #2e004a;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .mobile-subpanel.is-active {
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .subpanel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(0, 0, 0, 0.2);
+    }
+    .subpanel-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: none;
+      border: 0;
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0.3rem 0;
+    }
+    .subpanel-back-btn:hover { color: #d8b4fe; }
+    .arrow-left { width: 18px; height: 18px; }
+
+    .subpanel-parent-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: #d8b4fe;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .subpanel-parent-link:hover { text-decoration: underline; }
+    .ext-arrow { font-size: 0.95rem; }
+
+    .subpanel-content {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      padding: 0.75rem 1rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .mobile-sub-link {
+      display: flex;
+      flex-direction: column;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: background-color 0.15s ease;
+    }
+    .mobile-sub-link:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .mobile-sub-link.mobile-overview-link {
+      background: rgba(255, 255, 255, 0.12);
+      border-left: 3.5px solid #d8b4fe;
+      margin-bottom: 0.5rem;
+    }
+    .mobile-sub-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .mobile-sub-blurb {
+      font-size: 0.78rem;
+      line-height: 1.35;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 0.15rem;
+    }
+  }
+</style>
+
+<script>
+  const root = document.querySelector('.nav-root');
+  const toggle = document.getElementById('navToggle');
+  const mainView = document.getElementById('mobileMainView');
+  const catTriggers = document.querySelectorAll('.mobile-cat-trigger');
+  const backBtns = document.querySelectorAll('[data-back]');
+  const subpanels = document.querySelectorAll('.mobile-subpanel');
+  const mobileLinks = document.querySelectorAll('.mobile-sub-link, .mobile-cat-link');
+
+  // Toggle main mobile drawer
+  toggle?.addEventListener('click', () => {
+    const open = root?.toggleAttribute('data-open');
+    toggle.setAttribute('aria-expanded', String(Boolean(open)));
+    if (!open) {
+      resetMobilePanels();
+    }
+  });
+
+  // Open subpanel on mobile category click
+  catTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const targetId = trigger.getAttribute('data-target');
+      if (!targetId) return;
+      const targetPanel = document.getElementById(targetId);
+      if (!targetPanel) return;
+
+      mainView?.classList.add('is-hidden');
+      targetPanel.classList.add('is-active');
+    });
+  });
+
+  // Back button in subpanel
+  backBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      resetMobilePanels();
+    });
+  });
+
+  // Close mobile drawer when clicking any link inside
+  mobileLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      root?.removeAttribute('data-open');
+      toggle?.setAttribute('aria-expanded', 'false');
+      resetMobilePanels();
+    });
+  });
+
+  function resetMobilePanels() {
+    mainView?.classList.remove('is-hidden');
+    subpanels.forEach((panel) => panel.classList.remove('is-active'));
+  }
+
+  // Reset mobile-only state when window grows past desktop breakpoint
+  const desktopQuery = window.matchMedia('(min-width: 1241px)');
+  desktopQuery.addEventListener('change', (e) => {
+    if (!e.matches) return;
+    root?.removeAttribute('data-open');
+    toggle?.setAttribute('aria-expanded', 'false');
+    resetMobilePanels();
+  });
+</script>

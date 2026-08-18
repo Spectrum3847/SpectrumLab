@@ -1,0 +1,66 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
+import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
+import SidebarSublist from './SidebarSublist.astro';
+
+const { sidebar } = Astro.locals.starlightRoute;
+---
+
+<SidebarPersister>
+	<SidebarSublist sublist={sidebar} />
+</SidebarPersister>
+
+<div class="md:sl-hidden">
+	<MobileMenuFooter />
+</div>
+
+<script>
+  function initSidebarAccordion() {
+    const sidebar = document.querySelector('nav.sidebar');
+    if (!sidebar) return;
+
+    // Prevent clicks on group heading links from toggling the <details> element
+    sidebar.querySelectorAll<HTMLElement>('summary a.group-header-link').forEach((link) => {
+      if (!link.dataset.boundLink) {
+        link.dataset.boundLink = 'true';
+        link.addEventListener('click', (e) => {
+          e.stopPropagation();
+        });
+      }
+    });
+
+    const detailsList = Array.from(sidebar.querySelectorAll('details'));
+    const activeLink = sidebar.querySelector('a[aria-current="page"]');
+
+    // Close all groups except the one containing the active page
+    detailsList.forEach((details) => {
+      const hasActive = activeLink && details.contains(activeLink);
+      if (hasActive) {
+        details.open = true;
+      } else {
+        details.open = false;
+      }
+
+      const summary = details.querySelector('summary');
+      if (summary && !summary.dataset.accordionBound) {
+        summary.dataset.accordionBound = 'true';
+        summary.addEventListener('click', () => {
+          // If this group is currently opening, collapse all other groups
+          if (!details.open) {
+            detailsList.forEach((other) => {
+              if (other !== details) {
+                other.open = false;
+              }
+            });
+          }
+        });
+      }
+    });
+  }
+
+  // Run on initial load and Astro client transitions
+  document.addEventListener('DOMContentLoaded', initSidebarAccordion);
+  document.addEventListener('astro:page-load', initSidebarAccordion);
+  initSidebarAccordion();
+</script>

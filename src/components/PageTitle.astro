@@ -1,0 +1,106 @@
+---
+/**
+ * Starlight `PageTitle` override — header band carrying a section eyebrow,
+ * the title, and the page description. Ported from spectrum3847.org.
+ */
+import { navigationMenu } from '../data/navigation';
+
+/**
+ * Starlight's PAGE_TITLE_ID, inlined because `@astrojs/starlight/constants`
+ * is internal. SkipLink links to `#_top` and the table of contents resolves
+ * its "Overview" entry via `h1#_top`.
+ */
+const PAGE_TITLE_ID = '_top';
+
+const route = Astro.locals.starlightRoute;
+const { title, description } = route.entry.data;
+
+/**
+ * The eyebrow names the top-nav category a page lives under, matched by the
+ * most specific nav href that prefixes the current path.
+ */
+const norm = (href: string) => href.replace(/^\/+|\/+$/g, '');
+const currentPath = norm(String(route.id || route.slug || ''));
+
+let eyebrow = 'Spectrum Lab';
+let bestMatchLength = -1;
+for (const category of navigationMenu) {
+  const hrefs = category.items ? category.items.map((item) => item.href) : category.href ? [category.href] : [];
+  for (const href of hrefs) {
+    if (href.startsWith('http')) continue;
+    const candidate = norm(href);
+    if (!candidate) continue;
+    // Match on the first path segment too, so sibling pages inside a section
+    // (e.g. /lasers/*) inherit the section's category label.
+    const candidateSection = candidate.split('/')[0];
+    const currentSection = currentPath.split('/')[0];
+    const matches =
+      currentPath === candidate ||
+      currentPath.startsWith(`${candidate}/`) ||
+      currentSection === candidateSection;
+    if (matches && candidate.length > bestMatchLength) {
+      bestMatchLength = candidate.length;
+      eyebrow = category.label;
+    }
+  }
+}
+
+const clean = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+const isDuplicateEyebrow = clean(eyebrow) === clean(title || '');
+---
+
+<div class="page-header">
+  <p class="page-header-eyebrow">{isDuplicateEyebrow ? ' ' : eyebrow}</p>
+  <h1 id={PAGE_TITLE_ID}>{title}</h1>
+  {description && (
+    <div class="page-header-desc-row">
+      <p class="page-header-desc">{description}</p>
+    </div>
+  )}
+</div>
+
+<style is:global>
+  .page-header {
+    margin-block-end: 0.5rem;
+    padding-block-end: 1.25rem;
+    border-bottom: 2px solid var(--sl-color-border);
+  }
+
+  .page-header-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sl-color-accent);
+    margin: 0 0 0.4rem 0 !important;
+  }
+
+  .page-header h1 {
+    margin: 0;
+    font-family: var(--font-heading, 'Outfit', sans-serif);
+    font-size: clamp(1.85rem, 3.8vw, 2.45rem);
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--sl-color-white);
+  }
+
+  .page-header-desc-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+  }
+
+  .page-header-desc {
+    flex: 1 1 auto;
+    max-width: 64rem;
+    margin: 0;
+    font-size: 1.08rem;
+    line-height: 1.65;
+    color: var(--sl-color-gray-2);
+    text-wrap: pretty;
+  }
+</style>

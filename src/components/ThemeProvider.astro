@@ -1,0 +1,25 @@
+---
+/**
+ * Starlight `ThemeProvider` override — pins the site to the light theme.
+ *
+ * Starlight's default reads localStorage / prefers-color-scheme and flips to a
+ * very dark palette (#0F051D), which is what made the content pages feel so much
+ * heavier than the homepage. The site now has one look, matching the landing
+ * page, so there is no dark variant to switch to.
+ *
+ * `window.StarlightThemeProvider.updatePickers` is still defined as a no-op:
+ * Starlight's ThemeSelect calls it inline, and while we override that component
+ * away too, keeping the shim means nothing throws if it ever returns.
+ */
+---
+
+{/* Inlined to avoid a flash of the wrong theme. */}
+<script is:inline>
+  document.documentElement.dataset.theme = 'light';
+  // Clear any preference stored before the site became light-only, otherwise
+  // returning visitors would keep re-applying a theme that no longer exists.
+  try {
+    localStorage.removeItem('starlight-theme');
+  } catch {}
+  window.StarlightThemeProvider = { updatePickers() {} };
+</script>

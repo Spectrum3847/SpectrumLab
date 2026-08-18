@@ -1,0 +1,90 @@
+/**
+ * Top-nav menu data for the lab portal header (NavMenu.astro) and the
+ * eyebrow labels on page titles (PageTitle.astro).
+ *
+ * The left docs sidebar (astro.config.mjs) is the exhaustive navigation;
+ * this top nav is a curated set of jump-off points plus a link back to the
+ * main spectrum3847.org site.
+ */
+export interface NavItem {
+  label: string;
+  href: string;
+  blurb?: string;
+}
+
+export interface NavCategory {
+  label: string;
+  href?: string;
+  align?: 'left' | 'right' | 'center';
+  items?: NavItem[];
+}
+
+export const navigationMenu: NavCategory[] = [
+  {
+    label: 'Lab Guide',
+    href: '/',
+    align: 'left',
+    items: [
+      { label: 'Lab Tour & Zones', href: '/overview/lab-tour/', blurb: 'Video walkthrough of every shop zone' },
+      { label: 'Storage Directory', href: '/storage/stacktech-drawers/', blurb: 'Where every tool and part lives' },
+      { label: 'Safety & PPE', href: '/safety/gloves-and-ppe/', blurb: 'PPE, the glove policy & emergency protocols' },
+      { label: 'Maintenance Schedules', href: '/maintenance/schedules/', blurb: 'Opening/closing checklists & machine PM' },
+      { label: 'Consumables Ledger', href: '/inventory/consumables/', blurb: 'Prices, reorder links & bin locations' },
+    ],
+  },
+  {
+    label: 'Machines',
+    href: '/waterjet/wazer-pro/',
+    align: 'left',
+    items: [
+      { label: 'WAZER Pro Waterjet', href: '/waterjet/wazer-pro/', blurb: 'Desktop waterjet — WAM, garnet & maintenance' },
+      { label: 'xTool MetalFab 1200W', href: '/lasers/xtool-metalfab/', blurb: 'Fiber laser metal cutting & welding' },
+      { label: 'Gweike Cloud M3 Ultra', href: '/lasers/gweike-m3-ultra/', blurb: 'Hybrid fiber + CO2 laser system' },
+      { label: 'Thunder Nova 35', href: '/lasers/thunder-nova-35/', blurb: '100W CO2 laser — LightBurn workflow' },
+      { label: 'ShopSabre 23 Router', href: '/cnc/shopsabre-23/', blurb: 'CNC router — speeds, feeds & CAM' },
+      { label: 'Titan 25T Press Brake', href: '/forming/langmuir-titan-25t/', blurb: 'CNC press brake — dies & tonnage' },
+      { label: 'Lathes', href: '/forming/lathes/', blurb: 'PM-1130V & Grizzly manual lathes' },
+      { label: 'Evolution Saws', href: '/cutting/evolution-saws/', blurb: 'S14MCS & EVOMAX14AL chop saws' },
+      { label: 'Powder Coating', href: '/finishing/powder-coating/', blurb: 'Booths, gun SOP & curing oven' },
+    ],
+  },
+  {
+    label: '3D Printing',
+    href: '/3d-printing/filament-guide/',
+    align: 'center',
+    items: [
+      { label: 'Filament Guide', href: '/3d-printing/filament-guide/', blurb: 'PLA, PETG, TPU, PA-CF & PC settings matrix' },
+      { label: 'Print Settings & Supports', href: '/3d-printing/print-settings/', blurb: 'Support strategy, orientation & presets' },
+      { label: 'Bambu Lab Fleet', href: '/3d-printing/bambu-fleet/', blurb: 'X1-Carbon & H2D — AMS, plates & nozzles' },
+      { label: 'Prusa Mini+ Farm', href: '/3d-printing/prusa-farm/', blurb: 'PrusaSlicer, Live-Z & sheet care' },
+      { label: 'Large-Format Printers', href: '/3d-printing/large-format/', blurb: 'CR-6 Max, CR-10 Max & Garolite setups' },
+    ],
+  },
+  {
+    label: 'Graphics',
+    href: '/graphics/hp-t630-plotter/',
+    align: 'center',
+    items: [
+      { label: 'HP T630 Plotter', href: '/graphics/hp-t630-plotter/', blurb: '24" large-format printing & 712 inks' },
+      { label: 'Cricut Maker 4', href: '/graphics/cricut-maker-4/', blurb: 'Vinyl cutting, mats, blades & weeding' },
+      { label: 'Smart Heat Press', href: '/graphics/heat-press/', blurb: 'HTV & Infusible Ink time/temp settings' },
+      { label: 'Vinyl & Stickers', href: '/graphics/vinyl-and-stickers/', blurb: 'Die-cut stickers, banners & apparel' },
+    ],
+  },
+  {
+    label: 'Tools',
+    href: '/portable-power/m12-ecosystem/',
+    align: 'right',
+    items: [
+      { label: 'M12 Ecosystem', href: '/portable-power/m12-ecosystem/', blurb: 'Drills, drivers, rivet guns & cutters' },
+      { label: 'DeWalt & Pneumatics', href: '/portable-power/dewalt-and-pneumatics/', blurb: 'Track saw, compressor & shop air' },
+      { label: 'Hand Tools & Layout', href: '/hand-tools/layout-measuring/', blurb: 'Measuring, driving, cutting & clamping' },
+      { label: 'Electrical & Wiring', href: '/electrical/wire-prep-crimping/', blurb: 'Strippers, crimpers, soldering & scopes' },
+    ],
+  },
+  {
+    label: 'Spectrum3847.org',
+    href: 'https://www.spectrum3847.org',
+    align: 'right',
+  },
+];
