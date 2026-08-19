@@ -1,8 +1,154 @@
 ---
 title: "HP DesignJet T630 Plotter"
-description: "24-inch large-format printing, HP Click workflow, and 712 ink replacement."
+description: "24-inch large-format printing: roll and sheet loading, HP Click and CAD driver workflows, HP 712 ink replacement, jam clearing, and queue management."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import ConsumablesTable from '../../../components/ConsumablesTable.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+
+The HP DesignJet T630 is our 24-inch large-format inkjet plotter. We use it for full-size engineering drawings, 1:1 drill templates, field layout prints, team banners, and large sticker sheets for [Print-Then-Cut](/graphics/cricut-maker-4/) jobs. It prints a D-size sheet in about 30 seconds and feeds from either a 24" roll or the auto sheet feeder — you pick the source per job, no re-rigging required.
+
+<MachineSOP
+  specs={{
+    'Max Width': '24 in (D-size / A1)',
+    'Speed': 'A1/D-size in ~30 sec',
+    'Media Feeds': 'Roll + auto sheet feeder',
+    'Ink': 'HP 712 / 712XL (CMYK)',
+    'Memory': '1 GB',
+    'Connectivity': 'Wi-Fi, HP Click, mobile printing',
+    'Stand': 'Included, with media bin'
+  }}
+  ppe={[]}
+  training="Green — anyone can print. Get a 5-minute walkthrough from a graphics lead before your first roll swap or ink change."
+/>
+
+<ToolProcurementCard tool="hp-t630" />
+
+## Safety
+
+The plotter is one of the safest machines in the lab, but it is not zero-risk.
+
+<SafetyWarning type="warning" title="Keep hands out of a moving printer">
+The carriage moves fast and the built-in cutter blade is sharp. Never reach into the paper path or the window while a job is running. If something goes wrong, cancel the job from the front panel first, then open it up.
+</SafetyWarning>
+
+- **Do** power the printer off before clearing a jam.
+- **Do** get help lifting full paper rolls — awkward, not heavy.
+- **Don't** cut the roll edge with a blade while it's on the printer. Pull the roll, trim it square on a table.
+- **Don't** lean drawings, banners, or your backpack against the stand — the media bin needs to stay clear so prints drop cleanly.
+
+## Software & Workflow
+
+There are two ways to print. Use **HP Click** for quick prints of finished files; use the **printer driver** when you're printing from CAD and need exact scale control.
+
+### HP Click (drag-and-drop)
+
+1. Open HP Click on the graphics computer. It auto-discovers the T630 on the lab network.
+2. Drag your file into the window — PDF, JPEG, TIFF, and HP-GL/2 all work.
+3. Check the live preview: it shows exactly how the job lands on the loaded media, including rotation.
+4. Pick your media source (roll or sheet) and quantity, then hit **Print**. That's it — HP Click handles sizing sanely for one-off prints.
+
+### Driver printing from CAD
+
+For engineering drawings out of Onshape, SolidWorks, or Fusion, export the drawing as a **PDF at its real sheet size** (ANSI D / Arch D for full-size), then print through the HP driver:
+
+1. Open the PDF and choose **Print** → HP DesignJet T630.
+2. In printer properties, set the **document size** to match the drawing sheet and pick the **paper source** (roll for big sheets, sheet feeder for cut sheets).
+3. Set scale to **Actual size / 100%** — never "fit to page" — when the print will be used as a template or measured against parts.
+4. Print, then verify scale with calipers against a known dimension block on the drawing before you drill anything from it.
+
+### Print queue via the embedded web server
+
+The T630 runs a built-in web server you can reach from any computer on the lab network:
+
+1. On the front panel, tap the network icon to read the printer's IP address.
+2. Browse to `http://<printer-ip>`.
+3. From there you can watch and cancel queued jobs, check ink levels and media status, and see usage history. If someone's 12-copy mistake is eating the roll, this is where you kill it.
+
+## Consumables & Ink
+
+The T630 takes four **HP 712** cartridges (cyan, magenta, yellow, black). Black is available as a standard 38-ml cartridge or the 80-ml **712XL** — buy the XL, it's what we stock. Paper is generic 24" 20-lb bond on a 2" core.
+
+<ConsumablesTable machine="hp-t630" />
+
+### Replacing a 712 / 712XL cartridge
+
+Replace a cartridge when the front panel flags it — don't wait for a mid-banner failure.
+
+1. Make sure no job is printing. On the front panel, tap the **ink icon** → **Replace ink cartridges**.
+2. Open the ink cartridge cover.
+3. Grip the depleted cartridge and pull it straight out.
+4. Unwrap the new cartridge, match the color label to the slot, and push it in until it clicks seated.
+5. Close the cover. The printer runs a brief ink check on its own.
+6. Note the swap on the ink shelf so the next order goes in before we're dry — see [ordering more](/graphics/vinyl-and-stickers/#ordering-more).
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist title="Before You Print" items={[
+  'Front panel shows ready — no jam or ink errors',
+  'Media source for the job is loaded: roll for big prints, sheets in the feeder for cut-sheet jobs',
+  'Enough roll left for the job (front panel shows estimated remaining length)',
+  'Ink levels checked on the front panel or embedded web server',
+  'Driver/HP Click paper size matches the loaded media',
+  'Scale set to 100% (not fit-to-page) for templates and dimensioned drawings',
+  'Media bin under the printer is clear so prints drop cleanly'
+]} />
+
+## Operating Instructions
+
+### Loading a roll
+
+1. On the front panel, tap the paper icon → **Load roll**, and pull the old spindle out of the printer.
+2. Pop the blue hub off the spindle and slide the old core off.
+3. Slide the new roll on so the leading edge comes **over the top of the roll toward you**, then snug the blue hub back against the roll face — no side-to-side play.
+4. Seat the spindle back in the printer, both ends clicked in.
+5. Feed the leading edge into the roll slot until the printer grabs it. It aligns the paper and trims the edge square automatically.
+6. Confirm the paper type and width on the front panel.
+
+If the roll edge is torn or ragged, trim it square with scissors before feeding — a bad edge is the number one cause of load failures and skewed prints.
+
+### Using the auto sheet feeder
+
+For letter/tabloid/cut-sheet jobs, skip the roll entirely:
+
+1. Fan the sheet stack and square it up.
+2. Load the sheets into the auto sheet feeder and slide the guides against the stack — snug, not clamping.
+3. Choose **Sheet** as the paper source in the driver or HP Click. The printer switches between roll and feeder per job on its own; you never unload the roll to print sheets.
+
+### Banners and engineering drawings
+
+- **Engineering drawings:** print from the roll at 100% scale on bond. Full-size drawings taped to stock make excellent drill/cut templates — verify one dimension with calipers first.
+- **Banners:** design at final size, print from the roll using a custom paper size in HP Click or the driver, and the printer cuts the length automatically. Finishing (trimming and grommets) is covered in [Vinyl & Sticker Finishing](/graphics/vinyl-and-stickers/#team-banners).
+- **Sticker sheets:** the sheet feeder also takes printable sticker media for large [Print-Then-Cut](/graphics/cricut-maker-4/#print-then-cut-for-stickers) jobs on the Cricut.
+
+### Clearing a paper jam
+
+1. Read the front panel message — it tells you where the jam is.
+2. Power the printer **off**.
+3. Open the window. If the carriage moves freely, slide it gently out of the way.
+4. Pull the jammed paper out slowly in the direction it feeds. Remove **every** scrap — a leftover corner causes the next jam.
+5. Check the roll input and the sheet feeder path for torn pieces.
+6. Power back on and reload the media. The printer re-initializes on its own.
+7. Repeat jams usually mean a ragged roll edge or an overfilled sheet feeder — fix the cause, not just the jam.
+
+## Resources
+
+<TutorialLink title="HP DesignJet T600 Series User Guide (PDF)" url="https://kaas.hpcloud.hp.com/pdf-public/pdf_1457689_en-US-1.pdf" source="pdf" description="Full manual: loading, printing, ink system, jam recovery, and front-panel reference." />
+
+<TutorialLink title="HP DesignJet T630 Support Hub" url="https://support.hp.com/us-en/product/hp-designjet-t630-printer-series/33508840" source="knowledge-base" description="Official troubleshooting, drivers, and firmware downloads." />
+
+<TutorialLink title="HP DesignJet T200 & T600 Series Product Video" url="https://www.youtube.com/watch?v=UQnKAkcwnks" source="youtube" description="Overview of the printer, media handling, and HP Click." />
+
+<TutorialLink title="DesignJet T200/T600 for CAD Printing" url="https://www.youtube.com/watch?v=aG4WiHr3c4Q" source="youtube" description="Why these plotters work well for CAD drawings and how the workflow fits together." />
+
+## Cleanup & Maintenance
+
+- Leave the printer **powered on** in standby — it runs automatic printhead maintenance and wastes less ink than repeated cold starts.
+- Take your prints with you; don't let the media bin pile up.
+- Keep partial rolls in the graphics cabinet, on end, out of direct sun.
+- Wipe dust off the top cover occasionally; never spray cleaner into the printer.
+- Ink swaps and any error codes go in the log — see [Maintenance Schedules](/maintenance/schedules/).

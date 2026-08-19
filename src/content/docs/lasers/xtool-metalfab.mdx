@@ -1,8 +1,172 @@
 ---
 title: "xTool MetalFab (1200W)"
-description: "Metal laser cutting SOP, assist gas, safety, and focal setup."
+description: "Class 4 fiber laser SOP: metal cutting workflow, compressed air vs nitrogen assist gas, focal setup, and the welding module training gate."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+
+The xTool MetalFab is a 1200W fiber laser system — a laser source with cut, weld, and clean modes, paired with the MetalFab CNC Cutter gantry for sheet metal cutting. We use it to cut aluminum and steel sheet fast and clean. It is the most dangerous laser in the lab: **Class 4, and its beam is invisible.**
+
+<MachineSOP
+  specs={{
+    'Laser': '1200W fiber (Class 4)',
+    'Modes': 'Cut / Weld / Clean',
+    'Max Aluminum': '4 mm',
+    'Max Stainless': '5 mm',
+    'Max Carbon Steel': '10 mm',
+    'Max Brass': '3 mm',
+    'Power': '21A+ circuit, 4200W max draw',
+    'System': 'Laser source + CNC Cutter gantry'
+  }}
+  ppe={['laser-glasses', 'glasses', 'tie-hair', 'closed-shoes']}
+  training="Fiber laser sign-off required. Welding module is a separate, mentor-only sign-off — do not touch the welder without it."
+/>
+
+<ToolProcurementCard tool="xtool-metalfab" />
+
+<LabGalleryImage
+  src="xtool-metalfab.jpg"
+  alt="xTool MetalFab fiber laser with enclosure lid open showing the cutting head and bed"
+  caption="The MetalFab CNC Cutter gantry with the enclosure open for loading. Lid closed and interlocked before the beam fires — no exceptions."
+/>
+
+## Safety
+
+<SafetyWarning type="critical" title="Class 4 fiber laser — invisible beam, retina hazard">
+The 1064 nm fiber wavelength is invisible and passes straight through ordinary safety glasses and the front of your eye, focusing on the retina. A reflected flash can cause permanent blind spots before you can blink. Everyone in the area wears laser safety glasses rated for 1064 nm whenever the machine could fire outside a fully closed enclosure. Regular safety glasses do not count.
+</SafetyWarning>
+
+<SafetyWarning type="critical" title="Reflective metal warning">
+Aluminum, brass, and copper are mirrors at this wavelength. Never fire at polished or mirror-finish stock, never place shiny scrap under the head, and keep the material flat — a buckled sheet can redirect the beam. If a job needs mirror-finish material, talk to a mentor first.
+</SafetyWarning>
+
+<SafetyWarning type="warning" title="Fire watch">
+Fiber cutting throws sparks and hot dross. Keep the area clear of flammables and solvents, know where the fire extinguisher is, and stay with the machine for the entire job plus a few minutes after — hot dross can smolder in the scrap tray after the cut ends.
+</SafetyWarning>
+
+- Never bypass an enclosure interlock. If an interlock is faulty, the machine is down — tag it and tell a mentor.
+- No rings, watches, or loose sleeves when loading and unloading — sheet metal edges and hot parts. See [PPE & the glove policy](/safety/gloves-and-ppe/).
+- Cut parts and dross are hot. Give them a minute, or handle with pliers.
+- Fume extraction runs for every cut. Metal cutting fumes are not something to breathe.
+
+### Welding module — training gate
+
+The MetalFab includes a handheld laser **welding module**. It exists, it works, and **it is off-limits without a separate mentor-only sign-off.** Handheld welding is an open-beam Class 4 process — the enclosure that protects you during cutting is not there. Do not pick up the torch, do not switch the machine to weld mode, do not "just try it." Ask a mentor about welding training if you want to learn.
+
+## Software & Workflow
+
+The station PC next to the machine runs the xTool MetalFab software (you can see it on the monitor by the blue toolbox).
+
+1. **Export your part** as DXF (from Onshape/Fusion) or SVG. Flat profiles only — this is a 2D cutter.
+2. **Import into the MetalFab software** and verify scale against a known dimension.
+3. **Select material and thickness** from the preset library. The preset sets power, speed, and pierce parameters — start from the preset, not from scratch.
+4. **Set assist gas type and pressure** to match the material (see below).
+5. **Set the focal height** for your material thickness using the machine's focus procedure. Wrong focus is the number-one cause of dross and incomplete cuts — when a cut suddenly gets ugly, check focus before blaming power.
+6. **Position the job** on the sheet, frame it to confirm it fits, close the enclosure, and run.
+
+## Assist Gas Selection
+
+The assist gas blows molten metal out of the kerf. Choosing it is part of the job setup:
+
+| Gas | Use for | Edge result |
+| --- | --- | --- |
+| **Compressed air** | Carbon steel, general-purpose cuts, anything getting powder coated or painted | Slight oxide layer on the edge; cheap and always available |
+| **Nitrogen** | Stainless and aluminum when you need a clean, oxide-free edge — especially parts that will be welded | Bright, weld-ready edge; costs real money per cylinder |
+
+Default to compressed air. Switch to nitrogen only when the edge finish genuinely matters, and check the cylinder pressure before starting a long job — running out of gas mid-cut ruins the part.
+
+<LabGalleryImage
+  src="quincy-shop-compressor.jpg"
+  alt="Quincy QT-5 vertical shop air compressor with air dryer in the outdoor equipment enclosure"
+  caption="Shop compressed air comes from the Quincy QT-5 with an air dryer, in the outdoor enclosure. Dry air matters — moisture in the assist gas fouls the optics."
+/>
+
+## Consumables & Tooling
+
+There is no consumables table for this machine yet — its wear items are reordered directly from [xTool support](https://support.xtool.com/product/56):
+
+- **Protective lens (cover window):** sits below the focus lens and takes the spatter. Inspect before every session; a pitted or hazy window scatters the beam and kills cut quality. Keep spares on hand.
+- **Cutting nozzles:** wear items. A dinged or dross-crusted nozzle distorts the gas flow — swap it, don't fight it.
+- **Assist gas:** shop air is plumbed; nitrogen comes from cylinders. Note the level after use so the next person isn't surprised.
+
+Machine-specific accessories live in the labeled **xTool MetalFab drawer of the blue toolbox** next to the WAZER.
+
+<LabGalleryImage
+  src="blue-toolbox.jpg"
+  alt="Blue rolling toolbox with labeled drawers including xTool MetalFab accessories"
+  caption="The blue toolbox has a labeled drawer for xTool MetalFab accessories — nozzles, lenses, and setup tools go back there, not on the bench."
+/>
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Fire"
+  items={[
+    'Everyone in the area wearing 1064 nm laser safety glasses',
+    'Enclosure panels in place — interlocks working, never bypassed',
+    'Assist gas selected, connected, pressure set, no leaks',
+    'Protective lens and nozzle inspected — clean and undamaged',
+    'Material flat, fixtured, and not mirror-finish',
+    'Focal height set for this material thickness',
+    'Fume extraction running',
+    'Fire extinguisher in reach; no flammables or solvents nearby',
+    'Welding module untouched unless you have the welding sign-off'
+  ]}
+/>
+
+## Operating Instructions
+
+1. Power on the machine and the fume extraction, and let the system finish its startup checks.
+2. Load your sheet onto the cutting bed. Flat and supported — bridge any warp with fixturing, and confirm nothing shiny is sitting in the beam path.
+3. Open the job in the MetalFab software, set material, gas, and focus as above.
+4. Frame the job to confirm it fits your sheet with margin.
+5. Close the enclosure. Confirm the interlock indicator is happy.
+6. Start the cut and **stay with the machine.** Watch through the viewing window — with rated glasses on — for pierce failures, flare-ups from reflective spots, or dross buildup.
+7. When the job ends, wait for fume extraction to clear the enclosure before opening.
+8. Remove parts with care — edges are sharp and dross is hot. Drop metal skeletons and offcuts in the aluminum recycling bin if aluminum, scrap steel bin otherwise.
+9. Check the scrap tray under the bed for hot dross before walking away.
+
+## Resources
+
+<TutorialLink
+  title="xTool MetalFab User Manual"
+  url="https://support.xtool.com/article/1760"
+  source="manual"
+  description="Official manual for the MetalFab laser system."
+/>
+
+<TutorialLink
+  title="MetalFab CNC Cutter Setup & Use Guide"
+  url="https://support.xtool.com/article/1913"
+  source="knowledge-base"
+  description="Official guide for the CNC Cutter gantry — assembly, focus, and cutting workflow."
+/>
+
+<TutorialLink
+  title="xTool MetalFab Official Tutorials (playlist)"
+  url="https://www.youtube.com/playlist?list=PLTh5Q1mtK6K0E40sDX44gsK6pRBk-_qeM"
+  source="youtube"
+  description="xTool's official tutorial playlist for the MetalFab system."
+/>
+
+<TutorialLink
+  title="xTool MetalFab Full Review: Metalworking Made Easy"
+  url="https://www.youtube.com/watch?v=lmMHWvok3X4"
+  source="youtube"
+  description="Independent full review with real cutting and welding demos."
+/>
+
+## Cleanup & Maintenance
+
+- Power down in order: finish the job, let extraction run, then shut down the software, laser, and extraction.
+- Close the assist gas cylinder valve after nitrogen jobs and note the remaining pressure.
+- Empty the dross/scrap tray once it's cool. Sweep up metal skeleton offcuts.
+- Wipe down the bed slats; heavy dross buildup on slats scars the underside of future cuts.
+- Inspect the protective lens at the end of your session and log anything marginal on the [maintenance schedule](/maintenance/schedules/).
+
+Need thicker aluminum, polycarbonate, or anything non-metal? That is the [WAZER Pro waterjet](/waterjet/wazer-pro/). Wood and acrylic belong on the [Thunder Nova 35](/lasers/thunder-nova-35/) or the CO2 side of the [Gweike M3 Ultra](/lasers/gweike-m3-ultra/).

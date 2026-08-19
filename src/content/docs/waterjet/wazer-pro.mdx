@@ -1,8 +1,187 @@
 ---
 title: "WAZER Pro Waterjet"
-description: "Full SOP: WAM software, garnet loading, cutting, and maintenance."
+description: "Full SOP for the WAZER Pro: WAM software workflow, 80-mesh garnet loading, cutting aluminum and polycarbonate, kerf and taper, and tank maintenance."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import ConsumablesTable from '../../../components/ConsumablesTable.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+
+The WAZER Pro is our abrasive waterjet: a high-pressure stream of water and 80-mesh garnet that cuts almost any flat material — aluminum plate, steel, polycarbonate, glass, tile — with no heat, no fumes, and no burned edges. It is the go-to machine for robot plate parts and for every material the lasers can't touch.
+
+<MachineSOP
+  specs={{
+    'Cut Area': '12 × 18 in',
+    'Pump': '2.1 kW @ ~7,400 PSI',
+    'Max Aluminum': '1 in',
+    'Max Steel': '3/8 in (10 mm)',
+    'Kerf': '0.044 in',
+    'Abrasive': '80-mesh garnet @ 0.33 lb/min',
+    'Power': '220V / 16.1A',
+    'Continuous Cutting': '90 min'
+  }}
+  ppe={['glasses', 'hearing', 'closed-shoes']}
+  training="Waterjet sign-off required — run your first cuts with a mentor"
+/>
+
+<ToolProcurementCard tool="wazer-pro" />
+
+<LabGalleryImage
+  src="wazer-and-blue-toolbox.jpg"
+  alt="WAZER Pro waterjet next to the blue toolbox workstation"
+  caption="The WAZER Pro station. The blue toolbox next to it holds taps, clamps, and fabrication support tools, and the bin of aluminum offcuts is the recycling bin — offcuts go there, not in the trash."
+/>
+
+## Safety
+
+<SafetyWarning type="critical" title="Never cut with the lid open">
+The machine interlocks the lid for a reason: the jet is water and garnet moving fast enough to cut steel. Never bypass the lid, and never reach into the tank while the pump is running. Hit the pause button first, every time.
+</SafetyWarning>
+
+<SafetyWarning type="warning" title="High-pressure water injures">
+7,400 PSI water can inject through skin. Never put any part of your body near the nozzle while the pump is on, and never point a disconnected line at anyone during maintenance.
+</SafetyWarning>
+
+- Wear safety glasses — the lid contains the spray, but loading, unloading, and cleanup all splash.
+- Hearing protection on during cuts. The pump and jet are loud.
+- The machine runs on 220V. If anything electrical looks or smells wrong, kill power and get a mentor.
+- Garnet buckets weigh 55 lb. Lift with your legs or get a second person.
+- Spent garnet sludge is heavy and slippery. Wipe up spills immediately.
+- Gloves are fine here for handling wet parts and garnet — this machine has no rotating tooling. Everywhere else in the shop, check the [glove policy](/safety/gloves-and-ppe/) first.
+
+## Software & Workflow (WAM)
+
+WAM is WAZER's browser-based CAM at [wam.wazer.com](https://wam.wazer.com). It takes a 2D vector file and produces the job the machine runs.
+
+1. **Design and export.** Model the part in Onshape or Fusion and export the face as **DXF**, or export **SVG** from Illustrator/Inkscape. Flatten text and splines to paths before exporting.
+2. **Import into WAM.** Check the units and overall dimensions immediately — a wrong-scale import is the most common WAM mistake. Measure one known dimension on screen.
+3. **Position on the bed.** Lay the part out inside the 12 × 18 in cut area, leaving margin from the sheet edge and from clamps.
+4. **Select material and thickness.** Pick from WAM's material library. If your exact material isn't listed, pick the closest match and confirm with a test cut on scrap.
+5. **Set cut quality.** Coarse is fastest with the roughest edge and most taper; Fine is slowest and cleanest. Medium is right for most robot parts; use Fine for parts with press-fit holes or mating edges.
+6. **Set the cut path and lead-ins.** Cut outside the line for external profiles, inside for holes — WAM compensates for the kerf. Keep lead-ins in the waste material.
+7. **Generate and export the job**, then load it on the machine following the quick-start card at the station.
+
+## Materials & Cut Quality
+
+### Aluminum
+
+Aluminum plate is the bread and butter of this machine. It will cut up to 1 in thick, but thick cuts are slow — expect most 1/4 in robot plate to cut at a comfortable pace and anything over 1/2 in to take real time. Support thin sheet well and weight it down: the jet can lift and vibrate unsupported sheet, which ruins edge quality.
+
+### Polycarbonate
+
+Cut polycarbonate here, not on the lasers — **polycarb burns badly under a CO2 laser** and is on the [Thunder Laser never-cut list](/lasers/thunder-nova-35/). The waterjet gives a clean, stress-free edge with no melting. Peel the protective film only where clamps grip; leave the rest on to protect the surface from garnet scratching.
+
+<LabGalleryImage
+  src="material-cart-polycarb-clamps.jpg"
+  alt="Rolling material cart with polycarbonate sheet slots, aluminum extrusion cubbies, and clamps"
+  caption="Stock lives on the rolling material cart — labeled polycarbonate slots, aluminum cubbies, and the clamps you need for weighting material on the cut bed."
+/>
+
+### Kerf & taper
+
+- The jet removes a **0.044 in kerf**. WAM compensates automatically when you choose outside/inside cuts, but remember it when nesting parts — leave at least a kerf-width of material between profiles.
+- All waterjet cuts have some **taper** (the top of the cut is slightly wider than the bottom). Taper grows with cut speed and material thickness. For precision work, use Fine quality; for press-fit or bearing holes, cut undersize and drill or ream to final dimension afterward.
+- Keep hole diameters at or above the material thickness. Smaller holes pierce poorly and come out ugly — drill those instead.
+
+## Consumables & Tooling
+
+<ConsumablesTable machine="wazer-pro" />
+
+- **Abrasive:** 80-mesh WAZER garnet only. It is calibrated for the machine's feed system, and WAZER recommends against third-party abrasive. The Pro consumes about 0.33 lb/min, so a 55 lb bucket is roughly 2.75 hours of cutting — check the level before a long job.
+- **Nozzle:** a wear item. If the kerf widens, cuts taper more than usual, or the jet looks fuzzy instead of tight, tell a mentor — it is probably time to swap it.
+- **Cut bed slats:** the jet slowly eats them. That is normal and they are replaceable; see Cleanup & Maintenance below.
+
+### Loading garnet
+
+1. Pop the hopper lid and check what's inside — garnet must be bone dry and free-flowing. Clumps mean moisture, and moisture means a clogged feed line mid-cut.
+2. Pour from the bucket using the funnel, slowly, watching the fill level. Do not overfill.
+3. Close the hopper lid so shop dust and humidity stay out.
+4. Keep open buckets sealed between uses, stored under the WAZER bench.
+
+### Abrasive drainage (spent garnet)
+
+Used garnet settles in the tank and the machine pumps the spent slurry out to the **drain buckets**. Check them before every job — a full bucket overflows onto the floor mid-cut.
+
+- Empty buckets when they get heavy: let the garnet settle, pour off the clear water, and bag the wet sand for the trash.
+- Spent garnet is inert rock — it goes in the trash, **never down a sink drain**. It will set up in plumbing like concrete.
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Cut"
+  items={[
+    'Tank water level between the MIN and MAX lines',
+    'Garnet hopper filled with dry 80-mesh garnet — no clumps',
+    'Both drain buckets checked and not full',
+    'Nozzle inspected — jet tip looks clean, no visible wear',
+    'Material clamped or weighted flat on the cut bed',
+    'Nozzle height set — standoff just above the material, never touching',
+    'Job material and thickness in WAM match what is actually on the bed',
+    'Lid closed and latched'
+  ]}
+/>
+
+## Operating Instructions
+
+1. Power on the machine and let it initialize and home.
+2. Load your WAM job at the control panel.
+3. Place your material on the cut bed over intact slats. Clamp or weight it — the jet and water turbulence will shift loose sheet.
+4. Set the nozzle height: the standoff should just clear the material surface. Too high wastes energy and widens the kerf; touching the material will drag.
+5. Jog the nozzle to your work origin and set it. Make sure the whole job fits on your sheet.
+6. Run the job outline/frame check if your layout is tight on the sheet.
+7. Close the lid and start the cut.
+8. **Stay with the machine for the entire cut.** Watch and listen: if the water at the nozzle suddenly runs clear, garnet has stopped flowing — pause immediately and check the hopper and feed line. The machine can cut for 90 minutes continuously, but it never runs unattended.
+9. When the job finishes, wait for the pump to stop before opening the lid.
+10. Fish out your parts and the skeleton. Aluminum offcuts go in the recycling bin next to the machine.
+
+## Resources
+
+<TutorialLink
+  title="WAZER Pro User Manual Downloads"
+  url="https://support.wazer.com/wazer-pro-user-manual-downloads"
+  source="manual"
+  description="Full User Manual, Quick Start Guide, WAM 2.0 Operation Manual, and Maintenance Manual."
+/>
+
+<TutorialLink
+  title="WAZER Pro Support & Setup Videos"
+  url="https://support.wazer.com/pro"
+  source="knowledge-base"
+  description="Official knowledge base plus step-by-step setup and maintenance videos."
+/>
+
+<TutorialLink
+  title="World's Smallest Waterjet Cutter — WAZER Pro Review (FireballTool)"
+  url="https://www.youtube.com/watch?v=5jDMUjlYrBU"
+  source="youtube"
+  description="Thorough real-world review with cut demos across materials."
+/>
+
+<TutorialLink
+  title="I Tested the New World's Smallest Waterjet — WAZER Pro Review"
+  url="https://www.youtube.com/watch?v=PENWLKX4OqU"
+  source="youtube"
+  description="Second-opinion review covering workflow, garnet handling, and cut quality."
+/>
+
+## Cleanup & Maintenance
+
+After every session:
+
+- Remove all parts, skeletons, and offcuts from the tank. Aluminum to the recycling bin.
+- Rinse garnet off the bed rails and the lid seal, and wipe down the lid.
+- Check the drain buckets — empty them now if they're close to full so the next person starts clean.
+- Reseal any open garnet bucket.
+- Leave the lid closed.
+
+Periodic (see the [maintenance schedule](/maintenance/schedules/)):
+
+- **Cut bed slats** erode where cuts concentrate. Rotate or flip slats to spread wear, and flag heavily eroded slats for replacement — parts sag into worn slats and lose accuracy.
+- **Tank sediment** builds up below the slats even with drainage running; it gets shoveled out on the maintenance schedule.
+- **Nozzle wear** — report widening kerf or fuzzy jets rather than pushing a worn nozzle through one more job.
+
+Cutting metal that the waterjet is too slow for, or need a welded edge? See the [xTool MetalFab fiber laser](/lasers/xtool-metalfab/). Flat aluminum with pockets or countersinks belongs on the [ShopSabre CNC router](/cnc/shopsabre-23/).

@@ -1,8 +1,137 @@
 ---
 title: "Filament Material Guide"
-description: "PLA, PETG, TPU, PA-CF, and PC: temps, plates, drying, and use cases."
+description: "How to pick the right material — PLA, PETG, TPU, PA-CF, and PC — plus temps, plates, drying rules, and where we buy spools."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import FilamentCard from '../../../components/FilamentCard.astro';
+import FilamentMatrixTable from '../../../components/FilamentMatrixTable.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+
+Material choice matters more than any slicer setting. A perfectly tuned PLA bracket will still
+snap at the first hard hit; a mediocre PETG print of the same part will survive the season.
+Pick the material first, then go tune settings on the
+[Print Settings & Supports](/3d-printing/print-settings/) page.
+
+## Which material do I use?
+
+Work down this list and stop at the first line that matches your part:
+
+- **Just checking fit, making a jig, or printing something cosmetic?** → **PLA.** Cheapest,
+  fastest, easiest. Not for anything that lives on the robot.
+- **Going on the robot?** → **PETG.** This is the default answer for brackets, covers, sensor
+  mounts, and guards. Tougher than PLA and takes an impact without shattering.
+- **Needs to squish, grip, or absorb a hit?** → **TPU.** Intake rollers, bumper pads, grippers,
+  gaskets.
+- **Highly loaded — gearbox plates, motor mounts, anything you would otherwise machine?** →
+  **PA-CF.** Strongest thing we print. Bambu X1-Carbon or H2D only, dried first, no exceptions.
+- **Lives next to something hot, or needs max impact resistance at temperature?** → **PC.**
+  Enclosed printer required.
+
+When in doubt: prototype in PLA, ship in PETG. Escalate to PA-CF only when PETG has actually
+failed or the math says it will.
+
+<SafetyWarning type="warning" title="PLA melts in a hot car">
+PLA softens around 55 °C. Parts left in a car in Houston, near the powder-coat curing oven, or
+against a hot motor will sag and warp. If a part sees any heat at all, it is not a PLA part.
+</SafetyWarning>
+
+## The materials
+
+### PLA — prototypes and jigs
+
+<FilamentCard id="pla" />
+
+PLA is stiff and dimensionally accurate, which makes it great for drill guides and
+check-the-CAD prototypes. Its weaknesses are heat and impact: it is the most brittle material
+on this list and it creeps under sustained bolt tension. Print it fast, learn from it, then
+reprint the final part in something tougher.
+
+### PETG — the on-robot workhorse
+
+<FilamentCard id="petg" />
+
+PETG bends before it breaks, which is exactly what you want from a robot part. It is slightly
+harder to print than PLA — it strings, and it welds itself to smooth PEI plates. Always use the
+textured plate, and if you see wispy strings, the spool is wet: dry it before blaming the
+slicer.
+
+### TPU — flexible parts
+
+<FilamentCard id="tpu" />
+
+TPU prints slow and hates being pushed. Keep speeds down, keep retraction minimal, and feed it
+from an external spool holder — standard TPU folds and jams inside the AMS feed path. Only
+Bambu's specifically AMS-rated TPU may go through an AMS.
+
+### PA-CF — carbon fiber nylon, the strong stuff
+
+<FilamentCard id="pa-cf" />
+
+PA-CF parts approach machined-plastic strength and shrug off impacts that crack PETG. The cost:
+it is expensive, it absolutely must be dry, and the carbon fill sands brass nozzles into
+uselessness — hardened nozzle and extruder gears only, which in our lab means the
+[Bambu fleet](/3d-printing/bambu-fleet/). A spool left out overnight is a wet spool. Dry it
+again before printing.
+
+### PC — polycarbonate for heat and impact
+
+<FilamentCard id="pc" />
+
+PC is the pick when a part needs to survive both heat and abuse. It warps aggressively, so it
+only prints in an enclosed machine, and parts should stay in the warm chamber until fully
+cooled or the layers will crack. Watch the first layers — PC lifts at corners more than
+anything else we run.
+
+## Quick comparison
+
+<FilamentMatrixTable />
+
+## Storage & drying
+
+Filament is a sponge. Wet filament pops, strings, prints weak layers, and in the case of nylon
+produces parts with a fraction of their rated strength.
+
+**Storage rules:**
+
+- Open spools live in **dry boxes with desiccant** — not loose on the bench. Reseal partial
+  spools in a zip bag with a desiccant pack if a dry box is full.
+- Recharge or replace desiccant when the indicator changes color. Saturated desiccant is
+  decoration, not protection.
+- PA-CF stays in a dry box (or the H2D's AMS HT, which actively dries) at all times. It goes
+  straight from drying to the printer.
+
+**Who must be dried, and how much:**
+
+| Material | Drying requirement |
+| --- | --- |
+| PLA | Usually fine from the box. 50 °C for 8 h only if it strings. |
+| PETG | Dry at 65 °C for 8 h if stored open more than ~2 weeks or if stringing. |
+| TPU | **Required.** 70 °C for 8–12 h before printing — wet TPU bubbles and strings badly. |
+| PA-CF | **Mandatory, every session.** 80 °C for 12 h. Never print a spool that sat out overnight. |
+| PC | Dry at 80 °C for 8–12 h; hygroscopic. |
+
+Use a filament dryer or the H2D's AMS HT for drying. Do **not** use the powder-coat curing oven
+— its temperature swings will cook a spool into a solid donut.
+
+<SafetyWarning type="tip" title="Symptoms of wet filament">
+Popping or hissing at the nozzle, steam wisps, stringing that tuning does not fix, fuzzy matte
+surfaces, and weak layer adhesion. If you see two or more of these, stop and dry the spool —
+you are wasting printer time otherwise.
+</SafetyWarning>
+
+## Buying filament
+
+- **Buy Bambu-brand spools from the Bambu store** (reorder links on each card above). The RFID
+  tags auto-configure the AMS and slicer profiles, which removes a whole class of student error.
+- Overture PETG and TPU are our approved budget alternates for high-volume printing on the
+  [Prusa farm](/3d-printing/prusa-farm/).
+- PLA and PETG are bulk staples — keep several spools of each ahead of demand during build
+  season. PA-CF and PC are special-order; a mentor approves those purchases.
+- New spool arrives? Label it with the date opened, then into a dry box or the AMS.
+
+## Related pages
+
+- [Print Settings & Supports](/3d-printing/print-settings/) — walls, infill, orientation, and per-material presets
+- [Bambu Lab Fleet](/3d-printing/bambu-fleet/) — the only printers allowed to run PA-CF and PC
+- [Prusa Mini+ Farm](/3d-printing/prusa-farm/) — PLA/PETG volume printing
+- [Large-Format & Specialty](/3d-printing/large-format/) — oversized single-piece prints

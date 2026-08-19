@@ -180,6 +180,14 @@ a.site-title img {
   object-fit: contain !important;
 }
 
+/* Mobile "On this page" TOC bar: Starlight paints it with --sl-color-bg-nav
+   (our dark purple) but its text uses the page text color — illegible. Give
+   it the light sidebar treatment instead. */
+mobile-starlight-toc nav {
+  background-color: var(--sl-color-bg-sidebar) !important;
+  border-bottom: 1px solid var(--sl-color-border) !important;
+}
+
 /* ==========================================================================
    LEFT DOCS SIDEBAR — kept (unlike the main site) and restyled
    ========================================================================== */

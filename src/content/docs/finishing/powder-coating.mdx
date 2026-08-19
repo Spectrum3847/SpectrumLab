@@ -1,8 +1,154 @@
 ---
 title: "Powder Coating SOP"
-description: "Booths, application gun, grounding, and powder handling."
+description: "Full application SOP for the Eastwood PCS-250 in our DIY booth — grounding, voltage selection, spray technique, and powder handling."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import ConsumablesTable from '../../../components/ConsumablesTable.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+
+Powder coating is how robot parts get team colors that survive a competition season. Instead of wet paint, an electrostatic gun blows dry powder at the part; the powder carries a high-voltage charge, the part is grounded, and the powder clings to the metal until the [curing oven](/finishing/curing-oven/) melts it into a hard, chip-resistant skin. We spray Prismatic Powders purple and white with an Eastwood HotCoat PCS-250 gun in our DIY booth in the powder room.
+
+<MachineSOP
+  specs={{
+    'Gun': 'Eastwood HotCoat PCS-250',
+    'Voltage': '15 kV / 25 kV selectable',
+    'Air at the Gun': '5–10 PSI',
+    'Shop Air Supply': '120 PSI, regulated down',
+    'Gun Power': '120V outlet',
+    'Team Colors': 'Prismatic purple + white',
+  }}
+  ppe={['respirator', 'glasses', 'gloves', 'closed-shoes', 'tie-hair']}
+  training="Finishing sign-off — spray your first parts with a mentor watching"
+/>
+
+<ToolProcurementCard tool="eastwood-pcs250" />
+
+## Safety
+
+<SafetyWarning type="critical" title="Airborne powder is combustible dust — no flames, no sparks">
+Suspended powder can ignite. **No open flames, no grinding, no sparking tools, and no heat guns anywhere near the booth while spraying.** The curing oven is fine — it's a sealed electric oven — but nothing burns or sparks in the spray area itself.
+</SafetyWarning>
+
+<SafetyWarning type="critical" title="Respirator on before the gun turns on">
+Powder particles are exactly the size your lungs hate. Wear a particulate respirator (the booth respirators live on the shelf next to the gun) **any time powder is airborne** — spraying, pouring, or cleaning up. A dusty shirt washes out; dusty lungs don't.
+</SafetyWarning>
+
+- Nitrile gloves whenever you handle powder or sprayed parts — see [PPE & The Glove Policy](/safety/gloves-and-ppe/).
+- Safety glasses on. Powder blowback finds eyes.
+- The gun outputs high voltage (15–25 kV) at low current. It won't injure you, but the tingle will make you jump — keep your free hand off the part and the rack while spraying.
+- Keep the booth fan running the entire session. It's your filtration.
+- Wipe up spilled powder with the shop vac in the powder room — don't dry-sweep it into a cloud.
+
+## The Booth
+
+Our booth is team-built: a spray enclosure with LED lighting so you can actually see coverage, and a box fan pulling air through a furnace filter to capture overspray. The filter door is permanently purple at this point — that's the system working.
+
+Air comes from the shop compressor at 120 PSI and gets regulated **down to 5–10 PSI at the gun**. More air does not mean more powder sticking — it means powder blasting past the part and straight into the filter. If the gun is spitting or surging, check the regulator before you blame the gun.
+
+<LabGalleryImage
+  src="powder-booth-spray-area.jpg"
+  alt="DIY powder coating booth with spray gun, respirators, powder bottles, and purple-dusted box-fan filter"
+  caption="The booth: PCS-250 gun, respirators on the shelf, powder bottles, and the box-fan filter doing its (very purple) job."
+/>
+
+<LabGalleryImage
+  src="powder-room-storage-shelves.jpg"
+  alt="Powder coating and storage room with the spray booth, purple-coated filter door, shop vac, and supply shelves"
+  caption="The powder room. Booth on the left, shop vac for cleanup, supplies on the shelves."
+/>
+
+## Consumables
+
+<ConsumablesTable machine="eastwood-pcs250" />
+
+We buy team colors from [Prismatic Powders](https://www.prismaticpowders.com/) — purple and white. Every Prismatic color has a per-color PDF data sheet with its exact cure schedule; the [curing oven page](/finishing/curing-oven/) explains how to read it. Keep powder bottles **sealed with desiccant** on the powder room shelf — powder absorbs moisture, and damp powder clumps and spits out of the gun. Spare furnace filters for the box fan live in the powder room; swap the filter when it's caked (checked weekly per the [maintenance schedule](/maintenance/schedules/)).
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Spray"
+  items={[
+    'Part is fully prepped: degreased, scuffed, masked, outgassed if cast — see Surface Prep',
+    'You have not touched the prepped part with bare hands',
+    'Booth fan is on and the filter is not caked solid',
+    'Respirator and safety glasses on; gloves on',
+    'Shop air on, regulator reading 5–10 PSI at the gun',
+    'Powder is dry and free-flowing (no clumps when you swirl the cup)',
+    'Ground clamp is on BARE metal, not on paint, powder, or the masking tape',
+    'Oven is preheating so parts can go straight in after spraying',
+    'No open flames, grinders, or spark sources anywhere nearby',
+  ]}
+/>
+
+## Application SOP
+
+1. **Prep the part.** No shortcuts — powder shows every fingerprint and fisheye. Follow [Surface Prep & Cleaning](/finishing/surface-prep/) completely: degrease, scuff, outgas cast parts, mask threads and bores.
+2. **Hang the part on the rack.** Use steel wire or hooks through a hole that's masked or non-cosmetic. The part must hang free — anything the part rests against will have a bare spot.
+3. **Attach the ground clamp to bare metal.** This is the step that makes powder coating work at all. Clip the gun's ground clamp directly onto the part or its hanging hook, on a spot with **no paint, no old powder, no anodizing** — scrape a contact point if you must. See the warning below.
+4. **Load the powder cup.** Fill the cup 1/2 to 2/3 full with dry powder and thread it onto the gun. Give it a gentle shake to fluidize — the air feed keeps the powder stirred and flowing while you spray.
+5. **Set the voltage.** **15 kV for small parts** and tight geometry; **25 kV for large flat surfaces** like plates and chassis rails. Higher voltage throws more powder onto big areas but makes corners harder (see step 7).
+6. **Spray in steady passes.** Hold the gun **6–8 inches** from the part, perpendicular to the surface. Move in smooth, overlapping passes like spray paint — start the pass before the part, end it after. You're aiming for a uniform matte dusting, not a thick fuzzy layer. The powder should visibly jump to the part; if it's drifting past instead, check your ground.
+7. **Watch for Faraday cage corners.** Inside corners and recesses repel charged powder — the field lines take the powder to the edges and skip the valley. If a corner won't take powder: **drop to 15 kV**, move in slightly closer, and aim straight into the corner with short bursts. Don't flood it from far away; you'll just build up the edges.
+8. **Inspect coverage under the booth LEDs.** Rotate the part (by its hook — not by hand) and look for thin spots, bare edges, and holidays. Touch up now; there is no touching up after cure.
+9. **Straight to the oven — touch nothing.** The powder is held on by static alone. A finger, a sleeve, or a bump against the doorframe wipes it off instantly. Carry the part by its hook or rack to the [curing oven](/finishing/curing-oven/) and hang it without letting it touch anything.
+
+<SafetyWarning type="critical" title="No ground = no coating">
+The powder only sticks because the gun charges it and the **grounded part** attracts it. If the ground clamp is loose, on painted metal, or missing, powder will drift off the part, coverage will be blotchy, and you'll get shocked more. Every mystery "the gun isn't working" ever reported in this shop has been a bad ground. Clamp to bare metal. Check it twice.
+</SafetyWarning>
+
+<SafetyWarning type="tip" title="Recoating a part with existing powder">
+Second coats and already-coated parts spray at **15 kV** — the cured layer insulates the part, and high voltage will back-ionize and crater the finish. Light passes, low voltage, patience.
+</SafetyWarning>
+
+## Resources
+
+<TutorialLink
+  title="Eastwood PCS-250 Instruction Manual (#33278)"
+  url="https://www.eastwood.com/images/library/33278Q.pdf"
+  source="pdf"
+  description="Official manual: setup, air requirements, voltage selection, and troubleshooting."
+/>
+
+<TutorialLink
+  title="Eastwood Dual Voltage Powder Coating Gun Tutorial"
+  url="https://www.youtube.com/live/MBpwiQ-pfvA"
+  source="youtube"
+  description="Official Eastwood walkthrough of the PCS-250 — watch before your first session."
+/>
+
+<TutorialLink
+  title="Powder Coating Made Easy! Eastwood PCS-250 + Tabletop Oven Test"
+  url="https://www.youtube.com/watch?v=VDQG2NzHGug"
+  source="youtube"
+  description="Real-world PCS-250 application, start to finish."
+/>
+
+<TutorialLink
+  title="Prismatic Powders Knowledge Base"
+  url="https://www.prismaticpowders.com/knowledge-base"
+  source="knowledge-base"
+  description="Application guides and per-color cure schedules for the powders we shoot."
+/>
+
+<TutorialLink
+  title="How to Powder Coat Wheels — Prismatic Powders"
+  url="https://www.youtube.com/watch?v=Hj5z7i5YdGs"
+  source="youtube"
+  description="Official Prismatic application video — good technique reference for complex parts."
+/>
+
+## Cleanup & Maintenance
+
+- Blow the gun and cup out with low-pressure air **into the booth** (fan running, respirator on). Powder cross-contamination turns white parts lavender.
+- Empty leftover powder back into its bottle only if it stayed clean and dry; otherwise vacuum it up.
+- Vacuum booth surfaces with the shop vac. Never dry-sweep powder.
+- Reseal powder bottles with desiccant and return them to the shelf.
+- Regulator off, air line drained at closing time (standard shop shutdown).
+- Weekly: blow dust out of the booth filters; replace the box-fan filter when caked — see [Maintenance Schedules](/maintenance/schedules/).
+
+Next step in the process: [Curing Oven](/finishing/curing-oven/). Starting a part from scratch? Begin at [Surface Prep & Cleaning](/finishing/surface-prep/).

@@ -1,0 +1,19 @@
+{
+  // Cloudflare Workers static-assets deployment for lab.spectrum3847.org
+  // Deploy: npm run build && npx wrangler deploy
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "spectrumlab",
+  "compatibility_date": "2026-08-01",
+  "account_id": "ffd3e8ee831a6d15ce589f05d1116734",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  },
+  "routes": [
+    {
+      "pattern": "lab.spectrum3847.org",
+      "custom_domain": true
+    }
+  ]
+}

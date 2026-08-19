@@ -1,8 +1,82 @@
 ---
 title: "Surface Prep & Cleaning"
-description: "Degreasing, sandblasting, scuffing, and outgassing cast parts."
+description: "Degreasing, scuffing, outgassing cast parts, and masking — the prep work that decides whether powder sticks."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+
+Powder coat quality is decided before the gun ever turns on. Powder will happily stick to oil, fingerprints, and mill scale — right up until it chips off in sheets at the first competition hit. Every part follows this page **completely** before it goes to the [booth](/finishing/powder-coating/).
+
+## 1. Degrease
+
+Every part arrives dirty: cutting fluid from the lathe, way oil from the mill, tape residue, and hand oils from everyone who touched it.
+
+1. Wipe the entire part down with solvent (acetone or isopropyl) on a clean, lint-free rag. Solvents live in the green flammables cabinet in the storage room — return them there when done.
+2. Keep wiping with fresh rag faces until the rag comes away clean. A dirty rag just relocates the oil.
+3. Get into holes, pockets, and hex bores — oil hides where the rag doesn't reach. Blow out blind holes with compressed air afterward.
+4. Let the solvent flash off completely before the next step.
+
+Nitrile gloves on for solvent work — both to protect your skin and to protect the part. See [PPE & The Glove Policy](/safety/gloves-and-ppe/).
+
+## 2. Scuff or Blast for Adhesion
+
+Powder needs mechanical tooth. Smooth or shiny surfaces — polished aluminum, anodizing, old paint — must be roughed up:
+
+- **Scuff** the whole surface with Scotch-Brite or fine sandpaper until it's uniformly dull. No shiny patches. The bench grinder's Scotch-Brite deburring wheels handle edges and stubborn spots.
+- **Media blasting** is the gold standard when available — it profiles every face at once, including pockets a hand can't scuff. If a part gets blasted, coat it soon after; a blasted surface starts oxidizing immediately.
+- Strip old paint or failing powder completely. Coating over a failing layer means your new coat is only as strong as the old one.
+
+After scuffing, degrease **again** with a quick solvent wipe to remove scuffing dust, then blow the part off.
+
+<LabGalleryImage
+  src="bench-grinder-deburring.jpg"
+  alt="Bench grinder fitted with Scotch-Brite deburring wheels"
+  caption="The Scotch-Brite wheels on the bench grinder — good for deburring edges and scuffing stubborn spots before coating."
+/>
+
+## 3. Outgas Cast and Porous Parts
+
+Castings, welded assemblies, and porous metal soak up oil and moisture that boils out at cure temperature — straight through your fresh powder, leaving pits and craters ("outgassing").
+
+- **Pre-bake any cast or porous part** in the [curing oven](/finishing/curing-oven/) at or slightly above cure temperature for 30+ minutes, *before* coating.
+- Let it cool, watch for oil spots weeping to the surface, and degrease again if any appear.
+- Billet and sheet aluminum generally don't need this; castings and anything that has lived a greasy life always do.
+
+## 4. Mask Threads, Bores, and Precision Surfaces
+
+Powder adds real thickness. A coated thread won't take a bolt, a coated bearing bore won't take a bearing, and you'll be scraping purple out of holes with a pick at midnight.
+
+- **High-temp masking tape** (the tan polyester stuff, not blue painter's tape) for flat surfaces and large areas. Regular tape melts into goo at 400°F.
+- **Silicone plugs** for tapped holes and bores; **silicone caps** for studs. Push them in snug — powder finds loose plugs.
+- Mask anywhere that needs bare metal for conductivity or fit: grounding points, bearing seats, mating faces that get torqued.
+- Leave a masked or hidden spot for the [gun's ground clamp](/finishing/powder-coating/) and for the hanging hook.
+
+<SafetyWarning type="tip" title="Mask less than you think, plug more than you think">
+Tape edges show as ridges in the finish. Where you can, design the part so cosmetic faces are easy to spray and precision features are pluggable holes. Five silicone plugs beat twenty inches of fiddly tape.
+</SafetyWarning>
+
+## 5. Gloves From Here Forward
+
+<SafetyWarning type="critical" title="A fingerprint is a coating defect">
+After the final degrease, the part is **gloves-only** until it comes out of the oven. Skin oils ruin adhesion and show up as fisheyes in the cured finish — one bare-handed grab and you're back to step 1. Handle prepped parts by their hanging wire or with clean nitrile gloves, and hang them promptly rather than letting them sit collecting dust.
+</SafetyWarning>
+
+## Ready-to-Coat Check
+
+<PreFlightChecklist
+  title="Is This Part Actually Ready?"
+  items={[
+    'Solvent-wiped until the rag stays clean, including holes and pockets',
+    'Uniformly dull surface — no shiny patches, no old flaking coating',
+    'Re-degreased after scuffing; dust blown off',
+    'Cast/porous parts pre-baked and re-checked for weeping oil',
+    'Threads, bores, and mating faces masked with high-temp tape or silicone plugs',
+    'Bare spot available for the ground clamp',
+    'Hanging wire or hook attached',
+    'Nobody has touched it bare-handed since the final wipe',
+  ]}
+/>
+
+Prepped part in hand (gloved hand)? Head to the [Powder Coating SOP](/finishing/powder-coating/).

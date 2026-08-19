@@ -1,8 +1,120 @@
 ---
 title: "Curing Oven"
-description: "Temperature curves, bake times, part hanging, and thermal safety."
+description: "Light Armor curing oven SOP: PID controller, cure schedules at part temperature, hanging, and thermal safety."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+
+The Light Armor curing oven is the second half of [powder coating](/finishing/powder-coating/): it melts the electrostatically-clung powder into a smooth, hard finish. It's a hand-built dedicated powder-curing oven — PID temperature controller with a timer, ceramic door seal, and hanging rails inside. It is not a kitchen appliance and nothing edible ever goes in it.
+
+<MachineSOP
+  specs={{
+    'Max Temperature': '450°F',
+    'Typical Cure': '~400°F, 10–20 min at part temp',
+    'Interior': '22" W × 23" D × 60" T',
+    'Power': '240V single-phase, 14A',
+    'Control': 'PID controller + timer',
+    'Door': 'Ceramic seal, hanging rails inside',
+  }}
+  ppe={['heat-gloves', 'glasses', 'closed-shoes']}
+  training="Finishing sign-off — run your first cure with a mentor"
+/>
+
+<ToolProcurementCard tool="light-armor-oven" />
+
+## Safety
+
+<SafetyWarning type="critical" title="Everything about this oven is hot">
+The racks, the hooks, the parts, and the door hardware are all at ~400°F during a cure. **Heat-resistant gloves for any reach into the oven — no exceptions.** A 400°F part looks exactly like a room-temperature part. Assume everything inside is hot until it has provably cooled.
+</SafetyWarning>
+
+<SafetyWarning type="critical" title="Never leave a running oven unattended">
+Someone stays in the building, aware the oven is on, for the entire cure. Set the timer *and* a phone timer. The last-mentor-out closing check includes verifying the oven is **off and cool** — don't be the reason that check exists.
+</SafetyWarning>
+
+- Keep the area in front of the door clear — you need room to load and unload without touching anything.
+- No flammables near the oven: no solvent rags, no powder bottles, no cardboard stacked against it.
+- Parts must be fully dry before curing. Solvent trapped in a masked bore flashes to vapor at temperature.
+- Watch your forearms on the door frame when reaching deep — that's the classic burn.
+
+## Reading a Cure Schedule
+
+Powder doesn't cure on a universal timer — each powder has a schedule on its data sheet. Our Prismatic Powders colors each have a per-color PDF (find it on the [Prismatic documents page](https://www.prismaticpowders.com/documents)) that says something like "10 minutes at 400°F **part metal temperature**." Two things students get wrong:
+
+1. **The clock starts when the *metal* reaches temperature, not when you close the door.** A 1/16" bracket gets to 400°F in a couple of minutes; a chunk of 1" plate or a gearbox housing can take 15+ minutes just to come up to temp. Thicker part = longer total oven time.
+2. **Full cure window is typically 10–20 minutes at part temperature for our powders.** Undercured powder looks fine but chips like a candy shell; overcuring (within reason) mostly just yellows whites — when unsure, err slightly long.
+
+Rule of thumb: watch through the first few minutes — when the powder flows out from matte dust to a wet-look gloss (~400°F for our powders), the surface is at temp. Start the schedule clock a few minutes after flow-out for thin parts, longer for thick ones.
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Cure"
+  items={[
+    'Cure schedule for this specific powder pulled up (Prismatic per-color data sheet)',
+    'Oven preheated to setpoint before parts go in',
+    'Heat gloves staged by the door',
+    'Hooks/wire are steel — no zip ties, no aluminum wire that softens',
+    'Parts hang free: not touching each other, the walls, or the racks',
+    'Masking is high-temp rated (tape and plugs from the powder room shelf)',
+    'Timer set on the PID and a backup timer on your phone',
+    'You are staying nearby for the entire cure',
+  ]}
+/>
+
+## Operating Instructions
+
+1. **Preheat.** Set the PID to the powder's cure temperature (typically ~400°F) and let the oven reach and hold setpoint before loading. Loading a cold oven gives you an unknown cure clock.
+2. **Load without touching anything.** Uncured powder is held on by static only. Carry parts by their hooks from the booth and hang them on the oven rails. If a part brushes the door frame on the way in, it goes back to the booth for a touch-up.
+3. **Space the parts out.** Parts must not touch each other or the walls — every contact point becomes a bare, ugly spot, and touching parts fuse together.
+4. **Set the timer.** Use the powder's schedule *at part temperature* (see above). Thin brackets: schedule time plus a few minutes. Thick or cast parts: add soak time for the metal to come up to temp.
+5. **Monitor.** Stay in the area. Check that the PID is holding setpoint and not overshooting. If you smell strong burning (faint powder smell is normal), kill the oven and get a mentor.
+6. **End of cure: oven off, door cracked or parts out with heat gloves.** Move parts (by their hooks) to a safe cooling spot where nobody will grab them.
+7. **Cool completely before handling.** Parts come out at ~400°F and stay dangerous for a long time. Let them air-cool until you can hold your hand near the surface — don't quench, don't rush. The finish is also soft until it cools.
+
+<SafetyWarning type="warning" title="Label the cooling zone">
+A freshly-cured purple bracket sitting on the bench is a trap for the next person who walks by. Put a "HOT PARTS" note next to cooling parts, or cool them inside the powder room where traffic is low.
+</SafetyWarning>
+
+## Resources
+
+<TutorialLink
+  title="Light Armor Ovens"
+  url="https://lightarmor.us/"
+  source="website"
+  description="Manufacturer site for our hand-built curing oven."
+/>
+
+<TutorialLink
+  title="Light Armor Ovens FAQ"
+  url="https://lightarmor.us/pages/faq"
+  source="knowledge-base"
+  description="Official FAQ: operation, wiring, and temperature questions."
+/>
+
+<TutorialLink
+  title="Light Armor Ovens on YouTube"
+  url="https://www.youtube.com/channel/UC2xNwuA5gy_oLaqzlE9s8pQ"
+  source="youtube"
+  description="Official channel — build and operation videos."
+/>
+
+<TutorialLink
+  title="Prismatic Powders Documents & Data Sheets"
+  url="https://www.prismaticpowders.com/documents"
+  source="pdf"
+  description="Per-color application guides with the cure schedules this page tells you to follow."
+/>
+
+## Cleanup & Maintenance
+
+- Oven **off at the controller and the switch** when the last cure ends. The daily closing checklist has the last mentor out confirming the oven is off and cool.
+- Pull any dropped hooks or powder flakes off the oven floor once cool.
+- Keep the door seal clean — don't slam the door on hanging wires.
+- **Monthly** (per [Maintenance Schedules](/maintenance/schedules/)): verify the PID reading against a reference thermometer, and inspect the ceramic door seal. If the PID and reference disagree by more than a few degrees, tag the oven and tell a mentor — every cure depends on that number being true.
+
+Upstream steps: [Surface Prep & Cleaning](/finishing/surface-prep/) → [Powder Coating SOP](/finishing/powder-coating/) → here.
