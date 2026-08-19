@@ -1,0 +1,239 @@
+---
+title: "Electric Tapping Machine"
+description: "SOP for the MRCM 360° electric tapping arm: capacity, clutch setting, collets, the drill-and-tap station, and how to tap a batch of holes without snapping taps."
+---
+
+import MachineSOP from '../../../components/MachineSOP.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+
+The tapping arm is how we thread holes in batches. It is a folding articulated arm on the
+workbench near the [Evolution chop saws](/cutting/evolution-saws/): you pull the head over the
+hole, squeeze the trigger, and it drives the tap in dead straight at a controlled speed, then
+reverses out. A torque clutch slips before the tap does.
+
+It exists because hand tapping a plate with twenty 10-32 holes is slow, and every one of those
+holes is a chance to start crooked or snap a tap. This machine removes both problems, which is
+why the team designs a lot of tapped standoffs and threaded plates into the robot in the first
+place.
+
+<LabGalleryImage
+  src="servo-tapping-arm.jpg"
+  alt="Folding-arm electric tapping machine mounted on the workbench near the Evolution chop saw"
+  caption="The tapping arm on its bench station. Mentor training required before solo use."
+/>
+
+## Specs
+
+<MachineSOP
+  specs={{
+    'Brand': 'MRCM',
+    'Tap Capacity': 'M3–M16',
+    'Speed': '0–375 rpm (variable)',
+    'Arm Reach': '1045 mm horizontal',
+    'Vertical Travel': '400 mm',
+    'Rotation': '360° multi-direction',
+    'Collets': '8-piece set included',
+    'Power': '110 V AC, corded',
+  }}
+  ppe={['glasses', 'closed-shoes', 'tie-hair', 'no-gloves']}
+  training="Mentor walk-through required before first solo use — collet changes, clutch setting, and the reverse control."
+/>
+
+<SafetyWarning type="warning" title="No gloves on the tapping arm">
+The tap and collet spin. A glove that touches a rotating tap pulls your hand in with it — this is
+the same rule as the [lathe](/forming/lathes/) and it is not negotiable. Bare hands, sleeves
+rolled, long hair tied back. See [PPE & the glove policy](/safety/gloves-and-ppe/).
+</SafetyWarning>
+
+<ToolProcurementCard tool="mrcm-tapping-machine" />
+
+Everything we tap regularly sits comfortably inside the M3–M16 range: **10-32** is about M5 and
+**1/4-20** is about M6. You will not run out of capacity on a robot part.
+
+<SafetyWarning type="tip" title="Two spec numbers on the listing disagree">
+The product listing advertises **0–375 rpm** while its own spec table says **312 rpm**, and the
+title says **M3–M16** while a bullet claims M3–M36. The 16 mm maximum collet capacity is the
+number that settles it — treat this as an **M3–M16** machine. Speed is variable anyway and you
+should be running well below the top of the range in aluminum. Check the machine's own plate
+before trusting any figure here.
+</SafetyWarning>
+
+## Why we have this one
+
+We used to tap with a **Vevor pneumatic tapping station** (M3–M12, vertical, quick-change),
+bought in the fall of 2023 and documented in
+[Lab Upgrades](https://www.spectrum3847.org/seasons/2024/#2024-01-05-lab-upgrades). It kept a
+#10-32 spiral point tap loaded at all times and made tapping shafts fast enough that the 2024
+robot was designed around tapped standoffs.
+
+In late 2025 we replaced it with this electric machine. Per the
+[2026 season kickoff post](https://www.spectrum3847.org/seasons/2026/#2026-01-07-welcome-to-our-15th-build-blog):
+it is easier to use, it can tap automatically rather than needing the operator to drive each
+stroke, and **the clutch was adjusted specifically to reduce tap breakage**.
+
+It is also one of the machines new members learn first — the
+[Day 40 post](https://www.spectrum3847.org/seasons/2026/#2026-02-19-day-40) lists the tapping arm
+alongside the Thunder Laser and xTool MetalFab as tools that are "very easy" to train on.
+
+## The drill-and-tap station
+
+The arm is only half of it. The bench around it was built as a combined drill and tap station:
+
+- A **spoil board** area you can drill straight through without hitting the bench.
+- **T-track** for clamping plates flat and fast.
+- **Vises clamped to the table** for holding shafts and small parts upright.
+
+Drill the hole, slide the part over, tap it — without re-fixturing. Keep the station clear;
+it stops being fast the moment someone stacks parts on it.
+
+## Tooling & consumables
+
+- **Collets** — the 8-piece set covers the tap shank sizes we use. One tap per collet size; do
+  not force an undersized shank into a bigger collet.
+- **SAE vs metric is the real friction.** The machine is specified in metric (M3–M16) but we tap
+  **SAE** threads — 10-32 and 1/4-20. Finding tap holders that fit SAE shanks is the recurring
+  annoyance with every arm in this class. The community answer is a **torque-control collet**
+  sized for the thread (teams pair these arms with a **Lyndex T05-010** for 10-32); it slips at a
+  set torque and is what actually stops taps snapping. If a collet is missing or damaged, tell a
+  mentor — do not substitute a loose fit.
+- **Spiral point taps** — the machine's default tap is **#10-32 spiral point**, kept installed
+  so the most common job needs zero setup. Spiral point ("gun") taps push chips forward out of
+  the hole, which is what you want in a through hole.
+- **Cutting fluid** — still required. Powered tapping does not make dry aluminum safe to tap;
+  it just makes the mistake faster.
+- Spare taps live in **drawer 7 (Thread Taps)** of the red toolbox — see
+  [Threading & Riveting](/hand-tools/threading-riveting/).
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Tap"
+  items={[
+    'Hole is drilled to the correct tap drill size (#21 for 10-32, #7 for 1/4-20) and deburred',
+    'Correct tap installed and fully seated in the matching collet',
+    'Tap size matches the hole — check the tap marking, not the drawer label',
+    'Part is clamped in the vise or on the T-track — never hand-held',
+    'Cutting fluid on the tap',
+    'Clutch set for the tap size — lower torque for small taps',
+    'No gloves, sleeves rolled, hair tied back, safety glasses on',
+    'Arm swings freely to the hole without dragging over clamps or tooling',
+  ]}
+/>
+
+## How the automatic cycle works
+
+This is the part that makes the electric machine worth the swap, and it is worth understanding
+before you use it.
+
+- **Depth is counted in rotations, not distance.** You set the number of turns; combined with the
+  tap's thread pitch, that is your thread depth.
+- **Torque decides when counting starts** — the machine knows the tap has engaged the hole when it
+  sees load, and begins counting from there.
+- **It auto-retracts at the bottom.** Start the tap in the hole, let go, and the machine taps to
+  depth and backs itself out unattended.
+- **Auto-reverse breaks chips.** You can set it to back up after a number of rotations and then go
+  forward again — a peck cycle. This is the single biggest reason it needs less training than the
+  old pneumatic arm: chip packing was what broke taps.
+
+## Operating steps
+
+1. **Drill first.** The tapped hole is only as good as the tap drill under it. Wrong drill size
+   is the single most common cause of a snapped tap.
+2. **Set the tap in the collet** and confirm it is seated and running true.
+3. **Set depth (rotations) and the auto-reverse interval** for the tap and hole you have — not
+   whatever the last person left dialed in. Blind holes need conservative depth.
+4. **Set the clutch** for the tap size. Small taps need less torque; the clutch is what protects
+   the tap.
+5. **Add cutting fluid.**
+6. **Bring the head over the hole** and let the arm find vertical. Do not fight the arm sideways
+   to reach — reposition the part instead. A side load is a crooked thread.
+7. **Start the tap and let go.** The cycle runs itself and retracts. Guiding gently is fine;
+   forcing or holding it down is not.
+8. **Blow the chips clear** and test with an actual screw before you tap the next forty holes.
+   One test hole catches a wrong tap; forty do not.
+
+<SafetyWarning type="critical" title="If the clutch slips, stop">
+A slipping clutch means the tap is binding — chips packed in the flutes, no lubricant, a
+too-small hole, or the tap bottoming out in a blind hole. Every one of those gets worse if you
+keep going. Back out, clear the chips, re-lubricate, and check the hole size. Do not turn the
+clutch up to force it through: the clutch is the only thing standing between you and a broken
+tap in a finished part.
+</SafetyWarning>
+
+## Common failures
+
+- **Snapped tap** — almost always the tap drill was undersized, or the tap ran dry. Take it to a
+  mentor; a broken tap is harder than any drill bit and the part is usually scrap.
+- **Crooked or cross-threaded hole** — the arm was pulled sideways to reach the hole. Move the
+  part, not the arm.
+- **Threads look torn or oversized** — dull tap, or the speed is too high for the material. Slow
+  down and swap the tap.
+- **Clutch slipping immediately** — clutch set too low for the tap size, or the hole is wrong.
+  Verify the hole before touching the clutch.
+- **Tap binds in a blind hole** — spiral point taps push chips ahead of them, which packs the
+  bottom of a blind hole. Use a spiral flute tap for blind holes, or clear and re-enter.
+
+## Resources
+
+<TutorialLink
+  title="Electric Tapping Machine — In Use (Dec 2025)"
+  url="https://photos.spectrum3847.org/The-Lab/Our-Lab/i-pb7Vv7b/A"
+  source="website"
+  description="Video of the current electric arm running in our shop — watch this before your first job."
+/>
+
+<TutorialLink
+  title="Tapping Station Walkthrough (pneumatic predecessor)"
+  url="https://photos.spectrum3847.org/2024-FRC/Build-Season/Week-5-2024/i-FPfDpRK/A"
+  source="website"
+  description="How the old pneumatic station worked — lever on, button to reverse. Useful for the general workflow, but the controls are not the same machine."
+/>
+
+<TutorialLink
+  title="Lab Upgrades — building the drill & tap station"
+  url="https://www.spectrum3847.org/seasons/2024/#2024-01-05-lab-upgrades"
+  source="website"
+  description="Our own writeup of the spoil board, T-track, and vise setup around the tapping machine."
+/>
+
+<TutorialLink
+  title="2026 Kickoff — why we switched to electric"
+  url="https://www.spectrum3847.org/seasons/2026/#2026-01-07-welcome-to-our-15th-build-blog"
+  source="website"
+  description="The upgrade note: easier operation, automatic tapping, and the clutch adjustment for tap breakage."
+/>
+
+<TutorialLink
+  title="Chief Delphi — how our tapping arm's cycle works"
+  url="https://www.chiefdelphi.com/t/spectrum-3847-build-blog-2026/509971/430"
+  source="forum"
+  description="Our coach explaining rotation-based depth, torque-triggered counting, auto-retract, and the settable auto-reverse."
+/>
+
+<TutorialLink
+  title="Chief Delphi — Tapping Arm Recommendations"
+  url="https://www.chiefdelphi.com/t/tapping-arm-recommendations/503639"
+  source="forum"
+  description="Cross-team thread on picking one of these arms and pairing it with a torque-control collet. Useful if this machine ever needs replacing."
+/>
+
+## Cleanup & Maintenance
+
+- **Blow or brush the chips off** the machine and the station when you finish. Aluminum chips
+  packed around the collet are how the next person gets a crooked tap.
+- Wipe cutting fluid off the bench — it spreads onto parts headed for
+  [powder coating](/finishing/powder-coating/), where oil ruins adhesion.
+- Return the tap to its drawer unless it is the standing **#10-32**, which stays installed.
+- Report a dull tap, a slipping-under-no-load clutch, or any arm play to a mentor rather than
+  working around it.
+
+## Related pages
+
+- [Threading & Riveting](/hand-tools/threading-riveting/) — hand tapping, tap drill charts, dies, and rivnuts
+- [Drill Press & Bench Shear](/cutting/drill-press-shear/) — drilling the hole before you tap it
+- [PPE & The Glove Policy](/safety/gloves-and-ppe/) — why no gloves near a rotating tap
+- [Lathes](/forming/lathes/) — the other machine where gloves are banned outright

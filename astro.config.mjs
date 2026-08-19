@@ -93,6 +93,7 @@ export default defineConfig({
           label: 'Laser Cutting',
           collapsed: true,
           items: [
+            { label: 'Fiber Laser Cutting', slug: 'lasers/fiber-laser-cutting' },
             { label: 'xTool MetalFab (1200W)', slug: 'lasers/xtool-metalfab' },
             { label: 'Gweike Cloud M3 Ultra', slug: 'lasers/gweike-m3-ultra' },
             { label: 'Thunder Laser Nova 35', slug: 'lasers/thunder-nova-35' },
@@ -126,6 +127,7 @@ export default defineConfig({
             { label: 'Table Saw', slug: 'cutting/table-saw' },
             { label: 'Sanders & Grinders', slug: 'cutting/sanders-grinders' },
             { label: 'Drill Press & Bench Shear', slug: 'cutting/drill-press-shear' },
+            { label: 'Electric Tapping Machine', slug: 'cutting/tapping-machine' },
           ],
         },
         {

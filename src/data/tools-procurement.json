@@ -416,5 +416,17 @@
     "productUrl": "https://stacktech.toughbuilt.com/",
     "manualUrl": null,
     "supportUrl": "https://stacktech.toughbuilt.com/catalog/"
+  },
+  "mrcm-tapping-machine": {
+    "name": "MRCM Electric Tapping Machine (M3–M16, 360° arm)",
+    "vendor": "Amazon",
+    "price": null,
+    "orderDate": "2025-09-26",
+    "purchaseUrl": null,
+    "sku": "MRCM M3-M16 360-degree electric tapping machine, 8 collets, 110V",
+    "productUrl": null,
+    "manualUrl": null,
+    "supportUrl": null,
+    "notes": "Replaced the Vevor pneumatic tapping station. Amazon listing was marked Currently unavailable as of Aug 2026 — no live purchase URL to link. Price not captured from the order."
   }
 }

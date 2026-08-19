@@ -1,0 +1,161 @@
+---
+title: "Fiber Laser Cutting — Materials & Practice"
+description: "What our two fiber lasers can cut, which machine to pick, aluminum sourcing, workholding, cut-height tuning, and post-processing — the shared knowledge behind both machines."
+---
+
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+
+This page is the shared knowledge for both fiber lasers — materials, sourcing, workholding, and
+the habits that make cuts come out right. The machine-specific SOPs live on
+[xTool MetalFab](/lasers/xtool-metalfab/) and [Gweike M3 Ultra](/lasers/gweike-m3-ultra/).
+
+A fiber laser focuses light to a microscopic point to vaporize metal, with high-pressure air
+blowing the melt out of the kerf. For us that means cutting a full mechanism out of aluminum in
+under 30 minutes with no broken end mills, no hold-down screws or tabs, and parts that come off
+the bed essentially ready to assemble.
+
+## Which machine do I use?
+
+Both machines are **1200 W** and cut aluminum to the same thickness. Pick by size, material, and
+who is running it.
+
+| | [xTool MetalFab](/lasers/xtool-metalfab/) | [Gweike M3 Ultra](/lasers/gweike-m3-ultra/) |
+| :--- | :--- | :--- |
+| **Work area** | 24" × 24" | 54" × 36" — fits a full belly pan |
+| **Laser type** | Fiber only → **metal only** | Fiber **+ CO2** → metal, wood, plastic, SRPP |
+| **Alignment** | 16 MP camera matrix — drop a scrap anywhere and place parts on it | No cameras — set the origin manually and use the frame feature |
+| **Software** | xTool Creative Space — guided, Bambu-Studio-like | Industrial, translated; more control, easier to skip a step |
+| **Who runs it** | Students, solo after training | Coaches, or students with a coach |
+| **Exhaust** | 8" | 6" |
+
+Rules of thumb: **belly pans and full sheets go on the Gweike** because of the bed. **SRPP,
+wood, and plastic go on the Gweike** because it is the only one with CO2. **Odd scraps go on the
+xTool** because the cameras and sliding clamps make it trivial. When both are free and it is
+plain aluminum, use the xTool — it is the easier machine.
+
+## Materials & thicknesses
+
+- **Thin aluminum cuts fast.** 0.040", 0.060", 0.090", and 0.125" all cut great on both machines.
+  All of it is **5052** so we can bend it on the [Titan press brake](/forming/langmuir-titan-25t/).
+- **Thick plate is 5 mm 7075.** That is what our thick structural plate is made from.
+- **¼" is the practical ceiling** and we avoid it. We have cut ¼" 6061 on the xTool and it worked,
+  but it is 20% heavier than 5 mm, more expensive, and we do not plan to run it regularly. 7075
+  leaves a better finish than 6061.
+- **Settings barely differ between alloys.** The xTool has presets for 6061 and 7075 and we just
+  use them; the Gweike has no separate settings and cuts both the same.
+- **Carbon fiber** will cut on the fiber lasers but it is sketchy and not something we do casually.
+- **Steel** — we have only cut thin steel during machine bring-up. Thicker steel likely wants
+  N2/O2 assist gas, which we do not run.
+
+<SafetyWarning type="tip" title="Cut height is the setting you will actually fight">
+Both machines need their cut height tuned to the specific material to keep cutting cleanly. **Too
+close** and you get nozzle-contact warnings and the machine pauses — the xTool will sometimes
+cancel the job outright. **Too far** and it does not cut through. If cuts start going bad, check
+height before you change power or speed.
+</SafetyWarning>
+
+## Where our aluminum comes from
+
+Aluminum pricing moves fast — do not assume these numbers still hold.
+
+- **Thick plate (5 mm 7075):** imported from an Alibaba supplier as 600 × 900 mm (2' × 3') sheets,
+  sized to feed through the xTool's passthrough brushes. About **$972 for 14 sheets** including
+  shipping and tax.
+- **Thin sheet (5052):** bought from a local supplier cut to 4' × 3' so it drops into the Gweike
+  as a whole sheet.
+- **Donated 6061 1/16"** arrives in 5' × 10' sheets.
+- For the xTool, oversized sheets get cut down with the
+  **[M12 nibbler](/portable-power/m12-ecosystem/)**.
+
+## Workholding
+
+- **xTool** — sliding sheet clamps. Easy to grab small and odd-shaped scraps, which is why the
+  scrap pile lives next to it.
+- **Gweike** — a standard slat bed. Sheets are not always flat, and small or odd pieces do not lay
+  across the slats evenly. Plan for it: put small parts on the xTool.
+
+## Catch trays
+
+Both machines drop cut parts into a tray below the bed.
+
+- On the **xTool** the tray is further from the bed, so the beam defocuses before it hits — less
+  damage, and there is a pull-out drawer for collecting parts and scrap.
+- On the **Gweike** the tray sits closer, so the bottom takes more damage over time.
+- Both have sand in the bottom, though air assist blows it around. We are looking at rocks or
+  another material instead.
+
+## Post-processing
+
+1. **Knock out the cutouts.** xTool tolerances are set tighter, so some need a punch; Gweike cuts
+   run slightly looser and usually drop out if you tap the part over the recycling bin.
+2. **Light sanding or deburring** — burrs are small most of the time.
+3. **Wipe with acetone**, then most parts go to [powder coating](/finishing/powder-coating/).
+4. **Bearing holes get modeled at bearing size.** No oversizing. Parts come out close enough, and
+   we powder coat anyway and usually add bearing retention. Occasionally a bearing needs the
+   [arbor press](/forming/arbor-press/) after powder, or a deburr.
+
+The xTool holds about **0.001"** most of the time. The Gweike's steps have drifted slightly —
+parts have come out roughly 0.02" small over 8" — and it is adjustable, so flag it to a mentor
+rather than compensating in CAD.
+
+## Shop services both machines depend on
+
+- **Air:** the [Quincy QT-5 80-gallon, 130+ psi compressor](/portable-power/dewalt-and-pneumatics/)
+  feeds both. Compressed air is the only assist gas we use, and it is enough for what we cut. No
+  N2 or O2 — we are not getting school approval for gas cylinders.
+- **Exhaust:** both machines tie into the whole-shop Donaldson cyclone dust collector, venting
+  outside. **Never run either laser with the collector off.**
+
+<SafetyWarning type="warning" title="Both machines pause when the nozzle touches metal">
+A raised piece of swarf or a warped sheet will stop a job mid-cut. That is the machine protecting
+itself, not a malfunction. Clear the swarf, check the sheet is flat, and restart — do not defeat
+the warning.
+</SafetyWarning>
+
+## Experiments worth knowing about
+
+- **Tube cutting** — the Gweike's edge detection plus its adjustable Z bed can cut tube. It is
+  awkward and alignment-sensitive since you cut each face separately, but it built the metal Hub
+  for our practice field in 2026.
+- **Carbon fiber** — both will cut it with the fiber laser. Rarely worth it.
+- **Laser welding and cleaning** (xTool) — we have never used these features and do not plan to.
+
+## Resources
+
+<TutorialLink
+  title="Spectrum's Public Fiber Laser Cutter Writeup"
+  url="https://www.spectrum3847.org/resources/fiber-laser-cutters/"
+  source="website"
+  description="Our full public comparison of the two machines — pricing, delivery, footprints, and a long FAQ from other teams. The most complete writeup we have."
+/>
+
+<TutorialLink
+  title="xTool MetalFab Photo & Video Gallery"
+  url="https://photos.spectrum3847.org/The-Lab/XTool-MetalFab"
+  source="website"
+  description="Setup, test cuts, and workholding photos from our shop."
+/>
+
+<TutorialLink
+  title="Gweike M3 Ultra Photo & Video Gallery"
+  url="https://photos.spectrum3847.org/The-Lab/Gweike-M3-Ultra"
+  source="website"
+  description="Delivery, install, and cutting videos — including the shop exhaust setup."
+/>
+
+<TutorialLink
+  title="Day 6: NEW TOOL! Gweike M Series 6-in-1"
+  url="https://www.spectrum3847.org/seasons/2026/#2026-01-16-day-6-new-tool-gweike-m-series-6-in-1"
+  source="website"
+  description="Our build blog post on the Gweike arriving and being set up, with unboxing video."
+/>
+
+## Related pages
+
+- [xTool MetalFab (1200W)](/lasers/xtool-metalfab/) — machine SOP, software workflow, assist gas
+- [Gweike Cloud M3 Ultra](/lasers/gweike-m3-ultra/) — machine SOP, mode selection, rotary, water cooling
+- [Thunder Laser Nova 35](/lasers/thunder-nova-35/) — the CO2 laser, and the first machine most members learn
+- [Powder Coating SOP](/finishing/powder-coating/) — where most cut parts go next
+- [Langmuir Titan 25T](/forming/langmuir-titan-25t/) — bending the 5052 we cut
