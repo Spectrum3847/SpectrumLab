@@ -1,8 +1,83 @@
 ---
 title: "Box & Pan Sheet Metal Brake"
-description: "Manual brake setup, finger configuration, and bend technique."
+description: "Manual finger-brake setup: finger configuration, clamping, bend sequencing, and capacity limits for light-gauge sheet."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+
+The box & pan brake is the manual sibling of the [Titan 25T](/forming/langmuir-titan-25t/). Its clamping bar is split into removable **fingers**, which is the whole trick: you can pull fingers out to leave gaps for flanges you've already bent, so you can fold all four sides of a box or pan without the last bend colliding with the machine. Use it for light-gauge brackets, enclosures, bellypans, and electronics trays where you don't need CNC-repeatable angles.
+
+<MachineSOP
+  specs={{
+    'Type': 'Manual box & pan (finger) brake',
+    'Best For': 'Boxes, pans, enclosures, light brackets',
+    'Capacity': 'Light-gauge sheet only — see the capacity plate on the brake',
+    'Angle Control': 'Manual stop + eye/protractor',
+  }}
+  ppe={['glasses', 'closed-shoes']}
+  training="Quick mentor demo before first use — bring your part drawing."
+/>
+
+## Safety
+
+<SafetyWarning type="warning" title="Respect the capacity plate">
+A finger brake is a light-duty machine. Its rated capacity (stamped on the machine) assumes full-width mild steel — and aluminum ratings don't transfer to steel. Never bend material heavier than the plate rating, never bend rod, wire, or strap in it, and never "cheat" a heavy bend in a short section without asking a mentor first. Overloading bows the clamping bar and ruins the brake for everyone.
+</SafetyWarning>
+
+- Fingers pinch. Keep hands clear of the clamping bar when locking it, and clear of the apron when it swings up.
+- The counterweight and apron handles move fast — control the apron on the way down, don't let it drop.
+- Deburr sheared edges before handling. No gloves needed here, but see [PPE & the glove policy](/safety/gloves-and-ppe/) for the lab-wide rules.
+- Hardened steel, stainless above the derated capacity, and polycarbonate (it cracks cold) all need mentor approval.
+
+## Capacity Rules of Thumb
+
+- Full-width bends: stay at or under the plate rating for mild steel; aluminum of the same thickness bends much easier.
+- Stainless: derate roughly two gauge sizes from the mild-steel rating.
+- Short bends spread less load across the fingers than you'd think — the capacity limit is about the clamp and apron, so the plate rating still applies.
+- 6061-T6 aluminum cracks on tight radii. Bend it across the grain where possible and ask a mentor if the flange matters structurally. 5052 is the forgiving aluminum — prefer it for bent parts.
+
+## Setting Up Fingers for a Box
+
+1. Sketch your bend sequence first (next section). Count which bends need finger gaps.
+2. For a box, set the fingers so their combined width matches the **inside dimension of the box, minus a small clearance** (about one material thickness per side), centered on the bed.
+3. Loosen the finger clamp screws, slide or remove fingers, and re-tighten every screw — a loose finger creases the sheet.
+4. Check the finger edges are aligned flush with each other. A proud finger prints a line into your part.
+
+## Bend Sequence Planning
+
+The whole game with boxes is order of operations — each bend must clear the fingers and the apron:
+
+1. Bend the **two opposite sides first** (the long sides, usually). These are plain full-width bends.
+2. For the remaining two bends, the already-bent flanges must swing up **into the gaps** where you removed fingers.
+3. If a flange traps the part no matter the order, your box is too deep for its footprint — redesign, or split the part and rivet it.
+4. Fold a paper or cardboard model when in doubt. Thirty seconds of paper saves a ruined part.
+
+## Bending Technique
+
+1. Mark the bend line and account for **bend allowance** — the flat pattern from your CAD sheet-metal tools already includes it; trust that over ruler-and-guess.
+2. Slide the sheet under the fingers, align the bend line with the leading edge of the fingers, and lock the clamp handle firmly.
+3. Raise the apron smoothly to your target angle, then a few degrees past it — sheet **springs back** a couple of degrees when released.
+4. Release, check the angle with a protractor or against a known-square reference, and touch up if needed.
+5. Repeat per your sequence. Same operator, same technique for every bend on a part — consistency is accuracy on a manual brake.
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Bend"
+  items={[
+    'Material at or under the capacity plate rating',
+    'Bend sequence planned — every bend clears fingers and apron',
+    'Fingers configured, all clamp screws tight, edges flush',
+    'Bend lines marked from the CAD flat pattern',
+    'Edges deburred',
+    'Test bend planned on scrap of the same material',
+  ]}
+/>
+
+## When to Use the Titan Instead
+
+Take the part to the [Titan 25T](/forming/langmuir-titan-25t/) when you need any of: repeatable angles across many parts, material heavier than this brake's plate rating, precise flange lengths off the CNC backgauge, or bends in 1/8 in plate. The box & pan brake wins when you need finger gaps for closed boxes — the Titan's continuous die can't do the fourth wall of a deep box.
+
+**Related pages:** [Langmuir Titan 25T](/forming/langmuir-titan-25t/) · [Drill Press & Bench Shear](/cutting/drill-press-shear/) for cutting blanks · [PPE & the glove policy](/safety/gloves-and-ppe/)

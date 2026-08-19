@@ -1,8 +1,146 @@
 ---
 title: "Soldering & Test Bench"
-description: "PINECIL irons, DC power supply, and the Rigol oscilloscope."
+description: "PINECIL V2 irons, soldering technique, the current-limited DC power supply, and Rigol scope basics for debugging robot electronics."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+
+The electronics bench is where custom boards get built, mystery boards get diagnosed, and sensor wiring gets repaired. Robot power wiring is crimped, not soldered ([here's why](/electrical/wire-prep-crimping/)) — the bench is for everything else: signal wiring, connectors, LED strips, and board-level work.
+
+## PINECIL V2 Soldering Irons
+
+The team's irons are PINECIL V2s — small, fast, open-source irons that run IronOS firmware and heat from cold to working temperature in about six seconds.
+
+<MachineSOP
+  specs={{
+    'Iron': 'PINECIL V2 (IronOS firmware)',
+    'Power': 'USB-C PD/QC (12–20V, 3A) or DC5525 barrel (12–24V), up to 88W',
+    'Temp Range': '100–400 °C',
+    'Tips': 'TS100-compatible, interchangeable',
+  }}
+  ppe={['glasses']}
+  training="General shop orientation; a mentor walkthrough for your first soldering session."
+/>
+
+<ToolProcurementCard tool="pinecil" />
+
+<SafetyWarning type="warning" title="The hot end is invisible">
+A soldering iron at 350 °C looks identical to a cold one. Always rack the iron in its stand, never lay it on the bench, and treat every iron as hot until you've checked its screen. Pass irons handle-first.
+</SafetyWarning>
+
+**Power:** the PINECIL is only as strong as its supply. Use a **USB-C PD brick rated 60W or better** (or the barrel supply) — a phone charger will boot the iron but starve it, and it will lose the fight against a ground plane. If the iron sags in temperature mid-joint, suspect the supply first.
+
+**Temperature:** set the lowest temperature that gets the job done fast.
+
+- **Leaded solder (63/37, 60/40):** 320–350 °C
+- **Lead-free solder:** 350–380 °C
+- Big joints (ground pours, thick wire) want the top of the range, not more time grinding at the joint.
+
+**Tip care:**
+
+- **Tin the tip** before you start and before the iron goes to sleep — a thin silver coat of fresh solder. A black, oxidized tip transfers no heat.
+- Clean on **brass wool**, not a wet sponge — the sponge's thermal shock shortens tip life. Wipe, re-tin, solder.
+- IronOS sleeps the iron when it sits still and wakes it when you pick it up. Don't fight it; it's saving your tips.
+
+## Soldering Technique
+
+One rule above all: **heat the joint, not the solder.**
+
+1. Slide any heat shrink on *before* joining — yes, check now.
+2. Touch the iron so it contacts **both** the pad and the lead (or both wires). Give it a second.
+3. Feed solder into the **joint**, on the side away from the iron. When the joint is hot enough, solder flows toward the heat and wets everything it touches.
+4. Remove solder, then iron. Total contact: 2–3 seconds for typical joints. Hold the parts dead still while the solder freezes.
+5. Read the joint: a good one is shiny (leaded) with a smooth concave fillet, like a tiny volcano. A dull ball sitting *on top* of the wire is a cold joint — reheat it properly, don't blob more solder on it.
+
+Melting solder on the iron and carrying it to a cold joint makes a connection that looks fine and fails in the pit. Don't.
+
+## Benchtop DC Power Supply
+
+The bench supply powers boards and mechanisms for testing without risking a robot battery or a control system.
+
+<SafetyWarning type="critical" title="Set the current limit BEFORE powering an unknown board">
+Before connecting anything you didn't personally verify: set the voltage, short the leads (or use the supply's setting mode) and dial the current limit down to ~100 mA, THEN connect the board. If the supply immediately hits constant-current mode, the board has a short — and you just found it for free instead of with smoke.
+</SafetyWarning>
+
+Workflow for any device under test:
+
+1. Set the **voltage** to the device's rated input. Verify on the display before connecting.
+2. Set the **current limit** just above the expected draw — start low (100 mA for logic boards) and raise it deliberately as the device proves itself.
+3. Connect with clip leads, mind the polarity, and watch the current readout at power-on. Known current draw is your first diagnostic: zero means no connection, limit means short, expected means proceed.
+4. Power off at the supply before changing any connection.
+
+## Rigol DS1052E Oscilloscope
+
+The Rigol DS1052E is the bench scope: 50 MHz, 2 channels, 1 GSa/s. It's an older workhorse, and it does everything a robot signal needs.
+
+<ToolProcurementCard tool="rigol-ds1052e" />
+
+**Probe basics:**
+
+- Use probes at **10x** for almost everything — higher input impedance, less circuit loading, full voltage range. Set the switch on the probe *and* tell the scope: Channel menu → Probe → 10x. If your measured 5V rail reads 0.5V, the scope thinks the probe is 1x.
+- Clip the probe's ground lead to circuit ground, close to the measurement point.
+- Before trusting a probe, check it on the scope's calibration terminal (square wave) and trim the compensation screw until the corners are square.
+
+**Trigger basics:** a stable picture means the trigger is right.
+
+- **Edge trigger** on the channel you're watching; set the trigger **level** to the middle of the signal.
+- **Auto** sweep mode to browse and find signals; **Normal** when you want the screen to update only when the real event happens.
+- Scrolling or shimmering waveform? Fix the trigger level first.
+
+**Measuring PWM** (the bread and butter — motor controller and servo signals):
+
+1. Probe the signal wire at 10x, ground clip to signal ground.
+2. Edge trigger at ~50% of the pulse height.
+3. Use the **Measure** menu: frequency, positive pulse width, and +duty cycle read out directly.
+4. Sanity checks: a hobby-servo-style signal sits near 50–330 Hz with ~1–2 ms pulses; addressable LED data looks like garbage at slow timebases — zoom in.
+
+**Never probe mains wall power with this scope.** It's a low-voltage bench instrument; robot electronics only.
+
+## Ventilation & Fumes
+
+Solder smoke is vaporized flux, and it goes straight up into the face of whoever's leaning over the joint.
+
+- Run the fume fan/extractor at the bench, or position a fan to pull smoke away from your face.
+- The lead in leaded solder doesn't vaporize at iron temperatures, but it does stay on your hands — **wash your hands after soldering**, especially before food.
+- Keep the bench window/door airflow in mind for long sessions.
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Heat Up"
+  items={[
+    'Iron in its stand, powered from a 60W+ PD brick or barrel supply',
+    'Tip clean and tinned; brass wool at the bench',
+    'Temperature set for the solder in hand (leaded 320-350 C, lead-free 350-380 C)',
+    'Fume fan on and pulling away from your face',
+    'Heat shrink slid on before joining',
+    'Power supply: voltage set and current limit dialed low before any unknown board connects',
+    'Scope probe set to 10x on both the probe and the channel menu',
+  ]}
+/>
+
+## Resources
+
+<TutorialLink title="PINECIL Wiki (Pine64)" url="https://wiki.pine64.org/wiki/Pinecil" source="knowledge-base" description="Official documentation — power requirements, tips, and firmware updates." />
+
+<TutorialLink title="IronOS Documentation" url="https://ralim.github.io/IronOS/" source="knowledge-base" description="The firmware the irons run — settings, gestures, and temperature behavior." />
+
+<TutorialLink title="How to Use the Pinecil Soldering Iron" url="https://www.youtube.com/watch?v=VcMQCPYL2Ys" source="youtube" description="Hands-on walkthrough of setup, menus, and first joints." />
+
+<TutorialLink title="Rigol DS1000E User's Guide" url="https://beyondmeasure.rigoltech.com/acton/attachment/1579/f-02f5/1/-/-/-/-/file.pdf" source="pdf" description="Official manual for the DS1052E — triggers, measurements, and math functions." />
+
+<TutorialLink title="EEVblog — Rigol DS1052E Review" url="https://www.youtube.com/watch?v=AUwbtG6z6pI" source="youtube" description="Classic deep-dive on this exact scope and what it can do." />
+
+## Cleanup
+
+- Tin the tip, then sleep/unplug the iron. Let it cool in the stand before it's stored.
+- Power supply off, leads coiled and hung.
+- Probes back with the scope — ground clips attached, not orphaned in a drawer.
+- Solder spatter and clipped leads swept into the trash, not left for elbows.
+- Wash your hands.
+
+Related: [Wire Prep & Crimping](/electrical/wire-prep-crimping/) · [Coprocessors & SBCs](/electrical/coprocessors/) — bench-test a coprocessor's power budget on the current-limited supply before it ever touches the robot.

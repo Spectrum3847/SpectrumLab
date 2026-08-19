@@ -1,8 +1,140 @@
 ---
 title: "DeWalt Jobsite Table Saw"
-description: "Riving knife, fence alignment, and push stick rules."
+description: "Riving knife, fence alignment, push sticks, blade height, and kickback prevention on the DWE7491RS — wood and plastics only."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+
+The DeWalt jobsite table saw (DWE7491RS-class) is our rip-and-crosscut station for **wood and plastics** — field borders, plywood bases, practice-field elements, and crate parts. It lives on a rolling cart so it can move to the work. The table saw injures more people per year than any other tool in a typical shop, and nearly every one of those injuries follows the same script: no riving knife, freehand feeding, or hands where a push stick should be. Our rules exist to break that script.
+
+<MachineSOP
+  specs={{
+    'Blade': '10 in, ~4800 RPM',
+    'Power': '15A, 120V',
+    'Rip Capacity': '32-1/2 in',
+    'Depth of Cut': '3-1/8 in at 90°',
+    'Fence': 'Rack-and-pinion',
+    'Stand': 'Rolling cart',
+    'Materials': 'Wood, plywood, plastics — NO METAL',
+  }}
+  ppe={['glasses', 'hearing', 'no-gloves', 'closed-shoes', 'tie-hair']}
+  training="Mentor sign-off required before solo use. Dado/specialty setups are mentor-only."
+/>
+
+<ToolProcurementCard tool="dewalt-dwe7491rs" />
+
+<LabGalleryImage
+  src="benchtop-table-saw-cart.jpg"
+  alt="Benchtop table saw on a rolling utility cart"
+  caption="The table saw on its rolling cart. Roll it clear of foot traffic and lock the casters before cutting."
+/>
+
+## Safety
+
+<SafetyWarning type="critical" title="The riving knife stays ON">
+The riving knife is the thin fin behind the blade that keeps the kerf from closing and pinching — pinching is what launches kickback. It stays installed for every through-cut, period. If a cut genuinely can't run with the riving knife, that cut needs a mentor and a different plan, not a removed knife.
+</SafetyWarning>
+
+<SafetyWarning type="critical" title="Push sticks ALWAYS within reach">
+Two push sticks live at the saw and stay on the table, not in a drawer. Any rip narrower than about 6 in gets a push stick — your hand never passes within 6 in of the blade. If you find yourself deciding whether your fingers will clear, you already know the answer: push stick.
+</SafetyWarning>
+
+<SafetyWarning type="critical" title="No freehand cuts. No metal.">
+Every cut is guided by the fence (rips) or the miter gauge (crosscuts) — never both at once on the same cut, and never neither. And this saw cuts **no metal, ever** — not aluminum, not "just a thin bit." Metal goes to the [chop saw](/cutting/evolution-saws/) or [bandsaws](/cutting/bandsaws/).
+</SafetyWarning>
+
+- Stand to the **side** of the blade line, not behind the stock — kickback fires the workpiece straight back.
+- Wait for full blade speed before feeding, and push stock **past the blade** at the end of the cut — don't leave the offcut vibrating against the teeth.
+- Never reach over or behind a spinning blade to grab a piece. Blade stopped first.
+- No gloves at the saw ([glove policy](/safety/gloves-and-ppe/)); hearing protection on.
+
+## Kickback: Causes & Prevention
+
+Kickback happens when the stock rotates into the back of the blade or the kerf pinches it, and the blade throws the piece at you at blade-rim speed.
+
+| Cause | Prevention |
+| --- | --- |
+| Kerf closes and pinches the blade | Riving knife installed, always |
+| Fence not parallel to blade (stock wedges) | Fence alignment check (below) |
+| Freehand feeding or twisting the stock | Fence or miter gauge on every cut |
+| Using miter gauge + fence together | One or the other — offcut trapped against the fence kicks |
+| Wet, warped, or internally stressed wood | Flat face down; suspect boards get a mentor look first |
+| Standing in the line of fire | Feed from beside the blade line |
+| Letting go mid-cut | Feed through and past the blade, every time |
+
+## Fence Alignment
+
+The rack-and-pinion fence stays parallel by design, but verify after transport or a bump: measure from the fence to the same blade tooth at the front of the blade, rotate that tooth to the back, and measure again. Equal (or a hair wider at the back — never narrower) is correct. A fence that closes toward the back of the blade is a kickback machine — flag it and get a mentor before using the saw.
+
+## Blade Height
+
+Set the blade so the **teeth just clear the top of the stock** — about a tooth's height (roughly 1/8–1/4 in) above the material. Higher exposes more blade for no benefit; a barely-exposed blade also pushes the work down at the table instead of back at you.
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Rip"
+  items={[
+    'Riving knife installed and aligned with the blade',
+    'Push sticks on the saw table, within reach',
+    'Fence parallel (checked after any transport) and locked',
+    'Blade height set: teeth just above the stock',
+    'Cart casters locked, outfeed support ready for long stock',
+    'Material is wood or plastic — no metal, no free nails/screws/staples in reclaimed wood',
+    'Stock flat on the table, straight edge against the fence',
+    'Glasses + hearing protection on, no gloves, blade area clear of offcuts',
+  ]}
+/>
+
+## Operating Instructions
+
+1. Set fence width (use the rack-and-pinion scale, verify with a tape for critical cuts) and blade height.
+2. Stand beside the blade line, stock flat on the table and firm against the fence.
+3. Start the saw, let it reach full speed.
+4. Feed smoothly — steady pressure **forward and against the fence**. Swap to the push stick before your hand gets within 6 in of the blade.
+5. Push the work completely past the blade; let the offcut sit until the blade stops.
+6. Blade stopped → clear offcuts → next cut. Never clear the table around a spinning blade.
+
+## Resources
+
+<TutorialLink
+  title="DWE7491RS Instruction Manual (PDF)"
+  url="https://assets.dewalt.com/GLOBALBOM/QU/DWE7491RS/2/Instruction_Manual/EN/N376167_DWE7490.pdf"
+  source="pdf"
+  description="Official manual (shared across the DWE7490/7491 family) — riving knife setup, adjustments, parts."
+/>
+
+<TutorialLink
+  title="DeWalt Support"
+  url="https://support.dewalt.com/hc/en-us"
+  source="knowledge-base"
+  description="Official DeWalt support and parts lookup."
+/>
+
+<TutorialLink
+  title="How to Set Up your DeWalt DWE7491RS"
+  url="https://www.youtube.com/watch?v=J6A33oA8gDg"
+  source="youtube"
+  description="First-time setup: stand, fence, riving knife, and guards."
+/>
+
+<TutorialLink
+  title="DWE7491RS — Full Setup and Overview"
+  url="https://www.youtube.com/watch?v=7XTOC_sujd0"
+  source="youtube"
+  description="Walkthrough of controls, fence system, and adjustments."
+/>
+
+## Cleanup & Maintenance
+
+- Power off and unplug before any blade or throat-plate work.
+- Vacuum sawdust from the table, fence rails, and under the saw — the DeWalt shop vac lives under the workbench.
+- Lower the blade fully, coil the cord, roll the cart back to its parking spot, and lock the casters.
+- Blade sharpness and fence-alignment checks are on the [maintenance schedule](/maintenance/schedules/).
+
+**Related pages:** [Evolution Chop Saw](/cutting/evolution-saws/) and [Bandsaws](/cutting/bandsaws/) for metal · [Sanders & Grinders](/cutting/sanders-grinders/) for edge cleanup · [PPE & the glove policy](/safety/gloves-and-ppe/)

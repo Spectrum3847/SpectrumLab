@@ -1,8 +1,44 @@
 ---
 title: "Consumables Ledger"
-description: "Searchable inventory with prices, reorder links, and bin locations."
+description: "The searchable shop inventory — every consumable with its price, reorder link, and bin location, plus how to flag low stock and add items."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import ConsumablesTable from '../../../components/ConsumablesTable.astro';
+
+This is the shop's procurement ledger: every consumable the lab burns through, in one searchable table. Each entry carries three things on purpose:
+
+- **A price** — so anyone can sanity-check a budget or a purchase request without hunting through old orders.
+- **A reorder link** — so the person who notices we're low can be the person who fixes it (or hands a mentor an exact link instead of a vague description).
+- **A bin location** — so you can confirm we're actually out before anyone spends money, and so restocks land where the machine pages say they'll be.
+
+Machine pages show filtered slices of this same table (the [WAZER page](/waterjet/wazer-pro/) shows waterjet consumables, and so on) — this page is the whole ledger.
+
+## Flagging low stock
+
+You don't need permission to report a shortage — you need to make it visible:
+
+1. **Check the bin location** in the table below and confirm stock is actually low, not just misplaced.
+2. **Post it in the team Slack** (the shop/purchasing channel) with the item name from the ledger, or tell the shop captain or a mentor directly.
+3. If you're doing the [weekly restock pass](/maintenance/schedules/), note anything below its reorder point as part of that checklist.
+
+Rule of thumb: flag it when you open the **last box/roll/bucket**, not when it's empty. Lead time is real, and "we're out of garnet" the night before an event helps nobody.
+
+## The ledger
+
+<ConsumablesTable />
+
+## Adding or updating items
+
+The table renders straight from a data file in the site's GitHub repo — no CMS, no spreadsheet drift. To add an item or fix a price, location, or link:
+
+1. Open [`src/data/consumables.json`](https://github.com/Spectrum3847/SpectrumLab) in the **Spectrum3847/SpectrumLab** repo.
+2. Copy an existing entry and fill in its fields: `id`, `name`, `category`, `vendor`, `price`, `unit`, `partNumber`, `url`, `location`, `machines` (the machine keys whose pages should show it), and `notes`.
+3. Submit the change as a pull request. Once it merges, the item appears here and on every machine page tagged in its `machines` list.
+
+Keep entries honest: real part numbers, current prices, and the label that's actually on the bin. A ledger nobody trusts is a ledger nobody uses.
+
+## Related pages
+
+- [Maintenance Schedules](/maintenance/schedules/) — the weekly restock and monthly inventory passes
+- [Small Parts Bins](/storage/small-parts-bins/) — how bulk hardware is organized
+- [Primary Toolboxes](/storage/toolboxes/) — where the tools (not consumables) live

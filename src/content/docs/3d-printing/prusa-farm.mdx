@@ -1,8 +1,183 @@
 ---
 title: "Prusa Mini+ Farm"
-description: "PrusaSlicer configuration, Live-Z calibration, and sheet care."
+description: "SOP for the 12-printer Prusa Mini+ farm: PrusaSlicer setup, Live-Z calibration, PEI sheet care, and the Prusa Connect queue."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import VideoEmbed from '../../../components/VideoEmbed.astro';
+
+The Prusa Mini+ farm — twelve printers racked in wooden cubbies under the printer bench — is
+the volume workhorse of the lab. It handles most of the 3D-printed part demand for both the
+main team and the junior team: PLA prototypes, PETG brackets, jigs, and the endless stream of
+"can you print me a..." requests. The Minis are simple, tough, and the best place for newer
+students to learn printing without tying up the [Bambu fleet](/3d-printing/bambu-fleet/).
+
+<LabGalleryImage
+  src="3d-printer-farm-overview.jpg"
+  alt="Printer farm corner with Prusa Mini printers in wooden cubbies under the bench and the Bambu fleet on top"
+  caption="The farm: Prusa Minis in their cubbies under the bench, Bambu fleet above."
+/>
+
+<VideoEmbed id="yZNJGcsSCnM" title="Lab tour — the additive manufacturing farm" start={30} />
+
+<MachineSOP
+  specs={{
+    'Build Volume': '18 × 18 × 18 cm',
+    'Extruder': 'Bowden, 0.4 mm nozzle',
+    'Controller': '32-bit Buddy board',
+    'Firmware': 'Input Shaper + Pressure Advance',
+    'Leveling': 'Auto mesh bed leveling',
+    'Bed': 'Removable flexible PEI sheet',
+    'Network': 'USB / LAN + Prusa Connect',
+  }}
+  training="Basic printer orientation. Live-Z adjustment requires a mentor walk-through the first time."
+/>
+
+<ToolProcurementCard tool="prusa-mini" />
+
+## Safety
+
+- The nozzle runs at up to 280 °C and the bed at up to 100 °C. Keep fingers clear during
+  printing and heating.
+- The Minis are open-frame — no enclosure means no barrier. Do not lean tools, spools, or
+  sleeves into a running printer's motion path.
+- Materials: **PLA and PETG only** on the farm. TPU fights the Bowden extruder, and PA-CF/PC
+  are banned here — no enclosure and no hardened nozzle. Take those to the
+  [Bambu fleet](/3d-printing/bambu-fleet/).
+
+## Software & Workflow — PrusaSlicer
+
+1. Open **PrusaSlicer** and select the **Original Prusa MINI & MINI+** printer profile
+   (0.4 mm nozzle).
+2. Pick a print profile: **0.20 mm SPEED** for most work, **0.15 mm QUALITY** when surface
+   finish matters.
+3. Pick the matching filament profile (Prusament PLA / generic PLA / PETG). The stock profiles
+   are well tuned — do not hand-edit temperatures unless a mentor asks you to.
+4. Orient, support, and set walls/infill per
+   [Print Settings & Supports](/3d-printing/print-settings/).
+5. Slice and check the preview — time, filament, supports.
+6. Send the job through **Prusa Connect** (preferred, see below) or export G-code to a USB
+   stick and start it at the printer.
+
+### Prusa Connect queue
+
+The Minis are on the lab network and registered to the team's Prusa Connect account:
+
+1. Sign in to Prusa Connect on the shop PC.
+2. Upload your sliced file and add it to the **queue** of any idle printer — the dashboard
+   shows every Mini's state, temperature, and progress at a glance.
+3. During build season, do not cherry-pick "your" printer: take the first idle machine so the
+   queue drains evenly.
+4. Check the dashboard before physically visiting the farm — it saves you a trip when
+   everything is busy.
+
+## Consumables
+
+No dedicated consumables table for the farm — the staples are:
+
+- **PLA and PETG spools** — reorder links on the [Filament Guide](/3d-printing/filament-guide/).
+  The farm is where budget-brand PLA/PETG gets used up.
+- **Spare PEI sheets** — one clean spare per material type lives at the printer bench; smooth
+  and textured sheets are not interchangeable settings-wise.
+- **90%+ IPA** and **dish soap** for sheet care.
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Start a Mini"
+  items={[
+    'Sheet is clean, dry, and seated flat against the heatbed locating pins',
+    'Previous part and skirt scraps removed from the sheet',
+    'Correct filament profile selected (PLA vs PETG changes everything)',
+    'Enough filament on the spool for the whole job — Minis have no runout grace',
+    'Filament path from spool to Bowden tube is free to unwind, no crossed windings',
+    'Printer shows idle in Prusa Connect — not paused mid-job',
+    'First layer: plan to watch it go down before you walk away',
+  ]}
+/>
+
+## Operating Instructions
+
+1. **Load filament:** Preheat for your material from the LCD menu, snip the filament end at
+   45°, feed it into the extruder inlet, and confirm the load when the LCD asks. Watch for a
+   clean colored line of purge.
+2. **Start the print** from the Prusa Connect queue or the USB stick via the LCD knob.
+3. **Watch the first layer.** The Mini auto-levels with mesh bed leveling, but Live-Z decides
+   whether the first layer sticks. If it is not going down clean, stop and fix — see below.
+4. When done, pull the sheet off, **flex it over the bin** to pop the part free, and put the
+   sheet straight back on the pins. Sheets that wander the lab get lost and bent.
+
+### Live-Z calibration
+
+Live-Z is the nozzle-to-sheet gap. It is the single most important number on a Mini, and it is
+**per printer, per sheet** — check it after every sheet swap (that is on the
+[maintenance schedule](/maintenance/schedules/)).
+
+1. From the LCD: **Calibration → First Layer Calibration.** The printer prints a zigzag test
+   line and a filled square.
+2. While it prints, turn the knob to adjust Live-Z in real time:
+   - **Too high:** lines look like round spaghetti sitting on the sheet, with gaps between
+     passes. Go lower (more negative).
+   - **Too low:** lines are translucent, edges plow up ridges, the nozzle scratches. Go higher.
+   - **Right:** lines are slightly flattened ovals fused into their neighbors with no gaps —
+     the filled square peels off as one solid patch.
+3. Save and print. If a mentor re-set Live-Z, do not tweak it because your part lifted once —
+  clean the sheet first; 90% of adhesion problems are grease, not Z.
+
+### Sheet care
+
+- **Fingerprints kill adhesion.** Handle sheets by the edges, always.
+- **Every few prints:** wipe the sheet with 90%+ IPA on the bench (never on a hot bed).
+- **When adhesion drops even with IPA:** wash the sheet with dish soap and warm water, rubbing
+  with a clean paper towel; rinse thoroughly and dry with a fresh towel. Soap strips the
+  silicone/grease film that IPA leaves behind.
+- **PETG on smooth PEI welds itself down** — the farm default is the textured sheet for PETG.
+  If you must use smooth, glue stick as a release layer.
+- Bent, deeply gouged, or bald sheets: flag them to a mentor for replacement, do not quietly
+  put them back.
+
+## When to use a Mini vs a Bambu
+
+| Situation | Use |
+| --- | --- |
+| PLA prototype, jig, or fixture | **Mini** — always |
+| PETG part, no rush, fits 18 cm cube | **Mini** — the farm exists for this |
+| Batch of 8 identical parts | **Minis** — one per printer beats one big plate |
+| Junior team parts | **Minis** — their home turf |
+| Deadline tonight, needs to print fast | **Bambu** |
+| PA-CF, PC, or TPU | **Bambu only** |
+| Part bigger than 18 cm | [Bambu](/3d-printing/bambu-fleet/) up to 256 mm+, then [large-format](/3d-printing/large-format/) |
+| Multi-color or soluble supports | **Bambu** (AMS) |
+
+## Resources
+
+<TutorialLink title="Original Prusa MINI+ Handbook (PDF)" url="https://cdn.prusa3d.com/downloads/manual/prusa3d_manual_mini_en.pdf" source="pdf" description="Official user manual" />
+
+<TutorialLink title="Prusa MINI Knowledge Base" url="https://help.prusa3d.com/product/mini-2" source="knowledge-base" description="Official troubleshooting, guides, and part replacement walkthroughs" />
+
+<TutorialLink title="Original Prusa MINI — Calibration and First Print" url="https://www.youtube.com/watch?v=6Nip9EnSz7Q" source="youtube" description="Official video covering first-layer calibration — watch before your first Live-Z session" />
+
+## Cleanup & Maintenance
+
+After your print:
+
+- Part off, sheet flexed clean and back on the pins, scraps in the trash.
+- Spool back to storage if you unloaded; tape the filament end.
+- Update/clear your job in Prusa Connect so the printer shows idle.
+
+On the schedule (see [Maintenance Schedules](/maintenance/schedules/)):
+
+- **Weekly:** wipe PEI sheets with IPA during the farm walk-down.
+- **As needed:** dish-soap wash when adhesion drops.
+- **Per sheet change:** verify Live-Z with a first-layer calibration.
+
+## Related pages
+
+- [Filament Guide](/3d-printing/filament-guide/) — what the farm is allowed to print
+- [Print Settings & Supports](/3d-printing/print-settings/) — orientation and preset guidance
+- [Bambu Lab Fleet](/3d-printing/bambu-fleet/) — for everything the Minis cannot do

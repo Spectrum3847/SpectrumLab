@@ -1,8 +1,180 @@
 ---
 title: "Thunder Laser Nova 35"
-description: "100W CO2 laser settings, air assist, and optics cleaning."
+description: "100W CO2 laser SOP: LightBurn workflow, material starting settings, air assist, optics cleaning, and the never-cut list."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+
+The Thunder Laser Nova 35 is our workhorse 100W CO2 laser: acrylic, plywood, MDF, delrin, engraving on almost anything organic. It runs LightBurn from the workstation next to the machine and is the machine most students learn first. It is also the machine that most often gets asked to cut something it must never touch — read the never-cut list before anything else.
+
+<MachineSOP
+  specs={{
+    'Laser': '100W CO2 (Class 4)',
+    'Work Area': '900 × 600 mm (35.4 × 23.6 in)',
+    'Max Material Height': '230 mm (9 in)',
+    'Resolution': '500 DPI (1000 DPI hi-res head)',
+    'Software': 'LightBurn',
+    'Power': '110–230V, ~1.3 kW'
+  }}
+  ppe={['glasses', 'tie-hair', 'closed-shoes']}
+  training="Laser sign-off required — the Nova is the standard first-laser training machine"
+/>
+
+<ToolProcurementCard tool="thunder-nova-35" />
+
+<LabGalleryImage
+  src="thunder-laser-nova35.jpg"
+  alt="Thunder Laser Nova 35 CO2 laser cutter with lid open and the LightBurn workstation beside it"
+  caption="The Nova 35 with its LightBurn workstation. The sheet rack beside it holds laser stock."
+/>
+
+## Safety
+
+<SafetyWarning type="critical" title="The NEVER-cut list">
+Some materials are banned from this machine at any power, any speed, any thickness:
+
+- **PVC / vinyl** — releases chlorine gas that corrodes the machine and burns your lungs.
+- **Polycarbonate (Lexan)** — burns badly, catches fire, and yellows into smoke instead of cutting. It looks like acrylic; it is not. Polycarb goes to the [waterjet](/waterjet/wazer-pro/).
+- **ABS** — melts into goo and gives off toxic fumes.
+- **Anything unidentified** — if you cannot prove what a plastic is, a mentor identifies it or it does not go in.
+</SafetyWarning>
+
+<SafetyWarning type="warning" title="Never leave a running laser">
+Lasers start fires. Small flare-ups at the cut point are normal; a flame that keeps burning when the head moves away is not. Stay within sight of the machine for the entire job, know where the extinguisher is, and pause the job at the first sign of sustained flame.
+</SafetyWarning>
+
+- Lid closed while firing. The enclosure and interlocks make this a safe machine — don't defeat them.
+- Exhaust blower on for every job, even short engraves.
+- Acrylic and wood edges come out hot; smoke residue is sticky. Wash your hands after unloading.
+- Tie back hair and secure loose clothing before reaching over the bed. See [PPE & the glove policy](/safety/gloves-and-ppe/).
+
+## Software & Workflow (LightBurn)
+
+1. **Import** your file — SVG, DXF, or AI — into LightBurn on the station PC. Verify the scale against a known dimension.
+2. **Assign layers.** LightBurn maps colors to layers; put cuts, scores, and engraves on separate colors. Set each layer's mode: **Line** for cutting/scoring, **Fill** for raster engraving.
+3. **Set power and speed per layer**, starting from the table below or the saved material library. Set cut layers to run last so parts don't shift before engraving finishes.
+4. **Order the layers**: engrave first, inner cuts next, outer profile last.
+5. **Position the job** on the sheet in LightBurn, then **Frame** on the machine — the head traces the job boundary so you can confirm it lands on material and clears clamps.
+6. **Focus** to the material surface using the focus procedure at the station.
+7. Close the lid and **run**.
+
+## Material Settings — Starting Points
+
+These are **starting points, not gospel** — tubes age, materials vary batch to batch, and focus quality changes everything. Run a small test cut on scrap at these numbers, then adjust. When you dial in something new, save it to the LightBurn material library with a note.
+
+| Material | Thickness | Power | Speed | Notes |
+| --- | --- | --- | --- | --- |
+| Cast acrylic | 3 mm (1/8 in) | 65% | 15 mm/s | Flame-polished edge; leave masking on |
+| Cast acrylic | 6 mm (1/4 in) | 75% | 8 mm/s | Slow and single-pass beats fast multi-pass |
+| Baltic birch ply | 3 mm (1/8 in) | 55% | 25 mm/s | Glue voids can flare — watch it |
+| Baltic birch ply | 6 mm (1/4 in) | 70% | 12 mm/s | Expect some edge char |
+| MDF | 6 mm (1/4 in) | 70% | 10 mm/s | Chars heavily; high air assist |
+| Delrin (acetal) | 3 mm (1/8 in) | 55% | 20 mm/s | Melts if slow — favor speed; ventilate well |
+| Raster engrave (most) | surface | 20% | 300 mm/s | Tune with a grayscale test card |
+
+If the cut doesn't drop free, do not re-run the whole job blind — check focus first, then add a touch of power or drop speed slightly.
+
+<LabGalleryImage
+  src="laser-material-rack-thunder.jpg"
+  alt="Rolling rack of plywood, acrylic, and polycarbonate sheets beside the Thunder Laser"
+  caption="Laser stock rack: plywood and acrylic are fair game. The polycarbonate sheets stored here are waterjet stock — never load them in the laser."
+/>
+
+## Air Assist
+
+Air assist blows a stream through the nozzle at the cut point. It suppresses flare-ups, blows smoke out of the kerf, and keeps residue off the lens.
+
+- **High air assist for cutting** — always.
+- **Low air assist for engraving** — enough to protect the lens without blasting fine detail.
+- No air pressure at the nozzle is a stop condition: check the pump/valve before firing. Cutting without air assist is how lenses die and fires start.
+
+## Consumables & Tooling
+
+No consumables table for this machine yet — order through [Thunder Laser USA support](https://support.thunderlaserusa.com/):
+
+- **Focus lens** — the main wear item; smoke residue etches it over time if not kept clean.
+- **Mirrors** (three in the beam path) — cleaned in place, replaced when pitted.
+- **Laser tube** — the 100W tube is a long-life consumable; declining cut power at known-good settings is the symptom. Report it, don't compensate forever with more power.
+- Lens wipes and optics cleaner live at the station.
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Fire"
+  items={[
+    'Material is on the approved list — never PVC, vinyl, polycarbonate, or ABS',
+    'Exhaust blower running',
+    'Air assist on — high for cutting, low for engraving',
+    'Water chiller running, no temperature alarm',
+    'Focused to the material surface',
+    'Job framed — fits the sheet and clears any clamps',
+    'Bed clear of offcuts under and around the material',
+    'Lid closed',
+    'You are staying with the machine for the whole job'
+  ]}
+/>
+
+## Operating Instructions
+
+1. Power on the machine, chiller, exhaust blower, and air assist.
+2. Load material flat on the bed. Warped sheet gets weighted or clamped at the edges — out of the head's path.
+3. Prepare the job in LightBurn (layers, power/speed, ordering) as above.
+4. Focus to the material surface.
+5. Frame the job and confirm placement.
+6. Close the lid and start the job from LightBurn or the machine panel.
+7. Watch the job. Pause immediately for sustained flames, heavy uncut smoke pooling, or a cut that clearly is not going through.
+8. When finished, let the exhaust clear the smoke for a few seconds before opening the lid.
+9. Lift parts out carefully; check that cuts released fully before moving the sheet (a framed re-run only works if nothing moved).
+
+## Resources
+
+<TutorialLink
+  title="Nova Series User's Manual"
+  url="https://support.thunderlaserusa.com/portal/en/kb/articles/nova-series-users-manual"
+  source="manual"
+  description="Official Thunder Laser Nova series manual."
+/>
+
+<TutorialLink
+  title="Thunder Laser USA Support Portal"
+  url="https://support.thunderlaserusa.com/"
+  source="knowledge-base"
+  description="Knowledge base, maintenance guides, and parts."
+/>
+
+<TutorialLink
+  title="Delivery and Setup of the Thunder Laser Nova 35 (100W)"
+  url="https://www.youtube.com/watch?v=tGnKgUshAto"
+  source="youtube"
+  description="Full setup walkthrough of our exact model."
+/>
+
+<TutorialLink
+  title="Thunder Nova 35 100W Unboxing and Setup"
+  url="https://www.youtube.com/watch?v=YIsD5f1IdyA"
+  source="youtube"
+  description="Second setup and first-cuts video for the Nova 35."
+/>
+
+## Cleanup & Maintenance
+
+After every session:
+
+- Remove your parts, skeletons, and every small offcut that fell through the bed — debris under the bed is fire fuel.
+- Wipe smoke residue off the lid glass.
+- Power down: laser, then chiller, exhaust, and air assist.
+
+### Optics cleaning (weekly, or whenever cuts mysteriously weaken)
+
+1. Power the machine off.
+2. Inspect the focus lens and mirrors with a flashlight — haze, smoke film, or specks mean cleaning time.
+3. Clean with optics-grade wipes/swabs and lens cleaner or 99% IPA. Wet the wipe, sweep gently in one direction. **Never dry-wipe** — residue grit scratches coatings.
+4. A pitted or scorched lens does not clean up — flag it for replacement.
+5. Log the cleaning on the [maintenance schedule](/maintenance/schedules/).
+
+Metal cutting belongs on the [xTool MetalFab](/lasers/xtool-metalfab/), thick or banned plastics on the [WAZER Pro waterjet](/waterjet/wazer-pro/), and oversized CO2 jobs may fit the [Gweike M3 Ultra](/lasers/gweike-m3-ultra/)'s larger bed.

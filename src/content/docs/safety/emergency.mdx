@@ -1,8 +1,84 @@
 ---
 title: "Emergency Protocols & Power Shut-Offs"
-description: "What to do in an emergency and where the shut-offs are."
+description: "Injury response, fire, power shut-offs, eye-wash, who to call, and how incidents get reported."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+
+Read this page before you need it. In an emergency you will not think clearly — you will do whatever you rehearsed. The pattern for everything below is the same: **make it safe, get help, then deal with the details.**
+
+<SafetyWarning type="critical" title="When in doubt, call 911 first">
+Serious bleeding, burns bigger than a palm, anything involving eyes, loss of consciousness, electric shock, or a fire you can't knock down instantly: **call 911 immediately.** Do not wait for a mentor's permission to call — mentors will always back that call. Then alert the nearest mentor.
+</SafetyWarning>
+
+## Injury Response
+
+1. **Stop the machines.** Hit the E-stop on the machine involved; shut down neighboring machines so nobody else is distracted or endangered. Don't try to retrieve anything from a running machine.
+2. **Shout for a mentor.** Say what and where: "Injury at the lathe!" A mentor takes charge from this point.
+3. **Don't move a seriously injured person** unless they're in immediate danger (fire, machine still engaged).
+4. **First aid:** the kit is in the **First Aid drawer of the blue Durham cabinet**. The daily opening checklist verifies it's stocked and in place. Minor cuts and burns: clean, cover, and *still tell a mentor* — every injury gets reported (see below).
+5. For anything beyond a simple bandage, a mentor decides on 911 / urgent care / parent contact. When in doubt, escalate.
+
+<LabGalleryImage
+  src="durham-drawers-magnets-first-aid.jpg"
+  alt="Durham steel cabinet drawers including the drawer labeled First Aid"
+  caption="The First Aid drawer in the blue Durham cabinet. Know where this is before you need it."
+/>
+
+## Fire
+
+1. **Yell "FIRE"** so everyone in the shop knows immediately.
+2. **Small, contained fire** (trash-can sized, not spreading, not blocking your exit): one person grabs the nearest fire extinguisher — locations are marked in the shop [confirm locations] and verified daily on the opening checklist — and uses **PASS**: **P**ull the pin, **A**im at the base, **S**queeze, **S**weep. Everyone else clears back.
+3. **Evacuate instead of fighting the fire if:** it's bigger than a trash can, it's spreading, smoke is filling the room, it involves the compressed-gas or electrical panels, or you have *any* doubt. Machines and robots are replaceable.
+4. Evacuating: shut machines down with E-stops **only if it costs zero seconds**, get out, close doors behind you, meet at the assembly point [confirm assembly point], and call 911 from outside. A mentor takes a headcount.
+5. Solvents and other flammables live in the green flammables cabinet in the storage room — keeping them there when not in use is fire prevention, not tidiness.
+
+<LabGalleryImage
+  src="storage-room-apparel-flammables.jpg"
+  alt="Storage room with the green flammables cabinet among shelving"
+  caption="The green flammables cabinet in the storage room. Solvents go back here — never left out on benches."
+/>
+
+<SafetyWarning type="warning" title="Special fire cases in this shop">
+
+- **Powder room:** airborne powder is combustible dust — the no-flame rule in the [Powder Coating SOP](/finishing/powder-coating/) exists to prevent this fire, because a dust flash spreads too fast to fight.
+- **Lithium batteries (M12/DeWalt packs):** a hissing, smoking, or swelling pack cannot be extinguished by normal means. Do not fight it up close — evacuate and call 911. If it's small and just starting, moving it outside with pliers/shovel to open ground is a mentor's call only.
+- **Laser cutters:** small flare-ups inside the machine happen; that's what the machine's own procedures cover. A fire that persists after the laser stops is a real fire — treat it as above.
+
+</SafetyWarning>
+
+## Power Shut-Offs
+
+Know your three levels, fastest to slowest:
+
+1. **Machine E-stop** — the big red button on every CNC machine and major tool. Stops that machine instantly. E-stops are tested monthly per the [maintenance schedule](/maintenance/schedules/), so they will work when you hit them. Hit first, ask questions later — an unnecessary E-stop costs nothing.
+2. **Machine power switch** — every machine's main switch. The closing checklist powers everything down here nightly.
+3. **Breaker panel** — kills whole circuits, including a machine whose E-stop or switch is unreachable or has failed, and anything electrical that is smoking. Located at [confirm location — label the panel and update this page]. If you shut a breaker off in an emergency, leave it off until a mentor clears the machine.
+
+Also know: the **shop air compressor shutoff and line drain** (for a burst line or fitting — the hiss is loud but the fix is just shutting the valve), and that unplugging a benchtop tool is a perfectly good E-stop.
+
+## Eyes
+
+Anything in the eye — chips, solvent splash, powder — gets flushed **immediately and continuously for 15 minutes**. Use the eye-wash station at [confirm location — if the shop has no plumbed station, keep sealed saline bottles at the first-aid point and note it here]. Do not rub, and do not try to pick anything out of an eye. Chemical exposure or anything embedded: flush and call 911 / head to the ER — eyes do not get a wait-and-see.
+
+## Who to Call
+
+| Situation | Call |
+| --- | --- |
+| Serious injury, fire, chemical exposure | **911**, then nearest mentor |
+| Any injury, near-miss, or damaged machine | Nearest mentor, immediately |
+| No mentor physically present | Stop work entirely — students don't run machines without a mentor in the shop — and call the lead mentor [confirm phone list location; post it by the door] |
+| Building issues (power outage, water, alarms) | Mentor, who contacts the building contact [confirm contact] |
+
+## Incident Reporting
+
+Every injury and every near-miss gets written up — same day, no exceptions, no blame. A near-miss report is a free lesson; the report you skip is the one that lets it happen again to someone else.
+
+Include: who, what machine/tool, what happened, what PPE was in use, and what would have prevented it. File it with a mentor [confirm reporting form/location]. Mentors review reports and turn them into fixes — guarding, training, or updates to these docs.
+
+<SafetyWarning type="tip" title="The culture rule">
+Nobody at Spectrum ever gets in trouble for stopping a machine, hitting an E-stop, calling 911, or reporting their own mistake. People get in trouble for hiding problems. When something feels wrong — stop, ask, report.
+</SafetyWarning>
+
+Prevention lives on the [PPE & The Glove Policy](/safety/gloves-and-ppe/) page. This page is for when prevention wasn't enough.

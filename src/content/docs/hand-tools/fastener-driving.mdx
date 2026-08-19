@@ -1,8 +1,101 @@
 ---
 title: "Fastener Driving"
-description: "Hex keys, wrenches, sockets, nut drivers, and screwdrivers."
+description: "Hex keys, T-handles, wrenches, sockets, nut drivers, and screwdrivers — pick the right driver and stop stripping fasteners."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import DrawerLayoutMap from '../../../components/DrawerLayoutMap.astro';
+
+Most of a robot is fasteners, and most fastener problems are self-inflicted: wrong size driver, worn tool, or the wrong tool entirely. This page covers the hand drivers in the red toolbox. For powered driving, see the [Milwaukee M12 Ecosystem](/portable-power/m12-ecosystem/) — and remember an impact driver on a small screw is how threads die.
+
+## Where they live
+
+<DrawerLayoutMap unit="red-toolbox" />
+
+<LabGalleryImage
+  src="wrenches-drawer.jpg"
+  alt="Red toolbox wrenches drawer with combination, ratcheting, and adjustable wrenches"
+  caption="The wrenches drawer: combination wrenches, ratcheting wrenches, adjustables, and mini wrench sets in sorting trays."
+/>
+
+## Hex keys
+
+FRC robots run on socket-head and button-head cap screws, which means hex keys are the tool you'll use most. The hex drawer has L-keys sorted by size into labeled bins, ball-end drivers, T-handles, and fold-up sets.
+
+<LabGalleryImage
+  src="hex-keys-drawer.jpg"
+  alt="Hex keys drawer with L-keys sorted into labeled bins by size plus ball-end drivers"
+  caption="The hex keys drawer — L-keys sorted by size (3/32&quot;, 1/8&quot;, 5/32&quot;, 3/16&quot;), ball-end drivers, and fold-up sets. Return keys to the right bin."
+/>
+
+### Ball-end vs. straight
+
+- **Straight (full-engagement) end**: contacts all six flats across the full depth of the socket. Use it for **final tightening and for breaking loose** any fastener that resists.
+- **Ball end**: lets you drive at up to ~25° off-axis — great for reaching screws buried behind other mechanisms. But the ball only contacts the socket at a few small points.
+
+<SafetyWarning type="warning" title="When ball-ends strip fasteners">
+A ball-end under high torque concentrates all the force on tiny contact patches — it will round out the screw socket (or snap the ball off inside it) exactly when the fastener is tightest. Use the ball end to *spin* screws in awkward spots, then finish or break loose with the straight end, fully seated. If a key feels loose in the socket, it's worn or the wrong size (metric in SAE, or vice versa) — stop and check.
+</SafetyWarning>
+
+### T-handles
+
+T-handle hex drivers are faster to spin and easier on your hands than L-keys for repetitive work like swerve module assembly. Same rule applies: seat the tip fully before applying torque.
+
+## Wrenches
+
+- **Combination wrenches** (open end + box end): use the **box end** whenever you can — it grips all six corners and won't slip. The open end is for when you can't get the box over the nut.
+- **Ratcheting wrenches**: box-end speed without removing the wrench every sixth of a turn. Ideal for nylock nuts, which drag the whole way down.
+- **Adjustable wrenches**: a last resort. Snug the jaw fully and pull toward the fixed jaw. A loose adjustable rounds nuts.
+
+## Sockets & nut drivers
+
+The socket drawer has 1/4" and 3/8"-drive sets plus nut drivers. Sockets shine when you need real torque or repetition — pair a socket with a ratchet for frame bolts, or a nut driver for spinning nylocks while a hex key holds the screw. Six-point sockets grip better than twelve-point on stubborn fasteners.
+
+## Screwdrivers
+
+**Size the driver to the screw.** A #2 Phillips in a #1 screw (or the reverse) is the number-one cause of chewed-up screw heads. The tip should fill the recess completely with no wobble.
+
+To prevent cam-out (the driver twisting up and out of a Phillips head):
+
+1. Pick the exact right tip size.
+2. Push **hard** along the screw axis — most of your effort goes into pushing, less into twisting.
+3. Keep the driver perfectly in line with the screw.
+4. If it slips once, stop. Re-check size and alignment before you strip it.
+
+Precision screwdriver kits live in the same drawer bank for electronics-scale fasteners — see [Soldering & Test Bench](/electrical/soldering-test-bench/).
+
+## FRC-common sizes
+
+:::note[The two threads that run the robot]
+Almost everything on an FRC robot is **#10-32** or **1/4"-20**. Memorize their drivers and you'll never dig through drawers mid-match-repair:
+
+| Fastener | Driver |
+|---|---|
+| 10-32 socket head cap screw | 5/32" hex |
+| 10-32 button head / countersunk | 1/8" hex |
+| 10-32 nylock nut | 3/8" wrench or socket |
+| 1/4-20 socket head cap screw | 3/16" hex |
+| 1/4-20 button head | 5/32" hex |
+| 1/4-20 nylock nut | 7/16" wrench or socket |
 :::
+
+<LabGalleryImage
+  src="hdx-cases-socket-head-quarter-20.jpg"
+  alt="HDX cases labeled 10-32 Socket Head and 1/4-20"
+  caption="Bulk 10-32 and 1/4-20 hardware lives in labeled HDX cases on the hardware shelf — see Small Parts Bins."
+/>
+
+## Ground rules
+
+- Return every driver to its labeled bin — a missing 5/32" key at competition is a crisis.
+- Retire rounded hex keys and chewed screwdriver tips; tell a mentor so they get replaced.
+- Never extend a wrench with a pipe ("cheater bar") — if it won't move, you need penetrating oil, heat, or a mentor, not more leverage.
+- Threadlocker (blue) on fasteners that see vibration — but never on nylon-insert nuts, which don't need it.
+
+## Related pages
+
+- [Small Parts Bins](/storage/small-parts-bins/) — where the fasteners themselves live
+- [Threading & Riveting](/hand-tools/threading-riveting/) — making the threads you'll drive into
+- [Milwaukee M12 Ecosystem](/portable-power/m12-ecosystem/) — powered drivers and when to use them
+- [Primary Toolboxes](/storage/toolboxes/) — full toolbox layouts

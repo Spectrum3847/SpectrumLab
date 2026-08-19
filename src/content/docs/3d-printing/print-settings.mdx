@@ -1,8 +1,161 @@
 ---
 title: "Print Settings & Support Strategy"
-description: "Tree vs normal supports, interfaces, overhangs, and orientation."
+description: "Orientation for strength, tree vs normal supports, overhang and bridging limits, and copy-ready slicer presets for FRC parts."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import PrintSettingPreset from '../../../components/PrintSettingPreset.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+
+Ninety percent of print quality and part strength is decided before you touch a single slicer
+setting: it comes from **which way the part sits on the plate**. Get orientation right, then
+supports, then walls and infill. Material choice lives on the
+[Filament Guide](/3d-printing/filament-guide/).
+
+## Orientation for strength
+
+A 3D print is a stack of welded layers. It is strong along the layers and weak between them —
+a printed part pulls apart between layers like string cheese, at a fraction of the strength it
+has in the other directions.
+
+**Rule: layer lines must run perpendicular to the load.** Never let a load try to peel layers
+apart.
+
+- A bracket that gets pushed sideways? Print it flat so the force runs along the layers.
+- A hook or lever? Print it lying on its side, so the curve is drawn within each layer — not
+  standing up, where the bend puts tension straight across layer bonds.
+- A part loaded in several directions? Orient for the biggest load, add fillets at inside
+  corners (cracks start at sharp corners), or split the part into two prints, each oriented for
+  its own load, and bolt them together.
+
+Two more orientation wins:
+
+- **Holes print roundest pointing up** (axis vertical). Horizontal holes come out slightly
+  D-shaped — design them 0.2 mm oversize or drill/ream them after.
+- **The plate side is the flattest, best-looking face.** Put mating or cosmetic surfaces down
+  when you can.
+
+## Support strategy
+
+The best support is no support. Before enabling anything, try to design or orient the need
+away:
+
+1. **Rotate the part.** A shelf-shaped overhang often becomes a supported wall from another
+   angle.
+2. **Chamfer instead of overhang.** A 45° chamfer under a boss or ledge prints clean with zero
+   support.
+3. **Split the part** at a flat face and glue/bolt the halves — two easy prints beat one print
+   full of scarred support surfaces.
+4. Remember anything **under 45° from vertical prints fine unsupported** on our machines.
+
+When you genuinely need supports:
+
+- **Tree (organic) supports — the default.** They use less filament, pull off in one satisfying
+  piece, and barely scar the part. Best for anything with scattered small overhangs or organic
+  shapes.
+- **Normal (grid) supports** — use for large flat ceilings (a big horizontal underside), where
+  trees get flimsy and a uniform interface leaves a flatter surface.
+- Set a **support/part top Z distance of about 0.2 mm** (one layer) and enable a support
+  interface for surfaces that matter. If supports weld on, increase the gap; if the surface
+  above sags, decrease it.
+- Supported surfaces are always the ugliest surface on the part. Face them where nobody looks
+  and no part mates.
+
+## Overhang & bridging limits
+
+- **45° is the safe overhang limit** for every material we stock. PLA with full fan can push
+  toward 60°; PETG and PA-CF start drooping past 45–50°.
+- **Bridges** (flat spans anchored at both ends) print fine to roughly **20–30 mm in PLA** with
+  100% fan, less in PETG (it sags) and less again in low-fan materials like PA-CF and PC.
+  Longer than that: add a support pillar mid-span or chamfer the opening.
+- Design tip: turn rectangular horizontal openings into **teardrops or 45° diamonds** and they
+  print with no support at all.
+
+## Walls & infill for FRC parts
+
+Students always reach for the infill slider. Wrong slider — **walls carry the load.** Going
+from 2 to 4 walls adds far more strength than going from 15% to 50% infill, at less weight.
+
+- **Structural parts:** 4–6 walls, 5 top/bottom layers, 30–50% gyroid infill.
+- **Everything else:** 2–3 walls, 10–15% infill.
+- **Gyroid** is the house infill — strong in every direction, prints fast, and handles curved
+  interior geometry well. Grid is fine for flat quick stuff.
+- **100% infill is almost never the answer.** Past ~60% you add weight faster than strength.
+  If a part needs 100% infill to survive, it wants to be PA-CF, thicker, or aluminum.
+- Bolted joints: add washers or design bosses so bolt heads never bear on thin printed faces,
+  and use heat-set inserts instead of threading plastic for anything serviced more than once.
+
+<SafetyWarning type="tip" title="Reality-check the part, not the slicer">
+If a printed part breaks at practice, look at the break. Clean separation along a layer line
+means orientation was wrong — no amount of infill would have saved it. Reprint rotated, not
+denser.
+</SafetyWarning>
+
+## House presets
+
+Start from these, then adjust. Values are for the Bambu fleet at 0.4 mm nozzle; on the Prusa
+Minis keep the same walls/infill and let the stock speed profiles stand.
+
+<PrintSettingPreset
+  title="Fast Draft PLA"
+  slicer="Bambu Studio"
+  settings={{
+    'Layer height': '0.28 mm',
+    'Walls': '2',
+    'Top / bottom layers': '3 / 2',
+    'Infill': '10% grid',
+    'Part fan': '100%',
+    'Plate': 'Cool Plate or Textured PEI',
+  }}
+  notes="Fit checks, jigs, and cosmetic prototypes only. Nothing from this preset goes on the robot."
+/>
+
+<PrintSettingPreset
+  title="Structural PETG"
+  slicer="Bambu Studio"
+  settings={{
+    'Layer height': '0.20 mm',
+    'Walls': '4',
+    'Top / bottom layers': '5 / 4',
+    'Infill': '40% gyroid',
+    'Part fan': '40–60% (lower = stronger)',
+    'Plate': 'Textured PEI only',
+    'Max speed': '150 mm/s outer walls',
+  }}
+  notes="The default for on-robot brackets, mounts, covers, and guards. Dry the spool if you see stringing."
+/>
+
+<PrintSettingPreset
+  title="Flexible TPU"
+  slicer="Bambu Studio"
+  settings={{
+    'Layer height': '0.20 mm',
+    'Walls': '3',
+    'Infill': '20% gyroid (more = firmer part)',
+    'Speed': '30 mm/s everywhere',
+    'Retraction': 'Off or ≤ 0.5 mm',
+    'Part fan': '30%',
+    'Feed': 'External spool holder — not the AMS',
+  }}
+  notes="Roller wheels, bumper pads, grippers. Dry at 70 °C for 8+ h first — wet TPU is unprintable. Infill percentage is your durometer knob."
+/>
+
+<PrintSettingPreset
+  title="PA-CF Competition Part"
+  slicer="Bambu Studio"
+  settings={{
+    'Layer height': '0.16 mm',
+    'Walls': '5',
+    'Top / bottom layers': '6 / 5',
+    'Infill': '50% gyroid',
+    'Part fan': '0–30%',
+    'Plate': 'Engineering Plate or Textured PEI + glue',
+    'Printer': 'X1-Carbon / H2D only — hardened nozzle',
+  }}
+  notes="Gearbox plates, motor mounts, high-load brackets. Spool must come straight from 12 h at 80 °C drying. Mentor sign-off before starting."
+/>
+
+## Related pages
+
+- [Filament Guide](/3d-printing/filament-guide/) — pick the material before you pick settings
+- [Bambu Lab Fleet](/3d-printing/bambu-fleet/) — plate types, AMS mapping, and nozzle rules
+- [Prusa Mini+ Farm](/3d-printing/prusa-farm/) — PrusaSlicer profiles for the Minis

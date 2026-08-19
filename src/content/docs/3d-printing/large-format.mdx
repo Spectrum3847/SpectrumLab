@@ -1,8 +1,194 @@
 ---
 title: "Large-Format & Specialty Printers"
-description: "Creality CR-6 Max, CR-10 Max, and Garolite setups."
+description: "SOP for the Creality CR-6 Max and CR-10 Max: when to go big, auto-leveling, the Garolite bed for nylon, and keeping day-long prints alive."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+
+When a part will not fit the Bambus' 256 mm or the H2D's 350 mm envelope, the two big Crealitys
+take over: the **CR-6 Max** (400 mm cube) and the **CR-10 Max** (450 × 450 × 470 mm). They print
+full-size intake prototypes, field-element mockups, TRI props, and other big single pieces in
+one go — no seams, no glue joints.
+
+Set expectations honestly: these are **older, open-frame bedslingers**. They are slower than
+the Bambus, fussier, and a big print is measured in days, not hours. They earn their bench
+space by doing the one thing nothing else in the lab can: printing *big*.
+
+## Before you go big: do you actually need to?
+
+- **Split it first.** Two 250 mm halves on a [Bambu](/3d-printing/bambu-fleet/) with a bolted
+  or pinned joint usually print faster, stronger, and more reliably than one 500 mm gamble.
+- Go large-format when the part genuinely must be monolithic: continuous curves, sealed
+  volumes, or geometry where a joint would be the weak point.
+- Budget real calendar time. A plate-filling print can run 30+ hours — schedule it so the
+  critical hours land while the lab is open.
+
+## Creality CR-6 Max
+
+<MachineSOP
+  specs={{
+    'Build Volume': '400 × 400 × 400 mm',
+    'Leveling': 'Strain-gauge auto bed leveling',
+    'Z Axis': 'Dual lead screws + pull rods',
+    'Bed': 'Carborundum glass',
+    'Drivers': 'Silent steppers',
+    'Nozzle': '0.4 mm',
+  }}
+  training="Basic printer orientation, plus a mentor walk-through before your first large-format job."
+/>
+
+The CR-6 Max levels by pressing the nozzle itself against the bed with a strain gauge — no
+Z-offset knob and no probe offset to manage, but it means **a clean nozzle tip is part of the
+leveling system**. A blob of plastic on the nozzle becomes a leveling error across the whole
+plate.
+
+<ToolProcurementCard tool="creality-cr6-max" />
+
+## Creality CR-10 Max
+
+<MachineSOP
+  specs={{
+    'Build Volume': '450 × 450 × 470 mm',
+    'Leveling': 'Probe-based auto leveling',
+    'Frame': 'Golden-triangle Z braces',
+    'Extruder': 'Dual-gear, Capricorn tube',
+    'Recovery': 'Resume after power loss',
+    'Nozzle': '0.4 mm',
+  }}
+/>
+
+The CR-10 Max is the biggest envelope in the lab and also the oldest of the pair —
+discontinued by Creality, so spares come from the reseller ecosystem. Treat it gently and
+report anything odd instead of improvising a fix.
+
+<ToolProcurementCard tool="creality-cr10-max" />
+
+## Safety
+
+<SafetyWarning type="warning" title="Open frame, long reach">
+These machines have no enclosure and a bed that slings almost half a meter of hot glass back
+and forth. Keep the swing zone clear — bags, spools, and elbows included — and never reach
+over a moving bed.
+</SafetyWarning>
+
+- Bed runs up to 100 °C and is a large thermal mass: it stays burn-hot long after the print
+  ends.
+- Big prints run unattended by necessity. That is only acceptable because someone checks in —
+  see the reliability section below for the check-in rhythm.
+- **Materials:** PLA and PETG normally; unfilled nylon on the Garolite bed with a mentor.
+  **No PA-CF or PC** — no enclosure, no hardened nozzle. Those belong on the
+  [Bambu fleet](/3d-printing/bambu-fleet/).
+
+## Software & Workflow
+
+1. Slice in Cura or PrusaSlicer using the stock **CR-6 Max** / **CR-10 Max** machine profile —
+   both slicers ship (or import) profiles for these machines. Do not freelance a custom
+   machine definition.
+2. Apply the wall/infill logic from [Print Settings & Supports](/3d-printing/print-settings/) —
+   at this scale every extra wall is hours, so choose deliberately.
+3. Add a **brim** for anything tall or with small floor contact. On a day-long print, a corner
+   lifting at hour 20 is a catastrophe a brim would have prevented.
+4. Save G-code to the printer's memory card, insert, preheat, and start from the machine's
+   screen.
+5. Watch the entire first layer. At this bed size that takes a while — bring your homework.
+
+## Auto-leveling
+
+Run auto bed leveling **before every large print**. These beds are big enough to drift with
+temperature and handling.
+
+1. **Heat-soak first.** Preheat bed (and nozzle) to print temperature and wait ~10 minutes so
+   the glass finishes expanding before you probe it.
+2. **Clean the nozzle tip** — critical on the CR-6 Max, whose strain gauge probes through the
+   nozzle itself. Brush off any blob while warm.
+3. Run the leveling cycle from the printer menu (strain-gauge cycle on the CR-6 Max;
+   probe cycle on the CR-10 Max).
+4. Print a one-layer test patch or skirt and verify squish at the center **and** all four
+   corners before committing to a 30-hour job.
+
+## Garolite bed setup for nylon
+
+Unfilled nylon warps off glass but bonds beautifully to **Garolite (G10)** sheet:
+
+1. Clip the Garolite sheet over the glass bed, clips at the edges where the nozzle cannot
+   reach.
+2. Print nylon directly on the Garolite — no glue needed. Bed around 80–100 °C.
+3. Let the bed cool **completely** before removing the part; nylon grips Garolite hard when
+   warm and releases as it cools.
+4. When adhesion fades, scuff the sheet lightly with a Scotch-Brite pad and wipe with IPA.
+5. Dry the nylon first — 12 h at 80 °C, same rule as every nylon in the
+   [Filament Guide](/3d-printing/filament-guide/). Wet nylon on a two-day print is two days
+   wasted.
+
+Expect honest results, not miracles: on an open-frame machine, tall nylon parts will still
+want to warp. Keep nylon parts here low and wide, and take strength-critical nylon to the
+Bambus as PA-CF.
+
+## Long-print reliability
+
+Day-long prints fail for boring reasons. Kill the boring reasons:
+
+- **Fresh, dry filament, full spool.** Weigh or eyeball the spool against the slicer's
+  filament estimate — with margin. Mid-print spool swaps are a last resort.
+- **Thread the runout sensor.** Both machines detect runout and pause — but only if the
+  filament actually passes through the sensor.
+- **Power-loss resume exists; do not rely on it.** It usually leaves a visible scar line and
+  sometimes a failed layer bond at the resume point. It is insurance, not a plan.
+- **Glue stick on glass** as a release layer for PETG — big PETG parts can grip carborundum
+  glass hard enough to chip it on removal.
+- **Check in at the one-hour mark**, then every few hours. Most failures happen in layer one
+  or hour one.
+- Keep the machine out of A/C drafts; a draft across 400 mm of warm PLA is a warp machine.
+- Do not start a multi-day print the night before the machine is needed for something else.
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Commit to a Big Print"
+  items={[
+    'Could this be split and printed on the Bambus instead? (Really.)',
+    'Bed heat-soaked and auto-leveling run this session',
+    'Nozzle tip clean (CR-6 Max levels through the nozzle)',
+    'Test patch verified at center and corners',
+    'Enough filament for the whole job, spool unwinds freely, end not tangled',
+    'Filament threaded through the runout sensor',
+    'Brim enabled for tall or small-footprint parts',
+    'Glue stick applied for PETG on glass / Garolite fitted for nylon',
+    'Print scheduled so first hours are supervised and finish lands during open hours',
+  ]}
+/>
+
+## Resources
+
+<TutorialLink title="CR-6 Max Downloads & Support" url="https://www.creality.com/pages/download-cr-6-max" source="knowledge-base" description="Official Creality manual, firmware, and slicer profile downloads" />
+
+<TutorialLink title="CR-10 Max User Manual (PDF)" url="https://funduinoshop.com/media/pdf/33/59/62/_CR-10-Max-SM-001_Use-Manual.pdf" source="pdf" description="Reseller-hosted manual — Creality no longer hosts the original" />
+
+<TutorialLink title="Creality CR-6 MAX Review — Everything You Need to Know" url="https://www.youtube.com/watch?v=3hTuAKYcc4s" source="youtube" description="Thorough overview of the CR-6 Max, including its strain-gauge leveling" />
+
+<TutorialLink title="Creality CR-10 MAX — BIG for All The RIGHT Reasons" url="https://www.youtube.com/watch?v=AyGu7G6QMDk" source="youtube" description="CR-10 Max overview and large-print workflow tips" />
+
+## Cleanup & Maintenance
+
+After your print:
+
+- Let the bed cool, remove the part, scrape any glue residue, and wash the glass with warm
+  soapy water when it gets filmy; IPA wipe between prints.
+- Unload filament back to a dry box if the machine will sit idle — these printers have no AMS
+  babysitting the spool.
+- Wipe dust off the Z lead screws if you see debris; report squeaks, clicking, or belt slop to
+  a mentor rather than tightening things yourself.
+
+These machines ride the general printer-farm items on the
+[maintenance schedule](/maintenance/schedules/) — daily overnight-failure check and weekly
+walk-down.
+
+## Related pages
+
+- [Bambu Lab Fleet](/3d-printing/bambu-fleet/) — faster, more reliable, up to 350 mm
+- [Print Settings & Supports](/3d-printing/print-settings/) — brims, walls, and splitting parts
+- [Filament Guide](/3d-printing/filament-guide/) — drying rules that make or break long prints

@@ -1,8 +1,92 @@
 ---
 title: "Bench Sanders & Grinders"
-description: "Belt sanders, bench grinders, and deburring wheels."
+description: "1 in and 4 in belt sanders, bench grinders, and the Scotch-Brite deburring wheel: downward-side technique, small-parts holding, and the deburring workflow."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+
+Every saw cut in this lab ends at one of these machines. The **1 in vertical belt sander** handles inside curves and detail work, the **4 in horizontal belt sander** flattens edges and squares ends, and the bench grinders — including the one fitted with **Scotch-Brite deburring wheels** — knock the sharp edge off everything before it goes into a robot or a hand. They look like the tamest machines in the shop. They remove fingerprints faster than any of the others.
+
+<MachineSOP
+  specs={{
+    'Vertical Belt': '1 in — detail + inside curves',
+    'Horizontal Belt': '4 in — flats, squaring, chamfers',
+    'Deburring Grinder': 'Scotch-Brite wheels — edge break',
+    'Bench Grinder': 'Stone wheels — steel only',
+  }}
+  ppe={['glasses', 'no-gloves', 'tie-hair', 'closed-shoes']}
+  training="Mentor demo before first use. Small-parts technique is part of the demo."
+/>
+
+<LabGalleryImage
+  src="bench-grinder-deburring.jpg"
+  alt="Bench grinder fitted with Scotch-Brite deburring wheels"
+  caption="The deburring grinder: Scotch-Brite wheels break edges fast without eating the part. Every sawed aluminum part visits this wheel."
+/>
+
+## Safety
+
+<SafetyWarning type="critical" title="Work on the DOWNWARD side, against the rest">
+Always present the part where the belt or wheel is moving **downward / into the table and tool rest**, so the machine pushes the work down against support instead of throwing it up at your face. On the grinders that means below the wheel centerline against the rest; on the belt sanders, against the platen with the belt travel pressing the part onto the table.
+</SafetyWarning>
+
+<SafetyWarning type="critical" title="Small parts: pliers or a jig — never bare fingers near the belt">
+Anything smaller than roughly your palm gets held with locking pliers, vise-grips, or a simple wood/printed holding jig. A belt that snags a small part pulls it — and the fingertips pinching it — into the gap at the tool rest in milliseconds. If you can't grip it safely, clamp it to a carrier or ask a mentor for a jig.
+</SafetyWarning>
+
+- No gloves — a snagged glove is worse than a snagged fingertip. See [PPE & the glove policy](/safety/gloves-and-ppe/).
+- Parts get **hot** fast, especially small aluminum. Dunk cup or wait — don't press harder because you can't feel it through the heat.
+- Keep the tool-rest gap tight (about 1/8 in on grinders). A wide gap swallows parts and fingers.
+- Never sand/grind on the unsupported side of a belt or the side of a stone wheel.
+- Sparks from steel travel — check what's behind you (no solvent cans, no fuel, no people) before grinding.
+
+## Aluminum vs the Wheels
+
+**Aluminum never touches the stone (vitrified) grinding wheels.** Aluminum smears into the pores of a stone wheel — "loading" — and a loaded wheel can heat unevenly, go out of balance, and burst. Aluminum's tools are:
+
+- **Belt sanders** — fine for aluminum; clean the belt with a crepe stick when it starts loading up (shiny, glazed streaks).
+- **Scotch-Brite deburring wheels** — ideal for aluminum edge-break; the wheel sheds rather than loads.
+- Stone wheels are for **steel only**: sharpening, weld cleanup, rough shaping.
+
+If you spot silvery smears on a stone wheel, tag the grinder out and tell a mentor — the wheel needs dressing or replacement before anyone runs it.
+
+## The Deburring Workflow
+
+Every cut part — from the [chop saw](/cutting/evolution-saws/), [bandsaws](/cutting/bandsaws/), lathe, or shear — follows the same 60-second routine before it goes in the parts bin:
+
+1. **Flats and outside edges:** a few light passes on the 4 in horizontal belt to remove saw marks and square up if needed.
+2. **Edge break:** roll every cut edge lightly against the Scotch-Brite wheel — two or three passes per edge, light pressure, keep the part moving. You're removing the burr, not changing the dimension.
+3. **Inside curves and slots:** the 1 in vertical belt reaches where the wheel can't; hand deburring tools (red toolbox, Pliers & Cutters drawer) finish holes.
+4. **Test with a thumb-drag** (gently, along — not across — the edge). If it would snag a wire's insulation or a teammate's hand, it's not done.
+
+## Technique Notes
+
+- **Light pressure, keep it moving.** Pressure makes heat, not speed; dwelling makes divots and bluing.
+- Grind/sand so the contact point stays on the tool rest or table — floating work chatters and grabs.
+- On the horizontal belt, square ends against the miter fence if fitted; check with a square, not eyeballs.
+- Long stock: mind the far end — it sweeps behind you as you rotate the part.
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Sand or Grind"
+  items={[
+    'Right machine for the material (aluminum: belts/Scotch-Brite only, never stone wheels)',
+    'Tool rest gap ~1/8 in, tightened',
+    'Belt/wheel condition checked: no tears, no glazing, no aluminum smears on stone',
+    'Small part secured in pliers or a jig',
+    'Glasses on, no gloves, hair tied, spark path clear',
+    'Cooling cup or plan for hot parts',
+  ]}
+/>
+
+## Cleanup & Maintenance
+
+- Power off and let wheels spin down before walking away.
+- Brush dust and swarf off the tables and rests; sweep or vacuum the bench — mixed aluminum/steel dust doesn't go in the recycling bin.
+- Report torn belts, glazed or loaded wheels, and any wheel that vibrates on startup — wheel dressing and replacement is mentor work, tracked on the [maintenance schedule](/maintenance/schedules/).
+
+**Related pages:** [Evolution Chop Saw](/cutting/evolution-saws/) · [Bandsaws](/cutting/bandsaws/) · [Drill Press & Bench Shear](/cutting/drill-press-shear/) · [PPE & the glove policy](/safety/gloves-and-ppe/)

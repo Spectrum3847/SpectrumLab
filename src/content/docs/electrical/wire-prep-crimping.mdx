@@ -1,8 +1,102 @@
 ---
 title: "Wire Prep & Crimping"
-description: "Strippers, ratcheting crimpers, Powerpole, and battery lugs."
+description: "Strippers, ratcheting crimpers, Anderson Powerpoles, and hydraulic battery-lug crimps — plus the FRC wire gauge rules that make it all legal."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+
+A robot is only as reliable as its worst crimp. Robots vibrate, and solder joints crack under vibration — which is why FRC wiring is crimped, not soldered, everywhere it matters. This page covers the tools and the standards: strip clean, crimp with the right tool, and tug-test every single connection.
+
+The crimpers, strippers, and terminal assortments live in the electrical storage — the labeled Electrical drawer in the Durham cabinet and THE Electrical Case on the HDX rack.
+
+<LabGalleryImage src="hdx-cases-electrical-kraken.jpg" alt="HDX cases labeled THE Electrical Case and THE Kraken Case in the plywood rack" caption="THE Electrical Case holds the go-to crimp terminals and wire prep tools — return it to its rack slot." />
+
+<SafetyWarning type="critical" title="Dead robot before live hands">
+Disconnect the battery before cutting, stripping, or crimping anything on the robot. A wrench or wire strand across a live 12V battery circuit welds itself in place and starts fires. Battery out, main breaker off, then work.
+</SafetyWarning>
+
+## Wire Strippers
+
+Two strippers, two jobs:
+
+- **Standard strippers** handle signal and power wiring roughly 10–22 AWG. Use the labeled slot that matches your wire gauge — a smaller slot nicks strands, and every nicked strand is capacity lost and a future break point.
+- **Large-gauge strippers** handle the fat stuff: 6 AWG battery leads and main power runs. Don't chew 6 AWG with the small strippers; the insulation tears and the strands splay.
+
+**Good strip checklist:** insulation cut clean, no nicked or missing strands, strip length matched to the terminal barrel (strands should fill the barrel and stop — no bare wire showing behind it, no insulation inside it). Don't twist stranded wire before crimping into terminals; leave the strands as they lay.
+
+## Ratcheting Crimpers
+
+The ratcheting crimpers are the workhorses for insulated and non-insulated terminals — ring lugs, spade terminals, butt splices, ferrules. The ratchet mechanism is the point: **it will not release until the crimp is fully formed**, so every crimp gets full, repeatable pressure.
+
+- **Insulated terminals** follow the universal color code: **red = 22–16 AWG, blue = 16–14 AWG, yellow = 12–10 AWG**. Match the wire, the terminal, and the color-marked die position.
+- **Non-insulated terminals** use the non-insulated die profile — it folds the barrel instead of compressing an insulation sleeve. Using the insulated die on a bare terminal makes a loose, ugly crimp.
+- Seat the terminal in the die, insert the stripped wire until strands are fully in the barrel, squeeze through the full ratchet cycle.
+- **Tug test every crimp.** Pull hard — harder than feels polite. If it moves, cut it off and do it again. A crimp that fails in your hand was going to fail in a match.
+
+## Anderson Powerpole Connectors
+
+Powerpoles are the team standard for connectorized power runs — genderless, polarized by assembly, and rebuildable.
+
+1. **Crimp the contact** with the Powerpole crimper (or the correct die), stripped wire fully in the contact barrel. No strands outside, no insulation inside.
+2. **Orient the contact** before insertion: the contact's rolled tongue rides *up* against the housing's spring — look into the housing, find the spring, and align the contact so its flat side faces it per the housing's mold marks.
+3. **Push the contact in until it clicks** past the spring.
+4. **Click retention test:** tug the wire firmly backward. A properly seated contact does not come out. If it slides out, it was never locked — reinsert, listen for the click, test again.
+5. **Assemble housings** in the team-standard orientation (red/black paired per our existing harnesses — match an existing known-good pair, don't improvise), and add the roll pin if the pair should stay mated as a set.
+
+## Hydraulic Crimper — Battery Lugs
+
+Battery leads and main power cables (6 AWG) get lugs set with the hydraulic crimper. This is the one crimp on the robot that carries every amp the battery can deliver, so it's a process, not a squeeze:
+
+1. Strip the 6 AWG to the lug barrel depth with the large-gauge strippers.
+2. **Slide the heat shrink on first.** Adhesive-lined, correct diameter. Everyone forgets once.
+3. Select the die that matches the lug size (dies are stamped), seat the lug, insert the wire fully.
+4. Pump the hydraulic crimper until the dies bottom out completely. For long barrels, crimp twice along the barrel.
+5. **Tug test** — brace and pull with real force. The lug should feel like part of the wire.
+6. Slide the heat shrink over the barrel and shrink it with the [heat gun](/portable-power/dewalt-and-pneumatics/#20v-heat-gun--dce530) on low until it's tight and the adhesive just beads at the edge. The shrink covers all exposed barrel — no bare copper.
+7. Inspect: no loose strands at the barrel mouth, no cracks in the crimp, insulation undamaged.
+
+## FRC Wire Gauge Rules
+
+The breaker protects the **wire**, not the device — so wire gauge is dictated by the breaker feeding the circuit. The big ones to memorize:
+
+| Circuit breaker | Minimum wire size |
+| --- | --- |
+| 40A | 12 AWG |
+| 30A | 14 AWG |
+| 20A | 18 AWG |
+
+- Battery leads and the main power path run **6 AWG** through the 120A main breaker.
+- Motors on 40A breakers (drivetrain, most mechanisms) get 12 AWG — no exceptions, no "it was in the bin."
+- Smaller control and signal circuits have their own table entries — **check the wiring table in the current game manual** before pulling anything unusual, since exact rules are re-published every season.
+- When in doubt, go one gauge heavier. Copper is cheaper than a rewire at competition.
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Call a Crimp Done"
+  items={[
+    'Battery disconnected and main breaker off before touching robot wiring',
+    'Wire gauge matches the breaker per the FRC table',
+    'Strip is clean — no nicked strands, length matched to the barrel',
+    'Terminal size and die match the wire (red/blue/yellow for insulated)',
+    'Full ratchet cycle or hydraulic dies bottomed out',
+    'Tug test passed — hard pull, no movement',
+    'Powerpole contacts clicked past the spring and retention-tested',
+    'Heat shrink installed and shrunk over any exposed barrel',
+  ]}
+/>
+
+## Resources
+
+<TutorialLink title="Intro to FRC Robot Wiring — WPILib" url="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-1/intro-to-frc-robot-wiring.html" source="knowledge-base" description="The official step-by-step wiring guide for the FRC control system." />
+
+<TutorialLink title="Anderson Power Products" url="https://www.andersonpower.com/" source="website" description="Manufacturer datasheets and assembly instructions for Powerpole connectors." />
+
+## Related Pages
+
+- [Soldering & Test Bench](/electrical/soldering-test-bench/) — for the joints that *should* be soldered, and for testing what you built.
+- [Coprocessors & SBCs](/electrical/coprocessors/) — powering vision hardware cleanly off the power distribution board.
+- [DeWalt & Pneumatics](/portable-power/dewalt-and-pneumatics/) — the heat gun used for every heat-shrink step above.

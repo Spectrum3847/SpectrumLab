@@ -1,8 +1,136 @@
 ---
 title: "Maintenance Schedules"
-description: "Opening/closing checklists, weekly PM, and machine servicing."
+description: "Daily opening and closing checklists, weekly and monthly preventive maintenance, and per-machine service intervals."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+
+Machines don't fail at convenient times — they fail during build season, at 9 PM, three days before ship. The maintenance program below is how we stay ahead of that: daily checklists anyone can run, weekly and monthly preventive maintenance (PM), and per-machine service intervals.
+
+Everyone runs the daily lists. Weekly and monthly tasks are coordinated by the shop captain and mentors — but if you see something on these lists that needs doing, say so.
+
+## Daily
+
+### Opening
+
+First person in runs this list before work starts:
+
+<PreFlightChecklist
+  title="Opening Checklist"
+  items={[
+    'Unlock and walk the shop — check nothing was left powered overnight',
+    'Turn on shop air compressor; verify regulator at 120 PSI',
+    'Check 3D printer farm for overnight failures; clear plates',
+    'Empty any full scrap/waste bins from yesterday',
+    'Verify first-aid kit and fire extinguisher are in place',
+  ]}
+/>
+
+### Closing
+
+Nobody leaves until this list is green:
+
+<PreFlightChecklist
+  title="Closing Checklist"
+  items={[
+    'Power down every machine at its switch (not just the controller)',
+    'Drain air from pneumatic lines; compressor off',
+    'All tools back to their labeled drawers/bins — StackTech drawers closed',
+    'Sweep floors; vacuum machine chip trays',
+    'Take out trash if more than half full; sort scrap metal into the recycle bin',
+    'Last mentor out checks the curing oven and heat press are OFF and cool',
+  ]}
+/>
+
+## Weekly preventive maintenance
+
+- **WAZER**: check tank abrasive level, drain used-abrasive buckets if more than half full
+- **Laser optics**: inspect (clean only if hazy) on the Nova 35 and MetalFab
+- **ShopSabre**: vacuum spoilboard and rails; check for loose bits in collets
+- Blow dust out of powder booth filters; replace the box-fan filter if caked
+- **Printer farm**: wipe PEI plates with IPA; check nozzle wear on the CF printers
+- Charge all M12/DeWalt batteries; report any that won't hold charge
+- Restock small-parts bins from bulk stock; note anything below its reorder point in the [Consumables Ledger](/inventory/consumables/)
+
+## Monthly
+
+- **WAZER**: full maintenance per the maintenance manual (nozzle, mixing tube, tank clean-out)
+- **Lathe**: oil ways and leadscrew, check belt tension
+- **Bandsaws**: check blade tension, tracking, and tire condition
+- **Press brake**: grease ram guides; verify backgauge calibration
+- **Curing oven**: inspect door seal and thermocouple reading vs. a reference thermometer
+- Test emergency stops on every CNC machine
+- Inventory pass on the [Consumables Ledger](/inventory/consumables/) — reorder anything below minimum
+
+## Per-machine schedules
+
+Each machine's page carries its full SOP; the intervals below are the service side.
+
+### [WAZER Pro](/waterjet/wazer-pro/)
+
+| Task | Interval |
+|---|---|
+| Top off abrasive hopper | Every session |
+| Drain used abrasive from tank buckets | Weekly or every ~10 hrs cutting |
+| Replace nozzle/mixing tube | When kerf quality degrades (~30–60 hrs) |
+| Clean cut bed slats and flip/replace | Monthly |
+
+### [Thunder Laser Nova 35](/lasers/thunder-nova-35/)
+
+| Task | Interval |
+|---|---|
+| Clean lens and mirrors | Weekly with heavy use |
+| Empty exhaust/debris tray | Weekly |
+| Check coolant level and temperature | Every session |
+
+### [ShopSabre 23 CNC Router](/cnc/shopsabre-23/)
+
+| Task | Interval |
+|---|---|
+| Vacuum spoilboard + rails | Every session |
+| Surface spoilboard | When cutting depth varies |
+| Check collet and endmill wear | Every session |
+
+### [HP DesignJet T630 Plotter](/graphics/hp-t630-plotter/)
+
+| Task | Interval |
+|---|---|
+| Run printhead alignment | If banding appears |
+| Check ink levels before large prints | Every session |
+
+### [Curing Oven](/finishing/curing-oven/)
+
+| Task | Interval |
+|---|---|
+| Verify PID temp vs. reference thermometer | Monthly |
+| Inspect door seal | Monthly |
+
+### [Bambu Lab Fleet](/3d-printing/bambu-fleet/)
+
+| Task | Interval |
+|---|---|
+| Wipe plates with 90%+ IPA | Every few prints |
+| Clean/replace nozzle wiper pad | Monthly |
+| Run full calibration (lidar + vibration) | After nozzle changes |
+
+### [Prusa Mini+ Farm](/3d-printing/prusa-farm/)
+
+| Task | Interval |
+|---|---|
+| Wash sheets with dish soap when adhesion drops | As needed |
+| Check Live-Z after sheet swaps | Per sheet change |
+
+## Reporting & logging
+
+Maintenance only works if problems get written down where someone will see them:
+
+- **Found an issue?** Report it in the team's Slack (the shop channel) or tell the shop captain directly — same day, while you remember the details.
+- **Machine unsafe or broken?** Power it down, put a clearly-written "DO NOT USE" note on it, and then report it. Never leave a fault for the next person to discover the hard way.
+- **Completed a weekly/monthly task?** Say so in the same channel so it isn't done twice — or missed entirely because everyone assumed someone else did it.
+- Batteries that won't charge, tools that are dull or rounded, and consumables running low all count as reports too — see [flagging low stock](/inventory/consumables/).
+
+## Related pages
+
+- [Consumables Ledger](/inventory/consumables/) — prices, reorder links, and bin locations for everything on these lists
+- [Emergency Protocols](/safety/emergency/) — what to do when maintenance didn't happen in time
+- [Primary Toolboxes](/storage/toolboxes/) — where "back in its labeled drawer" points

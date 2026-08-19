@@ -1,8 +1,97 @@
 ---
 title: "Arbor Press & Broaching"
-description: "Pressing bearings and broaching hex bores."
+description: "Pressing bearings into printed and machined parts, and cutting keyways and hex bores with the broach set."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+
+The arbor press is the lab's controlled-force tool: a long lever, a rack-and-pinion ram, and your full attention. We use it for two jobs — **pressing bearings** into printed and machined parts, and **broaching** keyways and hex profiles through bored holes. Everything it does could be faked with a hammer, and everything it does is ruined by one.
+
+<MachineSOP
+  specs={{
+    'Type': 'Manual arbor press',
+    'Uses': 'Bearing pressing, keyway broaching, hex broaching, pin pressing',
+    'Table': 'Rotating slotted plate',
+    'Force Feel': 'Everything by hand — if it fights you, stop',
+  }}
+  ppe={['glasses', 'closed-shoes']}
+  training="Mentor demo before first use; mentor present for your first broach."
+/>
+
+<LabGalleryImage
+  src="arbor-press.jpg"
+  alt="Arbor press on the workbench with its slotted table plates removed"
+  caption="The arbor press on the workbench. The slotted table plates rotate to open a clearance hole under the ram — put them back after cleaning or broaching."
+/>
+
+## Safety
+
+<SafetyWarning type="critical" title="Never hammer. Never extend the lever.">
+If a part won't press with steady one-arm force on the stock handle, something is misaligned, undersized, or wrong — hammering on the ram or slipping a pipe over the lever turns "stuck" into "shattered." Broaches are hardened and brittle: they don't bend, they explode. Stop and get a mentor.
+</SafetyWarning>
+
+- Keep fingers out from under the ram and never between the part and the table. The press doesn't know the difference between a bearing and a fingertip.
+- Support the part flat and square on the table plates; a tilted part shoots sideways under load.
+- Eye protection on — a snapping broach or spring-loaded part throws hardened fragments.
+- Pressing bearings, no gloves needed; see [PPE & the glove policy](/safety/gloves-and-ppe/).
+
+## Pressing Bearings
+
+1. **Check the fit first.** The bearing should start into the bore by hand for the first bit. If you can't start it at all, the bore is undersized — fix the part (re-bore, or reprint with adjusted tolerance), don't force it.
+2. **Press only on the race that's being fitted.** Bearing into a housing: press the **outer race**. Bearing onto a shaft: press the **inner race**. Pressing through the balls brinells the races and kills the bearing quietly — it'll feel gritty in a month.
+3. Use a flat pressing plate, a socket, or a machined spacer that contacts the correct race evenly all the way around. Never press on the seal or shield.
+4. Align the bearing square to the bore, take up the slack gently, and check it's starting straight before applying force.
+5. Press with one smooth, steady stroke until it seats. It should feel firm and even — spikes in force mean it's cocked. Back it out and restart rather than powering through.
+6. **Printed parts:** plastic bores flex and relax. Design bores for the press fit your filament actually holds (see [print settings](/3d-printing/print-settings/)), press slowly, and let heat-sensitive plastics (PLA especially) cool between attempts. If the boss cracks, the wall was too thin — redesign, don't glue.
+
+## Broaching Keyways & Hex Bores
+
+The keyway broach set — broaches in a wooden box, plus bushings and shims in tubes — lives in the machine-shop drawer along with hand reamers.
+
+<LabGalleryImage
+  src="broach-set-drawer.jpg"
+  alt="Drawer with keyway broach set in a wooden box, bushings in tubes, and hand reamers"
+  caption="The broach set drawer: keyway broaches, guide bushings, and hand reamers. Count the shims back in when you're done."
+/>
+
+1. **Bore first, broach second.** Drill/bore or ream the hole to the exact size the broach chart calls for — usually done on the [lathe](/forming/lathes/) or [drill press](/cutting/drill-press-shear/).
+2. Pick the **matching guide bushing** for the hole diameter and broach size. The bushing keeps the broach square — never freehand a broach through a bare hole.
+3. Rotate the press table so a clearance slot is under the ram — the broach and chips must have somewhere to exit.
+4. Oil the broach with cutting oil (both faces), insert it through the bushing, and check it sits square before loading.
+5. Press through with one **smooth, continuous stroke** — steady force, no jerking, no stopping mid-cut if you can avoid it. The ram should stay square over the broach the whole stroke.
+6. For deeper keyways, add the supplied **shim** behind the broach and take a second pass. Passes are shallow by design; skipping a shim step is how broaches snap.
+7. Clear chips from the broach teeth with a brush, re-oil between passes, and wipe the broach clean before it goes back in its slot in the box.
+
+**Hex broaching** works the same way with hex broaches and bushings: round bore to the chart size, bushing, oil, steady stroke. For FRC hex bores in aluminum hubs, chamfer the entry edge first — it helps the broach start square.
+
+## Alignment — the Whole Game
+
+- Ram, tool, part, and table opening in one straight line. Eyeball it from two sides before loading force.
+- Take up slack slowly and *feel* the first bit of engagement. Anything crooked reveals itself in the first eighth inch — that's when it's still fixable.
+- Force rising smoothly = cutting/pressing. Force spiking = binding. Back off, realign.
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Press"
+  items={[
+    'Safety glasses on',
+    'Bore measured and matched to bearing or broach chart size',
+    'Correct bushing / pressing adapter selected',
+    'Table slot or clearance hole positioned under the ram',
+    'Part flat, square, and supported on the table',
+    'Broach oiled; shims counted and staged in order',
+    'Alignment checked from two directions',
+  ]}
+/>
+
+## Cleanup
+
+- Brush chips off the table, sweep the slot openings, and re-seat the table plates.
+- Wipe broaches and bushings, oil lightly, and return every piece to the wooden box — a missing shim strands the whole set.
+- Return pressing adapters and sockets to their drawers.
+
+**Related pages:** [Lathes & Mill/Drill](/forming/lathes/) for boring to broach size · [Drill Press & Bench Shear](/cutting/drill-press-shear/) · [PPE & the glove policy](/safety/gloves-and-ppe/)

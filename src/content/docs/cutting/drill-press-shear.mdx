@@ -1,8 +1,123 @@
 ---
 title: "Drill Press & Bench Shear"
-description: "Drilling SOP and sheet shearing."
+description: "Porter Cable floor drill press: chuck key discipline, clamping, speeds, and peck drilling — plus the Klutch bench shear for sheet and plate."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+
+Two bench-side essentials on one page. The **Porter Cable floor drill press** (by the machine shop doorway, next to the Titan) is how holes get drilled straight, on location, and without drama. The **Klutch lever-action bench shear** on the butcher-block workbench slices sheet and small plate with no chips, no heat, and no noise — when it's used right.
+
+<MachineSOP
+  specs={{
+    'Drill Press': 'Porter Cable floor-standing',
+    'Speed Change': 'Belt/pulley — match RPM to bit + material',
+    'Workholding': 'Drill-press vises + clamps (required)',
+    'Shear': 'Klutch lever-action bench shear',
+    'Shear Rule': 'One smooth stroke, fingers clear',
+  }}
+  ppe={['glasses', 'no-gloves', 'tie-hair', 'closed-shoes']}
+  training="Mentor demo + sign-off. Large bits (over 3/8 in) and hole saws are mentor-supervised."
+/>
+
+<LabGalleryImage
+  src="drill-press.jpg"
+  alt="Porter Cable floor-standing drill press next to the Titan press brake"
+  caption="The Porter Cable floor drill press by the machine shop doorway."
+/>
+
+## Drill Press
+
+### Safety
+
+<SafetyWarning type="critical" title="Chuck key discipline — same rule as the lathe">
+The chuck key goes in your hand, into the chuck, tightens the bit, and comes straight back out. It never rests in the chuck, not even while you reposition the part. A key launched off a spinning chuck is a genuine projectile.
+</SafetyWarning>
+
+<SafetyWarning type="critical" title="Clamp or vise the work — the helicopter rule">
+The drill press's signature injury is the spinning part: the bit grabs at breakthrough, the part becomes a propeller, and hands holding "just a small piece" get sliced. **Every part is held in a drill-press vise or clamped to the table.** Small green and larger vises live on the workbench and in the red toolbox drawer with the V-block. Sheet gets a clamp AND a sacrificial wood backer.
+</SafetyWarning>
+
+- No gloves, hair tied, sleeves secured — this is rotating machinery. See [PPE & the glove policy](/safety/gloves-and-ppe/).
+- Clear chips with a brush, spindle stopped. Long steel strings get broken with a chip hook, not fingers.
+- Align the table's center hole (or a backer board) under the bit so you don't drill the table.
+
+<LabGalleryImage
+  src="red-toolbox-drill-vise-drawer.jpg"
+  alt="Red toolbox drawer with drill-press vise, V-block, and layout tools"
+  caption="Drill-press vise, V-block (for round stock), and layout tools in the red toolbox. The V-block is how you drill round tube without it rolling."
+/>
+
+### Speeds by Bit Size & Material
+
+Rule of thumb: **RPM ≈ (4 × SFM) ÷ bit diameter in inches**, with roughly 200–300 SFM for aluminum and ~80–100 SFM for mild steel with standard HSS bits. In practice:
+
+| Bit diameter | Aluminum | Mild steel |
+| --- | --- | --- |
+| 1/8 in | ~3000 RPM | ~2500 RPM |
+| 1/4 in | ~3000 RPM | ~1200 RPM |
+| 3/8 in | ~2400 RPM | ~800 RPM |
+| 1/2 in | ~1800 RPM | ~600 RPM |
+| Hole saws / large bits | Slow — mentor setup | Slow — mentor setup |
+
+Small bits fast, big bits slow; steel slower than aluminum; cutting oil in steel, dry or WD-40 in aluminum. Speed changes are belt/pulley moves — unplug first, and check the RPM chart inside the pulley cover.
+
+### Drilling Procedure
+
+1. **Layout and center punch first.** A punched dimple keeps the bit from wandering; for precise holes, start with a center/spotting drill.
+2. Clamp the work (vise, clamps, V-block for round stock) with a backer under the exit side.
+3. Set RPM for bit and material; chuck the bit deep and straight; **key out**.
+4. Bring the bit to the punch mark with the quill, confirm alignment, then drill with steady feed — continuous chips, not dust (dull/slow) and not squealing (too fast).
+5. **Peck drill** anything deeper than ~2 bit diameters: drill, retract to clear chips, repeat. Oil each peck in steel.
+6. Ease up at breakthrough — that's when bits grab. Let the quill spring back, spindle off, then unclamp.
+7. Deburr both sides — countersink twist by hand or the [deburring wheel](/cutting/sanders-grinders/).
+
+## Klutch Bench Shear
+
+<LabGalleryImage
+  src="klutch-shear.jpg"
+  alt="Klutch lever-action bench shear on the workbench with drill-press vises beside it"
+  caption="The Klutch lever-action shear on the workbench. Chip-free, heat-free cuts in sheet and small plate."
+/>
+
+### Rules
+
+<SafetyWarning type="critical" title="Fingers never in the blade path">
+The shear cuts anything that crosses the blade line — steel plate or fingers, it doesn't distinguish. Both hands position the stock **beside** the blade path, and they stay there while the lever comes down. Never hold the offcut side near the blade, and never let a second person's hands near the shear while you're on the lever.
+</SafetyWarning>
+
+- **Capacity:** stay within the rating stamped on the shear for mild steel, and remember ratings drop for stainless and rise for aluminum. Hardened stock never — it chips the blades. Not sure? That's a mentor question.
+- **One smooth stroke.** Position, hold, and pull the lever through in one continuous motion. Half-strokes and re-bites leave stepped, burred edges and can jam the blade; if the lever won't move with reasonable force, the stock is over capacity — stop.
+- Mind the lever's swing arc — it comes down with force and returns with spring. Keep bystanders out of the arc.
+- Sheared edges are sharp and slightly rolled: deburr before handling further.
+
+### Shearing Procedure
+
+1. Mark the cut line and check the material against the shear's capacity rating.
+2. Feed the stock in square, line the mark up with the blade, and hold it flat against the bed/fence with both hands clear of the blade line.
+3. One smooth, full stroke of the lever.
+4. Return the lever gently to rest (don't let it snap back), remove both pieces, and deburr the cut edges.
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Drill or Shear"
+  items={[
+    'Drill: work clamped or in a vise — never hand-held',
+    'Drill: hole center-punched, backer in place, table hole aligned',
+    'Drill: RPM set for bit size + material, chuck key OUT',
+    'Shear: material within the stamped capacity, not hardened',
+    'Shear: hands and bystanders clear of blade path and lever arc',
+    'Glasses on, no gloves, hair tied',
+  ]}
+/>
+
+## Cleanup & Maintenance
+
+- Drill press: spindle off, brush chips from table and vise, bits back in the index, key on its hook.
+- Shear: lever at rest, offcuts picked up (sheared slivers are ankle-finders on the floor).
+- Report dull bits, wobbling chucks, or nicked shear blades — blade and belt checks are on the [maintenance schedule](/maintenance/schedules/).
+
+**Related pages:** [Lathes & Mill/Drill](/forming/lathes/) for precision holes · [Box & Pan Brake](/forming/box-pan-brake/) for bending sheared blanks · [Sanders & Grinders](/cutting/sanders-grinders/) · [PPE & the glove policy](/safety/gloves-and-ppe/)

@@ -1,8 +1,118 @@
 ---
 title: "Smart Bluetooth Heat Press"
-description: "App and manual temp/timer control, HTV and Infusible Ink settings."
+description: "AST&T 12×10 smart press: app and manual control, starting temps and times for HTV, sublimation, and Infusible Ink, plus burn-safety rules."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import ConsumablesTable from '../../../components/ConsumablesTable.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+
+The AST&T 12" × 10" Smart Bluetooth heat press is how team-shirt designs actually get onto shirts. It presses heat-transfer vinyl (HTV) cut on the [Cricut Maker 4](/graphics/cricut-maker-4/), plus sublimation prints and Cricut Infusible Ink, up to 400 °F. Control it from the **AST&T Heat** phone app with material presets, or straight from the buttons on the press — the app is convenient, not required.
+
+<MachineSOP
+  specs={{
+    'Platen': '12 × 10 in, ceramic-coated',
+    'Max Temp': '400 °F / 205 °C',
+    'Control': 'AST&T Heat app + manual buttons',
+    'Auto-Shutoff': '10 min idle',
+    'Base': 'Insulated safety base',
+    'Handles': 'HTV, sublimation, Infusible Ink',
+    'Warranty': '3-year'
+  }}
+  ppe={['heat-gloves']}
+  training="Green — anyone can press after a burn-safety walkthrough from a graphics lead. Never leave the press hot and unattended."
+/>
+
+<ToolProcurementCard tool="astt-heat-press" />
+
+## Safety
+
+<SafetyWarning type="critical" title="This is a 400 °F flat iron. Treat it like one.">
+The platen holds skin-burning heat long after you unplug it. **Stay with the press the entire time it's hot.** The 10-minute auto-shutoff is a backup for a mistake, not permission to walk away. The press lives on its insulated base whenever it isn't on a garment, and it goes back in the cabinet only after it's cool to the touch.
+</SafetyWarning>
+
+- **Do** keep the press on its insulated base on a sturdy, heat-safe surface — never on plastic, paper piles, or the edge of a bench.
+- **Do** plug it directly into a wall outlet. High-wattage heaters don't belong on power strips.
+- **Do** keep the cord routed away from the platen and out of walking paths.
+- **Do** warn people nearby that the press is hot — it looks exactly the same at 70 °F and 385 °F.
+- **Don't** touch the platen, ever, to "check if it's hot." Read the display.
+- **Don't** press anything with your fingers under or near the platen edge — reposition the garment only with the press lifted and set on its base.
+- **Don't** store it, bag it, or stack anything on it until it has fully cooled.
+
+## Software & Workflow
+
+### Pairing the AST&T Heat app
+
+1. Install the **AST&T Heat** app on your phone and turn on Bluetooth.
+2. Power on the press and let the app discover it.
+3. Pick a material preset in the app (or set custom temp/time) and send it to the press. The app also shows live temperature so you know when it's ready.
+
+### Manual control (no app needed)
+
+The buttons on the press set everything the app can: tap the temperature and time controls to dial in your settings, then wait for the display to show the target temp. If Bluetooth is being difficult five minutes before shirts need pressing, skip it — manual mode is fully capable.
+
+### Settings — starting points, not gospel
+
+These are **starting points**. Always check the instructions for your specific vinyl or blank, and test on scrap or an inside hem first.
+
+| Material | Temp | Time | Notes |
+| --- | --- | --- | --- |
+| HTV (Siser EasyWeed) | 305 °F | 15 s | Medium pressure. EasyWeed is hot-peel. |
+| Sublimation prints | 385 °F | 60 s | Polyester or high-poly blends only. |
+| Cricut Infusible Ink | 385 °F | 40 s | Follow Cricut's sheet layup exactly. |
+
+## Consumables
+
+HTV rolls are shared between this press and the Cricut — cut there, press here. Blank shirts live in the storage room (Gildan boxes).
+
+<ConsumablesTable machine="astt-heat-press" />
+
+Use a protective cover sheet (Teflon sheet or plain parchment paper) between the platen and your design on **every** press. It keeps adhesive and stray ink off the platen — a dirty platen ruins every job after it.
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist title="Before You Press" items={[
+  'Press is on its insulated base, on a sturdy heat-safe surface, plugged into a wall outlet',
+  'Cord routed away from the platen and foot traffic',
+  'Temp and time set for the material (see table) — display shows target temp reached',
+  'Garment pre-pressed 3–5 seconds to drive out moisture and wrinkles',
+  'Design placed carrier-side up and reading correctly (it was cut mirrored)',
+  'Cover sheet (Teflon/parchment) over the design',
+  'You have time to stay with the press until it is cool — if not, do not start'
+]} />
+
+## Operating Instructions
+
+1. Set temp and time (app or buttons) and let the press reach temperature on its base.
+2. Dress the shirt flat on the pressing area, print side up. Smooth out seams and wrinkles.
+3. **Pre-press the blank for 3–5 seconds** and lift. This drives out moisture and flattens the fibers — skipping it is the most common cause of transfers that peel in the wash.
+4. Place your weeded HTV design carrier-side up, exactly where you want it. Remember: the design should read correctly now; mirroring happened at the [cutting stage](/graphics/cricut-maker-4/).
+5. Lay the cover sheet over everything.
+6. Set the press down on the design and hold **firm, even pressure with both hands** for the full time. Don't rock it, don't peek.
+7. Lift the press straight up and return it to the insulated base.
+8. Peel the carrier per the vinyl's spec — Siser EasyWeed peels hot; other vinyls may want a warm or cold peel. When in doubt, wait 10 seconds.
+9. Multi-color designs: press each layer just long enough to tack (a few seconds), and give the final layer the full time. Keep carriers off already-pressed layers or cover them with parchment.
+
+**Sublimation and Infusible Ink extras:** lint-roll the blank first, and put parchment or blowout paper **inside** the shirt so ink can't ghost through to the back. Both need polyester or high-poly blanks — sublimation ink physically will not bond to cotton.
+
+## Resources
+
+<TutorialLink title="AST&T Smart Heat Press (ARTeefy HP5) product page" url="https://arteefy.com/products/smart-heat-press-hp5" source="website" description="Manufacturer page for the press — same hardware as our AST&T unit." />
+
+<TutorialLink title="AST&T Heat Press 12×10 Review (2025)" url="https://www.youtube.com/watch?v=u71bkDoDfiA" source="youtube" description="Hands-on look at the press, the app, and real pressing results." />
+
+<TutorialLink title="Heat Press by AST&T Review" url="https://www.youtube.com/watch?v=jFKBliS-zZg" source="youtube" description="Second opinion covering setup and everyday use." />
+
+<TutorialLink title="HTVRONT User Guides (HTV reference)" url="https://htvront.com/pages/user-guides" source="knowledge-base" description="There is no online manual for this press; these HTV/press guides are a solid substitute reference for materials and settings." />
+
+## Cleanup & Maintenance
+
+- Power off and leave the press on its insulated base until the platen is **cool to the touch** — then it can go back in the cabinet.
+- Wipe the (cold) platen with a soft cloth if any adhesive or ink transferred. Never scrape it with metal; the ceramic coating is the machine.
+- Coil the cord loosely; don't wrap it tight around the press while warm.
+- Report scorched platens, flaky temperature readings, or a dead app connection on the [Maintenance Schedules](/maintenance/schedules/) page.
+
+Next step in the chain: full apparel recipes are on [Vinyl & Sticker Finishing](/graphics/vinyl-and-stickers/#apparel-heat-transfers).

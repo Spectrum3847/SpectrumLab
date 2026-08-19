@@ -1,8 +1,96 @@
 ---
 title: "Threading & Riveting"
-description: "Taps and dies, hand rivet guns, and rivnut tools."
+description: "Taps and dies, the servo tapping arm, hand rivet guns, and rivnut tools — cut clean threads and set fasteners that stay."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import DrawerLayoutMap from '../../../components/DrawerLayoutMap.astro';
+import ConsumableCard from '../../../components/ConsumableCard.astro';
+
+When a bolt can't reach a nut, you make the threads yourself — tap them into the part, or set a rivnut. And when you don't need threads at all, a rivet is lighter and faster. The threading and riveting tools live in the blue toolbox next to the WAZER.
+
+## Where they live
+
+<DrawerLayoutMap unit="blue-toolbox" />
+
+## Taps & dies
+
+Taps cut internal threads in a drilled hole; dies cut external threads on a rod. Ninety percent of what you'll tap on this team is **10-32** and **1/4-20** in aluminum.
+
+### Tap drill sizes
+
+The hole you drill before tapping must be the **tap drill** size — too small and the tap seizes and snaps, too big and the threads are shallow and weak. Laminated tap/drill charts live in the top drawer of the red toolbox — check the chart, don't guess. The two you'll use constantly: **#21 drill for 10-32** and **#7 drill for 1/4-20**.
+
+<LabGalleryImage
+  src="red-toolbox-gloves-drawer.jpg"
+  alt="Red toolbox top drawer with glove boxes, safety glasses, and tap/drill charts"
+  caption="Tap/drill charts live in the red toolbox top drawer, along with gloves and safety glasses."
+/>
+
+### Hand tapping, step by step
+
+1. Drill the tap-drill-size hole and deburr it (a slight chamfer helps the tap start).
+2. Mount the tap in a tap handle — never pliers or a drill.
+3. Add **cutting fluid**. Aluminum taps dry are how taps break; a drop or two makes the whole job smoother.
+4. Start the tap **dead straight**. Check it against a square in two directions after the first couple of turns — a crooked start can't be corrected later, only redrilled.
+5. Advance about half a turn, then **back off a quarter turn to break the chip**. Feel the little snap as the chip shears. Repeat: half a turn forward, quarter back, all the way through.
+6. If it suddenly gets hard to turn, **stop**. Back out, clear chips, re-lubricate. Forcing it is how taps snap.
+7. Back the tap all the way out, blow the chips clear, and test with a screw.
+
+<SafetyWarning type="warning" title="Broken taps are a big deal">
+Taps are hardened and brittle — snap one off in a hole and it is harder than any drill bit you can throw at it. The part is usually scrap. The fixes are all prevention: right tap drill, cutting fluid, straight start, and backing off to break chips. If a tap breaks anyway, take it to a mentor — do not attack it with a drill.
+</SafetyWarning>
+
+Dies work the same way in reverse: chamfer the rod end, start the die square in its stock, cut with the same forward-and-back rhythm and plenty of fluid.
+
+### The servo tapping arm
+
+For batch tapping, the shop has a folding-arm electric tapping machine mounted on the workbench near the Evolution chop saw. It holds the tap perfectly vertical, drives it at controlled speed with a torque clutch, and reverses out — no crooked starts, and far fewer broken taps than hand tapping. Get trained on it by a mentor before first use, and still use cutting fluid.
+
+<LabGalleryImage
+  src="servo-tapping-arm.jpg"
+  alt="Folding-arm servo electric tapping machine mounted on the workbench"
+  caption="The servo tapping arm — the fast, straight way to tap a batch of holes. Mentor training required before solo use."
+/>
+
+## Hand rivet guns
+
+Blind (pop) rivets join sheet and tube fast, light, and permanently — no access to the back side needed. The manual rivet guns live in the blue toolbox riveting drawer; for high-volume riveting use the [M12 Riveting Tools](/portable-power/m12-riveting/).
+
+1. Drill the hole to match the rivet diameter (1/8" rivet, 1/8" hole — a #30 drill gives a good fit).
+2. Match the rivet's **grip range** to the total stack thickness you're joining.
+3. Insert the rivet mandrel into the gun's nosepiece, rivet body through the work.
+4. Hold the parts clamped tight together and squeeze until the mandrel snaps off.
+5. Spent mandrels go in the trash, not on the floor — they're sharp and they find tires and feet.
+
+<ConsumableCard id="blind-rivets-18" />
+
+## Rivnut tools
+
+Rivnuts (rivet nuts) give you real machine threads in thin wall tube or sheet where a tapped hole would strip — the go-to for bolting onto box tubing. The rivetnuts drawer has the red-handled manual installation tools and bags of aluminum and brass rivnuts sorted by size.
+
+<LabGalleryImage
+  src="rivnut-tools-drawer.jpg"
+  alt="Rivetnuts drawer with red-handled rivnut tools and bags of aluminum and brass rivet nuts"
+  caption="The rivetnuts drawer: red-handled installation tools plus aluminum and brass rivnuts sorted in bins."
+/>
+
+### Setting a rivnut
+
+1. Drill the hole to the size the rivnut calls for (check the packaging or the tap/drill chart area — it's larger than the thread size).
+2. Thread the rivnut fully onto the tool's mandrel, flange against the nosepiece.
+3. Insert into the hole, hold the tool square to the surface, and squeeze the handles. The body collapses and mushrooms against the back side.
+4. Compress until snug — then **stop**. Over-compressing strips the rivnut's internal threads or spins it loose in the hole.
+5. Unthread the mandrel and test with a bolt.
+
+A rivnut that spins in its hole is a miserable thing to remove — square hole edges, the right hole size, and firm (not maximal) compression prevent it. For repetitive installs there are also drill-attachment rivnut mandrels that spin the rivnut set with a drill — use a clutch-limited drill on low, because an impact driver will destroy the threads instantly.
+
+**Aluminum vs. brass:** aluminum rivnuts are the lightweight default for robot structures; brass ones are stronger in the threads and less prone to spinning out — use them where a bolt gets removed often.
+
+## Related pages
+
+- [Layout & Measuring](/hand-tools/layout-measuring/) — punch and measure before you drill
+- [Drill Press & Bench Shear](/cutting/drill-press-shear/) — drilling the holes all of this starts with
+- [M12 Riveting Tools](/portable-power/m12-riveting/) — powered riveting for big jobs
+- [Fastener Driving](/hand-tools/fastener-driving/) — driving the screws that go into your new threads

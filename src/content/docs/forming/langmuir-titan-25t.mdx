@@ -1,8 +1,173 @@
 ---
 title: "Langmuir Titan 25T Press Brake"
-description: "Die selection, tonnage limits, backgauge programming, and safety."
+description: "BendControl workflow, die selection, tonnage limits, backgauge programming, and pinch-point safety for the 25-ton CNC press brake."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+
+The Titan 25T is our CNC press brake — the machine that turns flat sheet from the [WAZER](/waterjet/wazer-pro/) and [xTool MetalFab](/lasers/xtool-metalfab/) into brackets, gussets, and bent-sheet-metal robot structure. Dual hydraulic rams with servo sync and glass-scale encoders hold the ram parallel to about two ten-thousandths of an inch, so bends repeat part after part. It is also the single most dangerous machine in the lab if you treat it casually: 25 tons does not notice a hand.
+
+<MachineSOP
+  specs={{
+    'Capacity': '25 tons',
+    'Bend Width': '33 in max',
+    'Ram Drive': 'Dual hydraulic + AC servo sync',
+    'Ram Accuracy': '±0.0002 in (glass scales)',
+    'Control': 'LCD touchscreen — BendControl',
+    'Backgauge': '2-axis CNC',
+    'Activation': 'Foot pedal',
+  }}
+  ppe={['glasses', 'closed-shoes', 'tie-hair']}
+  training="Mentor sign-off required. First bends are always mentor-supervised, and a mentor approves every new material/thickness combination."
+/>
+
+<ToolProcurementCard tool="langmuir-titan-25t" />
+
+<LabGalleryImage
+  src="langmuir-titan-press-brake.jpg"
+  alt="Langmuir Titan 25T CNC press brake with touchscreen control and tooling dies stored on the shelf below"
+  caption="The Titan 25T by the machine shop doorway. BendControl touchscreen on the right, punch and die sets stored on the shelf below the machine."
+/>
+
+## Safety
+
+<SafetyWarning type="critical" title="Pinch point — hands NEVER between the ram and the die">
+Nothing that belongs to you ever goes between the punch and the die. Hold the sheet by its outer edges, well away from the bend line. If a part is too small to hold safely at least 6 inches from the die, it is too small to bend by hand — ask a mentor about fixturing or bend it before cutting it free from a larger sheet.
+</SafetyWarning>
+
+<SafetyWarning type="critical" title="One operator, one pedal">
+Exactly one person runs the brake. The person holding the sheet is the person on the foot pedal — never split those jobs between two people. Keep your foot completely off the pedal until the sheet is positioned and your hands are clear. Everyone else stands back from the machine.
+</SafetyWarning>
+
+<SafetyWarning type="warning" title="The sheet whips upward">
+During the bend, the flange on your side rotates up — fast, and with force. Never lean over the workpiece, and support wide sheets from the sides, not from underneath the area that will rise.
+</SafetyWarning>
+
+- Never exceed the machine's 25-ton rating or the rating of the installed tooling. Do the tonnage math **before** you bend (table below).
+- Air bending only by default. Bottoming or coining multiplies required tonnage 3–5× and is **forbidden without a mentor**.
+- No gloves while operating — you need full feel and dexterity on the sheet. See [PPE & the glove policy](/safety/gloves-and-ppe/).
+- Deburred edges only. Sheared and waterjet edges are sharp; deburr before you handle a part at the brake.
+- If the machine does anything unexpected — noise, drift, error on screen — release the pedal, step back, and get a mentor.
+
+## Tonnage Limits — Do the Math First
+
+The Titan develops 25 tons across a 33 in (2.75 ft) bed. Required force is quoted in **tons per foot of bend length**. The rule-of-thumb values below assume **air bending with a V-die opening about 8× material thickness**:
+
+| Thickness | Mild steel (tons/ft) | 5052 aluminum (tons/ft) | Max bend length on our 25T |
+| --- | --- | --- | --- |
+| 0.040 in (18 ga steel) | ~2.5 | ~1 | Full bed |
+| 0.060 in (16 ga steel) | ~4 | ~1.5 | Full bed |
+| 0.090 in (13 ga steel) | ~6 | ~2.5 | Full bed |
+| 0.125 in (1/8 in) | ~9 | ~3.5 | Steel: ~33 in — **at the limit** |
+| 0.187 in (3/16 in) | ~14 | ~6 | Steel: ~21 in |
+| 0.250 in (1/4 in) | ~19 | ~8 | Steel: ~15 in |
+
+How to use it: **tonnage = (tons/ft) × (bend length in feet)**. A 10 in bend in 1/8 in steel needs roughly 9 × 0.83 ≈ 7.5 tons — easy. A full-width bend in 1/8 in steel is right at the machine's rating — that is a mentor conversation, not a solo job.
+
+<SafetyWarning type="critical" title="Hard rules on tonnage">
+Never exceed the machine rating or the tooling rating — whichever is lower. The table is approximate: a smaller V-die, harder alloy, or bottoming instead of air bending all raise the real number. **If you are not sure, you ask a mentor. Every time.** 6061-T6 aluminum needs roughly steel-level tonnage and likes to crack on tight radii — mentor approval required before bending 6061.
+</SafetyWarning>
+
+**Air bending vs bottoming:** in air bending the punch presses the sheet partway into the V and the angle is set by ram depth — low tonnage, any angle from one die set, slight springback you compensate for. Bottoming forces the sheet fully into the die to set the angle — far more tonnage, and the only mode where the table above stops applying. We air bend.
+
+## Die Selection & Tooling
+
+Punch and die sets live on the shelf **below the machine** (see photo above). Before bending:
+
+1. Pick a V-die opening about **8× the material thickness** (e.g., 1 in V for 1/8 in sheet). Wider V = less tonnage but a larger inside radius and wider minimum flange.
+2. Check the minimum flange length for the die — roughly 0.7× the V opening. A flange shorter than that falls into the V instead of bending.
+3. Wipe dies clean before installing, seat the punch and die fully, and snug the clamps evenly across the width.
+4. Return tooling to the shelf below the brake when done — lightly oiled, never left loose on the bed.
+
+## Software & Workflow — BendControl
+
+1. Power on the brake and let the touchscreen boot into **BendControl**.
+2. **Home the rams** when prompted so the glass scales have a reference.
+3. Select the installed **punch and die** in the tooling menu — the tonnage and depth math is only right if this matches reality.
+4. Enter **material type, thickness, bend angle, and bend length**. Sanity-check the tonnage BendControl reports against the table above.
+5. Set the **backgauge position** for your flange (next section).
+6. Bend a **scrap piece of the same material and thickness** first. Measure the angle, adjust for springback (air-bent parts spring back a degree or two), and re-run.
+7. Run production parts, same orientation and same gauge face every time.
+
+## Backgauge Programming
+
+The 2-axis CNC backgauge sets your flange length — slide the sheet back until it touches the gauge fingers and the bend line lands under the punch.
+
+- Program the backgauge distance as the **flange length measured to the bend line**, per your CAD flat pattern. Trust the flat pattern from your CAD sheet-metal tools over hand math.
+- For multi-bend parts, **plan the bend sequence before you start**: earlier flanges must not collide with the punch, the backgauge, or the machine frame on later bends. Bend order usually goes shortest/innermost flange last. When in doubt, fold a paper model.
+- Keep fingers and flanges away from the gauge as the ram comes down — the sheet rotates during the bend and can drag against the gauge fingers.
+- After programming, dry-run the positions with the ram parked before putting metal in.
+
+## Consumables & Tooling
+
+The brake itself has no true consumables — the punch and die sets below the machine are the investment. Treat them accordingly: no bending over scale, weld spatter, or hardened material, and report any nicked or galled tooling to a mentor. Replacement and additional tooling comes from Langmuir (see procurement card above).
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Bend"
+  items={[
+    'Mentor sign-off current for this material and thickness',
+    'Tonnage computed: (tons/ft × bend length in ft) is under 25 tons and under the tooling rating',
+    'Correct punch and V-die installed, clamped, and matched to what BendControl thinks is installed',
+    'Material verified: alloy, thickness, and burr-free edges',
+    'Backgauge position set and dry-checked against the flat pattern',
+    'Bend sequence planned — no flange will collide on later bends',
+    'Scrap test piece of the same material ready',
+    'One operator at the machine; bystanders clear; foot off the pedal until hands are clear',
+  ]}
+/>
+
+## Operating Instructions
+
+1. Complete the pre-flight checklist and BendControl setup above.
+2. Place the sheet on the die, slide it back against both backgauge fingers, and square it.
+3. Grip the sheet by its outer edges, hands at least 6 in from the die, arms out of the whip-up zone.
+4. Announce "bending" so nobody reaches in, then press the pedal smoothly and hold through the stroke.
+5. Release the pedal, let the ram retract fully, then remove the part.
+6. Measure the first part — angle and flange length — before running the rest.
+
+## Resources
+
+<TutorialLink
+  title="Titan 25T Quick Start Operating Manual (PDF)"
+  url="https://forum.langmuirsystems.com/uploads/short-url/zypmJaUfCvNX2UBHZYZVX7J6uy8.pdf"
+  source="pdf"
+  description="Langmuir's official operating manual — setup, BendControl reference, and tooling."
+/>
+
+<TutorialLink
+  title="Langmuir Titan 25T Support"
+  url="https://www.langmuirsystems.com/support/titan25t"
+  source="knowledge-base"
+  description="Official support articles, firmware, and troubleshooting."
+/>
+
+<TutorialLink
+  title="Meet the TITAN 25T CNC Press Brake"
+  url="https://www.youtube.com/watch?v=1jSOADbvwFw"
+  source="youtube"
+  description="Langmuir's overview of the machine and BendControl."
+/>
+
+<TutorialLink
+  title="Introducing TITAN 25T — A Compact CNC Press Brake"
+  url="https://www.youtube.com/watch?v=VVPVbvnAuqs"
+  source="youtube"
+  description="Feature walkthrough: dual-ram servo sync, backgauge, and tooling."
+/>
+
+## Cleanup & Maintenance
+
+- Park the ram, exit to the BendControl home screen, and power the machine off.
+- Return punch and die sets to the shelf below the brake, wiped down and lightly oiled.
+- Sweep offcuts and slugs from the bed and the floor around the pedal.
+- Report anything abnormal (hydraulic weeping, error messages, tooling damage) to a mentor and log it.
+- Periodic hydraulic and calibration checks are on the [maintenance schedule](/maintenance/schedules/).
+
+**Related pages:** [Box & Pan Brake](/forming/box-pan-brake/) for light-gauge manual bends · [Klutch bench shear](/cutting/drill-press-shear/) for trimming sheet before bending · [PPE & the glove policy](/safety/gloves-and-ppe/)

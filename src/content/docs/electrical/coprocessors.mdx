@@ -1,8 +1,68 @@
 ---
 title: "Coprocessors & SBCs"
-description: "Single-board computers and vision coprocessors."
+description: "Vision coprocessors for AprilTags: imaging SD cards, static IPs, and mounting and powering them so they survive a match."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+
+The roboRIO is busy running the robot, so vision runs somewhere else: a small single-board computer (SBC) on the robot processes camera frames — primarily **AprilTag detection with PhotonVision** for pose estimation and targeting — and sends results to the roboRIO over the network. This page is the practical checklist for setting one up; the deep documentation lives at WPILib and PhotonVision (links below).
+
+Vision hardware — boards, cameras, cables, and spare SD cards — lives in the **Vision bin on the Green Shelf** in the left closet.
+
+<LabGalleryImage src="left-closet-green-shelf-bins.jpg" alt="Green Shelf storage rack with bins labeled Vision and Power" caption="The Vision bin on the Green Shelf — coprocessors, cameras, and SD cards. Power conversion parts live in the Power bin beside it." />
+
+## What We Use Them For
+
+- **AprilTag localization:** cameras + PhotonVision give the robot field-relative pose for auto-alignment and odometry correction.
+- **Target/game-piece detection** when the season calls for it.
+- **Driver cameras** are the *low*-effort case — a coprocessor is overkill for a plain video feed, but often carries one anyway since it's there.
+
+## Imaging an SD Card
+
+Coprocessors boot from an SD card, and SD cards are the most common failure point. Treat them as disposable and keep spares imaged.
+
+1. Download the current **PhotonVision image for your specific board** from the PhotonVision docs/releases — images are board-specific.
+2. Flash it with Raspberry Pi Imager or balenaEtcher. Verify after write if the tool offers it.
+3. Use a **name-brand, high-endurance card**, 16GB+. Mystery cards corrupt at the worst time.
+4. **Label the card** (board + date) with the label maker, and image a spare while you're at it. A pre-imaged spare card in the pit turns a dead coprocessor into a two-minute fix.
+5. Power the board off cleanly before pulling a card — yanking a card under power corrupts it.
+
+## Network Setup
+
+Robot networking follows the WPILib convention — for team 3847 the robot network is `10.38.47.x`:
+
+- Radio: `10.38.47.1` · roboRIO: `10.38.47.2`
+- **Give each coprocessor a static IP** starting at `10.38.47.11` (`.12`, `.13` for additional units), subnet `255.255.255.0`. Set it in the PhotonVision web UI's networking settings.
+- Static beats mDNS (`photonvision.local`) at competition — mDNS discovery is flaky on the field; a static IP means the roboRIO and your dashboard always find the camera.
+- Plug the coprocessor into the radio's extra ethernet port or the robot's network switch. Configure the radio itself per the WPILib radio programming docs each season.
+- Bookmark the PhotonVision UI (`http://10.38.47.11:5800`) on the drive laptop.
+
+## Mounting & Power
+
+<SafetyWarning type="critical" title="Never power a coprocessor from the roboRIO USB port">
+The roboRIO's USB ports cannot supply the current an SBC pulls under vision load. The board will brown out mid-match — usually exactly when the code asks it for a pose. Power coprocessors from a dedicated regulated supply off the power distribution board.
+</SafetyWarning>
+
+- **Power:** use a **buck converter / regulated supply** rated comfortably above the board's peak draw (vision boards spike hard under load — budget 3A+ at 5V for small boards, and check your board's requirement). Feed it from a protected channel on the power distribution board or a dedicated regulator module. Solid crimped connections per the [wire prep page](/electrical/wire-prep-crimping/) — a vibrating power lead is a rebooting coprocessor.
+- **Bench-test first:** bring the board up on the [current-limited bench supply](/electrical/soldering-test-bench/) and watch its actual current draw before robot install.
+- **Mounting:** hard-mount with standoffs or a printed case, with airflow to the SoC. Add vibration isolation (rubber grommets, TPU mounts) — SD cards and vibration are enemies.
+- **Protect the SD card** physically; a card sticking out of a board edge on a robot will get sheared.
+- **Strain-relieve everything:** camera USB/CSI cables and power leads zip-tied so connectors carry no load. Locking USB or taped connectors for cameras.
+- Mount cameras rigidly — calibration is only as good as the camera's pose. Re-run PhotonVision calibration after any camera remount.
+
+## Resources
+
+<TutorialLink title="PhotonVision Documentation" url="https://docs.photonvision.org/en/latest/" source="knowledge-base" description="Installation images, hardware selection, calibration, and AprilTag pipelines." />
+
+<TutorialLink title="WPILib — AprilTag Introduction" url="https://docs.wpilib.org/en/stable/docs/software/vision-processing/apriltag/apriltag-intro.html" source="knowledge-base" description="What AprilTags are and how FRC robots use them for pose." />
+
+<TutorialLink title="WPILib — IP Configurations" url="https://docs.wpilib.org/en/stable/docs/networking/networking-introduction/ip-configurations.html" source="knowledge-base" description="The 10.TE.AM.x addressing scheme and static IP setup for coprocessors." />
+
+<TutorialLink title="WPILib Documentation" url="https://docs.wpilib.org/" source="website" description="Home for all FRC control system, networking, and radio configuration docs." />
+
+## Related Pages
+
+- [Wire Prep & Crimping](/electrical/wire-prep-crimping/) — clean power wiring for the buck converter.
+- [Soldering & Test Bench](/electrical/soldering-test-bench/) — bench-testing boards with a current limit before they touch the robot.

@@ -1,8 +1,132 @@
 ---
 title: "Horizontal & Vertical Bandsaws"
-description: "Blade speed, tensioning, and stock feed rates."
+description: "Horizontal bandsaw for stock cutoff, Grizzly G0555LANV vertical for curves, and the table-mounted Portaband: blade speeds, tensioning, and feed."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+
+Three bandsaws, three jobs. The **green horizontal bandsaw** (on casters, near the red toolbox and the aluminum stock rack) is the workhorse for cutting bar, tube, and extrusion to length — clamp the stock, drop the head, walk away-ish (you don't actually walk away). The **Grizzly G0555LANV 14 in vertical bandsaw** (by the Thunder Laser) cuts curves and profiles in aluminum, plastic, and wood. The **table-mounted Portaband** on the butcher-block workbench is the quick-trim station for small metal stock.
+
+<MachineSOP
+  specs={{
+    'Horizontal Saw': 'Stock cutoff — steel + aluminum',
+    'Vertical Saw': 'Grizzly G0555LANV, 14 in — curves',
+    'Portaband': 'Table-mounted — quick trims in metal',
+    'Feed': 'Let the blade cut — never force',
+  }}
+  ppe={['glasses', 'no-gloves', 'tie-hair', 'closed-shoes']}
+  training="Mentor demo + sign-off per saw. The horizontal saw's gravity feed setup is part of the sign-off."
+/>
+
+<LabGalleryImage
+  src="horizontal-bandsaw.jpg"
+  alt="Green horizontal metal-cutting bandsaw on casters next to the aluminum stock rack"
+  caption="The horizontal bandsaw lives on casters next to the rolling rack of aluminum stock — cut where the material is."
+/>
+
+## Safety
+
+<SafetyWarning type="critical" title="Fingers follow the line — never toward the blade">
+On the vertical saw and Portaband, plan every cut so your hands push **beside** the blade path, never in line with it. When a cut finishes, the resistance vanishes and your hand keeps moving. For small parts, keep a 2 in exclusion zone around the blade and use a push stick or pliers-grip on anything smaller than your palm.
+</SafetyWarning>
+
+- No gloves at any bandsaw — a blade that snags a glove pulls the hand in. See [PPE & the glove policy](/safety/gloves-and-ppe/).
+- Vertical saw: set the **upper guide about 1/4 in above the stock** — an exposed blade column is an injury waiting for a slip.
+- Horizontal saw: never reach across the blade while the head is cutting, and stay with the saw until the cut finishes and the head bottoms out.
+- Broken blade or blade comes off the wheels: power off, stand back, let everything stop, get a mentor. Don't open the wheel covers while anything moves.
+
+## Which Saw, Which Material
+
+| Job | Saw | Notes |
+| --- | --- | --- |
+| Tube/bar/extrusion to length | Horizontal | Clamp in the vise, gravity feed. |
+| Curves & profiles in aluminum sheet/plate | Vertical (G0555LANV) | Fine-tooth blade, slow feed. |
+| Curves in wood, plastic, polycarb | Vertical | Its home turf. |
+| Quick trims, one-off cuts in metal | Portaband | Slow blade speed — happy in steel or aluminum. |
+| **Steel on the vertical saw** | **No.** | The vertical runs wood-saw blade speeds — steel goes to the horizontal saw or Portaband. |
+
+## Blade Speed: Aluminum vs Steel
+
+Bandsaw blades are rated in **feet per minute (FPM)** of blade travel, and metal wants slow:
+
+- **Mild steel:** slow — roughly the 100–200 FPM class. The Portaband and horizontal saw live here.
+- **Aluminum:** faster is fine — several hundred FPM cuts cleanly with a fine blade and wax/lubricant if chips start welding to the teeth.
+- The **vertical saw runs at wood speeds** (thousands of FPM). That's why aluminum is its metal limit: aluminum tolerates high blade speed; steel at wood speed burns the blade's teeth off in seconds.
+- Check the speed chart or pulley diagram on the horizontal saw before changing setups, and ask a mentor before touching pulley steps.
+
+## Tensioning & Blade Care
+
+- Tension per the saw's tension scale for the blade width, then verify: a properly tensioned blade deflects only slightly under firm finger pressure mid-span and doesn't flutter in the cut.
+- Under-tension wanders and cuts crooked; over-tension snaps blades and wears bearings. Symmetric, not maximal.
+- **Tooth pitch rule: at least 3 teeth in the material at all times.** Thin-wall tube needs a fine blade; a coarse blade snags the wall and rips teeth off.
+- Track the blade centered on the wheels (mentor job), and replace blades that are cracked at the gullets, missing teeth, or making banana-shaped cuts. Spare blade lengths are labeled at each saw — check the blade's stamped length before ordering more.
+
+## Feed Rate — Let the Blade Cut
+
+The blade does the cutting; you just keep it fed. Steady, moderate pressure that produces continuous chips is right. Forcing it bows the blade, cuts crooked, and overheats the teeth. If you're leaning on it, something's wrong: dull blade, wrong pitch, or wrong saw for the material.
+
+## Horizontal Saw: Stock Cutoff Procedure
+
+1. Clamp the stock in the saw's **vise** — square jaws, fully tight, cut line about 1/8 in past the jaw. Round tube gets nested or blocked so it can't rotate; bundled cuts need mentor approval.
+2. Position the cut with the blade just on the waste side of your mark. Check by lowering the head gently with the saw off.
+3. Raise the head, start the blade, and lower it until the blade **just kisses** the work — then let the gravity feed take over. Set the feed/damper so the saw doesn't slam down.
+4. Stay with the saw. Listen: an even cutting sound is right; screech or chatter means stop and check.
+5. When the cut finishes and the head bottoms out, the saw shuts off (or you shut it off). Blade stopped → unclamp → deburr both pieces at the [deburring wheel](/cutting/sanders-grinders/).
+
+## Vertical Saw: Cutting Curves
+
+1. Set the upper guide 1/4 in above the stock. Layout your line with a scribe or marker.
+2. Plan relief cuts for tight curves — a blade can only turn so tight; relief cuts let waste fall away.
+3. Feed with both hands beside the line, rotating the work smoothly. Don't back out of a long curved cut with the blade running if you can avoid it — it pulls the blade off the wheels.
+4. Small parts ride a push stick or are clamped to a sled — fingers stay out of the 2 in zone.
+
+<LabGalleryImage
+  src="grizzly-vertical-bandsaw.jpg"
+  alt="Grizzly G0555LANV vertical bandsaw near the Thunder Laser"
+  caption="The Grizzly G0555LANV vertical bandsaw — curves in aluminum, plastic, and wood. Steel stays off this saw."
+/>
+
+## Portaband Station
+
+The table-mounted Portaband on the workbench turns the portable bandsaw into a mini vertical saw for quick metal trims — great for small extrusion, bolts, and standoffs. Same rules as the vertical saw (guide gap, hands beside the line, small parts held with pliers or vise-grips), with the advantage that its slow blade speed is happy in steel.
+
+<LabGalleryImage
+  src="workbench-arbor-press-portaband.jpg"
+  alt="Workbench with table-mounted Portaband bandsaw, arbor press, and bench grinder"
+  caption="The Portaband station on the butcher-block workbench, next to the arbor press and bench grinder."
+/>
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Cut"
+  items={[
+    'Right saw for the material (steel never on the vertical)',
+    'Blade sharp, tensioned, tracking; at least 3 teeth in the material',
+    'Horizontal: stock clamped tight in the vise, long ends supported',
+    'Vertical/Portaband: upper guide 1/4 in above stock, hands planned beside the line',
+    'No gloves, hair tied, glasses on',
+    'Cut line marked, kerf on the waste side',
+  ]}
+/>
+
+## Resources
+
+<TutorialLink
+  title="Grizzly Support & Manuals"
+  url="https://www.grizzly.com/"
+  source="website"
+  description="Manuals and parts for the G0555LANV — search the model number."
+/>
+
+## Cleanup & Maintenance
+
+- Power off. Brush chips off tables, vises, and guides; sweep under the horizontal saw (chips on casters travel).
+- Aluminum chips to recycling, steel to scrap.
+- Detension the vertical saw's blade if it will sit unused for a long break (mentor call), and log blade changes on the [maintenance schedule](/maintenance/schedules/).
+
+**Related pages:** [Evolution Chop Saw](/cutting/evolution-saws/) for fast square cutoffs · [Sanders & Grinders](/cutting/sanders-grinders/) for deburring every cut · [PPE & the glove policy](/safety/gloves-and-ppe/)

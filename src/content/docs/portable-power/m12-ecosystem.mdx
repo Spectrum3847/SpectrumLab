@@ -1,8 +1,197 @@
 ---
 title: "Milwaukee M12 Ecosystem"
-description: "Drills, impact drivers, saws, sanders, and specialty cutters."
+description: "The M12 cordless fleet: battery discipline, when to grab which tool, and per-tool guides for drills, impacts, saws, sanders, and specialty cutters."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import DrawerLayoutMap from '../../../components/DrawerLayoutMap.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+
+Nearly every cordless tool in the shop runs on one platform: Milwaukee M12. One battery pool, one set of chargers, a dozen bare tools. That is deliberate — any charged battery runs any tool, and a dead battery never strands a job. This page covers the whole fleet except the rivet tools, which have [their own page](/portable-power/m12-riveting/).
+
+<LabGalleryImage src="milwaukee-m12-tool-crate.jpg" alt="Crate of Milwaukee M12 cordless tools with batteries" caption="Part of the M12 fleet packed in a Spectrum 3847 crate for transport — at the shop, every tool has a labeled StackTech drawer instead." />
+
+<MachineSOP
+  specs={{
+    'Platform': 'Milwaukee M12 — 12V REDLITHIUM',
+    'Fleet': 'Drills, impacts, nibbler, cut-off, Hackzall, band saw, jigsaw, stapler, rotary tool, detail sander, rivet tool',
+    'Storage': 'StackTech towers, machine shop',
+    'Charging': 'Battery charging bench',
+  }}
+  ppe={['glasses', 'closed-shoes', 'tie-hair']}
+  training="General shop orientation for drills and drivers; mentor sign-off the first time you run any of the saws, the nibbler, or the cut-off tool."
+/>
+
+## Safety
+
+<SafetyWarning type="critical" title="Battery out before you touch the business end">
+Remove the battery before changing bits, blades, wheels, dies, or sanding pads — every time. A trigger bump with your fingers on a blade is how cordless tools bite.
+</SafetyWarning>
+
+- Safety glasses on for every cutting, sanding, or drilling operation. See [Gloves & PPE](/safety/gloves-and-ppe/).
+- No gloves around rotating bits and blades — they grab.
+- Clamp the work. If the part can spin or fly, it will. Never hand-hold small parts against a drill or saw.
+- Let blades and wheels stop completely before setting a tool down.
+- Carry tools by the body, not the trigger.
+
+## Batteries & Charging Discipline
+
+<LabGalleryImage src="battery-charging-station.jpg" alt="Bench with DeWalt and Milwaukee M12 chargers and batteries" caption="The battery charging bench — dead packs go here, not back in a drawer." />
+
+The fleet only works if the batteries do. Three rules:
+
+1. **Dead batteries go to the charging bench immediately.** Never put a dead pack back in a drawer — the next person finds out mid-hole.
+2. **Don't store tools with batteries in them.** Battery out, tool in its drawer, pack back to the pool. A tool stored with a battery is a drained battery and a trigger hazard in a closed drawer.
+3. **Return tools with a usable pack available.** House rule from the drill drawer: come back with a battery at one bar or better on the shelf, or flag it.
+
+Every battery gets charged weekly per the [maintenance schedule](/maintenance/schedules/). If a pack won't hold a charge or gets hot on the charger, label it and report it — don't shuffle it back into the pool.
+
+## Where Everything Lives
+
+Every M12 tool has a labeled drawer in one of the two rolling StackTech towers in the machine shop. Tools go back to *their* drawer at close — see [StackTech Tool Towers](/storage/stacktech-drawers/) for the full system.
+
+<DrawerLayoutMap unit="stacktech-power-tower" />
+
+<DrawerLayoutMap unit="stacktech-saw-tower" />
+
+## Drill/Driver — 3403-20
+
+The M12 FUEL 1/2" drill/driver is the default hole-maker: brushless, ~550 in-lbs, two speed ranges (0–450 and 0–1,700 RPM), 1/2" ratcheting chuck.
+
+<ToolProcurementCard tool="m12-drill" />
+
+**Drilling vs. driving — set the collar:**
+
+- **Drilling:** twist the clutch collar to the **drill-bit symbol**. This bypasses the clutch entirely so the bit never stalls short. Use **speed 2** (high) for small bits in aluminum and plastic, **speed 1** (low) for large bits, hole saws, and step drills.
+- **Driving screws:** pick a **numbered clutch setting**. The clutch slips at that torque, which is what saves you from stripping threads or crushing parts. Start low (3–5) for screws into 3D-printed parts and plastic, middle range for wood, and step up only if the screw doesn't seat.
+- Driving machine screws into tapped aluminum? Use a low clutch setting and finish by hand with a driver. The clutch is your torque wrench — the drill-symbol setting is not.
+
+Center-punch before drilling metal, use cutting fluid on steel, and back off to clear chips on deep holes. Deburr every hole — see [Cutting & Deburring](/hand-tools/cutting-deburring/).
+
+## Impact Driver — 3453-20
+
+The M12 FUEL 1/4" hex impact driver delivers up to 1,500 in-lbs through rapid rotational hammer blows — 0–3,600 RPM with 4-mode drive control.
+
+<ToolProcurementCard tool="m12-impact" />
+
+**Impact vs. drill — pick right:**
+
+- **Grab the impact** for driving fasteners that need real torque: self-drilling screws into extrusion, lag screws, wood screws, seized bolts. The impacts prevent cam-out and don't twist your wrist.
+- **Grab the drill** for making holes and for anything with a torque ceiling — machine screws into tapped aluminum, hardware near printed parts. An impact will happily strip a 10-32 in aluminum before you can release the trigger.
+- Use **impact-rated bits only**. Standard hex bits shatter under impact loads.
+- Use the drive-mode selector: mode 1 for delicate work, full power only when the fastener needs it. The self-tapping-screw mode stops before you strip the hole it just cut.
+
+## Nibbler — 2476-20
+
+The M12 FUEL 16-gauge nibbler punches a series of crescent-shaped chips to cut sheet without heat, sparks, or cracking. Capacity: 16-ga mild steel, 18-ga stainless, 12-ga aluminum. It is the tool of choice for **sheet polycarbonate and aluminum bellypans** — no melted edges like a jigsaw, no cracked corners like shears.
+
+- Variable-speed dial: slow for tight curves and polycarb, fast for straight runs in aluminum.
+- The die rotates tool-free — turn it to cut sideways or toward you in tight spots.
+- Leave the protective film on polycarbonate while cutting; mark your line on the film.
+- Chips are sharp confetti. Keep the chip bag on, and sweep the bench after — nibbler chips in a forearm is a shop tradition we're ending.
+- Deburr the cut edge; nibbled edges are serrated.
+
+## Cut-Off Tool — 2522-20
+
+The M12 FUEL 3" cut-off tool spins a 3" wheel at 20,000 RPM — a compact angle-grinder substitute for trimming bolts, slotting screws, and cutting where nothing else reaches. It takes metal cut-off, diamond tile, and carbide abrasive wheels, with reversible rotation and a tool-free depth-adjust shoe with vacuum port.
+
+- **Sparks.** Clear flammables, know what's behind the workpiece, and never cut toward anyone.
+- Guard stays on and between the wheel and your hand. Reverse the rotation instead of repositioning your body into the spark stream.
+- Abrasive wheels shatter if twisted in the cut — cut straight, let the wheel do the work.
+- Clamp the work. Two hands on the tool.
+
+## Hackzall — 2520-20
+
+The M12 FUEL Hackzall is a one-handed reciprocating saw — brushless, 0–3,000 SPM, 5/8" stroke, with a counterbalance that makes it genuinely controllable one-handed. It is the rough-cut tool: demolition of old robot assemblies, trimming zip-tied bundles of nothing-precious, cutting where you can't bring the work to a bandsaw.
+
+- One hand on the saw, the other hand **nowhere near the blade path** — including behind the workpiece.
+- Keep the shoe pressed against the work; a bouncing recip saw skips and grabs.
+- Let the blade stop before withdrawing from the cut.
+- If the cut needs to be straight or pretty, this is the wrong tool — see the band saw below.
+
+## Compact Band Saw — 2529-20
+
+The M12 FUEL compact band saw cuts up to 2.5" × 2.5" — the go-to for cutting extrusion and tube already mounted on the robot, at roughly 570 SFPM with an included 12/14 TPI blade. For stock at the bench, prefer the stationary saws — see [Bandsaws](/cutting/bandsaws/).
+
+**Portable stock-cutting rules:**
+
+- **Clamp the stock — in a vise or to the bench.** Never hold stock in one hand and the saw in the other. Short pieces especially: if it's too short to clamp with the cut line clear, cut it on a stationary saw.
+- Keep **3 teeth in the cut** minimum — thin-wall tube wants the finer pitch.
+- Let the saw's own weight feed the cut. Forcing bows the blade and the cut wanders.
+- The off-cut drops when the blade breaks through — mind your feet and don't catch it.
+- Check blade tracking and condition before cutting; spare blades live in the drawer.
+
+## Jig Saw — 2545-20
+
+The M12 FUEL jig saw is a barrel-grip curve cutter — brushless, 3,000 SPM, 7/8" stroke, tool-free T-shank blade eject, bevel detents at 0/15/30/45°, with an LED and dust blower. Use it for curves and cutouts in plywood and polycarbonate.
+
+- Polycarbonate melts and re-welds behind the blade if you rush: fine-tooth blade, moderate speed, steady feed, film left on.
+- Let the shoe sit flat on the work; a rocking jigsaw snaps blades.
+- Drill a starter hole for interior cutouts rather than plunge-cutting.
+- Blades are cheap — swap a dull one instead of forcing it. Assortment lives in the drawer.
+
+## Crown Stapler — 2447-20
+
+The M12 3/8" crown stapler drives T50-style flat crown staples, 1/4" to 9/16" leg. It's the fast way to attach bumper fabric, banners, and fabric to plywood.
+
+- **Treat it like a nail gun**, because it is one. Never point it at anyone, never hold work directly behind the staple point.
+- Keep it in **sequential actuation** (safety tip pressed, then trigger). Contact-actuation bump-firing is off-limits for bumper day chaos.
+- Staple boxes live in the same drawer as the tool.
+
+## Rotary Tool — 2525-20
+
+The M12 brushless rotary tool runs 5,000–27,500 RPM across 12 speed settings with a 1/8" collet (1/32", 1/16", and 3/32" collets fit too). At 0.8 lb it reaches where nothing else does: deburring inside tube, grinding a weld nub, engraving, cutting one seized screw in place.
+
+- Fiberglass-reinforced cut-off discs still shatter — glasses always, and keep the disc square to the cut.
+- Match speed to the accessory's rating; small mounted stones don't want full RPM.
+- Grip close to the collet like a fat pencil for control.
+
+## Detail Sander — 2531-20
+
+The M12 FUEL orbital detail sander has a pointed pad for corners, a tight 1.5 mm orbit, and a counterweight that kills most of the buzz. Use it for easing plywood edges, finishing bumper backing, and smoothing 3D-printed parts before paint.
+
+- Let the pad float — pressing harder just burns paper and swirls the finish.
+- Work through grits; don't ask 80-grit to be a finish pass.
+- Sanding dust plus the shop vac beats sanding dust plus your lungs — see the [DeWalt vacuum](/portable-power/dewalt-and-pneumatics/) and wear a dust mask for long sessions.
+
+## Riveting Tools
+
+The M12 Rivet Tool (2550-20) and its long nose extension are covered in depth on the [M12 Riveting page](/portable-power/m12-riveting/) — sizing, nose pieces, jaw cleaning, and the aluminum-vs-stainless decision.
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Pull the Trigger"
+  items={[
+    'Right tool for the job — impact for fasteners, drill for holes, saw matched to the material',
+    'Battery seated and showing at least one bar',
+    'Safety glasses on; no gloves near rotating bits or blades',
+    'Bit, blade, or wheel is correct, sharp, and tight — installed with the battery OUT',
+    'Workpiece clamped, not hand-held',
+    'Cut or drill path is clear behind and below the work',
+    'Chip bag, guard, or shoe in place where the tool has one',
+    'You know which StackTech drawer it returns to',
+  ]}
+/>
+
+## Resources
+
+<TutorialLink title="M12 FUEL Drill/Driver Manual (3403/3404)" url="https://documents.milwaukeetool.com/58-14-3400d2.pdf" source="pdf" description="Official operator's manual — clutch, speed ranges, chuck care." />
+
+<TutorialLink title="M12 FUEL Impact Driver Manual (3453)" url="https://documents.milwaukeetool.com/58-14-3453d1.pdf" source="pdf" description="Official operator's manual — drive modes and bit requirements." />
+
+<TutorialLink title="M12 FUEL Drill & Impact Driver Review" url="https://www.youtube.com/watch?v=2pI2djOVxxU" source="youtube" description="Side-by-side of the 3404/3453 generation — good feel for when to grab which." />
+
+<TutorialLink title="M12 FUEL Compact Band Saw Review (2529)" url="https://www.youtube.com/watch?v=yBVWmMmiqJ4" source="youtube" description="Capacity, blade tracking, and real cuts with the compact band saw." />
+
+## Cleanup & Maintenance
+
+- Battery **out** of the tool. Tool back in its labeled drawer, drawer closed.
+- Dead packs to the charging bench; charged packs back to the battery pool.
+- Blow or brush chips out of vents and blade guards before the tool goes away.
+- Dull blades and worn wheels get replaced now, not discovered later — restock from the drawer spares and note anything low on the [consumables ledger](/inventory/consumables/).
+- Weekly battery charging and fleet checks are on the [maintenance schedule](/maintenance/schedules/).

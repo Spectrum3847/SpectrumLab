@@ -1,8 +1,108 @@
 ---
 title: "Layout & Measuring"
-description: "Combination squares, center punches, calipers, and rulers."
+description: "Combination squares, center punches, calipers, micrometers, and layout tools — how to measure and mark parts accurately before you cut."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import DrawerLayoutMap from '../../../components/DrawerLayoutMap.astro';
+
+Every good part starts on paper — or more precisely, on a scribed line and a punched dot. Measure twice, mark once, cut once. The layout and measuring tools live in the red toolbox in the machine shop, and they go back there **every time**, because the next student needs them exactly where the label says they are.
+
+## Where they live
+
+<DrawerLayoutMap unit="red-toolbox" />
+
+<LabGalleryImage
+  src="red-toolbox.jpg"
+  alt="Red US General Pro rolling toolbox with numbered drawer labels"
+  caption="The red toolbox. Every drawer is numbered and labeled — layout and measuring tools are in the top drawers."
+/>
+
+## Combination squares
+
+The combination square is three tools in one: a 90° square, a 45° miter guide, and an adjustable depth/height gauge. Use it to:
+
+- Check that a cut end is square before you build on it.
+- Mark lines parallel to an edge — lock the head at your dimension, hold a pencil or scribe at the end of the rule, and slide the head along the edge.
+- Set tool heights and check depths (lock the rule, use the end as a depth probe).
+
+Keep the locking nut snug and the rule clean. A combination square that has been dropped is suspect — check it against a known square before trusting it.
+
+## Center punches
+
+**Punch before every drill. No exceptions.** A drill bit walked across a part leaves a scarred surface and a hole that is not where your layout says it is. The punched dimple gives the bit's chisel point a home so it starts exactly on your mark.
+
+1. Lay out your hole location with two crossing scribe lines.
+2. Set the punch tip on the intersection, tilted so you can see the point land.
+3. Stand the punch vertical and give it one firm tap with a hammer (spring-loaded automatic punches just need a push).
+4. Check the dimple against your lines. If it's off, angle the punch into the correct spot and re-strike.
+
+Then clamp the part and drill — see [Drill Press & Bench Shear](/cutting/drill-press-shear/) and [Clamps & Vises](/hand-tools/clamps-vises/).
+
+## Calipers
+
+Calipers are the workhorse measuring tool of the shop — good to about 0.001" when used well. The calipers drawer has digital calipers, a dial caliper, a pin vise, and spare batteries.
+
+<LabGalleryImage
+  src="calipers-drawer.jpg"
+  alt="Calipers drawer with a dial caliper, two digital calipers, pin vise, and spare batteries"
+  caption="The calipers drawer: dial caliper, EZ Cal digital calipers, pin vise, and spare batteries. Put them back here when you're done."
+/>
+
+### Zeroing
+
+Before every measuring session:
+
+1. Wipe the jaws clean — a chip or a film of oil reads as real thickness.
+2. Close the jaws fully and hold them closed with light pressure.
+3. Press **ZERO** (digital) or check the needle reads 0 (dial). If a dial caliper doesn't zero, rotate the bezel to zero it.
+4. Open and close again to confirm it repeats at zero.
+
+### The four measurements
+
+- **Outside (OD)** — the big lower jaws. Square the jaws to the part and use light, consistent pressure; squeezing harder does not make the part smaller, it just gives you a wrong number.
+- **Inside (ID)** — the small upper jaws. Open inside a hole or slot and rock gently to find the maximum (for holes) reading.
+- **Depth** — the thin rod that extends from the end of the beam. Rest the base flat on the surface and extend the rod to the bottom of the hole.
+- **Step** — the flat end faces of the beam and slider measure step heights.
+
+<SafetyWarning type="warning" title="Calipers are instruments, not pliers">
+Never use calipers as a clamp, a scribe, a pry bar, or a wrench. The jaws are hardened and ground — one abuse session and every measurement they make afterward is a lie. If you need to scribe a line, get a scribe. If you need to clamp, see [Clamps & Vises](/hand-tools/clamps-vises/).
+</SafetyWarning>
+
+## Micrometers
+
+When 0.001" actually matters — bearing fits, shaft diameters you're turning on the [lathe](/forming/lathes/), press-fit pins — step up from calipers to a micrometer. The measuring drawer holds a set of precision micrometers in graduated ranges.
+
+<LabGalleryImage
+  src="micrometers-measuring-drawer.jpg"
+  alt="Measuring drawer with precision micrometers and other measuring instruments"
+  caption="The measuring drawer: MG Tool precision micrometers and other instruments. Handle them like the precision tools they are."
+/>
+
+- Use the **ratchet or friction thimble** to close on the part — it applies the same measuring force every time, which is the whole point. Cranking the thimble directly gives inconsistent readings and can spring the frame.
+- Hold the frame, not the thimble, and let the part sit square between the anvils.
+- Verify zero (or against the included standard for larger mics) before trusting a reading.
+- Micrometers only cover a 1" range each — pick the one that matches your part.
+
+## Precision rules & scribes
+
+Steel rules with etched graduations beat tape measures for part layout — the markings are finer and the edge is straight enough to scribe against. Scribes scratch a fine, permanent line into metal that won't wipe off like marker. Use a scribe against a rule or square edge, tilted so the point drags into the corner of the guide edge, in one smooth pass.
+
+## Layout fluid
+
+For precise layout on aluminum, brush or spray on a thin coat of layout fluid (the classic blue stuff) and let it dry for a minute. A scribed line through the blue coating shows up as a bright, crisp metal line you can actually see while you work. Clean it off afterward with acetone or isopropyl alcohol — see [Surface Prep & Cleaning](/finishing/surface-prep/).
+
+## Care rules
+
+- **Back in the drawer, every time.** Calipers left on a bench get buried, dropped, and crushed. The drawer has labeled slots for a reason.
+- **Don't drop them.** A dropped caliper or micrometer is no longer a measuring tool until it's been verified against a standard. If you drop one, tell a mentor — don't quietly put it back.
+- Wipe tools down before they go back; chips and coolant corrode measuring faces.
+- If a digital caliper reads erratically or won't zero, swap the battery — spares are in the calipers drawer — before reporting it broken.
+
+## Related pages
+
+- [Clamps & Vises](/hand-tools/clamps-vises/) — hold the part before you drill what you punched
+- [Drill Press & Bench Shear](/cutting/drill-press-shear/) — where those punched holes get drilled
+- [Threading & Riveting](/hand-tools/threading-riveting/) — tap drill sizes start with an accurate measurement
+- [Primary Toolboxes](/storage/toolboxes/) — the full red and blue toolbox layouts

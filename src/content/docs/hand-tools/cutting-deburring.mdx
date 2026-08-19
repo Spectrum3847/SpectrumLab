@@ -1,8 +1,82 @@
 ---
 title: "Cutting, Trimming & Deburring"
-description: "Flush cutters, deburring tools, box cutters, and shears."
+description: "Flush cutters, deburring tools, box cutters, shears, snips, and files — trim it clean and kill every sharp edge."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import DrawerLayoutMap from '../../../components/DrawerLayoutMap.astro';
+
+A part isn't done when it comes off the saw — it's done when the edges won't cut the next person who picks it up. This page covers the hand tools for trimming and edge-finishing. Powered cutting lives on the [Bandsaws](/cutting/bandsaws/), [Evolution Chop Saws](/cutting/evolution-saws/), and [Sanders & Grinders](/cutting/sanders-grinders/) pages.
+
+## Where they live
+
+Flush cutters and deburring tools share the Pliers & Cutters drawer of the red toolbox; files have their own drawer.
+
+<DrawerLayoutMap unit="red-toolbox" />
+
+## Flush cutters
+
+Flush cutters make a clean, flat cut right at the surface — perfect for trimming zip ties flush (no sharp stub to slice a hand in the pit) and snipping small copper wire, component leads, and 3D-print support material.
+
+<SafetyWarning type="critical" title="Copper and plastic only — never steel">
+Flush cutters have thin, precisely-ground edges. Cutting steel wire, music wire, piano wire, or hardened anything will chip the blades permanently. If it isn't soft copper, aluminum, or plastic, use the right tool: diagonal cutters rated for hard wire, or a cutoff wheel. And wear safety glasses — clipped zip-tie ends and wire stubs fly.
+</SafetyWarning>
+
+Always cut zip ties **flush and square** against the head. An angled cut leaves a knife edge; a flush cut leaves a smooth face. For wire work and strippers, see [Wire Prep & Crimping](/electrical/wire-prep-crimping/).
+
+## Deburring tools
+
+Every sawed, drilled, or machined edge on aluminum gets deburred before the part moves on. The swivel deburring tool (a handle with a hooked, free-rotating blade) is the fastest way:
+
+1. Hold the handle like a pencil, blade hook facing the edge.
+2. Set the hook on the edge at roughly 45°.
+3. Pull along the edge in **one smooth, continuous pass** with light pressure — the blade swivels to follow curves and around hole rims.
+4. One or two passes per edge. You're breaking the sharp corner, not machining a chamfer — if you're producing thick curls, ease up.
+
+For drilled holes, one twist of the deburring blade (or a larger drill bit turned by hand) around the rim takes off the exit burr. For big batches of parts or long edges, use the Scotch-Brite deburring wheels on the bench grinder.
+
+<LabGalleryImage
+  src="bench-grinder-deburring.jpg"
+  alt="Bench grinder fitted with Scotch-Brite deburring wheels"
+  caption="The deburring station: a bench grinder fitted with Scotch-Brite wheels. See Sanders & Grinders for the SOP before using it."
+/>
+
+## Box cutters & utility knives
+
+- **Cut away from your body** — and away from your other hand. Plan where the blade goes if it slips before you start the cut.
+- **Retract the blade** the moment you set the knife down. A knife on a bench with the blade out is a trap.
+- **Use fresh blades.** A dull blade needs more force, and more force is what causes slips. Swap blades at the first sign of tearing instead of cutting; spent blades go in a sharps container or taped-up can, never loose in the trash.
+- Use a cutting mat or sacrificial surface, several shallow passes instead of one deep one, and keep fingers behind the straightedge if you're guiding on one.
+
+## Hand shears & snips
+
+Aviation snips handle thin sheet aluminum and polycarbonate trimming — let the cut open ahead of the blades and don't force full-depth bites at the end of the jaws. For straight cuts in thicker plate, the lever-action bench shear does in one pull what snips can't.
+
+<LabGalleryImage
+  src="klutch-shear.jpg"
+  alt="Klutch lever-action plate shear on the workbench"
+  caption="The Klutch bench shear — for plate and bar that hand snips can't handle. Full SOP on the Drill Press & Bench Shear page."
+/>
+
+Sheared edges are sharp by definition. Deburr or file every cut edge before the part leaves the bench — and see [Drill Press & Bench Shear](/cutting/drill-press-shear/) for the bench shear rules.
+
+## Files
+
+<LabGalleryImage
+  src="files-drawer.jpg"
+  alt="Files drawer with needle files in bins and larger handled files"
+  caption="The files drawer: needle files for small work, flat and half-round files for everything else, and a wire brush for cleaning them."
+/>
+
+- **Never use a file without a handle.** The bare tang is a spike aimed at your palm — if the file catches, the tang goes into your hand. Files in the drawer should all have handles; if you find one without, tell a mentor instead of using it.
+- **Files cut on the push stroke only.** Push with even pressure, then lift the file off the work on the return. Dragging it backward dulls the teeth and does nothing.
+- Use the wire brush (file card) to clear aluminum that clogs the teeth — a loaded file skates and scratches instead of cutting.
+- Needle files handle small slots, holes, and cleanup on laser-cut and waterjet parts; flat and half-round files handle everything bigger.
+
+## Related pages
+
+- [Sanders & Grinders](/cutting/sanders-grinders/) — powered deburring and finishing
+- [Drill Press & Bench Shear](/cutting/drill-press-shear/) — the bench shear SOP
+- [Wire Prep & Crimping](/electrical/wire-prep-crimping/) — the right cutters for electrical work
+- [Layout & Measuring](/hand-tools/layout-measuring/) — mark it before you cut it

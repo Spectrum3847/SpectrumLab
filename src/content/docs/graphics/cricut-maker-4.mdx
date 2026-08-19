@@ -1,8 +1,160 @@
 ---
 title: "Cricut Maker 4"
-description: "Design Space setup, mats, blades, weeding, and transfer tape workflow."
+description: "Design Space setup and pairing, Smart Materials vs mats, blade selection, weeding technique, transfer tape, and Print-Then-Cut stickers."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import ConsumablesTable from '../../../components/ConsumablesTable.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+
+The Cricut Maker 4 is our precision blade cutter. It handles 300+ materials with 13 swappable tools, and it's what we use for adhesive vinyl decals, heat-transfer vinyl (HTV) for team shirts, stencils, cardstock, and die-cut stickers. Cut HTV here, then press it with the [heat press](/graphics/heat-press/); finishing workflows live on [Vinyl & Sticker Finishing](/graphics/vinyl-and-stickers/).
+
+<MachineSOP
+  specs={{
+    'Materials': '300+ with 13 tools',
+    'Speed': '2× faster than Maker 3',
+    'Print Then Cut': 'Up to 24 × 28 in',
+    'Connectivity': 'Bluetooth / USB',
+    'Software': 'Cricut Design Space',
+    'Feeds': 'Mats + matless Smart Materials'
+  }}
+  ppe={[]}
+  training="Green — anyone can cut. First-time users: have a graphics lead watch your first blade swap and mat load."
+/>
+
+<ToolProcurementCard tool="cricut-maker-4" />
+
+## Safety
+
+<SafetyWarning type="warning" title="The blades are scalpels">
+Handle blade housings by the barrel, never the tip. When swapping blades out of a housing, push the plunger and keep your fingers off the cutting edge. Weeding tools are sharp too — drag them, don't stab toward your hand.
+</SafetyWarning>
+
+- **Do** keep fingers, hair, and sleeves away from the rollers while the machine is cutting.
+- **Do** cap or dock blades when they're out of the machine — loose blades in the drawer cut the next person.
+- **Don't** force a jammed mat; unload it from Design Space or the machine button.
+- **Don't** cut materials the machine isn't rated for — when in doubt, check Cricut's material list or ask a lead.
+
+## Software & Workflow
+
+### Design Space setup and pairing
+
+1. Install **Cricut Design Space** from [cricut.com/setup](https://cricut.com/setup) and sign in — ask a graphics lead which account the team uses.
+2. Power on the Maker 4. Connect one of two ways:
+   - **USB:** plug the cable into the graphics computer. Done.
+   - **Bluetooth:** open your computer's Bluetooth settings, pair with the Maker 4, then let Design Space finish machine setup.
+3. In Design Space, your machine appears in the connection dropdown on the **Make It** screen. If it doesn't, check the cable/pairing before restarting anything else.
+
+### Standard cut workflow
+
+1. Design on the Canvas (or import an SVG). Size everything at final dimensions.
+2. Click **Make It**. Confirm the layout preview — and turn **Mirror ON for every HTV cut** (you cut the back of the material).
+3. Select the **base material** (Premium Vinyl, Everyday Iron-On, Cardstock, etc.). This is what sets cut pressure — there is no dial on the machine; material selection *is* the pressure setting. Use the **More/Less pressure** dropdown for fine-tuning: "More" helps when a blade is getting dull.
+4. Load material (see mats vs Smart Materials below), press the flashing load button, then **Go**.
+5. Unload, then peel the **mat away from the material** (flip it and bend the mat), not the material off the mat — this keeps vinyl and cardstock from curling.
+
+Run a small **test cut** (a 1-inch shape in a corner) any time you use a new material or a fresh blade. A good cut goes through the vinyl but only kisses the backing liner.
+
+## Consumables & Tooling
+
+<ConsumablesTable machine="cricut-maker-4" />
+
+### Mats: match the grip to the material
+
+| Mat | Color | Use for |
+| --- | --- | --- |
+| LightGrip | Blue | Paper, cardstock, printable sticker paper |
+| StandardGrip | Green | Adhesive vinyl, HTV/iron-on, heavier cardstock — the default |
+| StrongGrip | Purple | Thick stuff: chipboard, leather, glitter cardstock, magnet |
+
+A mat that's too sticky tears paper on removal; a mat that's too worn lets vinyl shift mid-cut and ruins the job. Retire mats that no longer hold a corner down.
+
+### Smart Materials (matless cutting)
+
+Smart Vinyl, Smart Iron-On, and Smart Paper have a full-width stiff liner, so they feed **directly into the machine with no mat**. Design Space offers "Without mat" on the Make It screen when the material supports it. This is how you cut long, banner-length designs that no 12" mat could hold — just keep the path behind the machine clear, because the material passes back and forth through the rear during the cut.
+
+### Blades: Fine-Point vs Deep-Point
+
+- **Fine-Point (45°):** the default blade. Vinyl, HTV, paper, cardstock — 95% of what we cut.
+- **Deep-Point (60°):** steeper, more aggressive blade for thick materials: magnet sheet, chipboard, foam sheet, stiffened felt.
+
+**Housing swap** takes ten seconds:
+
+1. Open **Clamp B** on the carriage.
+2. Pull the current blade housing straight up and out.
+3. Drop the other housing in — it self-seats, no adjustment.
+4. Close the clamp. Make sure the material you selected in Design Space matches the blade you installed; Design Space will warn you if it expects a different tool.
+
+Blades live in the Cricut drawer at the graphics bench. Replacement Fine-Point blades drop into the existing housing (push the plunger, swap, done).
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist title="Before You Cut" items={[
+  'Design Space shows the Maker 4 connected (USB or Bluetooth)',
+  'Correct blade in Clamp B for the material (Fine-Point default, Deep-Point for thick)',
+  'Right mat for the material — or Smart Material loading straight, no mat',
+  'Material is larger than the design and stuck down smooth, no bubbles',
+  'Base material selected on the Make It screen matches what is actually loaded',
+  'Mirror is ON if cutting HTV, and HTV is shiny (carrier) side DOWN',
+  'Test cut done for any new material or fresh blade',
+  'Clearance behind the machine for the mat or Smart Material to feed through'
+]} />
+
+## Operating Instructions
+
+### Weeding technique
+
+Weeding is removing everything that isn't your design, leaving it on the liner (vinyl) or carrier (HTV).
+
+1. Grab the weeding tools from the Cricut drawer — the hook does most of the work; tweezers rescue small pieces.
+2. **Start from a corner** of the waste area and peel the excess back at a sharp, low angle. Slow and steady; ripping fast lifts your design with it.
+3. Pull out the centers of letters (the "counters" — inside of o, a, e) with the hook tip.
+4. Good light matters. Angle the cut toward a lamp so cut lines catch the light, or lightly flex the sheet to make them pop.
+5. Ball up the weeded scrap and bin it immediately — vinyl scrap sticks to everything in the lab.
+
+**Reverse weeding for intricate designs:** if tiny text or fine detail keeps lifting with the waste, don't fight it. Apply transfer tape over the whole *unweeded* cut, burnish it hard, flip the sandwich over and peel away the vinyl's backing liner — then weed the waste off the transfer tape from the sticky side. Small pieces stay anchored to the tape instead of tenting up.
+
+### Transfer tape workflow (adhesive vinyl)
+
+Transfer tape moves a weeded adhesive-vinyl design from its liner onto the final surface. (HTV never gets transfer tape — its clear carrier does that job. If you're doing HTV, go to the [heat press page](/graphics/heat-press/).)
+
+1. Cut a piece of transfer tape slightly larger than the design and lay it over the weeded vinyl.
+2. Burnish hard with a scraper — every letter, every edge.
+3. Flip it over and peel the vinyl's paper liner off the back at a 45° angle, leaving the design on the tape. If a piece stays on the liner, lay it back down and burnish that spot again.
+4. Clean the target surface with isopropyl alcohol and let it dry.
+5. Position and lay the design down — for anything big, use the **hinge method**: tape one edge in place, fold back, peel the liner progressively, and squeegee outward from the hinge to chase out bubbles.
+6. Burnish onto the surface, then peel the transfer tape back at a sharp angle, slowly. If vinyl lifts, stop, burnish, retry.
+
+### Print-Then-Cut (for stickers)
+
+Print-Then-Cut prints your artwork with a black registration box, then the Maker 4's sensor reads the marks and cuts precisely around each shape.
+
+1. In Design Space, build your art as **printable** images (or Flatten your layers), then **Make It** → Design Space sends the sheet to a printer with registration marks added.
+2. Print on printable sticker paper — matte works best; glossy sheets can confuse the registration sensor. The Maker 4 handles Print-Then-Cut sheets up to 24 × 28 in; big sheets print through the [plotter's sheet feeder](/graphics/hp-t630-plotter/#using-the-auto-sheet-feeder).
+3. Stick the printed sheet to a LightGrip (blue) mat, aligned with the top-left grid corner.
+4. Load the mat and press Go. The machine scans the registration box first, then cuts.
+5. For a **kiss cut** sticker sheet (cut through the vinyl only, sheet stays whole), pick a sticker-sheet material setting; for fully die-cut stickers, pick a cut-through setting.
+
+Full sticker recipes — including optional lamination — are on [Vinyl & Sticker Finishing](/graphics/vinyl-and-stickers/#die-cut-stickers).
+
+## Resources
+
+<TutorialLink title="Cricut Maker 4 Quick Start Guide" url="https://help.cricut.com/hc/en-us/articles/28450495457559-Cricut-Maker-4-Quick-Start-Guide" source="manual" description="Official setup and first-cut guide." />
+
+<TutorialLink title="Cricut Help Center" url="https://help.cricut.com/hc/en-us" source="knowledge-base" description="Material settings, tool guides, and Design Space troubleshooting." />
+
+<TutorialLink title="How to Set Up the Cricut Maker 4" url="https://www.youtube.com/watch?v=x4bOrgT6JJU" source="youtube" description="Walkthrough of unboxing, pairing, and the first project." />
+
+<TutorialLink title="Cricut Maker 4 Setup, Projects & Tutorials (official playlist)" url="https://www.youtube.com/playlist?list=PL-sW1stz54snFaUe0h7-bAIbtApEK5Saj" source="youtube" description="Cricut's official video series covering tools, materials, and techniques." />
+
+## Cleanup & Maintenance
+
+- Unload your mat, put the cover liner back on it, and store it **flat** in the mat rack — curled mats cut crooked.
+- Mats losing grip: lint-roll them, or wash with cool water and dish soap, air dry sticky-side up. Retire them when that stops working.
+- Return blade housings to the Cricut drawer, blades capped.
+- Ball up and trash all vinyl scrap; wipe stray adhesive off the bench.
+- Power the machine off and leave the graphics bench clear for the next person.
+- Blade life and mat condition are tracked on the [Maintenance Schedules](/maintenance/schedules/) page.

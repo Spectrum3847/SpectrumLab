@@ -1,8 +1,183 @@
 ---
 title: "Gweike Cloud M3 Ultra"
-description: "Hybrid fiber + CO2 laser: material compatibility and rotary setup."
+description: "Hybrid 1200W fiber + 130W CO2 6-in-1 laser: mode selection, material compatibility matrix, rotary setup, and water cooling checks."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+
+The Gweike Cloud M3 Ultra is a hybrid machine: a **1200W fiber laser and a 130W CO2 laser in one enclosure**, covering six processes — fiber metal cutting, welding, cleaning, rust removal, CO2 cutting, and CO2 engraving. One machine, two completely different lasers. The most important skill on this page is knowing which source you are firing and what it is allowed to touch.
+
+<MachineSOP
+  specs={{
+    'Fiber Laser': '1200W',
+    'CO2 Laser': '130W',
+    'Work Area': '1380 × 920 mm (54.3 × 36.2 in)',
+    'Max Speed': '800 mm/s',
+    'Fiber Cutting': 'up to 10 mm carbon steel',
+    'CO2 Cutting': 'up to 25 mm non-metals',
+    'Repeatability': '±0.02 mm',
+    'Cooling': 'Integrated water cooling',
+    'Laser Class': 'Class 4'
+  }}
+  ppe={['laser-glasses', 'glasses', 'tie-hair', 'closed-shoes']}
+  training="Laser sign-off required, plus a mode-selection walkthrough with a mentor before your first solo fiber job. Welding and cleaning modes are mentor-only."
+/>
+
+<ToolProcurementCard tool="gweike-m3-ultra" />
+
+<LabGalleryImage
+  src="gweike-m3-ultra.jpg"
+  alt="Gweike Cloud M3 Ultra laser with lid raised showing the slat cutting bed and control panel"
+  caption="The M3 Ultra with the lid up: slat cutting bed and control panel. The carbon-fiber sheets leaning against the cabinet are cut stock — carbon fiber jobs are mentor-only."
+/>
+
+## Safety
+
+<SafetyWarning type="critical" title="Two lasers, two hazard profiles">
+The fiber source (1064 nm, invisible) and the CO2 source (10,600 nm) need different protective eyewear and behave completely differently on materials. Before every job, confirm which mode is active and wear the laser glasses rated for that source. If you are not certain which laser will fire when you press start, stop and get a mentor.
+</SafetyWarning>
+
+<SafetyWarning type="critical" title="NEVER cut PVC or vinyl">
+Any chlorinated plastic — PVC, vinyl, most faux leather — releases chlorine gas when lasered. It will corrode the machine and hurt your lungs. There is no power setting that makes it safe. Unknown plastic = no cut until a mentor identifies it.
+</SafetyWarning>
+
+- Class 4 machine: keep the lid closed while firing and never bypass an interlock.
+- Fiber mode on metal means reflections — same rules as the [xTool MetalFab](/lasers/xtool-metalfab/): no mirror-finish stock, material flat on the bed.
+- Fire watch: stay with the machine for every job, know the extinguisher location, and keep the bed clear of offcut litter that can catch.
+- Fume extraction on for everything — metal fumes in fiber mode, smoke and resin fumes in CO2 mode.
+- Welding, cleaning, and rust-removal modes are open-beam handheld processes: **mentor-only**, same policy as the MetalFab welding gate.
+- Loose sleeves and dangling lanyards stay away from the gantry. See [PPE & the glove policy](/safety/gloves-and-ppe/).
+
+## Mode Selection
+
+The 6-in-1 design means the machine does exactly what the active mode tells it to — so mode selection is step zero of every job:
+
+1. Decide the process: **fiber** for metal cutting; **CO2** for wood, acrylic, and other approved non-metals; handheld modes only with a mentor.
+2. Select the mode in the control software and confirm the correct head/source is active before loading material.
+3. Match your **laser glasses to the active source** — 1064 nm rated for fiber, CO2-rated for CO2.
+4. Check the material against the matrix below for that mode.
+5. When you finish, return the machine to its idle/default state so the next operator doesn't inherit a surprise.
+
+## Material Compatibility Matrix
+
+| Material | Mode | OK? | Notes |
+| --- | --- | --- | --- |
+| Carbon steel (≤ 10 mm) | Fiber | Yes | Assist gas per job; oxide edge is normal with air |
+| Stainless steel | Fiber | Yes | Nitrogen for clean edges |
+| Aluminum | Fiber | Yes | Reflective — flat, non-polished stock only |
+| Brass / copper | Fiber | Ask first | Highly reflective; mentor sets these jobs up |
+| Plywood / solid wood | CO2 | Yes | Watch for internal glue voids flaring |
+| Cast acrylic | CO2 | Yes | Beautiful flame-polished edges |
+| MDF | CO2 | Yes | Chars; run high air assist |
+| Leather (real) | CO2 | Yes | Smells terrible; extraction on high |
+| Cardboard / paper | CO2 | Yes | Never unattended — catches easily |
+| Carbon fiber plate | — | Mentor-only | Conductive dust and nasty fumes; requires sign-off |
+| **PVC / vinyl / faux leather** | Any | **NEVER** | Chlorine gas — corrodes machine, poisons you |
+| **Polycarbonate** | CO2 | **NEVER** | Burns and flames badly — use the [waterjet](/waterjet/wazer-pro/) |
+| **ABS** | CO2 | **NEVER** | Melts into goo, toxic fumes |
+| Metals | CO2 | No | CO2 will not cut metal — that is what fiber mode is for |
+
+If it is not on this list, it does not go in the machine until a mentor identifies it. The same never-cut rules apply on the [Thunder Nova 35](/lasers/thunder-nova-35/).
+
+## Rotary Setup (cylindrical engraving)
+
+For engraving tumblers, tubes, and other cylinders in CO2 mode:
+
+1. Power the machine off before plugging in or unplugging the rotary attachment.
+2. Place the rotary on the bed, square to the gantry, and connect it to the rotary port.
+3. Power on and **enable rotary mode in the software** — this remaps the Y axis to rotation. Forgetting this step scribbles your artwork around the cylinder.
+4. Enter the workpiece diameter, load the cylinder, and confirm it turns freely without wobble.
+5. Focus on the **top surface of the cylinder**, not the bed.
+6. Run a low-power test frame or trace before the real engrave.
+7. When done: disable rotary mode in software, power off, unplug, and store the rotary. Leaving rotary mode enabled ruins the next person's flat job.
+
+## Water Cooling Checks
+
+Both sources depend on the integrated water cooling loop. A cooked laser tube is the most expensive mistake you can make on this machine.
+
+- Before starting: confirm the chiller/cooling loop is running and the coolant level is in range.
+- **Never fire the laser with a flow or temperature alarm active.** An alarm is a hard stop, not a suggestion — power down and get a mentor.
+- Coolant is distilled water only. Top-ups get logged on the [maintenance schedule](/maintenance/schedules/).
+- If ambient temperature in the shop is unusually hot or cold, give the cooling loop extra attention mid-job.
+
+## Consumables & Tooling
+
+No consumables table for this machine yet — wear items are ordered through [Gweike Cloud support](https://www.gweikecloud.com/pages/support):
+
+- **Focus lenses and protective windows** for both sources — inspect for haze and pitting before sessions.
+- **Nozzles** for the fiber cutting head.
+- **Distilled water** for the cooling loop.
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Fire"
+  items={[
+    'Correct mode selected and confirmed — fiber vs CO2',
+    'Laser glasses on and rated for the active source',
+    'Material is on the approved list for the selected mode',
+    'Cooling loop running, coolant level OK, no flow or temp alarms',
+    'Fume extraction running',
+    'Bed clear of offcuts and previous jobs',
+    'Rotary mode disabled unless the rotary is actually installed',
+    'Lid closed, interlocks working',
+    'Fire extinguisher in reach'
+  ]}
+/>
+
+## Operating Instructions
+
+1. Power on the machine and fume extraction; verify the cooling loop is circulating.
+2. Select the mode for your job and put on the matching laser glasses.
+3. Import your file in the control software, verify scale, and pick material settings — start from library presets and test on scrap for anything new.
+4. Load the material flat on the slat bed. Fixture anything that could shift or curl.
+5. Set focus for the active head per the station procedure.
+6. Frame the job to confirm position and fit.
+7. Close the lid and run. **Stay with the machine** — CO2 jobs can flare, fiber jobs throw sparks.
+8. After the job, let extraction clear the enclosure before opening the lid.
+9. Unload parts, clear the skeleton, and return the machine to its default mode.
+
+## Resources
+
+<TutorialLink
+  title="Gweike Cloud Documentation"
+  url="https://www.gweikecloud.com/pages/gweikecloud-documentation"
+  source="manual"
+  description="Official manuals and setup documentation for the M series."
+/>
+
+<TutorialLink
+  title="Gweike Cloud Support"
+  url="https://www.gweikecloud.com/pages/support"
+  source="knowledge-base"
+  description="Support portal for parts, firmware, and troubleshooting."
+/>
+
+<TutorialLink
+  title="GWEIKE M3 ULTRA 6-in-1 Laser Demo"
+  url="https://www.youtube.com/watch?v=56G8HbEx25Q"
+  source="youtube"
+  description="Walkthrough of all six modes on the M3 Ultra."
+/>
+
+<TutorialLink
+  title="This Beast Cuts Metal, Wood, & Welds — Gweike M3 Ultra"
+  url="https://www.youtube.com/watch?v=LE0rwAxd_Nk"
+  source="youtube"
+  description="Independent review covering fiber cutting, CO2 work, and welding."
+/>
+
+## Cleanup & Maintenance
+
+- Remove all material and offcuts; sweep debris off the slat bed.
+- Return the machine to default mode, rotary disabled and unplugged.
+- Let the cooling loop and extraction run their shutdown cycle before powering off.
+- Wipe the lid glass so the next person can actually see their job.
+- Log lens/nozzle condition and coolant level on the [maintenance schedule](/maintenance/schedules/).
+
+For dedicated CO2 work with a full LightBurn settings library, use the [Thunder Nova 35](/lasers/thunder-nova-35/). For dedicated metal sheet cutting, the [xTool MetalFab](/lasers/xtool-metalfab/) is the primary machine.

@@ -1,8 +1,213 @@
 ---
 title: "Bambu Lab Fleet"
-description: "X1-Carbon and H2D: slicer settings, plates, AMS, and nozzles."
+description: "SOP for Bambu 1 & 2 (X1-Carbon + AMS) and the H2D + AMS HT: Bambu Studio workflow, plates, AMS loading, nozzle swaps, and maintenance."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+
+The Bambu fleet is the fast lane of the printer farm: two X1-Carbons — **Bambu 1** and
+**Bambu 2**, each with a 4-slot AMS — and an **H2D** with an AMS HT. These are the lab's most
+capable printers and the **only** machines allowed to run PA-CF and PC. If a part is going on
+the competition robot, it probably comes off one of these.
+
+<LabGalleryImage
+  src="3d-printer-farm-overview.jpg"
+  alt="The 3D printing corner: two Bambu Lab X1-Carbons with AMS units and the H2D with AMS HT, with Prusa Minis in cubbies below"
+  caption="The printing corner. Bambu 1 and Bambu 2 (X1-Carbon + AMS) and the H2D with AMS HT up top; the Prusa Mini farm lives in the cubbies underneath."
+/>
+
+## Bambu 1 & 2 — X1-Carbon
+
+<MachineSOP
+  specs={{
+    'Build Volume': '256 × 256 × 256 mm',
+    'Motion': 'CoreXY, enclosed',
+    'Max Speed': '500 mm/s',
+    'Hotend': '300 °C all-metal',
+    'Nozzle': 'Hardened steel (stock)',
+    'Monitoring': 'Lidar first-layer + AI camera',
+    'AMS': '4 slots, auto material ID',
+  }}
+  training="Basic printer orientation to start prints. Nozzle/hotend swaps and PA-CF or PC jobs require mentor sign-off."
+/>
+
+<ToolProcurementCard tool="bambu-x1c" />
+
+## H2D + AMS HT
+
+<MachineSOP
+  specs={{
+    'Build Volume': '350 × 320 × 325 mm',
+    'Nozzles': 'Dual, up to 350 °C',
+    'Chamber': '65 °C heated',
+    'Max Speed': '1000 mm/s',
+    'AMS': 'AMS HT with active drying',
+  }}
+/>
+
+The H2D is the fleet's big gun: larger volume, heated chamber, and dual nozzles (dedicated
+support-material or dual-material prints without purge towers). Its AMS HT actively dries
+filament — PA-CF lives there so it is always print-ready.
+
+<ToolProcurementCard tool="bambu-h2d" />
+
+## Safety
+
+<SafetyWarning type="warning" title="Hot and fast">
+The nozzle runs up to 300–350 °C and the toolhead moves at up to 1000 mm/s. Never reach into a
+printer while it is printing, homing, or calibrating. Pause the print and wait for motion to
+stop before touching anything inside.
+</SafetyWarning>
+
+- The bed runs up to 110 °C on engineering materials. Let plates cool before grabbing them
+  bare-handed.
+- Keep lids and doors set for the material (see each printer's card on the
+  [Filament Guide](/3d-printing/filament-guide/)): lid off / door open for PLA and TPU,
+  closed for PA-CF and PC.
+- IPA is flammable — never spray it on a hot bed. Wipe plates on the bench, not in the machine.
+- Do not defeat or ignore a paused print: if the machine paused itself, it found a problem.
+  Read the screen before resuming.
+
+## Software & Workflow — Bambu Studio
+
+1. Open **Bambu Studio** on the shop PC and make sure you are on the team login.
+2. **Pick the right device.** In the Device tab, select Bambu 1, Bambu 2, or the H2D. Check its
+   camera view first — make sure the plate is empty and nobody else's job is queued.
+3. Import your model, orient and arrange it (see
+   [Print Settings & Supports](/3d-printing/print-settings/)).
+4. **Set the plate type in the slicer to match the plate physically in the printer.** Textured
+   PEI, Cool Plate, and Engineering Plate have different first-layer settings — a mismatch
+   ruins the first layer or damages the plate.
+5. **Map filaments to AMS slots.** Click the filament chips and sync with the AMS. Bambu spools
+   auto-identify via RFID; third-party spools must be assigned manually — set material type
+   *and* color so the next person can trust the display.
+6. Slice, sanity-check the preview (time, filament use, support placement), then **Send** to
+   the selected printer. Enable timelapse if you want it; leave AI failure detection on.
+7. Monitor the first layer from the camera view or the Bambu Handy app. Do not walk away until
+   layer one is down clean.
+
+## Consumables & Tooling
+
+No dedicated consumables ledger for the printers — everything reorders through the links below:
+
+- **Filament** — see the [Filament Guide](/3d-printing/filament-guide/) for what to buy and the
+  reorder links on every material card.
+- **90%+ IPA and paper towels** — plate cleaning. Lives at the printer bench.
+- **Glue stick** — release/adhesion layer for PC and PA-CF plates.
+- **Spare hotends/nozzles and wiper pads** — Bambu store; keep at least one spare hardened
+  hotend per X1C on the shelf.
+- **AMS desiccant packs** — swap when the AMS humidity indicator climbs.
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Send a Print"
+  items={[
+    'Plate is empty — previous part and purge waste removed',
+    'Plate type in Bambu Studio matches the plate actually installed',
+    'Plate wiped with 90%+ IPA if fingerprinted or after glue use',
+    'Filament mapped to the correct AMS slot, material and color verified',
+    'Enough filament on the spool for the job (AMS shows remaining % on Bambu spools)',
+    'TPU is on the external spool holder, not in the AMS',
+    'PA-CF or PC: spool dried, Engineering/glue plate prep done, mentor sign-off',
+    'Lid and door set correctly for the material',
+    'Waste chute area clear of purged filament buildup',
+  ]}
+/>
+
+## Operating Instructions
+
+### Loading the AMS
+
+1. Cut the filament end at ~45° so it feeds cleanly.
+2. Open the AMS lid, feed the end into an empty slot until the feeder grabs it and the slot
+   LED confirms.
+3. Seat the spool so it unwinds toward the feed tube without rubbing the AMS walls.
+4. Bambu spools identify themselves via RFID. For third-party spools, set material and color in
+   Bambu Studio or on the touchscreen immediately — an unlabeled slot is a trap for the next
+   person.
+
+### Unloading
+
+1. From the touchscreen or Studio, select the slot and choose **Unload**.
+2. Wait for the printer to purge and retract fully, then pull the spool and re-bag or dry-box
+   it. Tape the filament end to the spool — loose ends cause tangles that kill overnight prints.
+
+### Starting and watching a print
+
+1. Send the job from Bambu Studio (workflow above).
+2. The printer auto-levels and, on the X1Cs, **lidar-inspects the first layer**. If it flags a
+   problem, stop — do not override. Fix the plate (clean, reseat, correct type) and restart.
+3. The **AI camera watches for spaghetti failures** and pauses the print if detached plastic is
+   flying around. If you get the notification, inspect via camera before resuming or canceling.
+4. When the print finishes, let the plate cool a couple of minutes (parts self-release as the
+   plate cools), then flex the plate to pop parts off. Never chisel parts off a plate on the
+   bed — you will bend the plate or gouge the PEI.
+
+### Nozzle / hotend swap (mentor sign-off required)
+
+The X1-Carbons swap the **whole hotend assembly**, not just a nozzle tip:
+
+1. Power off and let the hotend cool completely.
+2. Pop off the magnetic toolhead front cover and disconnect the hotend fan connector.
+3. Loosen the hotend retaining screws, swap in the replacement hotend, reconnect, and refit the
+   cover. Follow the Bambu Wiki guide the first time — with a mentor.
+4. Confirm nozzle size and type on the touchscreen and in Bambu Studio.
+5. **Run full calibration (lidar + vibration) after every nozzle change** before the machine
+   returns to service.
+
+The H2D uses guided quick-swap nozzles — follow the on-screen maintenance flow. The same rule
+applies on every machine: **carbon-filled filament only ever runs through hardened nozzles.**
+The stock X1C hotend is hardened steel; if a brass or unknown hotend has been fitted, it does
+not print PA-CF.
+
+### Common failures
+
+- **First-layer inspection fails** — dirty or wrong plate 90% of the time. Wipe with IPA,
+  verify plate type in the slicer, restart.
+- **Spaghetti detection triggers** — part came unstuck mid-print. Clear all debris from the
+  bed and around the toolhead before restarting; check the plate prep and consider a brim.
+- **AMS retry / feed error** — tangled spool or filament ground down by the feeder. Unload,
+  trim the damaged section, check the spool for cross-winds, reload.
+- **Clicking extruder / underextrusion on CF materials** — wet filament or worn nozzle. Dry
+  the spool first; if it persists, the nozzle is due for replacement (weekly wear check is on
+  the maintenance schedule).
+
+## Resources
+
+<TutorialLink title="Bambu Lab X1 Series Wiki & Manual" url="https://wiki.bambulab.com/en/x1/manual" source="knowledge-base" description="Official manual, maintenance guides, and troubleshooting for the X1-Carbon" />
+
+<TutorialLink title="X1-Carbon Quick Start Guide (PDF)" url="https://cdn1.bambulab.com/documentation/Quick%20Start%20Guide%20for%20X1-Carbon%20Combo.pdf" source="pdf" description="Official quick-start for the X1-Carbon Combo (printer + AMS)" />
+
+<TutorialLink title="Bambu Lab H2D Wiki" url="https://wiki.bambulab.com/en/h2d" source="knowledge-base" description="Official H2D documentation — dual nozzle, chamber, and AMS HT guides" />
+
+<TutorialLink title="Bambu Lab X1C: Setup, Config, Calibrate, Test Print" url="https://www.youtube.com/watch?v=NkUr0u9W1nU" source="youtube" description="Full walkthrough from unboxing to first print" />
+
+<TutorialLink title="What I Learned from 300 Hours with the Bambu Lab H2D" url="https://www.youtube.com/watch?v=gCXL7N9NNq8" source="youtube" description="Long-term H2D usage review — worth watching before running big jobs" />
+
+## Cleanup & Maintenance
+
+After your print:
+
+- Remove parts **and** purge waste; leave the plate empty and clipped in.
+- Return spools you unloaded to their dry box or bag.
+- Wipe the plate with 90%+ IPA every few prints, or immediately after glue-stick use.
+
+On the schedule (see [Maintenance Schedules](/maintenance/schedules/)):
+
+- **Every few prints:** wipe plates with 90%+ IPA.
+- **Weekly:** check nozzle wear on the CF printers (part of the farm walk-down).
+- **Monthly:** clean or replace the nozzle wiper pads.
+- **After any nozzle change:** full lidar + vibration calibration before the next job.
+
+## Related pages
+
+- [Filament Guide](/3d-printing/filament-guide/) — materials, plates, and drying rules
+- [Print Settings & Supports](/3d-printing/print-settings/) — orientation, walls, and presets
+- [Prusa Mini+ Farm](/3d-printing/prusa-farm/) — send PLA/PETG volume work there instead
+- [Large-Format & Specialty](/3d-printing/large-format/) — parts bigger than 256 mm

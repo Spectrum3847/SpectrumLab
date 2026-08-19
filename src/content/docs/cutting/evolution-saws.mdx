@@ -1,8 +1,149 @@
 ---
-title: "Evolution Chop Saws"
-description: "S14MCS multi-material and EVOMAX14AL aluminum saw SOPs."
+title: "Evolution Chop Saw & Blades"
+description: "S14MCS mitering chop saw with the EVOMAX14ST steel blade and EVOMAX14AL aluminum blade: clamping, miter setup, dry-cut rules, and blade changes."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+
+The Evolution S14MCS is our metal-cutting mitering chop saw — the fast way to cut aluminum and steel tube, extrusion, and bar to length with a clean, square (or mitered) end. It **dry cuts**: a slow-turning carbide-toothed blade shears cold chips instead of grinding sparks, so cuts are burr-light and the part stays cool enough to handle soon after. The saw itself stays cool; **the chips do not** — more on that below. Blade choice is by material: the **EVOMAX14ST** cermet-carbide blade for steel, and the **EVOMAX14AL** 100-tooth blade for aluminum. The saw lives on top of the red US General toolbox.
+
+<MachineSOP
+  specs={{
+    'Blade': '14 in, 1 in arbor',
+    'Steel Blade': 'EVOMAX14ST cermet-carbide',
+    'Aluminum Blade': 'EVOMAX14AL, 100T TCT',
+    'Speed': '~1100 RPM',
+    'Power': '120V, 15A',
+    'Miter': '±46°',
+    'Capacity': '4-3/4 in round at 90°, 4 in at 45°',
+    'Cut Type': 'Dry / cold cut — no coolant',
+  }}
+  ppe={['glasses', 'hearing', 'no-gloves', 'closed-shoes']}
+  training="Mentor sign-off required before solo use. Blade changes are mentor-supervised until signed off separately."
+/>
+
+<ToolProcurementCard tool="evolution-s14mcs" />
+
+<ToolProcurementCard tool="evomax14al" />
+
+<LabGalleryImage
+  src="evolution-chop-saw.jpg"
+  alt="Evolution chop saw with EvoMax aluminum blade mounted on the red toolbox"
+  caption="The Evolution saw on the red toolbox — shown here wearing the EvoMax aluminum blade. Check which blade is mounted before you cut anything."
+/>
+
+## Safety
+
+<SafetyWarning type="critical" title="Clamp it. Never hand-hold.">
+Every piece gets locked in the saw's material clamp before the blade touches it — no exceptions for "just one quick cut." A carbide blade that grabs unclamped stock rips it out of your hand and throws it, along with the blade's broken teeth. If the piece is too short to clamp with your hands clear of the blade path, it's too short to cut on this saw — leave a longer piece or use the [bandsaw](/cutting/bandsaws/).
+</SafetyWarning>
+
+<SafetyWarning type="warning" title="Dry cut ≠ cold chips">
+"Cold cutting" means the *workpiece* stays cool — the chips come off HOT and sharp, and they collect in the chip tray by the hundreds. Don't catch chips, don't sweep them bare-handed right after a cut, and don't wear anything that funnels chips toward skin. Brush them out after they've cooled.
+</SafetyWarning>
+
+- **Wrong blade = ruined blade.** Steel on the aluminum blade tears the fine teeth off; aluminum on a loaded steel blade welds to the carbide. Check the mounted blade before every session.
+- No gloves at the saw — see [PPE & the glove policy](/safety/gloves-and-ppe/). Hearing protection on; a 14 in blade in steel tube is loud.
+- Let the blade reach **full speed before contact**, and let it stop completely before lifting stock out.
+- Support long stock at both ends — a see-sawing tube pinches the blade.
+- No wood, no plastic sheet, no abrasive discs on this saw. It is a metal saw with tooth geometry to match.
+
+## Blade Selection by Material
+
+| Material | Blade | Notes |
+| --- | --- | --- |
+| Mild steel tube, angle, bar | EVOMAX14ST (cermet carbide) | The default blade. Steady, moderate feed. |
+| Stainless | EVOMAX14ST | Slower feed; ask a mentor for thick sections. |
+| Aluminum tube, extrusion, bar | EVOMAX14AL (100T TCT) | Fine-tooth non-ferrous blade; anti-vibration slots. Rated for saws up to 1600 RPM — our ~1100 RPM saw is well within it. |
+| Brass, copper | EVOMAX14AL | Non-ferrous blade only. |
+| Wood, plastic, composites | — | Not on this saw. Table saw or bandsaw instead. |
+
+The EVOMAX14AL is a **blade, not a saw** — it swaps onto the S14MCS arbor when we're batch-cutting aluminum. Whoever swaps it logs which blade is mounted (label on the saw) so the next person isn't guessing.
+
+## Miter Setup
+
+1. Loosen the miter lock, swing the head/table to the target angle (±46° range), and re-lock firmly.
+2. Verify with an angle gauge for anything that matters — detents get you close, the gauge gets you right.
+3. Re-check that the clamp still holds the stock rigidly at the new angle, and that the blade path is still clear of the clamp and fence.
+4. Cut a test piece and measure the angle before committing good stock.
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Cut"
+  items={[
+    'Correct blade for the material verified (ST = steel, AL = aluminum)',
+    'Blade teeth inspected — no missing or chipped carbide',
+    'Stock clamped in the material vise, long ends supported',
+    'Cut line positioned with blade kerf on the waste side',
+    'Miter angle locked and verified',
+    'Guard moves freely and returns on its own',
+    'Glasses and hearing protection on, no gloves, bystanders clear of the chip stream',
+  ]}
+/>
+
+## Operating Instructions
+
+1. Mark the cut, seat the stock against the fence, and crank the clamp tight.
+2. Lower the head with the saw **off** to confirm the blade lands on the waste side of your line.
+3. Raise the head, start the saw, and let it hit full RPM.
+4. Feed smoothly and steadily — the blade should produce continuous small chips. Forcing it stalls the cut and chips teeth; feathering it work-hardens steel. Firm and steady.
+5. Complete the cut, release the trigger, and **let the blade stop** before raising the head fully and unclamping.
+6. Offcut and part are warm and sharp — pick them up by the ends, then deburr at the [deburring wheel](/cutting/sanders-grinders/).
+
+## Blade Change Procedure
+
+1. **Unplug the saw.** Not just off — unplugged.
+2. Lock the head down or hold it per the manual, press the spindle lock, and crack the arbor bolt loose with the supplied wrench (check the manual for thread direction before muscling it).
+3. Remove the outer flange and blade. Note the **rotation arrow** on the new blade — it must match the arrow on the guard.
+4. Wipe the flanges clean (chips trapped under a flange wobble the blade), mount the new blade, and torque the arbor bolt snug.
+5. Spin the blade by hand — free rotation, no wobble, guard operating normally.
+6. Update the blade label on the saw and stow the removed blade in its sleeve — teeth are fragile in a drawer.
+
+## Consumables
+
+Blades are the consumable. Replace when cuts slow down noticeably, teeth are missing, or steel cuts start throwing sparks (a dry-cut saw making sparks means dead carbide). Reorder both blades from Evolution — see the procurement cards above. No other consumables: this saw uses **no lubricant or coolant, ever** — that's the design.
+
+## Resources
+
+<TutorialLink
+  title="S14MCS Instruction Manual (PDF)"
+  url="https://assets.evolution-tools.org/instruction-manuals/102-0004A.pdf"
+  source="pdf"
+  description="Official manual — blade change details, adjustments, and parts diagram."
+/>
+
+<TutorialLink
+  title="Evolution Support"
+  url="https://store.evolutionpowertools.com/pages/support"
+  source="knowledge-base"
+  description="Official support, spares, and downloads."
+/>
+
+<TutorialLink
+  title="Evolution's NEW Mitering Chop Saw — S14MCS (TimWelds)"
+  url="https://www.youtube.com/watch?v=aPSLgp1O5bY"
+  source="youtube"
+  description="Hands-on review and demo of the exact saw we run."
+/>
+
+<TutorialLink
+  title="EvoMax Aluminum Blade Cut Test"
+  url="https://www.youtube.com/shorts/oOMJXI6mMkQ"
+  source="youtube"
+  description="Quick look at the EVOMAX14AL blade cutting aluminum."
+/>
+
+## Cleanup & Maintenance
+
+- Let the chip tray cool, then empty it — aluminum chips to the recycling bin, steel to scrap.
+- Brush the fence, clamp screw, and miter pivot clear of chips; chips in the pivot throw off angles.
+- Coil the cord, leave the head locked down.
+- Blade condition and guard function checks are on the [maintenance schedule](/maintenance/schedules/).
+
+**Related pages:** [Bandsaws](/cutting/bandsaws/) for short pieces and curves · [Sanders & Grinders](/cutting/sanders-grinders/) for deburring cuts · [PPE & the glove policy](/safety/gloves-and-ppe/)

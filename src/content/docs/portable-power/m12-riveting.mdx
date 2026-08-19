@@ -1,8 +1,143 @@
 ---
 title: "M12 Riveting Tools"
-description: "Standard and long nose rivet guns: sizing, jaws, and mandrels."
+description: "The M12 Rivet Tool and long nose extension: rivet sizing and grip range, nose piece swaps, jaw cleaning, and aluminum vs. stainless."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import MachineSOP from '../../../components/MachineSOP.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import ConsumableCard from '../../../components/ConsumableCard.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+
+Blind rivets are how most Spectrum sheet-metal and polycarb assemblies go together, and the M12 Rivet Tool (2550-20) is what sets them — one squeeze per rivet instead of a forearm workout per rivet. With the 6" long nose extension it also reaches places a hand riveter never will. Both live in the **Rivet Tools drawer of the StackTech power tower** ([map here](/portable-power/m12-ecosystem/#where-everything-lives)) along with the rivet size chart.
+
+<MachineSOP
+  specs={{
+    'Model': 'Milwaukee 2550-20 M12 Rivet Tool',
+    'Capacity': '3/32, 1/8, 5/32, 3/16 in blind rivets (up to 3/16 in stainless)',
+    'Runtime': '~450 × 1/8 in steel rivets per 1.5Ah pack',
+    'Reach': '6.5 in tool; +6 in with nose extension 48-95-0100',
+  }}
+  ppe={['glasses', 'closed-shoes']}
+  training="General shop orientation; have a mentor check your first few rivets on robot structure."
+/>
+
+<ToolProcurementCard tool="m12-rivet" />
+
+## Safety
+
+<SafetyWarning type="warning" title="Mandrels are needles">
+Spent mandrels are hardened steel spikes. Keep the collection cup on the tool, empty it into the metal recycle when it's half full, and never let mandrels hit the floor — they end up in shoes, tires, and knees.
+</SafetyWarning>
+
+- Safety glasses on. Mandrels occasionally snap early and let go with energy.
+- Fingers clear of the nose piece — the tool pulls with over a thousand pounds of force.
+- Remove the battery before swapping nose pieces or opening the jaw housing.
+
+## Rivet Sizing
+
+A blind rivet is specified by **diameter** and **grip range**. Get both right or the joint is decoration.
+
+**1. Match the hole to the rivet diameter:**
+
+| Rivet dia. | Drill size | Hole dia. |
+| --- | --- | --- |
+| 3/32" | #41 | 0.096" |
+| 1/8" | #30 | 0.129" |
+| 5/32" | #20 | 0.161" |
+| 3/16" | #11 | 0.191" |
+
+1/8" is the team default for sheet aluminum and polycarb; 3/16" for structural joints. A sloppy, oversized hole means the rivet body expands into air instead of clamping the stack.
+
+**2. Match the grip range to the material stack.** Measure the **total thickness** of everything the rivet passes through. That number must fall inside the rivet's grip range — printed on the box and on the size chart in the drawer.
+
+- Stack **thicker** than grip range: the rivet can't form a shop head. It holds until it doesn't.
+- Stack much **thinner** than grip range: the body buckles inside the hole instead of clamping.
+
+<ConsumableCard id="blind-rivets-18" />
+
+## Aluminum vs. Stainless Rivets
+
+- **Aluminum rivets** are the default: aluminum sheet, polycarb, gussets, anything non-structural or lightly loaded. Easy on the tool, easy to drill out.
+- **Stainless rivets** for high-shear structural joints and steel parts. The tool pulls up to 3/16" stainless, but each one works the jaws harder — expect to clean the jaws sooner, and mind the mandrel stubs, which snap off sharp.
+- Don't mix metals carelessly: a stainless rivet in a thin aluminum sheet will oval the hole under load before the rivet gives.
+
+Bulk rivet stock lives on the small-parts wall and in the labeled Stack-On boxes.
+
+<LabGalleryImage src="stack-on-box-rivets.jpg" alt="Stack-On organizer box labeled Rivets" caption="Bulk rivet assortments live in the 3847 Rivets Stack-On box — pull what you need, close the latches." />
+
+## Nose Piece Swap
+
+The tool carries one nose piece installed and the others stowed. The nose piece **must match the rivet diameter** — a 3/16" mandrel will not seat in a 1/8" nose.
+
+1. Battery out.
+2. Unscrew the installed nose piece with the wrench flats.
+3. Thread on the size you need and snug it — hand-tight plus a light wrench nip. A loose nose piece backs off mid-job.
+4. Stow the old one back in the drawer holder, not your pocket.
+
+Retention-style nose pieces (48-54-0100) grip the mandrel so the rivet stays put at any angle — worth installing before overhead or sideways riveting.
+
+## Operating Instructions
+
+1. Drill all holes to the chart size and deburr both faces — burrs hold the sheets apart and the rivet clamps the gap, not the metal.
+2. Align the parts and hold the pattern with **clecos** (Durham drawer, "Magnets/Clecos" label) on anything more than two holes. Rivet, then leapfrog the clecos.
+3. Insert the rivet mandrel into the nose piece until it seats.
+4. Put the rivet body through the hole and hold the tool **square to the surface, nose pressed flush**. A tilted tool makes a tilted, weak shop head.
+5. Squeeze the trigger and hold until the mandrel snaps — the tool pulls, forms the shop head, and the mandrel stub drops back into the collection cup.
+6. Inspect: the head should sit flat, the parts pulled tight with no gap. A spinning or proud rivet gets drilled out (use the same drill size, cut the head off) and replaced.
+
+## The Long Nose Extension — 48-95-0100
+
+The 6" nose extension threads on between the tool and the nose piece, moving the nose piece half a foot forward. Use it when the rivet sits somewhere the tool body can't:
+
+- Inside **2×1 tube and deep channels**, setting rivets against the far wall.
+- Down between mechanisms where the tool's bulk won't fit square to the surface.
+
+Keep the extension square to the work just like the bare tool — the extra length makes tilt easier to introduce and harder to see. It stores in the same Rivet Tools drawer.
+
+## Jaw Cleaning
+
+The pulling jaws inside the nose housing grip the mandrel on every cycle, and they load up with mandrel shavings and coating debris.
+
+**Symptoms of dirty jaws:** the mandrel slips instead of pulling, rivets need multiple trigger pulls, or pull force is noticeably down. **That's your cue — clean the jaws, don't force it.**
+
+1. Battery out.
+2. Unscrew the nose housing and remove the jaw assembly (the manual below has the diagram).
+3. Brush the jaws clean with a wire brush or solvent — the tooth grooves must be sharp and clear. Do **not** grease the jaw teeth; they grip by friction.
+4. Reassemble snug, test-pull a scrap rivet.
+
+If cleaning doesn't restore the pull, the jaws are worn — flag it for a mentor and order a replacement jaw set rather than limping it.
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Set a Rivet"
+  items={[
+    'Rivet diameter matches the drilled hole (chart in the drawer)',
+    'Grip range covers the measured material stack',
+    'Right alloy for the job — aluminum default, stainless for structure',
+    'Nose piece matches the rivet size and is snug',
+    'Holes deburred, parts clamped or cleco-ed tight',
+    'Mandrel collection cup attached and not full',
+    'Safety glasses on, battery charged',
+  ]}
+/>
+
+## Resources
+
+<TutorialLink title="M12 Rivet Tool Manual (2550)" url="https://documents.milwaukeetool.com/58-14-2550d1.pdf" source="pdf" description="Official operator's manual — jaw service diagram and nose piece parts." />
+
+<TutorialLink title="M12 Cordless Rivet Tool Review" url="https://www.youtube.com/watch?v=23B_LZPddoo" source="youtube" description="Real-world run-through of the 2550-20 on steel and aluminum rivets." />
+
+<TutorialLink title="M12 Rivet Tool Nose Extension Tutorial" url="https://www.youtube.com/watch?v=oLC0YCIKpXs" source="youtube" description="Installing and using the 6-inch nose extension for deep-reach rivets." />
+
+## Cleanup & Maintenance
+
+- Empty the mandrel cup into metal recycling.
+- Battery out; tool, extension, and nose pieces back in the Rivet Tools drawer.
+- Sweep up any dropped mandrels and rivet bodies — floor check before you leave.
+- Pull force feels down? Clean the jaws now (see above) so the next user doesn't inherit it.
+
+Related: [M12 Ecosystem](/portable-power/m12-ecosystem/) for battery discipline · [Threading & Riveting hand tools](/hand-tools/threading-riveting/) for rivnuts and manual rivet guns · [DeWalt & Pneumatics](/portable-power/dewalt-and-pneumatics/) for the air rivet gun.
