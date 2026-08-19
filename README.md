@@ -38,8 +38,25 @@ npm run build      # static build to dist/
 ## Deployment
 
 Deployed to Cloudflare Workers (static assets) at
-[lab.spectrum3847.org](https://lab.spectrum3847.org). Pushes to `master` deploy
-via GitHub Actions (`.github/workflows/deploy.yml`), or manually:
+[lab.spectrum3847.org](https://lab.spectrum3847.org).
+
+**Auto-deploy is handled by Cloudflare Workers Builds**, connected directly to
+this GitHub repo — every push to `main` builds and deploys automatically. There
+is no GitHub Actions workflow and no `CLOUDFLARE_API_TOKEN` secret in the repo;
+Cloudflare holds the credentials on its side.
+
+Cloudflare runs these commands (configured in the Workers Builds dashboard):
+
+```bash
+npm run build      # build command
+npx wrangler deploy  # deploy command
+```
+
+`wrangler.jsonc` stays in the repo — that is the config `wrangler deploy` reads
+for the worker name, the `dist/` assets directory, and the
+`lab.spectrum3847.org` custom domain.
+
+To deploy by hand (rarely needed):
 
 ```bash
 npm run build
