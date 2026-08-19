@@ -10,33 +10,46 @@
     "url": "https://shop.wazer.com/products/abrasive",
     "location": "Under the WAZER bench",
     "machines": ["wazer-pro"],
-    "notes": "~2.75 hr of cutting per bucket at 0.33 lb/min. WAZER recommends against third-party garnet."
+    "notes": "List price. ~2.75 hr of cutting per bucket at 0.33 lb/min. Ours has come through dealer orders (PDI) — WAZER recommends against third-party garnet."
   },
   {
-    "id": "hp-712-black-xl",
-    "name": "HP 712 80-ml Black Ink (XL)",
+    "id": "wazer-nozzle",
+    "name": "WAZER Nozzle",
+    "category": "Waterjet",
+    "vendor": "WAZER",
+    "price": "$60",
+    "unit": "each",
+    "partNumber": "WAZER nozzle",
+    "url": "https://shop.wazer.com/",
+    "location": "WAZER consumables bin",
+    "machines": ["wazer-pro"],
+    "notes": "Wear item — replace when kerf widens or cuts taper."
+  },
+  {
+    "id": "timink-712xl",
+    "name": "Timink 712XL Ink Combo Pack (compatible)",
     "category": "Plotter",
-    "vendor": "HP",
-    "price": "$85",
+    "vendor": "Amazon (Timink)",
+    "price": "$47.39",
+    "unit": "combo pack (80ml K + C/M/Y)",
+    "partNumber": "712XL compatible",
+    "url": "https://www.amazon.com/s?k=timink+712+ink+cartridges",
+    "location": "Graphics cabinet, plotter shelf",
+    "machines": ["hp-t630"],
+    "notes": "What we actually buy (Aug 2025 order). Third-party high-yield set for the DesignJet T630."
+  },
+  {
+    "id": "hp-712-black",
+    "name": "HP 712 80-ml Black Ink (genuine)",
+    "category": "Plotter",
+    "vendor": "Amazon / HP",
+    "price": "$64.90",
     "unit": "cartridge",
     "partNumber": "3ED71A",
     "url": "https://www.hp.com/us-en/shop/pdp/hp-712-80-ml-black-designjet-ink-cartridge",
     "location": "Graphics cabinet, plotter shelf",
     "machines": ["hp-t630"],
-    "notes": "High-capacity black. Standard 38-ml is 3ED70A."
-  },
-  {
-    "id": "hp-712-cyan",
-    "name": "HP 712 29-ml Cyan Ink",
-    "category": "Plotter",
-    "vendor": "HP",
-    "price": "$45",
-    "unit": "cartridge",
-    "partNumber": "3ED67A",
-    "url": "https://www.hp.com/us-en/shop/pdp/hp-712-29-ml-cyan-designjet-ink-cartridge",
-    "location": "Graphics cabinet, plotter shelf",
-    "machines": ["hp-t630"],
-    "notes": "3-pack (3ED77A) is cheaper per cartridge. Magenta 3ED68A, Yellow 3ED69A."
+    "notes": "Genuine HP option (paid $64.90 in 2022). Cyan/Magenta/Yellow 29-ml: 3ED67A/3ED68A/3ED69A."
   },
   {
     "id": "plotter-paper-24",
@@ -49,20 +62,20 @@
     "url": "https://www.amazon.com/s?k=24+inch+plotter+paper+150+ft",
     "location": "Graphics cabinet, lower shelf",
     "machines": ["hp-t630"],
-    "notes": "Any 24\" 20-lb bond with 2\" core works."
+    "notes": "Any 24\" 20-lb bond with 2\" core works. (List price — no receipt on file.)"
   },
   {
-    "id": "prismatic-powder",
-    "name": "Powder Coat Powder (team purple/white)",
+    "id": "prismatic-plum-river",
+    "name": "Prismatic Powders PLUM RIVER (team purple)",
     "category": "Powder Coating",
     "vendor": "Prismatic Powders",
-    "price": "$18–25",
-    "unit": "lb",
-    "partNumber": "Varies by color",
-    "url": "https://www.prismaticpowders.com/",
+    "price": "$147.10",
+    "unit": "10 lb box",
+    "partNumber": "PRB-4332",
+    "url": "https://www.prismaticpowders.com/shop/powder-coating-colors/PRB-4332/plum-river",
     "location": "Powder coat room shelf",
     "machines": ["eastwood-pcs250"],
-    "notes": "Store sealed with desiccant; powder absorbs moisture and spits."
+    "notes": "The signature purple — reordered 4+ times ($138.80 in 2024 → $147.10 in 2025). Store sealed with desiccant; moist powder spits."
   },
   {
     "id": "cricut-standardgrip-mat",
@@ -75,7 +88,7 @@
     "url": "https://cricut.com/en-us/blades-tools/mats/standardgrip-machine-mat-12-x-12-2-pack/2001974.html",
     "location": "Graphics cabinet, mat rack",
     "machines": ["cricut-maker-4"],
-    "notes": "Use LightGrip (blue) for paper, StrongGrip (purple) for thick materials."
+    "notes": "First set came in the Maker 4 Ultimate Bundle. LightGrip (blue) for paper, StrongGrip (purple) for thick materials."
   },
   {
     "id": "cricut-fine-point-blade",
@@ -117,17 +130,17 @@
     "notes": "Medium-tack for adhesive vinyl decals."
   },
   {
-    "id": "wazer-nozzle",
-    "name": "WAZER Nozzle",
-    "category": "Waterjet",
-    "vendor": "WAZER",
-    "price": "$60",
-    "unit": "each",
-    "partNumber": "WAZER nozzle",
-    "url": "https://shop.wazer.com/",
-    "location": "WAZER consumables bin",
-    "machines": ["wazer-pro"],
-    "notes": "Wear item — replace when kerf widens or cuts taper."
+    "id": "sublimation-alu-sheets",
+    "name": "Anodized Aluminum Sublimation Sheets (custom 5251 H24)",
+    "category": "Vinyl & Apparel",
+    "vendor": "Alibaba",
+    "price": "$48.00",
+    "unit": "sheet",
+    "partNumber": null,
+    "url": "https://www.alibaba.com/",
+    "location": "Graphics cabinet",
+    "machines": ["astt-heat-press"],
+    "notes": "14 custom sheets ordered Aug 2025 ($672 + $300 freight) for sublimation-on-metal signs."
   },
   {
     "id": "blind-rivets-18",
@@ -140,7 +153,85 @@
     "url": "https://www.mcmaster.com/97517A430/",
     "location": "Small parts wall, rivet bins",
     "machines": ["m12-rivet"],
-    "notes": "1/8\" dia × 0.126–0.25\" grip, domed head. Stock 3/16\" too."
+    "notes": "Restocked in McMaster orders (large-diameter domed head, 0.126–0.25\" grip). Stock 3/16\" too."
+  },
+  {
+    "id": "rivets-316-large-flange",
+    "name": "3/16\" Aluminum Large-Flange Blind Rivets",
+    "category": "Fasteners",
+    "vendor": "Amazon (Sunxeke)",
+    "price": "$9.99",
+    "unit": "box of 100",
+    "partNumber": "3/16\" × 3/8\", 5/8\" flange",
+    "url": "https://www.amazon.com/s?k=sunxeke+large+flange+blind+rivets+3%2F16",
+    "location": "Small parts wall, rivet bins",
+    "machines": ["m12-rivet"],
+    "notes": "Large flange spreads load on polycarb and soft materials (Mar 2026 order, ×2 boxes)."
+  },
+  {
+    "id": "wcp-nutstrip",
+    "name": "WCP Aluminum Nutstrip 6\" (#10-32, 0.5\" spacing)",
+    "category": "Fasteners",
+    "vendor": "WestCoast Products",
+    "price": "$8.99",
+    "unit": "6\" stick",
+    "partNumber": "WCP-0336",
+    "url": "https://wcproducts.com/products/nutstrips",
+    "location": "Small parts wall",
+    "machines": [],
+    "notes": "Bought 10 in Aug 2026 (order 26-52686). 10+ WCP orders in the 2026 season."
+  },
+  {
+    "id": "wcp-1032-bhcs",
+    "name": "#10-32 BHCS Black Oxide (2.5\" / 3\")",
+    "category": "Fasteners",
+    "vendor": "WestCoast Products",
+    "price": "$16.99–21.99",
+    "unit": "pack of 50",
+    "partNumber": "WCP-0261 / WCP-0263",
+    "url": "https://wcproducts.com/collections/hardware",
+    "location": "Small parts wall, bolt bins by length",
+    "machines": [],
+    "notes": "The robot-standard fastener. Long lengths restocked Aug 2026."
+  },
+  {
+    "id": "retaining-rings",
+    "name": "External Retaining Rings 3/8\" & 1/2\"",
+    "category": "Fasteners",
+    "vendor": "McMaster-Carr",
+    "price": "$11.74–13.63",
+    "unit": "pack of 100",
+    "partNumber": "97633A170 / 97633A200",
+    "url": "https://www.mcmaster.com/97633A170",
+    "location": "Durham cabinet — 1/2\" Hex/Snap Rings drawer",
+    "machines": [],
+    "notes": "Black-phosphate spring steel, for hex shaft (Apr 2026 order 63139602)."
+  },
+  {
+    "id": "m6-locknuts",
+    "name": "M6 Nylon-Insert Locknuts",
+    "category": "Fasteners",
+    "vendor": "McMaster-Carr",
+    "price": "$11.33",
+    "unit": "pack of 100",
+    "partNumber": "90576A814",
+    "url": "https://www.mcmaster.com/90576A814",
+    "location": "Small parts wall, metric bins",
+    "machines": [],
+    "notes": "Metric hardware for swerve/COTS assemblies."
+  },
+  {
+    "id": "epoxy-mixing-nozzles",
+    "name": "10:1 Epoxy Static Mixing Nozzles",
+    "category": "Shop Supplies",
+    "vendor": "Amazon",
+    "price": "$9.99",
+    "unit": "pack of 21",
+    "partNumber": null,
+    "url": "https://www.amazon.com/s?k=10%3A1+mixing+nozzles+epoxy",
+    "location": "Adhesives shelf",
+    "machines": [],
+    "notes": "For 10:1 structural adhesive cartridges."
   },
   {
     "id": "single-flute-endmills",
@@ -151,9 +242,152 @@
     "unit": "each",
     "partNumber": null,
     "url": "https://www.amazon.com/s?k=1%2F4+single+flute+carbide+end+mill+aluminum",
-    "location": "ShopSabre tooling drawer",
+    "location": "ShopSabre tooling drawer (blue toolbox)",
     "machines": ["shopsabre-23"],
-    "notes": "Single-flute O-ring style for aluminum; 2-flute for wood/plastic."
+    "notes": "Single-flute O-ring style for aluminum; 2-flute for wood/plastic. (List price — CNC tooling is bought on the school account.)"
+  },
+  {
+    "id": "zoro-polycarb-tube",
+    "name": "Clear Polycarbonate Tube 2\" OD × 6 ft",
+    "category": "Raw Stock",
+    "vendor": "Zoro",
+    "price": "$62.69",
+    "unit": "6 ft tube",
+    "partNumber": "G7848134",
+    "url": "https://www.zoro.com/search?q=G7848134",
+    "location": "Material cart / laser material rack",
+    "machines": [],
+    "notes": "Bought 5 in Mar 2026 (20% promo). Zoro = our raw-stock vendor: free shipping + frequent 10–20% promo codes."
+  },
+  {
+    "id": "zoro-polypro-sheet",
+    "name": "White Polypropylene Sheet 48\"×48\"×0.094\"",
+    "category": "Raw Stock",
+    "vendor": "Zoro",
+    "price": "$35.05",
+    "unit": "sheet",
+    "partNumber": "G5250567",
+    "url": "https://www.zoro.com/search?q=G5250567",
+    "location": "Sheet material rack",
+    "machines": ["shopsabre-23"],
+    "notes": "Routs cleanly; used for bumper backing and liners (Apr 2026 order)."
+  },
+  {
+    "id": "co2-laser-lens",
+    "name": "20mm CO2 Laser Focus Lens",
+    "category": "Laser",
+    "vendor": "Amazon (CNCOLETECH)",
+    "price": "$32.63",
+    "unit": "each",
+    "partNumber": "20mm ZnSe",
+    "url": "https://www.amazon.com/s?k=cncoletech+20mm+co2+laser+lens",
+    "location": "Laser spares drawer",
+    "machines": ["thunder-nova-35", "gweike-m3-ultra"],
+    "notes": "Replacement focus lens — swap when cleaning no longer restores cut quality."
+  },
+  {
+    "id": "xtool-cutting-nozzles",
+    "name": "xTool MetalFab Cutting Nozzles",
+    "category": "Laser",
+    "vendor": "xTool",
+    "price": "$69.00",
+    "unit": "pack of 5",
+    "partNumber": null,
+    "url": "https://www.xtool.com/collections/xtool-metalfab-accessories",
+    "location": "Blue toolbox — xTool MetalFab drawer",
+    "machines": ["xtool-metalfab"],
+    "notes": "Fiber laser cutting nozzle consumables (Mar 2026 order 415225)."
+  },
+  {
+    "id": "recip-blades",
+    "name": "Reciprocating Saw Blades (Hackzall)",
+    "category": "Cutting Tools",
+    "vendor": "Amazon",
+    "price": "$6.77",
+    "unit": "pack of 5",
+    "partNumber": "48-00-1640 compatible",
+    "url": "https://www.amazon.com/s?k=milwaukee+hackzall+blades",
+    "location": "StackTech saw tower — Hackzall drawer",
+    "machines": ["m12-hackzall"],
+    "notes": "Keep metal and wood blades stocked separately."
+  },
+  {
+    "id": "bandsaw-blade-93",
+    "name": "93-1/2\" × 3/4\" M42 Bi-Metal Bandsaw Blade",
+    "category": "Cutting Tools",
+    "vendor": "Amazon (Imachinist)",
+    "price": "$25–35",
+    "unit": "each",
+    "partNumber": "S931234610",
+    "url": "https://www.amazon.com/s?k=imachinist+93.5+bandsaw+blade",
+    "location": "Bandsaw spares, machine shop",
+    "machines": [],
+    "notes": "Fits the 4×6 horizontal bandsaw. WEN BB4550 44-7/8\" blades fit the benchtop metal bandsaw."
+  },
+  {
+    "id": "battery-lugs",
+    "name": "2 AWG Tin-Plated Copper Lugs (1/4\" hole)",
+    "category": "Electrical",
+    "vendor": "McMaster-Carr",
+    "price": "$5.06",
+    "unit": "each",
+    "partNumber": "6926K54",
+    "url": "https://www.mcmaster.com/6926K54",
+    "location": "Electrical bench, crimp bins",
+    "machines": [],
+    "notes": "Battery/main-power lugs — single-crimp, use the hydraulic crimper."
+  },
+  {
+    "id": "main-breakers",
+    "name": "Bussmann 120A Main Breakers",
+    "category": "Electrical",
+    "vendor": "Amazon (Crimp Supply)",
+    "price": "$20–30",
+    "unit": "each",
+    "partNumber": "BP/CB185-120 · CB285-120",
+    "url": "https://www.amazon.com/s?k=bussmann+cb185-120",
+    "location": "Electrical bench, robot power bins",
+    "machines": [],
+    "notes": "FRC main breakers (Apr 2026 restock ×5)."
+  },
+  {
+    "id": "zip-ties",
+    "name": "Cable Zip Ties (12\" 50 lb / 14\" 120 lb)",
+    "category": "Electrical",
+    "vendor": "Home Depot",
+    "price": "$17–19",
+    "unit": "bulk pack",
+    "partNumber": "SKYSHALO 1000-pk · KTI 100-pk",
+    "url": "https://www.homedepot.com/s/zip%20ties",
+    "location": "Electrical bench + pit kits",
+    "machines": [],
+    "notes": "Jun 2026 restock (order WN60612912)."
+  },
+  {
+    "id": "safety-side-shields",
+    "name": "Slip-On Safety Side Shields (for prescription glasses)",
+    "category": "Safety & PPE",
+    "vendor": "Amazon (Tellegloww)",
+    "price": "$43.99",
+    "unit": "box of 60 pairs",
+    "partNumber": null,
+    "url": "https://www.amazon.com/s?k=safety+side+shields+prescription+glasses",
+    "location": "PPE shelf by the shop door",
+    "machines": [],
+    "notes": "Makes prescription glasses pit-legal (Apr 2026)."
+  },
+  {
+    "id": "nitrile-gloves",
+    "name": "Black Nitrile Exam Gloves",
+    "category": "Safety & PPE",
+    "vendor": "Amazon",
+    "price": "$10–15",
+    "unit": "box of 100",
+    "partNumber": null,
+    "url": "https://www.amazon.com/s?k=black+nitrile+exam+gloves",
+    "location": "Red toolbox — top gloves drawer",
+    "machines": [],
+    "notes": "For chemicals, powder, and finishing ONLY — never near rotating machinery."
   },
   {
     "id": "label-tape-brother",
@@ -167,5 +401,18 @@
     "location": "Label maker drawer",
     "machines": [],
     "notes": "Black on white, 12mm — the shop standard for bin labels."
+  },
+  {
+    "id": "niimbot-b1",
+    "name": "NIIMBOT B1 Thermal Label Printer + Rolls",
+    "category": "Organization",
+    "vendor": "NIIMBOT / Amazon",
+    "price": "$25.42",
+    "unit": "printer",
+    "partNumber": "B1",
+    "url": "https://www.niimbot.com/",
+    "location": "Label maker drawer",
+    "machines": [],
+    "notes": "Bluetooth app-driven, inkless thermal (Oct 2025). BETCKEY DYMO-compatible rolls $26.99 for the DYMO printers."
   }
 ]

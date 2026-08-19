@@ -488,7 +488,9 @@ a.explore-card:hover {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #C084FC;
+  /* !important: .sl-markdown-content p otherwise wins on specificity and
+     paints this dark-on-purple. */
+  color: #C084FC !important;
   margin-bottom: 0.75rem !important;
 }
 
