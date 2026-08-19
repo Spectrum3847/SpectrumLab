@@ -1,9 +1,20 @@
 ---
 /**
- * Comparison matrix of all filaments from src/data/filaments.json.
+ * Comparison matrix of all filaments from src/data/filaments.json,
+ * grouped by approval tier (preferred → prototyping → existing stock).
  */
 import filaments from '../data/filaments.json';
 const items = filaments as any[];
+
+const tiers = [
+  { key: 'preferred', label: 'Preferred for new designs' },
+  { key: 'prototyping', label: 'Prototyping & support interface' },
+  { key: 'stock', label: 'On the shelf — use up, do not rebuy' },
+];
+const groups = tiers
+  .map((t) => ({ ...t, rows: items.filter((f) => f.tier === t.key) }))
+  .filter((g) => g.rows.length > 0);
+const untiered = items.filter((f) => !tiers.some((t) => t.key === f.tier));
 ---
 
 <div class="filament-matrix">
@@ -11,31 +22,62 @@ const items = filaments as any[];
     <thead>
       <tr>
         <th>Material</th>
+        <th>Density</th>
+        <th>Max Flow</th>
+        <th>Speed</th>
         <th>Nozzle</th>
         <th>Bed</th>
-        <th>Plate</th>
         <th>Fan</th>
+        <th>Loctite</th>
         <th>Drying</th>
-        <th>Enclosure</th>
         <th>$ / kg</th>
       </tr>
     </thead>
     <tbody>
-      {items.map((f) => (
+      {groups.map((g) => (
+        <>
+          <tr class="fm-group">
+            <th colspan="10" scope="colgroup">{g.label}</th>
+          </tr>
+          {g.rows.map((f) => (
+            <tr>
+              <td>
+                <strong>{f.name}</strong>
+                {f.hardenedNozzle && <span class="fm-flag" title="Requires hardened nozzle">⚙️ hardened</span>}
+              </td>
+              <td>{f.density ?? '—'}</td>
+              <td>{f.maxFlow ?? '—'}</td>
+              <td>{f.printSpeed ?? f.maxSpeed}</td>
+              <td>{f.nozzleTemp}</td>
+              <td>{f.bedTemp}</td>
+              <td>{f.fanSpeed}</td>
+              <td>{f.loctite ?? '—'}</td>
+              <td>{f.drying}</td>
+              <td class="fm-price">
+                {f.pricePerKg
+                  ? (f.reorderUrl
+                      ? <a href={f.reorderUrl} target="_blank" rel="noopener noreferrer">{f.pricePerKg}</a>
+                      : f.pricePerKg)
+                  : (f.reorderUrl
+                      ? <a href={f.reorderUrl} target="_blank" rel="noopener noreferrer">Reorder ↗</a>
+                      : '—')}
+              </td>
+            </tr>
+          ))}
+        </>
+      ))}
+      {untiered.map((f) => (
         <tr>
-          <td>
-            <strong>{f.name}</strong>
-            {f.hardenedNozzle && <span class="fm-flag" title="Requires hardened nozzle">⚙️ hardened</span>}
-          </td>
+          <td><strong>{f.name}</strong></td>
+          <td>{f.density ?? '—'}</td>
+          <td>{f.maxFlow ?? '—'}</td>
+          <td>{f.printSpeed ?? f.maxSpeed}</td>
           <td>{f.nozzleTemp}</td>
           <td>{f.bedTemp}</td>
-          <td>{f.plate}</td>
           <td>{f.fanSpeed}</td>
+          <td>{f.loctite ?? '—'}</td>
           <td>{f.drying}</td>
-          <td>{f.enclosure}</td>
-          <td class="fm-price">
-            {f.reorderUrl ? <a href={f.reorderUrl} target="_blank" rel="noopener noreferrer">{f.pricePerKg}</a> : f.pricePerKg}
-          </td>
+          <td class="fm-price">{f.pricePerKg ?? '—'}</td>
         </tr>
       ))}
     </tbody>
@@ -44,7 +86,17 @@ const items = filaments as any[];
 
 <style>
   .filament-matrix { overflow-x: auto; margin: 1.5rem 0; }
-  .filament-matrix table { font-size: 0.83rem; min-width: 780px; }
+  .filament-matrix table { font-size: 0.83rem; min-width: 980px; }
+  .fm-group th {
+    text-align: left;
+    font-family: var(--font-heading, 'Outfit', sans-serif);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--sl-color-accent);
+    background: var(--sl-color-bg-sidebar);
+  }
   .fm-flag {
     display: block;
     font-size: 0.68rem;

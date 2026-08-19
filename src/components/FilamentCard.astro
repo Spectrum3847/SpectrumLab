@@ -15,8 +15,9 @@ if (!data) throw new Error(`FilamentCard: unknown filament id "${Astro.props.id}
 <div class="filament-card">
   <div class="fc-header">
     <span class="fc-name">{data.name}</span>
-    <span class="fc-price">{data.pricePerKg} / kg</span>
+    {data.pricePerKg && <span class="fc-price">{data.pricePerKg} / kg</span>}
   </div>
+  {data.tierLabel && <p class={`fc-tier fc-tier-${data.tier}`}>{data.tierLabel}</p>}
   <div class="fc-grid">
     <div class="fc-stat"><span class="fc-label">Nozzle</span><span class="fc-value">{data.nozzleTemp}</span></div>
     <div class="fc-stat"><span class="fc-label">Bed</span><span class="fc-value">{data.bedTemp}</span></div>
@@ -24,6 +25,10 @@ if (!data) throw new Error(`FilamentCard: unknown filament id "${Astro.props.id}
     <div class="fc-stat"><span class="fc-label">Part Fan</span><span class="fc-value">{data.fanSpeed}</span></div>
     <div class="fc-stat"><span class="fc-label">Drying</span><span class="fc-value">{data.drying}</span></div>
     <div class="fc-stat"><span class="fc-label">Enclosure</span><span class="fc-value">{data.enclosure}</span></div>
+    {data.density && <div class="fc-stat"><span class="fc-label">Density (CAD)</span><span class="fc-value">{data.density}</span></div>}
+    {data.maxFlow && <div class="fc-stat"><span class="fc-label">Max Flow</span><span class="fc-value">{data.maxFlow}</span></div>}
+    {data.printSpeed && <div class="fc-stat"><span class="fc-label">Print Speed</span><span class="fc-value">{data.printSpeed}</span></div>}
+    {data.loctite && <div class="fc-stat"><span class="fc-label">Loctite</span><span class="fc-value">{data.loctite}</span></div>}
   </div>
   {data.hardenedNozzle && (
     <p class="fc-flag">⚙️ Requires hardened nozzle &amp; extruder gears</p>
@@ -87,6 +92,19 @@ if (!data) throw new Error(`FilamentCard: unknown filament id "${Astro.props.id}
     color: var(--sl-color-gray-3);
   }
   .fc-value { font-size: 0.83rem; font-weight: 700; line-height: 1.35; }
+  .fc-tier {
+    margin: -0.25rem 0 0.75rem 0 !important;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 0.4rem;
+    width: fit-content;
+  }
+  .fc-tier-preferred { color: #166534; background: #F0FDF4; border: 1px solid #BBF7D0; }
+  .fc-tier-prototyping { color: #1E40AF; background: #EFF6FF; border: 1px solid #BFDBFE; }
+  .fc-tier-stock { color: #92400E; background: #FFFBEB; border: 1px solid #FDE68A; }
   .fc-flag {
     margin: 0.7rem 0 0 0 !important;
     font-size: 0.83rem;

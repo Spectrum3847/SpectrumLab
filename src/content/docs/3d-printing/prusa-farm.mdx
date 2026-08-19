@@ -1,6 +1,6 @@
 ---
 title: "Prusa Mini+ Farm"
-description: "SOP for the 12-printer Prusa Mini+ farm: PrusaSlicer setup, Live-Z calibration, PEI sheet care, and the Prusa Connect queue."
+description: "SOP for the 12-printer Prusa Mini+ farm: 0.6 mm nozzle standard, PrusaSlicer setup, Live-Z calibration, PEI sheet care, and the Prusa Connect queue."
 ---
 
 import MachineSOP from '../../../components/MachineSOP.astro';
@@ -13,9 +13,12 @@ import VideoEmbed from '../../../components/VideoEmbed.astro';
 
 The Prusa Mini+ farm — twelve printers racked in wooden cubbies under the printer bench — is
 the volume workhorse of the lab. It handles most of the 3D-printed part demand for both the
-main team and the junior team: PLA prototypes, PETG brackets, jigs, and the endless stream of
+main team and the junior team: PLA prototypes, PCTG brackets, jigs, and the endless stream of
 "can you print me a..." requests. The Minis are simple, tough, and the best place for newer
 students to learn printing without tying up the [Bambu fleet](/3d-printing/bambu-fleet/).
+
+A few of the twelve are earmarked to be **donated to other FRC teams** — check the farm
+whiteboard before you plan a twelve-printer batch, since the working count changes.
 
 <LabGalleryImage
   src="3d-printer-farm-overview.jpg"
@@ -28,7 +31,7 @@ students to learn printing without tying up the [Bambu fleet](/3d-printing/bambu
 <MachineSOP
   specs={{
     'Build Volume': '18 × 18 × 18 cm',
-    'Extruder': 'Bowden, 0.4 mm nozzle',
+    'Extruder': 'Bowden, 0.6 mm hardened nozzle',
     'Controller': '32-bit Buddy board',
     'Firmware': 'Input Shaper + Pressure Advance',
     'Leveling': 'Auto mesh bed leveling',
@@ -40,24 +43,42 @@ students to learn printing without tying up the [Bambu fleet](/3d-printing/bambu
 
 <ToolProcurementCard tool="prusa-mini" />
 
+## Farm standards
+
+The farm is tuned for **throughput**, not fine detail — that is the whole point of running twelve
+of them.
+
+- **Nozzles: 0.6 mm hardened steel** across the farm. Hardened so PETG-GF is safe to run
+  anywhere; 0.6 mm so parts come off in a fraction of the time.
+- **Line width 0.70–0.75 mm** (115–125% of nozzle) and **0.28–0.32 mm layers** — wide, thick
+  beads that build strength fast. See the
+  [slicer priority hierarchy](/3d-printing/print-settings/#the-slicer-priority-hierarchy).
+- **Walls: 4–5** on a 0.6 mm nozzle for a structural part, not the 6–8 you would run on a Bambu.
+- Sheets are **textured PEI**, matching the Bambu fleet standard.
+
 ## Safety
 
 - The nozzle runs at up to 280 °C and the bed at up to 100 °C. Keep fingers clear during
   printing and heating.
 - The Minis are open-frame — no enclosure means no barrier. Do not lean tools, spools, or
   sleeves into a running printer's motion path.
-- Materials: **PLA and PETG only** on the farm. TPU fights the Bowden extruder, and PA-CF/PC
-  are banned here — no enclosure and no hardened nozzle. Take those to the
-  [Bambu fleet](/3d-printing/bambu-fleet/).
+- Materials: **PCTG, PETG-GF, and PLA** on the farm. Flexibles fight the Bowden extruder, so
+  TPU goes to a Bambu on the external spool holder.
+- **No PPA-GF on the Minis.** The hotend tops out at 280 °C, well under PPA-GF's 300–320 °C, and
+  an open frame cannot hold a heated chamber. Take it to the
+  [H2D or X2D](/3d-printing/bambu-fleet/). Same for CF nylon and PC from existing stock —
+  enclosed machines only.
+
 
 ## Software & Workflow — PrusaSlicer
 
-1. Open **PrusaSlicer** and select the **Original Prusa MINI & MINI+** printer profile
-   (0.4 mm nozzle).
-2. Pick a print profile: **0.20 mm SPEED** for most work, **0.15 mm QUALITY** when surface
+1. Open **PrusaSlicer** and select the **Original Prusa MINI & MINI+** printer profile, then set
+   the nozzle to **0.6 mm** — the default profile assumes 0.4 mm and will under-extrude badly.
+2. Pick a print profile: **0.30 mm SPEED** for most work, **0.20 mm QUALITY** when surface
    finish matters.
-3. Pick the matching filament profile (Prusament PLA / generic PLA / PETG). The stock profiles
-   are well tuned — do not hand-edit temperatures unless a mentor asks you to.
+3. Pick the matching filament profile. PLA and PETG have well-tuned stock profiles; **PCTG has
+   no stock profile — start from Generic PETG** and raise the nozzle to the top of the PCTG
+   range. Do not hand-edit temperatures beyond that unless a mentor asks you to.
 4. Orient, support, and set walls/infill per
    [Print Settings & Supports](/3d-printing/print-settings/).
 5. Slice and check the preview — time, filament, supports.
@@ -80,8 +101,9 @@ The Minis are on the lab network and registered to the team's Prusa Connect acco
 
 No dedicated consumables table for the farm — the staples are:
 
-- **PLA and PETG spools** — reorder links on the [Filament Guide](/3d-printing/filament-guide/).
-  The farm is where budget-brand PLA/PETG gets used up.
+- **PCTG, PETG-GF, and PLA spools** — reorder links on the
+  [Filament Guide](/3d-printing/filament-guide/). The farm is where budget-brand PLA and
+  leftover PETG stock gets used up.
 - **Spare PEI sheets** — one clean spare per material type lives at the printer bench; smooth
   and textured sheets are not interchangeable settings-wise.
 - **90%+ IPA** and **dish soap** for sheet care.
@@ -93,7 +115,8 @@ No dedicated consumables table for the farm — the staples are:
   items={[
     'Sheet is clean, dry, and seated flat against the heatbed locating pins',
     'Previous part and skirt scraps removed from the sheet',
-    'Correct filament profile selected (PLA vs PETG changes everything)',
+    'Nozzle set to 0.6 mm in PrusaSlicer — not the stock 0.4 mm default',
+    'Correct filament profile selected (PLA vs PCTG changes everything)',
     'Enough filament on the spool for the whole job — Minis have no runout grace',
     'Filament path from spool to Bowden tube is free to unwind, no crossed windings',
     'Printer shows idle in Prusa Connect — not paused mid-job',
@@ -136,8 +159,8 @@ Live-Z is the nozzle-to-sheet gap. It is the single most important number on a M
 - **When adhesion drops even with IPA:** wash the sheet with dish soap and warm water, rubbing
   with a clean paper towel; rinse thoroughly and dry with a fresh towel. Soap strips the
   silicone/grease film that IPA leaves behind.
-- **PETG on smooth PEI welds itself down** — the farm default is the textured sheet for PETG.
-  If you must use smooth, glue stick as a release layer.
+- **PETG and PCTG weld themselves to smooth PEI** — the farm runs textured sheets for exactly
+  this reason. If you must use smooth, glue stick as a release layer.
 - Bent, deeply gouged, or bald sheets: flag them to a mentor for replacement, do not quietly
   put them back.
 
@@ -146,13 +169,14 @@ Live-Z is the nozzle-to-sheet gap. It is the single most important number on a M
 | Situation | Use |
 | --- | --- |
 | PLA prototype, jig, or fixture | **Mini** — always |
-| PETG part, no rush, fits 18 cm cube | **Mini** — the farm exists for this |
+| PCTG or PETG-GF part, no rush, fits 18 cm cube | **Mini** — the farm exists for this |
 | Batch of 8 identical parts | **Minis** — one per printer beats one big plate |
 | Junior team parts | **Minis** — their home turf |
 | Deadline tonight, needs to print fast | **Bambu** |
-| PA-CF, PC, or TPU | **Bambu only** |
-| Part bigger than 18 cm | [Bambu](/3d-printing/bambu-fleet/) up to 256 mm+, then [large-format](/3d-printing/large-format/) |
-| Multi-color or soluble supports | **Bambu** (AMS) |
+| Fine detail or a thin-walled part | **Bambu** — 0.6 mm nozzles cannot resolve it |
+| PPA-GF, CF nylon, PC, or TPU | **Bambu only** |
+| Part bigger than 18 cm | [Bambu](/3d-printing/bambu-fleet/) — up to 350 × 320 × 325 mm on the H2D |
+| Zero-gap or soluble supports | **H2D / X2D** (dual nozzle) |
 
 ## Resources
 

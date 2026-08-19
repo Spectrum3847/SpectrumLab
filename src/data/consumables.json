@@ -234,19 +234,6 @@
     "notes": "For 10:1 structural adhesive cartridges."
   },
   {
-    "id": "single-flute-endmills",
-    "name": "1/4\" Single-Flute Carbide Endmills",
-    "category": "CNC Router",
-    "vendor": "Amazon",
-    "price": "$15–25",
-    "unit": "each",
-    "partNumber": null,
-    "url": "https://www.amazon.com/s?k=1%2F4+single+flute+carbide+end+mill+aluminum",
-    "location": "ShopSabre tooling drawer (blue toolbox)",
-    "machines": ["shopsabre-23"],
-    "notes": "Single-flute O-ring style for aluminum; 2-flute for wood/plastic. (List price — CNC tooling is bought on the school account.)"
-  },
-  {
     "id": "zoro-polycarb-tube",
     "name": "Clear Polycarbonate Tube 2\" OD × 6 ft",
     "category": "Raw Stock",
@@ -269,8 +256,8 @@
     "partNumber": "G5250567",
     "url": "https://www.zoro.com/search?q=G5250567",
     "location": "Sheet material rack",
-    "machines": ["shopsabre-23"],
-    "notes": "Routs cleanly; used for bumper backing and liners (Apr 2026 order)."
+    "machines": [],
+    "notes": "Used for bumper backing and liners (Apr 2026 order). Cuts cleanly on the bandsaw and jigsaw."
   },
   {
     "id": "co2-laser-lens",

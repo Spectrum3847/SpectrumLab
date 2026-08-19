@@ -1,6 +1,6 @@
 ---
 title: "Print Settings & Support Strategy"
-description: "Orientation for strength, tree vs normal supports, overhang and bridging limits, and copy-ready slicer presets for FRC parts."
+description: "Orientation for strength, the slicer priority hierarchy, dual-nozzle zero-gap supports, and copy-ready presets for FRC parts."
 ---
 
 import PrintSettingPreset from '../../../components/PrintSettingPreset.astro';
@@ -34,6 +34,40 @@ Two more orientation wins:
 - **The plate side is the flattest, best-looking face.** Put mating or cosmetic surfaces down
   when you can.
 
+## The slicer priority hierarchy
+
+When slicing a functional robot part, tune in **exactly this order**. The list is sorted by how
+much each setting actually buys you in strength per gram — students always reach for the infill
+slider, which is fifth.
+
+1. **Perimeter loops (walls).** The single biggest lever on bending and torsional strength — it
+   is the I-beam principle, and the walls are the flanges. Run **6–8 walls** on a 0.4 mm nozzle
+   or **4–5 walls** on a 0.6 mm nozzle.
+2. **Extrusion temperature and low fan.** Print at the **high end** of the manufacturer's
+   temperature range with part cooling at **20–40%**. Hotter plastic and slower cooling means
+   more polymer chain entanglement across the layer boundary — this is free interlayer strength.
+3. **Top / bottom solid layers.** **5–7 solid layers**, minimum 1.2–1.6 mm total thickness.
+   This is what stops bolt crush and fastener pull-through; thin top skins tear out around
+   washers.
+4. **Line width.** Set to **115–125% of nozzle diameter** — 0.50–0.52 mm on a 0.4 mm nozzle,
+   0.70–0.75 mm on a 0.6 mm. Wider beads mean more thermal contact area between layers.
+5. **Infill percentage.** **25–40%** for structural brackets. Reserve 100% / all-walls for
+   dead-axle spacers and clamp blocks where the part is a solid chunk by design.
+6. **Infill pattern.** **Gyroid** for isotropic 3D strength, or **cubic / adaptive cubic**.
+   Avoid grid and triangles — the nozzle drags back across its own crossings, which costs
+   quality and speed for no strength gain.
+7. **Layer height.** **0.20 mm** on a 0.4 mm nozzle, **0.28–0.32 mm** on a 0.6 mm.
+
+<SafetyWarning type="tip" title="Reality-check the part, not the slicer">
+If a printed part breaks at practice, look at the break. Clean separation along a layer line
+means orientation was wrong — no amount of infill would have saved it. Reprint rotated, not
+denser.
+</SafetyWarning>
+
+Two more joint rules that outrank everything on the list above: add washers or design bosses so
+bolt heads never bear on thin printed faces, and use **heat-set inserts** instead of threading
+plastic for anything serviced more than once.
+
 ## Support strategy
 
 The best support is no support. Before enabling anything, try to design or orient the need
@@ -54,46 +88,63 @@ When you genuinely need supports:
   shapes.
 - **Normal (grid) supports** — use for large flat ceilings (a big horizontal underside), where
   trees get flimsy and a uniform interface leaves a flatter surface.
-- Set a **support/part top Z distance of about 0.2 mm** (one layer) and enable a support
-  interface for surfaces that matter. If supports weld on, increase the gap; if the surface
-  above sags, decrease it.
+- Single-material supports want a **top Z distance of about 0.2 mm** (one layer). If supports
+  weld on, increase the gap; if the surface above sags, decrease it.
 - Supported surfaces are always the ugliest surface on the part. Face them where nobody looks
   and no part mates.
+
+## Dual-nozzle support strategies
+
+The H2D and X2D have a second nozzle, which unlocks something a single-nozzle printer cannot do:
+a **zero-gap** support interface that still releases cleanly. Instead of leaving an air gap and
+accepting a rough underside, we exploit chemical incompatibility between two plastics.
+
+### Universal zero-gap interface
+
+Use for **72D TPU, PCTG, and PETG-GF**.
+
+- **Main part and support towers:** the same functional material as the part (PCTG, PETG-GF, or
+  72D TPU).
+- **Support interface layer:** standard **white PLA** in Nozzle 2.
+- **Top / bottom Z distance:** **0.0 mm — zero gap.**
+- **Interface layers:** 2–3.
+
+*Why it works:* PLA will not chemically weld to polyurethanes or copolyesters. The interface
+touches the part with no gap at all, so the underside comes out looking injection-molded — and
+then the whole support snaps off clean, because the bond was never there to begin with.
+
+### PPA-GF supports
+
+PLA cannot be used here — PPA-GF prints at 290 °C+, which cooks PLA into a plug.
+
+- **Standard geometry:** single-material **PPA-GF tree supports** with a **0.22 mm top Z gap**.
+  The glass fibers create a clean break plane on their own.
+- **Complex or zero-gap geometry:** a dedicated high-temperature support material — Raise3D
+  Industrial PPA Support, or **AquaSys 120** water-soluble filament for internal geometry you
+  cannot reach with pliers.
+
+<SafetyWarning type="tip" title="Set the interface, not just the gap">
+Zero gap without a PLA interface layer welds the support to the part permanently. If you set
+Z distance to 0.0 mm, you must also assign the interface extruder and enable 2–3 interface
+layers, or you are printing a solid block.
+</SafetyWarning>
 
 ## Overhang & bridging limits
 
 - **45° is the safe overhang limit** for every material we stock. PLA with full fan can push
-  toward 60°; PETG and PA-CF start drooping past 45–50°.
+  toward 60°; PCTG, PETG-GF, and the nylons start drooping past 45–50°.
 - **Bridges** (flat spans anchored at both ends) print fine to roughly **20–30 mm in PLA** with
-  100% fan, less in PETG (it sags) and less again in low-fan materials like PA-CF and PC.
+  100% fan, less in PCTG and PETG-GF, and less again in low-fan materials like PPA-GF and PC.
   Longer than that: add a support pillar mid-span or chamfer the opening.
 - Design tip: turn rectangular horizontal openings into **teardrops or 45° diamonds** and they
   print with no support at all.
 
-## Walls & infill for FRC parts
-
-Students always reach for the infill slider. Wrong slider — **walls carry the load.** Going
-from 2 to 4 walls adds far more strength than going from 15% to 50% infill, at less weight.
-
-- **Structural parts:** 4–6 walls, 5 top/bottom layers, 30–50% gyroid infill.
-- **Everything else:** 2–3 walls, 10–15% infill.
-- **Gyroid** is the house infill — strong in every direction, prints fast, and handles curved
-  interior geometry well. Grid is fine for flat quick stuff.
-- **100% infill is almost never the answer.** Past ~60% you add weight faster than strength.
-  If a part needs 100% infill to survive, it wants to be PA-CF, thicker, or aluminum.
-- Bolted joints: add washers or design bosses so bolt heads never bear on thin printed faces,
-  and use heat-set inserts instead of threading plastic for anything serviced more than once.
-
-<SafetyWarning type="tip" title="Reality-check the part, not the slicer">
-If a printed part breaks at practice, look at the break. Clean separation along a layer line
-means orientation was wrong — no amount of infill would have saved it. Reprint rotated, not
-denser.
-</SafetyWarning>
-
 ## House presets
 
 Start from these, then adjust. Values are for the Bambu fleet at 0.4 mm nozzle; on the Prusa
-Minis keep the same walls/infill and let the stock speed profiles stand.
+Minis use the 0.6 mm equivalents from the
+[priority hierarchy](#the-slicer-priority-hierarchy) — 4–5 walls, 0.70–0.75 mm line width, and
+0.28–0.32 mm layers.
 
 <PrintSettingPreset
   title="Fast Draft PLA"
@@ -102,60 +153,82 @@ Minis keep the same walls/infill and let the stock speed profiles stand.
     'Layer height': '0.28 mm',
     'Walls': '2',
     'Top / bottom layers': '3 / 2',
-    'Infill': '10% grid',
+    'Infill': '10% gyroid',
     'Part fan': '100%',
-    'Plate': 'Cool Plate or Textured PEI',
+    'Plate': 'Textured PEI',
   }}
   notes="Fit checks, jigs, and cosmetic prototypes only. Nothing from this preset goes on the robot."
 />
 
 <PrintSettingPreset
-  title="Structural PETG"
+  title="Structural PCTG — the default"
   slicer="Bambu Studio"
   settings={{
     'Layer height': '0.20 mm',
-    'Walls': '4',
-    'Top / bottom layers': '5 / 4',
-    'Infill': '40% gyroid',
-    'Part fan': '40–60% (lower = stronger)',
-    'Plate': 'Textured PEI only',
-    'Max speed': '150 mm/s outer walls',
+    'Walls': '6',
+    'Top / bottom layers': '6 / 6',
+    'Line width': '0.50 mm',
+    'Infill': '30% gyroid',
+    'Part fan': '20–40% (lower = stronger)',
+    'Nozzle': '265 °C — high end of range',
+    'Plate': 'Textured PEI, bed 75 °C',
   }}
-  notes="The default for on-robot brackets, mounts, covers, and guards. Dry the spool if you see stringing."
+  notes="On-robot brackets, gearbox plates, covers, and electronics shields. Push speed freely — PCTG flows 14–20 mm³/s."
 />
 
 <PrintSettingPreset
-  title="Flexible TPU"
+  title="Rigid PETG-GF"
   slicer="Bambu Studio"
   settings={{
     'Layer height': '0.20 mm',
-    'Walls': '3',
-    'Infill': '20% gyroid (more = firmer part)',
-    'Speed': '30 mm/s everywhere',
-    'Retraction': 'Off or ≤ 0.5 mm',
-    'Part fan': '30%',
+    'Walls': '6',
+    'Top / bottom layers': '6 / 6',
+    'Line width': '0.50 mm',
+    'Infill': '35% cubic',
+    'Part fan': '20–40%',
+    'Nozzle': '265 °C, hardened only',
+    'Plate': 'Textured PEI, bed 75 °C',
+  }}
+  notes="Motor mounts and dead-axle spacers — parts that must not deflect. Hardened nozzle required; never a 0.2 mm."
+/>
+
+<PrintSettingPreset
+  title="72D TPU Impact Part"
+  slicer="Bambu Studio"
+  settings={{
+    'Layer height': '0.20 mm',
+    'Walls': '6–8',
+    'Top / bottom layers': '5 / 5',
+    'Infill': '30% gyroid',
+    'Speed': '40–80 mm/s',
+    'Volumetric flow': 'Cap at ≤ 6 mm³/s',
+    'Part fan': '20–40%',
     'Feed': 'External spool holder — not the AMS',
+    'Plate': 'Textured PEI, bed 50 °C',
   }}
-  notes="Roller wheels, bumper pads, grippers. Dry at 70 °C for 8+ h first — wet TPU is unprintable. Infill percentage is your durometer knob."
+  notes="Impact armor, rollers, hard stops, bumper brackets. Dry at 55 °C for 6–8 h first. Flow cap protects the extruder gears from grinding."
 />
 
 <PrintSettingPreset
-  title="PA-CF Competition Part"
+  title="PPA-GF Competition Part"
   slicer="Bambu Studio"
   settings={{
-    'Layer height': '0.16 mm',
-    'Walls': '5',
-    'Top / bottom layers': '6 / 5',
-    'Infill': '50% gyroid',
-    'Part fan': '0–30%',
-    'Plate': 'Engineering Plate or Textured PEI + glue',
-    'Printer': 'X1-Carbon / H2D only — hardened nozzle',
+    'Layer height': '0.20 mm',
+    'Walls': '8',
+    'Top / bottom layers': '7 / 7',
+    'Line width': '0.50 mm',
+    'Infill': '40% gyroid',
+    'Nozzle': '300–320 °C, hardened',
+    'Part fan': 'Off',
+    'Chamber': '60–80 °C',
+    'Plate': 'Textured PEI, bed 90 °C',
+    'Printer': 'H2D / X2D only',
   }}
-  notes="Gearbox plates, motor mounts, high-load brackets. Spool must come straight from 12 h at 80 °C drying. Mentor sign-off before starting."
+  notes="Extreme-load gearbox blocks and high-temp mounts. Spool comes straight from 4–6 h at 80 °C. First layer 20–30 mm/s. Mentor sign-off before starting."
 />
 
 ## Related pages
 
 - [Filament Guide](/3d-printing/filament-guide/) — pick the material before you pick settings
-- [Bambu Lab Fleet](/3d-printing/bambu-fleet/) — plate types, AMS mapping, and nozzle rules
-- [Prusa Mini+ Farm](/3d-printing/prusa-farm/) — PrusaSlicer profiles for the Minis
+- [Bambu Lab Fleet](/3d-printing/bambu-fleet/) — plate types, nozzle standards, and AMS mapping
+- [Prusa Mini+ Farm](/3d-printing/prusa-farm/) — PrusaSlicer profiles and the 0.6 mm farm setup

@@ -41,7 +41,6 @@ export const navigationMenu: NavCategory[] = [
       { label: 'xTool MetalFab 1200W', href: '/lasers/xtool-metalfab/', blurb: 'Fiber laser metal cutting & welding' },
       { label: 'Gweike Cloud M3 Ultra', href: '/lasers/gweike-m3-ultra/', blurb: 'Hybrid fiber + CO2 laser system' },
       { label: 'Thunder Nova 35', href: '/lasers/thunder-nova-35/', blurb: '100W CO2 laser — LightBurn workflow' },
-      { label: 'ShopSabre 23 Router', href: '/cnc/shopsabre-23/', blurb: 'CNC router — speeds, feeds & CAM' },
       { label: 'Titan 25T Press Brake', href: '/forming/langmuir-titan-25t/', blurb: 'CNC press brake — dies & tonnage' },
       { label: 'Lathes', href: '/forming/lathes/', blurb: 'PM-1130V & Grizzly manual lathes' },
       { label: 'Evolution Saws', href: '/cutting/evolution-saws/', blurb: 'S14MCS & EVOMAX14AL chop saws' },
@@ -53,11 +52,11 @@ export const navigationMenu: NavCategory[] = [
     href: '/3d-printing/filament-guide/',
     align: 'center',
     items: [
-      { label: 'Filament Guide', href: '/3d-printing/filament-guide/', blurb: 'PLA, PETG, TPU, PA-CF & PC settings matrix' },
+      { label: 'Filament Guide', href: '/3d-printing/filament-guide/', blurb: 'PCTG, PETG-GF, 72D TPU & PPA-GF matrix' },
       { label: 'Print Settings & Supports', href: '/3d-printing/print-settings/', blurb: 'Support strategy, orientation & presets' },
-      { label: 'Bambu Lab Fleet', href: '/3d-printing/bambu-fleet/', blurb: 'X1-Carbon & H2D — AMS, plates & nozzles' },
-      { label: 'Prusa Mini+ Farm', href: '/3d-printing/prusa-farm/', blurb: 'PrusaSlicer, Live-Z & sheet care' },
-      { label: 'Large-Format Printers', href: '/3d-printing/large-format/', blurb: 'CR-6 Max, CR-10 Max & Garolite setups' },
+      { label: 'Bambu Lab Fleet', href: '/3d-printing/bambu-fleet/', blurb: 'X1C, H2D & X2D — AMS, plates & nozzles' },
+      { label: 'Prusa Mini+ Farm', href: '/3d-printing/prusa-farm/', blurb: '12 Minis — 0.6 mm nozzles & Live-Z' },
+      { label: 'Filament Inventory', href: '/inventory/filaments/', blurb: 'Every spool we own & how to log new ones' },
     ],
   },
   {

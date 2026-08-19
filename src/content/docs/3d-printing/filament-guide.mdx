@@ -1,6 +1,6 @@
 ---
 title: "Filament Material Guide"
-description: "How to pick the right material — PLA, PETG, TPU, PA-CF, and PC — plus temps, plates, drying rules, and where we buy spools."
+description: "Materials philosophy, the approved filament lineup, CAD densities, Loctite compatibility, and drying rules for the Spectrum print farm."
 ---
 
 import FilamentCard from '../../../components/FilamentCard.astro';
@@ -8,9 +8,13 @@ import FilamentMatrixTable from '../../../components/FilamentMatrixTable.astro';
 import SafetyWarning from '../../../components/SafetyWarning.astro';
 
 Material choice matters more than any slicer setting. A perfectly tuned PLA bracket will still
-snap at the first hard hit; a mediocre PETG print of the same part will survive the season.
+snap at the first hard hit; a mediocre PCTG print of the same part will survive the season.
 Pick the material first, then go tune settings on the
 [Print Settings & Supports](/3d-printing/print-settings/) page.
+
+Our lineup is chosen for four things, in this order: **FRC field-impact survival**, **print
+throughput**, **shop safety in a shared space**, and **mechanical and chemical reliability**
+on an assembled robot.
 
 ## Which material do I use?
 
@@ -18,69 +22,132 @@ Work down this list and stop at the first line that matches your part:
 
 - **Just checking fit, making a jig, or printing something cosmetic?** → **PLA.** Cheapest,
   fastest, easiest. Not for anything that lives on the robot.
-- **Going on the robot?** → **PETG.** This is the default answer for brackets, covers, sensor
-  mounts, and guards. Tougher than PLA and takes an impact without shattering.
-- **Needs to squish, grip, or absorb a hit?** → **TPU.** Intake rollers, bumper pads, grippers,
-  gaskets.
-- **Highly loaded — gearbox plates, motor mounts, anything you would otherwise machine?** →
-  **PA-CF.** Strongest thing we print. Bambu X1-Carbon or H2D only, dried first, no exceptions.
-- **Lives next to something hot, or needs max impact resistance at temperature?** → **PC.**
-  Enclosed printer required.
+- **Going on the robot?** → **PCTG.** This is the default answer for brackets, gearbox plates,
+  covers, and electronics shields. Tough, fast, and chemically stable.
+- **Must not flex — motor mount, dead-axle spacer?** → **PETG-GF.** Trade a little toughness
+  for a lot of stiffness.
+- **Takes direct hits — armor, roller, hard stop, bumper bracket?** → **72D TPU.** Absorbs
+  impact instead of cracking, and nothing chemical touches it.
+- **Extreme load or lives somewhere hot?** → **PPA-GF.** Gearbox blocks, 185 °C+ HDT mounts.
+  H2D or X2D only, dried first, mentor sign-off.
 
-When in doubt: prototype in PLA, ship in PETG. Escalate to PA-CF only when PETG has actually
-failed or the math says it will.
+When in doubt: prototype in PLA, ship in PCTG. Escalate to PPA-GF only when PCTG or PETG-GF has
+actually failed or the math says it will.
 
 <SafetyWarning type="warning" title="PLA melts in a hot car">
 PLA softens around 55 °C. Parts left in a car in Houston, near the powder-coat curing oven, or
 against a hot motor will sag and warp. If a part sees any heat at all, it is not a PLA part.
 </SafetyWarning>
 
+## The approved lineup
+
+All **functional** filaments are stocked in **White or Natural/Clear** — it keeps the team
+aesthetic consistent and, more usefully, lets you see internal wall and infill fusion when you
+inspect or section a failed part.
+
+| Material | Color / Finish | Density (g/cm³) | Max Flow | Print Speed | Loctite | Primary FRC applications |
+| :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **72D TPU** <br/><small>CC3D / Polar / Siraya</small> | Natural (translucent) / solid white | **1.24** | 4–8 mm³/s | 40–80 mm/s | **Immune** | Direct-impact armor, intake rollers, pulleys, hard stops, bumper brackets |
+| **PCTG** <br/><small>3D-Fuel / Essentium / Atomic</small> | Optical clear / solid white | **1.24** | 14–20 mm³/s | 150–250+ mm/s | **High** | Primary workhorse: structural brackets, gearbox plates, electronics shields |
+| **PETG-GF** <br/><small>Bambu / Polymaker</small> | Matte white | **1.35** | 12–16 mm³/s | 120–200 mm/s | **High** | High-rigidity motor mounts, dead-axle spacers, stiff structural brackets |
+| **PPA-GF** <br/><small>Siraya Fibreheart</small> | Bone matte white | **1.32** | 8–12 mm³/s | 50–100 mm/s | **Immune** | Extreme-load gearbox blocks, high-temp mounts (185 °C+ HDT) |
+
+<SafetyWarning type="tip" title="CAD mass properties (Onshape)">
+Assign **1.24 g/cm³** for PCTG and 72D TPU, and **1.35 g/cm³** for PETG-GF and PPA-GF. PPA-GF's
+true density is 1.32 — we round it up to 1.35 in CAD so glass-filled parts never come out
+lighter on paper than on the robot.
+</SafetyWarning>
+
+## What we steer away from, and why
+
+None of this is contraband. If it is already on the shelf, **use it up** — just do not design
+new parts around it, and do not reorder it.
+
+- **Styrene-based polymers (ABS / ASA / HIPS).** We do not stock these at all. They emit
+  styrene VOCs and ultra-fine particles, and the lab is a shared space where that means
+  headaches for whoever is working at the next bench. If a slicer profile or a Bambu support
+  chart tells you to use ABS or ASA as a support interface, use white PLA instead — see the
+  [zero-gap interface trick](/3d-printing/print-settings/#universal-zero-gap-interface).
+- **Carbon-fiber nylon (PA-CF / PPA-CF / PET-CF).** Excellent stiffness, wrong failure mode for
+  impact mechanisms: the chopped fibers act as micro-stress risers under shock load, so parts
+  shatter along layer lines in a collision rather than bending. Spend our existing CF spools on
+  **static** parts — sensor mounts, electronics trays, fixturing — and reach for PPA-GF or 72D
+  TPU for anything that gets hit.
+- **Polycarbonate (PC) and acrylic (PMMA).** These craze — fine crack networks that turn into
+  fractures — on contact with anaerobic threadlockers like **Loctite 242/262**, essentially
+  immediately. Keep PC off any joint that gets threadlocked. It is still the right pick for
+  heat-resistant, non-threadlocked parts: light pipes, guards near warm motors, curing-oven
+  fixturing.
+
+<SafetyWarning type="critical" title="Loctite and polycarbonate do not mix">
+Anaerobic threadlocker wicks into PC and starts environmental stress cracking on contact. There
+is no cure time to wait out and no cleaning it off after. If a printed part gets Loctite
+anywhere near it, print it in PCTG, PETG-GF, 72D TPU, or PPA-GF.
+</SafetyWarning>
+
 ## The materials
 
-### PLA — prototypes and jigs
+### PCTG — the on-robot workhorse
+
+<FilamentCard id="pctg" />
+
+PCTG is what PETG wanted to be: same easy handling and forgiving first layer, noticeably tougher,
+and roughly twice the volumetric flow so a plate of brackets comes off in half the time. It needs
+no enclosure and no hardened nozzle, which means every printer in the lab can run it. This is the
+default.
+
+### PETG-GF — stiffness where flex is the enemy
+
+<FilamentCard id="petg-gf" />
+
+Glass fill trades impact toughness for rigidity. Use it when deflection is the failure mode — a
+motor mount that must hold gear mesh, a dead-axle spacer that must not compress. Do not use it
+where the part takes hits; that is PCTG's or 72D TPU's job. Abrasive: hardened nozzle only, and
+never a 0.2 mm.
+
+### 72D TPU — impact armor
+
+<FilamentCard id="tpu-72d" />
+
+This is not the squishy TPU you are picturing. At Shore 72D it prints and bolts like a rigid
+plastic, but it absorbs a hit and springs back where PLA or CF nylon would shatter. It is also
+chemically immune to everything in the shop, threadlockers included. Feed it from an external
+spool holder on a direct-drive extruder, and keep volumetric flow capped — see the
+[Bambu fleet](/3d-printing/bambu-fleet/) page for the ≤ 6 mm³/s rule.
+
+### PPA-GF — extreme load and high temperature
+
+<FilamentCard id="ppa-gf" />
+
+Glass-filled nylon, 185 °C+ HDT, immune to Loctite, and the strongest thing we print for
+sustained load. The costs are real: 300–320 °C nozzle, heated chamber, mandatory drying before
+every session, and glass dust that needs an N95 and eye protection during any sanding. H2D or
+X2D only, and a mentor signs off before it starts.
+
+### PLA — prototypes, jigs, and support interface
 
 <FilamentCard id="pla" />
 
-PLA is stiff and dimensionally accurate, which makes it great for drill guides and
-check-the-CAD prototypes. Its weaknesses are heat and impact: it is the most brittle material
-on this list and it creeps under sustained bolt tension. Print it fast, learn from it, then
-reprint the final part in something tougher.
+PLA has two jobs. First, it is the cheapest way to learn that your CAD is wrong — print the fit
+check, find the mistake, reprint the real part in PCTG. Second, it is the **support interface
+material in Nozzle 2**, because PLA refuses to chemically weld to polyurethanes or copolyesters.
+That refusal is what lets us run a zero-gap support interface and get an injection-molded
+underside that snaps clean off.
 
-### PETG — the on-robot workhorse
+### Already on the shelf
+
+These are materials we own and will finish, but would not choose for a new design. Full
+rationale in [what we steer away from](#what-we-steer-away-from-and-why) above, and the
+brand-by-brand list of what is physically on the shelf is in the
+[Filament Inventory](/inventory/filaments/).
 
 <FilamentCard id="petg" />
 
-PETG bends before it breaks, which is exactly what you want from a robot part. It is slightly
-harder to print than PLA — it strings, and it welds itself to smooth PEI plates. Always use the
-textured plate, and if you see wispy strings, the spool is wet: dry it before blaming the
-slicer.
-
-### TPU — flexible parts
-
-<FilamentCard id="tpu" />
-
-TPU prints slow and hates being pushed. Keep speeds down, keep retraction minimal, and feed it
-from an external spool holder — standard TPU folds and jams inside the AMS feed path. Only
-Bambu's specifically AMS-rated TPU may go through an AMS.
-
-### PA-CF — carbon fiber nylon, the strong stuff
+<FilamentCard id="tpu-95a" />
 
 <FilamentCard id="pa-cf" />
 
-PA-CF parts approach machined-plastic strength and shrug off impacts that crack PETG. The cost:
-it is expensive, it absolutely must be dry, and the carbon fill sands brass nozzles into
-uselessness — hardened nozzle and extruder gears only, which in our lab means the
-[Bambu fleet](/3d-printing/bambu-fleet/). A spool left out overnight is a wet spool. Dry it
-again before printing.
-
-### PC — polycarbonate for heat and impact
-
 <FilamentCard id="pc" />
-
-PC is the pick when a part needs to survive both heat and abuse. It warps aggressively, so it
-only prints in an enclosed machine, and parts should stay in the warm chamber until fully
-cooled or the layers will crack. Watch the first layers — PC lifts at corners more than
-anything else we run.
 
 ## Quick comparison
 
@@ -97,21 +164,32 @@ produces parts with a fraction of their rated strength.
   spools in a zip bag with a desiccant pack if a dry box is full.
 - Recharge or replace desiccant when the indicator changes color. Saturated desiccant is
   decoration, not protection.
-- PA-CF stays in a dry box (or the H2D's AMS HT, which actively dries) at all times. It goes
-  straight from drying to the printer.
+- PPA-GF and the CF nylons stay in a dry box (or the AMS HT, which actively dries) at all times.
+  They go straight from drying to the printer.
 
 **Who must be dried, and how much:**
 
 | Material | Drying requirement |
 | --- | --- |
 | PLA | Usually fine from the box. 50 °C for 8 h only if it strings. |
-| PETG | Dry at 65 °C for 8 h if stored open more than ~2 weeks or if stringing. |
-| TPU | **Required.** 70 °C for 8–12 h before printing — wet TPU bubbles and strings badly. |
-| PA-CF | **Mandatory, every session.** 80 °C for 12 h. Never print a spool that sat out overnight. |
-| PC | Dry at 80 °C for 8–12 h; hygroscopic. |
+| PCTG | 65 °C for 8 h if stored open more than ~2 weeks or if stringing. |
+| PETG / PETG-GF | 65 °C for 8 h if stored open more than ~2 weeks or if stringing. |
+| 72D TPU | **Required.** 55 °C for 6–8 h before printing. |
+| TPU 95A / TPE | **Required.** 55–65 °C for 6–8 h — wet TPU bubbles and strings badly. |
+| PPA-GF | **Mandatory, every session.** 80 °C for 4–6 h. |
+| PA-CF / PPA-CF | **Mandatory, every session.** 80 °C for 12 h. |
+| PC | 80 °C for 8–12 h; hygroscopic. |
 
-Use a filament dryer or the H2D's AMS HT for drying. Do **not** use the powder-coat curing oven
-— its temperature swings will cook a spool into a solid donut.
+### Using the AMS HT
+
+- Run the **internal active dry cycle** before a print rather than trusting a spool that has
+  been sitting. Once the chamber is sealed with fresh desiccant it holds low RH on its own.
+- For **long prints in actively heated material**, feed from the **rear bypass port** straight
+  to the toolhead instead of running the internal drive feeder — it keeps the filament in the
+  heated chamber without cycling it through the feed path for hours.
+
+Use a filament dryer or the AMS HT for drying. Do **not** use the powder-coat curing oven — its
+temperature swings will cook a spool into a solid donut.
 
 <SafetyWarning type="tip" title="Symptoms of wet filament">
 Popping or hissing at the nozzle, steam wisps, stringing that tuning does not fix, fuzzy matte
@@ -121,17 +199,21 @@ you are wasting printer time otherwise.
 
 ## Buying filament
 
-- **Buy Bambu-brand spools from the Bambu store** (reorder links on each card above). The RFID
+- **Functional filament is ordered White or Natural/Clear only.** Color goes on cosmetic and
+  prototype prints, not on structural parts.
+- **Bambu-brand spools come from the Bambu store** (reorder links on each card above). The RFID
   tags auto-configure the AMS and slicer profiles, which removes a whole class of student error.
-- Overture PETG and TPU are our approved budget alternates for high-volume printing on the
-  [Prusa farm](/3d-printing/prusa-farm/).
-- PLA and PETG are bulk staples — keep several spools of each ahead of demand during build
-  season. PA-CF and PC are special-order; a mentor approves those purchases.
+- **PCTG is the bulk staple** — keep several spools ahead of demand during build season. PETG-GF
+  is a steady second. PPA-GF is special-order and a mentor approves the purchase.
+- **Finish existing stock before reordering.** Open PETG, TPU 95A, CF nylon, and PC spools get
+  used up on the parts described above rather than written off. The
+  [Filament Inventory](/inventory/filaments/) lists every spool type we own, so check there
+  before ordering anything.
 - New spool arrives? Label it with the date opened, then into a dry box or the AMS.
 
 ## Related pages
 
-- [Print Settings & Supports](/3d-printing/print-settings/) — walls, infill, orientation, and per-material presets
-- [Bambu Lab Fleet](/3d-printing/bambu-fleet/) — the only printers allowed to run PA-CF and PC
-- [Prusa Mini+ Farm](/3d-printing/prusa-farm/) — PLA/PETG volume printing
-- [Large-Format & Specialty](/3d-printing/large-format/) — oversized single-piece prints
+- [Print Settings & Supports](/3d-printing/print-settings/) — the slicer priority hierarchy, dual-nozzle supports, and presets
+- [Bambu Lab Fleet](/3d-printing/bambu-fleet/) — nozzle standards, plates, AMS mapping, and the machines that run PPA-GF
+- [Prusa Mini+ Farm](/3d-printing/prusa-farm/) — 0.6 mm nozzles and high-throughput PCTG
+- [Filament Inventory](/inventory/filaments/) — every spool we actually own, and how to log a new one

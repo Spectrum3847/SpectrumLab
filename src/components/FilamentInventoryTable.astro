@@ -1,0 +1,267 @@
+---
+/**
+ * Filterable, searchable table of every filament spool the lab owns,
+ * from src/data/filament-inventory.json.
+ *
+ * <FilamentInventoryTable />                     — everything, with filter UI
+ * <FilamentInventoryTable family="Nylon / PPA" /> — pre-filtered, filter UI hidden
+ * <FilamentInventoryTable tier="preferred" />     — only first-choice spools
+ */
+import inventory from '../data/filament-inventory.json';
+
+interface Props {
+  family?: string;
+  tier?: string;
+  showFilters?: boolean;
+}
+const { family, tier, showFilters } = Astro.props;
+
+type Spool = {
+  id: string;
+  brand: string;
+  name: string;
+  family: string;
+  tier: string;
+  color: string;
+  spool: string;
+  nozzle: string;
+  bed: string;
+  drying: string;
+  hardened: string;
+  enclosure: string;
+  ams: string;
+  url?: string | null;
+  notes?: string | null;
+  caution?: string | null;
+  location?: string | null;
+};
+
+const TIER_LABELS: Record<string, string> = {
+  preferred: 'Preferred',
+  prototyping: 'Prototyping',
+  stock: 'Use it up',
+};
+
+let items = inventory as Spool[];
+if (family) items = items.filter((f) => f.family === family);
+if (tier) items = items.filter((f) => f.tier === tier);
+
+const families = [...new Set(items.map((f) => f.family))].sort();
+const tiers = ['preferred', 'prototyping', 'stock'].filter((t) => items.some((f) => f.tier === t));
+const filtersVisible = showFilters ?? (!family && !tier);
+const uid = `fi-${Math.random().toString(36).slice(2, 8)}`;
+
+/** Condense the three requirement fields into short badges. */
+function needs(f: Spool) {
+  const out: string[] = [];
+  if (/^(yes|required|recommended)/i.test(f.hardened ?? '')) out.push('⚙️ hardened');
+  if (/^(required|yes)/i.test(f.enclosure ?? '')) out.push('🔒 enclosure');
+  if (/^(no|not)/i.test(f.ams ?? '')) out.push('⛔ no AMS');
+  return out;
+}
+---
+
+<div class="filament-inventory" id={uid}>
+  {filtersVisible && (
+    <div class="fi-controls">
+      <input
+        type="search"
+        placeholder="Search brand, material, color, notes…"
+        class="fi-search"
+        data-fi-search
+      />
+      <div class="fi-chiprow" data-fi-tiers>
+        <button type="button" class="fi-chip active" data-tier="">All tiers</button>
+        {tiers.map((t) => (
+          <button type="button" class="fi-chip" data-tier={t}>{TIER_LABELS[t]}</button>
+        ))}
+      </div>
+      <div class="fi-chiprow" data-fi-families>
+        <button type="button" class="fi-chip active" data-family="">All materials</button>
+        {families.map((f) => (
+          <button type="button" class="fi-chip" data-family={f}>{f}</button>
+        ))}
+      </div>
+    </div>
+  )}
+  <div class="fi-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Spool</th>
+          <th>Material</th>
+          <th>Status</th>
+          <th>Nozzle / Bed</th>
+          <th>Needs</th>
+          <th>Drying</th>
+          <th>Location</th>
+          <th>Buy</th>
+        </tr>
+      </thead>
+      <tbody>
+        {items.map((f) => (
+          <tr
+            data-family={f.family}
+            data-tier={f.tier}
+            data-search={`${f.brand} ${f.name} ${f.family} ${f.color} ${f.notes ?? ''} ${f.caution ?? ''} ${f.location ?? ''}`.toLowerCase()}
+          >
+            <td>
+              <span class="fi-brand">{f.brand}</span>
+              <span class="fi-name">{f.name}</span>
+              <span class="fi-sub">{f.color} · {f.spool}</span>
+              {f.notes && <span class="fi-notes">{f.notes}</span>}
+              {f.caution && <span class="fi-caution">⚠️ {f.caution}</span>}
+            </td>
+            <td><span class="fi-family-chip">{f.family}</span></td>
+            <td><span class={`fi-tier-chip fi-tier-${f.tier}`}>{TIER_LABELS[f.tier] ?? f.tier}</span></td>
+            <td class="fi-temps">{f.nozzle}<br /><span class="fi-bed">{f.bed}</span></td>
+            <td class="fi-needs">
+              {needs(f).length > 0
+                ? needs(f).map((n) => <span class="fi-need">{n}</span>)
+                : <span class="fi-none">—</span>}
+            </td>
+            <td class="fi-drying">{f.drying}</td>
+            <td class="fi-loc">{f.location ?? <span class="fi-none">not logged</span>}</td>
+            <td>
+              {f.url ? (
+                <a class="fi-buy" href={f.url} target="_blank" rel="noopener noreferrer">Reorder ↗</a>
+              ) : (
+                <span class="fi-none">—</span>
+              )}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <p class="fi-empty" data-fi-empty hidden>No spools match your filter.</p>
+  </div>
+  <p class="fi-count"><strong>{items.length}</strong> spool types logged.</p>
+</div>
+
+<style>
+  .filament-inventory { margin: 1.5rem 0; }
+  .fi-controls { display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 0.9rem; }
+  .fi-search {
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    font: inherit;
+    font-size: 0.92rem;
+    border: 1px solid var(--sl-color-border);
+    border-radius: 0.6rem;
+    background: var(--sl-color-bg);
+    color: var(--sl-color-text);
+  }
+  .fi-search:focus { outline: none; border-color: var(--sl-color-accent); }
+  .fi-chiprow { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .fi-chip {
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.3rem 0.7rem;
+    border-radius: 9999px;
+    border: 1px solid var(--sl-color-border);
+    background: var(--sl-color-bg);
+    color: var(--sl-color-gray-2);
+    cursor: pointer;
+    transition: all 0.12s;
+  }
+  .fi-chip:hover { border-color: var(--sl-color-accent); color: var(--sl-color-accent); }
+  .fi-chip.active { background: var(--sl-color-accent); border-color: var(--sl-color-accent); color: #fff; }
+  .fi-wrap { overflow-x: auto; }
+  .filament-inventory table { font-size: 0.82rem; min-width: 1040px; }
+  .fi-brand { display: block; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--sl-color-gray-3); }
+  .fi-name { display: block; font-weight: 800; font-size: 0.92rem; }
+  .fi-sub { display: block; font-size: 0.76rem; color: var(--sl-color-gray-3); margin-top: 0.1rem; }
+  .fi-notes { display: block; font-size: 0.76rem; color: var(--sl-color-gray-3); margin-top: 0.3rem; max-width: 34rem; line-height: 1.45; }
+  .fi-caution {
+    display: block;
+    font-size: 0.76rem;
+    margin-top: 0.35rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.4rem;
+    color: #92400E;
+    background: #FFFBEB;
+    border: 1px solid #FDE68A;
+    max-width: 34rem;
+    line-height: 1.45;
+  }
+  .fi-family-chip {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    background: var(--sl-color-accent-low);
+    color: var(--sl-color-accent-high);
+    white-space: nowrap;
+  }
+  .fi-tier-chip {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    white-space: nowrap;
+  }
+  .fi-tier-preferred { color: #166534; background: #F0FDF4; border: 1px solid #BBF7D0; }
+  .fi-tier-prototyping { color: #1E40AF; background: #EFF6FF; border: 1px solid #BFDBFE; }
+  .fi-tier-stock { color: #92400E; background: #FFFBEB; border: 1px solid #FDE68A; }
+  .fi-temps { font-weight: 700; white-space: nowrap; }
+  .fi-bed { font-weight: 600; color: var(--sl-color-gray-3); }
+  .fi-need { display: block; font-size: 0.72rem; font-weight: 700; white-space: nowrap; color: #B45309; }
+  .fi-drying { font-size: 0.78rem; max-width: 14rem; }
+  .fi-loc { font-size: 0.8rem; }
+  .fi-none { color: var(--sl-color-gray-3); font-weight: 600; }
+  .fi-buy { font-weight: 700; font-size: 0.82rem; white-space: nowrap; }
+  .fi-empty { color: var(--sl-color-gray-3); padding: 1rem; text-align: center; }
+  .fi-count { font-size: 0.78rem; color: var(--sl-color-gray-3); margin-top: 0.6rem !important; }
+</style>
+
+<script>
+  function initFilamentInventory() {
+    document.querySelectorAll<HTMLElement>('.filament-inventory').forEach((root) => {
+      if (root.dataset.bound) return;
+      root.dataset.bound = 'true';
+      const search = root.querySelector<HTMLInputElement>('[data-fi-search]');
+      const tierBtns = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-fi-tiers] .fi-chip'));
+      const famBtns = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-fi-families] .fi-chip'));
+      const rows = Array.from(root.querySelectorAll<HTMLTableRowElement>('tbody tr'));
+      const empty = root.querySelector<HTMLElement>('[data-fi-empty]');
+      let activeTier = '';
+      let activeFamily = '';
+      const apply = () => {
+        const q = (search?.value ?? '').toLowerCase().trim();
+        let visible = 0;
+        rows.forEach((r) => {
+          const okTier = !activeTier || r.dataset.tier === activeTier;
+          const okFam = !activeFamily || r.dataset.family === activeFamily;
+          const okQ = !q || (r.dataset.search ?? '').includes(q);
+          const show = okTier && okFam && okQ;
+          r.hidden = !show;
+          if (show) visible++;
+        });
+        if (empty) empty.hidden = visible !== 0;
+      };
+      search?.addEventListener('input', apply);
+      tierBtns.forEach((b) =>
+        b.addEventListener('click', () => {
+          activeTier = b.dataset.tier ?? '';
+          tierBtns.forEach((x) => x.classList.toggle('active', x === b));
+          apply();
+        })
+      );
+      famBtns.forEach((b) =>
+        b.addEventListener('click', () => {
+          activeFamily = b.dataset.family ?? '';
+          famBtns.forEach((x) => x.classList.toggle('active', x === b));
+          apply();
+        })
+      );
+    });
+  }
+  document.addEventListener('DOMContentLoaded', initFilamentInventory);
+  document.addEventListener('astro:page-load', initFilamentInventory);
+  initFilamentInventory();
+</script>

@@ -90,13 +90,12 @@ export default defineConfig({
           items: [{ label: 'WAZER Pro', slug: 'waterjet/wazer-pro' }],
         },
         {
-          label: 'CNC & Laser Cutting',
+          label: 'Laser Cutting',
           collapsed: true,
           items: [
             { label: 'xTool MetalFab (1200W)', slug: 'lasers/xtool-metalfab' },
             { label: 'Gweike Cloud M3 Ultra', slug: 'lasers/gweike-m3-ultra' },
             { label: 'Thunder Laser Nova 35', slug: 'lasers/thunder-nova-35' },
-            { label: 'ShopSabre 23 CNC Router', slug: 'cnc/shopsabre-23' },
           ],
         },
         {
@@ -107,7 +106,6 @@ export default defineConfig({
             { label: 'Print Settings & Supports', slug: '3d-printing/print-settings' },
             { label: 'Bambu Lab Fleet', slug: '3d-printing/bambu-fleet' },
             { label: 'Prusa Mini+ Farm', slug: '3d-printing/prusa-farm' },
-            { label: 'Large-Format & Specialty', slug: '3d-printing/large-format' },
           ],
         },
         {
@@ -115,7 +113,6 @@ export default defineConfig({
           collapsed: true,
           items: [
             { label: 'Langmuir Titan 25T Press Brake', slug: 'forming/langmuir-titan-25t' },
-            { label: 'Box & Pan Brake', slug: 'forming/box-pan-brake' },
             { label: 'Lathes', slug: 'forming/lathes' },
             { label: 'Arbor Press & Broaching', slug: 'forming/arbor-press' },
           ],
@@ -163,7 +160,10 @@ export default defineConfig({
         {
           label: 'Inventory & Procurement',
           collapsed: true,
-          items: [{ label: 'Consumables Ledger', slug: 'inventory/consumables' }],
+          items: [
+            { label: 'Consumables Ledger', slug: 'inventory/consumables' },
+            { label: 'Filament Inventory', slug: 'inventory/filaments' },
+          ],
         },
         {
           label: 'Maintenance',

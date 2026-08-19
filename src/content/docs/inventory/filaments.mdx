@@ -1,0 +1,128 @@
+---
+title: "Filament Inventory"
+description: "Every filament spool type the lab owns — brand, temps, drying, hardened-nozzle and enclosure requirements — plus how to log a new spool when we buy one."
+---
+
+import FilamentInventoryTable from '../../../components/FilamentInventoryTable.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+
+This is the **what-we-actually-own** list: every filament spool type that has come through the
+lab, with the settings that matter and the requirements that will bite you. It exists so nobody
+loads an unknown black spool into an X1C and finds out the hard way that it needed a hardened
+nozzle.
+
+For **which material to choose** for a part, start at the
+[Filament Guide](/3d-printing/filament-guide/) instead — that page is policy, this page is stock.
+
+## The shelf
+
+<FilamentInventoryTable />
+
+**Reading the Status column:**
+
+- **Preferred** — a first-choice material under current policy. Design new parts around these.
+- **Prototyping** — PLA family. Fit checks, jigs, cosmetic parts, and the dual-nozzle support
+  interface. Not functional robot parts.
+- **Use it up** — we own it and it works, but it is not what we would buy again. Spend these
+  spools on the jobs they are still good at (each row's notes say what that is), then reorder a
+  preferred material instead.
+
+**Reading the Needs column:**
+
+- **⚙️ hardened** — abrasive filled filament. Hardened nozzle required. Our whole Bambu and Prusa
+  fleet is already 0.4 mm / 0.6 mm hardened, so this is a check, not a blocker.
+- **🔒 enclosure** — enclosed machine only. That means a Bambu, not a Prusa Mini.
+- **⛔ no AMS** — will jam or grind in the AMS feed path. External spool holder only.
+
+<SafetyWarning type="warning" title="No PCTG on the shelf">
+The [Filament Guide](/3d-printing/filament-guide/) names **PCTG** as our primary workhorse for
+on-robot parts, but there is **no PCTG in this inventory** — every spool we own predates that
+call. Until PCTG is stocked, structural parts fall back to PETG-GF (preferred, in stock) or the
+remaining plain PETG. Getting PCTG ordered is the highest-value filament purchase on the list.
+</SafetyWarning>
+
+## Gaps worth knowing about
+
+- **PCTG — not stocked.** See above. The designated workhorse has never been ordered.
+- **72D TPU — one spool type**, the CC3D Hard TPU. Impact armor depends entirely on it, so it is
+  worth keeping a spare on hand rather than discovering it is empty mid-build.
+- **PPA-GF — one spool type**, the Siraya Fibreheart. Same single-point-of-failure problem, and
+  it is special-order with a mentor's approval.
+- **Siraya TPU-GF is 64D, not 72D.** It is a structural glass-filled TPU and close to what policy
+  asks for, but it is not the specified 72D — logged as use-it-up until someone decides to promote
+  it.
+- **Bambu Support for PA/PET is discontinued.** If any spools remain, use them; Bambu now points
+  at ABS/ASA for that job, which we deliberately do not stock. Our answer is the
+  [zero-gap PLA interface](/3d-printing/print-settings/#universal-zero-gap-interface) instead.
+
+## Adding a spool when we buy one
+
+The inventory lives in **[`src/data/filament-inventory.json`](https://github.com/Spectrum3847/SpectrumLab/blob/master/src/data/filament-inventory.json)** — a plain
+JSON array. Append one object per new spool type and the table above picks it up on the next
+build. You do not need to touch the component or this page.
+
+**1. Copy this template into the array:**
+
+```json
+{
+  "id": "brand-material-slug",
+  "brand": "Brand Name",
+  "name": "Product Name",
+  "family": "PETG / PET",
+  "tier": "stock",
+  "color": "White",
+  "spool": "1 kg",
+  "nozzle": "240–270 °C",
+  "bed": "70–80 °C",
+  "drying": "65 °C / 8 h",
+  "hardened": "Required",
+  "enclosure": "Not required",
+  "ams": "Yes",
+  "url": "https://vendor.example/product",
+  "notes": "What it is good for, and anything learned from printing it.",
+  "caution": null,
+  "location": "Filament shelf, bin 3"
+}
+```
+
+**2. Fill in the fields:**
+
+| Field | What goes in it |
+| --- | --- |
+| `id` | Unique kebab-case slug, `brand-material`. Must not duplicate an existing id. |
+| `brand` / `name` | As printed on the spool label. |
+| `family` | One of: `PLA`, `PETG / PET`, `TPU / TPE`, `Nylon / PPA`, `Polycarbonate`, `Polypropylene`, `Support`. Reuse an existing value so the filter chips stay tidy — a new value creates a new chip. |
+| `tier` | `preferred`, `prototyping`, or `stock`. Match the [Filament Guide](/3d-printing/filament-guide/) policy — if it is not one of the four approved functional materials or a PLA, it is `stock`. |
+| `color` / `spool` | Colorway and spool weight, e.g. `"White"` / `"1 kg"`. |
+| `nozzle` / `bed` / `drying` | From the manufacturer's page, not a guess. Use en-dashes and `°C`. |
+| `hardened` | Start the value with `Required`, `Recommended`, or `Yes` to trigger the ⚙️ badge. Anything else (`"No"`) shows no badge. |
+| `enclosure` | Start with `Required` to trigger the 🔒 badge. |
+| `ams` | Start with `No` or `Not` to trigger the ⛔ badge. |
+| `url` | Manufacturer or reorder page. `null` if there isn't one. |
+| `notes` | What the material is for and what we learned printing it. |
+| `caution` | Anything that could ruin a print or a machine — conflicting specs, unverified figures, hazards. `null` if none. |
+| `location` | Where the spool physically lives. `null` if it isn't logged yet. |
+
+**3. Check it before you commit:**
+
+```bash
+node scripts/check-filament-inventory.mjs
+```
+
+That validates JSON syntax, required fields, duplicate ids, and unknown `tier` or `family`
+values — it catches the trailing comma or missing field that would otherwise break the site
+build.
+
+<SafetyWarning type="tip" title="Specs come from the manufacturer, not from vibes">
+If you cannot find a real temperature range on the brand's own page, put what you found in
+`notes` and flag the uncertainty in `caution` rather than inventing a number. Several rows here
+carry cautions for exactly that reason — a wrong drying temperature ruins a spool, and a wrong
+nozzle temp ruins a print.
+</SafetyWarning>
+
+## Related pages
+
+- [Filament Guide](/3d-printing/filament-guide/) — which material to pick, and why
+- [Print Settings & Supports](/3d-printing/print-settings/) — the slicer priority hierarchy and dual-nozzle supports
+- [Consumables Ledger](/inventory/consumables/) — everything else we buy and reorder
+- [Bambu Lab Fleet](/3d-printing/bambu-fleet/) — which machines can run what

@@ -1,6 +1,6 @@
 ---
 title: "Bambu Lab Fleet"
-description: "SOP for Bambu 1 & 2 (X1-Carbon + AMS) and the H2D + AMS HT: Bambu Studio workflow, plates, AMS loading, nozzle swaps, and maintenance."
+description: "SOP for the 2× X1-Carbon, H2D, and X2D: nozzle and plate standards, Bambu Studio workflow, AMS loading, nozzle swaps, and maintenance."
 ---
 
 import MachineSOP from '../../../components/MachineSOP.astro';
@@ -11,15 +11,52 @@ import TutorialLink from '../../../components/TutorialLink.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
 
 The Bambu fleet is the fast lane of the printer farm: two X1-Carbons — **Bambu 1** and
-**Bambu 2**, each with a 4-slot AMS — and an **H2D** with an AMS HT. These are the lab's most
-capable printers and the **only** machines allowed to run PA-CF and PC. If a part is going on
-the competition robot, it probably comes off one of these.
+**Bambu 2**, each with a 4-slot AMS — plus an **H2D** with an AMS HT and an **X2D** (more X2Ds
+are on the way). These are the lab's most capable printers, the only enclosed machines, and the
+only ones with a second nozzle for dual-material supports. If a part is going on the competition
+robot, it probably comes off one of these.
 
 <LabGalleryImage
   src="3d-printer-farm-overview.jpg"
   alt="The 3D printing corner: two Bambu Lab X1-Carbons with AMS units and the H2D with AMS HT, with Prusa Minis in cubbies below"
   caption="The printing corner. Bambu 1 and Bambu 2 (X1-Carbon + AMS) and the H2D with AMS HT up top; the Prusa Mini farm lives in the cubbies underneath."
 />
+
+## Fleet standards
+
+These apply to **every** Bambu in the lab. They are not per-job choices.
+
+- **Nozzles: 0.4 mm hardened steel, fleet-wide.** Hardened is the standard even on materials
+  that do not strictly need it — it means any spool can go in any machine without someone
+  checking first. Carbon- and glass-filled filament runs on hardened nozzles only, no exceptions.
+- **Plates: double-sided textured PEI spring steel, fleet-wide.** One plate type across the farm
+  removes a whole class of slicer mismatch errors.
+- **Wash plates periodically with warm water and Dawn dish soap.** IPA alone redistributes
+  finger oils rather than removing them; a soap-and-water wash in the sink is what actually
+  resets adhesion. Wipe with 90%+ IPA between prints, wash properly when adhesion gets flaky.
+
+Bed temperature by material:
+
+| Material | Bed |
+| --- | --- |
+| 72D TPU | 45–55 °C |
+| PCTG / PETG-GF | 70–80 °C |
+| PPA-GF | 85–95 °C |
+
+<SafetyWarning type="warning" title="Cap TPU volumetric flow at 6 mm³/s">
+72D TPU will push faster than the extruder gears can grip it. Above roughly 6 mm³/s the gears
+grind a flat into the filament instead of feeding it, which jams the toolhead and costs a hotend
+teardown. Set the volumetric speed limit in the filament profile before you slice.
+</SafetyWarning>
+
+**Material assignments across the fleet:**
+
+- **PCTG, PETG-GF, PLA, PETG** — any Bambu, any time.
+- **72D TPU** — any Bambu, external spool holder, flow-capped.
+- **PPA-GF** — **H2D or X2D only.** It needs 300–320 °C and a heated chamber; the X1C's 300 °C
+  hotend cannot hold the top of that range reliably.
+- **CF nylon and PC (existing stock)** — enclosed machines only, which means all four Bambus.
+  See the [Filament Guide](/3d-printing/filament-guide/) for what these are still good for.
 
 ## Bambu 1 & 2 — X1-Carbon
 
@@ -33,10 +70,13 @@ the competition robot, it probably comes off one of these.
     'Monitoring': 'Lidar first-layer + AI camera',
     'AMS': '4 slots, auto material ID',
   }}
-  training="Basic printer orientation to start prints. Nozzle/hotend swaps and PA-CF or PC jobs require mentor sign-off."
+  training="Basic printer orientation to start prints. Nozzle/hotend swaps and engineering-material jobs require mentor sign-off."
 />
 
 <ToolProcurementCard tool="bambu-x1c" />
+
+The X1Cs are the fleet's reliable middle: enclosed, lidar first-layer inspection, and a 4-slot
+AMS each. They run everything except PPA-GF, which needs more heat than a 300 °C hotend holds.
 
 ## H2D + AMS HT
 
@@ -48,13 +88,46 @@ the competition robot, it probably comes off one of these.
     'Max Speed': '1000 mm/s',
     'AMS': 'AMS HT with active drying',
   }}
+  training="Printer orientation plus a mentor walk-through before your first dual-material or PPA-GF job."
 />
 
-The H2D is the fleet's big gun: larger volume, heated chamber, and dual nozzles (dedicated
-support-material or dual-material prints without purge towers). Its AMS HT actively dries
-filament — PA-CF lives there so it is always print-ready.
+The H2D is the fleet's big gun and our **largest build envelope** — 350 × 320 × 325 mm. Heated
+chamber, dual nozzles, and an AMS HT that actively dries filament, so PPA-GF and the CF nylons
+live in it and stay print-ready. The dual nozzle is what makes the
+[zero-gap PLA support interface](/3d-printing/print-settings/#universal-zero-gap-interface)
+possible.
+
+If a part will not fit the H2D, **split it** and bolt or pin the halves — see
+[Print Settings](/3d-printing/print-settings/). We do not have a larger printer.
 
 <ToolProcurementCard tool="bambu-h2d" />
+
+## X2D
+
+<MachineSOP
+  specs={{
+    'Build Volume (single nozzle)': '256 × 256 × 260 mm',
+    'Build Volume (dual nozzle)': '235.5 × 256 × 256 mm',
+    'Nozzles': 'Dual, 0.4 mm hardened steel',
+    'Enclosure': 'Enclosed, heated chamber',
+    'Materials': 'Full range incl. PPA-GF',
+    'Role': 'High-temp engineering capacity',
+  }}
+  training="Printer orientation plus mentor sign-off for PPA-GF."
+/>
+
+The X2D is the second machine cleared for **PPA-GF** and high-temp engineering work, which takes
+that load off the H2D during build season. **More X2Ds are on order** — as they arrive they
+become the default home for engineering-material jobs.
+
+**Watch the envelope when you run dual-nozzle.** Single-nozzle gives you the full
+256 × 256 × 260 mm, but switching to the dual or auxiliary nozzle costs you about 20 mm of
+width and 4 mm of height — **235.5 × 256 × 256 mm**. A part that just fits in single-nozzle mode
+can fail to slice once you add a
+[zero-gap PLA support interface](/3d-printing/print-settings/#universal-zero-gap-interface).
+Check the plate preview after you assign the second nozzle, not before.
+
+<ToolProcurementCard tool="bambu-x2d" />
 
 ## Safety
 
@@ -66,9 +139,8 @@ stop before touching anything inside.
 
 - The bed runs up to 110 °C on engineering materials. Let plates cool before grabbing them
   bare-handed.
-- Keep lids and doors set for the material (see each printer's card on the
-  [Filament Guide](/3d-printing/filament-guide/)): lid off / door open for PLA and TPU,
-  closed for PA-CF and PC.
+- Keep lids and doors set for the material: lid off / door open for PLA and TPU (heat creep),
+  closed for PPA-GF and the enclosed engineering materials.
 - IPA is flammable — never spray it on a hot bed. Wipe plates on the bench, not in the machine.
 - Do not defeat or ignore a paused print: if the machine paused itself, it found a problem.
   Read the screen before resuming.
@@ -76,13 +148,13 @@ stop before touching anything inside.
 ## Software & Workflow — Bambu Studio
 
 1. Open **Bambu Studio** on the shop PC and make sure you are on the team login.
-2. **Pick the right device.** In the Device tab, select Bambu 1, Bambu 2, or the H2D. Check its
-   camera view first — make sure the plate is empty and nobody else's job is queued.
+2. **Pick the right device.** In the Device tab, select Bambu 1, Bambu 2, the H2D, or the X2D.
+   Check its camera view first — make sure the plate is empty and nobody else's job is queued.
 3. Import your model, orient and arrange it (see
    [Print Settings & Supports](/3d-printing/print-settings/)).
-4. **Set the plate type in the slicer to match the plate physically in the printer.** Textured
-   PEI, Cool Plate, and Engineering Plate have different first-layer settings — a mismatch
-   ruins the first layer or damages the plate.
+4. **Confirm the plate type is set to textured PEI.** That is the only plate we run, but a
+   profile imported from MakerWorld can arrive set to Cool Plate or Engineering Plate — a
+   mismatch ruins the first layer.
 5. **Map filaments to AMS slots.** Click the filament chips and sync with the AMS. Bambu spools
    auto-identify via RFID; third-party spools must be assigned manually — set material type
    *and* color so the next person can trust the display.
@@ -98,9 +170,11 @@ No dedicated consumables ledger for the printers — everything reorders through
 - **Filament** — see the [Filament Guide](/3d-printing/filament-guide/) for what to buy and the
   reorder links on every material card.
 - **90%+ IPA and paper towels** — plate cleaning. Lives at the printer bench.
-- **Glue stick** — release/adhesion layer for PC and PA-CF plates.
-- **Spare hotends/nozzles and wiper pads** — Bambu store; keep at least one spare hardened
-  hotend per X1C on the shelf.
+- **Dawn dish soap** — the periodic proper plate wash. IPA between prints, soap and warm water
+  when adhesion gets flaky.
+- **Glue stick** — adhesion layer for PC and CF-nylon prints from existing stock.
+- **Spare 0.4 mm hardened hotends/nozzles and wiper pads** — Bambu store; keep at least one
+  spare hardened hotend per X1C on the shelf.
 - **AMS desiccant packs** — swap when the AMS humidity indicator climbs.
 
 ## Pre-Flight Checklist
@@ -109,12 +183,13 @@ No dedicated consumables ledger for the printers — everything reorders through
   title="Before You Send a Print"
   items={[
     'Plate is empty — previous part and purge waste removed',
-    'Plate type in Bambu Studio matches the plate actually installed',
+    'Plate type in Bambu Studio is set to textured PEI',
     'Plate wiped with 90%+ IPA if fingerprinted or after glue use',
     'Filament mapped to the correct AMS slot, material and color verified',
     'Enough filament on the spool for the job (AMS shows remaining % on Bambu spools)',
-    'TPU is on the external spool holder, not in the AMS',
-    'PA-CF or PC: spool dried, Engineering/glue plate prep done, mentor sign-off',
+    'TPU is on the external spool holder, not in the AMS — and flow-capped at 6 mm3/s',
+    'PPA-GF: H2D or X2D only, spool dried 4-6 h at 80 C, chamber up, mentor sign-off',
+    'CF nylon or PC from existing stock: spool dried, glue stick applied, mentor sign-off',
     'Lid and door set correctly for the material',
     'Waste chute area clear of purged filament buildup',
   ]}
@@ -161,10 +236,10 @@ The X1-Carbons swap the **whole hotend assembly**, not just a nozzle tip:
 5. **Run full calibration (lidar + vibration) after every nozzle change** before the machine
    returns to service.
 
-The H2D uses guided quick-swap nozzles — follow the on-screen maintenance flow. The same rule
-applies on every machine: **carbon-filled filament only ever runs through hardened nozzles.**
-The stock X1C hotend is hardened steel; if a brass or unknown hotend has been fitted, it does
-not print PA-CF.
+The H2D and X2D use guided quick-swap nozzles — follow the on-screen maintenance flow. The same
+rule applies on every machine: **the fleet standard is 0.4 mm hardened steel, and filled filament
+only ever runs through hardened nozzles.** The stock X1C hotend is hardened steel; if a brass or
+unknown hotend has been fitted, it does not print filled material until it is swapped back.
 
 ### Common failures
 
@@ -174,7 +249,7 @@ not print PA-CF.
   bed and around the toolhead before restarting; check the plate prep and consider a brim.
 - **AMS retry / feed error** — tangled spool or filament ground down by the feeder. Unload,
   trim the damaged section, check the spool for cross-winds, reload.
-- **Clicking extruder / underextrusion on CF materials** — wet filament or worn nozzle. Dry
+- **Clicking extruder / underextrusion on filled materials** — wet filament or worn nozzle. Dry
   the spool first; if it persists, the nozzle is due for replacement (weekly wear check is on
   the maintenance schedule).
 
@@ -209,5 +284,4 @@ On the schedule (see [Maintenance Schedules](/maintenance/schedules/)):
 
 - [Filament Guide](/3d-printing/filament-guide/) — materials, plates, and drying rules
 - [Print Settings & Supports](/3d-printing/print-settings/) — orientation, walls, and presets
-- [Prusa Mini+ Farm](/3d-printing/prusa-farm/) — send PLA/PETG volume work there instead
-- [Large-Format & Specialty](/3d-printing/large-format/) — parts bigger than 256 mm
+- [Prusa Mini+ Farm](/3d-printing/prusa-farm/) — send high-volume PCTG and PLA work there instead

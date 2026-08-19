@@ -43,17 +43,6 @@
     "manualUrl": "https://support.thunderlaserusa.com/portal/en/kb/articles/nova-series-users-manual",
     "supportUrl": "https://support.thunderlaserusa.com/"
   },
-  "shopsabre-23": {
-    "name": "ShopSabre 23 CNC Router",
-    "vendor": "ShopSabre CNC (direct)",
-    "price": null,
-    "orderDate": "June 2020",
-    "purchaseUrl": "https://www.shopsabre.com/cnc-routers/shopsabre-23/",
-    "sku": "SS23 · serial 13495 · incl. VCarve Pro",
-    "productUrl": "https://www.shopsabre.com/cnc-routers/shopsabre-23/",
-    "manualUrl": "https://www.shopsabre.com/wp-content/uploads/2023/10/ShopSabre-23-Brochure.pdf",
-    "supportUrl": "https://www.shopsabre.com/support/"
-  },
   "langmuir-titan-25t": {
     "name": "Langmuir Systems Titan 25T CNC Press Brake",
     "vendor": "Langmuir Systems (direct)",
@@ -174,28 +163,6 @@
     "productUrl": "https://www.prusa3d.com/category/original-prusa-mini/",
     "manualUrl": "https://cdn.prusa3d.com/downloads/manual/prusa3d_manual_mini_en.pdf",
     "supportUrl": "https://help.prusa3d.com/product/mini-2"
-  },
-  "creality-cr6-max": {
-    "name": "Creality CR-6 Max",
-    "vendor": null,
-    "price": null,
-    "orderDate": null,
-    "purchaseUrl": "https://www.creality.com/products/creality-cr-6-max-3d-printer",
-    "sku": "CR-6 Max",
-    "productUrl": "https://www.creality.com/products/creality-cr-6-max-3d-printer",
-    "manualUrl": "https://www.creality.com/download/creality-cr-6-max-3d-printer",
-    "supportUrl": "https://www.creality.com/pages/download-cr-6-max"
-  },
-  "creality-cr10-max": {
-    "name": "Creality CR-10 Max",
-    "vendor": null,
-    "price": null,
-    "orderDate": null,
-    "purchaseUrl": null,
-    "sku": "CR-10 Max",
-    "productUrl": null,
-    "manualUrl": "https://funduinoshop.com/media/pdf/33/59/62/_CR-10-Max-SM-001_Use-Manual.pdf",
-    "supportUrl": "https://www.crealitycloud.com/downloads/firmware/cr-series"
   },
   "eastwood-pcs250": {
     "name": "Eastwood HotCoat PCS-250 Dual-Voltage Powder Gun (×2)",
