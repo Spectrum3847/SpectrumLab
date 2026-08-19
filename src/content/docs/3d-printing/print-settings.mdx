@@ -141,10 +141,13 @@ layers, or you are printing a solid block.
 
 ## House presets
 
-Start from these, then adjust. Values are for the Bambu fleet at 0.4 mm nozzle; on the Prusa
-Minis use the 0.6 mm equivalents from the
-[priority hierarchy](#the-slicer-priority-hierarchy) — 4–5 walls, 0.70–0.75 mm line width, and
-0.28–0.32 mm layers.
+Start from these, then adjust. **The values below are for a 0.4 mm nozzle, which means the H2D and
+the X2D.** Most of the lab's machines are not 0.4 mm: the **X1Cs run 0.6 mm** and so do all twelve
+**Prusa Minis**. On any 0.6 mm machine, convert using the
+[priority hierarchy](#the-slicer-priority-hierarchy) — **4–5 walls, 0.70–0.75 mm line width, and
+0.28–0.32 mm layers** — instead of typing these numbers in as-is. Copying a 0.4 mm profile onto a
+0.6 mm machine under-extrudes badly, and it is the most common way a "known good" preset produces
+a weak part.
 
 <PrintSettingPreset
   title="Fast Draft PLA"

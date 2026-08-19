@@ -11,24 +11,30 @@ import TutorialLink from '../../../components/TutorialLink.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
 
 The Bambu fleet is the fast lane of the printer farm: two X1-Carbons — **Bambu 1** and
-**Bambu 2**, each with a 4-slot AMS — plus an **H2D** with an AMS HT and an **X2D** (more X2Ds
-are on the way). These are the lab's most capable printers, the only enclosed machines, and the
+**Bambu 2** — plus an **H2D** and an **X2D** (more X2Ds are on the way). AMS coverage differs per
+machine, so check before you plan a multi-material job: Bambu 1 has a 4-slot AMS *and* an AMS-HT,
+Bambu 2 has an AMS-HT only, the H2D carries an AMS Pro on its right nozzle and an AMS-HT on its
+left, and the X2D has no AMS yet (an AMS-HT is on order).
+These are the lab's most capable printers, the only enclosed machines, and the
 only ones with a second nozzle for dual-material supports. If a part is going on the competition
 robot, it probably comes off one of these.
 
 <LabGalleryImage
   src="3d-printer-farm-overview.jpg"
-  alt="The 3D printing corner: two Bambu Lab X1-Carbons with AMS units and the H2D with AMS HT, with Prusa Minis in cubbies below"
-  caption="The printing corner. Bambu 1 and Bambu 2 (X1-Carbon + AMS) and the H2D with AMS HT up top; the Prusa Mini farm lives in the cubbies underneath."
+  alt="The 3D printing corner: two Bambu Lab X1-Carbons with AMS units and the H2D with its AMS Pro and AMS-HT, with Prusa Minis in cubbies below"
+  caption="The printing corner. Bambu 1 and Bambu 2 (X1-Carbon + AMS) and the H2D up top; the Prusa Mini farm lives in the cubbies underneath."
 />
 
 ## Fleet standards
 
 These apply to **every** Bambu in the lab. They are not per-job choices.
 
-- **Nozzles: 0.4 mm hardened steel, fleet-wide.** Hardened is the standard even on materials
-  that do not strictly need it — it means any spool can go in any machine without someone
-  checking first. Carbon- and glass-filled filament runs on hardened nozzles only, no exceptions.
+- **Nozzles: hardened steel, fleet-wide — but the size differs by machine.** The **X1Cs run
+  0.6 mm**; the **H2D and X2D run 0.4 mm**. Check which machine you are slicing for before you
+  pick a profile, because a 0.4 mm profile sent to a 0.6 mm machine under-extrudes badly.
+  Hardened is the standard even on materials that do not strictly need it — it means any spool
+  can go in any machine without someone checking first. Carbon- and glass-filled filament runs
+  on hardened nozzles only, no exceptions.
 - **Plates: double-sided textured PEI spring steel, fleet-wide.** One plate type across the farm
   removes a whole class of slicer mismatch errors.
 - **Wash plates periodically with warm water and Dawn dish soap.** IPA alone redistributes
@@ -66,34 +72,38 @@ teardown. Set the volumetric speed limit in the filament profile before you slic
     'Motion': 'CoreXY, enclosed',
     'Max Speed': '500 mm/s',
     'Hotend': '300 °C all-metal',
-    'Nozzle': 'Hardened steel (stock)',
+    'Nozzle': '0.6 mm hardened steel',
     'Monitoring': 'Lidar first-layer + AI camera',
-    'AMS': '4 slots, auto material ID',
+    'AMS': 'Bambu 1: 4-slot AMS + AMS-HT · Bambu 2: AMS-HT only',
   }}
   training="Basic printer orientation to start prints. Nozzle/hotend swaps and engineering-material jobs require mentor sign-off."
 />
 
 <ToolProcurementCard tool="bambu-x1c" />
 
-The X1Cs are the fleet's reliable middle: enclosed, lidar first-layer inspection, and a 4-slot
-AMS each. They run everything except PPA-GF, which needs more heat than a 300 °C hotend holds.
+The X1Cs are the fleet's reliable middle: enclosed, lidar first-layer inspection, and 0.6 mm
+hardened nozzles that turn parts around fast. They run everything except PPA-GF, which needs more
+heat than a 300 °C hotend holds. Their AMS setups are **not** identical — Bambu 1 has a 4-slot AMS
+plus an AMS-HT, Bambu 2 has only an AMS-HT — so a four-material job has to go on Bambu 1.
 
-## H2D + AMS HT
+## H2D + AMS Pro & AMS-HT
 
 <MachineSOP
   specs={{
     'Build Volume': '350 × 320 × 325 mm',
-    'Nozzles': 'Dual, up to 350 °C',
+    'Nozzles': 'Dual, 0.4 mm hardened steel, up to 350 °C',
     'Chamber': '65 °C heated',
     'Max Speed': '1000 mm/s',
-    'AMS': 'AMS HT with active drying',
+    'AMS': 'AMS Pro on the right nozzle · AMS-HT (active drying) on the left',
   }}
   training="Printer orientation plus a mentor walk-through before your first dual-material or PPA-GF job."
 />
 
 The H2D is the fleet's big gun and our **largest build envelope** — 350 × 320 × 325 mm. Heated
-chamber, dual nozzles, and an AMS HT that actively dries filament, so PPA-GF and the CF nylons
-live in it and stay print-ready. The dual nozzle is what makes the
+chamber, dual nozzles, and two AMS units: an **AMS Pro on the right nozzle** and an **AMS-HT on the
+left**. The AMS-HT actively dries filament, so PPA-GF and the CF nylons live in it and stay
+print-ready — which also means the **left** nozzle is the one that feeds them. The dual nozzle is
+what makes the
 [zero-gap PLA support interface](/3d-printing/print-settings/#universal-zero-gap-interface)
 possible.
 
@@ -110,6 +120,7 @@ If a part will not fit the H2D, **split it** and bolt or pin the halves — see
     'Build Volume (dual nozzle)': '235.5 × 256 × 256 mm',
     'Nozzles': 'Dual, 0.4 mm hardened steel',
     'Enclosure': 'Enclosed, heated chamber',
+    'AMS': 'None yet — an AMS-HT is on order',
     'Materials': 'Full range incl. PPA-GF',
     'Role': 'High-temp engineering capacity',
   }}
@@ -173,7 +184,8 @@ No dedicated consumables ledger for the printers — everything reorders through
 - **Dawn dish soap** — the periodic proper plate wash. IPA between prints, soap and warm water
   when adhesion gets flaky.
 - **Glue stick** — adhesion layer for PC and CF-nylon prints from existing stock.
-- **Spare 0.4 mm hardened hotends/nozzles and wiper pads** — Bambu store; keep at least one
+- **Spare hardened hotends/nozzles (0.6 mm for the X1Cs, 0.4 mm for the H2D/X2D) and wiper
+  pads** — Bambu store; keep at least one
   spare hardened hotend per X1C on the shelf.
 - **AMS desiccant packs** — swap when the AMS humidity indicator climbs.
 
@@ -237,8 +249,10 @@ The X1-Carbons swap the **whole hotend assembly**, not just a nozzle tip:
    returns to service.
 
 The H2D and X2D use guided quick-swap nozzles — follow the on-screen maintenance flow. The same
-rule applies on every machine: **the fleet standard is 0.4 mm hardened steel, and filled filament
-only ever runs through hardened nozzles.** The stock X1C hotend is hardened steel; if a brass or
+rule applies on every machine: **the fleet standard is hardened steel — 0.6 mm on the X1Cs, 0.4 mm
+on the H2D and X2D — and filled filament only ever runs through hardened nozzles.** Put the same
+size back in that came out, or update the machine profile to match. The stock X1C hotend is
+hardened steel; if a brass or
 unknown hotend has been fitted, it does not print filled material until it is swapped back.
 
 ### Common failures
