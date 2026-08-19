@@ -1,8 +1,57 @@
 ---
 title: "USB & Bluetooth Label Makers"
-description: "Label maker pairing, software, and shop labeling standards."
+description: "The shop labeling standard, how to print a proper label, and where the label makers and TZe tape live."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import ConsumableCard from '../../../components/ConsumableCard.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+
+Every storage system on this site — the [StackTech towers](/storage/stacktech-drawers/), the [toolboxes](/storage/toolboxes/), the [small-parts wall](/storage/small-parts-bins/) — works for exactly one reason: everything is labeled. The label makers are how that stays true. This page is the standard.
+
+## The Labeling Standard
+
+**If it holds parts or tools, it gets a printed label.** Bins, drawers, cases, boxes, shelves, belt pockets — no exceptions.
+
+- **Tape:** Brother TZe, **12 mm black-on-white (TZe-231)**. One tape everywhere means every label in the shop reads the same at arm's length.
+- **Say what's inside, specifically.** "10-32 Socket Head" — not "screws." Belt pockets get tooth count and profile ("60T 9mm 5M"). Toolbox drawers get a number and a name.
+- **Label the front face**, where it's readable with the container in place on its shelf or in its rack.
+- **One label per container.** Peel the old one off when contents change — a container with two labels is a container with zero labels.
+
+<ConsumableCard id="label-tape-brother" />
+
+<LabGalleryImage src="hdx-cases-fastener-labels.jpg" alt="Stack of HDX cases with printed labels for wood screws, GoPros, 10-32 socket head, and 1/4-20" caption="The standard in action — same tape, same format, readable from across the room." />
+
+<LabGalleryImage src="belt-organizer-labels-closeup.jpg" alt="Belt organizer pockets with printed button labels for timing belt tooth counts" caption="Even belt pockets get labels — tooth count and profile on every pocket." />
+
+## Using the Label Makers
+
+The shop's Brother P-touch and portable Bluetooth label printers live in the **label maker drawer**, with spare TZe cassettes alongside. Two ways to print:
+
+### From your phone (Bluetooth)
+
+1. Install Brother's label app (the printer's model sticker tells you which one it wants — Brother's iPrint&Label / P-touch Design&Print family).
+2. Turn the printer on and pair it in the app — the app finds the printer directly; you don't pair through the phone's Bluetooth settings on most models.
+3. Type the text, pick 12 mm tape size in the app if it asks, and print. Skip the decorative frames and fonts — plain bold text is the standard.
+
+### From a shop PC (USB)
+
+1. Connect the printer by USB and use Brother's **P-touch Editor** software.
+2. Editor is the right tool for batch jobs — printing a whole drawer bank or a wall of bins in one sitting with identical formatting.
+
+**Either way:** check the cassette has tape left, and put the label maker *back in its drawer* when you're done. A label maker is a tool with a labeled home, same as everything else.
+
+## When to Relabel
+
+- **Contents changed?** Relabel the same day. A wrong label is worse than no label — people trust it.
+- **Label peeling, faded, or handwritten?** Replace it. Handwritten masking tape is a placeholder, not a label — if you have to write one mid-build, replace it with a printed label before the week is out.
+- **New container?** It gets a label *before* parts go in. Unlabeled containers don't enter the system.
+- Found a mystery bin? Identify the contents, label it, or empty it back into the sorted bins — don't shelve it as-is.
+
+<SafetyWarning type="tip" title="Label the shop like you'll forget everything by Saturday">
+You will. So will everyone else. The team changes every year — the labels are the institutional memory that lets a brand-new student find a 3/16 hex key in thirty seconds. Five minutes with the label maker is the highest-leverage shop work there is.
+</SafetyWarning>
+
+## Restock
+
+When a cassette runs dry, swap in a spare from the label maker drawer and note it on the [Consumables Ledger](/inventory/consumables/) so replacements get ordered. The standard cassette is the TZe-231 above — don't substitute look-alike tape that jams the printer or fades in a month.

@@ -1,40 +1,126 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
-hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
-  actions:
-    - text: Example Guide
-      link: /guides/example/
-      icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
-      variant: minimal
+title: Spectrum Lab
+description: The Spectrum 3847 lab portal — machine SOPs, safety standards, storage maps, and consumables for every tool in the shop.
+template: splash
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+<style>{`
+  /* The dashboard builds its own hero; hide the standard page-title band. */
+  .page-header { display: none; }
+  .sl-markdown-content h2 { margin-top: 2.75rem; }
+`}</style>
 
-## Next steps
+<div class="homepage-hero">
+  <p class="hero-label">Spectrum 3847 Lab Portal</p>
+  <p class="hero-title">The Lab Manual</p>
+  <p class="hero-tagline">Every machine, tool, drawer, and consumable in the Spectrum lab — with the safety rules, SOPs, and training requirements to use them right. If it's in the shop, it's documented here.</p>
+  <div class="hero-actions">
+    <a class="hero-btn-primary" href="/overview/lab-tour/">Take the Tour</a>
+    <a class="hero-btn-secondary" href="/safety/gloves-and-ppe/">Safety First</a>
+  </div>
+</div>
 
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
-</CardGrid>
+## Start Here
+
+<div class="card-grid">
+  <a class="feature-card-link" href="/safety/gloves-and-ppe/">
+    <article class="feature-card">
+      <span class="card-tag">Safety</span>
+      <h3>PPE &amp; The Glove Policy</h3>
+      <p>Read this before anything else: eye protection, the glove rules, and what to wear (and never wear) around each machine.</p>
+      <span class="card-arrow">Read the rules →</span>
+    </article>
+  </a>
+  <a class="feature-card-link" href="/overview/lab-tour/">
+    <article class="feature-card">
+      <span class="card-tag">Orientation</span>
+      <h3>Lab Tour &amp; Floorplan</h3>
+      <p>Video walkthrough of every zone — classroom, additive farm, machine shop, powder coat room, and practice field.</p>
+      <span class="card-arrow">Take the tour →</span>
+    </article>
+  </a>
+  <a class="feature-card-link" href="/storage/toolboxes/">
+    <article class="feature-card">
+      <span class="card-tag">Storage</span>
+      <h3>Storage Directory</h3>
+      <p>Clickable drawer maps for the toolbox fleet, StackTech towers, and the small-parts wall — find any tool or part in under a minute.</p>
+      <span class="card-arrow">Find anything →</span>
+    </article>
+  </a>
+  <a class="feature-card-link" href="/maintenance/schedules/">
+    <article class="feature-card">
+      <span class="card-tag">Upkeep</span>
+      <h3>Maintenance Schedules</h3>
+      <p>Daily, weekly, and seasonal checklists that keep the machines cutting straight and the batteries charged.</p>
+      <span class="card-arrow">See the schedule →</span>
+    </article>
+  </a>
+</div>
+
+## Machines
+
+Every machine has an SOP page: specs, required PPE and training, pre-flight checklist, operating steps, and consumables. Read it before you run it.
+
+<div class="explore-grid">
+  <a class="explore-card" href="/waterjet/wazer-pro/"><span class="ec-name">WAZER Pro</span><span class="ec-desc">Waterjet — metal, rubber, nearly anything</span></a>
+  <a class="explore-card" href="/lasers/xtool-metalfab/"><span class="ec-name">xTool MetalFab</span><span class="ec-desc">1200W fiber laser for sheet metal</span></a>
+  <a class="explore-card" href="/lasers/gweike-m3-ultra/"><span class="ec-name">Gweike Cloud M3 Ultra</span><span class="ec-desc">Hybrid fiber + CO2 6-in-1 laser</span></a>
+  <a class="explore-card" href="/lasers/thunder-nova-35/"><span class="ec-name">Thunder Laser Nova 35</span><span class="ec-desc">100W CO2 laser for wood & acrylic</span></a>
+  <a class="explore-card" href="/cnc/shopsabre-23/"><span class="ec-name">ShopSabre 23</span><span class="ec-desc">CNC router — plate and sheet work</span></a>
+  <a class="explore-card" href="/forming/langmuir-titan-25t/"><span class="ec-name">Langmuir Titan 25T</span><span class="ec-desc">CNC press brake for sheet metal</span></a>
+  <a class="explore-card" href="/forming/box-pan-brake/"><span class="ec-name">Box &amp; Pan Brake</span><span class="ec-desc">Manual sheet-metal bending</span></a>
+  <a class="explore-card" href="/forming/lathes/"><span class="ec-name">Lathes</span><span class="ec-desc">PM-1130V turning and shaft work</span></a>
+  <a class="explore-card" href="/forming/arbor-press/"><span class="ec-name">Arbor Press &amp; Broaching</span><span class="ec-desc">Pressing bearings, cutting keyways</span></a>
+  <a class="explore-card" href="/cutting/evolution-saws/"><span class="ec-name">Evolution Chop Saws</span><span class="ec-desc">Dry-cut aluminum and steel</span></a>
+  <a class="explore-card" href="/cutting/bandsaws/"><span class="ec-name">Bandsaws</span><span class="ec-desc">Vertical, horizontal, and portaband</span></a>
+  <a class="explore-card" href="/cutting/table-saw/"><span class="ec-name">Table Saw</span><span class="ec-desc">DeWalt jobsite saw for wood and plastics</span></a>
+  <a class="explore-card" href="/cutting/sanders-grinders/"><span class="ec-name">Sanders &amp; Grinders</span><span class="ec-desc">Belt sander, bench grinder, deburring</span></a>
+  <a class="explore-card" href="/cutting/drill-press-shear/"><span class="ec-name">Drill Press &amp; Shear</span><span class="ec-desc">Floor drill press and bench shear</span></a>
+  <a class="explore-card" href="/finishing/powder-coating/"><span class="ec-name">Powder Coating</span><span class="ec-desc">Spray booth, gun, and curing oven</span></a>
+</div>
+
+## 3D Printing
+
+<div class="explore-grid">
+  <a class="explore-card" href="/3d-printing/filament-guide/"><span class="ec-name">Filament Guide &amp; Matrix</span><span class="ec-desc">Which material for which part</span></a>
+  <a class="explore-card" href="/3d-printing/print-settings/"><span class="ec-name">Print Settings &amp; Supports</span><span class="ec-desc">Proven profiles and presets</span></a>
+  <a class="explore-card" href="/3d-printing/bambu-fleet/"><span class="ec-name">Bambu Lab Fleet</span><span class="ec-desc">X1-Carbons and the H2D</span></a>
+  <a class="explore-card" href="/3d-printing/prusa-farm/"><span class="ec-name">Prusa Mini+ Farm</span><span class="ec-desc">The workhorse farm in the cubbies</span></a>
+  <a class="explore-card" href="/3d-printing/large-format/"><span class="ec-name">Large-Format &amp; Specialty</span><span class="ec-desc">For parts that don't fit</span></a>
+</div>
+
+## Graphics & Apparel
+
+<div class="explore-grid">
+  <a class="explore-card" href="/graphics/hp-t630-plotter/"><span class="ec-name">HP DesignJet T630</span><span class="ec-desc">Large-format plotter</span></a>
+  <a class="explore-card" href="/graphics/cricut-maker-4/"><span class="ec-name">Cricut Maker 4</span><span class="ec-desc">Vinyl and material cutting</span></a>
+  <a class="explore-card" href="/graphics/heat-press/"><span class="ec-name">Smart Heat Press</span><span class="ec-desc">Shirts and HTV transfers</span></a>
+  <a class="explore-card" href="/graphics/vinyl-and-stickers/"><span class="ec-name">Vinyl &amp; Stickers</span><span class="ec-desc">Weeding, transfer, and finishing</span></a>
+</div>
+
+## Tools & Electrical
+
+<div class="explore-grid">
+  <a class="explore-card" href="/portable-power/m12-ecosystem/"><span class="ec-name">Milwaukee M12 Ecosystem</span><span class="ec-desc">The cordless fleet and battery rules</span></a>
+  <a class="explore-card" href="/portable-power/m12-riveting/"><span class="ec-name">M12 Riveting</span><span class="ec-desc">Rivet tool, sizes, and nose pieces</span></a>
+  <a class="explore-card" href="/portable-power/dewalt-and-pneumatics/"><span class="ec-name">DeWalt &amp; Pneumatics</span><span class="ec-desc">Compressors, vacuum, and air tools</span></a>
+  <a class="explore-card" href="/hand-tools/layout-measuring/"><span class="ec-name">Layout &amp; Measuring</span><span class="ec-desc">Calipers, squares, and marking</span></a>
+  <a class="explore-card" href="/hand-tools/fastener-driving/"><span class="ec-name">Fastener Driving</span><span class="ec-desc">Hex keys, drivers, and torque</span></a>
+  <a class="explore-card" href="/hand-tools/cutting-deburring/"><span class="ec-name">Cutting &amp; Deburring</span><span class="ec-desc">Files, snips, and edge-breaking</span></a>
+  <a class="explore-card" href="/hand-tools/threading-riveting/"><span class="ec-name">Threading &amp; Riveting</span><span class="ec-desc">Taps, dies, and hand riveters</span></a>
+  <a class="explore-card" href="/hand-tools/clamps-vises/"><span class="ec-name">Clamps &amp; Vises</span><span class="ec-desc">Workholding done right</span></a>
+  <a class="explore-card" href="/electrical/wire-prep-crimping/"><span class="ec-name">Wire Prep &amp; Crimping</span><span class="ec-desc">Strippers, crimpers, and connectors</span></a>
+  <a class="explore-card" href="/electrical/soldering-test-bench/"><span class="ec-name">Soldering &amp; Test Bench</span><span class="ec-desc">PINECIL irons and the oscilloscope</span></a>
+  <a class="explore-card" href="/electrical/coprocessors/"><span class="ec-name">Coprocessors &amp; SBCs</span><span class="ec-desc">Vision and control hardware</span></a>
+</div>
+
+## Consumables & Restocking
+
+<a class="feature-card-link" href="/inventory/consumables/">
+  <article class="feature-card">
+    <span class="card-tag">Inventory</span>
+    <h3>Consumables Ledger</h3>
+    <p>Garnet, endmills, label tape, rivets, powder, ink — every consumable the shop burns through, with part numbers, storage locations, and reorder links. Used the last of something? Log it here so it gets reordered before someone needs it.</p>
+    <span class="card-arrow">Open the ledger →</span>
+  </article>
+</a>

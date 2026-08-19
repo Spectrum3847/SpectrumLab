@@ -1,8 +1,116 @@
 ---
 title: "Lab Tour & Floorplan"
-description: "Video walkthrough of every zone in the Spectrum lab."
+description: "Welcome to the Spectrum 3847 lab — video walkthrough of every zone, what lives where, and where to find the docs for each area."
 ---
 
-:::note
-This page is being built out. Content coming shortly.
-:::
+import LabTourEmbed from '../../../components/LabTourEmbed.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+
+Welcome to the lab. This is where Spectrum 3847 designs, builds, breaks, and rebuilds robots — and this page is your map. Watch the tour video, then read the zone-by-zone breakdown below to learn what lives in each area and where its documentation is.
+
+<SafetyWarning type="warning" title="Before you touch anything">
+New in the lab? Read [PPE & The Glove Policy](/safety/gloves-and-ppe/) and [Emergency Protocols](/safety/emergency/) first. Every machine in the shop requires training before you run it — the SOP pages tell you what sign-off each one needs.
+</SafetyWarning>
+
+## The Video Tour
+
+Click a chapter chip to jump the player straight to that zone.
+
+<LabTourEmbed markers={[
+  { seconds: 0, label: 'Intro' },
+  { seconds: 13, label: 'Classroom' },
+  { seconds: 30, label: 'Additive Farm' },
+  { seconds: 47, label: 'Snack Closet' },
+  { seconds: 57, label: 'Machine Shop' },
+  { seconds: 74, label: 'Assembly Tables' },
+  { seconds: 82, label: 'Powder Coat' },
+  { seconds: 89, label: 'Merch' },
+  { seconds: 99, label: 'Practice Room' },
+]} />
+
+The video was filmed for the 2025 season, so a few machines have arrived since — the written tour below reflects the shop as it is today.
+
+## Classroom
+
+The first room you walk into. Big team meetings, design sessions on the big screen, whiteboard arguments about intake geometry, and general hangout time all happen here. It's also where the daily build blog gets written — Spectrum publishes its engineering notebook publicly all season.
+
+When a design review ends with "go make it," everything else on this page is where that happens.
+
+## Additive Farm
+
+The 3D-printing corner runs nearly nonstop during build season, feeding printed parts to both the main team and the junior team. The fleet today: Bambu Lab X1-Carbon printers with AMS units, a Bambu Lab H2D with AMS HT, and a farm of Prusa Minis in wooden cubbies under the bench.
+
+<LabGalleryImage src="3d-printer-farm-overview.jpg" alt="3D printing corner with Bambu Lab X1-Carbons, an H2D, and Prusa Minis in cubbies" caption="The additive farm — Bambu X1-Carbons and the H2D up top, Prusa Minis in the cubbies below." />
+
+Start here:
+
+- [Filament Guide & Matrix](/3d-printing/filament-guide/) — which material for which part
+- [Print Settings & Supports](/3d-printing/print-settings/) — proven profiles
+- [Bambu Lab Fleet](/3d-printing/bambu-fleet/) and [Prusa Mini+ Farm](/3d-printing/prusa-farm/) — machine SOPs
+- [Large-Format & Specialty](/3d-printing/large-format/) — for parts that don't fit
+
+## Snack Closet & Storage Room
+
+The famous snack closet shares space with parts storage — no one likes to work on an empty stomach. The storage closets hold the deep inventory: bumpers, robot frames, wheel bins, drivetrain spares, and shelf after shelf of labeled totes.
+
+<LabGalleryImage src="left-closet-overview.jpg" alt="Left closet doorway with storage racks, bumpers, parts bins, and robot frames" caption="The left closet — bumpers, robot frames, and the Pink and Green shelf racks of parts bins." />
+
+If you're hunting for a bearing, a belt, or a bolt, the storage system is documented in [Small Parts Bins](/storage/small-parts-bins/) and [Primary Toolboxes](/storage/toolboxes/).
+
+## Machine Shop
+
+The heart of the lab, where designs become reality. In one room: the WAZER waterjet, the xTool MetalFab fiber laser, the Gweike and Thunder CO2 lasers, the ShopSabre CNC router, the Langmuir Titan press brake, the PM-1130V lathe, the mill, and the saw wall.
+
+<LabGalleryImage src="machine-shop-from-tool-bench.jpg" alt="Machine shop overview with lathe, bandsaw, arbor press, belt sander, and battery charging bench" caption="The machine shop from the tool bench — lathe, bandsaw, arbor press, and the battery charging area." />
+
+<LabGalleryImage src="wazer-and-blue-toolbox.jpg" alt="WAZER waterjet next to the blue toolbox workstation" caption="The WAZER waterjet and the blue toolbox workstation — the fab corner of the shop." />
+
+Every machine has its own SOP page — read it before you run it:
+
+- **Waterjet:** [WAZER Pro](/waterjet/wazer-pro/)
+- **Lasers:** [xTool MetalFab](/lasers/xtool-metalfab/), [Gweike Cloud M3 Ultra](/lasers/gweike-m3-ultra/), [Thunder Laser Nova 35](/lasers/thunder-nova-35/)
+- **CNC:** [ShopSabre 23 Router](/cnc/shopsabre-23/)
+- **Forming:** [Langmuir Titan 25T Press Brake](/forming/langmuir-titan-25t/), [Lathes](/forming/lathes/), [Arbor Press & Broaching](/forming/arbor-press/)
+- **Saws:** [Evolution Chop Saws](/cutting/evolution-saws/), [Bandsaws](/cutting/bandsaws/), [Drill Press & Bench Shear](/cutting/drill-press-shear/)
+
+Tool storage lives here too — the [StackTech towers](/storage/stacktech-drawers/) and the [toolbox fleet](/storage/toolboxes/).
+
+## Assembly Tables
+
+The design and assembly tables are where subsystems come together during the season. They get gloriously messy during build — clear your spot when you leave. Photon, the team's little purple dinosaur mascot, is usually tucked in somewhere nearby, and the material cart keeps polycarbonate sheet, extrusion, and clamps within arm's reach.
+
+<LabGalleryImage src="material-cart-polycarb-clamps.jpg" alt="Rolling material cart with polycarbonate slots, extrusion cubbies, and clamps" caption="The rolling material cart by the assembly area — labeled polycarb slots, extrusion cubbies, clamps on top." />
+
+Working at the tables usually means [M12 cordless tools](/portable-power/m12-ecosystem/) and the [hand tool](/hand-tools/layout-measuring/) drawers.
+
+## Powder Coat Room
+
+A small room where parts get beautiful in shades of purple and white. The spray booth, gun, respirators, and powder shelf live here — the box-fan filter's purple dust tells you which color we shoot most.
+
+<LabGalleryImage src="powder-booth-spray-area.jpg" alt="Powder coating booth with spray gun, respirators, powder bottles, and dusted filter" caption="The powder coating booth — gun, respirators, powder stock, and the well-used filter." />
+
+Powder coating is respirator-required work with its own SOPs: [Powder Coating](/finishing/powder-coating/), [Curing Oven](/finishing/curing-oven/), and [Surface Prep & Cleaning](/finishing/surface-prep/).
+
+## Merch Storage
+
+The same room doubles as merch storage — excess team t-shirts, TRI shirts, banquet supplies, and apparel boxes, plus the flammables cabinet.
+
+<LabGalleryImage src="storage-room-apparel-flammables.jpg" alt="Storage room with apparel boxes, green flammables cabinet, and TRI shirts shelf" caption="Merch and supply storage — apparel boxes, TRI shirts, and the flammables cabinet." />
+
+Shirts start life in the lab too — see [Graphics & Apparel](/graphics/heat-press/) for the heat press and vinyl workflow.
+
+## Practice Room
+
+The big open room. Each season the practice field gets constructed here for code testing and driver practice, with computers, cameras, and drive-team electronics stationed behind the plexiglass barrier. It's also the home of TRI — the Texas Robot Invitational, Spectrum's offseason event.
+
+## Photo Galleries
+
+Every photo on this site links back to the full-resolution original. Browse the complete galleries:
+
+<TutorialLink title="The Lab — Full Photo Gallery" url="https://photos.spectrum3847.org/The-Lab" source="website" description="All lab photos on photos.spectrum3847.org." />
+
+<TutorialLink title="Aug 18, 2026 Photo Set" url="https://photos.spectrum3847.org/The-Lab/Aug-18-2026-Photos" source="website" description="The current documentation photo set — every machine, toolbox, and drawer." />
+
+<TutorialLink title="Spectrum 2025 Lab Tour Video" url="https://www.youtube.com/watch?v=yZNJGcsSCnM" source="youtube" description="The tour video embedded above, on the Spectrum3847 YouTube channel." />
