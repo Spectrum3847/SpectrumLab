@@ -56,6 +56,10 @@ npx wrangler deploy  # deploy command
 for the worker name, the `dist/` assets directory, and the
 `lab.spectrum3847.org` custom domain.
 
+`.nvmrc` pins the build to Node 24 (Cloudflare's current default, and what the
+image preinstalls). Astro 7 needs Node 20+, so this keeps a future default bump
+from silently changing the build runtime.
+
 To deploy by hand (rarely needed):
 
 ```bash
