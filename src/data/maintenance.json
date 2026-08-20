@@ -20,7 +20,7 @@
     "WAZER: check tank abrasive level, drain used-abrasive buckets if > half full",
     "Laser optics: inspect (clean only if hazy) on Nova 35 and MetalFab",
     "Blow dust out of powder booth filters; replace box-fan filter if caked",
-    "Printer farm: wipe PEI plates with IPA; wash with Dawn and warm water when adhesion drops; check nozzle wear on machines running filled filament",
+    "Printer farm: wash PEI plates with Dawn and warm water every few prints; check nozzle wear on machines running filled filament",
     "Charge all M12/DeWalt batteries; report any that won't hold charge",
     "Restock small-parts bins from bulk stock; note anything below reorder point"
   ],
@@ -54,7 +54,7 @@
       { "task": "Inspect door seal", "interval": "Monthly" }
     ],
     "bambu-fleet": [
-      { "task": "Wipe plates with 90%+ IPA", "interval": "Every few prints" },
+      { "task": "Wash plates with soap and warm water", "interval": "Every few prints" },
       { "task": "Clean/replace nozzle wiper pad", "interval": "Monthly" },
       { "task": "Run full calibration (lidar + vibration)", "interval": "After nozzle changes" }
     ],

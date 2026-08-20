@@ -37,9 +37,9 @@ These apply to **every** Bambu in the lab. They are not per-job choices.
   on hardened nozzles only, no exceptions.
 - **Plates: double-sided textured PEI spring steel, fleet-wide.** One plate type across the farm
   removes a whole class of slicer mismatch errors.
-- **Wash plates periodically with warm water and Dawn dish soap.** IPA alone redistributes
-  finger oils rather than removing them; a soap-and-water wash in the sink is what actually
-  resets adhesion. Wipe with 90%+ IPA between prints, wash properly when adhesion gets flaky.
+- **Wash plates with warm water and Dawn dish soap every few prints — not just when adhesion
+  drops.** Soap and water is the only thing that actually removes finger oils rather than just
+  redistributing them, so it is the whole routine. No IPA.
 
 Bed temperature by material:
 
@@ -155,7 +155,6 @@ stop before touching anything inside.
   bare-handed.
 - Keep lids and doors set for the material: lid off / door open for PLA and TPU (heat creep),
   closed for PPA-GF and the enclosed engineering materials.
-- IPA is flammable — never spray it on a hot bed. Wipe plates on the bench, not in the machine.
 - Do not defeat or ignore a paused print: if the machine paused itself, it found a problem.
   Read the screen before resuming.
 
@@ -183,9 +182,8 @@ No dedicated consumables ledger for the printers — everything reorders through
 
 - **Filament** — see the [Filament Guide](/3d-printing/filament-guide/) for what to buy and the
   reorder links on every material card.
-- **90%+ IPA and paper towels** — plate cleaning. Lives at the printer bench.
-- **Dawn dish soap** — the periodic proper plate wash. IPA between prints, soap and warm water
-  when adhesion gets flaky.
+- **Dawn dish soap and paper towels** — plate cleaning. Lives at the printer bench. Warm water
+  and soap only, every few prints — no IPA.
 - **Glue stick** — adhesion layer for PC and CF-nylon prints from existing stock.
 - **Spare hardened hotends/nozzles (0.6 mm for the X1Cs, 0.4 mm for the H2D/X2D) and wiper
   pads** — Bambu store; keep at least one
@@ -199,7 +197,7 @@ No dedicated consumables ledger for the printers — everything reorders through
   items={[
     'Plate is empty — previous part and purge waste removed',
     'Plate type in Bambu Studio is set to textured PEI',
-    'Plate wiped with 90%+ IPA if fingerprinted or after glue use',
+    'Plate washed with soap and warm water if fingerprinted or after glue use',
     'Filament mapped to the correct AMS slot, material and color verified',
     'Enough filament on the spool for the job (AMS shows remaining % on Bambu spools)',
     'Hard 72D TPU is AMS-fed and flow-capped at 6 mm3/s; soft TPU and TPE stay on the external spool holder',
@@ -260,8 +258,8 @@ unknown hotend has been fitted, it does not print filled material until it is sw
 
 ### Common failures
 
-- **First-layer inspection fails** — dirty or wrong plate 90% of the time. Wipe with IPA,
-  verify plate type in the slicer, restart.
+- **First-layer inspection fails** — dirty or wrong plate 90% of the time. Wash with soap and
+  warm water, verify plate type in the slicer, restart.
 - **Spaghetti detection triggers** — part came unstuck mid-print. Clear all debris from the
   bed and around the toolhead before restarting; check the plate prep and consider a brim.
 - **AMS retry / feed error** — tangled spool or filament ground down by the feeder. Unload,
@@ -288,11 +286,11 @@ After your print:
 
 - Remove parts **and** purge waste; leave the plate empty and clipped in.
 - Return spools you unloaded to their dry box or bag.
-- Wipe the plate with 90%+ IPA every few prints, or immediately after glue-stick use.
+- Wash the plate with soap and warm water every few prints, or immediately after glue-stick use.
 
 On the schedule (see [Maintenance Schedules](/maintenance/schedules/)):
 
-- **Every few prints:** wipe plates with 90%+ IPA.
+- **Every few prints:** wash plates with soap and warm water.
 - **Weekly:** check nozzle wear on the CF printers (part of the farm walk-down).
 - **Monthly:** clean or replace the nozzle wiper pads.
 - **After any nozzle change:** full lidar + vibration calibration before the next job.
