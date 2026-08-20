@@ -60,7 +60,9 @@ teardown. Set the volumetric speed limit in the filament profile before you slic
 - **PCTG, PETG-GF, PLA, PETG** — any Bambu, any time.
 - **72D TPU** — any Bambu, **fed through the AMS**, flow-capped at 6 mm³/s.
 - **PPA-GF** — **H2D or X2D only.** It needs 300–320 °C and a heated chamber; the X1C's 300 °C
-  hotend cannot hold the top of that range reliably.
+  hotend cannot hold the top of that range reliably. Note the **X2D also caps at 300 °C** — it
+  is cleared for PPA-GF but runs it at the low end of the band, not the full 320 °C the H2D can
+  reach.
 - **CF nylon and PC (existing stock)** — enclosed machines only, which means all four Bambus.
   See the [Filament Guide](/3d-printing/filament-guide/) for what these are still good for.
 
@@ -91,7 +93,7 @@ plus an AMS-HT, Bambu 2 has only an AMS-HT — so a four-material job has to go 
 <MachineSOP
   specs={{
     'Build Volume': '350 × 320 × 325 mm',
-    'Nozzles': 'Dual, 0.4 mm hardened steel, up to 350 °C',
+    'Nozzles': 'Dual, 0.4 mm hardened steel, up to 320 °C',
     'Chamber': '65 °C heated',
     'Max Speed': '1000 mm/s',
     'AMS': 'AMS Pro on the right nozzle · AMS-HT (active drying) on the left',
@@ -143,7 +145,8 @@ Check the plate preview after you assign the second nozzle, not before.
 ## Safety
 
 <SafetyWarning type="warning" title="Hot and fast">
-The nozzle runs up to 300–350 °C and the toolhead moves at up to 1000 mm/s. Never reach into a
+The nozzle runs up to 320 °C on the H2D (300 °C on the X1Cs and X2D) and the toolhead moves at
+up to 1000 mm/s. Never reach into a
 printer while it is printing, homing, or calibrating. Pause the print and wait for motion to
 stop before touching anything inside.
 </SafetyWarning>
