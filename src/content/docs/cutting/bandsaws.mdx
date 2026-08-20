@@ -8,6 +8,7 @@ import SafetyWarning from '../../../components/SafetyWarning.astro';
 import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
 import TutorialLink from '../../../components/TutorialLink.astro';
+import ConsumablesTable from '../../../components/ConsumablesTable.astro';
 
 Three bandsaws, three jobs. The **green horizontal bandsaw** (on casters, near the red toolbox and the aluminum stock rack) is the workhorse for cutting bar, tube, and extrusion to length — clamp the stock, drop the head, walk away-ish (you don't actually walk away). The **Grizzly G0555LANV 14 in vertical bandsaw** (by the Thunder Laser) cuts curves and profiles in aluminum, plastic, and wood. The **table-mounted Portaband** on the butcher-block workbench is the quick-trim station for small metal stock.
 
@@ -114,13 +115,26 @@ The table-mounted Portaband on the workbench turns the portable bandsaw into a m
   ]}
 />
 
+## Consumables
+
+Blades are the only consumable, and **every saw takes a different length** — read the length stamped on the old blade before ordering.
+
+<ConsumablesTable machine="grizzly-g0555,horizontal-bandsaw,m12-bandsaw" />
+
 ## Resources
 
 <TutorialLink
-  title="Grizzly Support & Manuals"
-  url="https://www.grizzly.com/"
-  source="website"
-  description="Manuals and parts for the G0555LANV — search the model number."
+  title="Grizzly G0555LANV Owner's Manual (PDF)"
+  url="https://cdn0.grizzly.com/manuals/g0555lanv_m.pdf"
+  source="pdf"
+  description="The vertical saw's own manual — tension spec, tracking adjustment, tire redressing, lubrication, and the parts diagram."
+/>
+
+<TutorialLink
+  title="Grizzly Support Centre"
+  url="https://support.grizzly.com/"
+  source="knowledge-base"
+  description="Official how-tos, including blade tensioning and adjusting the G0555LANV tension rod."
 />
 
 ## Cleanup & Maintenance

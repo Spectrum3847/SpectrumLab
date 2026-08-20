@@ -10,6 +10,7 @@ import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
 import DrawerLayoutMap from '../../../components/DrawerLayoutMap.astro';
 import TutorialLink from '../../../components/TutorialLink.astro';
+import ConsumablesTable from '../../../components/ConsumablesTable.astro';
 
 Nearly every cordless tool in the shop runs on one platform: Milwaukee M12. One battery pool, one set of chargers, a dozen bare tools. That is deliberate — any charged battery runs any tool, and a dead battery never strands a job. This page covers the whole fleet except the rivet tools, which have [their own page](/portable-power/m12-riveting/).
 
@@ -45,14 +46,17 @@ Remove the battery before changing bits, blades, wheels, dies, or sanding pads �
 The fleet only works if the batteries do. Three rules:
 
 1. **Dead batteries go to the charging bench immediately.** Never put a dead pack back in a drawer — the next person finds out mid-hole.
-2. **Don't store tools with batteries in them.** Battery out, tool in its drawer, pack back to the pool. A tool stored with a battery is a drained battery and a trigger hazard in a closed drawer.
-3. **Return tools with a usable pack available.** House rule from the drill drawer: come back with a battery at one bar or better on the shelf, or flag it.
+2. **Tools are stored with a charged pack on board.** That is deliberate. Spectrum built the M12 storage box specifically so the fleet could live batteried-up — *"we wanted a way to keep them stored with their batteries installed so they are quicker to grab and return"* ([Lab Upgrades, Jan 2024](https://www.spectrum3847.org/seasons/2024/#2024-01-05-lab-upgrades)). So don't strip a tool at close: **swap the pack, don't remove it**, and send the tired one to the bench.
+3. **Battery OUT for every bit, blade, wheel, or pad change.** That is the moment cordless tools bite — not storage. Same rule at the bench and in the pit.
+4. **Return tools with a usable pack.** House rule from the drill drawer: the tool goes back with a battery at one bar or better, or you flag it.
 
 Every battery gets charged weekly per the [maintenance schedule](/maintenance/schedules/). If a pack won't hold a charge or gets hot on the charger, label it and report it — don't shuffle it back into the pool.
 
 ## Where Everything Lives
 
 Every M12 tool has a labeled drawer in one of the two rolling StackTech towers in the machine shop. Tools go back to *their* drawer at close — see [StackTech Tool Towers](/storage/stacktech-drawers/) for the full system.
+
+There is also a **shop-built M12 storage box**: a dense wooden rack that holds the fleet with batteries installed, sized so it can sit on a pit table at competition. It replaced "all of them in a T-Stak bucket," which is exactly as bad as it sounds ([Lab Upgrades, Jan 2024](https://www.spectrum3847.org/seasons/2024/#2024-01-05-lab-upgrades)).
 
 <DrawerLayoutMap unit="stacktech-power-tower" />
 
@@ -162,6 +166,12 @@ The M12 FUEL orbital detail sander has a pointed pad for corners, a tight 1.5 mm
 
 The M12 Rivet Tool (2550-20) and its long nose extension are covered in depth on the [M12 Riveting page](/portable-power/m12-riveting/) — sizing, nose pieces, jaw cleaning, and the aluminum-vs-stainless decision.
 
+## Consumables
+
+Blades, wheels, pads and staples are the fleet's running cost. Restock from the drawer spares and log anything low.
+
+<ConsumablesTable machine="m12-bandsaw,m12-jigsaw,m12-cutoff,m12-detail-sander,m12-stapler,m12-hackzall,m12-drill,m12-rivet" />
+
 ## Pre-Flight Checklist
 
 <PreFlightChecklist
@@ -190,7 +200,7 @@ The M12 Rivet Tool (2550-20) and its long nose extension are covered in depth on
 
 ## Cleanup & Maintenance
 
-- Battery **out** of the tool. Tool back in its labeled drawer, drawer closed.
+- Tool back in its labeled drawer with a **charged pack on it**, drawer closed. Battery out only for a bit/blade change or if the tool is going in for service.
 - Dead packs to the charging bench; charged packs back to the battery pool.
 - Blow or brush chips out of vents and blade guards before the tool goes away.
 - Dull blades and worn wheels get replaced now, not discovered later — restock from the drawer spares and note anything low on the [consumables ledger](/inventory/consumables/).

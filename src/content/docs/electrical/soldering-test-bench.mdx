@@ -8,6 +8,7 @@ import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
 import SafetyWarning from '../../../components/SafetyWarning.astro';
 import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
 import TutorialLink from '../../../components/TutorialLink.astro';
+import ConsumablesTable from '../../../components/ConsumablesTable.astro';
 
 The electronics bench is where custom boards get built, mystery boards get diagnosed, and sensor wiring gets repaired. Robot power wiring is crimped, not soldered ([here's why](/electrical/wire-prep-crimping/)) — the bench is for everything else: signal wiring, connectors, LED strips, and board-level work.
 
@@ -100,6 +101,10 @@ The Rigol DS1052E is the bench scope: 50 MHz, 2 channels, 1 GSa/s. It's an older
 
 **Never probe mains wall power with this scope.** It's a low-voltage bench instrument; robot electronics only.
 
+## Consumables
+
+<ConsumablesTable machine="pinecil" />
+
 ## Ventilation & Fumes
 
 Solder smoke is vaporized flux, and it goes straight up into the face of whoever's leaning over the joint.
@@ -144,3 +149,13 @@ Solder smoke is vaporized flux, and it goes straight up into the face of whoever
 - Wash your hands.
 
 Related: [Wire Prep & Crimping](/electrical/wire-prep-crimping/) · [Coprocessors & SBCs](/electrical/coprocessors/) — bench-test a coprocessor's power budget on the current-limited supply before it ever touches the robot.
+
+## Training & Videos
+
+<TutorialLink
+  title="Soldering — UCI Engineering Training (26 min)"
+  url="https://www.youtube.com/watch?v=rD1uIDdTAwU"
+  source="youtube"
+  description="Wetting, heat control and joint inspection, from the same UCI series Spectrum recommends for shop training."
+/>
+

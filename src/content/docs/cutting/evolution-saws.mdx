@@ -9,13 +9,14 @@ import SafetyWarning from '../../../components/SafetyWarning.astro';
 import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
 import TutorialLink from '../../../components/TutorialLink.astro';
+import ConsumablesTable from '../../../components/ConsumablesTable.astro';
 
-The Evolution S14MCS is our metal-cutting mitering chop saw — the fast way to cut aluminum and steel tube, extrusion, and bar to length with a clean, square (or mitered) end. It **dry cuts**: a slow-turning carbide-toothed blade shears cold chips instead of grinding sparks, so cuts are burr-light and the part stays cool enough to handle soon after. The saw itself stays cool; **the chips do not** — more on that below. Blade choice is by material: the **EVOMAX14ST** cermet-carbide blade for steel, and the **EVOMAX14AL** 100-tooth blade for aluminum. The saw lives on top of the red US General toolbox.
+The Evolution S14MCS is our metal-cutting mitering chop saw — the fast way to cut aluminum and steel tube, extrusion, and bar to length with a clean, square (or mitered) end. It **dry cuts**: a slow-turning carbide-toothed blade shears cold chips instead of grinding sparks, so cuts are burr-light and the part stays cool enough to handle soon after. The saw itself stays cool; **the chips do not** — more on that below. Blade choice is by material: the **EVOMAX14ST** 80-tooth cermet-carbide blade for steel, and the **EVOMAX14AL** 100-tooth TCT blade for aluminum. The saw lives on top of the [Orange Toolbox](/storage/toolboxes/#orange-toolbox--metrology-machinist-tooling--ppe) — the wide orange-trimmed US General Pro cabinet labelled *Chopsaw Tools*, whose thirteen drawers hold the shop's measuring instruments and machinist tooling. The 1×30 belt sander shares the same top.
 
 <MachineSOP
   specs={{
     'Blade': '14 in, 1 in arbor',
-    'Steel Blade': 'EVOMAX14ST cermet-carbide',
+    'Steel Blade': 'EVOMAX14ST, 80T cermet-carbide',
     'Aluminum Blade': 'EVOMAX14AL, 100T TCT',
     'Speed': '~1100 RPM',
     'Power': '120V, 15A',
@@ -33,8 +34,8 @@ The Evolution S14MCS is our metal-cutting mitering chop saw — the fast way to 
 
 <LabGalleryImage
   src="evolution-chop-saw.jpg"
-  alt="Evolution chop saw with EvoMax aluminum blade mounted on the red toolbox"
-  caption="The Evolution saw on the red toolbox — shown here wearing the EvoMax aluminum blade. Check which blade is mounted before you cut anything."
+  alt="Evolution chop saw with EvoMax aluminum blade mounted on the Orange Toolbox"
+  caption="The Evolution saw on the Orange Toolbox — shown wearing the EvoMax aluminum blade, with the miter fence and stop blocks fitted and the 1×30 belt sander alongside. Check which blade is mounted before you cut anything."
 />
 
 ## Safety
@@ -64,6 +65,17 @@ Every piece gets locked in the saw's material clamp before the blade touches it 
 | Wood, plastic, composites | — | Not on this saw. Table saw or bandsaw instead. |
 
 The EVOMAX14AL is a **blade, not a saw** — it swaps onto the S14MCS arbor when we're batch-cutting aluminum. Whoever swaps it logs which blade is mounted (label on the saw) so the next person isn't guessing.
+
+## Repeat Cuts — the Fence, Stop Blocks & Tape
+
+The saw was set up for batch work in the winter of 2023: a **fence, stop blocks, and an adhesive measuring tape** run along the bed so shafts and spacers can be cut to a repeated length without measuring each one ([Lab Upgrades, Jan 2024](https://www.spectrum3847.org/seasons/2024/#2024-01-05-lab-upgrades)). Use it:
+
+1. Set the stop block against the tape at your length and lock it.
+2. Cut one piece and **measure it** — the tape's zero is referenced to the blade kerf, and a bumped stop block reads fine and cuts wrong.
+3. Adjust the block if the test piece is off, then run the batch, seating each piece firmly against both the fence and the stop before clamping.
+4. Long stock still gets supported at the far end; the stop only fixes length, not sag.
+
+Deburr the batch together at the [Scotch-Brite wheel](/cutting/sanders-grinders/) — it's faster than one at a time, and it means no sharp spacer ever reaches an assembly table.
 
 ## Miter Setup
 
@@ -107,7 +119,9 @@ The EVOMAX14AL is a **blade, not a saw** — it swaps onto the S14MCS arbor when
 
 ## Consumables
 
-Blades are the consumable. Replace when cuts slow down noticeably, teeth are missing, or steel cuts start throwing sparks (a dry-cut saw making sparks means dead carbide). Reorder both blades from Evolution — see the procurement cards above. No other consumables: this saw uses **no lubricant or coolant, ever** — that's the design.
+Blades are the consumable. Replace when cuts slow down noticeably, teeth are missing, or steel cuts start throwing sparks (a dry-cut saw making sparks means dead carbide). No other consumables: this saw uses **no lubricant or coolant, ever** — that's the design.
+
+<ConsumablesTable machine="evolution-s14mcs" />
 
 ## Resources
 

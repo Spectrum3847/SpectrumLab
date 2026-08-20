@@ -7,12 +7,23 @@ import SafetyWarning from '../../../components/SafetyWarning.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
 import DrawerLayoutMap from '../../../components/DrawerLayoutMap.astro';
 import ConsumableCard from '../../../components/ConsumableCard.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
 
-When a bolt can't reach a nut, you make the threads yourself — tap them into the part, or set a rivnut. And when you don't need threads at all, a rivet is lighter and faster. The threading and riveting tools live in the blue toolbox next to the WAZER.
+When a bolt can't reach a nut, you make the threads yourself — tap them into the part, or set a rivnut. And when you don't need threads at all, a rivet is lighter and faster.
+
+The tools are spread over three places, so start here:
+
+| Tool | Where |
+| --- | --- |
+| Taps, tap wrenches, dies | Red toolbox, **drawer 7 (Thread Taps)** |
+| Tap/drill charts | Orange Toolbox, **drawer 13** (the glove drawer) |
+| Hand rivet gun | StackTech hand-tools tower, **Vises / Electrical / Manual Rivet Guns** drawer |
+| Rivnut tools and rivnuts | Lathe T-Stak stack, **Rivetnuts** drawer |
+| Extra taps, dies and clamps for the fab corner | Blue toolbox by the WAZER |
 
 ## Where they live
 
-<DrawerLayoutMap unit="blue-toolbox" />
+<DrawerLayoutMap unit="lathe-tstak" />
 
 ## Taps & dies
 
@@ -20,12 +31,12 @@ Taps cut internal threads in a drilled hole; dies cut external threads on a rod.
 
 ### Tap drill sizes
 
-The hole you drill before tapping must be the **tap drill** size — too small and the tap seizes and snaps, too big and the threads are shallow and weak. Laminated tap/drill charts live in the top drawer of the red toolbox — check the chart, don't guess. The two you'll use constantly: **#21 drill for 10-32** and **#7 drill for 1/4-20**.
+The hole you drill before tapping must be the **tap drill** size — too small and the tap seizes and snaps, too big and the threads are shallow and weak. Laminated tap/drill charts live in **drawer 13 of the [Orange Toolbox](/storage/toolboxes/#orange-toolbox--metrology-machinist-tooling--ppe)** — the wide top drawer with the gloves in it. Check the chart, don't guess. The two you'll use constantly: **#21 drill for 10-32** and **#7 drill for 1/4-20**.
 
 <LabGalleryImage
   src="red-toolbox-gloves-drawer.jpg"
-  alt="Red toolbox top drawer with glove boxes, safety glasses, and tap/drill charts"
-  caption="Tap/drill charts live in the red toolbox top drawer, along with gloves and safety glasses."
+  alt="Orange Toolbox drawer 13 with glove boxes, safety glasses, and tap/drill charts"
+  caption="Tap/drill charts live in Orange Toolbox drawer 13, along with the gloves and safety glasses."
 />
 
 ### Hand tapping, step by step
@@ -60,7 +71,13 @@ still needs cutting fluid.
 
 ## Hand rivet guns
 
-Blind (pop) rivets join sheet and tube fast, light, and permanently — no access to the back side needed. The manual rivet guns live in the blue toolbox riveting drawer; for high-volume riveting use the [M12 Riveting Tools](/portable-power/m12-riveting/).
+Blind (pop) rivets join sheet and tube fast, light, and permanently — no access to the back side needed. The Lenox hand riveter lives in the **Vises / Electrical / Manual Rivet Guns** drawer of the [StackTech hand-tools tower](/storage/stacktech-drawers/); for high-volume riveting use the [M12 Riveting Tools](/portable-power/m12-riveting/).
+
+<LabGalleryImage
+  src="stacktech-vises-electrical-drawer.jpg"
+  alt="StackTech drawer with clamp-on hobby vises, a Fluke multimeter case and the Lenox hand riveter"
+  caption="The StackTech **Vises / Electrical / Manual Rivet Guns** drawer — the Lenox hand riveter lives here with the clamp-on vises, the Fluke, and the wire strippers."
+/>
 
 1. Drill the hole to match the rivet diameter (1/8" rivet, 1/8" hole — a #30 drill gives a good fit).
 2. Match the rivet's **grip range** to the total stack thickness you're joining.
@@ -72,12 +89,12 @@ Blind (pop) rivets join sheet and tube fast, light, and permanently — no acces
 
 ## Rivnut tools
 
-Rivnuts (rivet nuts) give you real machine threads in thin wall tube or sheet where a tapped hole would strip — the go-to for bolting onto box tubing. The rivetnuts drawer has the red-handled manual installation tools and bags of aluminum and brass rivnuts sorted by size.
+Rivnuts (rivet nuts) give you real machine threads in thin wall tube or sheet where a tapped hole would strip — the go-to for bolting onto box tubing. The **Rivetnuts** drawer at the bottom of the [lathe T-Stak stack](/storage/toolboxes/#lathe-t-stak-drawers) has the red-handled manual installation tools and bags of aluminum and brass rivnuts sorted by size.
 
 <LabGalleryImage
   src="rivnut-tools-drawer.jpg"
-  alt="Rivetnuts drawer with red-handled rivnut tools and bags of aluminum and brass rivet nuts"
-  caption="The rivetnuts drawer: red-handled installation tools plus aluminum and brass rivnuts sorted in bins."
+  alt="T-Stak Rivetnuts drawer with red-handled rivnut tools and bags of aluminum and brass rivet nuts"
+  caption="The Rivetnuts drawer at the bottom of the lathe T-Stak stack: red-handled installation tools plus aluminum and brass rivnuts sorted in bins."
 />
 
 ### Setting a rivnut
@@ -91,6 +108,30 @@ Rivnuts (rivet nuts) give you real machine threads in thin wall tube or sheet wh
 A rivnut that spins in its hole is a miserable thing to remove — square hole edges, the right hole size, and firm (not maximal) compression prevent it. For repetitive installs there are also drill-attachment rivnut mandrels that spin the rivnut set with a drill — use a clutch-limited drill on low, because an impact driver will destroy the threads instantly.
 
 **Aluminum vs. brass:** aluminum rivnuts are the lightweight default for robot structures; brass ones are stronger in the threads and less prone to spinning out — use them where a bolt gets removed often.
+
+## Training & Videos
+
+<TutorialLink
+  title="Tapping Essentials — Haas"
+  url="https://www.youtube.com/watch?v=bkrUzGooA9k"
+  source="youtube"
+  description="Tap types, tap drill sizing, lubrication and why taps break. On Spectrum's recommended list."
+/>
+
+<TutorialLink
+  title="Fasteners — UCI Engineering Training"
+  url="https://www.youtube.com/watch?v=HbGh7TQ0NhA"
+  source="youtube"
+  description="Thread forms, bolt grades, washers, lock nuts and why fasteners loosen. Spectrum links this as the team's general fasteners reference."
+/>
+
+<TutorialLink
+  title="UCI Engineering Training Videos — full playlist"
+  url="https://www.youtube.com/playlist?list=PL404C2C74D09871B3"
+  source="youtube"
+  description="All eight films: hand tools, fasteners, measurement, cutting and filing, metal forming, soldering, and MIG welding."
+/>
+
 
 ## Related pages
 

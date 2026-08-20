@@ -5,6 +5,11 @@
  *
  * <DrawerLayoutMap unit="stacktech-tower-1" />
  * Click a drawer to expand its contents.
+ *
+ * Badges show the drawer's PRINTED number when the unit has one (`number` in
+ * storage-locations.json). Units whose drawers carry no printed number render a
+ * neutral dot instead — never a made-up index, so the map can't claim a box has
+ * more numbered drawers than it really does.
  */
 import storage from '../data/storage-locations.json';
 
@@ -21,10 +26,12 @@ if (!unit) throw new Error(`DrawerLayoutMap: unknown unit "${Astro.props.unit}"`
     {unit.location && <span class="dm-loc">📍 {unit.location}</span>}
   </div>
   <div class="dm-stack">
-    {unit.drawers.map((d: any, i: number) => (
+    {unit.drawers.map((d: any) => (
       <details class="dm-drawer">
         <summary>
-          <span class="dm-drawer-num">{i + 1}</span>
+          <span class:list={['dm-drawer-num', d.number == null && 'is-unnumbered']}>
+            {d.number ?? '•'}
+          </span>
           <span class="dm-drawer-label">{d.label}</span>
           <span class="dm-count">{d.contents.length} item{d.contents.length === 1 ? '' : 's'}</span>
         </summary>
@@ -33,10 +40,16 @@ if (!unit) throw new Error(`DrawerLayoutMap: unknown unit "${Astro.props.unit}"`
             <li>{c}</li>
           ))}
         </ul>
+        {d.printedLabel && (
+          <p class="dm-printed">
+            <span>Printed label</span> {d.printedLabel}
+          </p>
+        )}
         {d.notes && <p class="dm-notes">{d.notes}</p>}
       </details>
     ))}
   </div>
+  {unit.note && <p class="dm-unit-note">{unit.note}</p>}
 </div>
 
 <style>
@@ -94,6 +107,10 @@ if (!unit) throw new Error(`DrawerLayoutMap: unknown unit "${Astro.props.unit}"`
     font-weight: 800;
     font-size: 0.78rem;
   }
+  .dm-drawer-num.is-unnumbered {
+    background: var(--sl-color-gray-5, #e9e5ef);
+    color: var(--sl-color-gray-2, #6b6577);
+  }
   .dm-drawer-label { flex: 1 1 auto; font-weight: 700; font-size: 0.92rem; }
   .dm-count { font-size: 0.75rem; font-weight: 700; color: var(--sl-color-gray-3); white-space: nowrap; }
   .dm-contents {
@@ -102,10 +119,34 @@ if (!unit) throw new Error(`DrawerLayoutMap: unknown unit "${Astro.props.unit}"`
     font-size: 0.88rem;
   }
   .dm-contents li { margin-bottom: 0.15rem !important; }
+  .dm-unit-note {
+    margin: 0 !important;
+    padding: 0.15rem 1.1rem 0.9rem;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: var(--sl-color-gray-3);
+  }
   .dm-notes {
     margin: 0 !important;
     padding: 0 1rem 0.75rem 3rem;
     font-size: 0.8rem;
     color: var(--sl-color-gray-3);
+  }
+  .dm-printed {
+    margin: 0 !important;
+    padding: 0 1rem 0.4rem 3rem;
+    font-size: 0.78rem;
+    color: var(--sl-color-gray-3);
+  }
+  .dm-printed span {
+    display: inline-block;
+    margin-right: 0.45rem;
+    padding: 0.05rem 0.4rem;
+    border-radius: 0.3rem;
+    background: var(--sl-color-gray-6, #f2eff7);
+    font-weight: 700;
+    font-size: 0.68rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
   }
 </style>

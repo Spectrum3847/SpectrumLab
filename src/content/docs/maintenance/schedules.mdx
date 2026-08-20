@@ -1,11 +1,14 @@
 ---
 title: "Maintenance Schedules"
-description: "Daily opening and closing checklists, weekly and monthly preventive maintenance, and per-machine service intervals."
+description: "Daily opening and closing checklists, weekly, monthly and seasonal preventive maintenance, per-machine service intervals for every tool in the shop, and the shop's cleaning and lubrication reference."
 ---
 
 import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+import ConsumablesTable from '../../../components/ConsumablesTable.astro';
 
-Machines don't fail at convenient times — they fail during build season, at 9 PM, three days before ship. The maintenance program below is how we stay ahead of that: daily checklists anyone can run, weekly and monthly preventive maintenance (PM), and per-machine service intervals.
+Machines don't fail at convenient times — they fail during build season, at 9 PM, three days before ship. The maintenance program below is how we stay ahead of that: daily checklists anyone can run, weekly and monthly preventive maintenance (PM), per-machine service intervals, and the reference for which cleaner and which lubricant goes where.
 
 Everyone runs the daily lists. Weekly and monthly tasks are coordinated by the shop captain and mentors — but if you see something on these lists that needs doing, say so.
 
@@ -19,10 +22,11 @@ First person in runs this list before work starts:
   title="Opening Checklist"
   items={[
     'Unlock and walk the shop — check nothing was left powered overnight',
-    'Turn on shop air compressor; verify regulator at 120 PSI',
-    'Check 3D printer farm for overnight failures; clear plates',
+    'Turn on shop air compressor; verify regulator at 120 PSI and no line is hissing',
+    'Check 3D printer farm for overnight failures; clear plates and check the Prusa Connect camera views',
     'Empty any full scrap/waste bins from yesterday',
     'Verify first-aid kit and fire extinguisher are in place',
+    'Eyeball the machine benches — anything tagged DO NOT USE from last night stays off',
   ]}
 />
 
@@ -35,9 +39,12 @@ Nobody leaves until this list is green:
   items={[
     'Power down every machine at its switch (not just the controller)',
     'Drain air from pneumatic lines; compressor off',
-    'All tools back to their labeled drawers/bins — StackTech drawers closed',
+    'All tools back to their labeled drawers/bins — StackTech and toolbox drawers closed',
+    'Lathe and mill ways brushed clear and wiped with a light film of way oil',
+    'Chip trays emptied on the chop saw and bandsaws; tapping station blown clear',
     'Sweep floors; vacuum machine chip trays',
     'Take out trash if more than half full; sort scrap metal into the recycle bin',
+    'Dead M12 / DeWalt packs on the charging bench, tools back in drawers with a charged pack',
     'Last mentor out checks the curing oven and heat press are OFF and cool',
   ]}
 />
@@ -45,25 +52,41 @@ Nobody leaves until this list is green:
 ## Weekly preventive maintenance
 
 - **WAZER**: check tank abrasive level, drain used-abrasive buckets if more than half full
-- **Laser optics**: inspect (clean only if hazy) on the Nova 35 and MetalFab
+- **Laser optics**: inspect (clean only if hazy) on the Nova 35, the MetalFab and the Gweike; empty debris trays
 - Blow dust out of powder booth filters; replace the box-fan filter if caked
-- **Printer farm**: wash PEI plates with Dawn and warm water every few prints; check nozzle wear on machines running filled filament
-- Charge all M12/DeWalt batteries; report any that won't hold charge
+- **Printer farm**: wash PEI plates and sheets with Dawn and warm water every few prints; check nozzle wear on machines running filled filament
+- Charge all M12/DeWalt batteries; report any that won't hold charge or get hot on the charger
+- **Bandsaws**: brush sawdust and chips off wheels, tires and guides
+- **Shop vacs**: check filters; rinse and fully dry the DeWalt filter after any wet pickup
 - Restock small-parts bins from bulk stock; note anything below its reorder point in the [Consumables Ledger](/inventory/consumables/)
 
 ## Monthly
 
 - **WAZER**: full maintenance per the maintenance manual (nozzle, mixing tube, tank clean-out)
-- **Lathe**: oil ways and leadscrew, check belt tension
-- **Bandsaws**: check blade tension, tracking, and tire condition
+- **Lathe**: oil ways and leadscrew, check belt tension, wipe and re-oil the chuck
+- **Bandsaws**: check blade tension, tracking, and tire condition; redress tires only if glazed
 - **Press brake**: grease ram guides; verify backgauge calibration
 - **Curing oven**: inspect door seal and thermocouple reading vs. a reference thermometer
+- **Table saw**: check fence parallelism and riving-knife alignment
+- **Compressor**: check oil level in the Quincy sight glass; drain both tanks fully
 - Test emergency stops on every CNC machine
 - Inventory pass on the [Consumables Ledger](/inventory/consumables/) — reorder anything below minimum
 
+## Seasonal / annual
+
+Run these at kickoff and again at the end of the competition season:
+
+- **Full toolbox audit.** Open every drawer of the [red](/storage/toolboxes/#red-toolbox--hand-tools) and [orange](/storage/toolboxes/#orange-toolbox--metrology-machinist-tooling--ppe) chests against its map on this site. Empty sawtooth slots mean a missing tool: find it or order it. Fix any label that no longer matches its drawer.
+- **Pit kit restock.** Every T-Stak pit kit gets opened, inventoried, and closed full — before it goes back on the stack, not the night before an event.
+- **Compressor oil.** Quincy QT-series oil is changed after the first 100 hours of a new machine and then **every 500 hours or once a year, whichever comes first**, using Quin-Cip-D (SAE 30 / ISO 100). Check the air filter at the same time.
+- **Measuring tool check.** Verify each caliper and micrometer against a gauge block or standard. Anything that has been dropped gets checked or retired.
+- **Blade and wheel sweep.** Retire dull saw blades, glazed sanding belts, and any stone wheel with aluminum smeared into it.
+- **E-stop and guard walk-down.** Every guard present and moving freely, every E-stop tested, every machine's power switch reachable.
+- **Battery cull.** Any M12/DeWalt pack that won't hold a charge comes out of the pool and gets recycled, not shuffled back in.
+
 ## Per-machine schedules
 
-Each machine's page carries its full SOP; the intervals below are the service side.
+Each machine's page carries its full SOP; the intervals below are the service side. Where a table says *per the manual*, the manual is linked from that machine's page — read it rather than guessing.
 
 ### [WAZER Pro](/waterjet/wazer-pro/)
 
@@ -73,6 +96,28 @@ Each machine's page carries its full SOP; the intervals below are the service si
 | Drain used abrasive from tank buckets | Weekly or every ~10 hrs cutting |
 | Replace nozzle/mixing tube | When kerf quality degrades (~30–60 hrs) |
 | Clean cut bed slats and flip/replace | Monthly |
+| Full tank clean-out and pump service | Per the WAZER maintenance manual |
+
+### [xTool MetalFab](/lasers/xtool-metalfab/)
+
+| Task | Interval |
+|---|---|
+| Inspect the protective lens for spatter | Every session — a spattered lens burns through and takes the head with it |
+| Replace the protective lens | When cleaning no longer clears it |
+| Check assist-gas supply and pressure | Every session |
+| Inspect/replace cutting nozzle | When cut edges dross or the kerf wanders |
+| Clear slag from the bed slats and drawer | Weekly |
+| Check chiller/coolant level and temperature | Weekly |
+
+### [Gweike Cloud M3 Ultra](/lasers/gweike-m3-ultra/)
+
+| Task | Interval |
+|---|---|
+| Inspect protective lens / optics | Weekly with heavy use |
+| Empty debris tray and clear the honeycomb bed | Weekly |
+| Check exhaust flow and filter loading | Weekly |
+| Check coolant level and temperature | Every session |
+| Clean the air-assist pump inlet filter | Monthly |
 
 ### [Thunder Laser Nova 35](/lasers/thunder-nova-35/)
 
@@ -81,14 +126,111 @@ Each machine's page carries its full SOP; the intervals below are the service si
 | Clean lens and mirrors | Weekly with heavy use |
 | Empty exhaust/debris tray | Weekly |
 | Check coolant level and temperature | Every session |
+| Check belt tension and rail cleanliness | Monthly |
+| Re-calibrate the LightBurn camera overlay | When parts stop landing where the preview shows |
 
-
-### [HP DesignJet T630 Plotter](/graphics/hp-t630-plotter/)
+### [Langmuir Titan 25T Press Brake](/forming/langmuir-titan-25t/)
 
 | Task | Interval |
 |---|---|
-| Run printhead alignment | If banding appears |
-| Check ink levels before large prints | Every session |
+| Check hydraulic fluid level and hoses for weeping | Monthly |
+| Grease ram guides | Monthly |
+| Verify backgauge calibration against a test bend | Monthly, and after any crash |
+| Inspect punch and die edges for nicks | Before any run of visible parts |
+
+### [PM-1130V Lathe & Grizzly Mill](/forming/lathes/)
+
+| Task | Interval |
+|---|---|
+| Brush chips off ways, cross slide and chuck; wipe and film with way oil | Every session, at close |
+| Check headstock/apron oil levels and oil points | Per the PM-1130V manual |
+| Check belt tension and range-change function | Monthly |
+| Clean and oil the chuck; check jaw runout | Monthly |
+| Inspect inserts and holders; replace chipped inserts | Every use — report, don't hide |
+| Never blow chips off the ways with compressed air | Rule, not interval |
+
+### [Bandsaws](/cutting/bandsaws/)
+
+| Task | Interval |
+|---|---|
+| Brush chips and dust off wheels, tires, table and guides | Weekly |
+| Check blade tension — about 1/4" deflection at moderate finger pressure mid-span | Monthly and after any blade change |
+| Check blade tracking (mentor job) | Monthly |
+| Release blade tension if the saw will sit unused for a long break | Per break |
+| Redress glazed rubber tires with 100-grit, only enough to expose fresh rubber | As needed (mentor) |
+| Replace blades that are cracked at the gullets, missing teeth, or cutting banana-shaped | On sight |
+
+Over-tensioning is the classic G0555 mistake: it damages the upper hinge assembly, wears tires prematurely, and breaks blades. Tension to spec, not to maximum.
+
+### [Evolution Chop Saw](/cutting/evolution-saws/)
+
+| Task | Interval |
+|---|---|
+| Empty the chip tray (after chips cool) | Every session |
+| Brush chips off the fence, clamp screw and miter pivot | Every session — chips in the pivot throw off angles |
+| Inspect blade teeth for missing/chipped carbide | Before each session |
+| Verify the mounted blade matches the material and the saw's blade label | Every session |
+| Check guard returns on its own | Weekly |
+| Verify the stop-block scale against a test cut | Before any batch |
+
+### [Drill Press & Bench Shear](/cutting/drill-press-shear/)
+
+| Task | Interval |
+|---|---|
+| Brush chips from table, vise and column | Every session |
+| Check chuck for wobble and the key is on its hook | Every session |
+| Check belt tension and the RPM chart inside the pulley cover | Monthly |
+| Wipe and lightly oil the column and quill | Monthly |
+| Inspect shear blades for nicks; check the lever returns | Monthly |
+
+### [Table Saw](/cutting/table-saw/)
+
+| Task | Interval |
+|---|---|
+| Vacuum sawdust from table, fence rails and under the saw | Every session |
+| Confirm riving knife installed and aligned | Every session |
+| Fence parallelism check (front vs. back of the same tooth) | Monthly, and after any transport |
+| Blade sharpness / pitch build-up check | Monthly |
+| Blade and throat plate condition | Monthly |
+
+### [Sanders & Grinders](/cutting/sanders-grinders/)
+
+| Task | Interval |
+|---|---|
+| Brush dust and swarf off tables and rests; sweep the bench | Every session |
+| Tool-rest gap set to about 1/8" | Every session |
+| Clean glazed belts with a crepe stick | As they load up |
+| Inspect stone wheels for aluminum smears — tag out and dress if found | Every session |
+| Replace torn belts and any wheel that vibrates on startup | On sight (mentor) |
+
+### [Electric Tapping Machine](/cutting/tapping-machine/)
+
+| Task | Interval |
+|---|---|
+| Blow or brush chips off the machine and station | Every session |
+| Wipe cutting fluid off the bench (it ruins powder adhesion downstream) | Every session |
+| Check the standing #10-32 tap for dullness | Weekly |
+| Verify the clutch slips at the set torque and holds under normal load | Monthly |
+| Check arm play and collet condition | Monthly |
+
+### [Arbor Press & Broach Set](/forming/arbor-press/)
+
+| Task | Interval |
+|---|---|
+| Brush chips off the table and re-seat the table plates | Every use |
+| Wipe and lightly oil broaches and bushings before they go back in the box | Every use |
+| Count shims back into the wooden box | Every use — a missing shim strands the set |
+| Check ram/rack action for binding | Monthly |
+
+### [Powder Booth (Eastwood PCS-250)](/finishing/powder-coating/)
+
+| Task | Interval |
+|---|---|
+| Blow the gun and cup out into the booth, fan running | After every color change |
+| Check the box-fan filter; replace when caked | Weekly |
+| Verify powder bottles are sealed with desiccant | Weekly |
+| Vacuum spilled powder (never dry-sweep it into a cloud) | Every session |
+| Check the ground clamp and its lead for continuity | Monthly |
 
 ### [Curing Oven](/finishing/curing-oven/)
 
@@ -96,6 +238,7 @@ Each machine's page carries its full SOP; the intervals below are the service si
 |---|---|
 | Verify PID temp vs. reference thermometer | Monthly |
 | Inspect door seal | Monthly |
+| Check hanging rails and hooks for powder build-up | Monthly |
 
 ### [Bambu Lab Fleet](/3d-printing/bambu-fleet/)
 
@@ -104,13 +247,119 @@ Each machine's page carries its full SOP; the intervals below are the service si
 | Wash plates with soap and warm water | Every few prints |
 | Clean/replace nozzle wiper pad | Monthly |
 | Run full calibration (lidar + vibration) | After nozzle changes |
+| Inspect nozzles for wear on machines running filled filament | Monthly |
+| Clean the carbon rods / lubricate per Bambu's schedule | Per the machine's maintenance reminder |
 
 ### [Prusa Mini+ Farm](/3d-printing/prusa-farm/)
 
 | Task | Interval |
 |---|---|
-| Wash sheets with dish soap when adhesion drops | As needed |
+| Wash sheets with dish soap when adhesion drops | As needed — never acetone on a powder-coated sheet |
 | Check Live-Z after sheet swaps | Per sheet change |
+| Check belt tension and lubricate the Z leadscrew | Quarterly |
+| Confirm every Mini and its camera is reporting into Prusa Connect | Weekly |
+
+### [HP DesignJet T630 Plotter](/graphics/hp-t630-plotter/)
+
+| Task | Interval |
+|---|---|
+| Run printhead alignment | If banding appears |
+| Check ink levels before large prints | Every session |
+| Clean the platen and cutter path | Monthly |
+
+### [Cricut Maker 4](/graphics/cricut-maker-4/)
+
+| Task | Interval |
+|---|---|
+| Wipe the mat clean and re-cover it | Every few jobs |
+| Replace the mat when it no longer holds material | As needed |
+| Clean the blade housing (fuzz in the housing = ragged cuts) | Monthly |
+| Wipe the rollers and clear the cut path | Monthly |
+
+### [Heat Press](/graphics/heat-press/)
+
+| Task | Interval |
+|---|---|
+| Wipe the platen while warm (never with the press closed on a rag) | Every session |
+| Check the pressure setting against a test press | Before any batch |
+| Verify the platen temperature against a surface thermometer | Quarterly |
+
+### Shop Air — [Quincy QT-5 & house lines](/portable-power/dewalt-and-pneumatics/)
+
+| Task | Interval |
+|---|---|
+| Verify regulator at 120 PSI before anyone connects a tool | Every opening |
+| Drain the air from the house lines; compressor off | Every closing |
+| Drain condensate from the tank | Weekly |
+| Check oil level in the sight glass | Monthly |
+| Check the air filter element | Monthly |
+| Change compressor oil — Quin-Cip-D (SAE 30 / ISO 100) | Every 500 hours or annually, whichever comes first (first change at 100 hours on a new machine) |
+| Check the air dryer is actually drying — any water spitting from a coupler is a fault | On sight |
+
+### DeWalt cordless compressor & vacuum
+
+| Task | Interval |
+|---|---|
+| Drain the DCC2560 tank after use | Every use |
+| Coil the hose and stow under the bench | Every use |
+| Empty the vac tank; rinse after any wet pickup | Every use |
+| Rinse the HEPA filter when suction drops, dry fully before reinstalling | As needed |
+
+### Battery fleet (M12 & DeWalt)
+
+| Task | Interval |
+|---|---|
+| Dead packs to the charging bench | Immediately, every time |
+| Charge every pack and confirm it takes a charge | Weekly |
+| Label and pull any pack that gets hot, swells, or won't hold charge | On sight — see [Emergency Protocols](/safety/emergency/) |
+| Cull the pool of dead packs | Seasonally |
+
+### Storage systems
+
+| Task | Interval |
+|---|---|
+| Every tool back to its labelled drawer | Every meeting |
+| Spot-check a drawer against its map on this site | Weekly |
+| Full audit of the red and orange chests against their maps | Seasonally |
+| Reprint any label that no longer matches its contents | On sight — see [Label Makers](/storage/label-makers/) |
+
+## Cleaning & Lubrication Reference
+
+Which product, for what. This is Spectrum's own long-standing practice, condensed from the team's [Maintenance Guide](https://spectrum3847.org/resources/maintenance-guide/) — read that for the robot-side version (bumpers, electrical, and post-event deep cleans).
+
+### Cleaning
+
+| Job | Use | Don't |
+|---|---|---|
+| General degreasing, chain and gears, drivetrain parts | **Simple Green** sprayed onto a rag, then wipe | Don't use it on polycarbonate you want to stay clear — it clouds the appearance |
+| Polycarbonate, Lexan and most plastics | Dish soap (Dawn/Joy/Palmolive) and water — about 3 tbsp in a spray bottle of water | Don't use solvents or Simple Green on clear parts |
+| Fast-evaporating wipe-down, no residue | Isopropyl alcohol | — |
+| Getting into corners and around gear teeth | Dollar-store toothbrush or paint brush, with a little Simple Green on the tip | — |
+| Wheels and rollers before a match | Simple Green + microfibre; Q-tips for omni/mecanum rollers | Wipe them down before **every** match — it is free traction |
+| Electronics, SB50s, breaker contacts, PDP/PDH breaker slots | WD-40 Contact Cleaner | Don't use a degreaser near the belly pan |
+| Heavy grease work | Blue shop towels (stronger than paper towels, disposable) | — |
+| Blowing a robot or machine clear | Shop compressed air at arm's length, glasses on | Never at skin, eyes or clothing; never on lathe ways |
+
+### Lubrication
+
+| Job | Use |
+|---|---|
+| Planetary gearboxes | **Tri-Flow** — a few drops on each gear |
+| Chain and sprockets | **Tri-Flow** — a few drops on the sprockets |
+| Gearbox interiors | **WD-40 Specialist Dry Lube with PTFE**, sprayed in while rotating the gearbox so every tooth gets coated |
+| Lathe ways and leadscrew | ISO 68 way oil, light film at close |
+| Tapping and threading steel | Dark sulfurized cutting oil |
+| Tapping and drilling aluminum | WD-40 or a wax stick — but never dry |
+
+### Threadlocker
+
+<SafetyWarning type="warning" title="Never put threadlocker on polycarbonate, Lexan, ABS or acrylic">
+Threadlocker chemically attacks those plastics and cracks them — sometimes days later, which makes it a miserable failure to diagnose. **Nylon and Delrin (acetal) are fine.** Every bolt that isn't secured by a nylon lock nut should get threadlocker, *unless* it is near or threaded into a plastic that will degrade. Gel Loctite is the form the team stocks: it doesn't dry up like the stick and it's far less messy than the drip bottle.
+</SafetyWarning>
+
+### Reorder links
+
+<ConsumablesTable category="Shop Supplies" />
 
 ## Reporting & logging
 
@@ -120,6 +369,43 @@ Maintenance only works if problems get written down where someone will see them:
 - **Machine unsafe or broken?** Power it down, put a clearly-written "DO NOT USE" note on it, and then report it. Never leave a fault for the next person to discover the hard way.
 - **Completed a weekly/monthly task?** Say so in the same channel so it isn't done twice — or missed entirely because everyone assumed someone else did it.
 - Batteries that won't charge, tools that are dull or rounded, and consumables running low all count as reports too — see [flagging low stock](/inventory/consumables/).
+
+## Resources
+
+<TutorialLink
+  title="Spectrum Maintenance Guide"
+  url="https://spectrum3847.org/resources/maintenance-guide/"
+  source="website"
+  description="The team's own robot maintenance guide — cleaning products, metal shavings, wheel and roller care, threadlocker rules, and lubrication."
+/>
+
+<TutorialLink
+  title="B3.1 Maintenance and Triage (training)"
+  url="https://docs.google.com/presentation/d/1m0f9urPvA5mDsYUIbJfKmZDw2Bal5va4vqTf4cG_kvM/preview"
+  source="website"
+  description="Spectrum's training deck on mechanical, bumper and electrical maintenance — plus event triage: zip ties, VHB, gussets, thin Lexan, and drill pins."
+/>
+
+<TutorialLink
+  title="B3.1 Maintenance and Triage (video)"
+  url="https://www.youtube.com/watch?v=TsYSL9athTk"
+  source="youtube"
+  description="The recorded session that goes with the deck."
+/>
+
+<TutorialLink
+  title="Grizzly G0555LANV Owner's Manual (PDF)"
+  url="https://cdn0.grizzly.com/manuals/g0555lanv_m.pdf"
+  source="pdf"
+  description="Maintenance schedule, blade tension spec, tire redressing, and lubrication for the vertical bandsaw."
+/>
+
+<TutorialLink
+  title="Quincy QT-Series Manual (PDF)"
+  url="https://airenergy.com/wp-content/uploads/2022/07/quincy-qt-manual.pdf"
+  source="pdf"
+  description="Break-in, oil type and change intervals, filter service, and the maintenance table for the shop compressor."
+/>
 
 ## Related pages
 

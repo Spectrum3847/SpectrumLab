@@ -5,6 +5,7 @@
  * <ConsumablesTable />                    — everything
  * <ConsumablesTable category="Waterjet" /> — pre-filtered, filter UI hidden
  * <ConsumablesTable machine="wazer-pro" /> — items tagged for a machine
+ * <ConsumablesTable machine="belt-sanders,bench-grinder" /> — several machines at once
  */
 import consumables from '../data/consumables.json';
 
@@ -31,7 +32,10 @@ type Item = {
 
 let items = consumables as Item[];
 if (category) items = items.filter((c) => c.category === category);
-if (machine) items = items.filter((c) => c.machines?.includes(machine));
+if (machine) {
+  const keys = machine.split(',').map((m) => m.trim()).filter(Boolean);
+  items = items.filter((c) => c.machines?.some((m) => keys.includes(m)));
+}
 const categories = [...new Set(items.map((c) => c.category))].sort();
 const filtersVisible = showFilters ?? (!category && !machine);
 const uid = `ct-${Math.random().toString(36).slice(2, 8)}`;

@@ -9,7 +9,9 @@
     "partNumber": "WAZER 80-mesh",
     "url": "https://shop.wazer.com/products/abrasive",
     "location": "Under the WAZER bench",
-    "machines": ["wazer-pro"],
+    "machines": [
+      "wazer-pro"
+    ],
     "notes": "List price. ~2.75 hr of cutting per bucket at 0.33 lb/min. Ours has come through dealer orders (PDI) — WAZER recommends against third-party garnet."
   },
   {
@@ -22,7 +24,9 @@
     "partNumber": "WAZER nozzle",
     "url": "https://shop.wazer.com/",
     "location": "WAZER consumables bin",
-    "machines": ["wazer-pro"],
+    "machines": [
+      "wazer-pro"
+    ],
     "notes": "Wear item — replace when kerf widens or cuts taper."
   },
   {
@@ -35,7 +39,9 @@
     "partNumber": "712XL compatible",
     "url": "https://www.amazon.com/s?k=timink+712+ink+cartridges",
     "location": "Graphics cabinet, plotter shelf",
-    "machines": ["hp-t630"],
+    "machines": [
+      "hp-t630"
+    ],
     "notes": "What we actually buy (Aug 2025 order). Third-party high-yield set for the DesignJet T630."
   },
   {
@@ -48,7 +54,9 @@
     "partNumber": "3ED71A",
     "url": "https://www.hp.com/us-en/shop/pdp/hp-712-80-ml-black-designjet-ink-cartridge",
     "location": "Graphics cabinet, plotter shelf",
-    "machines": ["hp-t630"],
+    "machines": [
+      "hp-t630"
+    ],
     "notes": "Genuine HP option (paid $64.90 in 2022). Cyan/Magenta/Yellow 29-ml: 3ED67A/3ED68A/3ED69A."
   },
   {
@@ -61,7 +69,9 @@
     "partNumber": "20 lb bond, 2\" core",
     "url": "https://www.amazon.com/s?k=24+inch+plotter+paper+150+ft",
     "location": "Graphics cabinet, lower shelf",
-    "machines": ["hp-t630"],
+    "machines": [
+      "hp-t630"
+    ],
     "notes": "Any 24\" 20-lb bond with 2\" core works. (List price — no receipt on file.)"
   },
   {
@@ -74,7 +84,9 @@
     "partNumber": "PRB-4332",
     "url": "https://www.prismaticpowders.com/shop/powder-coating-colors/PRB-4332/plum-river",
     "location": "Powder coat room shelf",
-    "machines": ["eastwood-pcs250"],
+    "machines": [
+      "eastwood-pcs250"
+    ],
     "notes": "The signature purple — reordered 4+ times ($138.80 in 2024 → $147.10 in 2025). Store sealed with desiccant; moist powder spits."
   },
   {
@@ -87,7 +99,9 @@
     "partNumber": "2001974",
     "url": "https://cricut.com/en-us/blades-tools/mats/standardgrip-machine-mat-12-x-12-2-pack/2001974.html",
     "location": "Graphics cabinet, mat rack",
-    "machines": ["cricut-maker-4"],
+    "machines": [
+      "cricut-maker-4"
+    ],
     "notes": "First set came in the Maker 4 Ultimate Bundle. LightGrip (blue) for paper, StrongGrip (purple) for thick materials."
   },
   {
@@ -100,7 +114,9 @@
     "partNumber": "2007300",
     "url": "https://cricut.com/en-us/blades-tools/blades/premium-fine-point-blade-and-housing/2007300.html",
     "location": "Cricut drawer, graphics bench",
-    "machines": ["cricut-maker-4"],
+    "machines": [
+      "cricut-maker-4"
+    ],
     "notes": "Replacement blades only: 2007301 (2-pack)."
   },
   {
@@ -113,7 +129,10 @@
     "partNumber": "Siser EasyWeed preferred",
     "url": "https://www.amazon.com/s?k=siser+easyweed+htv+12",
     "location": "Graphics cabinet, vinyl rack",
-    "machines": ["cricut-maker-4", "astt-heat-press"],
+    "machines": [
+      "cricut-maker-4",
+      "astt-heat-press"
+    ],
     "notes": "Cut mirrored, shiny side down. 305°F / 15 s / medium pressure."
   },
   {
@@ -126,7 +145,9 @@
     "partNumber": null,
     "url": "https://www.amazon.com/s?k=vinyl+transfer+tape+12+inch",
     "location": "Graphics cabinet, vinyl rack",
-    "machines": ["cricut-maker-4"],
+    "machines": [
+      "cricut-maker-4"
+    ],
     "notes": "Medium-tack for adhesive vinyl decals."
   },
   {
@@ -139,7 +160,9 @@
     "partNumber": null,
     "url": "https://www.alibaba.com/",
     "location": "Graphics cabinet",
-    "machines": ["astt-heat-press"],
+    "machines": [
+      "astt-heat-press"
+    ],
     "notes": "14 custom sheets ordered Aug 2025 ($672 + $300 freight) for sublimation-on-metal signs."
   },
   {
@@ -152,7 +175,9 @@
     "partNumber": "97517A430",
     "url": "https://www.mcmaster.com/97517A430/",
     "location": "Small parts wall, rivet bins",
-    "machines": ["m12-rivet"],
+    "machines": [
+      "m12-rivet"
+    ],
     "notes": "Restocked in McMaster orders (large-diameter domed head, 0.126–0.25\" grip). Stock 3/16\" too."
   },
   {
@@ -165,7 +190,9 @@
     "partNumber": "3/16\" × 3/8\", 5/8\" flange",
     "url": "https://www.amazon.com/s?k=sunxeke+large+flange+blind+rivets+3%2F16",
     "location": "Small parts wall, rivet bins",
-    "machines": ["m12-rivet"],
+    "machines": [
+      "m12-rivet"
+    ],
     "notes": "Large flange spreads load on polycarb and soft materials (Mar 2026 order, ×2 boxes)."
   },
   {
@@ -269,7 +296,10 @@
     "partNumber": "20mm ZnSe",
     "url": "https://www.amazon.com/s?k=cncoletech+20mm+co2+laser+lens",
     "location": "Laser spares drawer",
-    "machines": ["thunder-nova-35", "gweike-m3-ultra"],
+    "machines": [
+      "thunder-nova-35",
+      "gweike-m3-ultra"
+    ],
     "notes": "Replacement focus lens — swap when cleaning no longer restores cut quality."
   },
   {
@@ -282,7 +312,9 @@
     "partNumber": null,
     "url": "https://www.xtool.com/collections/xtool-metalfab-accessories",
     "location": "Blue toolbox — xTool MetalFab drawer",
-    "machines": ["xtool-metalfab"],
+    "machines": [
+      "xtool-metalfab"
+    ],
     "notes": "Fiber laser cutting nozzle consumables (Mar 2026 order 415225)."
   },
   {
@@ -295,12 +327,14 @@
     "partNumber": "48-00-1640 compatible",
     "url": "https://www.amazon.com/s?k=milwaukee+hackzall+blades",
     "location": "StackTech saw tower — Hackzall drawer",
-    "machines": ["m12-hackzall"],
+    "machines": [
+      "m12-hackzall"
+    ],
     "notes": "Keep metal and wood blades stocked separately."
   },
   {
     "id": "bandsaw-blade-93",
-    "name": "93-1/2\" × 3/4\" M42 Bi-Metal Bandsaw Blade",
+    "name": "Horizontal Bandsaw Blade (check stamped length)",
     "category": "Cutting Tools",
     "vendor": "Amazon (Imachinist)",
     "price": "$25–35",
@@ -308,8 +342,10 @@
     "partNumber": "S931234610",
     "url": "https://www.amazon.com/s?k=imachinist+93.5+bandsaw+blade",
     "location": "Bandsaw spares, machine shop",
-    "machines": [],
-    "notes": "Fits the 4×6 horizontal bandsaw. WEN BB4550 44-7/8\" blades fit the benchtop metal bandsaw."
+    "machines": [
+      "horizontal-bandsaw"
+    ],
+    "notes": "Blade lengths differ per saw and are stamped on the blade — read the old blade before ordering. 93-1/2\" is the 14\" vertical (Grizzly) length, not the 4×6 horizontal; the WEN BB4550 benchtop saw takes 44-7/8\"."
   },
   {
     "id": "battery-lugs",
@@ -401,5 +437,513 @@
     "location": "Label maker drawer",
     "machines": [],
     "notes": "Bluetooth app-driven, inkless thermal (Oct 2025). BETCKEY DYMO-compatible rolls $26.99 for the DYMO printers."
+  },
+  {
+    "id": "evomax14st-blade",
+    "name": "Evolution EVOMAX14ST 14\" 80T Cermet Steel Blade",
+    "category": "Cutting Tools",
+    "vendor": "Evolution Power Tools",
+    "price": "~$180",
+    "unit": "each",
+    "partNumber": "EVOMAX14ST",
+    "url": "https://store.evolutionpowertools.com/products/evolution-evomax14st",
+    "location": "Mounted on the chop saw, or in its sleeve on the Orange Toolbox",
+    "machines": [
+      "evolution-s14mcs"
+    ],
+    "notes": "The steel blade. Cermet carbide, 1\" arbor. Replace when cuts slow or the saw starts throwing sparks — a dry-cut saw making sparks has dead carbide. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "evomax14al-blade",
+    "name": "Evolution EVOMAX14AL 14\" 100T Aluminum Blade",
+    "category": "Cutting Tools",
+    "vendor": "Evolution Power Tools",
+    "price": "$140.00",
+    "unit": "each",
+    "partNumber": "EVOMAX14AL",
+    "url": "https://store.evolutionpowertools.com/products/evolution-14bladeal-14-in-80t-1-in-arbor-aluminum-and-non-ferrous-metal-tct-blade-copy",
+    "location": "Mounted on the chop saw, or in its sleeve on the Orange Toolbox",
+    "machines": [
+      "evolution-s14mcs"
+    ],
+    "notes": "The non-ferrous blade (bought July 2026). Rated to 1600 RPM — our ~1100 RPM saw is well inside it. Never cut steel with this blade."
+  },
+  {
+    "id": "tablesaw-blade-10",
+    "name": "10\" 60T ATB Fine-Finish Blade",
+    "category": "Cutting Tools",
+    "vendor": "Home Depot / Amazon (Diablo)",
+    "price": "~$45",
+    "unit": "each",
+    "partNumber": "Diablo D1060X (5/8\" arbor)",
+    "url": "https://www.amazon.com/s?k=diablo+d1060x+10+inch+60+tooth+blade",
+    "location": "Table saw cart",
+    "machines": [
+      "dewalt-dwe7491rs"
+    ],
+    "notes": "Wood, plywood and plastics. A 60T ATB gives clean edges in polycarbonate at moderate feed. Wood/plastics only — this saw never cuts metal. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "bandsaw-blade-vertical",
+    "name": "93-1/2\" Bandsaw Blade (Grizzly G0555)",
+    "category": "Cutting Tools",
+    "vendor": "Grizzly / Amazon (Imachinist)",
+    "price": "$25–35",
+    "unit": "each",
+    "partNumber": "93-1/2\" × 3/8\"–3/4\"",
+    "url": "https://www.amazon.com/s?k=93+1%2F2+bandsaw+blade",
+    "location": "Bandsaw spares, machine shop",
+    "machines": [
+      "grizzly-g0555"
+    ],
+    "notes": "93-1/2\" is the G0555 length. Fine pitch (14–18 TPI) for aluminum, coarse skip-tooth for wood and plastic. Keep 3 teeth in the material. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "m12-bandsaw-blades",
+    "name": "M12 Compact Band Saw Blades, 12/14 TPI",
+    "category": "Cutting Tools",
+    "vendor": "Milwaukee",
+    "price": "~$25",
+    "unit": "pack of 3",
+    "partNumber": "48-39-0572",
+    "url": "https://www.milwaukeetool.com/Products/Accessories/Saw-Blades/Band-Saw-Blades",
+    "location": "StackTech saw tower — Compact Bandsaw drawer",
+    "machines": [
+      "m12-bandsaw"
+    ],
+    "notes": "12/14 TPI is the general-purpose pitch and what the saw ships with. Thin-wall tube wants the finer 18 TPI. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "jigsaw-blades-tshank",
+    "name": "T-Shank Jig Saw Blade Assortment",
+    "category": "Cutting Tools",
+    "vendor": "Amazon / Home Depot (Bosch)",
+    "price": "~$20",
+    "unit": "assortment",
+    "partNumber": "T-shank, wood + metal + plastic",
+    "url": "https://www.amazon.com/s?k=bosch+t-shank+jigsaw+blade+assortment",
+    "location": "StackTech power tower — Jigsaw & Nibbler drawer",
+    "machines": [
+      "m12-jigsaw"
+    ],
+    "notes": "Fine-tooth blades for polycarbonate (coarse teeth chip and melt it). Blades are cheap; swap them instead of forcing a dull one. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "cutoff-wheels-3in",
+    "name": "3\" Metal Cut-Off Wheels",
+    "category": "Cutting Tools",
+    "vendor": "Amazon / Milwaukee",
+    "price": "~$15",
+    "unit": "pack of 5",
+    "partNumber": "3\" × 3/8\" arbor, type 1",
+    "url": "https://www.amazon.com/s?k=3+inch+cut+off+wheel+3%2F8+arbor+metal",
+    "location": "StackTech power tower — Sanders & Cut-Off drawer",
+    "machines": [
+      "m12-cutoff"
+    ],
+    "notes": "Abrasive wheels shatter if twisted in the cut. Retire chipped or out-of-round wheels immediately. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "detail-sander-pads",
+    "name": "Detail Sander Hook-and-Loop Pads",
+    "category": "Shop Supplies",
+    "vendor": "Amazon / Milwaukee",
+    "price": "~$15",
+    "unit": "assorted grit pack",
+    "partNumber": "Mouse/detail triangle pads",
+    "url": "https://www.amazon.com/s?k=milwaukee+m12+detail+sander+sandpaper",
+    "location": "StackTech power tower — Sanders & Cut-Off drawer",
+    "machines": [
+      "m12-detail-sander"
+    ],
+    "notes": "Work through grits. Replace pads when the grit polishes smooth — pressing harder on a dead pad just burns the workpiece. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "staples-t50",
+    "name": "T50-Style 3/8\" Crown Staples",
+    "category": "Fasteners",
+    "vendor": "Home Depot / Amazon (Arrow)",
+    "price": "~$10",
+    "unit": "box of 1000",
+    "partNumber": "T50, 1/4\"–9/16\" leg",
+    "url": "https://www.amazon.com/s?k=arrow+t50+staples+assorted",
+    "location": "StackTech power tower — Stapler drawer",
+    "machines": [
+      "m12-stapler"
+    ],
+    "notes": "Bumper fabric and banner work. Match leg length to the material stack — too long and the point comes through the back of the plywood. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "carbide-inserts-turning",
+    "name": "Carbide Turning Inserts (Oscarbide 1/2\" set)",
+    "category": "Machine Shop",
+    "vendor": "McMaster-Carr / insert vendor",
+    "price": "~$30–60",
+    "unit": "box of 10",
+    "partNumber": "Match the geometry printed on the holder box (CCMT / DCMT / TNMG / WNMG)",
+    "url": "https://www.mcmaster.com/products/carbide-inserts/",
+    "location": "Lathe T-Stak — Indexable Turning Set & Inserts drawer",
+    "machines": [
+      "pm-1130v"
+    ],
+    "notes": "The lathe runs an Oscarbide 7-piece 1/2\" indexable set (SRDCN / SER / SVJCR / SCLCR / SWGCR / SDNCN / SDJCR). Order the insert style stamped on the holder — ask a mentor before switching geometry. Report chipped inserts, don't hide them. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "cutting-oil-dark",
+    "name": "Dark Thread-Cutting Oil",
+    "category": "Machine Shop",
+    "vendor": "McMaster-Carr",
+    "price": "~$25",
+    "unit": "quart",
+    "partNumber": "Sulfurized cutting oil",
+    "url": "https://www.mcmaster.com/products/cutting-fluid/",
+    "location": "Lathe bench + tapping station",
+    "machines": [
+      "pm-1130v",
+      "mrcm-tapping-machine",
+      "drill-press"
+    ],
+    "notes": "Steel tapping, threading and drilling. Aluminum runs dry, on WD-40, or on a wax stick. Powered tapping does NOT make dry aluminum safe to tap. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "tap-1032-spiral-point",
+    "name": "#10-32 Spiral Point (Gun) Taps",
+    "category": "Machine Shop",
+    "vendor": "McMaster-Carr",
+    "price": "~$12",
+    "unit": "each",
+    "partNumber": "#10-32 UNF spiral point",
+    "url": "https://www.mcmaster.com/products/taps/spiral-point-taps-7/",
+    "location": "Red toolbox drawer 7 (Thread Taps); one stays loaded in the tapping machine",
+    "machines": [
+      "mrcm-tapping-machine"
+    ],
+    "notes": "The shop's standing tap — the tapping machine keeps a #10-32 spiral point installed so the most common job needs zero setup. Spiral point pushes chips forward, so it is a through-hole tap; use spiral flute for blind holes. Tap drill: #21. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "tap-1420-spiral-point",
+    "name": "1/4-20 Spiral Point (Gun) Taps",
+    "category": "Machine Shop",
+    "vendor": "McMaster-Carr",
+    "price": "~$14",
+    "unit": "each",
+    "partNumber": "1/4-20 UNC spiral point",
+    "url": "https://www.mcmaster.com/products/taps/spiral-point-taps-7/",
+    "location": "Red toolbox drawer 7 (Thread Taps)",
+    "machines": [
+      "mrcm-tapping-machine"
+    ],
+    "notes": "The other thread that runs the robot. Tap drill: #7. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "drill-bits-hss",
+    "name": "HSS Jobber Drill Bits (incl. #21 and #7)",
+    "category": "Machine Shop",
+    "vendor": "McMaster-Carr",
+    "price": "~$5–10",
+    "unit": "each",
+    "partNumber": "#21 (10-32 tap drill) · #7 (1/4-20 tap drill)",
+    "url": "https://www.mcmaster.com/products/drill-bits/",
+    "location": "StackTech hand tower — Drill Bits drawer; large bits in Orange Toolbox drawer 11",
+    "machines": [
+      "drill-press",
+      "m12-drill"
+    ],
+    "notes": "The two number drills the team burns through are #21 and #7. Replace bits that squeal, smoke, or produce dust instead of chips — a dull bit is what grabs at breakthrough. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "center-drills",
+    "name": "Center / Spotting Drills",
+    "category": "Machine Shop",
+    "vendor": "McMaster-Carr",
+    "price": "~$10",
+    "unit": "each",
+    "partNumber": "#2–#3 combined drill and countersink",
+    "url": "https://www.mcmaster.com/products/drill-bits/",
+    "location": "Orange Toolbox drawer 5 (lathe accessories)",
+    "machines": [
+      "pm-1130v",
+      "drill-press"
+    ],
+    "notes": "Start every tailstock hole and every precise drill-press hole with a center drill — it is the difference between a hole on your mark and a hole near it. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "way-oil",
+    "name": "ISO 68 Way Oil",
+    "category": "Machine Shop",
+    "vendor": "McMaster-Carr",
+    "price": "~$30",
+    "unit": "quart",
+    "partNumber": "ISO VG 68 slideway oil",
+    "url": "https://www.mcmaster.com/products/way-oil/",
+    "location": "Lathe T-Stak — Measuring / Grease drawer",
+    "machines": [
+      "pm-1130v"
+    ],
+    "notes": "Wipe the ways and lay down a light film at close. Never blow chips off the ways with compressed air — it drives grit under the film. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "sanding-belts-1x30",
+    "name": "1\" × 30\" Sanding Belts",
+    "category": "Shop Supplies",
+    "vendor": "McMaster-Carr / Amazon",
+    "price": "~$15",
+    "unit": "pack of 10",
+    "partNumber": "1 × 30 in, 60–220 grit assortment",
+    "url": "https://www.mcmaster.com/products/sanding-belts/",
+    "location": "Bench shelf by the belt sanders",
+    "machines": [
+      "belt-sanders"
+    ],
+    "notes": "The 1×30 sander handles inside curves and detail work. Clean a glazed belt with a crepe stick before replacing it — aluminum loads belts long before it wears them out. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "sanding-belts-4x36",
+    "name": "4\" × 36\" Sanding Belts",
+    "category": "Shop Supplies",
+    "vendor": "McMaster-Carr / Amazon",
+    "price": "~$25",
+    "unit": "pack of 5",
+    "partNumber": "4 × 36 in, 60–120 grit",
+    "url": "https://www.mcmaster.com/products/sanding-belts/",
+    "location": "Bench shelf by the belt sanders",
+    "machines": [
+      "belt-sanders"
+    ],
+    "notes": "Flats, squaring ends and chamfers. Same rule as the 1×30: crepe stick first, replace when the belt is bald or torn. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "scotchbrite-deburring-wheel",
+    "name": "Scotch-Brite Deburring Wheel (6\")",
+    "category": "Shop Supplies",
+    "vendor": "McMaster-Carr (3M)",
+    "price": "~$60",
+    "unit": "each",
+    "partNumber": "6\" × 1\" non-woven convolute wheel",
+    "url": "https://www.mcmaster.com/products/deburring-wheels/",
+    "location": "Fitted to the bench grinder; spares on the bench shelf",
+    "machines": [
+      "bench-grinder"
+    ],
+    "notes": "Every sawed aluminum part visits this wheel. The wheel sheds rather than loads, which is why aluminum is allowed on it and never on the stone wheels. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "hi-temp-masking-tape",
+    "name": "High-Temperature Polyester Masking Tape",
+    "category": "Powder Coating",
+    "vendor": "McMaster-Carr",
+    "price": "~$15",
+    "unit": "roll",
+    "partNumber": "Green/tan polyester, 400 °F+ rated",
+    "url": "https://www.mcmaster.com/products/masking-tape/high-temperature-masking-tape/",
+    "location": "Powder room shelf",
+    "machines": [
+      "eastwood-pcs250",
+      "light-armor-oven"
+    ],
+    "notes": "Blue painter's tape melts into goo at cure temperature. Mask threads, bearing seats and grounding points with this. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "silicone-plugs",
+    "name": "High-Temp Silicone Plugs & Caps",
+    "category": "Powder Coating",
+    "vendor": "McMaster-Carr",
+    "price": "~$20",
+    "unit": "assortment",
+    "partNumber": "Tapered silicone plugs / pull plugs / caps",
+    "url": "https://www.mcmaster.com/products/silicone-plugs/",
+    "location": "Powder room shelf",
+    "machines": [
+      "eastwood-pcs250",
+      "light-armor-oven"
+    ],
+    "notes": "Five plugs beat twenty inches of fiddly tape. Size them snug — powder finds loose plugs. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "booth-filter-20x20",
+    "name": "Furnace Filter for the Booth Box Fan",
+    "category": "Powder Coating",
+    "vendor": "Home Depot / Lowe's",
+    "price": "~$5",
+    "unit": "each",
+    "partNumber": "Standard pleated furnace filter (match the fan)",
+    "url": "https://www.amazon.com/s?k=pleated+furnace+filter",
+    "location": "Powder room shelf",
+    "machines": [
+      "eastwood-pcs250"
+    ],
+    "notes": "The filter is the booth's only filtration. Swap it when it is caked — checked weekly on the maintenance schedule. Measure the fan before ordering; sizes are not universal. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "bambu-hardened-nozzle",
+    "name": "Bambu Hardened Steel Nozzle",
+    "category": "3D Printing",
+    "vendor": "Bambu Lab",
+    "price": "~$25",
+    "unit": "each",
+    "partNumber": "0.4 mm / 0.6 mm hardened",
+    "url": "https://us.store.bambulab.com/collections/nozzle",
+    "location": "Printer bench, spares drawer",
+    "machines": [
+      "bambu-x1c",
+      "bambu-h2d",
+      "bambu-x2d"
+    ],
+    "notes": "Filled filaments (PETG-GF, PPA-GF, CF nylon, PPS-CF) eat brass nozzles. The X1Cs run 0.6 mm and the H2D/X2D run 0.4 mm — order to match, and run a full calibration after any nozzle change. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "bambu-textured-plate",
+    "name": "Bambu Textured PEI Build Plate",
+    "category": "3D Printing",
+    "vendor": "Bambu Lab",
+    "price": "~$25",
+    "unit": "each",
+    "partNumber": "Textured PEI spring steel",
+    "url": "https://us.store.bambulab.com/collections/build-plate/products/bambu-textured-pei-plate",
+    "location": "Printer bench, plate rack",
+    "machines": [
+      "bambu-x1c",
+      "bambu-h2d",
+      "bambu-x2d"
+    ],
+    "notes": "Textured PEI is the fleet-wide standard — one plate type across the farm. Replace a plate when the PEI is gouged bald; wash with Dawn and warm water long before that. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "prusa-mini-sheet",
+    "name": "Prusa MINI Textured Powder-Coated Sheet",
+    "category": "3D Printing",
+    "vendor": "Prusa Research",
+    "price": "~$25",
+    "unit": "each",
+    "partNumber": "MINI textured PEI spring steel",
+    "url": "https://www.prusa3d.com/product/mini-textured-powder-coated-print-sheet/",
+    "location": "Printer bench, spare sheet rack",
+    "machines": [
+      "prusa-mini"
+    ],
+    "notes": "Never clean a powder-coated sheet with acetone — it microfractures the texture. Dish soap and warm water only. Verify Live-Z after every sheet swap. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "prusa-mini-nozzle",
+    "name": "Prusa MINI Nozzle (0.6 mm)",
+    "category": "3D Printing",
+    "vendor": "Prusa Research",
+    "price": "~$10–30",
+    "unit": "each",
+    "partNumber": "0.6 mm brass / hardened",
+    "url": "https://www.prusa3d.com/category/nozzles/",
+    "location": "Printer bench, spares drawer",
+    "machines": [
+      "prusa-mini"
+    ],
+    "notes": "0.6 mm is the farm standard. Hardened for anything filled; brass is fine for PLA and plain PETG. The MINI+ hotend is all-metal to 275 °C. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "pinecil-tips",
+    "name": "PINECIL Soldering Tips (TS/B2, C4, K)",
+    "category": "Electrical",
+    "vendor": "PINE64",
+    "price": "~$5–10",
+    "unit": "each",
+    "partNumber": "TS100-compatible tips",
+    "url": "https://pine64.com/product/pinecil-smart-mini-portable-soldering-iron/",
+    "location": "Electrical bench, iron caddy",
+    "machines": [
+      "pinecil"
+    ],
+    "notes": "B2 conical for general work, C4 chisel for wire and lugs, K knife for drag soldering. A dead tip is usually an un-tinned tip — tin before parking the iron. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "solder-and-flux",
+    "name": "63/37 Rosin-Core Solder + Flux Pen",
+    "category": "Electrical",
+    "vendor": "Amazon / Digi-Key",
+    "price": "~$25",
+    "unit": "roll + pen",
+    "partNumber": "0.031\" 63/37 rosin core",
+    "url": "https://www.amazon.com/s?k=63%2F37+rosin+core+solder+0.031",
+    "location": "Electrical bench, solder drawer",
+    "machines": [
+      "pinecil"
+    ],
+    "notes": "63/37 is eutectic — it goes solid instantly instead of through a slushy stage, which is what makes cold joints. Flux is not optional on anything oxidised. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "heat-shrink-adhesive",
+    "name": "Adhesive-Lined Heat Shrink Assortment",
+    "category": "Electrical",
+    "vendor": "Amazon / McMaster-Carr",
+    "price": "~$25",
+    "unit": "assortment",
+    "partNumber": "3:1 dual-wall, adhesive lined",
+    "url": "https://www.mcmaster.com/products/heat-shrink-tubing/",
+    "location": "Electrical bench, crimp bins",
+    "machines": [],
+    "notes": "Adhesive-lined for battery lugs and anything that flexes — heat until adhesive beads at both ends. Shrink it with the DeWalt heat gun on LOW. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "simple-green",
+    "name": "Simple Green All-Purpose Cleaner",
+    "category": "Shop Supplies",
+    "vendor": "Home Depot",
+    "price": "~$8",
+    "unit": "32 oz spray",
+    "partNumber": "Ready-to-use, 2500000104032",
+    "url": "https://www.homedepot.com/p/Simple-Green-32-oz-Ready-To-Use-All-Purpose-Cleaner-2500000104032/206624095",
+    "location": "Shop cleaning shelf",
+    "machines": [],
+    "notes": "Spectrum's standard degreaser for drivetrain parts, chain and gears. Spray on the rag, not the robot. Do NOT use it on polycarbonate you want to stay clear — it clouds the appearance (soap and water for polycarb). From the team [maintenance guide](https://spectrum3847.org/resources/maintenance-guide/)."
+  },
+  {
+    "id": "tri-flow-lubricant",
+    "name": "Tri-Flow Superior Lubricant",
+    "category": "Shop Supplies",
+    "vendor": "Amazon",
+    "price": "~$12",
+    "unit": "2 oz drip bottle",
+    "partNumber": "Tri-Flow TF21010",
+    "url": "https://www.amazon.com/s?k=tri-flow+superior+lubricant+drip",
+    "location": "StackTech hand tower — Grease & Loctite drawer",
+    "machines": [],
+    "notes": "The team's planetary and chain lubricant: a few drops on each gear, a few drops on the sprockets. Not a substitute for gearbox lube — see WD-40 PTFE dry spray for that. From the team [maintenance guide](https://spectrum3847.org/resources/maintenance-guide/)."
+  },
+  {
+    "id": "wd40-ptfe-dry",
+    "name": "WD-40 Specialist Dry Lube with PTFE",
+    "category": "Shop Supplies",
+    "vendor": "Home Depot / Amazon",
+    "price": "~$9",
+    "unit": "10 oz spray",
+    "partNumber": "WD-40 Specialist Dry Lube",
+    "url": "https://www.amazon.com/s?k=wd40+specialist+dry+lube+ptfe",
+    "location": "StackTech hand tower — Grease & Loctite drawer",
+    "machines": [],
+    "notes": "Gearbox lubrication: spray in while rotating the gearbox so every tooth gets coated. Dry film, so it does not collect the grit that wet lube does. From the team [maintenance guide](https://spectrum3847.org/resources/maintenance-guide/)."
+  },
+  {
+    "id": "loctite-blue-gel",
+    "name": "Loctite 242/243 Blue Threadlocker (gel)",
+    "category": "Shop Supplies",
+    "vendor": "Home Depot / Amazon",
+    "price": "~$10",
+    "unit": "gel tube",
+    "partNumber": "Loctite 242 / 243 blue, removable",
+    "url": "https://www.amazon.com/s?k=loctite+blue+threadlocker+gel",
+    "location": "StackTech hand tower — Grease & Loctite drawer",
+    "machines": [],
+    "notes": "Gel form: does not dry up like the stick and is far less messy than the drip bottle. Every bolt that is not held by a nylock gets it — EXCEPT anything touching polycarbonate/Lexan, ABS or acrylic, which threadlocker cracks. Nylon and Delrin are fine. From the team [maintenance guide](https://spectrum3847.org/resources/maintenance-guide/)."
+  },
+  {
+    "id": "shop-towels",
+    "name": "Blue Shop Towels",
+    "category": "Shop Supplies",
+    "vendor": "Home Depot / Amazon",
+    "price": "~$12",
+    "unit": "roll pack",
+    "partNumber": "Heavy-duty disposable shop towels",
+    "url": "https://www.amazon.com/s?k=blue+shop+towels+roll",
+    "location": "Cleaning shelf, machine shop",
+    "machines": [],
+    "notes": "Stronger than paper towels and disposable — the right rag for grease and cutting oil. Microfibre cloths for wheels, rollers and anything you want to stay clean. (list estimate — no receipt on file; update the price when we next order)."
   }
 ]

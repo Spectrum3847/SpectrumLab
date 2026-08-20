@@ -6,17 +6,31 @@ description: "Combination squares, center punches, calipers, micrometers, and la
 import SafetyWarning from '../../../components/SafetyWarning.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
 import DrawerLayoutMap from '../../../components/DrawerLayoutMap.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
 
-Every good part starts on paper — or more precisely, on a scribed line and a punched dot. Measure twice, mark once, cut once. The layout and measuring tools live in the red toolbox in the machine shop, and they go back there **every time**, because the next student needs them exactly where the label says they are.
+Every good part starts on paper — or more precisely, on a scribed line and a punched dot. Measure twice, mark once, cut once.
+
+The tools split across two boxes, and knowing which is which saves you five minutes every time:
+
+- **Layout and marking** — tapes, rules, levels, combination and speed squares — live in **drawer 9 (Measuring)** of the [red toolbox](/storage/toolboxes/#red-toolbox--hand-tools). Center punches are in drawer 5, markers in drawer 15.
+- **Precision metrology** — calipers, micrometers, dial indicators, the DRO — lives in the [Orange Toolbox](/storage/toolboxes/#orange-toolbox--metrology-machinist-tooling--ppe) at the chop saw: drawer 12 (calipers), drawer 10 (micrometers & instruments), drawer 2 (indicators & machine setup).
+
+Everything goes back **every time**, because the next student needs it exactly where the label says it is.
 
 ## Where they live
 
 <DrawerLayoutMap unit="red-toolbox" />
 
 <LabGalleryImage
+  src="measuring-drawer.jpg"
+  alt="Red toolbox drawer 9 with tape measures, levels, rules, and squares"
+  caption="Drawer 9 of the red toolbox — Measuring: tapes, levels, rules, combination squares and speed squares."
+/>
+
+<LabGalleryImage
   src="red-toolbox.jpg"
-  alt="Red US General Pro rolling toolbox with numbered drawer labels"
-  caption="The red toolbox. Every drawer is numbered and labeled — layout and measuring tools are in the top drawers."
+  alt="Wide US General Pro cabinet with orange trim and drawers numbered 1 to 13"
+  caption="The Orange Toolbox at the chop saw — drawers 10, 11 and 12 hold the micrometers, the drill vise, and the calipers."
 />
 
 ## Combination squares
@@ -42,12 +56,12 @@ Then clamp the part and drill — see [Drill Press & Bench Shear](/cutting/drill
 
 ## Calipers
 
-Calipers are the workhorse measuring tool of the shop — good to about 0.001" when used well. The calipers drawer has digital calipers, a dial caliper, a pin vise, and spare batteries.
+Calipers are the workhorse measuring tool of the shop — good to about 0.001" when used well. **Drawer 12 of the Orange Toolbox** has the EZ Cal digital calipers, a dial caliper, a pin vise, and spare batteries. (The blue toolbox by the WAZER keeps its own labelled Calipers drawer for the fab corner — measure at the machine, put them straight back.)
 
 <LabGalleryImage
   src="calipers-drawer.jpg"
   alt="Calipers drawer with a dial caliper, two digital calipers, pin vise, and spare batteries"
-  caption="The calipers drawer: dial caliper, EZ Cal digital calipers, pin vise, and spare batteries. Put them back here when you're done."
+  caption="Drawer 12 of the Orange Toolbox — dial caliper, EZ Cal digital calipers, pin vise, and spare batteries. Put them back here when you're done."
 />
 
 ### Zeroing
@@ -72,12 +86,12 @@ Never use calipers as a clamp, a scribe, a pry bar, or a wrench. The jaws are ha
 
 ## Micrometers
 
-When 0.001" actually matters — bearing fits, shaft diameters you're turning on the [lathe](/forming/lathes/), press-fit pins — step up from calipers to a micrometer. The measuring drawer holds a set of precision micrometers in graduated ranges.
+When 0.001" actually matters — bearing fits, shaft diameters you're turning on the [lathe](/forming/lathes/), press-fit pins — step up from calipers to a micrometer. **Drawer 10 of the Orange Toolbox** holds the boxed MG Tool micrometers, the iGaging EZ-View DRO Plus, and the handheld instruments.
 
 <LabGalleryImage
   src="micrometers-measuring-drawer.jpg"
   alt="Measuring drawer with precision micrometers and other measuring instruments"
-  caption="The measuring drawer: MG Tool precision micrometers and other instruments. Handle them like the precision tools they are."
+  caption="Drawer 10 of the Orange Toolbox — MG Tool precision micrometers, the iGaging DRO, and the handheld instruments. Handle them like the precision tools they are."
 />
 
 - Use the **ratchet or friction thimble** to close on the part — it applies the same measuring force every time, which is the whole point. Cranking the thimble directly gives inconsistent readings and can spring the frame.
@@ -95,14 +109,40 @@ For precise layout on aluminum, brush or spray on a thin coat of layout fluid (t
 
 ## Care rules
 
-- **Back in the drawer, every time.** Calipers left on a bench get buried, dropped, and crushed. The drawer has labeled slots for a reason.
+- **Back in the drawer, every time.** Calipers left on a bench get buried, dropped, and crushed. Orange Toolbox drawer 12 — nowhere else.
 - **Don't drop them.** A dropped caliper or micrometer is no longer a measuring tool until it's been verified against a standard. If you drop one, tell a mentor — don't quietly put it back.
 - Wipe tools down before they go back; chips and coolant corrode measuring faces.
-- If a digital caliper reads erratically or won't zero, swap the battery — spares are in the calipers drawer — before reporting it broken.
+- If a digital caliper reads erratically or won't zero, swap the battery — spares are in the same drawer — before reporting it broken.
+
+## Training & Videos
+
+Spectrum's [tools & workspace resource list](https://spectrum3847.org/resources/other-teams-resources/tools-and-workspace/) points every new member at the UC Irvine **Engineering Training Videos** series — eight long-form shop-training films that are still the best free machine-shop course on the internet. The ones that cover this page:
+
+<TutorialLink
+  title="Measurements and Layouts — UCI Engineering Training"
+  url="https://www.youtube.com/watch?v=2Yhj4RRhn34"
+  source="youtube"
+  description="Rules, squares, calipers, micrometers and layout technique — the same order this page walks through."
+/>
+
+<TutorialLink
+  title="Measuring Tool Basics — Haas"
+  url="https://www.youtube.com/watch?v=1tpyf5o9H20"
+  source="youtube"
+  description="Short, modern, and specific about caliper and micrometer technique. On Spectrum's recommended list."
+/>
+
+<TutorialLink
+  title="UCI Engineering Training Videos — full playlist"
+  url="https://www.youtube.com/playlist?list=PL404C2C74D09871B3"
+  source="youtube"
+  description="All eight films: hand tools, fasteners, measurement, cutting and filing, metal forming, soldering, and MIG welding."
+/>
+
 
 ## Related pages
 
 - [Clamps & Vises](/hand-tools/clamps-vises/) — hold the part before you drill what you punched
 - [Drill Press & Bench Shear](/cutting/drill-press-shear/) — where those punched holes get drilled
 - [Threading & Riveting](/hand-tools/threading-riveting/) — tap drill sizes start with an accurate measurement
-- [Primary Toolboxes](/storage/toolboxes/) — the full red and blue toolbox layouts
+- [Primary Toolboxes](/storage/toolboxes/) — the full red, orange and blue toolbox layouts
