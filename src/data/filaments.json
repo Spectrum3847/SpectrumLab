@@ -1,33 +1,9 @@
 [
   {
-    "id": "pctg",
-    "name": "PCTG",
-    "tier": "preferred",
-    "tierLabel": "Preferred — primary workhorse",
-    "brands": "3D-Fuel, Essentium, Atomic",
-    "color": "Optical Clear / Solid White",
-    "density": "1.24 g/cm³",
-    "maxFlow": "14–20 mm³/s",
-    "printSpeed": "150–250+ mm/s",
-    "loctite": "High",
-    "nozzleTemp": "250–265 °C (house baseline — confirm against the spool label)",
-    "bedTemp": "70–80 °C",
-    "plate": "Double-sided textured PEI spring steel",
-    "fanSpeed": "20–40% (low fan = stronger layers)",
-    "maxSpeed": "150–250+ mm/s",
-    "drying": "Dry at 65 °C for 8 h if stored open > 2 weeks or if stringing",
-    "hardenedNozzle": false,
-    "enclosure": "Open or closed — no enclosure required",
-    "useCases": "Primary workhorse: structural brackets, gearbox plates, electronics shields. This is the default answer for an on-robot part.",
-    "pricePerKg": null,
-    "reorderUrl": "https://www.3dfuel.com/",
-    "notes": "Clearer, tougher, and far faster than PETG with the same easy handling. Highest volumetric flow in the lineup — the material to pick when print throughput matters."
-  },
-  {
     "id": "petg-gf",
     "name": "PETG-GF (Glass Fiber)",
     "tier": "preferred",
-    "tierLabel": "Preferred — stiffness",
+    "tierLabel": "Preferred — primary workhorse",
     "brands": "Bambu PETG-GF, ELEGOO PETG-GF, Polymaker",
     "color": "Matte White",
     "density": "1.35 g/cm³",
@@ -42,10 +18,10 @@
     "drying": "Dry at 65 °C for 8 h — standard PETG precaution",
     "hardenedNozzle": true,
     "enclosure": "Not required",
-    "useCases": "High-rigidity motor mounts, dead-axle spacers, and stiff structural brackets — anywhere deflection matters more than toughness.",
+    "useCases": "Primary workhorse: structural brackets, gearbox plates, electronics shields, motor mounts, and dead-axle spacers — the default answer for an on-robot part.",
     "pricePerKg": null,
     "reorderUrl": "https://us.elegoo.com/products/petg-gf-filament-1-75mm-colored-1kg",
-    "notes": "Glass fill buys stiffness at the cost of some impact toughness — pick PCTG when the part takes hits, PETG-GF when it must not flex. Abrasive: hardened nozzle only, no 0.2 mm."
+    "notes": "Glass fill trades some impact toughness for rigidity and speed over plain PETG — for parts that take direct hits instead of static load, back off to 72D TPU. Abrasive: hardened nozzle only, no 0.2 mm."
   },
   {
     "id": "tpu-72d",
@@ -90,10 +66,10 @@
     "drying": "Mandatory, every session. 80 °C for 4–6 h before use",
     "hardenedNozzle": true,
     "enclosure": "Required — heated chamber 60–80 °C. H2D / X2D only.",
-    "useCases": "Extreme-load gearbox blocks and high-temp mounts (185 °C+ HDT). The escalation material when PCTG and PETG-GF have actually failed.",
+    "useCases": "Extreme-load gearbox blocks and high-temp mounts (185 °C+ HDT). The escalation material when PETG-GF has actually failed.",
     "pricePerKg": null,
     "reorderUrl": "https://siraya.tech/products/fibreheart-ppa-gf-filament",
-    "notes": "Glass-filled nylon — immune to Loctite and the only material here that holds strength near the curing oven. Needs a respirator for post-processing and mentor sign-off to run. Siraya's own spec flags this as not AMS-compatible, but we run it through the H2D's AMS HT anyway by declaring the slot as Bambu PAHT-CF and overriding nozzle/chamber/drying to the real numbers — see the Filament Inventory entry for the exact overrides. Never declare it as Bambu PPA-CF; that profile is itself non-AMS-compatible and may get the load refused."
+    "notes": "Glass-filled nylon — immune to Loctite and the only material here that holds strength near the curing oven. Needs a respirator for post-processing and mentor sign-off to run. Siraya's own spec flags this as not AMS-compatible, but we run it through the H2D's AMS HT anyway by declaring the slot as Bambu PA6-GF — Bambu's own glass-fiber nylon, a closer material match than the carbon-fiber PAHT-CF profile we tried first — and overriding nozzle/chamber/drying to the real numbers. See the Filament Inventory entry for the exact overrides."
   },
   {
     "id": "pla",
@@ -117,7 +93,7 @@
     "useCases": "Prototypes, fit checks, jigs, drill guides, and cosmetic parts — plus the dual-nozzle support interface material. Not a functional robot part.",
     "pricePerKg": "$19.99",
     "reorderUrl": "https://us.store.bambulab.com/products/pla-basic-filament",
-    "notes": "Softens ~55 °C, brittle under impact, and creeps under bolt tension — prototype in PLA, ship in PCTG. Its other job is Nozzle 2: PLA will not weld to polyurethanes or copolyesters, which is what makes the zero-gap support trick work."
+    "notes": "Softens ~55 °C, brittle under impact, and creeps under bolt tension — prototype in PLA, ship in PETG-GF. Its other job is Nozzle 2: PLA will not weld to polyurethanes or copolyesters, which is what makes the zero-gap support trick work."
   },
   {
     "id": "petg",
@@ -138,10 +114,10 @@
     "drying": "65 °C for 8 h — hygroscopic; dry if stored open > 2 weeks",
     "hardenedNozzle": false,
     "enclosure": "Open or closed",
-    "useCases": "Perfectly good for brackets, covers, and guards — it is what we printed on-robot for years. Burn through open spools before starting new PCTG.",
+    "useCases": "Perfectly good for brackets, covers, and guards — it is what we printed on-robot for years. Burn through open spools before starting new PETG-GF.",
     "pricePerKg": "$19.99",
     "reorderUrl": "https://us.store.bambulab.com/products/petg-hf",
-    "notes": "Superseded by PCTG for new designs — PCTG is tougher and prints roughly twice as fast — but there is nothing wrong with a PETG part. Use the stock we have, then reorder PCTG."
+    "notes": "Superseded by PETG-GF for new structural designs — PETG-GF is stiffer and abrasion hardware handles the glass fill fine — but there is nothing wrong with a PETG part. Use the stock we have, then reorder PETG-GF."
   },
   {
     "id": "tpu-95a",

@@ -54,7 +54,7 @@ export const navigationMenu: NavCategory[] = [
     href: '/3d-printing/filament-guide/',
     align: 'center',
     items: [
-      { label: 'Filament Guide', href: '/3d-printing/filament-guide/', blurb: 'PCTG, PETG-GF, 72D TPU & PPA-GF matrix' },
+      { label: 'Filament Guide', href: '/3d-printing/filament-guide/', blurb: 'PETG-GF, 72D TPU & PPA-GF matrix' },
       { label: 'Print Settings & Supports', href: '/3d-printing/print-settings/', blurb: 'Support strategy, orientation & presets' },
       { label: 'Bambu Lab Fleet', href: '/3d-printing/bambu-fleet/', blurb: 'X1C, H2D & X2D — AMS, plates & nozzles' },
       { label: 'Prusa Mini+ Farm', href: '/3d-printing/prusa-farm/', blurb: '12 Minis — 0.6 mm nozzles & Live-Z' },

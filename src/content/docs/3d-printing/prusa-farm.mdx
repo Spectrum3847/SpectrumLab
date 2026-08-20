@@ -13,7 +13,7 @@ import VideoEmbed from '../../../components/VideoEmbed.astro';
 
 The Prusa Mini+ farm — twelve printers racked in wooden cubbies under the printer bench — is
 the volume workhorse of the lab. It handles most of the 3D-printed part demand for both the
-main team and the junior team: PLA prototypes, PCTG brackets, jigs, and the endless stream of
+main team and the junior team: PLA prototypes, PETG-GF brackets, jigs, and the endless stream of
 "can you print me a..." requests. The Minis are simple, tough, and the best place for newer
 students to learn printing without tying up the [Bambu fleet](/3d-printing/bambu-fleet/).
 
@@ -62,7 +62,7 @@ of them.
   printing and heating.
 - The Minis are open-frame — no enclosure means no barrier. Do not lean tools, spools, or
   sleeves into a running printer's motion path.
-- Materials: **PCTG, PETG-GF, and PLA** on the farm. Flexibles fight the Bowden extruder, so
+- Materials: **PETG-GF and PLA** on the farm. Flexibles fight the Bowden extruder, so
   TPU goes to a Bambu on the external spool holder.
 - **No PPA-GF on the Minis.** The hotend tops out at 280 °C, well under PPA-GF's 300–320 °C, and
   an open frame cannot hold a heated chamber. Take it to the
@@ -76,9 +76,9 @@ of them.
    the nozzle to **0.6 mm** — the default profile assumes 0.4 mm and will under-extrude badly.
 2. Pick a print profile: **0.30 mm SPEED** for most work, **0.20 mm QUALITY** when surface
    finish matters.
-3. Pick the matching filament profile. PLA and PETG have well-tuned stock profiles; **PCTG has
-   no stock profile — start from Generic PETG** and raise the nozzle to the top of the PCTG
-   range. Do not hand-edit temperatures beyond that unless a mentor asks you to.
+3. Pick the matching filament profile. PLA and PETG have well-tuned stock profiles; **PETG-GF
+   has no stock profile — start from Generic PETG** and raise the nozzle to the top of the
+   PETG-GF range. Do not hand-edit temperatures beyond that unless a mentor asks you to.
 4. Orient, support, and set walls/infill per
    [Print Settings & Supports](/3d-printing/print-settings/).
 5. Slice and check the preview — time, filament, supports.
@@ -101,7 +101,7 @@ The Minis are on the lab network and registered to the team's Prusa Connect acco
 
 No dedicated consumables table for the farm — the staples are:
 
-- **PCTG, PETG-GF, and PLA spools** — reorder links on the
+- **PETG-GF and PLA spools** — reorder links on the
   [Filament Guide](/3d-printing/filament-guide/). The farm is where budget-brand PLA and
   leftover PETG stock gets used up.
 - **Spare PEI sheets** — one clean spare per material type lives at the printer bench; smooth
@@ -116,7 +116,7 @@ No dedicated consumables table for the farm — the staples are:
     'Sheet is clean, dry, and seated flat against the heatbed locating pins',
     'Previous part and skirt scraps removed from the sheet',
     'Nozzle set to 0.6 mm in PrusaSlicer — not the stock 0.4 mm default',
-    'Correct filament profile selected (PLA vs PCTG changes everything)',
+    'Correct filament profile selected (PLA vs PETG-GF changes everything)',
     'Enough filament on the spool for the whole job — Minis have no runout grace',
     'Filament path from spool to Bowden tube is free to unwind, no crossed windings',
     'Printer shows idle in Prusa Connect — not paused mid-job',
@@ -159,7 +159,7 @@ Live-Z is the nozzle-to-sheet gap. It is the single most important number on a M
 - **When adhesion drops even with IPA:** wash the sheet with dish soap and warm water, rubbing
   with a clean paper towel; rinse thoroughly and dry with a fresh towel. Soap strips the
   silicone/grease film that IPA leaves behind.
-- **PETG and PCTG weld themselves to smooth PEI** — the farm runs textured sheets for exactly
+- **PETG and PETG-GF weld themselves to smooth PEI** — the farm runs textured sheets for exactly
   this reason. If you must use smooth, glue stick as a release layer.
 - Bent, deeply gouged, or bald sheets: flag them to a mentor for replacement, do not quietly
   put them back.
@@ -169,7 +169,7 @@ Live-Z is the nozzle-to-sheet gap. It is the single most important number on a M
 | Situation | Use |
 | --- | --- |
 | PLA prototype, jig, or fixture | **Mini** — always |
-| PCTG or PETG-GF part, no rush, fits 18 cm cube | **Mini** — the farm exists for this |
+| PETG-GF part, no rush, fits 18 cm cube | **Mini** — the farm exists for this |
 | Batch of 8 identical parts | **Minis** — one per printer beats one big plate |
 | Junior team parts | **Minis** — their home turf |
 | Deadline tonight, needs to print fast | **Bambu** |

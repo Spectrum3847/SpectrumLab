@@ -34,16 +34,8 @@ For **which material to choose** for a part, start at the
 - **🔒 enclosure** — enclosed machine only. That means a Bambu, not a Prusa Mini.
 - **⛔ no AMS** — will jam or grind in the AMS feed path. External spool holder only.
 
-<SafetyWarning type="warning" title="No PCTG on the shelf">
-The [Filament Guide](/3d-printing/filament-guide/) names **PCTG** as our primary workhorse for
-on-robot parts, but there is **no PCTG in this inventory** — every spool we own predates that
-call. Until PCTG is stocked, structural parts fall back to PETG-GF (preferred, in stock) or the
-remaining plain PETG. Getting PCTG ordered is the highest-value filament purchase on the list.
-</SafetyWarning>
-
 ## Gaps worth knowing about
 
-- **PCTG — not stocked.** See above. The designated workhorse has never been ordered.
 - **72D TPU — one spool type**, the CC3D Hard TPU. Impact armor depends entirely on it, so it is
   worth keeping a spare on hand rather than discovering it is empty mid-build. The nearest
   substitute on the shelf is the 67D INNOVATEFIL TPU-CF, and it is only a 0.5 kg spool.
@@ -98,7 +90,7 @@ build. You do not need to touch the component or this page.
 | `id` | Unique kebab-case slug, `brand-material`. Must not duplicate an existing id. |
 | `brand` / `name` | As printed on the spool label. |
 | `family` | One of: `PLA`, `PETG / PET`, `TPU / TPE`, `Nylon / PPA`, `Polycarbonate`, `PPS`, `Polypropylene`, `Support`. Reuse an existing value so the filter chips stay tidy — a new value creates a new chip. |
-| `tier` | `preferred`, `prototyping`, or `stock`. Match the [Filament Guide](/3d-printing/filament-guide/) policy — if it is not one of the four approved functional materials or a PLA, it is `stock`. |
+| `tier` | `preferred`, `prototyping`, or `stock`. Match the [Filament Guide](/3d-printing/filament-guide/) policy — if it is not one of the three approved functional materials or a PLA, it is `stock`. |
 | `color` / `spool` | Colorway and spool weight, e.g. `"White"` / `"1 kg"`. |
 | `nozzle` / `bed` / `drying` | From the manufacturer's page, not a guess. Use en-dashes and `°C`. |
 | `hardened` | Start the value with `Required`, `Recommended`, or `Yes` to trigger the ⚙️ badge. Anything else (`"No"`) shows no badge. |

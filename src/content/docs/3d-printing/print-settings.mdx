@@ -116,9 +116,9 @@ nozzle (AMS-fed color or material swaps), leave the prime tower on — that case
 
 ### Universal zero-gap interface
 
-Use for **72D TPU, PCTG, and PETG-GF**.
+Use for **72D TPU and PETG-GF**.
 
-- **Main part and support towers:** the same functional material as the part (PCTG, PETG-GF, or
+- **Main part and support towers:** the same functional material as the part (PETG-GF or
   72D TPU).
 - **Support interface layer:** standard **white PLA** in Nozzle 2.
 - **Top / bottom Z distance:** **0.0 mm — zero gap.**
@@ -147,9 +147,9 @@ layers, or you are printing a solid block.
 ## Overhang & bridging limits
 
 - **45° is the safe overhang limit** for every material we stock. PLA with full fan can push
-  toward 60°; PCTG, PETG-GF, and the nylons start drooping past 45–50°.
+  toward 60°; PETG-GF and the nylons start drooping past 45–50°.
 - **Bridges** (flat spans anchored at both ends) print fine to roughly **20–30 mm in PLA** with
-  100% fan, less in PCTG and PETG-GF, and less again in low-fan materials like PPA-GF and PC.
+  100% fan, less in PETG-GF, and less again in low-fan materials like PPA-GF and PC.
   Longer than that: add a support pillar mid-span or chamfer the opening.
 - Design tip: turn rectangular horizontal openings into **teardrops or 45° diamonds** and they
   print with no support at all.
@@ -176,35 +176,19 @@ Minis use the 0.6 mm equivalents from the
 />
 
 <PrintSettingPreset
-  title="Structural PCTG — the default"
+  title="Structural PETG-GF — the default"
   slicer="Bambu Studio"
   settings={{
     'Layer height': '0.20 mm',
     'Walls': '6',
     'Top / bottom layers': '6 / 6',
     'Line width': '0.50 mm',
-    'Infill': '30% gyroid',
+    'Infill': '30–35% gyroid (cubic for max-stiffness parts)',
     'Part fan': '20–40% (lower = stronger)',
-    'Nozzle': '265 °C — high end of range',
-    'Plate': 'Textured PEI, bed 75 °C',
-  }}
-  notes="On-robot brackets, gearbox plates, covers, and electronics shields. Push speed freely — PCTG flows 14–20 mm³/s."
-/>
-
-<PrintSettingPreset
-  title="Rigid PETG-GF"
-  slicer="Bambu Studio"
-  settings={{
-    'Layer height': '0.20 mm',
-    'Walls': '6',
-    'Top / bottom layers': '6 / 6',
-    'Line width': '0.50 mm',
-    'Infill': '35% cubic',
-    'Part fan': '20–40%',
     'Nozzle': '265 °C, hardened only',
     'Plate': 'Textured PEI, bed 75 °C',
   }}
-  notes="Motor mounts and dead-axle spacers — parts that must not deflect. Hardened nozzle required; never a 0.2 mm."
+  notes="On-robot brackets, gearbox plates, covers, electronics shields, motor mounts, and dead-axle spacers — the default answer for an on-robot part. Hardened nozzle required; never a 0.2 mm."
 />
 
 <PrintSettingPreset
