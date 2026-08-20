@@ -281,7 +281,7 @@
     "ams": "NOT AMS-safe — documented jams; needs direct-drive + external spool holder",
     "url": "https://www.esun3d.com/elastic-tpe-83a-product/",
     "notes": "Softer and stretchier than TPU. Speed <50 mm/s, 100% part-cooling fan. A sizzling sound while printing means the filament is wet.",
-    "caution": null,
+    "caution": "No Bambu Studio profile exists for this material on any machine -- confirmed against the vendor bundle. It is also much softer than the 95A TPU family profile, so that family will feed it badly. Mentor-only, hand-tuned settings.",
     "location": null
   },
   {
@@ -338,7 +338,7 @@
     "ams": "AMS and AMS Lite yes — NOT AMS 2",
     "url": "https://siraya.tech/products/fibreheart-tpu-gf-15-glass-fiber-filament",
     "notes": "Official Bambu Studio profiles exist for X1C/P1S/A1/H2D/H2S/X2D and more, plus OrcaSlicer — download from siraya.tech/pages/print-settings-download. No native PrusaSlicer profile. Speed 30–100 mm/s.",
-    "caution": "Glass-fiber dust: N95+ mask and goggles when sanding or machining printed parts.",
+    "caution": "Glass-fiber dust: N95+ mask and goggles when sanding or machining printed parts. No Bambu Studio profile exists for TPU-GF on any machine -- confirmed against the vendor bundle. Mentor-only, hand-tuned settings until one exists.",
     "location": null
   },
   {
@@ -509,7 +509,7 @@
     "ams": "No",
     "url": "https://www.go-3dprint.com/products/taulman-alloy-910-filament-1-75mm",
     "notes": "Highest tensile strength in taulman's nylon lineup (~56 MPa, 8,100+ PSI), elongation 31–32%. Lower water absorption than their other nylons. Pick this for mechanical linkages. Fan off, retraction 3–4 mm.",
-    "caution": "taulman3d.com is dead/domain-squatted — specs come from a reseller. Drying guidance from third parties is inconsistent (3 h/150 °C to '8 h/82 °C insufficient'); dry longer rather than shorter.",
+    "caution": "taulman3d.com is dead/domain-squatted — specs come from a reseller. Drying guidance from third parties is inconsistent (3 h/150 °C to '8 h/82 °C insufficient'); dry longer rather than shorter. The nearest Bambu Studio profile is Generic PA-CF, a carbon-filled nylon -- this spool is unfilled, so flow and shrinkage will differ even though the temperature band overlaps enough to print. Confirm on a real print before trusting it for a part that matters.",
     "location": null
   },
   {
@@ -528,7 +528,7 @@
     "ams": "No",
     "url": "https://www.amazon.com/taulman3D-Plate-Printing-Filament-1-75mm/dp/B01N3SXUVE",
     "notes": "'Cast Plate' is a filament grade emulating industrial cast nylon plate (~95 MPa tensile, HDT 112 °C / 185 °C annealed) — not a bundled bed accessory. Hotter than taulman's 645/680 nylons. Speed 38–40 mm/s, fan off.",
-    "caution": "Never use nylon as support for nylon — it welds permanently. Use taulman SAC1060 breakaway (235–255 °C) or PVA; not HIPS. Bed figure not confirmed on a live taulman page (domain dead).",
+    "caution": "Never use nylon as support for nylon — it welds permanently. Use taulman SAC1060 breakaway (235–255 °C) or PVA; not HIPS. Bed figure not confirmed on a live taulman page (domain dead). The nearest Bambu Studio profile is Generic PA-CF, a carbon-filled nylon -- this spool is unfilled, so flow and shrinkage will differ even though the temperature band overlaps enough to print. Confirm on a real print before trusting it for a part that matters.",
     "location": null
   },
   {
@@ -547,7 +547,7 @@
     "ams": "No",
     "url": "https://www.go-3dprint.com/products/taulman-nylon-tpe-pctpe-co-polymer-filament-1-75mm.html",
     "notes": "taulman's most flexible nylon — elongation 370–497%, tensile 35 MPa. For wearables, vibration damping, and grips. Fan off, ~30–50 mm/s.",
-    "caution": "The flexible outlier in the taulman family — not a strength competitor to Alloy 910. Shore hardness (~D45) is estimated, not manufacturer-verified. taulman3d.com is dead; specs are reseller-sourced.",
+    "caution": "The flexible outlier in the taulman family — not a strength competitor to Alloy 910. Shore hardness (~D45) is estimated, not manufacturer-verified. taulman3d.com is dead; specs are reseller-sourced. No Bambu Studio profile exists for this nylon/TPE co-polymer on any machine -- confirmed against the vendor bundle. Mentor-only, hand-tuned settings.",
     "location": null
   },
   {
@@ -623,7 +623,7 @@
     "ams": "Not recommended",
     "url": "https://www.amazon.com/PRILINE-Printer-Filament-Dimensional-Accuracy/dp/B09SZ8HMR9",
     "notes": "Fan off or ≤20%, 10 mm brim recommended. No slicer profile — Generic PC-CF, or Generic PC with the hardened-nozzle flag. Speed ~40–50 mm/s.",
-    "caution": "A Prusa forum thread reports inconsistent spool quality from this brand — spot-check a spool before trusting it on a competition part.",
+    "caution": "A Prusa forum thread reports inconsistent spool quality from this brand — spot-check a spool before trusting it on a competition part. No Bambu Studio profile exists for PC-CF on any machine we own -- confirmed against the vendor bundle. Start from the plain PC profile and expect to hand-tune; mentor-only until it has a real profile.",
     "location": null
   },
   {
@@ -661,7 +661,7 @@
     "ams": "No — not compatible with any AMS",
     "url": "https://bambulab.com/en-us/filament/pps-cf",
     "notes": "The hottest material in the building. Higher values in the nozzle range improve Z-direction strength. Optional anneal at 180–220 °C for 6–12 h.",
-    "caution": "Needs a hotend over 300 °C AND a heated chamber — check the machine before loading this; most of the fleet cannot run it.",
+    "caution": "Needs a hotend over 300 °C AND a heated chamber -- H2D only. Bambu ships no PPS-CF profile for the X2D at all (confirmed against the vendor bundle), so it cannot be sliced there no matter what the machine can physically reach; not a policy choice, a hard gap. Most of the rest of the fleet cannot run it either.",
     "location": null
   },
   {

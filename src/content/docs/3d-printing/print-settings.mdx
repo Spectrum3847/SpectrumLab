@@ -112,6 +112,11 @@ material B stays on nozzle 2 for the entire print — nothing is ever pushed bac
 hotend, so there is nothing to purge. Leaving it on just burns plate space and print time for no
 quality benefit. If a job ever *does* route more than one filament through the same physical
 nozzle (AMS-fed color or material swaps), leave the prime tower on — that case still needs it.
+
+Measured on an X2D zero-gap test slice (same model, same 108 nozzle changes): with the tower on,
+the plate came out to 23.62 g and 1h50m, **54% of that weight (12.69 g) was the prime tower
+alone** — more than the part itself. Tower off: 10.93 g and 1h9m, same part, same supports. Half
+the filament, 41 fewer minutes, nothing else changed.
 </SafetyWarning>
 
 ### Universal zero-gap interface
@@ -200,15 +205,16 @@ a weak part.
   settings={{
     'Layer height': '0.20 mm',
     'Walls': '6–8',
-    'Top / bottom layers': '5 / 5',
+    'Top / bottom layers': '6 / 6',
     'Infill': '30% gyroid',
     'Speed': '40–80 mm/s',
+    'Nozzle': '240 °C — high end of range',
     'Volumetric flow': 'Cap at ≤ 6 mm³/s',
     'Part fan': '20–40%',
     'Feed': 'AMS — flow-capped at 6 mm³/s',
     'Plate': 'Textured PEI, bed 50 °C',
   }}
-  notes="Impact armor, rollers, hard stops, bumper brackets. Dry at 55 °C for 6–8 h first. Flow cap protects the extruder gears from grinding."
+  notes="Impact armor, rollers, hard stops, bumper brackets. Dry at 55 °C for 6–8 h first. Flow cap protects the extruder gears from grinding. 6/6 top/bottom layers, not 5 -- at 0.20 mm that is 1.20 mm, the floor from the priority hierarchy above; 5 layers lands at 1.00 mm and under-protects against bolt pull-through."
 />
 
 <PrintSettingPreset
@@ -220,13 +226,13 @@ a weak part.
     'Top / bottom layers': '7 / 7',
     'Line width': '0.50 mm',
     'Infill': '40% gyroid',
-    'Nozzle': '300–320 °C, hardened',
+    'Nozzle': '310 °C on H2D, 300 °C on X2D — hardened',
     'Part fan': 'Off',
     'Chamber': '60–80 °C',
     'Plate': 'Textured PEI, bed 90 °C',
     'Printer': 'H2D / X2D only',
   }}
-  notes="Extreme-load gearbox blocks and high-temp mounts. Spool comes straight from 4–6 h at 80 °C. First layer 20–30 mm/s. Mentor sign-off before starting."
+  notes="Extreme-load gearbox blocks and high-temp mounts. Spool comes straight from 4–6 h at 80 °C. First layer 20–30 mm/s. Mentor sign-off before starting. The X2D's hotend caps at 300 °C — do not push toward the H2D's 310 °C on that machine."
 />
 
 ## Related pages

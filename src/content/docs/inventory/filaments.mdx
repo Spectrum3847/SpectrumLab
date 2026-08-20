@@ -39,14 +39,21 @@ For **which material to choose** for a part, start at the
 - **72D TPU — one spool type**, the CC3D Hard TPU. Impact armor depends entirely on it, so it is
   worth keeping a spare on hand rather than discovering it is empty mid-build. The nearest
   substitute on the shelf is the 67D INNOVATEFIL TPU-CF, and it is only a 0.5 kg spool.
-- **PPS-CF needs a machine most of the fleet doesn't have.** The Bambu PPS-CF wants a 310–340 °C
-  nozzle and a 60–90 °C heated chamber — that is the H2D and X2D, not an X1C and definitely not a
-  Mini. It is logged so nobody loads it by mistake.
+- **PPS-CF needs a machine most of the fleet doesn't have — and it's H2D only, not X2D.** The
+  Bambu PPS-CF wants a 310–340 °C nozzle and a 60–90 °C heated chamber, which rules out the X1Cs
+  and the Minis outright. The X2D can physically reach those numbers, but Bambu ships no PPS-CF
+  slicer profile for it at all — a hard vendor gap, not a policy choice. It is logged so nobody
+  loads it expecting the X2D to work.
 - **PPA-GF — one spool type**, the Siraya Fibreheart. Same single-point-of-failure problem, and
   it is special-order with a mentor's approval.
 - **Siraya TPU-GF is 64D, not 72D.** It is a structural glass-filled TPU and close to what policy
   asks for, but it is not the specified 72D — logged as use-it-up until someone decides to promote
   it.
+- **Four spools have no Bambu Studio profile at all, on any machine** — confirmed against the
+  vendor bundle, not a guess: PRILINE PC-CF, eSUN TPE-83A, Siraya Fibreheart TPU-GF, and taulman
+  PCTPE. There is no family preset to fall back to either; a student picking one of these gets
+  nothing to start from. Treat all four as mentor-only, hand-tuned settings, and see each row's
+  caution for the nearest starting point.
 - **Bambu Support for PA/PET is discontinued.** If any spools remain, use them; Bambu now points
   at ABS/ASA for that job, which we deliberately do not stock. Our answer is the
   [zero-gap PLA interface](/3d-printing/print-settings/#universal-zero-gap-interface) instead.
