@@ -7,6 +7,7 @@ import SafetyWarning from '../../../components/SafetyWarning.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
 import DrawerLayoutMap from '../../../components/DrawerLayoutMap.astro';
 import TutorialLink from '../../../components/TutorialLink.astro';
+import ConsumablesTable from '../../../components/ConsumablesTable.astro';
 
 Most of a robot is fasteners, and most fastener problems are self-inflicted: wrong size driver, worn tool, or the wrong tool entirely. This page covers the hand drivers in the red toolbox. For powered driving, see the [Milwaukee M12 Ecosystem](/portable-power/m12-ecosystem/) — and remember an impact driver on a small screw is how threads die.
 
@@ -83,6 +84,35 @@ To prevent cam-out (the driver twisting up and out of a Phillips head):
 4. If it slips once, stop. Re-check size and alignment before you strip it.
 
 Full-size screwdrivers are **drawer 13** (flat head on the left, Phillips on the right); precision drivers for electronics-scale fasteners are **drawer 14, Small Screwdrivers** — see [Soldering & Test Bench](/electrical/soldering-test-bench/).
+
+## When you strip one anyway
+
+It happens, usually to a 10-32 button head buried where you couldn't get the driver square. The shop
+keeps **ENGINEER PZ-58 screw removal pliers** for exactly this: the jaws bite the *outside* of the
+screw head and turn it, so a rounded-out socket doesn't matter. Two notes from the team's own review
+of them:
+
+- They need real grip strength. If you can't close them hard enough, get someone who can rather
+  than chewing the head further.
+- Get the jaws fully onto the head and square before you squeeze. A partial bite rounds the head's
+  outside edge too, and then nothing will grip it.
+
+Once it's out, throw the screw away — a head that needed pliers is not going back in a robot.
+
+## Torque drivers and hex bits
+
+For anything that needs a repeatable torque — swerve, gearboxes, anything the manual gives a spec
+for — use a torque driver with a **1/4" hex bit** rather than a hex key and judgement. The shop
+stocks cheap bits in the two sizes that matter (**5/32"** for 10-32 socket head, **1/8"** for 10-32
+button and flat) precisely so there is always one in the driver, the drill, and the impact without
+anyone hunting.
+
+## The shop's picks
+
+These are the specific tools the team settled on after trying cheaper versions, with prices and
+reorder links. Full ledger on the [Consumables](/inventory/consumables/) page.
+
+<ConsumablesTable category="Hand Tools" />
 
 ## FRC-common sizes
 

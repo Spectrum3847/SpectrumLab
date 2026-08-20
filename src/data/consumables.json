@@ -922,7 +922,7 @@
   },
   {
     "id": "loctite-blue-gel",
-    "name": "Loctite 242/243 Blue Threadlocker (gel)",
+    "name": "Loctite 242/243 Blue Threadlocker (gel) — backup",
     "category": "Shop Supplies",
     "vendor": "Home Depot / Amazon",
     "price": "~$10",
@@ -931,7 +931,7 @@
     "url": "https://www.amazon.com/s?k=loctite+blue+threadlocker+gel",
     "location": "StackTech hand tower — Grease & Loctite drawer",
     "machines": [],
-    "notes": "Gel form: does not dry up like the stick and is far less messy than the drip bottle. Every bolt that is not held by a nylock gets it — EXCEPT anything touching polycarbonate/Lexan, ABS or acrylic, which threadlocker cracks. Nylon and Delrin are fine. From the team [maintenance guide](https://spectrum3847.org/resources/maintenance-guide/)."
+    "notes": "Works, and there is some on the shelf, but the shop's first choice is the Vibra-Tite 125 gel above. Never on polycarbonate/Lexan, ABS or acrylic; nylon and Delrin are fine."
   },
   {
     "id": "shop-towels",
@@ -945,5 +945,153 @@
     "location": "Cleaning shelf, machine shop",
     "machines": [],
     "notes": "Stronger than paper towels and disposable — the right rag for grease and cutting oil. Microfibre cloths for wheels, rollers and anything you want to stay clean. (list estimate — no receipt on file; update the price when we next order)."
+  },
+  {
+    "id": "pz58-screw-removal-pliers",
+    "name": "ENGINEER PZ-58 Screw Removal Pliers",
+    "category": "Hand Tools",
+    "vendor": "Amazon (ENGINEER)",
+    "price": "$22",
+    "unit": "each",
+    "partNumber": "PZ-58",
+    "url": "https://amzn.to/3S1Iijx",
+    "location": "Red toolbox drawer 4 (Pliers)",
+    "machines": [],
+    "notes": "Removes stripped 10-32 button heads by gripping the outside of the head. Needs real grip strength — often easier for an adult than a student. Picked out in Spectrum's own review of a year of tool and supply purchases as one of the items worth the price."
+  },
+  {
+    "id": "knipex-snap-ring-pliers",
+    "name": "KNIPEX Snap Ring Pliers",
+    "category": "Hand Tools",
+    "vendor": "Amazon (KNIPEX)",
+    "price": "$30",
+    "unit": "each",
+    "partNumber": "KNIPEX snap ring pliers",
+    "url": "https://amzn.to/4ec77lt",
+    "location": "Red toolbox drawer 4 (Pliers)",
+    "machines": [],
+    "notes": "Better than the cheaper snap-ring pliers we tried: the tips do not bend, they hold the ring, and they open around a hex shaft. Picked out in Spectrum's own review of a year of tool and supply purchases as one of the items worth the price."
+  },
+  {
+    "id": "vessel-electric-ratchet",
+    "name": "VESSEL 400ER3 Electric Slim Ratchet",
+    "category": "Hand Tools",
+    "vendor": "eBay (imported from Japan)",
+    "price": "$90–120",
+    "unit": "each",
+    "partNumber": "VESSEL 400ER3",
+    "url": "https://www.ebay.com/sch/i.html?_nkw=VESSEL+400ER3",
+    "location": "StackTech power tower",
+    "machines": [],
+    "notes": "USB-C powered, head barely bigger than a manual ratchet, so it reaches into the robot and turns a bolt where there is no swing room. Niche, but it makes some repairs 10x faster. We own two. Picked out in Spectrum's own review of a year of tool and supply purchases as one of the items worth the price."
+  },
+  {
+    "id": "wera-joker-38",
+    "name": "Wera Joker 3/8\" Ratcheting Combination Wrench",
+    "category": "Hand Tools",
+    "vendor": "RS Online (Wera)",
+    "price": "$12 + shipping",
+    "unit": "each",
+    "partNumber": "05073281001",
+    "url": "https://us.rs-online.com/product/wera-tools/05073281001/71409481/",
+    "location": "Red toolbox drawer 11 (Wrenches)",
+    "machines": [],
+    "notes": "The jaw holds a nut while you start it — worth it the first time it saves you three minutes on a hard-to-reach bolt in the pit. Picked out in Spectrum's own review of a year of tool and supply purchases as one of the items worth the price."
+  },
+  {
+    "id": "hex-bits-quarter-inch",
+    "name": "1/4\" Hex Bits, 5/32\" and 1/8\"",
+    "category": "Fasteners",
+    "vendor": "Amazon",
+    "price": "~$1",
+    "unit": "each",
+    "partNumber": "1/4\" hex shank driver bits",
+    "url": "https://amzn.to/4eoeapJ",
+    "location": "Red toolbox drawer 10; StackTech Allen Wrenches drawer",
+    "machines": [
+      "m12-drill",
+      "m12-impact"
+    ],
+    "notes": "Buy a pile. 5/32\" drives 10-32 socket head, 1/8\" drives 10-32 button and flat. Having them loose for torque drivers, drills and impacts is what makes torquing to spec actually happen. Picked out in Spectrum's own review of a year of tool and supply purchases as one of the items worth the price."
+  },
+  {
+    "id": "niimbot-d110",
+    "name": "NIIMBOT D110 Mini Label Maker",
+    "category": "Organization",
+    "vendor": "Amazon (NIIMBOT)",
+    "price": "$18",
+    "unit": "each",
+    "partNumber": "D110",
+    "url": "https://amzn.to/4xwS6SL",
+    "location": "Graphics bench / label maker drawer",
+    "machines": [],
+    "notes": "Small Bluetooth label printer for robot parts, wires and tool locations. Cheap enough that there is no excuse for an unlabelled anything. Picked out in Spectrum's own review of a year of tool and supply purchases as one of the items worth the price."
+  },
+  {
+    "id": "crc-plastic-safe-cleaner",
+    "name": "CRC Plastic Safe Contact Cleaner",
+    "category": "Shop Supplies",
+    "vendor": "Amazon (CRC)",
+    "price": "$20",
+    "unit": "can",
+    "partNumber": "Plastic Safe Contact Cleaner",
+    "url": "https://amzn.to/3SJeEj5",
+    "location": "Electrical bench + shop cleaning shelf",
+    "machines": [],
+    "notes": "The shop's general-purpose cleaner: robot electronics, silicone rollers (it is plastic-safe, which most contact cleaners are not), and general dust and debris — it lifts grime so it wipes up. Picked out in Spectrum's own review of a year of tool and supply purchases as one of the items worth the price."
+  },
+  {
+    "id": "vibratite-125-gel",
+    "name": "Vibra-Tite 125 Removable Threadlocker Gel",
+    "category": "Shop Supplies",
+    "vendor": "Amazon (Vibra-Tite)",
+    "price": "$16",
+    "unit": "gel tube",
+    "partNumber": "12535 (125, medium strength)",
+    "url": "https://amzn.to/4fNH313",
+    "location": "StackTech hand tower — Grease & Loctite drawer",
+    "machines": [],
+    "notes": "\"By far our favourite thread locker.\" The gel applies far more cleanly than the liquid bottles and does not dry out like the glue-stick kind. We stock medium and high strength. Never on polycarbonate, Lexan, ABS or acrylic. Picked out in Spectrum's own review of a year of tool and supply purchases as one of the items worth the price."
+  },
+  {
+    "id": "battery-straps",
+    "name": "Sea to Summit Hook Release Accessory Straps",
+    "category": "Electrical",
+    "vendor": "Amazon (Sea to Summit)",
+    "price": "$9",
+    "unit": "each",
+    "partNumber": "Hook Release Accessory Strap",
+    "url": "https://amzn.to/4gn7RW8",
+    "location": "Electrical bench / robot power bins",
+    "machines": [],
+    "notes": "Battery retention straps. Very secure, cut to any length, and they pass through a 1/2\" drilled hole — which is what makes them good for getting through inspection. Picked out in Spectrum's own review of a year of tool and supply purchases as one of the items worth the price."
+  },
+  {
+    "id": "tape-measure-dual",
+    "name": "WISEUP Magnetic Tape Measure (fractions + metric)",
+    "category": "Hand Tools",
+    "vendor": "Amazon (WISEUP)",
+    "price": "$19",
+    "unit": "2-pack",
+    "partNumber": "Industrial, 1/8 fractions + metric",
+    "url": "https://amzn.to/4vIJPcK",
+    "location": "Red toolbox drawer 9 (Measuring)",
+    "machines": [],
+    "notes": "Imperial fractions for shop work and metric for measuring out auton paths, on one tape. Magnetic tip. Durable for the price — we own six or eight. Picked out in Spectrum's own review of a year of tool and supply purchases as one of the items worth the price."
+  },
+  {
+    "id": "m12-band-file-belts",
+    "name": "M12 Band File Belts",
+    "category": "Cutting Tools",
+    "vendor": "Amazon / Milwaukee",
+    "price": "~$20",
+    "unit": "pack",
+    "partNumber": "M12 band file abrasive belts",
+    "url": "https://amzn.to/4eKRMIA",
+    "location": "StackTech power tower",
+    "machines": [
+      "m12-band-file"
+    ],
+    "notes": "Belts for the M12 band file — the tool that sands parts already bolted to the robot, in spaces no other sander reaches. Faster than hand-filing and a pit favourite. Picked out in Spectrum's own review of a year of tool and supply purchases as one of the items worth the price."
   }
 ]
