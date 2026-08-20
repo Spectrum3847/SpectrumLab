@@ -1,0 +1,105 @@
+---
+title: "Touchscreen Filament Settings"
+description: "What to tell the printer's touch panel for each slicer filament profile, including the PPA-GF workaround and the one material that never goes in the AMS."
+---
+
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+
+The slicer and the printer keep **separate** filament lists. Our profile names
+("02 PETG-GF — robot parts") exist only in Bambu Studio. The touch panel shows Bambu's own
+firmware list, which we cannot rename or add to.
+
+So there are two places to say what is loaded, and they have to agree.
+
+## Do I have to set it twice?
+
+Usually not. Every filament profile carries a `GFxx` code that both sides understand.
+
+- **On a machine with an AMS** — set the slot in Bambu Studio, then use **Sync filaments with
+  AMS**. Studio writes the code to the printer and the panel slot updates itself. Set it once, in
+  the slicer.
+- **Genuine Bambu spools** carry the code on an RFID tag, so the AMS reads them automatically.
+- **Set it by hand on the panel** for anything on the external spool holder, and for the **X2D**
+  until its AMS-HT arrives.
+
+## The mapping
+
+Find the slicer profile you picked, then select the **touch panel** entry next to it.
+
+| Slicer filament profile | Select on the touch panel | Panel temp range |
+| --- | --- | --- |
+| 01 PLA — draft only | Generic → **PLA** | 190–240 °C |
+| 02 PETG-GF — robot parts | Generic → **PETG-CF** | 240–270 °C |
+| 03 PETG — general | Generic → **PETG** | 220–270 °C |
+| 04 TPU 72D — impact parts | Bambu → **TPU for AMS** | 220–240 °C |
+| 05 TPU 95A — flexible | Bambu → **TPU 95A** | 200–250 °C |
+| 06 PPA-GF — competition | Bambu → **PA-GF** — read the note below | 260–300 °C |
+| 07 PPS-CF — H2D only | Bambu → **PPS-CF**, external spool only | 310–340 °C |
+| 08 PA-CF | Generic → **PA-CF** | 260–300 °C |
+| 09 PC | Generic → **PC** | 260–290 °C |
+| 10 PLA — support interface | Bambu → **Support for PLA** | 190–240 °C |
+
+## Why PETG-GF says PETG-CF
+
+There is no PETG-GF option anywhere in Bambu's list — not in the slicer, not on the panel.
+**PETG-CF is the correct choice on both sides.** Glass-filled and carbon-filled PETG print in the
+same 240–270 °C band with near-identical flow, so it is a genuine match rather than a workaround.
+
+## PPA-GF: the panel says PA-GF on purpose
+
+**Bambu will not accept PPA-GF in an AMS slot.** The printer refuses it, so the slot has to be
+told something else.
+
+We deliberately use **PA-GF** — a filament the lab does not stock and never will. That is the
+whole point: if a panel slot says PA-GF, it holds our PPA-GF. There is no real PA-GF in the
+building to confuse it with.
+
+It is also the closest honest match. PPA-GF is a glass-filled nylon and so is PA-GF, so the AMS
+loads, unloads, and purges it the same way.
+
+<SafetyWarning type="warning" title="Do not 'correct' PA-GF to PPA-GF">
+Changing the panel to PPA-GF stops the AMS from accepting the spool, and the print will not start.
+This is a deliberate lab convention, not a mistake.
+
+One side effect: PA-GF tops out at 300 °C on the panel while PPA-GF wants up to 320 °C. The
+**slicer** commands the real print temperature, so this only affects the panel's band. If a
+PPA-GF job shows a temperature-mismatch warning, that is why — ask a mentor, do not change the
+panel setting.
+</SafetyWarning>
+
+## PPS-CF never goes in the AMS
+
+PPS-CF is the **one material that always feeds from the external spool holder.** Bambu warns it is
+brittle and can snap inside the bent PTFE tube above the AMS, and it is prohibited with high-flow
+nozzles. **H2D only, external spool, mentor sign-off.**
+
+Everything else in the lab runs through the AMS, including Hard 72D TPU — see the
+[Bambu Lab Fleet](/3d-printing/bambu-fleet/) page for the flow cap that goes with it.
+
+## Generic or Bambu?
+
+Pick **Generic** unless the spool is genuinely Bambu-branded. The Bambu entries assume Bambu's own
+filament and, for RFID spools, expect the tag to match. Our PPA-GF is Siraya Fibreheart, our
+PETG-GF is ELEGOO, and most of our PLA is ELEGOO, DURAMIC, or eSUN — all Generic.
+
+The four Bambu entries in the table above are exceptions only because Bambu's list has no Generic
+equivalent for them.
+
+## Getting it wrong
+
+The printer uses its own panel setting for **hotend temperature, bed temperature, and AMS
+drying**. A mismatch is not cosmetic:
+
+- Panel set low, slicer set high → the extruder grinds or jams
+- Panel set high, slicer set low → the filament cooks in the hotend and needs a teardown
+
+<SafetyWarning type="tip" title="The thirty-second check">
+Before you start a print: the material shown on the panel slot should match the material in the
+slicer's filament slot. Same material, same slot number. That is the whole check.
+</SafetyWarning>
+
+## Related pages
+
+- [Print Settings & Supports](/3d-printing/print-settings/) — which profile to pick and why
+- [Filament Guide](/3d-printing/filament-guide/) — pick the material before the settings
+- [Bambu Lab Fleet](/3d-printing/bambu-fleet/) — AMS layout per machine and the TPU flow cap

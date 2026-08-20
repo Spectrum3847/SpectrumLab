@@ -259,7 +259,7 @@
     "drying": "60–65 °C / 6 h (highly hygroscopic)",
     "hardened": "No",
     "enclosure": "Not required",
-    "ams": "Not AMS-safe — external spool only",
+    "ams": "AMS-fed in the lab — cap volumetric flow at 6 mm³/s",
     "url": "https://www.amazon.com/CC3D-Hardness-Transparent-Toughness-Comparable/dp/B0CFY1S38G",
     "notes": "Shore 72D — much stiffer than 95A TPU; bendable but not stretchy. Speed 30–40 mm/s, retraction 0–4 mm. Start from Generic TPU / Bambu TPU-95A.",
     "caution": "Bed temp sources conflict badly (reseller says 60 °C, aggregator says 30–35 °C). Layer adhesion is very temperature-sensitive — test on a small part first.",

@@ -105,6 +105,7 @@ export default defineConfig({
           items: [
             { label: 'Filament Guide & Matrix', slug: '3d-printing/filament-guide' },
             { label: 'Print Settings & Supports', slug: '3d-printing/print-settings' },
+            { label: 'Touchscreen Filament Settings', slug: '3d-printing/touchscreen-filament-map' },
             { label: 'Bambu Lab Fleet', slug: '3d-printing/bambu-fleet' },
             { label: 'Prusa Mini+ Farm', slug: '3d-printing/prusa-farm' },
           ],
