@@ -69,7 +69,7 @@
     "useCases": "Direct-impact armor, intake rollers, pulleys, hard stops, and bumper brackets — anything that takes a hit and must not shatter.",
     "pricePerKg": null,
     "reorderUrl": "https://www.amazon.com/CC3D-Hardness-Transparent-Toughness-Comparable/dp/B0CFY1S38G",
-    "notes": "72D is a structural TPU, not a squishy one — it prints and bolts like a rigid plastic but absorbs impact instead of cracking. Direct-drive extruders only; feed from an external spool holder."
+    "notes": "72D is a structural TPU, not a squishy one — it prints and bolts like a rigid plastic but absorbs impact instead of cracking. Direct-drive extruders only. On our Bambus it runs through the AMS with volumetric flow capped at 6 mm³/s."
   },
   {
     "id": "ppa-gf",
