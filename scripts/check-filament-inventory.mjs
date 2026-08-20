@@ -35,6 +35,7 @@ const FAMILIES = [
   'TPU / TPE',
   'Nylon / PPA',
   'Polycarbonate',
+  'PPS',
   'Polypropylene',
   'Support',
 ];
