@@ -93,7 +93,7 @@
     "useCases": "Extreme-load gearbox blocks and high-temp mounts (185 °C+ HDT). The escalation material when PCTG and PETG-GF have actually failed.",
     "pricePerKg": null,
     "reorderUrl": "https://siraya.tech/products/fibreheart-ppa-gf-filament",
-    "notes": "Glass-filled nylon — immune to Loctite and the only material here that holds strength near the curing oven. Needs a respirator for post-processing and mentor sign-off to run."
+    "notes": "Glass-filled nylon — immune to Loctite and the only material here that holds strength near the curing oven. Needs a respirator for post-processing and mentor sign-off to run. Siraya's own spec flags this as not AMS-compatible, but we run it through the H2D's AMS HT anyway by declaring the slot as Bambu PAHT-CF and overriding nozzle/chamber/drying to the real numbers — see the Filament Inventory entry for the exact overrides. Never declare it as Bambu PPA-CF; that profile is itself non-AMS-compatible and may get the load refused."
   },
   {
     "id": "pla",

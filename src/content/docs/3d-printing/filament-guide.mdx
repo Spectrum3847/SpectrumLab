@@ -124,6 +124,15 @@ sustained load. The costs are real: 300–320 °C nozzle, heated chamber, mandat
 every session, and glass dust that needs an N95 and eye protection during any sanding. H2D or
 X2D only, and a mentor signs off before it starts.
 
+<SafetyWarning type="tip" title="Loading PPA-GF into the AMS HT">
+Siraya's own spec says PPA-GF is not AMS-compatible, but we run it through the H2D's AMS HT
+anyway: declare the slot as **Bambu PAHT-CF** — the nearest profile we own that Bambu actually
+rates for the AMS HT, with matching hardened-nozzle, enclosure, and mandatory-drying
+requirements — then manually override nozzle to 300–320 °C, chamber to 60–80 °C, and drying to
+80–100 °C for 4–6 h. Do not declare it as Bambu PPA-CF; that profile is flagged non-AMS-compatible
+(any model) and may get the load refused outright.
+</SafetyWarning>
+
 ### PLA — prototypes, jigs, and support interface
 
 <FilamentCard id="pla" />
