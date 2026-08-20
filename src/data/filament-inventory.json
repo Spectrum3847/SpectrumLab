@@ -487,9 +487,9 @@
     "drying": "80–100 °C / 4–6 h before EVERY session",
     "hardened": "Required, ≥0.4 mm",
     "enclosure": "Enclosed/heated chamber strongly recommended",
-    "ams": "Explicitly NOT compatible — but see notes: we run it through the H2D's AMS HT anyway",
+    "ams": "Explicitly NOT compatible — but see notes: we run it through the H2D's AMS HT anyway (declared as Bambu PA6-GF)",
     "url": "https://siraya.tech/products/fibreheart-ppa-gf-filament",
-    "notes": "Bambu Studio + OrcaSlicer profiles at siraya.tech/pages/print-settings-download. Fan off. Speed 30–100 mm/s, first layer 20–30. In practice we load it in the H2D's AMS HT by declaring the slot as Bambu PAHT-CF — the nearest AMS-HT-rated profile we own, requiring the same hardened nozzle, full enclosure, and mandatory per-session drying — then manually override nozzle to 300–320 °C, chamber to 60–80 °C, and drying to 80–100 °C / 4–6 h. Do NOT declare it as Bambu PPA-CF: that profile is itself flagged non-AMS-compatible (any model) and may cause the AMS HT to refuse the load.",
+    "notes": "Bambu Studio + OrcaSlicer profiles at siraya.tech/pages/print-settings-download. Fan off. Speed 30–100 mm/s, first layer 20–30. In practice we load it in the H2D's AMS HT by declaring the slot as Bambu PA6-GF — Bambu's own glass-fiber nylon profile, a closer material match than the carbon-fiber PAHT-CF profile we tried first — then manually override nozzle to 300–320 °C, chamber to 60–80 °C, and drying to 80–100 °C / 4–6 h. Do NOT declare it as Bambu PPA-CF: that profile is itself flagged non-AMS-compatible (any model) and may cause the AMS HT to refuse the load.",
     "caution": "Manufacturer explicitly recommends an N95+ respirator and HEPA/carbon ventilation for printing AND post-processing. Run it in the enclosed printer with the vent on.",
     "location": null
   },
