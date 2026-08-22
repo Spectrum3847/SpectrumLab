@@ -17,7 +17,10 @@ interface Props {
 const { specs = {}, ppe = [], training } = Astro.props;
 
 const PPE_BADGES: Record<string, { icon: string; label: string; critical?: boolean }> = {
-  glasses: { icon: '🥽', label: 'Safety Glasses' },
+  glasses: { icon: '🥽', label: 'Safety Glasses (ANSI Z87+)' },
+  // Rotating machinery: goggles seal to the face, glasses do not. Marked
+  // critical so it reads as a hard requirement, not "eye protection of some kind".
+  goggles: { icon: '🥽', label: 'SAFETY GOGGLES — not glasses', critical: true },
   hearing: { icon: '🎧', label: 'Hearing Protection' },
   respirator: { icon: '😷', label: 'Respirator' },
   'respirator-recommended': { icon: '😷', label: 'Respirator (recommended)' },

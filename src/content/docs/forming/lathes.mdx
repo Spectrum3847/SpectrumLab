@@ -25,7 +25,7 @@ The Precision Matthews PM-1130V — the **Blue Lathe** — is our manual lathe f
     'Feeds': 'Power longitudinal + cross feed',
     'Weight': '~670 lb',
   }}
-  ppe={['glasses', 'no-gloves', 'tie-hair', 'closed-shoes']}
+  ppe={['goggles', 'no-gloves', 'tie-hair', 'closed-shoes']}
   training="Full machine-shop training and mentor sign-off. A mentor stays in the room whenever the lathe or mill is running."
 />
 
@@ -51,6 +51,7 @@ Rotating machinery grabs and does not let go. **No gloves, ever**, at the lathe 
 If the spindle is turning, you are standing at the machine with your hand near the stop. Need to grab a tool, answer a question, check your phone? Spindle off first.
 </SafetyWarning>
 
+- **Safety goggles, not safety glasses.** Lathe chips leave the work sideways and hot, and glasses are open at the sides and top. Goggles seal to your face. Over-glasses goggles are in drawer 13 of the [Orange Toolbox](/storage/toolboxes/#orange-toolbox--metrology-machinist-tooling--ppe) and fit over prescription frames.
 - Clear chips with a **brush or chip hook after the spindle stops** — never fingers, never a rag near rotation, and long stringy chips get broken up, not pulled.
 - Stock sticking out of the back of the spindle bore more than a couple of diameters must be supported or cut shorter — unsupported bar whips and bends violently.
 - Know where the E-stop is before you start.
@@ -92,6 +93,8 @@ Rough in 0.020–0.050 in radius passes for aluminum (half that in steel), sneak
 
 The operation most likely to bite. Part close to the chuck, tool square and exactly on center, spindle in low range at ~1/3 turning speed, steady feed, cutting oil the whole way. If it chatters or squeals, stop and get a mentor — don't push through. Catch the part in a tray, never in your hand.
 
+Use the indexable grooving holders for this — **MGEHR1212-1.5** for aluminum and small diameters, **MGEHR1212-2** when the narrow blade chatters or you're in steel. Details and insert numbers are in [Grooving & Parting](#grooving--parting--the-mgehr-holders) below.
+
 ### Drilling from the Tailstock
 
 Center-face the stock, start with a **center drill**, then step up through drill sizes to your final diameter. Peck: drill about one diameter deep, back out, clear chips, repeat. Oil in steel. Spare drill chucks and Morse-taper arbors are in **Orange Toolbox drawer 7**; the MT2 live center and the boring/turning tool holders are in **drawer 5**.
@@ -102,7 +105,7 @@ Power tapping on the lathe is not a student operation. Spindle **off**: start th
 
 ## Tooling — the Lathe Drawers
 
-The lathe runs a **quick-change tool post (QCTP)**: each cutter lives in its own holder, pre-set for height, and swaps in seconds. Set tool height to the spindle center (face a point on scrap or use the tailstock center as reference), lock the holder, and put holders back in the drawer with their inserts intact — report chipped inserts, don't hide them.
+The lathe runs a **quick-change tool post (QCTP)**: each cutter lives in its own holder, pre-set for height, and swaps in seconds. Set tool height to the spindle center — the [Pro Lathe Gage](#setting-tool-height--the-pro-lathe-gage) in the drawer does this in under a minute, or reference the tailstock center and face a scrap end to check for a nub. Lock the holder, and put holders back in the drawer with their inserts intact — report chipped inserts, don't hide them.
 
 <LabGalleryImage
   src="lathe-drawer-qctp-tooling.jpg"
@@ -111,6 +114,34 @@ The lathe runs a **quick-change tool post (QCTP)**: each cutter lives in its own
 />
 
 <DrawerLayoutMap unit="lathe-turning-tooling" />
+
+### Grooving & Parting — the MGEHR Holders
+
+Parting and grooving run on two dedicated indexable holders, both 12 × 12 mm right-hand external tools that clamp straight into a QCTP block. The number after the dash **is** the insert width, which is also your kerf:
+
+| Holder | Insert | Kerf | Reach for it when |
+| --- | --- | --- | --- |
+| MGEHR1212-1.5 | MGMN150-G | 1.5 mm (0.059 in) | Aluminum, spacers, small-diameter stock, narrow grooves — snap-ring and O-ring relief |
+| MGEHR1212-2 | MGMN200-G | 2 mm (0.079 in) | Steel, larger diameters, anything where the narrow blade chatters |
+
+Working notes:
+
+- **The inserts are double-ended.** MGMN inserts have a cutting edge at each end — when one edge dulls or chips, flip it before you write it off. Half the inserts in the case that look "used up" have a fresh edge on the back.
+- **Changing an insert:** the blade is a spring clamp. Lever it open with the little L-key that came with the holder, slide the insert home until it seats in the vee, release. Never force an insert into a clamp you haven't opened — that's how you crack a $2 insert and a $18 holder.
+- **Width is not interchangeable.** A 1.5 mm insert in the 2 mm holder will not seat, and vice versa. Match the insert to the number stamped on the holder shank.
+- **Depth is limited.** These are short blades on a 12 mm shank — they'll reach on the order of 3/8 in of depth, so part-off tops out around 5/8–3/4 in diameter. Check the blade's usable reach against your radius *before* you start the cut, not halfway in.
+- **On center or not at all.** A grooving tool above center rubs; below center, the insert digs and snaps. This is the tool that punishes a sloppy height setting hardest — see the gauge below.
+
+### Setting Tool Height — the Pro Lathe Gage
+
+The Edge Technology Pro Lathe Gage lives in the QCTP drawer and takes the guesswork out of putting a cutter on the spindle axis. It's a bubble level on a bearing-mounted shaft, and it's the fastest honest answer to "is this tool on center?"
+
+1. Clamp the gage's ground shaft in the chuck and let the body hang.
+2. Sit the base flat on the cross slide or compound, square to the spindle axis.
+3. **Zero it first:** loosen the adjustment screw, rotate the level housing until the bubble centers, then tighten. This compensates for the machine not sitting dead level — do it once per session, not once per tool.
+4. Bring the cutter tip up under the gage's contact face and turn the QCTP height knob until the bubble re-centers. It's hands-free, so both hands are on the holder.
+
+The recess in the body clears boring bars, so it sets those too. Sanity check it the old way the first time: face a scrap end and look for a nub — a nub means you're still off center.
 
 The lathe's consumables and support drawers — drill bits, way oil and grease, electrical, and the rivnut kit — are the labelled T-Stak stack under the bench:
 
@@ -185,6 +216,13 @@ Wear items for the lathe and mill, with reorder links. Match insert geometry to 
   url="https://precisionmatthews.freshdesk.com/"
   source="knowledge-base"
   description="PM's official support portal for parts and troubleshooting."
+/>
+
+<TutorialLink
+  title="Edge Technology Pro Lathe Gage Manual"
+  url="https://www.edgetechnologyproducts.com/product_images/product_manual/pro_lathe_gage/pro_lathe_gage_manual.html"
+  source="manual"
+  description="Setup and zeroing procedure for the tool-height gauge in the QCTP drawer."
 />
 
 <TutorialLink

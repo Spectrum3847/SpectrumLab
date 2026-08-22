@@ -589,6 +589,36 @@
     "notes": "The lathe runs an Oscarbide 7-piece 1/2\" indexable set (SRDCN / SER / SVJCR / SCLCR / SWGCR / SDNCN / SDJCR). Order the insert style stamped on the holder — ask a mentor before switching geometry. Report chipped inserts, don't hide them. (list estimate — no receipt on file; update the price when we next order)."
   },
   {
+    "id": "grooving-inserts-mgmn150",
+    "name": "MGMN150-G Grooving / Parting Inserts (1.5 mm)",
+    "category": "Machine Shop",
+    "vendor": "Amazon (ASZLBYM)",
+    "price": "$17.99",
+    "unit": "MGEHR1212-1.5 holder + 11 inserts",
+    "partNumber": "MGMN150-G · fits MGEHR1212-1.5",
+    "url": "https://amzn.to/4zNjPQm",
+    "location": "Lathe T-Stak — QCTP Holders & Setup drawer",
+    "machines": [
+      "pm-1130v"
+    ],
+    "notes": "The narrow parting insert: a 1.5 mm kerf wastes less stock and needs less power, so it is the default for aluminum spacers and small-diameter work. Sold as a kit with its holder — buying the kit gets a spare holder you can leave pre-set in a QCTP block. (Amazon order, 15 Feb 2025.)"
+  },
+  {
+    "id": "grooving-inserts-mgmn200",
+    "name": "MGMN200-G Grooving / Parting Inserts (2 mm)",
+    "category": "Machine Shop",
+    "vendor": "Amazon / eBay",
+    "price": "~$15",
+    "unit": "pack of 10",
+    "partNumber": "MGMN200-G · fits MGEHR1212-2",
+    "url": "https://www.amazon.com/s?k=MGMN200-G+carbide+grooving+inserts+2mm",
+    "location": "Lathe T-Stak — QCTP Holders & Setup drawer",
+    "machines": [
+      "pm-1130v"
+    ],
+    "notes": "The wider, stiffer parting insert — the one for steel and for anything much over 1/2 in diameter. Every listing we bought these from (ApplianPar holder kit Feb 2023, ApplianPar 10-pack Jun 2022, an eBay 10-pack at $15.18) is now unavailable, but MGMN200-G is a generic ISO-style insert: any reputable seller's -G geometry drops into the MGEHR1212-2 holder. Do not order MGMN200-M or -H without asking a mentor — different chipbreaker, different feed."
+  },
+  {
     "id": "cutting-oil-dark",
     "name": "Dark Thread-Cutting Oil",
     "category": "Machine Shop",
