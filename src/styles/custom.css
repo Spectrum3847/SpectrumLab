@@ -607,3 +607,22 @@ a.explore-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(88, 17, 122, 0.3);
 }
+
+/* Tall poster/infographic preview: scrolls inside a fixed-height frame so a
+   6000px-tall graphic does not swallow the page. Frame background matches the
+   poster's own so the two blend at the edges. */
+.sl-markdown-content .poster-preview {
+  max-height: 30rem;
+  overflow-y: auto;
+  margin: 1.5rem 0 1rem;
+  border: 1px solid var(--sl-color-border);
+  border-radius: 0.85rem;
+  background: #111214;
+  box-shadow: 0 6px 20px rgba(60, 0, 96, 0.08);
+}
+.sl-markdown-content .poster-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
