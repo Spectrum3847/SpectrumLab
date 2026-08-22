@@ -33,6 +33,10 @@ const PPE_BADGES: Record<string, { icon: string; label: string; critical?: boole
   'tie-hair': { icon: '💇', label: 'Tie Back Hair / No Loose Clothing', critical: true },
   apron: { icon: '🦺', label: 'Apron' },
   'face-shield': { icon: '🛡️', label: 'Face Shield' },
+  // Intentionally unused: every laser here runs closed, and the enclosure is the
+  // eye protection. This belongs on a machine only if we ever do open-beam work
+  // (the handheld welding/cleaning heads), which is currently a never. Kept so
+  // that requirement is expressible rather than reinvented under a vague name.
   'laser-glasses': { icon: '🕶️', label: 'Laser Safety Glasses', critical: true },
 };
 ---

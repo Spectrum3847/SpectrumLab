@@ -24,7 +24,7 @@ The Gweike Cloud M3 Ultra is a hybrid machine: a **1200W fiber laser and a 130W 
     'Cooling': 'Integrated water cooling',
     'Laser Class': 'Class 4'
   }}
-  ppe={['laser-glasses', 'goggles', 'tie-hair', 'closed-shoes']}
+  ppe={['goggles', 'tie-hair', 'closed-shoes']}
   training="Laser sign-off required, plus a mode-selection walkthrough with a mentor before your first solo fiber job. Welding and cleaning modes are mentor-only."
 />
 
@@ -38,30 +38,31 @@ The Gweike Cloud M3 Ultra is a hybrid machine: a **1200W fiber laser and a 130W 
 
 ## Safety
 
-<SafetyWarning type="critical" title="Two lasers, two hazard profiles">
-The fiber source (1064 nm, invisible) and the CO2 source (10,600 nm) need different protective eyewear and behave completely differently on materials. Before every job, confirm which mode is active and wear the laser glasses rated for that source. If you are not certain which laser will fire when you press start, stop and get a mentor.
+<SafetyWarning type="critical" title="Two lasers, two hazard profiles — and one shared rule: lid down">
+The fiber source (1064 nm, invisible) and the CO2 source (10,600 nm) behave completely differently on materials, so confirm which mode is active before every job. If you are not certain which laser will fire when you press start, stop and get a mentor.
+
+Both are Class 4, and for both the thing protecting your eyes is the enclosure — the lid and window diffuse the beam to a safe level, which is why you can watch a job without eye protection. **Lid closed and interlocked whenever either source can fire.** Never run it open, never defeat an interlock; a faulty interlock means the machine is down.
 </SafetyWarning>
 
 <SafetyWarning type="critical" title="NEVER cut PVC or vinyl">
 Any chlorinated plastic — PVC, vinyl, most faux leather — releases chlorine gas when lasered. It will corrode the machine and hurt your lungs. There is no power setting that makes it safe. Unknown plastic = no cut until a mentor identifies it.
 </SafetyWarning>
 
-- Class 4 machine: keep the lid closed while firing and never bypass an interlock.
+- Class 4 machine: the lid stays closed while firing and interlocks are never bypassed. That is the eye protection.
 - Fiber mode on metal means reflections — same rules as the [xTool MetalFab](/lasers/xtool-metalfab/): no mirror-finish stock, material flat on the bed.
 - Fire watch: stay with the machine for every job, know the extinguisher location, and keep the bed clear of offcut litter that can catch.
 - Fume extraction on for everything — metal fumes in fiber mode, smoke and resin fumes in CO2 mode.
-- Welding, cleaning, and rust-removal modes are open-beam handheld processes: **mentor-only**, same policy as the MetalFab welding gate.
+- Welding, cleaning, and rust-removal are open-beam handheld processes. **This lab does not use them. Ever** — same policy as the [MetalFab handheld module](/lasers/xtool-metalfab/#handheld-welding-module--we-do-not-use-it). Open-beam work is the one thing that would require wavelength-rated eyewear for everyone in the room, and we avoid it by keeping every job inside the enclosure.
 - Loose sleeves and dangling lanyards stay away from the gantry. See [PPE & the glove policy](/safety/gloves-and-ppe/).
 
 ## Mode Selection
 
 The 6-in-1 design means the machine does exactly what the active mode tells it to — so mode selection is step zero of every job:
 
-1. Decide the process: **fiber** for metal cutting; **CO2** for wood, acrylic, and other approved non-metals; handheld modes only with a mentor.
+1. Decide the process: **fiber** for metal cutting; **CO2** for wood, acrylic, and other approved non-metals. The handheld modes are not used here at all.
 2. Select the mode in the control software and confirm the correct head/source is active before loading material.
-3. Match your **laser glasses to the active source** — 1064 nm rated for fiber, CO2-rated for CO2.
-4. Check the material against the matrix below for that mode.
-5. When you finish, return the machine to its idle/default state so the next operator doesn't inherit a surprise.
+3. Check the material against the matrix below for that mode.
+4. When you finish, return the machine to its idle/default state so the next operator doesn't inherit a surprise.
 
 ## Material Compatibility Matrix
 
@@ -119,7 +120,6 @@ No consumables table for this machine yet — wear items are ordered through [Gw
   title="Before You Fire"
   items={[
     'Correct mode selected and confirmed — fiber vs CO2',
-    'Laser glasses on and rated for the active source',
     'Material is on the approved list for the selected mode',
     'Cooling loop running, coolant level OK, no flow or temp alarms',
     'Fume extraction running',
@@ -133,7 +133,7 @@ No consumables table for this machine yet — wear items are ordered through [Gw
 ## Operating Instructions
 
 1. Power on the machine and fume extraction; verify the cooling loop is circulating.
-2. Select the mode for your job and put on the matching laser glasses.
+2. Select the mode for your job and confirm the correct source is live before you load material.
 3. Import your file in the control software, verify scale, and pick material settings — start from library presets and test on scrap for anything new.
 4. Load the material flat on the slat bed. Fixture anything that could shift or curl.
 5. Set focus for the active head per the station procedure.
