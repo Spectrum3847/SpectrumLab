@@ -60,10 +60,10 @@ teardown. Set the volumetric speed limit in the filament profile before you slic
 
 - **PETG-GF, PLA, PETG** — any Bambu, any time.
 - **72D TPU** — any Bambu, **fed through the AMS**, flow-capped at 6 mm³/s.
-- **PPA-GF** — **H2D or X2D only.** It needs 300–320 °C and a heated chamber; the X1C's 300 °C
-  hotend cannot hold the top of that range reliably. Note the **X2D also caps at 300 °C** — it
-  is cleared for PPA-GF but runs it at the low end of the band, not the full 320 °C the H2D can
-  reach.
+- **PPA-GF** — **H2D only.** It needs 310 °C and a heated chamber; the X1Cs and the X2D both cap
+  their hotends at 300 °C, short of that floor. Clamping the profile to 300 °C on either would
+  produce a degraded print, not the real material, so neither gets one — PPA-GF is one machine
+  or nothing.
 - **CF nylon and PC (existing stock)** — enclosed machines only, which means all four Bambus.
   See the [Filament Guide](/3d-printing/filament-guide/) for what these are still good for.
 
@@ -124,15 +124,18 @@ If a part will not fit the H2D, **split it** and bolt or pin the halves — see
     'Nozzles': 'Dual, 0.4 mm hardened steel',
     'Enclosure': 'Enclosed, heated chamber',
     'AMS': 'None yet — an AMS-HT is on order',
-    'Materials': 'Full range incl. PPA-GF',
-    'Role': 'High-temp engineering capacity',
+    'Materials': 'Full range excl. PPA-GF and PPS-CF (300 °C hotend ceiling)',
+    'Role': 'Second dual-nozzle machine — zero-gap supports and general engineering parts',
   }}
-  training="Printer orientation plus mentor sign-off for PPA-GF."
+  training="Printer orientation."
 />
 
-The X2D is the second machine cleared for **PPA-GF** and high-temp engineering work, which takes
-that load off the H2D during build season. **More X2Ds are on order** — as they arrive they
-become the default home for engineering-material jobs.
+The X2D is the lab's second dual-nozzle machine, which means it shares the H2D's zero-gap
+support trick and takes general print load off it during build season. It is **not** cleared
+for PPA-GF or PPS-CF: both need a 310 °C+ hotend and the X2D's caps at 300 °C, same as the
+X1Cs. Clamping either profile down to 300 °C would ship a degraded material, not the real
+thing, so both stay **H2D only** — see the [Filament Guide](/3d-printing/filament-guide/) and
+[Filament Inventory](/inventory/filaments/). **More X2Ds are on order.**
 
 **Watch the envelope when you run dual-nozzle.** Single-nozzle gives you the full
 256 × 256 × 260 mm, but switching to the dual or auxiliary nozzle costs you about 20 mm of
@@ -204,7 +207,7 @@ No dedicated consumables ledger for the printers — everything reorders through
     'Filament mapped to the correct AMS slot, material and color verified',
     'Enough filament on the spool for the job (AMS shows remaining % on Bambu spools)',
     'Hard 72D TPU is AMS-fed and flow-capped at 6 mm3/s; soft TPU and TPE stay on the external spool holder',
-    'PPA-GF: H2D or X2D only, spool dried 4-6 h at 80 C, chamber up, mentor sign-off',
+    'PPA-GF: H2D only, spool dried 4-6 h at 80 C, chamber up, mentor sign-off',
     'CF nylon or PC from existing stock: spool dried, glue stick applied, mentor sign-off',
     'Lid and door set correctly for the material',
     'Waste chute area clear of purged filament buildup',

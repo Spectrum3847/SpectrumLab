@@ -28,7 +28,7 @@ Work down this list and stop at the first line that matches your part:
 - **Takes direct hits — armor, roller, hard stop, bumper bracket?** → **72D TPU.** Absorbs
   impact instead of cracking, and nothing chemical touches it.
 - **Extreme load or lives somewhere hot?** → **PPA-GF.** Gearbox blocks, 185 °C+ HDT mounts.
-  H2D or X2D only, dried first, mentor sign-off.
+  **H2D only**, dried first, mentor sign-off.
 
 When in doubt: prototype in PLA, ship in PETG-GF. Escalate to PPA-GF only when PETG-GF has
 actually failed or the math says it will.
@@ -47,7 +47,7 @@ inspect or section a failed part.
 | Material | Color / Finish | Density (g/cm³) | Max Flow | Print Speed | Loctite | Primary FRC applications |
 | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
 | **72D TPU** <br/><small>CC3D / Polar / Siraya</small> | Natural (translucent) / solid white | **1.24** | 4–8 mm³/s | 40–80 mm/s | **Immune** | Direct-impact armor, intake rollers, pulleys, hard stops, bumper brackets |
-| **PETG-GF** <br/><small>Bambu / Polymaker</small> | Matte white | **1.35** | 12–16 mm³/s | 120–200 mm/s | **High** | Primary workhorse: structural brackets, gearbox plates, electronics shields, motor mounts, dead-axle spacers |
+| **PETG-GF** <br/><small>Bambu / Polymaker</small> | Matte white | **1.35** | 11.5 mm³/s | ~137 mm/s (flow-capped) | **High** | Primary workhorse: structural brackets, gearbox plates, electronics shields, motor mounts, dead-axle spacers |
 | **PPA-GF** <br/><small>Siraya Fibreheart</small> | Bone matte white | **1.32** | 8–12 mm³/s | 50–100 mm/s | **Immune** | Extreme-load gearbox blocks, high-temp mounts (185 °C+ HDT) |
 
 <SafetyWarning type="tip" title="CAD mass properties (Onshape)">
@@ -110,14 +110,16 @@ spool holder on a direct-drive extruder, and keep volumetric flow capped — see
 <FilamentCard id="ppa-gf" />
 
 Glass-filled nylon, 185 °C+ HDT, immune to Loctite, and the strongest thing we print for
-sustained load. The costs are real: 300–320 °C nozzle, heated chamber, mandatory drying before
-every session, and glass dust that needs an N95 and eye protection during any sanding. H2D or
-X2D only, and a mentor signs off before it starts.
+sustained load. The costs are real: 310 °C nozzle, heated chamber, mandatory drying before
+every session, and glass dust that needs an N95 and eye protection during any sanding. **H2D
+only** — the X1Cs and the X2D both cap out at 300 °C, short of the 310 °C floor this material
+needs, so we do not offer a clamped-down profile on either — and a mentor signs off before it
+starts.
 
 <SafetyWarning type="tip" title="Loading PPA-GF into the AMS HT">
 Siraya's own spec says PPA-GF is not AMS-compatible, but we run it through the H2D's AMS HT
 anyway: declare the slot as **Bambu PA6-GF** — Bambu's own glass-fiber nylon, and a closer
-material match than a carbon-fiber profile — then manually override nozzle to 300–320 °C,
+material match than a carbon-fiber profile — then manually override nozzle to 310 °C,
 chamber to 60–80 °C, and drying to 80–100 °C for 4–6 h. We tried declaring it as PAHT-CF
 first; PA6-GF is what we settled on. Do not declare it as Bambu PPA-CF; that profile is flagged
 non-AMS-compatible (any model) and may get the load refused outright.
@@ -173,7 +175,7 @@ loading, temperature, or flex requirement isn't obvious from the lineup above.
 | Primary Robot Applications | 5-minute fit slices, mechanism prototypes, universal support interface | 80% of structural parts, brackets, sensor mounts, sheet-metal hybrid cores | Intake rollers, bumper latch blocks, hard stops, skid shoes, battery corners | High-torque gearbox plates, motor mounts (185 °C+ HDT), dead-axle clamps |
 | Support Pairing (Nozzle 2 @ 0.0 mm Gap) | Elegoo PETG-GF | Elegoo Rapid PLA+ | Elegoo Rapid PLA+ | Elegoo PETG-GF *(PLA+ would melt at PPA-GF print temps)* |
 | Filament Density (CAD Mass) | **1.20 g/cm³** | **1.35 g/cm³** | **1.24 g/cm³** | **1.27–1.32 g/cm³** |
-| Max Volumetric Flow / Speed | **24–32 mm³/s** | **12–16 mm³/s** | **4–8 mm³/s** | **8–12 mm³/s** |
+| Max Volumetric Flow / Speed | **24–32 mm³/s** | **11.5 mm³/s** | **4–8 mm³/s** | **8–12 mm³/s** |
 | Anaerobic Loctite Safety | Good *(non-crazing)* | High resistance | **Completely immune** | **Completely immune** |
 | Primary Machine / Nozzle Size | Prusa / Bambu (0.4 & 0.6) | Prusa / Bambu (0.4 & 0.6) | Bambu / Prusa (0.4 & 0.6) | **Enclosed Bambu (0.4 hardened)** |
 
@@ -237,6 +239,6 @@ you are wasting printer time otherwise.
 ## Related pages
 
 - [Print Settings & Supports](/3d-printing/print-settings/) — the slicer priority hierarchy, dual-nozzle supports, and presets
-- [Bambu Lab Fleet](/3d-printing/bambu-fleet/) — nozzle standards, plates, AMS mapping, and the machines that run PPA-GF
+- [Bambu Lab Fleet](/3d-printing/bambu-fleet/) — nozzle standards, plates, AMS mapping, and the machine that runs PPA-GF
 - [Prusa Mini+ Farm](/3d-printing/prusa-farm/) — 0.6 mm nozzles and high-throughput PETG-GF
 - [Filament Inventory](/inventory/filaments/) — every spool we actually own, and how to log a new one

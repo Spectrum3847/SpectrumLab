@@ -226,13 +226,27 @@ a weak part.
     'Top / bottom layers': '7 / 7',
     'Line width': '0.50 mm',
     'Infill': '40% gyroid',
-    'Nozzle': '310 °C on H2D, 300 °C on X2D — hardened',
+    'Nozzle': '310 °C — hardened',
     'Part fan': 'Off',
     'Chamber': '60–80 °C',
     'Plate': 'Textured PEI, bed 90 °C',
-    'Printer': 'H2D / X2D only',
+    'Printer': 'H2D only',
   }}
-  notes="Extreme-load gearbox blocks and high-temp mounts. Spool comes straight from 4–6 h at 80 °C. First layer 20–30 mm/s. Mentor sign-off before starting. The X2D's hotend caps at 300 °C — do not push toward the H2D's 310 °C on that machine."
+  notes="Extreme-load gearbox blocks and high-temp mounts. Spool comes straight from 4–6 h at 80 °C. First layer 20–30 mm/s. Mentor sign-off before starting. H2D only: this needs a 310 °C hotend, and the X1Cs and the X2D both cap at 300 °C — a clamped-down profile would run below the temperature the material needs, so neither machine gets one."
+/>
+
+<PrintSettingPreset
+  title="Large Part — brim on"
+  slicer="Bambu Studio"
+  settings={{
+    'Layer height': '0.28–0.32 mm (0.6 nozzle) / 0.28 mm (0.4 nozzle)',
+    'Walls': '3',
+    'Top / bottom layers': '4 / 4',
+    'Infill': '15% gyroid',
+    'Brim': 'Outer brim, 8 mm — always on',
+    'Printer': 'Any Bambu',
+  }}
+  notes="Big, low-detail prints — enclosures, covers, anything closer to plate-sized than robot-part-sized. Fewer walls and lighter infill keep print time reasonable on a part that is large everywhere; the brim is pinned on rather than left to the slicer default, because a large part carries more warping force at its corners than a no-brim setup assumes. Not a fix for a tall, thin part with a small footprint — that geometry wants the Structural PETG-GF preset and still needs a brim of its own; this preset is for parts that are large in every dimension."
 />
 
 ## Related pages

@@ -33,7 +33,7 @@ Find the slicer profile you picked, then select the **touch panel** entry next t
 | 03 PETG — general | Generic → **PETG** | 220–270 °C |
 | 04 TPU 72D — impact parts | Bambu → **TPU for AMS** | 220–240 °C |
 | 05 TPU 95A — flexible | Bambu → **TPU 95A** | 200–250 °C |
-| 06 PPA-GF — competition | Bambu → **PA-GF** — read the note below | 260–300 °C |
+| 06 PPA-GF — competition, H2D only | Bambu → **PA-GF** — read the note below | 260–300 °C |
 | 07 PPS-CF — H2D only | Bambu → **PPS-CF**, external spool only | 310–340 °C |
 | 08 PA-CF | Generic → **PA-CF** | 260–300 °C |
 | 09 PC | Generic → **PC** | 260–290 °C |
@@ -61,7 +61,7 @@ loads, unloads, and purges it the same way.
 Changing the panel to PPA-GF stops the AMS from accepting the spool, and the print will not start.
 This is a deliberate lab convention, not a mistake.
 
-One side effect: PA-GF tops out at 300 °C on the panel while PPA-GF wants up to 320 °C. The
+One side effect: PA-GF tops out at 300 °C on the panel while PPA-GF runs at 310 °C. The
 **slicer** commands the real print temperature, so this only affects the panel's band. If a
 PPA-GF job shows a temperature-mismatch warning, that is why — ask a mentor, do not change the
 panel setting.
