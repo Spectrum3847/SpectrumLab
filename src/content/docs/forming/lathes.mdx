@@ -10,6 +10,7 @@ import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
 import TutorialLink from '../../../components/TutorialLink.astro';
 import DrawerLayoutMap from '../../../components/DrawerLayoutMap.astro';
+import ConsumablesTable from '../../../components/ConsumablesTable.astro';
 
 The Precision Matthews PM-1130V — the **Blue Lathe** — is our manual lathe for shafts, spacers, hubs, and standoffs: anything round, anything hex-bored, anything that needs a bearing seat. Next to it on the machine-shop bench sits the **Grizzly mill/drill** (the one labeled "Mill"), its companion for flats, keyway slots, and precisely located holes. These two machines carry the strictest rules in the lab, because they are the ones that grab.
 
@@ -76,7 +77,7 @@ Square the end of the stock first — every other measurement references it. Too
 
 ### Turning
 
-Rough in 0.020–0.050 in radius passes for aluminum (half that in steel), sneak up on final diameter with a 0.005 in finish pass. Measure with a micrometer from the [lathe toolbox](#tooling--the-lathe-drawers), and remember the cross slide dial may read radius, not diameter — verify before trusting it.
+Rough in 0.020–0.050 in radius passes for aluminum (half that in steel), sneak up on final diameter with a 0.005 in finish pass. Measure with a micrometer from [Orange Toolbox drawer 10](/storage/toolboxes/#orange-toolbox--metrology-machinist-tooling--ppe), and remember the cross slide dial may read radius, not diameter — verify before trusting it.
 
 ### Parting
 
@@ -84,11 +85,11 @@ The operation most likely to bite. Part close to the chuck, tool square and exac
 
 ### Drilling from the Tailstock
 
-Center-face the stock, start with a **center drill**, then step up through drill sizes to your final diameter. Peck: drill about one diameter deep, back out, clear chips, repeat. Oil in steel. The tailstock drill chuck and MT2 live center live in the lathe accessory drawers.
+Center-face the stock, start with a **center drill**, then step up through drill sizes to your final diameter. Peck: drill about one diameter deep, back out, clear chips, repeat. Oil in steel. Spare drill chucks and Morse-taper arbors are in **Orange Toolbox drawer 7**; the MT2 live center and the boring/turning tool holders are in **drawer 5**.
 
 ### Tapping
 
-Power tapping on the lathe is not a student operation. Spindle **off**: start the tap straight using the tailstock chuck (or a spring center) to guide it while you turn the tap by hand with a wrench. For production tapping of many parts, the [servo tapping arm](/hand-tools/threading-riveting/) on the workbench is faster and safer.
+Power tapping on the lathe is not a student operation. Spindle **off**: start the tap straight using the tailstock chuck (or a spring center) to guide it while you turn the tap by hand with a wrench. For production tapping of many parts, the [electric tapping machine](/cutting/tapping-machine/) on the bench by the chop saws is faster and safer.
 
 ## Tooling — the Lathe Drawers
 
@@ -100,7 +101,11 @@ The lathe runs a **quick-change tool post (QCTP)**: each cutter lives in its own
   caption="QCTP holders, hex keys, and setup blocks in the lathe drawers. The next drawer down holds the Oscarbide indexable turning set and spare carbide inserts."
 />
 
-<DrawerLayoutMap unit="lathe-toolbox" />
+<DrawerLayoutMap unit="lathe-turning-tooling" />
+
+The lathe's consumables and support drawers — drill bits, way oil and grease, electrical, and the rivnut kit — are the labelled T-Stak stack under the bench:
+
+<DrawerLayoutMap unit="lathe-tstak" />
 
 Hex and round bar stock for lathe work lives on the **Lathe Shelf** below the machine — labeled bins of 3/8 in and 1/2 in hex shaft plus round stock and a salvage bin. Check salvage before cutting fresh bar.
 
@@ -128,7 +133,9 @@ The mill/drill handles what the lathe can't: milled flats on hex shaft, slots, p
 
 ## Consumables & Tooling Supplies
 
-No ConsumablesTable entries yet for the machine shop — current wear items are: **carbide inserts** for the Oscarbide 1/2 in turning set (spares in the carbide drawer; reorder matching insert geometry from the holder box label), **cutting oil** (dark thread-cutting oil for steel, WD-40 or A9 for aluminum), and center drills/twist drills (lathe accessory drawer). Generic replacements come from McMaster-Carr or the insert vendor — ask a mentor before ordering a different insert style.
+Wear items for the lathe and mill, with reorder links. Match insert geometry to the marking on the holder box before ordering — ask a mentor before switching to a different insert style.
+
+<ConsumablesTable machine="pm-1130v" />
 
 ## Pre-Flight Checklist
 

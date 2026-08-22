@@ -9,6 +9,7 @@ import SafetyWarning from '../../../components/SafetyWarning.astro';
 import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
 import TutorialLink from '../../../components/TutorialLink.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import ConsumablesTable from '../../../components/ConsumablesTable.astro';
 
 The Bambu fleet is the fast lane of the printer farm: two X1-Carbons — **Bambu 1** and
 **Bambu 2** — plus an **H2D** and an **X2D** (more X2Ds are on the way). AMS coverage differs per
@@ -182,6 +183,8 @@ No dedicated consumables ledger for the printers — everything reorders through
 
 - **Filament** — see the [Filament Guide](/3d-printing/filament-guide/) for what to buy and the
   reorder links on every material card.
+<ConsumablesTable machine="bambu-x1c,bambu-h2d,bambu-x2d" />
+
 - **Dawn dish soap and paper towels** — plate cleaning. Lives at the printer bench. Warm water
   and soap only, every few prints — no IPA.
 - **Glue stick** — adhesion layer for PC and CF-nylon prints from existing stock.
@@ -269,6 +272,11 @@ unknown hotend has been fitted, it does not print filled material until it is sw
   the maintenance schedule).
 
 ## Resources
+
+<TutorialLink title="B2.4 Spectrum 3D Printing Training (slides)" url="https://docs.google.com/presentation/d/17f3FW7n_B4S9B0Uf2dVvO5ZlcCNTxSpik0KHe84lzBc/preview" source="website" description="The team's own training deck: printer anatomy, hotends and nozzles, every filament we use, bed adhesion, moisture, and troubleshooting by ear." />
+
+<TutorialLink title="B2.5 FRC 3D Printed Parts (slides)" url="https://docs.google.com/presentation/d/1w-zGo9hEuVamzVrmhK3MJni0aftu0k9ZUnMRb93MIrI/preview" source="website" description="Spectrum's guide to what should and shouldn't be a printed part on a competition robot." />
+
 
 <TutorialLink title="Bambu Lab X1 Series Wiki & Manual" url="https://wiki.bambulab.com/en/x1/manual" source="knowledge-base" description="Official manual, maintenance guides, and troubleshooting for the X1-Carbon" />
 

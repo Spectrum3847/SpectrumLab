@@ -10,6 +10,7 @@ import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
 import TutorialLink from '../../../components/TutorialLink.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
 import VideoEmbed from '../../../components/VideoEmbed.astro';
+import ConsumablesTable from '../../../components/ConsumablesTable.astro';
 
 The Prusa Mini+ farm — twelve printers racked in wooden cubbies under the printer bench — is
 the volume workhorse of the lab. It handles most of the 3D-printed part demand for both the
@@ -97,9 +98,22 @@ The Minis are on the lab network and registered to the team's Prusa Connect acco
 4. Check the dashboard before physically visiting the farm — it saves you a trip when
    everything is busy.
 
+Two things make that dashboard worth trusting:
+
+- **Every Mini has a camera.** The farm runs ESP32-CAM boards flashed as Prusa Connect webcams
+  (the team maintains its own build of the firmware), so the dashboard shows a live still of each
+  bed, not just a progress bar. Look at the picture before you assume a job is fine — spaghetti
+  reads as "printing" to the printer.
+- **The Minis run input-shaping firmware**, added along with the Wi-Fi modules and cameras
+  ([Lab Upgrades, Jan 2024](https://www.spectrum3847.org/seasons/2024/#2024-01-05-lab-upgrades)). That is why farm print times are closer to
+  the Bambus than a stock Mini's would be — and why a profile copied off the internet with stock
+  Mini accelerations is leaving time on the table.
+
 ## Consumables
 
-No dedicated consumables table for the farm — the staples are:
+<ConsumablesTable machine="prusa-mini" />
+
+Plus the un-tabled staples:
 
 - **PETG-GF and PLA spools** — reorder links on the
   [Filament Guide](/3d-printing/filament-guide/). The farm is where budget-brand PLA and
@@ -164,6 +178,20 @@ Live-Z is the nozzle-to-sheet gap. It is the single most important number on a M
 - Bent, deeply gouged, or bald sheets: flag them to a mentor for replacement, do not quietly
   put them back.
 
+## Listen to the printer
+
+Spectrum's own [3D Printing Training](https://docs.google.com/presentation/d/17f3FW7n_B4S9B0Uf2dVvO5ZlcCNTxSpik0KHe84lzBc/preview) deck makes this the first troubleshooting step, and it is genuinely the fastest diagnostic in the farm:
+
+- **Clicking from the extruder** — the drive gear is skipping. The hotend is jammed or the filament isn't moving. Stop the print; don't let it grind a flat spot into the filament.
+- **Loud or erratic axis noise** — something on that axis is binding or out of alignment, or the leadscrew wants lubrication. A healthy stepper makes a consistent tone.
+- **Fan noise that changes** — a bearing going out. A part-cooling fan that dies mid-print ruins overhangs; a hotend fan that dies causes a jam. Flag it.
+- **Silence where there should be a fan** — stop the print and tell a mentor.
+
+Two more from the same deck, worth knowing before you fight a first layer:
+
+- **Moisture matters.** Most of our plastics are hygroscopic. A wet spool means you're boiling water as well as melting plastic: bubbles, popping, weak layers. Dry the spool, don't fight the profile — see the [Filament Guide](/3d-printing/filament-guide/).
+- **Glue stick is a release layer as often as an adhesive.** Some filaments stick *too* well to a sheet and take the coating with them; a glue layer lets go before the sheet does.
+
 ## When to use a Mini vs a Bambu
 
 | Situation | Use |
@@ -173,7 +201,7 @@ Live-Z is the nozzle-to-sheet gap. It is the single most important number on a M
 | Batch of 8 identical parts | **Minis** — one per printer beats one big plate |
 | Junior team parts | **Minis** — their home turf |
 | Deadline tonight, needs to print fast | **Bambu** |
-| Fine detail or a thin-walled part | **Bambu** — 0.6 mm nozzles cannot resolve it |
+| Fine detail or a thin-walled part | **H2D / X2D** — the only 0.4 mm machines in the lab. The X1Cs are 0.6 mm like the Minis, so they gain you nothing here |
 | PPA-GF, CF nylon, PC, or TPU | **Bambu only** |
 | Part bigger than 18 cm | [Bambu](/3d-printing/bambu-fleet/) — up to 350 × 320 × 325 mm on the H2D |
 | Zero-gap or soluble supports | **H2D / X2D** (dual nozzle) |
@@ -183,6 +211,10 @@ Live-Z is the nozzle-to-sheet gap. It is the single most important number on a M
 <TutorialLink title="Original Prusa MINI+ Handbook (PDF)" url="https://cdn.prusa3d.com/downloads/manual/prusa3d_manual_mini_en.pdf" source="pdf" description="Official user manual" />
 
 <TutorialLink title="Prusa MINI Knowledge Base" url="https://help.prusa3d.com/product/mini-2" source="knowledge-base" description="Official troubleshooting, guides, and part replacement walkthroughs" />
+
+<TutorialLink title="B2.4 Spectrum 3D Printing Training (slides)" url="https://docs.google.com/presentation/d/17f3FW7n_B4S9B0Uf2dVvO5ZlcCNTxSpik0KHe84lzBc/preview" source="website" description="The team's own training deck: printer anatomy, hotends and nozzles, every filament we use, bed adhesion, moisture, and troubleshooting by ear." />
+
+<TutorialLink title="B2.5 FRC 3D Printed Parts (slides)" url="https://docs.google.com/presentation/d/1w-zGo9hEuVamzVrmhK3MJni0aftu0k9ZUnMRb93MIrI/preview" source="website" description="Spectrum's guide to what should and shouldn't be a printed part on a competition robot." />
 
 <TutorialLink title="Original Prusa MINI — Calibration and First Print" url="https://www.youtube.com/watch?v=6Nip9EnSz7Q" source="youtube" description="Official video covering first-layer calibration — watch before your first Live-Z session" />
 

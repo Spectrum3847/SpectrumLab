@@ -7,41 +7,106 @@
       "drawers": [
         {
           "label": "Allen Wrenches / Markers",
-          "contents": ["Bondhus ball-end hex drivers", "T-handle hex driver", "Color-coded torx L-keys", "Fold-up hex sets", "Hex bit cases", "Picks", "Sharpie markers"]
+          "contents": [
+            "Bondhus ball-end hex drivers",
+            "T-handle hex driver",
+            "Color-coded torx L-keys",
+            "Fold-up hex sets",
+            "Hex bit cases",
+            "Picks",
+            "Sharpie markers"
+          ]
         },
         {
           "label": "Wrenches / Measuring",
-          "contents": ["Tape measures (labeled Spectrum 3847)", "Digital caliper", "EZ Cal height & depth gauges", "Combination & ratcheting wrenches", "Sockets & ratchets", "Preset torque T-handles"]
+          "contents": [
+            "Tape measures (labeled Spectrum 3847)",
+            "Digital caliper",
+            "EZ Cal height & depth gauges",
+            "Combination & ratcheting wrenches",
+            "Sockets & ratchets",
+            "Preset torque T-handles"
+          ]
         },
         {
           "label": "Screwdrivers / Sharp Things",
-          "contents": ["Phillips & flat screwdrivers", "Stanley precision screwdriver set", "Scissors", "Flush cutters", "Mini pliers", "Wire brush"]
+          "contents": [
+            "Phillips & flat screwdrivers",
+            "Stanley precision screwdriver set",
+            "Scissors",
+            "Flush cutters",
+            "Mini pliers",
+            "Wire brush"
+          ]
         },
         {
           "label": "Drill Bits / Magnets & Mirrors",
-          "contents": ["Huot tap & drill index", "Loose drill & driver bits", "Annular cutter", "Milescraft Drive90Plus right-angle driver", "Flexible bit extension", "Inspection mirror", "Telescoping magnet pickups", "Flashlight"]
+          "contents": [
+            "Huot tap & drill index",
+            "Loose drill & driver bits",
+            "Annular cutter",
+            "Milescraft Drive90Plus right-angle driver",
+            "Flexible bit extension",
+            "Inspection mirror",
+            "Telescoping magnet pickups",
+            "Flashlight"
+          ]
         },
         {
           "label": "Pliers",
-          "contents": ["Groove-joint pliers", "Vise-Grip snap-ring pliers", "Long-nose & locking pliers", "Milwaukee aviation snips", "Wire strippers", "Mini bolt cutter", "Cable cutters"]
+          "contents": [
+            "Groove-joint pliers",
+            "Vise-Grip snap-ring pliers",
+            "Long-nose & locking pliers",
+            "Milwaukee aviation snips",
+            "Wire strippers",
+            "Mini bolt cutter",
+            "Cable cutters"
+          ]
         },
         {
           "label": "Clamps",
-          "contents": ["Irwin Quick-Grip one-handed bar clamps", "WorkPro one-handed bar clamps", "Locking C-clamp pliers", "Cam clamp", "Small screw clamp"]
+          "contents": [
+            "Irwin Quick-Grip one-handed bar clamps",
+            "WorkPro one-handed bar clamps",
+            "Locking C-clamp pliers",
+            "Cam clamp",
+            "Small screw clamp"
+          ]
         },
         {
           "label": "Grease & Loctite / Mallets & Hammers",
-          "contents": ["WD-40 Specialist dry lube", "Loctite & Vibra-Tite threadlockers", "Gorilla super glue", "Rubber mallet", "Chisels & punches"]
+          "contents": [
+            "WD-40 Specialist dry lube",
+            "Loctite & Vibra-Tite threadlockers",
+            "Gorilla super glue",
+            "Rubber mallet",
+            "Chisels & punches"
+          ]
         },
         {
           "label": "Vises / Electrical / Manual Rivet Guns",
-          "contents": ["Clamp-on hobby vises", "Fluke multimeter & test leads", "Lenox hand riveter", "Vise-Grip locking pliers", "Slip-joint pliers"]
+          "contents": [
+            "Clamp-on hobby vises",
+            "Fluke multimeter & test leads",
+            "Lenox hand riveter",
+            "Vise-Grip locking pliers",
+            "Slip-joint pliers"
+          ]
         },
         {
           "label": "Tape",
-          "contents": ["Gaff tape (team colors)", "T-Rex Brute Force tape", "Electrical tape", "Masking tape", "3M VHB double-sided tape", "Self-fusing silicone wrap"]
+          "contents": [
+            "Gaff tape (team colors)",
+            "T-Rex Brute Force tape",
+            "Electrical tape",
+            "Masking tape",
+            "3M VHB double-sided tape",
+            "Self-fusing silicone wrap"
+          ]
         }
-      ]
+      ],
+      "note": "Drawers are listed top to bottom, matching the three stacked StackTech units in the photo (4-drawer unit on top, then 3-drawer, then 2-drawer). StackTech drawers are labelled by name, not numbered."
     },
     {
       "id": "stacktech-power-tower",
@@ -50,112 +115,524 @@
       "drawers": [
         {
           "label": "Drills",
-          "contents": ["Milwaukee M12 FUEL 1/2\" drill/drivers (3403-20)", "Drill bit index", "M12 batteries + charger"],
+          "contents": [
+            "Milwaukee M12 FUEL 1/2\" drill/drivers (3403-20)",
+            "Drill bit index",
+            "M12 batteries + charger"
+          ],
           "notes": "Return drills with a battery ≥ 1 bar; dead batteries go to the charging shelf."
         },
         {
           "label": "Impact Drivers",
-          "contents": ["Milwaukee M12 FUEL 1/4\" hex impact drivers (3453-20)", "Impact-rated bit sets", "Magnetic bit holders"]
+          "contents": [
+            "Milwaukee M12 FUEL 1/4\" hex impact drivers (3453-20)",
+            "Impact-rated bit sets",
+            "Magnetic bit holders"
+          ]
         },
         {
           "label": "Rivet Tools",
-          "contents": ["M12 Rivet Tool (2550-20)", "6\" long nose extension (48-95-0100)", "Rivet size chart", "Spent-mandrel cup"]
+          "contents": [
+            "M12 Rivet Tool (2550-20)",
+            "6\" long nose extension (48-95-0100)",
+            "Rivet size chart",
+            "Spent-mandrel cup"
+          ]
         },
         {
           "label": "Sanders & Cut-Off",
-          "contents": ["M12 FUEL Orbital Detail Sander (2531-20)", "M12 FUEL 3\" Cut-Off Tool (2522-20)", "Sanding pads", "Cut-off wheels"]
+          "contents": [
+            "M12 FUEL Orbital Detail Sander (2531-20)",
+            "M12 FUEL 3\" Cut-Off Tool (2522-20)",
+            "Sanding pads",
+            "Cut-off wheels"
+          ]
         },
         {
           "label": "Jigsaw & Nibbler",
-          "contents": ["M12 FUEL Jig Saw (2545-20)", "M12 FUEL 16 Ga Nibbler (2476-20)", "T-shank blade assortment"]
+          "contents": [
+            "M12 FUEL Jig Saw (2545-20)",
+            "M12 FUEL 16 Ga Nibbler (2476-20)",
+            "T-shank blade assortment"
+          ]
         },
         {
           "label": "Rotary & USB Tools",
-          "contents": ["M12 Rotary Tool (2525-20)", "Rotary bit kit", "USB-rechargeable tools & cables"]
+          "contents": [
+            "M12 Rotary Tool (2525-20)",
+            "Rotary bit kit",
+            "USB-rechargeable tools & cables"
+          ]
         },
         {
           "label": "Stapler",
-          "contents": ["M12 3/8\" Crown Stapler (2447-20)", "T50 staple boxes"]
+          "contents": [
+            "M12 3/8\" Crown Stapler (2447-20)",
+            "T50 staple boxes"
+          ]
         }
-      ]
+      ],
+      "note": "Listed top to bottom. StackTech drawers are labelled by name, not numbered."
     },
     {
       "id": "stacktech-saw-tower",
       "name": "StackTech Tower — Saws & Portable Cutting",
       "location": "Machine shop, rolling",
       "drawers": [
-        { "label": "Hackzall", "contents": ["M12 FUEL Hackzall (2520-20)", "Recip blade assortment"] },
-        { "label": "Compact Bandsaw", "contents": ["M12 FUEL Compact Band Saw (2529-20)", "Spare 12/14 TPI blades"] },
-        { "label": "Batteries & Chargers", "contents": ["M12 battery fleet", "Dual chargers"] }
-      ]
+        {
+          "label": "Hackzall",
+          "contents": [
+            "M12 FUEL Hackzall (2520-20)",
+            "Recip blade assortment"
+          ]
+        },
+        {
+          "label": "Compact Bandsaw",
+          "contents": [
+            "M12 FUEL Compact Band Saw (2529-20)",
+            "Spare 12/14 TPI blades"
+          ]
+        },
+        {
+          "label": "Batteries & Chargers",
+          "contents": [
+            "M12 battery fleet",
+            "Dual chargers"
+          ]
+        }
+      ],
+      "note": "Listed top to bottom. StackTech drawers are labelled by name, not numbered."
     },
     {
       "id": "red-toolbox",
       "name": "Red Toolbox — Hand Tools (US General Pro)",
-      "location": "Machine shop — two-stack chest with numbered drawer labels",
+      "location": "Machine shop — two-stack chest, printed drawers 1–16",
       "drawers": [
-        { "label": "Hammers & Mallets", "contents": ["Claw hammers", "Dead-blow & rubber mallets", "Pry bar", "Transfer punch set", "Ratcheting wrenches (overflow)"] },
-        { "label": "Handsaws", "contents": ["Stanley FatMax & DeWalt hacksaws and handsaws", "Spare blades", "Carver set", "Safety wire twisters"] },
-        { "label": "Hex Key Sets", "contents": ["Tekton metric hex & torx fold-up sets", "Preset 2.8 Nm torque T-handle", "Picks", "Bins of loose L-keys"] },
-        { "label": "Pliers", "contents": ["Snap-ring pliers", "Locking pliers", "Mini pliers", "Flush cutters", "Wire strippers", "Bionic Wrench"] },
-        { "label": "Sharp Things", "contents": ["Box cutters", "Scissors & snips", "Aviation snips", "Center punches", "Deburring tools", "Flush cutters"] },
-        { "label": "Sockets", "contents": ["Sockets by size in labeled trays (1/4\" through 1/2\", 9/16\", big sockets)", "Extensions & adapters", "Stubby ratchet"] },
-        { "label": "Thread Taps", "contents": ["Taps by size in labeled bins (4-40 through 7/16\", NPT, metric, big taps)", "Tap wrenches & T-handles", "Threading dies"] },
-        { "label": "Nut Drivers", "contents": ["Hollow-shaft nut drivers in 3D-printed sawtooth racks"] },
-        { "label": "Measuring", "contents": ["Speed squares & combination squares", "Levels", "Steel rules", "Tape measures", "Laser distance measurer"] },
-        { "label": "Hex Keys", "contents": ["L-key allen wrenches by size in labeled bins (3/32\", 1/8\", 5/32\", 3/16\")", "Ball-end drivers", "Fold-up sets"] },
-        { "label": "Wrenches", "contents": ["Combination & ratcheting wrenches in 3D-printed sawtooth organizers", "Handles color-coded by size with tape"] },
-        { "label": "Other Wrenches", "contents": ["Adjustable wrenches", "Mini combination wrench sets in trays", "Specialty wrenches"] },
-        { "label": "Screwdrivers", "contents": ["Flat-head & Phillips screwdrivers in sawtooth racks"] },
-        { "label": "Small Screwdrivers", "contents": ["Precision screwdrivers in Phillips & Flat bins", "Driver bit trays"] },
-        { "label": "Markers & Pens", "contents": ["Sharpie marker tray", "Pencils, pens & highlighters in printed bins"] },
-        { "label": "Files", "contents": ["Needle & jewelers files in printed bins", "Flat & half-round files", "Brass brush"] },
         {
-          "label": "Gloves & PPE",
-          "contents": ["Nitrile exam gloves", "Safety glasses", "Tap & drill charts"],
-          "notes": "Unnumbered top drawer — drawers below match the printed drawer numbers 1–16."
+          "number": 1,
+          "label": "Hammers & Mallets",
+          "printedLabel": "Hammers · Mallets",
+          "contents": [
+            "Claw hammers",
+            "Dead-blow & rubber mallets",
+            "Pry bar",
+            "Transfer punch set",
+            "Ratcheting wrenches (overflow)"
+          ]
         },
-        { "label": "Drill Vise & Layout", "contents": ["Drill-press vise", "V-block", "Large drill bits", "Layout tools"] },
-        { "label": "Calipers", "contents": ["Dial caliper", "EZ Cal digital calipers", "Pin vise", "Spare batteries"] },
-        { "label": "Micrometers & Instruments", "contents": ["MG Tool precision micrometers", "iGaging EZ-View DRO Plus", "Stud/wall detector", "Wireless thermometer probes"] }
-      ]
+        {
+          "number": 2,
+          "label": "Handsaws",
+          "printedLabel": "Handsaws",
+          "contents": [
+            "Stanley FatMax & DeWalt hacksaws and handsaws",
+            "Spare blades",
+            "Carver set",
+            "Safety wire twisters"
+          ]
+        },
+        {
+          "number": 3,
+          "label": "Hex Key Sets",
+          "printedLabel": "(number only — no name label)",
+          "contents": [
+            "Tekton fold-up metric hex & torx sets",
+            "Ball-end T-handle hex drivers",
+            "Preset 2.8 N·m torque driver",
+            "Picks",
+            "Bins of loose L-keys"
+          ],
+          "notes": "The one drawer with a number but no name label. Drawer 10 holds L-keys sorted by size; this drawer holds the sets, T-handles and torque drivers."
+        },
+        {
+          "number": 4,
+          "label": "Pliers",
+          "printedLabel": "Pliers",
+          "contents": [
+            "Snap-ring pliers",
+            "Locking pliers",
+            "Mini pliers",
+            "Flush cutters",
+            "Wire strippers",
+            "Bionic Wrench"
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Sharp Things",
+          "printedLabel": "Sharp Things — Snips · Center Punches · Deburring Tools · Box Cutters · Scissors · Razor Blades · Aviation Snips",
+          "contents": [
+            "Box cutters & razor blades",
+            "Scissors",
+            "Aviation snips",
+            "Snips",
+            "Center punches",
+            "Deburring tools",
+            "Flush cutters"
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Sockets",
+          "printedLabel": "Sockets",
+          "contents": [
+            "Sockets by size in labeled trays (1/4\" through 1/2\", 9/16\", big sockets)",
+            "Extensions & adapters",
+            "Stubby ratchet"
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Thread Taps",
+          "printedLabel": "Thread Taps",
+          "contents": [
+            "Taps by size in labeled bins (4-40 through 7/16\", NPT, metric, big taps)",
+            "Tap wrenches & T-handles",
+            "Threading dies"
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Nutdrivers + Wrench Sets",
+          "printedLabel": "NUTDRIVERS + WRENCH SETS",
+          "contents": [
+            "Hollow-shaft nut drivers in 3D-printed sawtooth racks",
+            "Boxed wrench sets"
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Measuring",
+          "printedLabel": "Measuring — Tape Measures · Levels · Rulers · Combination Squares · Speed Squares",
+          "contents": [
+            "Tape measures",
+            "Levels",
+            "Steel rules",
+            "Combination squares",
+            "Speed squares",
+            "Laser distance measurer"
+          ],
+          "notes": "Layout and marking only. Precision metrology — calipers, micrometers, indicators — lives in the Orange Toolbox."
+        },
+        {
+          "number": 10,
+          "label": "Hex Keys",
+          "printedLabel": "Hex Keys · Allen Wrenches",
+          "contents": [
+            "L-key allen wrenches by size in labeled bins (3/32\", 1/8\", 5/32\", 3/16\")",
+            "Ball-end drivers",
+            "Fold-up sets",
+            "Impact hex bit packs"
+          ]
+        },
+        {
+          "number": 11,
+          "label": "Wrenches",
+          "printedLabel": "Wrenches",
+          "contents": [
+            "Combination & ratcheting wrenches in 3D-printed sawtooth organizers",
+            "Handles color-coded by size with tape"
+          ]
+        },
+        {
+          "number": 12,
+          "label": "Other Wrenches",
+          "printedLabel": "Other Wrenches",
+          "contents": [
+            "Adjustable wrenches",
+            "Mini combination wrench sets in trays",
+            "Specialty wrenches"
+          ]
+        },
+        {
+          "number": 13,
+          "label": "Screwdrivers",
+          "printedLabel": "Screwdrivers — Flat Head · Phillips",
+          "contents": [
+            "Flat-head screwdrivers in sawtooth racks",
+            "Phillips screwdrivers in sawtooth racks"
+          ]
+        },
+        {
+          "number": 14,
+          "label": "Small Screwdrivers",
+          "printedLabel": "Small Screwdrivers",
+          "contents": [
+            "Precision screwdrivers in Phillips & Flat bins",
+            "Driver bit trays"
+          ],
+          "notes": "Top row, left of the three narrow drawers."
+        },
+        {
+          "number": 15,
+          "label": "Markers & Pens",
+          "printedLabel": "Markers · Pens/Pencils",
+          "contents": [
+            "Sharpie marker tray",
+            "Pencils, pens & highlighters in printed bins"
+          ],
+          "notes": "Top row, centre of the three narrow drawers."
+        },
+        {
+          "number": 16,
+          "label": "Files",
+          "printedLabel": "Files",
+          "contents": [
+            "Needle & jewelers files in printed bins",
+            "Flat & half-round files",
+            "Brass brush (file card)"
+          ],
+          "notes": "Top row, right of the three narrow drawers."
+        }
+      ],
+      "note": "Sixteen drawers, and only sixteen. Numbers run bottom-up: 1–8 are the lower cabinet, 9–13 the upper chest, and 14, 15 and 16 are the three narrow drawers side by side across the top. Calipers, micrometers, the drill vise and the glove/PPE stock are NOT in this box — they live in the Orange Toolbox at the chop saw."
     },
     {
-      "id": "dragne-toolbox",
-      "name": "Red Toolbox #2 — Dragne Toolbox (Stock & Indicators)",
-      "location": "Machine shop, by the lathe — Roughneck lift table parked beside it",
+      "id": "orange-toolbox",
+      "name": "Orange Toolbox — Chop Saw Station (US General Pro)",
+      "location": "Machine shop — under the Evolution chop saw, Roughneck lift table alongside",
+      "note": "Thirteen drawers. Drawer 13 runs full width across the top; below it the box splits into two columns — odd numbers 11, 9, 7, 5, 3, 1 down the wide left column and even numbers 12, 10, 8, 6, 4, 2 down the narrow right column. Drawers 4, 6 and 8 have not been catalogued yet; one of them holds the shop tachometers, the stud scanner, the Foneso laser tape measure and the angle finder. Open them, photograph them, and add them here. The printed label on the box reads \"Oragne Toolbox\" — a long-standing typo for the orange tape wrapping its edges.",
       "drawers": [
         {
-          "label": "Indicators & Machine Setup",
-          "contents": ["Dial indicator", "Magnetic base stands", "Machinist square case", "Shars screwless vise", "V-block", "QCTP holder"],
-          "notes": "Drawer 2 on the printed labels."
-        },
-        { "label": "Gears & Shaft Stock", "contents": ["Salvaged gears & pulley hubs", "Aluminum & steel round stock", "Tube shaft stock"] },
-        {
+          "number": 1,
           "label": "Plastic Stock",
-          "contents": ["Delrin/UHMW blocks", "Small parts case", "Prolube", "Funnel", "Fittings"],
-          "notes": "Bottom drawer."
+          "contents": [
+            "Delrin/UHMW blocks",
+            "Small parts case",
+            "Prolube",
+            "Funnel",
+            "Fittings"
+          ],
+          "notes": "Bottom of the left column."
+        },
+        {
+          "number": 2,
+          "label": "Indicators & Machine Setup",
+          "contents": [
+            "Dial test indicator",
+            "Magnetic base stands",
+            "Machinist square case",
+            "Shars screwless vise",
+            "Parallels & V-block",
+            "QCTP holder"
+          ],
+          "notes": "Bottom of the right column."
+        },
+        {
+          "number": 3,
+          "label": "Gears & Shaft Stock",
+          "contents": [
+            "Salvaged gears & pulley hubs",
+            "Aluminum & steel round stock",
+            "Tube shaft stock",
+            "Hex-bore hubs and plates"
+          ],
+          "notes": "Check here before you buy or turn a new shaft."
+        },
+        {
+          "number": 4,
+          "label": "Not yet catalogued",
+          "contents": [
+            "Contents not logged — open it, photograph it, and add it here"
+          ]
+        },
+        {
+          "number": 5,
+          "label": "Live Center & Lathe Accessories",
+          "contents": [
+            "MT2 live center",
+            "Drill bit and end mill sets in tubes",
+            "Boring bar and turning tool holders",
+            "GS-TER20-D20 tool holder"
+          ]
+        },
+        {
+          "number": 6,
+          "label": "Not yet catalogued",
+          "contents": [
+            "Contents not logged — open it, photograph it, and add it here"
+          ]
+        },
+        {
+          "number": 7,
+          "label": "Drill Chucks & Arbors",
+          "contents": [
+            "Jacobs drill chucks on Morse-taper arbors",
+            "Tap wrench",
+            "Hand file",
+            "McMaster-Carr hardware packets"
+          ]
+        },
+        {
+          "number": 8,
+          "label": "Not yet catalogued",
+          "contents": [
+            "Contents not logged — open it, photograph it, and add it here"
+          ]
+        },
+        {
+          "number": 9,
+          "label": "Broaches, Reamers & Gauge Pins",
+          "contents": [
+            "Keyway broach set in its wooden box",
+            "Hand reamers",
+            "Gauge pin sets (Series-144)",
+            "Taper reamer"
+          ],
+          "notes": "This is the drawer the Arbor Press & Broaching page sends you to."
+        },
+        {
+          "number": 10,
+          "label": "Micrometers & Instruments",
+          "contents": [
+            "MG Tool precision micrometers (0–25 mm, boxed)",
+            "iGaging EZ-View DRO Plus",
+            "Tacklife stud/wall detector",
+            "Wireless thermometer probes"
+          ]
+        },
+        {
+          "number": 11,
+          "label": "Drill Vise & Layout",
+          "contents": [
+            "Small drill-press vise",
+            "V-block",
+            "Large drill bits",
+            "Layout tools and scribes"
+          ]
+        },
+        {
+          "number": 12,
+          "label": "Calipers",
+          "contents": [
+            "Dial caliper",
+            "EZ Cal digital calipers",
+            "Pin vise",
+            "Spare batteries"
+          ]
+        },
+        {
+          "number": 13,
+          "label": "Gloves & PPE",
+          "contents": [
+            "Nitrile exam gloves (M through XL)",
+            "Safety glasses",
+            "Tap & drill charts",
+            "Snap ring and groove size charts"
+          ],
+          "notes": "Full-width top drawer — this is the drawer people mean by \"the glove drawer\"."
         }
       ]
     },
     {
       "id": "blue-toolbox",
-      "name": "Blue Toolbox — Fabrication Support",
-      "location": "Machine shop, next to the WAZER",
+      "name": "Blue Toolbox — Fabrication Support (US General)",
+      "location": "Machine shop — between the WAZER and the Gweike, fab corner",
       "drawers": [
-        { "label": "Taps & Dies", "contents": ["Tap and die sets", "Tap handles", "Cutting fluid"] },
-        { "label": "Riveting", "contents": ["Hand rivet guns", "Manual rivnut tools", "Rivet assortments"] },
-        { "label": "Clamps", "contents": ["C-clamps", "Kant-Twist clamps", "90° corner clamps"] }
-      ]
+        {
+          "number": null,
+          "label": "Calipers",
+          "printedLabel": "Calipers",
+          "contents": [
+            "Calipers for the fab corner — measure at the machine, put them straight back"
+          ],
+          "notes": "Second drawer from the top."
+        },
+        {
+          "number": null,
+          "label": "CNC Router",
+          "printedLabel": "CNC Router",
+          "contents": [
+            "CNC router tooling, collets and setup hardware"
+          ],
+          "notes": "Third drawer from the top."
+        },
+        {
+          "number": null,
+          "label": "xTool MetalFab",
+          "printedLabel": "xTool MetalFab",
+          "contents": [
+            "xTool MetalFab nozzles, lenses and setup tools"
+          ],
+          "notes": "Second drawer up from the bottom."
+        }
+      ],
+      "note": "Only three of the blue box's drawers carry a printed label; the rest are unlabelled and hold general fab-corner support — taps and dies, hand tools, clamps and setup gear for the WAZER / xTool corner. Labelling and cataloguing them is an open job."
     },
     {
-      "id": "lathe-toolbox",
-      "name": "Lathe Toolbox",
-      "location": "Next to the PM-1130V",
+      "id": "lathe-tstak",
+      "name": "Lathe T-Stak Drawers",
+      "location": "Under the lathe bench, beside the PM-1130V",
       "drawers": [
-        { "label": "Turning Tools", "contents": ["Indexable turning tools", "Carbide inserts", "Boring bars"] },
-        { "label": "Workholding", "contents": ["Chuck jaws", "Live centers", "Drill chucks"] },
-        { "label": "Measuring", "contents": ["Micrometers", "Dial indicators", "Edge finders"] }
+        {
+          "number": null,
+          "label": "Drill Bits / Spare Hardware",
+          "printedLabel": "DRILL BITS/SPARE HARDWARE",
+          "contents": [
+            "Drill bit sets",
+            "Spare fasteners and shaft hardware"
+          ]
+        },
+        {
+          "number": null,
+          "label": "Measuring / Grease",
+          "printedLabel": "MEASURING/GREASE",
+          "contents": [
+            "Measuring tools kept at the lathe",
+            "Way oil and grease"
+          ]
+        },
+        {
+          "number": null,
+          "label": "Electrical / Tape",
+          "printedLabel": "ELECTRICAL/TAPE",
+          "contents": [
+            "Electrical odds and ends",
+            "Tape"
+          ]
+        },
+        {
+          "number": null,
+          "label": "Rivetnuts",
+          "printedLabel": "Rivetnuts",
+          "contents": [
+            "Red-handled manual rivnut tools",
+            "Aluminum & brass rivnuts sorted in bins",
+            "Spare mandrels and nosepieces"
+          ]
+        }
+      ],
+      "note": "Four labelled DeWalt T-Stak drawer units stacked under the bench; the stack itself carries a \"Lathe Drawers\" label. Turning tooling is not in this stack — the QCTP holders and the Oscarbide indexable set live in their own T-Stak drawers beside it."
+    },
+    {
+      "id": "lathe-turning-tooling",
+      "name": "Lathe Turning Tooling (T-Stak drawers)",
+      "location": "Beside the lathe bench, with the Lathe T-Stak stack",
+      "note": "These two drawers are not separately labelled — go by contents.",
+      "drawers": [
+        {
+          "number": null,
+          "label": "QCTP Holders & Setup",
+          "contents": [
+            "Quick-change tool post holders, pre-set for height",
+            "Parting blade holder",
+            "Ball-end hex key sets",
+            "1-2-3 / setup block",
+            "Brass brush",
+            "Insert screws (DRC1206)"
+          ]
+        },
+        {
+          "number": null,
+          "label": "Indexable Turning Set & Inserts",
+          "contents": [
+            "Oscarbide 7-piece 1/2\" indexable carbide turning tool set (SRDCN / SER / SVJCR / SCLCR / SWGCR / SDNCN / SDJCR)",
+            "Boring bars",
+            "Spare carbide inserts in labeled cases",
+            "WIDIA GTD #10-32 HSS taps",
+            "3/8\" indexable insert stock"
+          ]
+        }
       ]
     }
   ],
