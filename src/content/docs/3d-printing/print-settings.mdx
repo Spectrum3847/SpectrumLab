@@ -5,6 +5,7 @@ description: "Orientation for strength, the slicer priority hierarchy, dual-nozz
 
 import PrintSettingPreset from '../../../components/PrintSettingPreset.astro';
 import SafetyWarning from '../../../components/SafetyWarning.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
 
 Ninety percent of print quality and part strength is decided before you touch a single slicer
 setting: it comes from **which way the part sits on the plate**. Get orientation right, then
@@ -294,6 +295,31 @@ a weak part.
   }}
   notes="Big, low-detail prints — enclosures, covers, anything closer to plate-sized than robot-part-sized. Fewer walls and lighter infill keep print time reasonable on a part that is large everywhere; adaptive cubic rather than gyroid for the same reason — it subdivides, so it runs dense near the surfaces and sparse through the middle, and its straight runs let the printer actually hold the flow cap that gyroid's curves keep it from reaching; the brim is pinned on rather than left to the slicer default, because a large part carries more warping force at its corners than a no-brim setup assumes. Not a fix for a tall, thin part with a small footprint — that geometry wants the Structural PETG-GF preset and still needs a brim of its own; this preset is for parts that are large in every dimension."
 />
+
+## Resources
+
+<TutorialLink
+  title="Markforged — 3D Printing Design Tips"
+  url="https://markforged.com/resources/learn/design-for-additive-manufacturing-plastics-composites/3d-printing-strategies-for-composites/composites-3d-printing-design-tips"
+  source="knowledge-base"
+  description="Design-for-print guidance from a composites printer vendor: loading conditions and orientation, critical dimensions, bed contact, cutting supports, fillets and chamfers, and when to use hardware instead of a printed feature."
+/>
+
+Worth reading next to [Orientation for strength](#orientation-for-strength) — it lands on the same
+rule from a different direction: design so the largest forces run across the XY plane, and split
+the part when no single orientation serves every face. Its "printed unit test" is our
+prototype-in-PLA fit check under another name.
+
+Two things it covers that this page does not. **Fillet the edges normal to the plate and chamfer
+the ones sitting on it** — fillets cut stress concentrations and warping, chamfers make the part
+easier to release and stop the first layer splaying, and a chamfer on a hole helps a fit line up.
+And **reach for hardware before printing a feature**: heat-set inserts rather than tapped plastic
+(which this page already requires), plus dowel pins for wear surfaces and alignment, and bushings
+where you need a concentric running fit.
+
+Skip the continuous-fiber passages. Markforged machines lay continuous strand along a toolpath;
+ours chop fiber into the filament, which is why our glass fill buys stiffness rather than
+routed reinforcement. Everything else on the page applies to FFF unchanged.
 
 ## Related pages
 
