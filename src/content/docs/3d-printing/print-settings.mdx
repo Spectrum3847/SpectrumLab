@@ -1,6 +1,6 @@
 ---
 title: "Print Settings & Support Strategy"
-description: "Orientation for strength, the slicer priority hierarchy, dual-nozzle zero-gap supports, and copy-ready presets for FRC parts."
+description: "Orientation for strength, the slicer priority hierarchy, dual-nozzle supports, and copy-ready presets for FRC parts."
 ---
 
 import PrintSettingPreset from '../../../components/PrintSettingPreset.astro';
@@ -52,8 +52,11 @@ slider, which is fifth.
 4. **Line width.** Set to **115–125% of nozzle diameter** — 0.50–0.52 mm on a 0.4 mm nozzle,
    0.70–0.75 mm on a 0.6 mm. Wider beads mean more thermal contact area between layers.
 5. **Infill percentage.** **25–40%** for structural brackets. Reserve 100% / all-walls for
-   dead-axle spacers and clamp blocks where the part is a solid chunk by design.
-6. **Infill pattern.** **Gyroid** for isotropic 3D strength, or **cubic / adaptive cubic**.
+   dead-axle spacers and clamp blocks where the part is a solid chunk by design — see the
+   **Maximum Strength** preset below.
+6. **Infill pattern.** **Gyroid** for isotropic 3D strength — impacts arrive from directions
+   nobody predicted, and gyroid is the pattern with no preferred one. Use **adaptive cubic** on
+   big low-detail parts, where subdividing away from the surfaces buys time you actually feel.
    Avoid grid and triangles — the nozzle drags back across its own crossings, which costs
    quality and speed for no strength gain.
 7. **Layer height.** **0.20 mm** on a 0.4 mm nozzle, **0.28–0.32 mm** on a 0.6 mm.
@@ -95,12 +98,14 @@ When you genuinely need supports:
 
 ## Dual-nozzle support strategies
 
-The H2D and X2D have a second nozzle, which unlocks something a single-nozzle printer cannot do:
-a **zero-gap** support interface that still releases cleanly. Instead of leaving an air gap and
-accepting a rough underside, we exploit chemical incompatibility between two plastics.
+The H2D and X2D have a second nozzle, which lets a support tower print in a different material
+from the part. The house profiles default to **same-material supports with a 1-layer Z gap** — the
+support prints in the part's own material and breaks away at the gap. If you want a smoother
+underside and are willing to load PLA in slot 2, the **`06 Robot Part - PLA Support`** profile
+carries the PLA-interface strategy instead.
 
 <SafetyWarning type="tip" title="Turn off the prime tower for true dual-nozzle prints">
-Whenever a print assigns each nozzle its own dedicated material — the zero-gap interface below,
+Whenever a print assigns each nozzle its own dedicated material — a PLA support interface,
 PPA-GF supports on a second hotend, anything where **the AMS is not the thing switching
 filament** — turn off **Print Settings → Others → Prime tower** before slicing. Bambu Studio
 ships `enable_prime_tower` **on by default**, including in the dual-nozzle process presets, so
@@ -119,35 +124,15 @@ alone** — more than the part itself. Tower off: 10.93 g and 1h9m, same part, s
 the filament, 41 fewer minutes, nothing else changed.
 </SafetyWarning>
 
-### Universal zero-gap interface
-
-Use for **72D TPU and PETG-GF**.
-
-- **Main part and support towers:** the same functional material as the part (PETG-GF or
-  72D TPU).
-- **Support interface layer:** standard **white PLA** in Nozzle 2.
-- **Top / bottom Z distance:** **0.0 mm — zero gap.**
-- **Interface layers:** 2–3.
-
-*Why it works:* PLA will not chemically weld to polyurethanes or copolyesters. The interface
-touches the part with no gap at all, so the underside comes out looking injection-molded — and
-then the whole support snaps off clean, because the bond was never there to begin with.
-
 ### PPA-GF supports
 
 PLA cannot be used here — PPA-GF prints at 290 °C+, which cooks PLA into a plug.
 
 - **Standard geometry:** single-material **PPA-GF tree supports** with a **0.22 mm top Z gap**.
   The glass fibers create a clean break plane on their own.
-- **Complex or zero-gap geometry:** a dedicated high-temperature support material — Raise3D
+- **Complex or fully enclosed geometry:** a dedicated high-temperature support material — Raise3D
   Industrial PPA Support, or **AquaSys 120** water-soluble filament for internal geometry you
   cannot reach with pliers.
-
-<SafetyWarning type="tip" title="Set the interface, not just the gap">
-Zero gap without a PLA interface layer welds the support to the part permanently. If you set
-Z distance to 0.0 mm, you must also assign the interface extruder and enable 2–3 interface
-layers, or you are printing a solid block.
-</SafetyWarning>
 
 ## Overhang & bridging limits
 
@@ -191,12 +176,30 @@ a weak part.
     'Walls': '6',
     'Top / bottom layers': '6 / 6',
     'Line width': '0.50 mm',
-    'Infill': '30–35% gyroid (cubic for max-stiffness parts)',
+    'Infill': '30–35% gyroid',
     'Part fan': '20–40% (lower = stronger)',
     'Nozzle': '265 °C, hardened only',
     'Plate': 'Textured PEI, bed 75 °C',
   }}
-  notes="On-robot brackets, gearbox plates, covers, electronics shields, motor mounts, and dead-axle spacers — the default answer for an on-robot part. Hardened nozzle required; never a 0.2 mm."
+  notes="On-robot brackets, gearbox plates, covers, electronics shields, motor mounts, and dead-axle spacers — the default answer for an on-robot part. Hardened nozzle required; never a 0.2 mm. If a part needs more than this, add walls or move to the Maximum Strength preset below — a denser or different infill pattern is the weakest lever on the list and will not save a part that is genuinely under-built."
+/>
+
+<PrintSettingPreset
+  title="Maximum Strength PETG-GF — solid"
+  slicer="Bambu Studio"
+  settings={{
+    'Layer height': '0.20 mm',
+    'Walls': '25 (all perimeters — walls consume the section)',
+    'Sparse infill': '100%, rectilinear — backstop for thick sections',
+    'Top / bottom layers': '8 / 8 (1.6 mm)',
+    'Line width': '0.50 mm',
+    'Part fan': '20% — low end, heat retention',
+    'Nozzle': '265 °C, hardened only',
+    'Volumetric flow': 'Cap at 11.5 mm³/s',
+    'Brim': 'Outer brim, 5 mm',
+    'Plate': 'Textured PEI, bed 75 °C',
+  }}
+  notes="The escalation rung between the structural default and PPA-GF: try a solid PETG-GF part before you special-order PPA-GF at nearly 3× the cost. For clamp blocks, dead-axle spacers, and any part that has already failed at 30–35%. Walls and infill are both set deliberately — 25 walls turns plate-like and shell geometry into pure perimeter, and 100% infill catches the middle of thick chunks where concentric loops would otherwise converge into gap fill, which is the weakest plastic in the part. Brim is on because a fully solid glass-filled part builds real internal stress and will lift a corner without one. Expect roughly double the material and print time of the structural preset."
 />
 
 <PrintSettingPreset
@@ -242,11 +245,11 @@ a weak part.
     'Layer height': '0.28–0.32 mm (0.6 nozzle) / 0.28 mm (0.4 nozzle)',
     'Walls': '3',
     'Top / bottom layers': '4 / 4',
-    'Infill': '15% gyroid',
+    'Infill': '15% adaptive cubic',
     'Brim': 'Outer brim, 8 mm — always on',
     'Printer': 'Any Bambu',
   }}
-  notes="Big, low-detail prints — enclosures, covers, anything closer to plate-sized than robot-part-sized. Fewer walls and lighter infill keep print time reasonable on a part that is large everywhere; the brim is pinned on rather than left to the slicer default, because a large part carries more warping force at its corners than a no-brim setup assumes. Not a fix for a tall, thin part with a small footprint — that geometry wants the Structural PETG-GF preset and still needs a brim of its own; this preset is for parts that are large in every dimension."
+  notes="Big, low-detail prints — enclosures, covers, anything closer to plate-sized than robot-part-sized. Fewer walls and lighter infill keep print time reasonable on a part that is large everywhere; adaptive cubic rather than gyroid for the same reason — it subdivides, so it runs dense near the surfaces and sparse through the middle, and its straight runs let the printer actually hold the flow cap that gyroid's curves keep it from reaching; the brim is pinned on rather than left to the slicer default, because a large part carries more warping force at its corners than a no-brim setup assumes. Not a fix for a tall, thin part with a small footprint — that geometry wants the Structural PETG-GF preset and still needs a brim of its own; this preset is for parts that are large in every dimension."
 />
 
 ## Related pages
