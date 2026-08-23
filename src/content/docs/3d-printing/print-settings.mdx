@@ -152,13 +152,13 @@ layers, or you are printing a solid block.
 
 ### PPA-GF supports
 
-PLA cannot be used here — PPA-GF prints at 290 °C+, which cooks PLA into a plug.
+PLA cannot be used here — PPA-GF prints at 310 °C, which cooks PLA into a plug.
 
 - **Standard geometry:** single-material **PPA-GF tree supports** with a **0.22 mm top Z gap**.
   The glass fibers create a clean break plane on their own.
-- **Complex or zero-gap geometry:** a dedicated high-temperature support material — Raise3D
-  Industrial PPA Support, or **AquaSys 120** water-soluble filament for internal geometry you
-  cannot reach with pliers.
+- **Geometry you cannot reach with pliers:** we do not stock a high-temperature or soluble
+  support material, so there is no fallback. Reorient the part, split it, or design the overhang
+  out — do not start a PPA-GF print you have no way to clean up.
 
 ## Overhang & bridging limits
 
@@ -172,6 +172,12 @@ PLA cannot be used here — PPA-GF prints at 290 °C+, which cooks PLA into a pl
 
 ## House presets
 
+Each card names the **Spectrum3847 filament and process presets** to pick in Bambu Studio — the
+numbered entries in the dropdowns, published from the
+[3DPrinterSettings](https://github.com/Spectrum3847/3DPrinterSettings) repo. Select those two
+first; the values below are what they set, so you can check the profile did what you expect and
+adjust from there.
+
 Start from these, then adjust. **The values below are for a 0.4 mm nozzle, which means the H2D and
 the X2D.** Most of the lab's machines are not 0.4 mm: the **X1Cs run 0.6 mm** and so do all twelve
 **Prusa Minis**. On any 0.6 mm machine, convert using the
@@ -184,6 +190,8 @@ a weak part.
   title="Fast Draft PLA"
   slicer="Bambu Studio"
   settings={{
+    'Filament preset': '01 PLA - draft only',
+    'Process preset': '01 Draft - not for robot',
     'Layer height': '0.28 mm',
     'Walls': '2',
     'Top / bottom layers': '3 / 2',
@@ -198,6 +206,8 @@ a weak part.
   title="Structural PETG-GF — the default"
   slicer="Bambu Studio"
   settings={{
+    'Filament preset': '02 PETG-GF - robot parts',
+    'Process preset': '02 Robot Part - PETG-GF',
     'Layer height': '0.20 mm',
     'Walls': '6',
     'Top / bottom layers': '6 / 6',
@@ -214,6 +224,8 @@ a weak part.
   title="Maximum Strength PETG-GF — solid"
   slicer="Bambu Studio"
   settings={{
+    'Filament preset': '02 PETG-GF - robot parts',
+    'Process preset': '07 Max Strength - solid',
     'Layer height': '0.20 mm',
     'Walls': '25 (all perimeters — walls consume the section)',
     'Sparse infill': '100%, rectilinear — backstop for thick sections',
@@ -225,13 +237,15 @@ a weak part.
     'Brim': 'Outer brim, 5 mm',
     'Plate': 'Textured PEI, bed 75 °C',
   }}
-  notes="The escalation rung between the structural default and PPA-GF: try a solid PETG-GF part before you special-order PPA-GF at nearly 3× the cost. For clamp blocks, dead-axle spacers, and any part that has already failed at 30–35%. Walls and infill are both set deliberately — 25 walls turns plate-like and shell geometry into pure perimeter, and 100% infill catches the middle of thick chunks where concentric loops would otherwise converge into gap fill, which is the weakest plastic in the part. Brim is on because a fully solid glass-filled part builds real internal stress and will lift a corner without one. Expect roughly double the material and print time of the structural preset."
+  notes="The escalation rung between the structural default and PPA-GF: try a solid PETG-GF part before you special-order PPA-GF at nearly 3× the cost. For clamp blocks, dead-axle spacers, and any part that has already failed at 30–35%. Walls and infill are both set deliberately — 25 walls turns plate-like and shell geometry into pure perimeter, and 100% infill catches the middle of thick chunks where concentric loops would otherwise converge into gap fill, which is the weakest plastic in the part. Brim is on because a fully solid glass-filled part builds real internal stress and will lift a corner without one. Expect roughly double the material and print time of the structural preset. The 07 process preset reaches the machines with the next preset deploy."
 />
 
 <PrintSettingPreset
   title="72D TPU Impact Part"
   slicer="Bambu Studio"
   settings={{
+    'Filament preset': '04 TPU 72D - impact parts',
+    'Process preset': '03 Impact Part - TPU 72D',
     'Layer height': '0.20 mm',
     'Walls': '6–8',
     'Top / bottom layers': '6 / 6',
@@ -250,6 +264,8 @@ a weak part.
   title="PPA-GF Competition Part"
   slicer="Bambu Studio"
   settings={{
+    'Filament preset': '06 PPA-GF - competition',
+    'Process preset': '04 Competition - high temp',
     'Layer height': '0.20 mm',
     'Walls': '8',
     'Top / bottom layers': '7 / 7',
@@ -268,6 +284,7 @@ a weak part.
   title="Large Part — brim on"
   slicer="Bambu Studio"
   settings={{
+    'Process preset': '05 Large Part - brim on',
     'Layer height': '0.28–0.32 mm (0.6 nozzle) / 0.28 mm (0.4 nozzle)',
     'Walls': '3',
     'Top / bottom layers': '4 / 4',

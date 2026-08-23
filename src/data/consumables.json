@@ -869,6 +869,21 @@
     "notes": "0.6 mm is the farm standard. Hardened for anything filled; brass is fine for PLA and plain PETG. The MINI+ hotend is all-metal to 275 °C. (list estimate — no receipt on file; update the price when we next order)."
   },
   {
+    "id": "hdpe-cleaning-filament",
+    "name": "HDPE Cleaning Filament",
+    "category": "3D Printing",
+    "unit": "spool",
+    "partNumber": "1.75 mm cleaning / purging filament",
+    "location": "3D printer supply drawer",
+    "machines": [
+      "bambu-x1c",
+      "bambu-h2d",
+      "bambu-x2d",
+      "prusa-mini"
+    ],
+    "notes": "Purge the hot end with this when stepping a nozzle DOWN in temperature — see Changing filaments on a nozzle in the Filament Guide. One roll on hand. Brand, price and reorder link are not recorded yet; more importantly, read the rated maximum temperature off the spool and add it here, because the purge procedure caps at the lower of the outgoing material's temperature and this filament's ceiling, and most HDPE is rated short of PPA-GF's 310 °C."
+  },
+  {
     "id": "pinecil-tips",
     "name": "PINECIL Soldering Tips (TS/B2, C4, K)",
     "category": "Electrical",
