@@ -100,9 +100,9 @@ When you genuinely need supports:
 
 The H2D and X2D have a second nozzle, which lets a support tower print in a different material
 from the part. The house profiles default to **same-material supports with a 1-layer Z gap** — the
-support prints in the part's own material and breaks away at the gap. If you want a smoother
-underside and are willing to load PLA in slot 2, the **`06 Robot Part - PLA Support`** profile
-carries the PLA-interface strategy instead.
+support prints in the part's own material and breaks away at the gap. That is the fast choice
+and it needs no setup. When the finish on a supported face actually matters, the zero-gap PLA
+interface below is the option.
 
 <SafetyWarning type="tip" title="Turn off the prime tower for true dual-nozzle prints">
 Whenever a print assigns each nozzle its own dedicated material — a PLA support interface,
@@ -124,13 +124,39 @@ alone** — more than the part itself. Tower off: 10.93 g and 1h9m, same part, s
 the filament, 41 fewer minutes, nothing else changed.
 </SafetyWarning>
 
+### Zero-gap PLA interface
+
+Not the default, and it is worth knowing why. A PLA interface gets you an underside that looks
+injection-molded, but it costs a nozzle change on every layer that carries interface, and
+somebody has to load PLA in slot 2 before the print starts. Same-material supports need neither.
+Reach for this when the finish on a supported face matters — not by habit.
+
+**H2D and X2D only** — the X1Cs have a single nozzle. Slicer profile:
+**`06 Robot Part - PLA Support`**. Use for **72D TPU and PETG-GF**.
+
+- **Main part and support towers:** the same functional material as the part (PETG-GF or
+  72D TPU).
+- **Support interface layer:** standard **white PLA** in Nozzle 2.
+- **Top / bottom Z distance:** **0.0 mm — zero gap.**
+- **Interface layers:** 2–3.
+
+*Why it works:* PLA will not chemically weld to polyurethanes or copolyesters. The interface
+touches the part with no gap at all, so the underside comes out looking injection-molded — and
+then the whole support snaps off clean, because the bond was never there to begin with.
+
+<SafetyWarning type="tip" title="Set the interface, not just the gap">
+Zero gap without a PLA interface layer welds the support to the part permanently. If you set
+Z distance to 0.0 mm, you must also assign the interface extruder and enable 2–3 interface
+layers, or you are printing a solid block.
+</SafetyWarning>
+
 ### PPA-GF supports
 
 PLA cannot be used here — PPA-GF prints at 290 °C+, which cooks PLA into a plug.
 
 - **Standard geometry:** single-material **PPA-GF tree supports** with a **0.22 mm top Z gap**.
   The glass fibers create a clean break plane on their own.
-- **Complex or fully enclosed geometry:** a dedicated high-temperature support material — Raise3D
+- **Complex or zero-gap geometry:** a dedicated high-temperature support material — Raise3D
   Industrial PPA Support, or **AquaSys 120** water-soluble filament for internal geometry you
   cannot reach with pliers.
 
