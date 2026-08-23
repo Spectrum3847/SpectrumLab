@@ -81,7 +81,7 @@ new parts around it, and do not reorder it.
   styrene VOCs and ultra-fine particles, and the lab is a shared space where that means
   headaches for whoever is working at the next bench. If a slicer profile or a Bambu support
   chart tells you to use ABS or ASA as a support interface, use white PLA instead — see the
-  [zero-gap interface trick](/3d-printing/print-settings/#universal-zero-gap-interface).
+  [dual-nozzle support strategies](/3d-printing/print-settings/#dual-nozzle-support-strategies).
 - **Carbon-fiber nylon (PA-CF / PPA-CF / PET-CF).** Excellent stiffness, wrong failure mode for
   impact mechanisms: the chopped fibers act as micro-stress risers under shock load, so parts
   shatter along layer lines in a collision rather than bending. Spend our existing CF spools on
@@ -148,7 +148,7 @@ non-AMS-compatible (any model) and may get the load refused outright.
 PLA has two jobs. First, it is the cheapest way to learn that your CAD is wrong — print the fit
 check, find the mistake, reprint the real part in PETG-GF. Second, it is the **support interface
 material in Nozzle 2**, because PLA refuses to chemically weld to polyurethanes or copolyesters.
-That refusal is what lets us run a zero-gap support interface and get an injection-molded
+That refusal is what lets us run a PLA support interface and get an injection-molded
 underside that snaps clean off.
 
 ### Already on the shelf
@@ -237,6 +237,63 @@ Popping or hissing at the nozzle, steam wisps, stringing that tuning does not fi
 surfaces, and weak layer adhesion. If you see two or more of these, stop and dry the spool —
 you are wasting printer time otherwise.
 </SafetyWarning>
+
+## Changing filaments on a nozzle
+
+Going **up** in temperature mostly takes care of itself — the hotter material melts whatever the
+last one left behind. Going **down** is what clogs nozzles. Before you drop a nozzle from a hot
+material to a cooler one, purge it with **HDPE cleaning filament at the hotter material's
+temperature**, while the nozzle is still hot.
+
+Residue only softens at the temperature it was printed at. Load PLA at 220 °C behind PPA-GF that
+ran at 310 °C and the leftover nylon in the melt zone never softens — it sits there as a solid
+restriction while the PLA tries to squeeze past. First you get under-extrusion, then a partial
+clog, then a blockage that needs the hotend apart. The incoming filament can never clear it on
+its own, because the temperature that would melt it is the one you just left.
+
+**Purge before you cool anything down:**
+
+1. Leave the nozzle **at the outgoing material's print temperature**. Do not start cooling yet.
+2. Unload the hot material normally.
+3. Load **HDPE cleaning filament** and extrude by hand until the strand runs clear — no color,
+   no glass-fiber glitter, no dark specks.
+4. *Then* drop the nozzle to the incoming material's temperature.
+5. Load the new filament and purge again until the color runs solid and even.
+
+**Transitions that always get a purge:**
+
+| Coming off | Going to | Drop |
+| --- | --- | --- |
+| **PPA-GF** (310 °C) | anything else we print | 40–120 °C |
+| **PA-CF / PPA-CF** (260–320 °C) | PETG, TPU, or PLA | 40–130 °C |
+| **PC** (260–290 °C) | PETG, TPU, or PLA | 30–70 °C |
+| **PETG-GF** (240–270 °C) | PLA (190–230 °C) | 30–50 °C |
+
+A drop of roughly **30 °C or more** is the rule of thumb. Near-sideways moves do not need it —
+PETG-GF down to 72D TPU is about 15 °C, and the TPU will push the residue through fine.
+
+<SafetyWarning type="warning" title="Check the cleaning filament's temperature ceiling">
+Most HDPE cleaning filament is rated well short of 310 °C. Purge at the outgoing material's
+temperature **or the cleaning filament's rated maximum, whichever is lower** — run HDPE past its
+ceiling and it degrades and smokes in the melt zone, which leaves you worse off than the residue
+did. Coming off PPA-GF, read the spool before you set the temperature.
+</SafetyWarning>
+
+<SafetyWarning type="tip" title="An automatic filament change is not a purge">
+An automatic change is sized to flush the previous **color**, and it loads at whatever
+temperature the incoming material calls for — which is the one temperature that cannot move the
+outgoing material's residue. Stepping down, do the manual hot purge first, then let the AMS run
+its normal change.
+</SafetyWarning>
+
+If the purge will not run clean, escalate to a **cold pull**: extrude cleaning filament, let the
+nozzle cool to roughly 90–120 °C, then pull the filament straight back out so it takes the
+softened residue with it. Repeat until what comes out is clean. If that still does not do it, it
+is a hotend teardown — get a mentor.
+
+Going the other way, up in temperature, the one thing to avoid is **heat-soaking a PLA-loaded
+nozzle at nylon temperatures**. PLA left sitting at 300 °C+ cooks into carbon that no purge will
+shift. Push the PLA out first, then bring the nozzle up.
 
 ## Buying filament
 
