@@ -1,6 +1,6 @@
 ---
 title: "Print Settings & Support Strategy"
-description: "Orientation for strength, the slicer priority hierarchy, dual-nozzle supports, and copy-ready presets for FRC parts."
+description: "Orientation for strength, the slicer priority hierarchy, automatic tree supports, and copy-ready presets for FRC parts."
 ---
 
 import PrintSettingPreset from '../../../components/PrintSettingPreset.astro';
@@ -85,32 +85,35 @@ away:
    full of scarred support surfaces.
 4. Remember anything **under 45° from vertical prints fine unsupported** on our machines.
 
-When you genuinely need supports:
+Every house profile now has supports configured and turned on already — nothing to paint, nothing
+to switch on:
 
-- **Tree (organic) supports — the default.** They use less filament, pull off in one satisfying
-  piece, and barely scar the part. Best for anything with scattered small overhangs or organic
-  shapes.
-- **Normal (grid) supports** — use for large flat ceilings (a big horizontal underside), where
-  trees get flimsy and a uniform interface leaves a flatter surface.
-- Single-material supports want a **top Z distance of about 0.2 mm** (one layer). If supports
-  weld on, increase the gap; if the surface above sags, decrease it.
-- Supported surfaces are always the ugliest surface on the part. Face them where nobody looks
-  and no part mates.
+- **Tree Auto, growing from the build plate only.** Branches never snake sideways across the
+  print, and the auto pass runs without you painting anything.
+- **Same material as the part**, with a **one-layer top/bottom Z gap** — 0.2 mm on the H2D/X2D's
+  0.4 mm nozzles, 0.3 mm on the X1Cs' and Minis' 0.6 mm nozzles. Enough to snap off cleanly
+  without scarring the surface above.
+- If supports land somewhere you don't want them, use the **support blocker** on that spot
+  before slicing. If the auto pass misses an overhang that genuinely needs help, use the
+  **support painter** to add it — most parts need neither.
+- Supported surfaces are always the ugliest surface on the part. Orient so they fall where
+  nobody looks and no part mates.
 
-## Dual-nozzle support strategies
-
-The H2D and X2D have a second nozzle, which lets a support tower print in a different material
-from the part. The house profiles default to **same-material supports with a 1-layer Z gap** — the
-support prints in the part's own material and breaks away at the gap. That is the fast choice
-and it needs no setup. When the finish on a supported face actually matters, the zero-gap PLA
-interface below is the option.
+**High-temp materials get a larger, tuned gap instead of a smaller one.** PLA cannot be used as
+an interface here — PPA-GF prints at 310 °C, which cooks PLA into a plug. The Competition and Max
+Strength profiles use single-material **PPA-GF tree supports with a 0.35 mm top/bottom Z gap**
+and a denser concentric interface, backed off further than the 0.2 mm default so the glass-fiber
+break plane still releases clean at that temperature. For geometry you cannot reach with pliers,
+there is no fallback — we do not stock a high-temperature or soluble support material. Reorient
+the part, split it, or design the overhang out; do not start a PPA-GF print you have no way to
+clean up.
 
 <SafetyWarning type="tip" title="Turn off the prime tower for true dual-nozzle prints">
-Whenever a print assigns each nozzle its own dedicated material — a PLA support interface,
-PPA-GF supports on a second hotend, anything where **the AMS is not the thing switching
-filament** — turn off **Print Settings → Others → Prime tower** before slicing. Bambu Studio
-ships `enable_prime_tower` **on by default**, including in the dual-nozzle process presets, so
-this does not happen automatically; you have to uncheck it yourself, every time.
+Whenever a print assigns each nozzle its own dedicated material — different materials on the
+H2D's or X2D's two hotends, anything where **the AMS is not the thing switching filament** — turn
+off **Print Settings → Others → Prime tower** before slicing. Bambu Studio ships
+`enable_prime_tower` **on by default**, so this does not happen automatically; you have to
+uncheck it yourself, every time.
 
 The prime tower exists to purge and rebuild pressure when a single nozzle swaps between
 filaments fed through the AMS. On a real dual-nozzle job, material A stays on nozzle 1 and
@@ -118,48 +121,7 @@ material B stays on nozzle 2 for the entire print — nothing is ever pushed bac
 hotend, so there is nothing to purge. Leaving it on just burns plate space and print time for no
 quality benefit. If a job ever *does* route more than one filament through the same physical
 nozzle (AMS-fed color or material swaps), leave the prime tower on — that case still needs it.
-
-Measured on an X2D zero-gap test slice (same model, same 108 nozzle changes): with the tower on,
-the plate came out to 23.62 g and 1h50m, **54% of that weight (12.69 g) was the prime tower
-alone** — more than the part itself. Tower off: 10.93 g and 1h9m, same part, same supports. Half
-the filament, 41 fewer minutes, nothing else changed.
 </SafetyWarning>
-
-### Zero-gap PLA interface
-
-Not the default, and it is worth knowing why. A PLA interface gets you an underside that looks
-injection-molded, but it costs a nozzle change on every layer that carries interface, and
-somebody has to load PLA in slot 2 before the print starts. Same-material supports need neither.
-Reach for this when the finish on a supported face matters — not by habit.
-
-**H2D and X2D only** — the X1Cs have a single nozzle. Slicer profile:
-**`06 Robot Part - PLA Support`**. Use for **72D TPU and PETG-GF**.
-
-- **Main part and support towers:** the same functional material as the part (PETG-GF or
-  72D TPU).
-- **Support interface layer:** standard **white PLA** in Nozzle 2.
-- **Top / bottom Z distance:** **0.0 mm — zero gap.**
-- **Interface layers:** 2–3.
-
-*Why it works:* PLA will not chemically weld to polyurethanes or copolyesters. The interface
-touches the part with no gap at all, so the underside comes out looking injection-molded — and
-then the whole support snaps off clean, because the bond was never there to begin with.
-
-<SafetyWarning type="tip" title="Set the interface, not just the gap">
-Zero gap without a PLA interface layer welds the support to the part permanently. If you set
-Z distance to 0.0 mm, you must also assign the interface extruder and enable 2–3 interface
-layers, or you are printing a solid block.
-</SafetyWarning>
-
-### PPA-GF supports
-
-PLA cannot be used here — PPA-GF prints at 310 °C, which cooks PLA into a plug.
-
-- **Standard geometry:** single-material **PPA-GF tree supports** with a **0.22 mm top Z gap**.
-  The glass fibers create a clean break plane on their own.
-- **Geometry you cannot reach with pliers:** we do not stock a high-temperature or soluble
-  support material, so there is no fallback. Reorient the part, split it, or design the overhang
-  out — do not start a PPA-GF print you have no way to clean up.
 
 ## Overhang & bridging limits
 
@@ -238,7 +200,7 @@ a weak part.
     'Brim': 'Outer brim, 5 mm',
     'Plate': 'Textured PEI, bed 75 °C',
   }}
-  notes="The escalation rung between the structural default and PPA-GF: try a solid PETG-GF part before you special-order PPA-GF at nearly 3× the cost. For clamp blocks, dead-axle spacers, and any part that has already failed at 30–35%. Walls and infill are both set deliberately — 25 walls turns plate-like and shell geometry into pure perimeter, and 100% infill catches the middle of thick chunks where concentric loops would otherwise converge into gap fill, which is the weakest plastic in the part. Brim is on because a fully solid glass-filled part builds real internal stress and will lift a corner without one. Expect roughly double the material and print time of the structural preset. The 07 process preset reaches the machines with the next preset deploy."
+  notes="The escalation rung between the structural default and PPA-GF: try a solid PETG-GF part before you special-order PPA-GF at nearly 3× the cost. For clamp blocks, dead-axle spacers, and any part that has already failed at 30–35%. Walls and infill are both set deliberately — 25 walls turns plate-like and shell geometry into pure perimeter, and 100% infill catches the middle of thick chunks where concentric loops would otherwise converge into gap fill, which is the weakest plastic in the part. Brim is on because a fully solid glass-filled part builds real internal stress and will lift a corner without one. Expect roughly double the material and print time of the structural preset."
 />
 
 <PrintSettingPreset

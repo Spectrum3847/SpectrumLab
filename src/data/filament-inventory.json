@@ -717,7 +717,7 @@
     "enclosure": "Not required",
     "ams": "Yes (all AMS models)",
     "url": "https://us.store.bambulab.com/products/support-for-pla-new",
-    "notes": "Breakaway support interface for PLA only — set the support Z distance to 0 in Bambu Studio so the interface peels off clean, which is exactly the zero-gap interface job the materials policy keeps PLA around for. Not water-soluble.",
+    "notes": "Breakaway support interface for PLA only — set the support Z distance to 0 in Bambu Studio so the interface peels off clean, the same trick plain white PLA does for our own materials. Not water-soluble.",
     "caution": "Not interchangeable with the Support for PA/PET (Support G) already on the shelf — that one is for the hot materials, this one only works under PLA.",
     "location": null
   }

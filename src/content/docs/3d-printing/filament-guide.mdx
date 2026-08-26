@@ -84,8 +84,8 @@ new parts around it, and do not reorder it.
 - **Styrene-based polymers (ABS / ASA / HIPS).** We do not stock these at all. They emit
   styrene VOCs and ultra-fine particles, and the lab is a shared space where that means
   headaches for whoever is working at the next bench. If a slicer profile or a Bambu support
-  chart tells you to use ABS or ASA as a support interface, use white PLA instead — see the
-  [zero-gap interface trick](/3d-printing/print-settings/#zero-gap-pla-interface).
+  chart tells you to use ABS or ASA as a support interface, use white PLA instead — it doesn't
+  chemically weld to anything else we stock, so it never needs a styrene.
 - **Carbon-fiber nylon (PA-CF / PPA-CF / PET-CF).** Excellent stiffness, wrong failure mode for
   impact mechanisms: the chopped fibers act as micro-stress risers under shock load, so parts
   shatter along layer lines in a collision rather than bending. Spend our existing CF spools on
@@ -145,15 +145,15 @@ first; PA6-GF is what we settled on. Do not declare it as Bambu PPA-CF; that pro
 non-AMS-compatible (any model) and may get the load refused outright.
 </SafetyWarning>
 
-### PLA — prototypes, jigs, and support interface
+### PLA — prototypes and jigs
 
 <FilamentCard id="pla" />
 
-PLA has two jobs. First, it is the cheapest way to learn that your CAD is wrong — print the fit
-check, find the mistake, reprint the real part in PETG-GF. Second, it is the **support interface
-material in Nozzle 2**, because PLA refuses to chemically weld to polyurethanes or copolyesters.
-That refusal is what lets us run a zero-gap support interface and get an injection-molded
-underside that snaps clean off.
+PLA is the cheapest way to learn that your CAD is wrong — print the fit check, find the mistake,
+reprint the real part in PETG-GF. Every house process profile already prints its own supports in
+the part's own material, so PLA is not part of the maintained support workflow anymore; it stays
+useful as a manual support interface (it doesn't chemically weld to polyurethanes or
+copolyesters) for the rare job someone hand-configures one.
 
 ### Already on the shelf
 
@@ -192,8 +192,7 @@ loading, temperature, or flex requirement isn't obvious from the lineup above.
 | Elongation at Break (XY) | ~8–14% | ~3–5% | **> 150%** | ~2.2–2.7% |
 | Charpy / Izod Impact Strength | ~3.8–5.5 kJ/m² | ~10–13 kJ/m² | **No break** *(absorbs shock)* | **12.2 kJ/m²** |
 | Heat Deflection Temp (HDT @ 0.45 MPa) | ~52–55 °C | ~75–80 °C | ~65–70 °C | **185 °C** *(annealed)* |
-| Primary Robot Applications | 5-minute fit slices, mechanism prototypes, universal support interface | 80% of structural parts, brackets, sensor mounts, sheet-metal hybrid cores | Intake rollers, bumper latch blocks, hard stops, skid shoes, battery corners | High-torque gearbox plates, motor mounts (185 °C+ HDT), dead-axle clamps |
-| Support Pairing (Nozzle 2 @ 0.0 mm Gap) | Elegoo PETG-GF | Elegoo Rapid PLA+ | Elegoo Rapid PLA+ | Elegoo PETG-GF *(PLA+ would melt at PPA-GF print temps)* |
+| Primary Robot Applications | 5-minute fit slices, mechanism prototypes | 80% of structural parts, brackets, sensor mounts, sheet-metal hybrid cores | Intake rollers, bumper latch blocks, hard stops, skid shoes, battery corners | High-torque gearbox plates, motor mounts (185 °C+ HDT), dead-axle clamps |
 | Filament Density (CAD Mass) | **1.20 g/cm³** | **1.35 g/cm³** | **1.24 g/cm³** | **1.27–1.32 g/cm³** |
 | Max Volumetric Flow / Speed | **24–32 mm³/s** | **11.5 mm³/s** | **4–8 mm³/s** | **8–12 mm³/s** |
 | Anaerobic Loctite Safety | Good *(non-crazing)* | High resistance | **Completely immune** | **Completely immune** |
@@ -315,7 +314,7 @@ shift. Push the PLA out first, then bring the nozzle up.
 
 ## Related pages
 
-- [Print Settings & Supports](/3d-printing/print-settings/) — the slicer priority hierarchy, dual-nozzle supports, and presets
+- [Print Settings & Supports](/3d-printing/print-settings/) — the slicer priority hierarchy, automatic tree supports, and presets
 - [Bambu Lab Fleet](/3d-printing/bambu-fleet/) — nozzle standards, plates, AMS mapping, and the machine that runs PPA-GF
 - [Prusa Mini+ Farm](/3d-printing/prusa-farm/) — 0.6 mm nozzles and high-throughput PETG-GF
 - [Filament Inventory](/inventory/filaments/) — every spool we actually own, and how to log a new one

@@ -75,9 +75,9 @@
     "id": "pla",
     "name": "PLA / PLA Basic",
     "tier": "prototyping",
-    "tierLabel": "Prototyping & support interface",
+    "tierLabel": "Prototyping",
     "brands": "Bambu PLA Basic, Bambu PLA Matte, ELEGOO PLA+, 3D-Fuel Pro PLA",
-    "color": "White (support interface stock)",
+    "color": "White",
     "density": "1.24 g/cm³",
     "maxFlow": "12–20 mm³/s",
     "printSpeed": "Up to 300 mm/s (Bambu), 180 mm/s (Prusa Mini)",
@@ -90,10 +90,10 @@
     "drying": "Usually not needed; 50 °C for 8 h if stringing",
     "hardenedNozzle": false,
     "enclosure": "Open — lid OFF or door open on Bambu (heat creep)",
-    "useCases": "Prototypes, fit checks, jigs, drill guides, and cosmetic parts — plus the dual-nozzle support interface material. Not a functional robot part.",
+    "useCases": "Prototypes, fit checks, jigs, drill guides, and cosmetic parts. Not a functional robot part.",
     "pricePerKg": "$19.99",
     "reorderUrl": "https://us.store.bambulab.com/products/pla-basic-filament",
-    "notes": "Softens ~55 °C, brittle under impact, and creeps under bolt tension — prototype in PLA, ship in PETG-GF. Its other job is Nozzle 2: PLA will not weld to polyurethanes or copolyesters, which is what makes the zero-gap support trick work."
+    "notes": "Softens ~55 °C, brittle under impact, and creeps under bolt tension — prototype in PLA, ship in PETG-GF."
   },
   {
     "id": "petg",

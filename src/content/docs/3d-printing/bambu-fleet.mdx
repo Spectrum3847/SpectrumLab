@@ -17,8 +17,8 @@ machine, so check before you plan a multi-material job: Bambu 1 has a 4-slot AMS
 Bambu 2 has an AMS-HT only, the H2D carries an AMS Pro on its right nozzle and an AMS-HT on its
 left, and the X2D has no AMS yet (an AMS-HT is on order).
 These are the lab's most capable printers, the only enclosed machines, and the
-only ones with a second nozzle for dual-material supports. If a part is going on the competition
-robot, it probably comes off one of these.
+only ones with a second nozzle. If a part is going on the competition robot, it probably comes
+off one of these.
 
 <LabGalleryImage
   src="3d-printer-farm-overview.jpg"
@@ -94,7 +94,7 @@ plus an AMS-HT, Bambu 2 has only an AMS-HT — so a four-material job has to go 
 <MachineSOP
   specs={{
     'Build Volume': '350 × 320 × 325 mm',
-    'Nozzles': 'Dual, 0.4 mm hardened steel, up to 320 °C',
+    'Nozzles': 'Dual, 0.4 mm hardened steel, up to 320 °C — 0.6 mm high-flow tungsten carbide ordered 2026-08-24, not yet installed',
     'Chamber': '65 °C heated',
     'Max Speed': '1000 mm/s',
     'AMS': 'AMS Pro on the right nozzle · AMS-HT (active drying) on the left',
@@ -105,10 +105,9 @@ plus an AMS-HT, Bambu 2 has only an AMS-HT — so a four-material job has to go 
 The H2D is the fleet's big gun and our **largest build envelope** — 350 × 320 × 325 mm. Heated
 chamber, dual nozzles, and two AMS units: an **AMS Pro on the right nozzle** and an **AMS-HT on the
 left**. The AMS-HT actively dries filament, so PPA-GF and the CF nylons live in it and stay
-print-ready — which also means the **left** nozzle is the one that feeds them. The dual nozzle is
-what makes the
-[zero-gap PLA support interface](/3d-printing/print-settings/#zero-gap-pla-interface)
-possible.
+print-ready — which also means the **left** nozzle is the one that feeds them. The dual nozzle
+lets the AMS-HT keep feeding a high-temp material on the left independently of whatever the AMS
+Pro is running on the right, with no swap between them mid-job.
 
 If a part will not fit the H2D, **split it** and bolt or pin the halves — see
 [Print Settings](/3d-printing/print-settings/). We do not have a larger printer.
@@ -121,17 +120,17 @@ If a part will not fit the H2D, **split it** and bolt or pin the halves — see
   specs={{
     'Build Volume (single nozzle)': '256 × 256 × 260 mm',
     'Build Volume (dual nozzle)': '235.5 × 256 × 256 mm',
-    'Nozzles': 'Dual, 0.4 mm hardened steel',
+    'Nozzles': 'Dual, 0.4 mm hardened steel — 0.6 mm high-flow tungsten carbide ordered 2026-08-24, not yet installed',
     'Enclosure': 'Enclosed, heated chamber',
     'AMS': 'None yet — an AMS-HT is on order',
     'Materials': 'Full range excl. PPA-GF and PPS-CF (300 °C hotend ceiling)',
-    'Role': 'Second dual-nozzle machine — PLA-interface supports and general engineering parts',
+    'Role': 'Second dual-nozzle machine — general engineering parts, takes load off the H2D',
   }}
   training="Printer orientation."
 />
 
-The X2D is the lab's second dual-nozzle machine, which means it shares the H2D's PLA-interface
-support option and takes general print load off it during build season. It is **not** cleared
+The X2D is the lab's second dual-nozzle machine, which takes general print load off the H2D
+during build season. It is **not** cleared
 for PPA-GF or PPS-CF: both need a 310 °C+ hotend and the X2D's caps at 300 °C, same as the
 X1Cs. Clamping either profile down to 300 °C would ship a degraded material, not the real
 thing, so both stay **H2D only** — see the [Filament Guide](/3d-printing/filament-guide/) and
@@ -140,9 +139,13 @@ thing, so both stay **H2D only** — see the [Filament Guide](/3d-printing/filam
 **Watch the envelope when you run dual-nozzle.** Single-nozzle gives you the full
 256 × 256 × 260 mm, but switching to the dual or auxiliary nozzle costs you about 20 mm of
 width and 4 mm of height — **235.5 × 256 × 256 mm**. A part that just fits in single-nozzle mode
-can fail to slice once you add a
-[zero-gap PLA support interface](/3d-printing/print-settings/#zero-gap-pla-interface).
-Check the plate preview after you assign the second nozzle, not before.
+can fail to slice once a job routes a second material through the auxiliary nozzle. Check the
+plate preview after you assign the second nozzle, not before.
+
+The X2D's right nozzle is Bowden-fed and capped near 200 mm/s, well under the left's direct-drive
+speed. Our process presets override the right side to **100 mm/s outer wall / 200 mm/s support**
+(Bambu's stock profile ships it at 50 mm/s) so a single-material part that groups to the right
+nozzle isn't punished with roughly double the print time; the left nozzle keeps vendor defaults.
 
 <ToolProcurementCard tool="bambu-x2d" />
 
