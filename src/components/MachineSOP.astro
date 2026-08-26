@@ -16,28 +16,37 @@ interface Props {
 }
 const { specs = {}, ppe = [], training } = Astro.props;
 
-const PPE_BADGES: Record<string, { icon: string; label: string; critical?: boolean }> = {
+/**
+ * PPE badge art comes from the lab's own ISO-7010-style icon pack
+ * (Graphics/safety-icons, published to public/safety-icons/badges). `icon` is a
+ * badge filename; keys with no drawn badge yet fall back to `emoji`, so adding
+ * a glyph to generate.py is all it takes to upgrade one.
+ */
+const PPE_BADGES: Record<
+  string,
+  { icon?: string; emoji?: string; label: string; critical?: boolean }
+> = {
   // The lab says "goggles" everywhere so nobody reads the requirement as their
   // own glasses. There is deliberately no 'glasses' key: it is the ambiguous
   // term we are trying to retire, so an old page using it renders the fallback
   // and gets noticed. Laser eyewear keeps its real product name below.
-  goggles: { icon: '🥽', label: 'Safety Goggles' },
-  hearing: { icon: '🎧', label: 'Hearing Protection' },
-  respirator: { icon: '😷', label: 'Respirator' },
-  'respirator-recommended': { icon: '😷', label: 'Respirator (recommended)' },
-  'dust-mask': { icon: '😷', label: 'Dust Mask' },
-  gloves: { icon: '🧤', label: 'Gloves Required' },
-  'no-gloves': { icon: '🚫', label: 'NO GLOVES — rotating machinery', critical: true },
-  'heat-gloves': { icon: '🧤', label: 'Heat-Resistant Gloves' },
-  'closed-shoes': { icon: '👟', label: 'Closed-Toe Shoes' },
-  'tie-hair': { icon: '💇', label: 'Tie Back Hair / No Loose Clothing', critical: true },
-  apron: { icon: '🦺', label: 'Apron' },
-  'face-shield': { icon: '🛡️', label: 'Face Shield' },
+  goggles: { icon: 'safety-glasses-required', label: 'Safety Goggles' },
+  hearing: { icon: 'hearing-protection-required', label: 'Hearing Protection' },
+  respirator: { icon: 'respirator-recommended', label: 'Respirator' },
+  'respirator-recommended': { icon: 'respirator-recommended', label: 'Respirator (recommended)' },
+  'dust-mask': { icon: 'respirator-recommended', label: 'Dust Mask' },
+  gloves: { icon: 'nitrile-gloves-required', label: 'Gloves Required' },
+  'no-gloves': { icon: 'no-gloves', label: 'NO GLOVES — rotating machinery', critical: true },
+  'heat-gloves': { icon: 'heat-gloves-required', label: 'Heat-Resistant Gloves' },
+  'closed-shoes': { icon: 'closed-toe-shoes-required', label: 'Closed-Toe Shoes' },
+  'tie-hair': { icon: 'hair-tied-required', label: 'Tie Back Hair / No Loose Clothing', critical: true },
+  apron: { emoji: '🦺', label: 'Apron' },
+  'face-shield': { emoji: '🛡️', label: 'Face Shield' },
   // Intentionally unused: every laser here runs closed, and the enclosure is the
   // eye protection. This belongs on a machine only if we ever do open-beam work
   // (the handheld welding/cleaning heads), which is currently a never. Kept so
   // that requirement is expressible rather than reinvented under a vague name.
-  'laser-glasses': { icon: '🕶️', label: 'Laser Safety Glasses', critical: true },
+  'laser-glasses': { emoji: '🕶️', label: 'Laser Safety Glasses', critical: true },
 };
 ---
 
@@ -57,10 +66,21 @@ const PPE_BADGES: Record<string, { icon: string; label: string; critical?: boole
       {ppe.length > 0 && (
         <div class="sop-ppe">
           {ppe.map((p) => {
-            const badge = PPE_BADGES[p] ?? { icon: '⚠️', label: p };
+            const badge = PPE_BADGES[p] ?? { emoji: '⚠️', label: p };
             return (
               <span class={`ppe-badge ${badge.critical ? 'ppe-critical' : ''}`}>
-                <span aria-hidden="true">{badge.icon}</span> {badge.label}
+                {badge.icon ? (
+                  <img
+                    class="ppe-icon"
+                    src={`/safety-icons/badges/${badge.icon}.svg`}
+                    alt=""
+                    width="22"
+                    height="22"
+                  />
+                ) : (
+                  <span aria-hidden="true">{badge.emoji}</span>
+                )}
+                {badge.label}
               </span>
             );
           })}
@@ -113,14 +133,23 @@ const PPE_BADGES: Record<string, { icon: string; label: string; critical?: boole
   .ppe-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    padding: 0.3rem 0.7rem;
+    gap: 0.4rem;
+    padding: 0.3rem 0.75rem 0.3rem 0.4rem;
     border-radius: 9999px;
     font-size: 0.78rem;
     font-weight: 700;
     background: var(--sl-color-accent-low);
     color: var(--sl-color-accent-high);
     border: 1px solid transparent;
+  }
+  /* The badge art carries its own ISO colours (blue disc, red prohibition ring),
+     so it sits on a white chip rather than the tinted pill background. */
+  .ppe-icon {
+    width: 1.4rem;
+    height: 1.4rem;
+    flex-shrink: 0;
+    border-radius: 9999px;
+    background: #fff;
   }
   .ppe-critical {
     background: #FEF2F2;

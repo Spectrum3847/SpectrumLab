@@ -1,0 +1,52 @@
+---
+/**
+ * A single safety badge from the lab's icon pack, for inline use in MDX.
+ * Machine SOP headers get their badges from MachineSOP instead — this is for
+ * legends, callouts, and anywhere a rule is being explained rather than listed.
+ *
+ * <SafetyIcon badge="no-gloves" label="No gloves at rotating machinery" />
+ * <SafetyIcon badge="safety-glasses-required" size={64} />
+ *
+ * `badge` is a filename in public/safety-icons/badges (see
+ * Graphics/safety-icons/README.md for the full list).
+ */
+interface Props {
+  badge: string;
+  label?: string;
+  size?: number;
+}
+const { badge, label, size = 48 } = Astro.props;
+// With no visible label the image has to carry the meaning itself; with one,
+// the text is the label and the image is decoration.
+const alt = label ? '' : badge.replace(/-/g, ' ');
+---
+
+<figure class="safety-icon" style={`--si-size:${size}px`}>
+  <img src={`/safety-icons/badges/${badge}.svg`} alt={alt} width={size} height={size} />
+  {label && <figcaption>{label}</figcaption>}
+</figure>
+
+<style>
+  .safety-icon {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0;
+    width: min(9rem, 100%);
+    text-align: center;
+    vertical-align: top;
+  }
+  .safety-icon img {
+    width: var(--si-size);
+    height: var(--si-size);
+    background: #fff;
+    border-radius: 9999px;
+  }
+  .safety-icon figcaption {
+    font-size: 0.76rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--sl-color-text);
+  }
+</style>

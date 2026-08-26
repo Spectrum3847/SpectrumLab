@@ -10,8 +10,9 @@ import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
 import ConsumablesTable from '../../../components/ConsumablesTable.astro';
 import TutorialLink from '../../../components/TutorialLink.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import Term from '../../../components/Term.astro';
 
-The WAZER Pro is our abrasive waterjet: a high-pressure stream of water and 80-mesh garnet that cuts almost any flat material — aluminum plate, steel, polycarbonate, glass, tile — with no heat, no fumes, and no burned edges. It is the go-to machine for robot plate parts and for every material the lasers can't touch.
+The WAZER Pro is our abrasive waterjet: a high-pressure stream of water and 80-mesh <Term id="garnet">garnet</Term> that cuts almost any flat material — aluminum plate, steel, polycarbonate, glass, tile — with no heat, no fumes, and no burned edges. No heat means no <Term id="haz">heat-affected zone</Term>, which is what makes it the right machine for hardened and heat-sensitive stock. It is the go-to machine for robot plate parts and for every material the lasers can't touch.
 
 <MachineSOP
   specs={{
@@ -33,7 +34,7 @@ The WAZER Pro is our abrasive waterjet: a high-pressure stream of water and 80-m
 <LabGalleryImage
   src="wazer-and-blue-toolbox.jpg"
   alt="WAZER Pro waterjet next to the blue toolbox workstation"
-  caption="The WAZER Pro station. The blue toolbox next to it holds the fab-corner support tools — its labelled drawers are Calipers, CNC Router and xTool MetalFab — and the bin of aluminum offcuts is the recycling bin: offcuts go there, not in the trash."
+  caption="The WAZER Pro station. The blue toolbox next to it holds the fab-corner support tools — Calipers and xTool MetalFab accessories, plus a drawer still labelled for the retired CNC router — and the bin of aluminum offcuts is the recycling bin: offcuts go there, not in the trash."
 />
 
 ## Safety
@@ -61,8 +62,8 @@ WAM is WAZER's browser-based CAM at [wam.wazer.com](https://wam.wazer.com). It t
 2. **Import into WAM.** Check the units and overall dimensions immediately — a wrong-scale import is the most common WAM mistake. Measure one known dimension on screen.
 3. **Position on the bed.** Lay the part out inside the 12 × 18 in cut area, leaving margin from the sheet edge and from clamps.
 4. **Select material and thickness.** Pick from WAM's material library. If your exact material isn't listed, pick the closest match and confirm with a test cut on scrap.
-5. **Set cut quality.** Coarse is fastest with the roughest edge and most taper; Fine is slowest and cleanest. Medium is right for most robot parts; use Fine for parts with press-fit holes or mating edges.
-6. **Set the cut path and lead-ins.** Cut outside the line for external profiles, inside for holes — WAM compensates for the kerf. Keep lead-ins in the waste material.
+5. **Set cut quality.** Coarse is fastest with the roughest edge and most <Term id="taper">taper</Term>; Fine is slowest and cleanest. Medium is right for most robot parts; use Fine for parts with press-fit holes or mating edges.
+6. **Set the cut path and <Term id="lead-in">lead-ins</Term>.** Cut outside the line for external profiles, inside for holes — WAM compensates for the kerf. Keep lead-ins in the waste material.
 7. **Generate and export the job**, then load it on the machine following the quick-start card at the station.
 
 ## Materials & Cut Quality
@@ -83,7 +84,7 @@ Cut polycarbonate here, not on the lasers — **polycarb burns badly under a CO2
 
 ### Kerf & taper
 
-- The jet removes a **0.044 in kerf**. WAM compensates automatically when you choose outside/inside cuts, but remember it when nesting parts — leave at least a kerf-width of material between profiles.
+- The jet removes a **0.044 in <Term id="kerf">kerf</Term>**. WAM compensates automatically when you choose outside/inside cuts, but remember it when nesting parts — leave at least a kerf-width of material between profiles.
 - All waterjet cuts have some **taper** (the top of the cut is slightly wider than the bottom). Taper grows with cut speed and material thickness. For precision work, use Fine quality; for press-fit or bearing holes, cut undersize and drill or ream to final dimension afterward.
 - Keep hole diameters at or above the material thickness. Smaller holes pierce poorly and come out ugly — drill those instead.
 

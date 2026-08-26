@@ -9,6 +9,7 @@ import SafetyWarning from '../../../components/SafetyWarning.astro';
 import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
 import TutorialLink from '../../../components/TutorialLink.astro';
 import ConsumablesTable from '../../../components/ConsumablesTable.astro';
+import Term from '../../../components/Term.astro';
 
 The electronics bench is where custom boards get built, mystery boards get diagnosed, and sensor wiring gets repaired. Robot power wiring is crimped, not soldered ([here's why](/electrical/wire-prep-crimping/)) — the bench is for everything else: signal wiring, connectors, LED strips, and board-level work.
 
@@ -43,7 +44,7 @@ A soldering iron at 350 °C looks identical to a cold one. Always rack the iron 
 
 **Tip care:**
 
-- **Tin the tip** before you start and before the iron goes to sleep — a thin silver coat of fresh solder. A black, oxidized tip transfers no heat.
+- **<Term id="tinning">Tin</Term> the tip** before you start and before the iron goes to sleep — a thin silver coat of fresh solder. A black, oxidized tip transfers no heat.
 - Clean on **brass wool**, not a wet sponge — the sponge's thermal shock shortens tip life. Wipe, re-tin, solder.
 - IronOS sleeps the iron when it sits still and wakes it when you pick it up. Don't fight it; it's saving your tips.
 
@@ -55,7 +56,7 @@ One rule above all: **heat the joint, not the solder.**
 2. Touch the iron so it contacts **both** the pad and the lead (or both wires). Give it a second.
 3. Feed solder into the **joint**, on the side away from the iron. When the joint is hot enough, solder flows toward the heat and wets everything it touches.
 4. Remove solder, then iron. Total contact: 2–3 seconds for typical joints. Hold the parts dead still while the solder freezes.
-5. Read the joint: a good one is shiny (leaded) with a smooth concave fillet, like a tiny volcano. A dull ball sitting *on top* of the wire is a cold joint — reheat it properly, don't blob more solder on it.
+5. Read the joint: a good one is shiny (leaded) with a smooth concave fillet, like a tiny volcano. A dull ball sitting *on top* of the wire is a <Term id="cold-joint">cold joint</Term> — reheat it properly, don't blob more solder on it.
 
 Melting solder on the iron and carrying it to a cold joint makes a connection that looks fine and fails in the pit. Don't.
 
@@ -64,7 +65,7 @@ Melting solder on the iron and carrying it to a cold joint makes a connection th
 The bench supply powers boards and mechanisms for testing without risking a robot battery or a control system.
 
 <SafetyWarning type="critical" title="Set the current limit BEFORE powering an unknown board">
-Before connecting anything you didn't personally verify: set the voltage, short the leads (or use the supply's setting mode) and dial the current limit down to ~100 mA, THEN connect the board. If the supply immediately hits constant-current mode, the board has a short — and you just found it for free instead of with smoke.
+Before connecting anything you didn't personally verify: set the voltage, short the leads (or use the supply's setting mode) and dial the <Term id="current-limit">current limit</Term> down to ~100 mA, THEN connect the board. If the supply immediately hits constant-current mode, the board has a short — and you just found it for free instead of with smoke.
 </SafetyWarning>
 
 Workflow for any device under test:
@@ -107,7 +108,7 @@ The Rigol DS1052E is the bench scope: 50 MHz, 2 channels, 1 GSa/s. It's an older
 
 ## Ventilation & Fumes
 
-Solder smoke is vaporized flux, and it goes straight up into the face of whoever's leaning over the joint.
+Solder smoke is vaporized <Term id="flux">flux</Term>, and it goes straight up into the face of whoever's leaning over the joint.
 
 - Run the fume fan/extractor at the bench, or position a fan to pull smoke away from your face.
 - The lead in leaded solder doesn't vaporize at iron temperatures, but it does stay on your hands — **wash your hands after soldering**, especially before food.

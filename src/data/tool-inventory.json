@@ -1,0 +1,104 @@
+{
+  "$comment": "The authoritative list of what the lab owns. `procurement` keys into tools-procurement.json for price/vendor/manual links; tools without a purchase record simply omit it. `page` is the SOP or reference page that covers the tool. The `retired` array is the archive — tools the lab no longer has. Nothing is ever deleted from this file; it moves to `retired` so the record survives.",
+  "areas": [
+    { "id": "lasers", "name": "Lasers & Waterjet" },
+    { "id": "machine-shop", "name": "Machine Shop" },
+    { "id": "saws", "name": "Saws & Material Prep" },
+    { "id": "printing", "name": "3D Printing" },
+    { "id": "finishing", "name": "Finishing & Powder Coating" },
+    { "id": "graphics", "name": "Graphics & Apparel" },
+    { "id": "portable", "name": "Portable Power & Air" },
+    { "id": "electrical", "name": "Electrical & Test" },
+    { "id": "infrastructure", "name": "Storage & Shop Infrastructure" }
+  ],
+  "owned": [
+    { "id": "xtool-metalfab", "name": "xTool MetalFab 1200W Fiber Laser", "area": "lasers", "page": "/lasers/xtool-metalfab/", "procurement": "xtool-metalfab", "location": "Fab corner", "training": "mentor" },
+    { "id": "gweike-m3-ultra", "name": "Gweike Cloud M3 Ultra", "area": "lasers", "page": "/lasers/gweike-m3-ultra/", "procurement": "gweike-m3-ultra", "location": "Fab corner", "training": "mentor" },
+    { "id": "thunder-nova-35", "name": "Thunder Laser Nova 35 (100W CO2)", "area": "lasers", "page": "/lasers/thunder-nova-35/", "procurement": "thunder-nova-35", "location": "Machine shop", "training": "mentor" },
+    { "id": "wazer-pro", "name": "WAZER Pro Desktop Waterjet", "area": "lasers", "page": "/waterjet/wazer-pro/", "procurement": "wazer-pro", "location": "Fab corner", "training": "mentor" },
+
+    { "id": "pm-1130v", "name": "Precision Matthews PM-1130V Lathe", "area": "machine-shop", "page": "/forming/lathes/", "procurement": "pm-1130v", "location": "Machine shop, lathe bench", "training": "mentor" },
+    { "id": "grizzly-mill", "name": "Grizzly Mill/Drill", "area": "machine-shop", "page": "/forming/lathes/#the-grizzly-milldrill", "location": "Machine shop, beside the lathe", "training": "mentor" },
+    { "id": "langmuir-titan-25t", "name": "Langmuir Titan 25T CNC Press Brake", "area": "machine-shop", "page": "/forming/langmuir-titan-25t/", "procurement": "langmuir-titan-25t", "location": "Machine shop, by the doorway", "training": "mentor" },
+    { "id": "arbor-press", "name": "Arbor Press", "area": "machine-shop", "page": "/forming/arbor-press/", "procurement": "arbor-press", "location": "Workbench", "training": "orientation" },
+    { "id": "mrcm-tapping-machine", "name": "MRCM Electric Tapping Machine", "area": "machine-shop", "page": "/cutting/tapping-machine/", "procurement": "mrcm-tapping-machine", "location": "Drill-and-tap station", "training": "orientation" },
+    { "id": "drill-press", "name": "Porter Cable Floor Drill Press", "area": "machine-shop", "page": "/cutting/drill-press-shear/#drill-press", "location": "Machine shop doorway, next to the Titan", "training": "mentor" },
+    { "id": "klutch-shear", "name": "Klutch Lever-Action Bench Shear", "area": "machine-shop", "page": "/cutting/drill-press-shear/#klutch-bench-shear", "location": "Butcher-block workbench", "training": "orientation" },
+
+    { "id": "evolution-s14mcs", "name": "Evolution S14MCS Chop Saw", "area": "saws", "page": "/cutting/evolution-saws/", "procurement": "evolution-s14mcs", "location": "On the Orange Toolbox", "training": "mentor" },
+    { "id": "evomax14al", "name": "Evolution EVOMAX 14 Chop Saw", "area": "saws", "page": "/cutting/evolution-saws/", "procurement": "evomax14al", "location": "Machine shop", "training": "mentor" },
+    { "id": "grizzly-g0555", "name": "Grizzly G0555LANV 14\" Vertical Bandsaw", "area": "saws", "page": "/cutting/bandsaws/#vertical-saw-cutting-curves", "procurement": "grizzly-g0555", "location": "Machine shop", "training": "mentor" },
+    { "id": "horizontal-bandsaw", "name": "Horizontal Bandsaw", "area": "saws", "page": "/cutting/bandsaws/#horizontal-saw-stock-cutoff-procedure", "location": "Machine shop", "training": "mentor" },
+    { "id": "portaband-station", "name": "Portaband Station (table-mounted)", "area": "saws", "page": "/cutting/bandsaws/#portaband-station", "location": "Workbench", "training": "mentor" },
+    { "id": "dewalt-dwe7491rs", "name": "DeWalt DWE7491RS Jobsite Table Saw", "area": "saws", "page": "/cutting/table-saw/", "procurement": "dewalt-dwe7491rs", "location": "Rolling cart", "training": "mentor" },
+    { "id": "belt-sanders", "name": "Belt Sanders — 1\" vertical & 4\" horizontal", "area": "saws", "page": "/cutting/sanders-grinders/", "location": "Machine shop; 1×30 sits on the Orange Toolbox", "training": "orientation" },
+    { "id": "bench-grinder", "name": "Bench Grinder (stone wheels — steel only)", "area": "saws", "page": "/cutting/sanders-grinders/", "location": "Machine shop", "training": "orientation" },
+    { "id": "deburring-grinder", "name": "Scotch-Brite Deburring Grinder", "area": "saws", "page": "/cutting/sanders-grinders/", "location": "Machine shop", "training": "orientation" },
+
+    { "id": "bambu-x1c", "name": "Bambu Lab X1-Carbon", "count": 2, "area": "printing", "page": "/3d-printing/bambu-fleet/#bambu-1--2--x1-carbon", "procurement": "bambu-x1c", "location": "Additive farm", "training": "orientation" },
+    { "id": "bambu-h2d", "name": "Bambu Lab H2D (+ AMS Pro & AMS-HT)", "area": "printing", "page": "/3d-printing/bambu-fleet/#h2d--ams-pro--ams-ht", "procurement": "bambu-h2d", "location": "Additive farm", "training": "orientation" },
+    { "id": "bambu-x2d", "name": "Bambu Lab X2D", "area": "printing", "page": "/3d-printing/bambu-fleet/#x2d", "procurement": "bambu-x2d", "location": "Additive farm", "training": "orientation" },
+    { "id": "prusa-mini", "name": "Prusa Mini+", "count": 12, "area": "printing", "page": "/3d-printing/prusa-farm/", "procurement": "prusa-mini", "location": "Additive farm cubbies", "training": "orientation", "notes": "Some are being donated out — count drifts." },
+
+    { "id": "eastwood-pcs250", "name": "Eastwood PCS-250 Powder Coating System", "count": 2, "area": "finishing", "page": "/finishing/powder-coating/", "procurement": "eastwood-pcs250", "location": "Powder coat room", "training": "mentor" },
+    { "id": "powder-booth", "name": "Powder Spray Booth", "area": "finishing", "page": "/finishing/powder-coating/#the-booth", "location": "Powder coat room", "training": "mentor" },
+    { "id": "light-armor-oven", "name": "Light Armor Curing Oven", "area": "finishing", "page": "/finishing/curing-oven/", "procurement": "light-armor-oven", "location": "Powder coat room", "training": "mentor" },
+
+    { "id": "hp-t630", "name": "HP DesignJet T630 24\" Plotter", "area": "graphics", "page": "/graphics/hp-t630-plotter/", "procurement": "hp-t630", "location": "Classroom", "training": "green" },
+    { "id": "cricut-maker-4", "name": "Cricut Maker 4", "area": "graphics", "page": "/graphics/cricut-maker-4/", "procurement": "cricut-maker-4", "location": "Classroom", "training": "green" },
+    { "id": "astt-heat-press", "name": "Smart Heat Press", "area": "graphics", "page": "/graphics/heat-press/", "procurement": "astt-heat-press", "location": "Classroom", "training": "green" },
+
+    { "id": "m12-drill", "name": "M12 FUEL 1/2\" Drill/Driver (3403-20)", "area": "portable", "page": "/portable-power/m12-ecosystem/#drilldriver--3403-20", "procurement": "m12-drill", "location": "StackTech power tower", "training": "orientation" },
+    { "id": "m12-impact", "name": "M12 FUEL Impact Driver (3453-20)", "area": "portable", "page": "/portable-power/m12-ecosystem/#impact-driver--3453-20", "procurement": "m12-impact", "location": "StackTech power tower", "training": "orientation" },
+    { "id": "m12-rivet", "name": "M12 Rivet Tool", "area": "portable", "page": "/portable-power/m12-riveting/", "procurement": "m12-rivet", "location": "StackTech power tower", "training": "orientation" },
+    { "id": "m12-nibbler", "name": "M12 Nibbler (2476-20)", "area": "portable", "page": "/portable-power/m12-ecosystem/#nibbler--2476-20", "procurement": "m12-nibbler", "location": "StackTech saw tower", "training": "mentor" },
+    { "id": "m12-cutoff", "name": "M12 Cut-Off Tool (2522-20)", "area": "portable", "page": "/portable-power/m12-ecosystem/#cut-off-tool--2522-20", "procurement": "m12-cutoff", "location": "StackTech saw tower", "training": "mentor" },
+    { "id": "m12-hackzall", "name": "M12 Hackzall (2520-20)", "area": "portable", "page": "/portable-power/m12-ecosystem/#hackzall--2520-20", "procurement": "m12-hackzall", "location": "StackTech saw tower", "training": "mentor" },
+    { "id": "m12-bandsaw", "name": "M12 Compact Band Saw (2529-20)", "area": "portable", "page": "/portable-power/m12-ecosystem/#compact-band-saw--2529-20", "procurement": "m12-bandsaw", "location": "StackTech saw tower", "training": "mentor" },
+    { "id": "m12-jigsaw", "name": "M12 Jig Saw (2545-20)", "area": "portable", "page": "/portable-power/m12-ecosystem/#jig-saw--2545-20", "procurement": "m12-jigsaw", "location": "StackTech saw tower", "training": "mentor" },
+    { "id": "m12-stapler", "name": "M12 Crown Stapler (2447-20)", "area": "portable", "page": "/portable-power/m12-ecosystem/#crown-stapler--2447-20", "procurement": "m12-stapler", "location": "StackTech power tower", "training": "orientation" },
+    { "id": "m12-rotary", "name": "M12 Rotary Tool (2525-20)", "area": "portable", "page": "/portable-power/m12-ecosystem/#rotary-tool--2525-20", "procurement": "m12-rotary", "location": "StackTech power tower", "training": "orientation" },
+    { "id": "m12-detail-sander", "name": "M12 Detail Sander (2531-20)", "area": "portable", "page": "/portable-power/m12-ecosystem/#detail-sander--2531-20", "procurement": "m12-detail-sander", "location": "StackTech power tower", "training": "orientation" },
+    { "id": "m12-band-file", "name": "M12 Band File", "area": "portable", "page": "/portable-power/m12-ecosystem/#band-file--the-pits-secret-weapon", "location": "StackTech power tower", "training": "orientation" },
+    { "id": "m12-misc", "name": "M12 Installation Driver, Oscillating Tool & Die Grinder", "area": "portable", "page": "/portable-power/m12-ecosystem/#installation-driver-oscillating-tool--die-grinder", "location": "StackTech power tower", "training": "orientation" },
+    { "id": "m12-subcompact", "name": "M12 Subcompact Drill & Driver", "area": "portable", "page": "/portable-power/m12-ecosystem/#subcompact-drill--driver", "location": "StackTech power tower", "training": "orientation" },
+    { "id": "dewalt-dcs520", "name": "DeWalt DCS520 FLEXVOLT Track Saw", "area": "portable", "page": "/portable-power/dewalt-and-pneumatics/#flexvolt-track-saw--dcs520", "procurement": "dewalt-dcs520", "location": "Machine shop", "training": "mentor" },
+    { "id": "dewalt-dce530", "name": "DeWalt DCE530 20V Heat Gun", "area": "portable", "page": "/portable-power/dewalt-and-pneumatics/#20v-heat-gun--dce530", "procurement": "dewalt-dce530", "location": "StackTech power tower", "training": "orientation" },
+    { "id": "dewalt-dcv580", "name": "DeWalt DCV580 20V Wet/Dry Vacuum", "area": "portable", "page": "/portable-power/dewalt-and-pneumatics/#20v-wetdry-vacuum", "procurement": "dewalt-dcv580", "location": "Machine shop", "training": "green" },
+    { "id": "dewalt-dcc2560", "name": "DeWalt DCC2560 Cordless Compressor", "area": "portable", "page": "/portable-power/dewalt-and-pneumatics/#cordless-compressor--dcc2560", "procurement": "dewalt-dcc2560", "location": "Machine shop / pit kit", "training": "orientation" },
+    { "id": "quincy-qt5", "name": "Quincy QT-5 Shop Air Compressor", "area": "portable", "page": "/portable-power/dewalt-and-pneumatics/#shop-air--quincy-qt-5", "location": "Machine shop", "training": "mentor", "notes": "Feeds the lasers' assist air and every pneumatic tool in the shop." },
+    { "id": "pneumatic-rivet-gun", "name": "Pneumatic Rivet Gun", "area": "portable", "page": "/portable-power/dewalt-and-pneumatics/#pneumatic-rivet-gun", "location": "Machine shop", "training": "orientation" },
+
+    { "id": "pinecil", "name": "PINECIL V2 Soldering Irons", "area": "electrical", "page": "/electrical/soldering-test-bench/#pinecil-v2-soldering-irons", "procurement": "pinecil", "location": "Electrical bench", "training": "orientation" },
+    { "id": "rigol-ds1052e", "name": "Rigol DS1052E Oscilloscope", "area": "electrical", "page": "/electrical/soldering-test-bench/#rigol-ds1052e-oscilloscope", "procurement": "rigol-ds1052e", "location": "Electrical bench", "training": "orientation" },
+    { "id": "dc-supply", "name": "Benchtop DC Power Supply", "area": "electrical", "page": "/electrical/soldering-test-bench/#benchtop-dc-power-supply", "location": "Electrical bench", "training": "orientation" },
+    { "id": "hydraulic-crimper", "name": "Hydraulic Lug Crimper", "area": "electrical", "page": "/electrical/wire-prep-crimping/#hydraulic-crimper--battery-lugs", "location": "Electrical bench", "training": "orientation" },
+    { "id": "coprocessors", "name": "Vision Coprocessors & SBCs", "area": "electrical", "page": "/electrical/coprocessors/", "location": "Electrical bench", "training": "orientation" },
+
+    { "id": "stacktech", "name": "StackTech Tool Towers", "count": 3, "area": "infrastructure", "page": "/storage/stacktech-drawers/", "procurement": "stacktech", "location": "Machine shop, rolling", "training": "green" },
+    { "id": "toolboxes", "name": "Red, Orange & Blue Toolboxes", "count": 3, "area": "infrastructure", "page": "/storage/toolboxes/", "location": "Machine shop", "training": "green" },
+    { "id": "dust-collector", "name": "Cyclone Dust Collector", "area": "infrastructure", "page": "/lasers/fiber-laser-cutting/#shop-services-both-machines-depend-on", "location": "Machine shop", "training": "orientation" },
+    { "id": "chain-hoist", "name": "Storage Cart & Chain Hoist", "area": "infrastructure", "page": "/storage/toolboxes/#storage-cart--chain-hoist", "location": "Machine shop", "training": "mentor" },
+    { "id": "lift-table", "name": "Roughneck Lift Table", "area": "infrastructure", "page": "/cutting/evolution-saws/", "location": "Beside the Orange Toolbox", "training": "green" },
+    { "id": "label-makers", "name": "Label Makers", "area": "infrastructure", "page": "/storage/label-makers/", "location": "Machine shop", "training": "green" }
+  ],
+  "retired": [
+    {
+      "id": "shopsabre-23",
+      "name": "ShopSabre 23 CNC Router",
+      "area": "machine-shop",
+      "removed": "2026",
+      "reason": "No longer in the lab — the team does not own a CNC router.",
+      "replacedBy": "Flat-part work moved to the fiber lasers and the WAZER; see [Onshape to Part](/overview/onshape-to-part/) for how to route a job now.",
+      "notes": "Its old tooling drawer in the Blue Toolbox still carries a printed \"CNC Router\" label. The label is stale — the drawer's contents are being re-catalogued."
+    },
+    {
+      "id": "box-pan-brake",
+      "name": "Box & Pan Brake",
+      "area": "machine-shop",
+      "removed": "2026",
+      "reason": "No longer in the lab.",
+      "replacedBy": "All bending is now done on the [Langmuir Titan 25T](/forming/langmuir-titan-25t/), which is more accurate and repeatable."
+    }
+  ]
+}

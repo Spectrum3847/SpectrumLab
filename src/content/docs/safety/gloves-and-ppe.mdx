@@ -5,8 +5,30 @@ description: "Eye protection, hearing protection, respirators, clothing standard
 
 import SafetyWarning from '../../../components/SafetyWarning.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import SafetyIcon from '../../../components/SafetyIcon.astro';
+import Term from '../../../components/Term.astro';
 
 PPE in this shop is not a vibe, it's a system: each item protects against a specific hazard, and wearing the *wrong* PPE can be worse than wearing none. This page is the whole system. Learn the glove policy first — it's the one rule people get backwards.
+
+## Know the Symbols
+
+These are the symbols on the machine placards and at the top of every machine page. **Blue disc = required. Blue ring = recommended. Red slash = never.**
+
+<div class="icon-legend">
+  <SafetyIcon badge="safety-glasses-required" label="Safety goggles required" />
+  <SafetyIcon badge="hearing-protection-required" label="Hearing protection required" />
+  <SafetyIcon badge="closed-toe-shoes-required" label="Closed-toe shoes required" />
+  <SafetyIcon badge="hair-tied-required" label="Hair tied back" />
+  <SafetyIcon badge="heat-gloves-required" label="Heat-resistant gloves" />
+  <SafetyIcon badge="nitrile-gloves-required" label="Nitrile gloves required" />
+  <SafetyIcon badge="respirator-recommended" label="Respirator recommended" />
+  <SafetyIcon badge="hearing-protection-recommended" label="Hearing protection recommended" />
+  <SafetyIcon badge="no-gloves" label="NO gloves — rotating machinery" />
+  <SafetyIcon badge="no-loose-items" label="No loose clothing or lanyards" />
+  <SafetyIcon badge="no-flames" label="No open flame or sparks" />
+</div>
+
+If a symbol is on the placard, it applies to *everyone* at that machine — including the person just watching.
 
 ## The Two-Second Check
 
@@ -27,7 +49,7 @@ Gloves are the only piece of PPE in this shop that is **mandatory at some statio
 > Gloves get you pulled into what spins.**
 
 <SafetyWarning type="critical" title="NO GLOVES ON ANY ROTATING MACHINERY — EVER">
-**Lathe. Mill. Drill press. Bandsaws. Bench grinder. CNC router. Rotary tools.** If any part of the machine spins, your hands are bare.
+**Lathe. Mill. Drill press. Bandsaws. Bench grinder. Belt sander. Rotary and die grinders.** If any part of the machine spins, your hands are bare.
 
 A spinning tool that snags bare skin takes some skin and lets go. A spinning tool that snags a **glove** doesn't let go — it winds the glove up in a fraction of a second and pulls your hand, then your arm, into the machine. The glove that was supposed to protect you becomes the rope that feeds you in. This is one of the most common ways machinists lose fingers, and it is 100% preventable: **bare hands at anything that spins.**
 </SafetyWarning>
@@ -71,7 +93,7 @@ Nitrile gloves and eye protection live in **drawer 13 of the [Orange Toolbox](/s
 
 We say *goggles*, not *glasses*, everywhere in this lab on purpose. "Glasses" is the word people hear as "the ones already on my face," and those stop nothing. Ask for goggles and you get eye protection; ask for glasses and you get an argument.
 
-- Your own prescription glasses are **not** eye protection. Wear over-glasses goggles from the drawer — they fit straight over frames — or get ANSI Z87+ prescription eyewear of your own.
+- Your own prescription glasses are **not** eye protection. Wear over-glasses goggles from the drawer — they fit straight over frames — or get ANSI <Term id="z87">Z87+</Term> prescription eyewear of your own.
 - Face shield **over** (not instead of) goggles for grinding and wire-wheel work.
 - **Laser eyewear is not part of our PPE, because every laser here runs closed.** The enclosure and window diffuse the beam to a safe level, which is why you can stand and watch a cut. The rule that replaces eyewear is simple: the lid stays shut and interlocks are never defeated. Open-beam work — the handheld welding and cleaning heads — is the only thing that would need wavelength-rated eyewear, and this lab does not do it at all.
 
@@ -79,7 +101,7 @@ Everything stocked in drawer 13 is ANSI Z87+ rated. If it isn't marked Z87, it i
 
 ## Hearing Protection
 
-Hearing damage is cumulative and permanent, and shop noise is louder than it feels. **Hearing protection goes on whenever loud tools are running** — yours or anyone else's: chop saws, grinders, the router, air tools, hammering. Earmuffs and plugs are stocked in the shop. If you have to raise your voice to talk to the person next to you, it's loud enough to need protection.
+Hearing damage is cumulative and permanent, and shop noise is louder than it feels. **Hearing protection goes on whenever loud tools are running** — yours or anyone else's: chop saws, grinders, the shop compressor, air tools, hammering. Earmuffs and plugs are stocked in the shop. If you have to raise your voice to talk to the person next to you, it's loud enough to need protection.
 
 ## Respirators
 
@@ -87,7 +109,7 @@ Hearing damage is cumulative and permanent, and shop noise is louder than it fee
 
 ## Clothing Standards
 
-Every item here exists because of a real injury somewhere:
+Every item here exists because of a real injury somewhere. They all guard against the same hazard — <Term id="entanglement">entanglement</Term>:
 
 - **Closed-toe shoes, always.** Dropped stock and chips don't negotiate with sandals.
 - **Tie back long hair** before operating or standing near any rotating machine. Hair wraps exactly like a glove does.

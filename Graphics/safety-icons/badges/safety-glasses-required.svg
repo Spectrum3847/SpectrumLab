@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="safety glasses required"><circle cx="60" cy="60" r="56" fill="#1D4988"/><g color="#FFFFFF" transform="translate(26.4 26.4) scale(0.7)">
+  <path fill-rule="evenodd" fill="currentColor" d="M24 32 H72 C79 32 84 37 84 44 V50 C84 57 79 62 72 62 H60 C56.5 62 54 60 52.3 57 C51 54.8 50 54 48 54 C46 54 45 54.8 43.7 57 C42 60 39.5 62 36 62 H24 C17 62 12 57 12 50 V44 C12 37 17 32 24 32 Z M26.5 39 H33.5 A6.5 6.5 0 0 1 40 45.5 A6.5 6.5 0 0 1 33.5 52 H26.5 A6.5 6.5 0 0 1 20 45.5 A6.5 6.5 0 0 1 26.5 39 Z M62.5 39 H69.5 A6.5 6.5 0 0 1 76 45.5 A6.5 6.5 0 0 1 69.5 52 H62.5 A6.5 6.5 0 0 1 56 45.5 A6.5 6.5 0 0 1 62.5 39 Z"/>
+  <rect x="2" y="41" width="10" height="12" rx="4" fill="currentColor"/>
+  <rect x="84" y="41" width="10" height="12" rx="4" fill="currentColor"/>
+</g></svg>

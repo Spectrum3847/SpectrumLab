@@ -9,6 +9,7 @@ import SafetyWarning from '../../../components/SafetyWarning.astro';
 import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
 import TutorialLink from '../../../components/TutorialLink.astro';
 import ConsumablesTable from '../../../components/ConsumablesTable.astro';
+import Term from '../../../components/Term.astro';
 
 The Light Armor curing oven is the second half of [powder coating](/finishing/powder-coating/): it melts the electrostatically-clung powder into a smooth, hard finish. It's a hand-built dedicated powder-curing oven — PID temperature controller with a timer, ceramic door seal, and hanging rails inside. It is not a kitchen appliance and nothing edible ever goes in it.
 
@@ -44,7 +45,7 @@ Someone stays in the building, aware the oven is on, for the entire cure. Set th
 
 ## Reading a Cure Schedule
 
-Powder doesn't cure on a universal timer — each powder has a schedule on its data sheet. Our Prismatic Powders colors each have a per-color PDF (find it on the [Prismatic documents page](https://www.prismaticpowders.com/documents)) that says something like "10 minutes at 400°F **part metal temperature**." Two things students get wrong:
+Powder doesn't cure on a universal timer — each powder has a <Term id="cure-schedule">cure schedule</Term> on its data sheet. Our Prismatic Powders colors each have a per-color PDF (find it on the [Prismatic documents page](https://www.prismaticpowders.com/documents)) that says something like "10 minutes at 400°F **part metal temperature**." Two things students get wrong:
 
 1. **The clock starts when the *metal* reaches temperature, not when you close the door.** A 1/16" bracket gets to 400°F in a couple of minutes; a chunk of 1" plate or a gearbox housing can take 15+ minutes just to come up to temp. Thicker part = longer total oven time.
 2. **Full cure window is typically 10–20 minutes at part temperature for our powders.** Undercured powder looks fine but chips like a candy shell; overcuring (within reason) mostly just yellows whites — when unsure, err slightly long.

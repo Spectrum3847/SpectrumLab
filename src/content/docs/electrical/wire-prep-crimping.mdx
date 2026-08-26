@@ -8,8 +8,9 @@ import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
 import TutorialLink from '../../../components/TutorialLink.astro';
 import ConsumablesTable from '../../../components/ConsumablesTable.astro';
+import Term from '../../../components/Term.astro';
 
-A robot is only as reliable as its worst crimp. Robots vibrate, and solder joints crack under vibration — which is why FRC wiring is crimped, not soldered, everywhere it matters. This page covers the tools and the standards: strip clean, crimp with the right tool, and tug-test every single connection.
+A robot is only as reliable as its worst <Term id="crimp">crimp</Term>. Robots vibrate, and solder joints crack under vibration — which is why FRC wiring is crimped, not soldered, everywhere it matters. This page covers the tools and the standards: strip clean, crimp with the right tool, and tug-test every single connection.
 
 The crimpers, strippers, and terminal assortments live in the electrical storage — the labeled Electrical drawer in the Durham cabinet and THE Electrical Case on the HDX rack.
 
@@ -23,14 +24,14 @@ Disconnect the battery before cutting, stripping, or crimping anything on the ro
 
 Two strippers, two jobs:
 
-- **Standard strippers** handle signal and power wiring roughly 10–22 AWG. Use the labeled slot that matches your wire gauge — a smaller slot nicks strands, and every nicked strand is capacity lost and a future break point.
+- **Standard strippers** handle signal and power wiring roughly 10–22 <Term id="awg">AWG</Term>. Use the labeled slot that matches your wire gauge — a smaller slot nicks strands, and every nicked strand is capacity lost and a future break point.
 - **Large-gauge strippers** handle the fat stuff: 6 AWG battery leads and main power runs. Don't chew 6 AWG with the small strippers; the insulation tears and the strands splay.
 
 **Good strip checklist:** insulation cut clean, no nicked or missing strands, strip length matched to the terminal barrel (strands should fill the barrel and stop — no bare wire showing behind it, no insulation inside it). Don't twist stranded wire before crimping into terminals; leave the strands as they lay.
 
 ## Ratcheting Crimpers
 
-The ratcheting crimpers are the workhorses for insulated and non-insulated terminals — ring lugs, spade terminals, butt splices, ferrules. The ratchet mechanism is the point: **it will not release until the crimp is fully formed**, so every crimp gets full, repeatable pressure.
+The ratcheting crimpers are the workhorses for insulated and non-insulated terminals — ring lugs, spade terminals, butt splices, <Term id="ferrule">ferrules</Term>. The ratchet mechanism is the point: **it will not release until the crimp is fully formed**, so every crimp gets full, repeatable pressure.
 
 - **Insulated terminals** follow the universal color code: **red = 22–16 AWG, blue = 16–14 AWG, yellow = 12–10 AWG**. Match the wire, the terminal, and the color-marked die position.
 - **Non-insulated terminals** use the non-insulated die profile — it folds the barrel instead of compressing an insulation sleeve. Using the insulated die on a bare terminal makes a loose, ugly crimp.
@@ -39,7 +40,7 @@ The ratcheting crimpers are the workhorses for insulated and non-insulated termi
 
 ## Anderson Powerpole Connectors
 
-Powerpoles are the team standard for connectorized power runs — genderless, polarized by assembly, and rebuildable.
+<Term id="powerpole">Powerpoles</Term> are the team standard for connectorized power runs — genderless, polarized by assembly, and rebuildable.
 
 1. **Crimp the contact** with the Powerpole crimper (or the correct die), stripped wire fully in the contact barrel. No strands outside, no insulation inside.
 2. **Orient the contact** before insertion: the contact's rolled tongue rides *up* against the housing's spring — look into the housing, find the spring, and align the contact so its flat side faces it per the housing's mold marks.

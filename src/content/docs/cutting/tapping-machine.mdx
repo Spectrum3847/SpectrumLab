@@ -10,6 +10,7 @@ import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
 import TutorialLink from '../../../components/TutorialLink.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
 import ConsumablesTable from '../../../components/ConsumablesTable.astro';
+import Term from '../../../components/Term.astro';
 
 The tapping arm is how we thread holes in batches. It is a folding articulated arm on the
 workbench near the [Evolution chop saws](/cutting/evolution-saws/): you pull the head over the
@@ -45,7 +46,7 @@ place.
 />
 
 <SafetyWarning type="warning" title="No gloves on the tapping arm">
-The tap and collet spin. A glove that touches a rotating tap pulls your hand in with it — this is
+The tap and <Term id="collet">collet</Term> spin. A glove that touches a rotating tap pulls your hand in with it — this is
 the same rule as the [lathe](/forming/lathes/) and it is not negotiable. Bare hands, sleeves
 rolled, long hair tied back. See [PPE & the glove policy](/safety/gloves-and-ppe/).
 </SafetyWarning>
@@ -103,7 +104,7 @@ it stops being fast the moment someone stacks parts on it.
   mentor — do not substitute a loose fit.
 - **Spiral point taps** — the machine's default tap is **#10-32 spiral point**, kept installed
   so the most common job needs zero setup. Spiral point ("gun") taps push chips forward out of
-  the hole, which is what you want in a through hole.
+  the hole, which is what you want in a <Term id="through-hole">through hole</Term>.
 - **Cutting fluid** — still required. Powered tapping does not make dry aluminum safe to tap;
   it just makes the mistake faster.
 - Spare taps live in **drawer 7 (Thread Taps)** of the red toolbox — see
@@ -144,11 +145,11 @@ before you use it.
 
 ## Operating steps
 
-1. **Drill first.** The tapped hole is only as good as the tap drill under it. Wrong drill size
+1. **Drill first.** The tapped hole is only as good as the <Term id="tap-drill">tap drill</Term> under it. Wrong drill size
    is the single most common cause of a snapped tap.
 2. **Set the tap in the collet** and confirm it is seated and running true.
 3. **Set depth (rotations) and the auto-reverse interval** for the tap and hole you have — not
-   whatever the last person left dialed in. Blind holes need conservative depth.
+   whatever the last person left dialed in. <Term id="blind-hole">Blind holes</Term> need conservative depth.
 4. **Set the clutch** for the tap size. Small taps need less torque; the clutch is what protects
    the tap.
 5. **Add cutting fluid.**

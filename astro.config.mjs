@@ -47,6 +47,15 @@ export default defineConfig({
       },
       sidebar: [
         {
+          label: 'Start Here',
+          collapsed: false,
+          items: [
+            { label: 'Onshape to Part', slug: 'overview/onshape-to-part' },
+            { label: 'Find Anything', slug: 'find' },
+            { label: 'Shop Glossary', slug: 'reference/glossary' },
+          ],
+        },
+        {
           label: 'Lab Overview & Storage',
           collapsed: true,
           items: [
@@ -149,6 +158,7 @@ export default defineConfig({
           label: 'Inventory & Procurement',
           collapsed: true,
           items: [
+            { label: 'Tool Inventory', slug: 'inventory/tool-list' },
             { label: 'Consumables Ledger', slug: 'inventory/consumables' },
             { label: 'Filament Inventory', slug: 'inventory/filaments' },
           ],

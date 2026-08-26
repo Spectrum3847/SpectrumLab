@@ -1,0 +1,41 @@
+---
+title: "Tool Inventory"
+description: "Every machine and tool the lab owns, where it lives, what training it needs, and links to its manual — plus the archive of tools we no longer have."
+---
+
+import ToolInventoryTable from '../../../components/ToolInventoryTable.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+
+This is the fleet: what we own, where it is, and what you need before you can run it. Every row links to that tool's page, and to its manual where we have one.
+
+Three things this list is good for: **checking we actually own something before buying another one**, **finding the manual at 11pm the night before an event**, and **knowing whether you're allowed to touch it yet**.
+
+## What "to use it" means
+
+| Badge | Meaning |
+| --- | --- |
+| **Anyone** | No sign-off needed. Read the page, follow the pre-flight, go. |
+| **Orientation** | Get a walkthrough from a mentor or lead once, then you're clear. |
+| **Mentor sign-off** | A mentor trains you on this specific machine and signs you off before you run it alone. Sign-offs don't transfer between machines. |
+
+<ToolInventoryTable />
+
+## No longer in the lab
+
+Tools leave. When they do they move here rather than getting deleted, so that "did we ever have one of those?" has an answer, and so old build posts and photos still make sense.
+
+<ToolInventoryTable retired />
+
+<SafetyWarning type="tip" title="If a page still mentions one of these, that's a bug">
+Retired tools should appear on this page and nowhere else — not in a materials table, not in a machine recommendation, not on the homepage. If you find a live reference to one, say so, or fix it in the repo.
+</SafetyWarning>
+
+## Keeping this list true
+
+The list renders from `src/data/tool-inventory.json`. It is deliberately separate from `tools-procurement.json` — that file records *what we paid and where we bought it*, this one records *what we have and where it is*. A tool with a purchase record links the two with a `procurement` key; a tool we were given or that predates our records simply has no key, which is fine.
+
+**When a tool arrives:** add an entry with `id`, `name`, `area`, `page`, `location`, and `training`. Add a matching `tools-procurement.json` record if there's a receipt.
+
+**When a tool leaves:** move its entry from `owned` to `retired` and add `removed`, `reason`, and — most importantly — `replacedBy`, so the next person who goes looking for it finds out what to use instead. Then sweep the site for live references to it.
+
+**Related pages:** [Find Anything](/find/) · [Consumables Ledger](/inventory/consumables/) · [Maintenance Schedules](/maintenance/schedules/) · [Lab Tour & Floorplan](/overview/lab-tour/)

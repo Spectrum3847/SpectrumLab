@@ -1,0 +1,215 @@
+---
+/**
+ * The full glossary, grouped by category, with a client-side search box.
+ * Entry ids double as anchor targets: the <Term> popover's "Full glossary
+ * entry" link points at /reference/glossary/#<id>.
+ */
+import glossary from '../data/glossary.json';
+
+const { categories, terms } = glossary as any;
+const byCategory = categories.map((c: any) => ({
+  ...c,
+  terms: terms
+    .filter((t: any) => t.category === c.id)
+    .sort((a: any, b: any) => a.term.localeCompare(b.term, 'en', { numeric: true })),
+}));
+const lookup = new Map(terms.map((t: any) => [t.id, t.term]));
+---
+
+<div class="glossary" data-glossary>
+  <div class="gl-controls">
+    <input
+      type="search"
+      class="gl-search"
+      data-gl-search
+      placeholder="Search terms and definitions…"
+      aria-label="Search the glossary"
+    />
+    <span class="gl-count" data-gl-count>{terms.length} terms</span>
+  </div>
+
+  {byCategory.map((c: any) => (
+    <section class="gl-cat" data-gl-cat id={`cat-${c.id}`}>
+      <h2 class="gl-cat-name">{c.name}</h2>
+      <p class="gl-cat-blurb">{c.blurb}</p>
+      <div class="gl-entries">
+        {c.terms.map((t: any) => (
+          <article
+            class="gl-entry"
+            id={t.id}
+            data-gl-entry
+            data-search={`${t.term} ${(t.aka ?? []).join(' ')} ${t.definition}`.toLowerCase()}
+          >
+            <h3 class="gl-term">
+              {t.term}
+              {t.aka?.length > 0 && <span class="gl-aka">also: {t.aka.join(', ')}</span>}
+            </h3>
+            <p class="gl-def">{t.definition}</p>
+            {(t.href || t.seeAlso?.length > 0) && (
+              <p class="gl-links">
+                {t.href && (
+                  <a class="gl-page" href={t.href}>
+                    Where it's used →
+                  </a>
+                )}
+                {t.seeAlso?.length > 0 && (
+                  <span class="gl-see">
+                    See also:{' '}
+                    {t.seeAlso.map((s: string, i: number) => (
+                      <>
+                        {i > 0 && ', '}
+                        <a href={`#${s}`}>{lookup.get(s) ?? s}</a>
+                      </>
+                    ))}
+                  </span>
+                )}
+              </p>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+  ))}
+
+  <p class="gl-empty" data-gl-empty hidden>No terms match that search.</p>
+</div>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-glossary]');
+  if (root) {
+    const search = root.querySelector<HTMLInputElement>('[data-gl-search]');
+    const entries = [...root.querySelectorAll<HTMLElement>('[data-gl-entry]')];
+    const cats = [...root.querySelectorAll<HTMLElement>('[data-gl-cat]')];
+    const count = root.querySelector<HTMLElement>('[data-gl-count]');
+    const empty = root.querySelector<HTMLElement>('[data-gl-empty]');
+
+    function apply() {
+      const q = (search?.value ?? '').toLowerCase().trim();
+      let shown = 0;
+      for (const el of entries) {
+        const hit = !q || (el.dataset.search ?? '').includes(q);
+        el.hidden = !hit;
+        if (hit) shown++;
+      }
+      // Hide a category heading once every entry under it is filtered out.
+      for (const c of cats) {
+        c.hidden = ![...c.querySelectorAll<HTMLElement>('[data-gl-entry]')].some((e) => !e.hidden);
+      }
+      if (count) count.textContent = `${shown} term${shown === 1 ? '' : 's'}`;
+      if (empty) empty.hidden = shown > 0;
+    }
+
+    search?.addEventListener('input', apply);
+
+    // Arriving at /reference/glossary/#kerf should land on the entry even if a
+    // previous search is still typed in; clear the filter and flash the target.
+    function revealHash() {
+      const id = decodeURIComponent(location.hash.slice(1));
+      if (!id) return;
+      const target = document.getElementById(id);
+      if (!target?.hasAttribute('data-gl-entry')) return;
+      if (search?.value) {
+        search.value = '';
+        apply();
+      }
+      target.scrollIntoView({ block: 'center' });
+      target.classList.add('is-target');
+      window.setTimeout(() => target.classList.remove('is-target'), 1600);
+    }
+
+    window.addEventListener('hashchange', revealHash);
+    revealHash();
+  }
+</script>
+
+<style>
+  .gl-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1.25rem 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 0.6rem 0;
+    background: var(--sl-color-bg);
+  }
+  .gl-search {
+    flex: 1 1 auto;
+    padding: 0.55rem 0.85rem;
+    border: 1px solid var(--sl-color-border);
+    border-radius: 0.6rem;
+    background: var(--sl-color-bg);
+    color: var(--sl-color-text);
+    font: inherit;
+    font-size: 0.9rem;
+  }
+  .gl-search:focus { outline: none; border-color: var(--sl-color-accent); }
+  .gl-count {
+    flex-shrink: 0;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--sl-color-gray-3);
+    white-space: nowrap;
+  }
+
+  .gl-cat { margin: 2.5rem 0; }
+  .gl-cat-name {
+    margin: 0 0 0.2rem !important;
+    font-size: 1.25rem;
+    border-bottom: 2px solid var(--sl-color-accent);
+    padding-bottom: 0.35rem;
+  }
+  .gl-cat-blurb {
+    margin: 0 0 1rem !important;
+    font-size: 0.85rem;
+    color: var(--sl-color-gray-3);
+  }
+  .gl-entries {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+    gap: 0.75rem;
+  }
+  .gl-entry {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--sl-color-border);
+    border-radius: 0.7rem;
+    background: var(--sl-color-bg-sidebar);
+    scroll-margin-top: 6rem;
+  }
+  .gl-entry.is-target {
+    border-color: var(--sl-color-accent);
+    box-shadow: 0 0 0 3px var(--sl-color-accent-low);
+  }
+  .gl-term {
+    margin: 0 0 0.35rem !important;
+    font-size: 0.98rem !important;
+    color: var(--sl-color-accent);
+  }
+  .gl-aka {
+    display: block;
+    font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+    font-weight: 600;
+    font-size: 0.72rem;
+    color: var(--sl-color-gray-3);
+  }
+  .gl-def {
+    margin: 0 !important;
+    font-size: 0.86rem;
+    line-height: 1.5;
+  }
+  .gl-links {
+    margin: 0.55rem 0 0 !important;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.9rem;
+    font-size: 0.75rem;
+  }
+  .gl-page { font-weight: 700; white-space: nowrap; }
+  .gl-see { color: var(--sl-color-gray-3); }
+  .gl-empty {
+    margin: 2rem 0;
+    font-size: 0.9rem;
+    color: var(--sl-color-gray-3);
+  }
+</style>

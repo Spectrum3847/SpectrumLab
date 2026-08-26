@@ -6,6 +6,7 @@ description: "Materials philosophy, the approved filament lineup, CAD densities,
 import FilamentCard from '../../../components/FilamentCard.astro';
 import FilamentMatrixTable from '../../../components/FilamentMatrixTable.astro';
 import SafetyWarning from '../../../components/SafetyWarning.astro';
+import Term from '../../../components/Term.astro';
 
 Material choice matters more than any slicer setting. A perfectly tuned PLA bracket will still
 snap at the first hard hit; a mediocre PETG-GF print of the same part will survive the season.
@@ -112,14 +113,14 @@ anywhere near it, print it in PETG-GF, 72D TPU, or PPA-GF.
 PETG-GF is the default answer for anything that goes on the robot: structural brackets, gearbox
 plates, covers, electronics shields, motor mounts that must hold gear mesh, dead-axle spacers
 that must not compress. The glass fill buys rigidity at some cost to impact toughness — do not
-use it where the part takes direct hits; that is 72D TPU's job. Abrasive: hardened nozzle only,
+use it where the part takes direct hits; that is 72D TPU's job. Abrasive: <Term id="hardened-nozzle">hardened nozzle</Term> only,
 and never a 0.2 mm.
 
 ### 72D TPU — impact armor
 
 <FilamentCard id="tpu-72d" />
 
-This is not the squishy TPU you are picturing. At Shore 72D it prints and bolts like a rigid
+This is not the squishy TPU you are picturing. At <Term id="shore-hardness">Shore</Term> 72D it prints and bolts like a rigid
 plastic, but it absorbs a hit and springs back where PLA or CF nylon would shatter. It is also
 chemically immune to everything in the shop, threadlockers included. Feed it from an external
 spool holder on a direct-drive extruder, and keep volumetric flow capped — see the
@@ -130,7 +131,7 @@ spool holder on a direct-drive extruder, and keep volumetric flow capped — see
 <FilamentCard id="ppa-gf" />
 
 Glass-filled nylon, 185 °C+ HDT, immune to Loctite, and the strongest thing we print for
-sustained load. The costs are real: 310 °C nozzle, heated chamber, mandatory drying before
+sustained load. The costs are real: 310 °C nozzle, heated chamber, mandatory <Term id="drying">drying</Term> before
 every session, and glass dust that needs an N95 and safety goggles during any sanding. **H2D
 only** — the X1Cs and the X2D both cap out at 300 °C, short of the 310 °C floor this material
 needs, so we do not offer a clamped-down profile on either — and a mentor signs off before it

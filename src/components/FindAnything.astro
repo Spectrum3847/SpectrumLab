@@ -1,0 +1,289 @@
+---
+/**
+ * "Where is it?" search across every catalogued location in the lab:
+ * drawer contents, storage units, the small-parts wall, pit kits, and every
+ * consumable with a bin location.
+ *
+ * The whole index is rendered into the page at build time and filtered
+ * client-side, so it works instantly, offline, and with no search service.
+ * ~300 rows is small enough that this stays cheaper than any alternative.
+ */
+import storage from '../data/storage-locations.json';
+import consumables from '../data/consumables.json';
+
+interface Row {
+  /** What you'd type to look for it. */
+  name: string;
+  /** The specific place it lives. */
+  where: string;
+  /** The unit / area that place is part of. */
+  area: string;
+  kind: 'Tool' | 'Storage unit' | 'Small parts' | 'Consumable' | 'Pit kit';
+  href: string;
+}
+
+const rows: Row[] = [];
+const s = storage as any;
+
+for (const unit of s.units) {
+  rows.push({
+    name: unit.name,
+    where: unit.location,
+    area: `${unit.drawers.length} drawers`,
+    kind: 'Storage unit',
+    href: unit.page,
+  });
+
+  for (const d of unit.drawers) {
+    // Printed drawer numbers are the thing people read off the box, so lead with
+    // one when it exists; unnumbered drawers fall back to their label alone.
+    const drawer = d.number != null ? `Drawer ${d.number} — ${d.label}` : d.label;
+    for (const item of d.contents) {
+      rows.push({
+        name: item,
+        where: drawer,
+        area: unit.name,
+        kind: 'Tool',
+        href: unit.page,
+      });
+    }
+  }
+}
+
+for (const category of s.smallParts.categories) {
+  rows.push({
+    name: category,
+    where: s.smallParts.location,
+    area: s.smallParts.name,
+    kind: 'Small parts',
+    href: s.smallParts.page,
+  });
+}
+
+rows.push({
+  name: s.pitKits.name,
+  where: s.pitKits.location,
+  area: 'Competition',
+  kind: 'Pit kit',
+  href: s.pitKits.page,
+});
+
+const items = Array.isArray(consumables) ? consumables : (consumables as any).items;
+for (const c of items) {
+  if (!c.location) continue;
+  rows.push({
+    name: c.name,
+    where: c.location,
+    area: c.partNumber ? `${c.category} · ${c.partNumber}` : c.category,
+    kind: 'Consumable',
+    href: '/inventory/consumables/',
+  });
+}
+
+rows.sort((a, b) => a.name.localeCompare(b.name, 'en', { numeric: true }));
+
+const KINDS = ['Tool', 'Consumable', 'Small parts', 'Storage unit', 'Pit kit'];
+---
+
+<div class="find" data-find>
+  <div class="find-bar">
+    <input
+      type="search"
+      class="find-input"
+      data-find-input
+      placeholder="Search for a tool, part, or supply…"
+      aria-label="Search everything in the lab"
+      autocomplete="off"
+    />
+    <span class="find-count" data-find-count>{rows.length} entries</span>
+  </div>
+
+  <div class="find-filters" role="group" aria-label="Filter by kind">
+    <button type="button" class="find-chip is-on" data-kind="">Everything</button>
+    {KINDS.map((k) => (
+      <button type="button" class="find-chip" data-kind={k}>{k}</button>
+    ))}
+  </div>
+
+  <ul class="find-results" data-find-results>
+    {rows.map((r) => (
+      <li
+        class="find-row"
+        data-kind={r.kind}
+        data-search={`${r.name} ${r.where} ${r.area}`.toLowerCase()}
+      >
+        <a href={r.href}>
+          <span class="fr-name">{r.name}</span>
+          <span class="fr-where">{r.where}</span>
+          <span class="fr-area">{r.area}</span>
+          <span class="fr-kind">{r.kind}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <p class="find-empty" data-find-empty hidden>
+    Nothing catalogued under that name. Try a broader word — "hex" rather than "hex key set" — and
+    if it genuinely isn't listed, that's a gap worth telling a mentor about so it gets added.
+  </p>
+</div>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-find]');
+  if (root) {
+    const input = root.querySelector<HTMLInputElement>('[data-find-input]');
+    const rows = [...root.querySelectorAll<HTMLElement>('.find-row')];
+    const count = root.querySelector<HTMLElement>('[data-find-count]');
+    const empty = root.querySelector<HTMLElement>('[data-find-empty]');
+    const chips = [...root.querySelectorAll<HTMLButtonElement>('.find-chip')];
+    let kind = '';
+
+    function apply() {
+      const q = (input?.value ?? '').toLowerCase().trim();
+      // Every whitespace-separated word must match somewhere in the row, so
+      // "1/4 socket" finds the socket drawer without needing exact phrasing.
+      const words = q ? q.split(/\s+/) : [];
+      let shown = 0;
+      for (const row of rows) {
+        const hay = row.dataset.search ?? '';
+        const hit =
+          (!kind || row.dataset.kind === kind) && words.every((w) => hay.includes(w));
+        row.hidden = !hit;
+        if (hit) shown++;
+      }
+      if (count) count.textContent = `${shown} ${shown === 1 ? 'entry' : 'entries'}`;
+      if (empty) empty.hidden = shown > 0;
+    }
+
+    input?.addEventListener('input', apply);
+
+    for (const chip of chips) {
+      chip.addEventListener('click', () => {
+        kind = chip.dataset.kind ?? '';
+        chips.forEach((c) => c.classList.toggle('is-on', c === chip));
+        apply();
+      });
+    }
+
+    // Deep link: /find/?q=reamer lands with the search already run, so a QR code
+    // on a drawer can point straight at what's in it.
+    const preset = new URLSearchParams(location.search).get('q');
+    if (preset && input) {
+      input.value = preset;
+      apply();
+    }
+    input?.focus({ preventScroll: true });
+  }
+</script>
+
+<style>
+  .find { margin: 1.5rem 0; }
+  .find-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 0.6rem 0;
+    background: var(--sl-color-bg);
+  }
+  .find-input {
+    flex: 1 1 auto;
+    padding: 0.7rem 1rem;
+    border: 2px solid var(--sl-color-border);
+    border-radius: 0.7rem;
+    background: var(--sl-color-bg);
+    color: var(--sl-color-text);
+    font: inherit;
+    font-size: 1rem;
+  }
+  .find-input:focus { outline: none; border-color: var(--sl-color-accent); }
+  .find-count {
+    flex-shrink: 0;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--sl-color-gray-3);
+    white-space: nowrap;
+  }
+
+  .find-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 0.5rem 0 1rem;
+  }
+  .find-chip {
+    padding: 0.28rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid var(--sl-color-border);
+    background: var(--sl-color-bg);
+    color: var(--sl-color-text);
+    font: inherit;
+    font-size: 0.76rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .find-chip:hover { border-color: var(--sl-color-accent); }
+  .find-chip.is-on {
+    background: var(--sl-color-accent);
+    border-color: var(--sl-color-accent);
+    color: #fff;
+  }
+
+  .find-results {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .find-row { margin: 0 !important; }
+  .find-row a {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr) minmax(0, 1fr) auto;
+    gap: 0.25rem 0.9rem;
+    align-items: baseline;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid var(--sl-color-border);
+    border-radius: 0.55rem;
+    background: var(--sl-color-bg-sidebar);
+    text-decoration: none;
+    color: var(--sl-color-text);
+  }
+  .find-row a:hover {
+    border-color: var(--sl-color-accent);
+    background: var(--sl-color-bg);
+  }
+  .fr-name { font-weight: 700; font-size: 0.88rem; }
+  .fr-where { font-size: 0.82rem; color: var(--sl-color-accent); font-weight: 600; }
+  .fr-area { font-size: 0.76rem; color: var(--sl-color-gray-3); }
+  .fr-kind {
+    justify-self: end;
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--sl-color-gray-3);
+    white-space: nowrap;
+  }
+
+  .find-empty {
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--sl-color-gray-3);
+  }
+
+  /* Stacked layout on phones — this page gets used standing at a toolbox. */
+  @media (max-width: 50rem) {
+    .find-row a {
+      grid-template-columns: 1fr auto;
+    }
+    .fr-name { grid-column: 1; }
+    .fr-kind { grid-column: 2; grid-row: 1; }
+    .fr-where { grid-column: 1 / -1; }
+    .fr-area { grid-column: 1 / -1; }
+  }
+</style>

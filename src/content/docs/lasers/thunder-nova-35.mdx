@@ -9,6 +9,7 @@ import SafetyWarning from '../../../components/SafetyWarning.astro';
 import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
 import TutorialLink from '../../../components/TutorialLink.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import Term from '../../../components/Term.astro';
 
 The Thunder Laser Nova 35 is our workhorse 100W CO2 laser: acrylic, plywood, MDF, delrin, engraving on almost anything organic. It runs LightBurn from the workstation next to the machine and is the machine most students learn first. It is also the machine that most often gets asked to cut something it must never touch — read the never-cut list before anything else.
 
@@ -56,11 +57,11 @@ Lasers start fires. Small flare-ups at the cut point are normal; a flame that ke
 ## Software & Workflow (LightBurn)
 
 1. **Import** your file — SVG, DXF, or AI — into LightBurn on the station PC. Verify the scale against a known dimension.
-2. **Assign layers.** LightBurn maps colors to layers; put cuts, scores, and engraves on separate colors. Set each layer's mode: **Line** for cutting/scoring, **Fill** for raster engraving.
+2. **Assign layers.** LightBurn maps colors to layers; put cuts, scores, and engraves on separate colors. Set each layer's mode: **Line** for cutting/scoring, **Fill** for <Term id="raster">raster</Term> engraving.
 3. **Set power and speed per layer**, starting from the table below or the saved material library. Set cut layers to run last so parts don't shift before engraving finishes.
 4. **Order the layers**: engrave first, inner cuts next, outer profile last.
 5. **Position the job** on the sheet in LightBurn, then **Frame** on the machine — the head traces the job boundary so you can confirm it lands on material and clears clamps.
-6. **Focus** to the material surface using the focus procedure at the station.
+6. **<Term id="focus-height">Focus</Term>** to the material surface using the focus procedure at the station.
 7. Close the lid and **run**.
 
 ### Camera alignment on scrap
@@ -83,7 +84,7 @@ These are **starting points, not gospel** — tubes age, materials vary batch to
 | Cast acrylic | 6 mm (1/4 in) | 75% | 8 mm/s | Slow and single-pass beats fast multi-pass |
 | Baltic birch ply | 3 mm (1/8 in) | 55% | 25 mm/s | Glue voids can flare — watch it |
 | Baltic birch ply | 6 mm (1/4 in) | 70% | 12 mm/s | Expect some edge char |
-| MDF | 6 mm (1/4 in) | 70% | 10 mm/s | Chars heavily; high air assist |
+| MDF | 6 mm (1/4 in) | 70% | 10 mm/s | Chars heavily; high <Term id="air-assist">air assist</Term> |
 | Delrin (acetal) | 3 mm (1/8 in) | 55% | 20 mm/s | Melts if slow — favor speed; ventilate well |
 | Raster engrave (most) | surface | 20% | 300 mm/s | Tune with a grayscale test card |
 

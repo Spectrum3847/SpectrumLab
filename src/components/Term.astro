@@ -1,0 +1,205 @@
+---
+/**
+ * An inline glossary term. Renders the word with a dotted underline; hovering,
+ * tapping, or focusing it shows the definition from src/data/glossary.json
+ * without leaving the page.
+ *
+ * <Term id="kerf" />                      -> renders "Kerf"
+ * <Term id="kerf">kerf width</Term>       -> renders your own wording
+ *
+ * The id must exist in glossary.json — an unknown id fails the build rather
+ * than silently rendering a word with no definition behind it.
+ */
+import glossary from '../data/glossary.json';
+
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
+
+const entry = (glossary as any).terms.find((t: any) => t.id === id);
+if (!entry) {
+  throw new Error(
+    `Term: unknown glossary id "${id}". Add it to src/data/glossary.json or fix the id.`
+  );
+}
+const aka = entry.aka?.length ? entry.aka.join(', ') : '';
+---
+
+<button
+  type="button"
+  class="term"
+  data-term={entry.term}
+  data-aka={aka}
+  data-def={entry.definition}
+  data-href={`/reference/glossary/#${id}`}
+  aria-label={`${entry.term} — show definition`}
+>
+  <slot>{entry.term}</slot>
+</button>
+
+<style>
+  .term {
+    /* Reset the button back to running text; the dotted rule is the only tell. */
+    display: inline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
+    cursor: help;
+    border-bottom: 1.5px dotted var(--sl-color-accent);
+    transition: background-color 0.12s ease;
+  }
+  .term:hover,
+  .term:focus-visible {
+    background: var(--sl-color-accent-low);
+    border-bottom-style: solid;
+  }
+  .term:focus-visible {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 2px;
+  }
+</style>
+
+<script>
+  // One shared tooltip for the whole page, driven by event delegation, so a page
+  // with 60 terms on it creates exactly one extra element and one set of
+  // listeners. Uses the popover API when available so the tip lands in the top
+  // layer and can never be clipped by a table's overflow or a card's rounding.
+  const SUPPORTS_POPOVER =
+    typeof HTMLElement !== 'undefined' && 'popover' in HTMLElement.prototype;
+
+  const tip = document.createElement('div');
+  tip.className = 'glossary-tip';
+  tip.setAttribute('role', 'tooltip');
+  if (SUPPORTS_POPOVER) tip.setAttribute('popover', 'manual');
+  document.body.appendChild(tip);
+
+  let active: HTMLElement | null = null;
+  let hideTimer: number | undefined;
+
+  function open(el: HTMLElement) {
+    window.clearTimeout(hideTimer);
+    active = el;
+
+    const term = el.dataset.term ?? '';
+    const aka = el.dataset.aka ?? '';
+    const def = el.dataset.def ?? '';
+    const href = el.dataset.href ?? '/reference/glossary/';
+
+    tip.replaceChildren();
+    const head = document.createElement('p');
+    head.className = 'gt-term';
+    head.textContent = term;
+    if (aka) {
+      const alt = document.createElement('span');
+      alt.className = 'gt-aka';
+      alt.textContent = aka;
+      head.appendChild(alt);
+    }
+    const body = document.createElement('p');
+    body.className = 'gt-def';
+    body.textContent = def;
+    const link = document.createElement('a');
+    link.className = 'gt-link';
+    link.href = href;
+    link.textContent = 'Full glossary entry →';
+    tip.append(head, body, link);
+
+    if (SUPPORTS_POPOVER) {
+      try {
+        (tip as any).showPopover();
+      } catch {
+        /* already open — reposition below */
+      }
+    } else {
+      tip.classList.add('is-open');
+    }
+    position(el);
+  }
+
+  function close() {
+    active = null;
+    if (SUPPORTS_POPOVER) {
+      try {
+        (tip as any).hidePopover();
+      } catch {
+        /* already closed */
+      }
+    } else {
+      tip.classList.remove('is-open');
+    }
+  }
+
+  function position(el: HTMLElement) {
+    const r = el.getBoundingClientRect();
+    const t = tip.getBoundingClientRect();
+    const margin = 8;
+
+    let left = r.left + r.width / 2 - t.width / 2;
+    left = Math.max(margin, Math.min(left, window.innerWidth - t.width - margin));
+
+    // Prefer below; flip above when the bottom of the viewport is closer.
+    let top = r.bottom + margin;
+    if (top + t.height > window.innerHeight - margin && r.top - t.height - margin > margin) {
+      top = r.top - t.height - margin;
+    }
+
+    tip.style.left = `${Math.round(left)}px`;
+    tip.style.top = `${Math.round(top)}px`;
+  }
+
+  function triggerFrom(target: EventTarget | null): HTMLElement | null {
+    return target instanceof Element ? (target.closest('.term') as HTMLElement | null) : null;
+  }
+
+  document.addEventListener('pointerover', (e) => {
+    // Touch taps also fire pointerover; the click handler below covers those, and
+    // opening twice is harmless because open() is idempotent.
+    if ((e as PointerEvent).pointerType === 'touch') return;
+    const el = triggerFrom(e.target);
+    if (el) open(el);
+  });
+
+  document.addEventListener('pointerout', (e) => {
+    if ((e as PointerEvent).pointerType === 'touch') return;
+    const el = triggerFrom(e.target);
+    if (!el) return;
+    // Short grace period so the pointer can travel into the tip to click its link.
+    hideTimer = window.setTimeout(close, 120);
+  });
+
+  tip.addEventListener('pointerenter', () => window.clearTimeout(hideTimer));
+  tip.addEventListener('pointerleave', close);
+
+  document.addEventListener('click', (e) => {
+    const el = triggerFrom(e.target);
+    if (el) {
+      e.preventDefault();
+      if (active === el) close();
+      else open(el);
+      return;
+    }
+    if (!tip.contains(e.target as Node)) close();
+  });
+
+  document.addEventListener('focusin', (e) => {
+    const el = triggerFrom(e.target);
+    if (el) open(el);
+    else if (!tip.contains(e.target as Node)) close();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && active) {
+      const el = active;
+      close();
+      el.focus();
+    }
+  });
+
+  window.addEventListener('scroll', () => active && position(active), { passive: true });
+  window.addEventListener('resize', () => active && position(active));
+</script>

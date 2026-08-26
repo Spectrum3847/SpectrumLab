@@ -9,6 +9,7 @@ import SafetyWarning from '../../../components/SafetyWarning.astro';
 import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
 import TutorialLink from '../../../components/TutorialLink.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import Term from '../../../components/Term.astro';
 
 The xTool MetalFab is a 1200W fiber laser system — a laser source with cut, weld, and clean modes, paired with the MetalFab CNC Cutter gantry for sheet metal cutting. We use it to cut aluminum and steel sheet fast and clean. It is the most dangerous laser in the lab: **Class 4, and its beam is invisible.**
 
@@ -46,7 +47,7 @@ Aluminum, brass, and copper are mirrors at this wavelength. Never fire at polish
 </SafetyWarning>
 
 <SafetyWarning type="warning" title="Fire watch">
-Fiber cutting throws sparks and hot dross. Keep the area clear of flammables and solvents, know where the fire extinguisher is, and stay with the machine for the entire job plus a few minutes after — hot dross can smolder in the scrap tray after the cut ends.
+Fiber cutting throws sparks and hot <Term id="dross">dross</Term>. Keep the area clear of flammables and solvents, know where the fire extinguisher is, and stay with the machine for the entire job plus a few minutes after — hot dross can smolder in the scrap tray after the cut ends.
 </SafetyWarning>
 
 - Never bypass an enclosure interlock. If an interlock is faulty, the machine is down — tag it and tell a mentor.
@@ -67,13 +68,13 @@ The station PC next to the machine runs the xTool MetalFab software (you can see
 1. **Export your part** as DXF (from Onshape/Fusion) or SVG. Flat profiles only — this is a 2D cutter.
 2. **Import into the MetalFab software** and verify scale against a known dimension.
 3. **Select material and thickness** from the preset library. The preset sets power, speed, and pierce parameters — start from the preset, not from scratch.
-4. **Set assist gas type and pressure** to match the material (see below).
+4. **Set <Term id="assist-gas">assist gas</Term> type and pressure** to match the material (see below).
 5. **Set the focal height** for your material thickness using the machine's focus procedure. Wrong focus is the number-one cause of dross and incomplete cuts — when a cut suddenly gets ugly, check focus before blaming power.
 6. **Position the job** on the sheet, frame it to confirm it fits, close the enclosure, and run.
 
 ## Assist Gas Selection
 
-The assist gas blows molten metal out of the kerf. Choosing it is part of the job setup:
+The assist gas blows molten metal out of the <Term id="kerf">kerf</Term>. Choosing it is part of the job setup:
 
 | Gas | Use for | Edge result |
 | --- | --- | --- |

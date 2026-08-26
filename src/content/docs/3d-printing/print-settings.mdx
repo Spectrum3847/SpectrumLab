@@ -6,10 +6,11 @@ description: "Orientation for strength, the slicer priority hierarchy, dual-nozz
 import PrintSettingPreset from '../../../components/PrintSettingPreset.astro';
 import SafetyWarning from '../../../components/SafetyWarning.astro';
 import TutorialLink from '../../../components/TutorialLink.astro';
+import Term from '../../../components/Term.astro';
 
 Ninety percent of print quality and part strength is decided before you touch a single slicer
 setting: it comes from **which way the part sits on the plate**. Get orientation right, then
-supports, then walls and infill. Material choice lives on the
+supports, then walls and <Term id="infill">infill</Term>. Material choice lives on the
 [Filament Guide](/3d-printing/filament-guide/).
 
 ## Orientation for strength
@@ -41,7 +42,7 @@ When slicing a functional robot part, tune in **exactly this order**. The list i
 much each setting actually buys you in strength per gram — students always reach for the infill
 slider, which is fifth.
 
-1. **Perimeter loops (walls).** The single biggest lever on bending and torsional strength — it
+1. **<Term id="perimeter">Perimeter</Term> loops (walls).** The single biggest lever on bending and torsional strength — it
    is the I-beam principle, and the walls are the flanges. Run **6–8 walls** on a 0.4 mm nozzle
    or **4–5 walls** on a 0.6 mm nozzle.
 2. **Extrusion temperature and low fan.** Print at the **high end** of the manufacturer's
@@ -60,7 +61,7 @@ slider, which is fifth.
    big low-detail parts, where subdividing away from the surfaces buys time you actually feel.
    Avoid grid and triangles — the nozzle drags back across its own crossings, which costs
    quality and speed for no strength gain.
-7. **Layer height.** **0.20 mm** on a 0.4 mm nozzle, **0.28–0.32 mm** on a 0.6 mm.
+7. **<Term id="layer-height">Layer height</Term>.** **0.20 mm** on a 0.4 mm nozzle, **0.28–0.32 mm** on a 0.6 mm.
 
 <SafetyWarning type="tip" title="Reality-check the part, not the slicer">
 If a printed part breaks at practice, look at the break. Clean separation along a layer line
@@ -77,7 +78,7 @@ plastic for anything serviced more than once.
 The best support is no support. Before enabling anything, try to design or orient the need
 away:
 
-1. **Rotate the part.** A shelf-shaped overhang often becomes a supported wall from another
+1. **Rotate the part.** A shelf-shaped <Term id="overhang">overhang</Term> often becomes a supported wall from another
    angle.
 2. **Chamfer instead of overhang.** A 45° chamfer under a boss or ledge prints clean with zero
    support.
@@ -103,7 +104,7 @@ The H2D and X2D have a second nozzle, which lets a support tower print in a diff
 from the part. The house profiles default to **same-material supports with a 1-layer Z gap** — the
 support prints in the part's own material and breaks away at the gap. That is the fast choice
 and it needs no setup. When the finish on a supported face actually matters, the zero-gap PLA
-interface below is the option.
+<Term id="support-interface">interface</Term> below is the option.
 
 <SafetyWarning type="tip" title="Turn off the prime tower for true dual-nozzle prints">
 Whenever a print assigns each nozzle its own dedicated material — a PLA support interface,

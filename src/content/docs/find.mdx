@@ -1,0 +1,33 @@
+---
+title: "Find Anything"
+description: "Search every catalogued drawer, bin, shelf, and consumable in the lab. Type what you're looking for and get the drawer number."
+---
+
+import FindAnything from '../../components/FindAnything.astro';
+
+Type what you're after. This searches every drawer we've catalogued, the small-parts wall, the pit kits, and every consumable with a bin location — and tells you where it lives.
+
+<FindAnything />
+
+## If it isn't here
+
+Two possibilities, and they need different fixes:
+
+- **It exists but isn't catalogued.** Several drawers are still uncatalogued — the [Blue Toolbox](/storage/toolboxes/#blue-toolbox--fabrication-support) is mostly unlabelled, and drawers 4, 6, and 8 of the [Orange Toolbox](/storage/toolboxes/#orange-toolbox--metrology-machinist-tooling--ppe) have never been logged. Tell a mentor what you found and where, and it gets added.
+- **We don't have it.** Check the [Tool Inventory](/inventory/tool-list/) to be sure, then say so in the team Slack rather than assuming somebody already ordered one.
+
+## Putting things back
+
+Search only works if things go back where the search says they are. The rules that keep this page honest:
+
+1. **One home per tool.** If it has a labelled drawer, that drawer is the only correct place for it.
+2. **Put it back at the end of the session, not the end of the build.** A tool that lives on a bench for three weeks is a tool nobody can find.
+3. **A new home needs a label and an entry.** If something genuinely needs a new drawer, [label it](/storage/label-makers/) and get it into `src/data/storage-locations.json` so it shows up here.
+
+## How this page works
+
+Everything comes from two data files in the site repo — `src/data/storage-locations.json` and `src/data/consumables.json` — rendered at build time and filtered in your browser. There is no server, so it's fast and it works on shop wifi at its worst.
+
+You can link straight to a search with `?q=`, e.g. [`/find/?q=reamer`](/find/?q=reamer). That's what makes drawer QR codes possible.
+
+**Related pages:** [Primary Toolboxes](/storage/toolboxes/) · [StackTech Tool Towers](/storage/stacktech-drawers/) · [Small Parts Bins](/storage/small-parts-bins/) · [Consumables Ledger](/inventory/consumables/) · [Tool Inventory](/inventory/tool-list/)

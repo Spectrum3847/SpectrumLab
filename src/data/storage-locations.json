@@ -106,7 +106,8 @@
           ]
         }
       ],
-      "note": "Drawers are listed top to bottom, matching the three stacked StackTech units in the photo (4-drawer unit on top, then 3-drawer, then 2-drawer). StackTech drawers are labelled by name, not numbered."
+      "note": "Drawers are listed top to bottom, matching the three stacked StackTech units in the photo (4-drawer unit on top, then 3-drawer, then 2-drawer). StackTech drawers are labelled by name, not numbered.",
+      "page": "/storage/stacktech-drawers/#hand-tools-tower"
     },
     {
       "id": "stacktech-power-tower",
@@ -172,7 +173,8 @@
           ]
         }
       ],
-      "note": "Listed top to bottom. StackTech drawers are labelled by name, not numbered."
+      "note": "Listed top to bottom. StackTech drawers are labelled by name, not numbered.",
+      "page": "/storage/stacktech-drawers/#power-tools-tower"
     },
     {
       "id": "stacktech-saw-tower",
@@ -201,7 +203,8 @@
           ]
         }
       ],
-      "note": "Listed top to bottom. StackTech drawers are labelled by name, not numbered."
+      "note": "Listed top to bottom. StackTech drawers are labelled by name, not numbered.",
+      "page": "/storage/stacktech-drawers/#saw-tower"
     },
     {
       "id": "red-toolbox",
@@ -385,7 +388,8 @@
           "notes": "Top row, right of the three narrow drawers."
         }
       ],
-      "note": "Sixteen drawers, and only sixteen. Numbers run bottom-up: 1–8 are the lower cabinet, 9–13 the upper chest, and 14, 15 and 16 are the three narrow drawers side by side across the top. Calipers, micrometers, the drill vise and the glove/PPE stock are NOT in this box — they live in the Orange Toolbox at the chop saw."
+      "note": "Sixteen drawers, and only sixteen. Numbers run bottom-up: 1–8 are the lower cabinet, 9–13 the upper chest, and 14, 15 and 16 are the three narrow drawers side by side across the top. Calipers, micrometers, the drill vise and the glove/PPE stock are NOT in this box — they live in the Orange Toolbox at the chop saw.",
+      "page": "/storage/toolboxes/#red-toolbox--hand-tools"
     },
     {
       "id": "orange-toolbox",
@@ -522,7 +526,8 @@
           ],
           "notes": "Full-width top drawer — this is the drawer people mean by \"the glove drawer\"."
         }
-      ]
+      ],
+      "page": "/storage/toolboxes/#orange-toolbox--metrology-machinist-tooling--ppe"
     },
     {
       "id": "blue-toolbox",
@@ -540,12 +545,12 @@
         },
         {
           "number": null,
-          "label": "CNC Router",
+          "label": "CNC Router (stale label — router retired)",
           "printedLabel": "CNC Router",
           "contents": [
-            "CNC router tooling, collets and setup hardware"
+            "Leftover CNC router tooling, collets and setup hardware — the router itself is gone"
           ],
-          "notes": "Third drawer from the top."
+          "notes": "Third drawer from the top. The printed label names the ShopSabre 23, which the lab no longer owns (see the Tool Inventory archive). Contents are pending re-cataloguing and the drawer needs relabelling."
         },
         {
           "number": null,
@@ -557,7 +562,8 @@
           "notes": "Second drawer up from the bottom."
         }
       ],
-      "note": "Only three of the blue box's drawers carry a printed label; the rest are unlabelled and hold general fab-corner support — taps and dies, hand tools, clamps and setup gear for the WAZER / xTool corner. Labelling and cataloguing them is an open job."
+      "note": "Only three of the blue box's drawers carry a printed label; the rest are unlabelled and hold general fab-corner support — taps and dies, hand tools, clamps and setup gear for the WAZER / xTool corner. Labelling and cataloguing them is an open job.",
+      "page": "/storage/toolboxes/#blue-toolbox--fabrication-support"
     },
     {
       "id": "lathe-tstak",
@@ -602,7 +608,8 @@
           ]
         }
       ],
-      "note": "Four labelled DeWalt T-Stak drawer units stacked under the bench; the stack itself carries a \"Lathe Drawers\" label. Turning tooling is not in this stack — the QCTP holders and the Oscarbide indexable set live in their own T-Stak drawers beside it."
+      "note": "Four labelled DeWalt T-Stak drawer units stacked under the bench; the stack itself carries a \"Lathe Drawers\" label. Turning tooling is not in this stack — the QCTP holders and the Oscarbide indexable set live in their own T-Stak drawers beside it.",
+      "page": "/storage/toolboxes/#lathe-t-stak-drawers"
     },
     {
       "id": "lathe-turning-tooling",
@@ -637,7 +644,8 @@
             "3/8\" indexable insert stock"
           ]
         }
-      ]
+      ],
+      "page": "/storage/toolboxes/#lathe-t-stak-drawers"
     }
   ],
   "smallParts": {
@@ -653,11 +661,13 @@
       "Nuts & lock nuts",
       "Washers"
     ],
-    "standard": "Bins are printed from the team's parametric grid-bin models; every bin gets a Brother TZe label on the front face."
+    "standard": "Bins are printed from the team's parametric grid-bin models; every bin gets a Brother TZe label on the front face.",
+    "page": "/storage/small-parts-bins/"
   },
   "pitKits": {
     "name": "T-Stak Competition Pit Kits",
     "location": "Storage room, stacked by the door",
-    "notes": "Pre-packed duplicates of the most-used tools so the shop set never leaves the building."
+    "notes": "Pre-packed duplicates of the most-used tools so the shop set never leaves the building.",
+    "page": "/storage/toolboxes/#t-stak-competition-pit-kits"
   }
 }

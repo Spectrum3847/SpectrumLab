@@ -1,0 +1,25 @@
+---
+title: "Shop Glossary"
+description: "Every piece of shop, CAD, machining, printing, and electrical vocabulary this site uses — defined in plain language, with a link to the page that teaches it in context."
+---
+
+import GlossaryList from '../../../components/GlossaryList.astro';
+import Term from '../../../components/Term.astro';
+
+Nobody is born knowing what a <Term id="k-factor" /> is. This page defines every term the rest of the site uses, in the way it's actually used here — which alloy we mean, which drawer it's in, which machine cares.
+
+You don't have to come here to look something up. Anywhere on the site, a word with a **dotted underline** like <Term id="kerf" /> or <Term id="tap-drill" /> shows its definition if you hover it, tap it, or tab to it. This page is the whole list, searchable.
+
+<GlossaryList />
+
+## Adding a term
+
+The glossary renders straight from `src/data/glossary.json` in the site repo. To add one:
+
+1. Copy an existing entry and fill in `id` (kebab-case, used as the anchor), `term`, `category`, and `definition`.
+2. Optional fields: `aka` for alternate names people search for, `href` for the page that teaches it, and `seeAlso` for related term ids.
+3. Use it inline anywhere with `<Term id="your-id" />`, or `<Term id="your-id">your own wording</Term>` when the sentence needs a different form of the word.
+
+Keep definitions to a few sentences and make them *ours* — the useful version of "tap drill" says #10-32 takes a #21, not that a tap drill is a drill used before tapping. An unknown `id` fails the build on purpose, so a typo can never ship as a word with nothing behind it.
+
+**Related pages:** [Onshape to Part](/overview/onshape-to-part/) · [Find Anything](/find/) · [PPE & The Glove Policy](/safety/gloves-and-ppe/)

@@ -1,0 +1,1363 @@
+{
+  "$comment": "Lab glossary. Rendered by /reference/glossary/ and by the <Term> component, which shows `definition` in a popover. Keep definitions to 1-3 sentences and shop-grounded — if a term has a Spectrum-specific answer (which alloy, which drawer, which machine), say ours, not the textbook's. `href` points at the page that teaches the term in context.",
+  "categories": [
+    { "id": "measurement", "name": "Measurement & Layout", "blurb": "Reading a part, marking a part, and proving a part is right." },
+    { "id": "machining", "name": "Machining & Cutting", "blurb": "Turning, drilling, tapping, sawing — the vocabulary of removing material." },
+    { "id": "forming", "name": "Sheet Metal & Forming", "blurb": "What the press brake needs you to know before you bend anything." },
+    { "id": "beam", "name": "Lasers & Waterjet", "blurb": "Terms shared by the fiber lasers, the CO2 laser, and the WAZER." },
+    { "id": "printing", "name": "3D Printing", "blurb": "Slicer settings, print failures, and filament vocabulary." },
+    { "id": "fasteners", "name": "Fasteners & Hardware", "blurb": "Thread callouts, rivets, and the hardware that holds a robot together." },
+    { "id": "materials", "name": "Materials", "blurb": "The alloys and plastics we actually stock, and what each is for." },
+    { "id": "electrical", "name": "Electrical & Wiring", "blurb": "Wire prep, connectors, soldering, and bench instruments." },
+    { "id": "finishing", "name": "Finishing & Coating", "blurb": "Surface prep, powder coating, and curing." },
+    { "id": "cad", "name": "CAD, CAM & File Formats", "blurb": "Onshape to machine — what each file type carries and what it drops." },
+    { "id": "shop", "name": "Shop & Safety", "blurb": "The words on the placards and in the pre-flight checklists." }
+  ],
+  "terms": [
+    {
+      "id": "tolerance",
+      "term": "Tolerance",
+      "category": "measurement",
+      "definition": "How far off nominal a dimension is allowed to be and still work. A 0.250 in shaft hole toleranced ±0.002 in is fine anywhere from 0.248 to 0.252. Tighter tolerances cost real time — only ask for them where a bearing, gear, or mating part actually needs them.",
+      "seeAlso": ["nominal", "clearance-fit", "press-fit"]
+    },
+    {
+      "id": "nominal",
+      "term": "Nominal",
+      "category": "measurement",
+      "definition": "The stated, ideal dimension before tolerance — the number on the drawing. Real parts are never exactly nominal; that is what tolerance is for.",
+      "seeAlso": ["tolerance"]
+    },
+    {
+      "id": "thou",
+      "term": "Thou",
+      "aka": ["mil", "thousandth"],
+      "category": "measurement",
+      "definition": "One thousandth of an inch, 0.001 in. \"Two thou\" = 0.002 in. It is the working unit for anything a caliper measures — a sheet of paper is about 4 thou.",
+      "seeAlso": ["caliper", "micrometer"]
+    },
+    {
+      "id": "caliper",
+      "term": "Caliper",
+      "category": "measurement",
+      "definition": "The shop's default measuring tool: reads outside, inside, and depth dimensions to about 0.001 in. Zero it closed before every use, and measure with the flats of the jaws, not the tips.",
+      "href": "/hand-tools/layout-measuring/#calipers",
+      "seeAlso": ["micrometer", "thou"]
+    },
+    {
+      "id": "micrometer",
+      "term": "Micrometer",
+      "aka": ["mic"],
+      "category": "measurement",
+      "definition": "A more precise outside-dimension tool than a caliper — good to about 0.0001 in — but limited to a one-inch span per mic. Use the ratchet or friction thimble so every measurement is taken at the same feel.",
+      "href": "/hand-tools/layout-measuring/#micrometers",
+      "seeAlso": ["caliper", "thou"]
+    },
+    {
+      "id": "dial-indicator",
+      "term": "Dial indicator",
+      "aka": ["DTI"],
+      "category": "measurement",
+      "definition": "Measures *change* in position, not absolute size. Used to check that a part in the lathe chuck runs true, or that a table or fence is parallel. It only ever tells you \"how much did this move.\"",
+      "seeAlso": ["runout"]
+    },
+    {
+      "id": "runout",
+      "term": "Runout",
+      "category": "measurement",
+      "definition": "How much a spinning part wobbles off its axis of rotation, read with a dial indicator. High runout in the lathe chuck means the part is not centered and every turned diameter will be off.",
+      "href": "/forming/lathes/",
+      "seeAlso": ["dial-indicator", "chuck"]
+    },
+    {
+      "id": "datum",
+      "term": "Datum",
+      "category": "measurement",
+      "definition": "The reference face, edge, or hole that every other dimension is measured from. Pick one datum and lay out from it — measuring each feature from the last one stacks all the errors together.",
+      "seeAlso": ["tolerance"]
+    },
+    {
+      "id": "center-punch",
+      "term": "Center punch",
+      "category": "measurement",
+      "definition": "A hardened point struck to dimple the metal where a hole goes. The dimple is what stops the drill bit from wandering off your layout mark.",
+      "href": "/hand-tools/layout-measuring/#center-punches",
+      "seeAlso": ["spot-drill"]
+    },
+    {
+      "id": "layout-fluid",
+      "term": "Layout fluid",
+      "aka": ["Dykem", "layout dye"],
+      "category": "measurement",
+      "definition": "Blue dye brushed onto bare metal so a scribed line shows up as bright bare metal against dark blue. Far easier to see and far more precise than Sharpie.",
+      "href": "/hand-tools/layout-measuring/#layout-fluid"
+    },
+    {
+      "id": "gauge",
+      "term": "Gauge",
+      "aka": ["ga"],
+      "category": "measurement",
+      "definition": "A sheet-thickness numbering system where bigger numbers mean thinner metal, and the same number means different thicknesses in steel vs aluminum. Always confirm the actual decimal thickness with a caliper before bending or cutting.",
+      "seeAlso": ["caliper", "k-factor"]
+    },
+    {
+      "id": "clearance-fit",
+      "term": "Clearance fit",
+      "category": "measurement",
+      "definition": "A hole sized deliberately larger than the shaft or bolt so parts assemble by hand. FRC bolt holes are usually clearance — a #10-32 bolt gets a 0.196 in (#9) or larger hole so tolerance stack-up doesn't fight you.",
+      "seeAlso": ["press-fit", "tolerance"]
+    },
+    {
+      "id": "press-fit",
+      "term": "Press fit",
+      "aka": ["interference fit"],
+      "category": "measurement",
+      "definition": "A hole sized slightly *smaller* than the part going in, so it has to be pressed home and stays put by friction. How bearings seat in a gearbox plate. Off by a thou or two in either direction is the difference between \"tight\" and \"cracked.\"",
+      "href": "/forming/arbor-press/#pressing-bearings",
+      "seeAlso": ["clearance-fit", "arbor-press"]
+    },
+    {
+      "id": "sfm",
+      "term": "SFM",
+      "aka": ["surface feet per minute"],
+      "category": "machining",
+      "definition": "How fast the cutting edge travels across the material, independent of part size. It is the number that actually matters for tool life; RPM is just SFM converted for a specific diameter. Roughly 200-300 SFM for aluminum with HSS, 80-100 for mild steel.",
+      "href": "/forming/lathes/#spindle-speeds",
+      "seeAlso": ["rpm", "feed-rate"]
+    },
+    {
+      "id": "rpm",
+      "term": "RPM",
+      "category": "machining",
+      "definition": "Spindle revolutions per minute. Derived from SFM and diameter: RPM ≈ (4 × SFM) ÷ diameter in inches. Practical version: small bits fast, big bits slow, steel slower than aluminum.",
+      "href": "/cutting/drill-press-shear/",
+      "seeAlso": ["sfm", "feed-rate"]
+    },
+    {
+      "id": "feed-rate",
+      "term": "Feed rate",
+      "category": "machining",
+      "definition": "How fast the tool is pushed into the cut. Too light and the tool rubs and dulls; too heavy and it grabs or breaks. The tell is the chip: continuous curls are right, dust means rubbing, and screaming means too fast.",
+      "seeAlso": ["sfm", "chip-load", "chip"]
+    },
+    {
+      "id": "chip-load",
+      "term": "Chip load",
+      "category": "machining",
+      "definition": "How much material each cutting edge takes per revolution. It is what feed rate and RPM are really setting together, and why doubling the RPM without changing feed makes chips thinner, not the cut faster.",
+      "seeAlso": ["feed-rate", "sfm"]
+    },
+    {
+      "id": "chip",
+      "term": "Chip",
+      "aka": ["swarf"],
+      "category": "machining",
+      "definition": "The material a cutting tool removes. Chips are sharp, often hot, and never cleared by hand — a brush with the spindle stopped, or a chip hook for long steel strings.",
+      "seeAlso": ["feed-rate", "chip-hook"]
+    },
+    {
+      "id": "chip-hook",
+      "term": "Chip hook",
+      "category": "machining",
+      "definition": "A hooked wire tool for pulling long stringy steel chips off a spinning part or out of a hole. It exists so nobody uses their fingers, which is how the majority of shop hand cuts happen.",
+      "seeAlso": ["chip"]
+    },
+    {
+      "id": "peck-drilling",
+      "term": "Peck drilling",
+      "category": "machining",
+      "definition": "Drilling in short bites — go in, retract fully to clear chips, go back in. Required for anything deeper than about two bit diameters, otherwise packed chips overheat the bit and snap it.",
+      "href": "/cutting/drill-press-shear/#drilling-procedure",
+      "seeAlso": ["chip", "cutting-fluid"]
+    },
+    {
+      "id": "spot-drill",
+      "term": "Spot drill",
+      "aka": ["center drill", "spotting drill"],
+      "category": "machining",
+      "definition": "A short, stiff drill used only to start a hole precisely on location. Because it barely flexes, it can't wander the way a long twist drill can.",
+      "seeAlso": ["center-punch"]
+    },
+    {
+      "id": "tap",
+      "term": "Tap",
+      "category": "machining",
+      "definition": "The tool that cuts internal threads into a drilled hole. Spiral-point (\"gun\") taps push chips forward and are the default for through holes; bottoming taps thread to the base of a blind hole.",
+      "href": "/hand-tools/threading-riveting/#taps--dies",
+      "seeAlso": ["tap-drill", "blind-hole", "die"]
+    },
+    {
+      "id": "tap-drill",
+      "term": "Tap drill",
+      "category": "machining",
+      "definition": "The specific drill size you must use *before* tapping — big enough to leave only the thread material behind. #10-32 takes a #21 (0.159 in); 1/4-20 takes a #7 (0.201 in). Drill it with a clearance bit by mistake and there is nothing left to cut threads into.",
+      "href": "/cutting/tapping-machine/",
+      "seeAlso": ["tap", "thread-engagement", "clearance-fit"]
+    },
+    {
+      "id": "die",
+      "term": "Die (threading)",
+      "category": "machining",
+      "definition": "The counterpart to a tap: it cuts *external* threads onto a rod or bolt shank. Not to be confused with a press brake die, which is a bending tool.",
+      "seeAlso": ["tap", "v-die"]
+    },
+    {
+      "id": "blind-hole",
+      "term": "Blind hole",
+      "category": "machining",
+      "definition": "A hole that does not go all the way through. Blind holes trap chips and cutting oil, so they need clearing between pecks and a bottoming tap to get usable threads near the base.",
+      "seeAlso": ["through-hole", "tap", "peck-drilling"]
+    },
+    {
+      "id": "through-hole",
+      "term": "Through hole",
+      "category": "machining",
+      "definition": "A hole that exits the far side of the part. Easier than a blind hole in every way — chips fall out, taps run straight through, and you can see your alignment.",
+      "seeAlso": ["blind-hole"]
+    },
+    {
+      "id": "countersink",
+      "term": "Countersink",
+      "category": "machining",
+      "definition": "A cone-shaped recess so a flat-head screw sits flush with the surface. Also the name of the tool that cuts it — the same tool spun by hand is how we break edges on drilled holes.",
+      "seeAlso": ["counterbore", "deburr", "flat-head"]
+    },
+    {
+      "id": "counterbore",
+      "term": "Counterbore",
+      "category": "machining",
+      "definition": "A flat-bottomed recess so a socket head cap screw's cylindrical head drops below the surface. Flat bottom for SHCS; cone for flat-head.",
+      "seeAlso": ["countersink", "shcs"]
+    },
+    {
+      "id": "deburr",
+      "term": "Deburr",
+      "category": "machining",
+      "definition": "Removing the sharp raised lip left by cutting, drilling, or shearing. Not cosmetic: burrs cut hands, stop parts from seating flat, and ruin powder coat adhesion. Every cut edge gets deburred.",
+      "href": "/cutting/sanders-grinders/#the-deburring-workflow",
+      "seeAlso": ["chamfer", "scotch-brite"]
+    },
+    {
+      "id": "chamfer",
+      "term": "Chamfer",
+      "aka": ["break the edge"],
+      "category": "machining",
+      "definition": "A small angled cut along an edge or hole. Makes parts safe to handle, helps bolts and bearings start straight, and gives powder coat something to hold on to.",
+      "seeAlso": ["deburr", "countersink"]
+    },
+    {
+      "id": "reamer",
+      "term": "Reamer",
+      "category": "machining",
+      "definition": "A finishing tool that takes a drilled hole to an exact size and a smooth finish. It follows the existing hole rather than making its own, so the hole has to be drilled slightly undersize first.",
+      "href": "/storage/toolboxes/#orange-toolbox--metrology-machinist-tooling--ppe",
+      "seeAlso": ["press-fit", "tolerance"]
+    },
+    {
+      "id": "broach",
+      "term": "Broach",
+      "category": "machining",
+      "definition": "A toothed bar pressed straight through a hole, each tooth cutting slightly deeper than the last, to turn a round hole into a keyway or hex. This is what the arbor press is for.",
+      "href": "/forming/arbor-press/#broaching-keyways--hex-bores",
+      "seeAlso": ["keyway", "arbor-press"]
+    },
+    {
+      "id": "keyway",
+      "term": "Keyway",
+      "category": "machining",
+      "definition": "A rectangular slot in a bore and a matching one on a shaft; a key dropped into both stops the two from spinning relative to each other. How sprockets and gears transmit torque without relying on a set screw.",
+      "seeAlso": ["broach"]
+    },
+    {
+      "id": "arbor-press",
+      "term": "Arbor press",
+      "category": "machining",
+      "definition": "A lever-operated ram for pushing things straight — bearings into bores, broaches through holes, bushings out. All force, no rotation, and alignment is the entire game.",
+      "href": "/forming/arbor-press/",
+      "seeAlso": ["press-fit", "broach"]
+    },
+    {
+      "id": "chuck",
+      "term": "Chuck",
+      "category": "machining",
+      "definition": "The jawed clamp that grips a bit (drill press) or the workpiece (lathe). The 3-jaw self-centering chuck on the PM-1130V centers round stock automatically as you tighten.",
+      "href": "/forming/lathes/",
+      "seeAlso": ["chuck-key", "collet", "runout"]
+    },
+    {
+      "id": "chuck-key",
+      "term": "Chuck key",
+      "category": "machining",
+      "definition": "The handle that tightens a chuck — and the shop's most reliable projectile. It goes in your hand, into the chuck, tightens, and comes straight back out. It never rests in the chuck, not for a second.",
+      "href": "/cutting/drill-press-shear/",
+      "seeAlso": ["chuck"]
+    },
+    {
+      "id": "collet",
+      "term": "Collet",
+      "category": "machining",
+      "definition": "A split sleeve that grips a tool or round stock evenly all the way around as it is squeezed. More concentric and more rigid than a chuck, but each collet only covers a narrow size range.",
+      "seeAlso": ["chuck"]
+    },
+    {
+      "id": "tailstock",
+      "term": "Tailstock",
+      "category": "machining",
+      "definition": "The lathe's sliding right-hand unit. It holds a live center to support the far end of long work, or a drill chuck to drill down the centerline of a spinning part.",
+      "href": "/forming/lathes/",
+      "seeAlso": ["live-center", "chuck"]
+    },
+    {
+      "id": "live-center",
+      "term": "Live center",
+      "category": "machining",
+      "definition": "A pointed tailstock support with an internal bearing, so the point spins with the workpiece instead of grinding against it. A dead center has no bearing and will burn a part that isn't greased.",
+      "href": "/storage/toolboxes/#orange-toolbox--metrology-machinist-tooling--ppe",
+      "seeAlso": ["tailstock"]
+    },
+    {
+      "id": "qctp",
+      "term": "QCTP",
+      "aka": ["quick change tool post"],
+      "category": "machining",
+      "definition": "The lathe tool post that lets you swap pre-set tool holders in seconds without re-setting center height each time. Each holder keeps its own height adjustment, which is why they stay matched to their tools.",
+      "href": "/storage/toolboxes/#lathe-t-stak-drawers",
+      "seeAlso": ["carbide-insert"]
+    },
+    {
+      "id": "carbide-insert",
+      "term": "Carbide insert",
+      "category": "machining",
+      "definition": "A small replaceable cutting tip clamped into a tool holder. Harder and far more heat-tolerant than HSS, so it runs faster — but it is brittle and chips if the cut is interrupted or the machine chatters.",
+      "seeAlso": ["hss", "qctp"]
+    },
+    {
+      "id": "hss",
+      "term": "HSS",
+      "aka": ["high-speed steel"],
+      "category": "machining",
+      "definition": "The standard tool material for drill bits and taps. Tougher and more forgiving than carbide, but it softens at high temperature — which is why HSS wants lower SFM and cutting fluid.",
+      "seeAlso": ["carbide-insert", "sfm", "cutting-fluid"]
+    },
+    {
+      "id": "cutting-fluid",
+      "term": "Cutting fluid",
+      "aka": ["cutting oil", "coolant"],
+      "category": "machining",
+      "definition": "Oil applied at the cut to carry away heat and stop chips welding to the tool. Required for steel and for all tapping; aluminum can be cut dry or with a dry lube, and gummy aluminum usually means it needed lubricant after all.",
+      "seeAlso": ["tap", "peck-drilling", "hss"]
+    },
+    {
+      "id": "facing",
+      "term": "Facing",
+      "category": "machining",
+      "definition": "Lathe operation that cuts across the end of the workpiece to make it flat and square to the axis. Almost always the first cut on a new piece of stock, because it establishes the datum everything else is measured from.",
+      "href": "/forming/lathes/#core-operations",
+      "seeAlso": ["turning", "datum"]
+    },
+    {
+      "id": "turning",
+      "term": "Turning",
+      "category": "machining",
+      "definition": "Lathe operation that reduces the outside diameter by moving the tool along the length of a spinning part.",
+      "href": "/forming/lathes/#core-operations",
+      "seeAlso": ["facing", "boring", "parting"]
+    },
+    {
+      "id": "boring",
+      "term": "Boring",
+      "category": "machining",
+      "definition": "Enlarging an existing hole with a single-point tool on the lathe. Unlike drilling, boring corrects the hole's position and roundness — it is how you hit a bearing-fit bore.",
+      "seeAlso": ["turning", "press-fit"]
+    },
+    {
+      "id": "parting",
+      "term": "Parting",
+      "aka": ["cutoff"],
+      "category": "machining",
+      "definition": "Cutting a finished piece off the stock with a narrow blade fed straight in. The lathe's most dig-in-prone operation: it needs the tool exactly on center height, minimal overhang, and steady feed.",
+      "seeAlso": ["turning"]
+    },
+    {
+      "id": "kerf",
+      "term": "Kerf",
+      "category": "beam",
+      "definition": "The width of material a cut removes. A saw blade, a laser beam, and a waterjet stream all have kerf, which is why a cut line and a part edge are not the same place — cut on the waste side of the line.",
+      "seeAlso": ["taper", "lead-in"]
+    },
+    {
+      "id": "tpi-blade",
+      "term": "TPI (blade)",
+      "aka": ["teeth per inch"],
+      "category": "machining",
+      "definition": "Saw blade tooth count per inch. The rule that matters: at least three teeth engaged in the material at all times. Thin wall tube needs high TPI or the teeth snag and strip; thick solid stock needs low TPI so chips have somewhere to go.",
+      "href": "/cutting/bandsaws/",
+      "seeAlso": ["tpi-thread"]
+    },
+    {
+      "id": "kickback",
+      "term": "Kickback",
+      "category": "shop",
+      "definition": "When a saw blade grabs the workpiece and throws it back at the operator, usually because the cut closed on the blade or the piece was between blade and fence. Never stand directly behind the cut line.",
+      "href": "/cutting/table-saw/#kickback-causes--prevention",
+      "seeAlso": ["fence", "riving-knife"]
+    },
+    {
+      "id": "fence",
+      "term": "Fence",
+      "category": "machining",
+      "definition": "A straight reference face that the workpiece rides against so cuts land where you want them. A fence out of parallel with the blade is the leading cause of kickback and tapered cuts.",
+      "seeAlso": ["kickback", "stop-block"]
+    },
+    {
+      "id": "stop-block",
+      "term": "Stop block",
+      "category": "machining",
+      "definition": "A block clamped to the fence at a set distance so every cut comes out the same length without re-measuring. How the chop saw makes twenty identical tube segments.",
+      "href": "/cutting/evolution-saws/#repeat-cuts--the-fence-stop-blocks--tape",
+      "seeAlso": ["fence"]
+    },
+    {
+      "id": "riving-knife",
+      "term": "Riving knife",
+      "aka": ["splitter"],
+      "category": "machining",
+      "definition": "The curved plate behind a table saw blade that holds the cut open so the wood cannot pinch the blade. It is the single most effective anti-kickback device on the saw and is never removed for a through cut.",
+      "href": "/cutting/table-saw/",
+      "seeAlso": ["kickback"]
+    },
+    {
+      "id": "work-hardening",
+      "term": "Work hardening",
+      "category": "materials",
+      "definition": "Metal getting harder and more brittle where it has been repeatedly bent or rubbed. It is why a dull blade cutting stainless makes the next pass harder, and why you don't re-bend the same line twice.",
+      "seeAlso": ["springback"]
+    },
+    {
+      "id": "k-factor",
+      "term": "K-factor",
+      "category": "forming",
+      "definition": "Where the neutral axis sits inside a bend, as a fraction of material thickness. It is the constant that makes flat patterns come out right, and it changes with material, thickness, and bend radius — get it from a test bend, not a guess.",
+      "href": "/forming/langmuir-titan-25t/",
+      "seeAlso": ["bend-allowance", "bend-deduction", "flat-pattern"]
+    },
+    {
+      "id": "bend-allowance",
+      "term": "Bend allowance",
+      "category": "forming",
+      "definition": "The length of material consumed by the curve of a bend. Add it to your flat lengths to get the flat pattern; the CAD does this for you once the k-factor is right.",
+      "seeAlso": ["k-factor", "bend-deduction", "flat-pattern"]
+    },
+    {
+      "id": "bend-deduction",
+      "term": "Bend deduction",
+      "category": "forming",
+      "definition": "How much shorter the flat blank is than the sum of the finished outside dimensions. The practical number: cut the blank this much smaller than the drawing's flange lengths added together.",
+      "seeAlso": ["bend-allowance", "k-factor"]
+    },
+    {
+      "id": "flat-pattern",
+      "term": "Flat pattern",
+      "aka": ["unfold", "development"],
+      "category": "forming",
+      "definition": "The unfolded 2D shape you cut so that, once bent, it becomes the 3D part. Export the flat pattern from Onshape's sheet metal tools — never the outline of the folded part.",
+      "href": "/overview/onshape-to-part/",
+      "seeAlso": ["bend-allowance", "dxf"]
+    },
+    {
+      "id": "bend-relief",
+      "term": "Bend relief",
+      "category": "forming",
+      "definition": "A small notch cut at each end of a bend line so the material can move without tearing the adjacent flange. Sheet metal features in CAD add these automatically; hand-drawn flat patterns usually forget them.",
+      "seeAlso": ["flat-pattern", "flange"]
+    },
+    {
+      "id": "flange",
+      "term": "Flange",
+      "category": "forming",
+      "definition": "The leg of material on either side of a bend. Every brake has a minimum flange length — bend closer to the edge than that and the material has nothing to sit on and will slip or fold badly.",
+      "href": "/forming/langmuir-titan-25t/",
+      "seeAlso": ["bend-relief", "v-die"]
+    },
+    {
+      "id": "springback",
+      "term": "Springback",
+      "category": "forming",
+      "definition": "Metal partially returning toward flat after the brake releases. You always over-bend slightly to land on the angle you want; how much depends on material, thickness, and die width.",
+      "href": "/forming/langmuir-titan-25t/",
+      "seeAlso": ["work-hardening", "air-bending"]
+    },
+    {
+      "id": "v-die",
+      "term": "V-die",
+      "category": "forming",
+      "definition": "The grooved lower tool the punch presses material into. Die width sets the bend radius, the tonnage required, and the minimum flange — changing dies changes all three at once.",
+      "href": "/forming/langmuir-titan-25t/#die-selection--tooling",
+      "seeAlso": ["punch", "tonnage", "air-bending"]
+    },
+    {
+      "id": "punch",
+      "term": "Punch",
+      "category": "forming",
+      "definition": "The upper tool on a press brake that drives the material down into the V-die. Its tip radius sets the inside bend radius.",
+      "seeAlso": ["v-die", "inside-bend-radius"]
+    },
+    {
+      "id": "inside-bend-radius",
+      "term": "Inside bend radius",
+      "category": "forming",
+      "definition": "The radius on the inside corner of a bend. Bending tighter than the material allows cracks the outside of the bend — aluminum is much less forgiving here than mild steel.",
+      "seeAlso": ["punch", "grain-direction"]
+    },
+    {
+      "id": "tonnage",
+      "term": "Tonnage",
+      "category": "forming",
+      "definition": "The force a bend requires, set by material, thickness, and die width. Do the math before the bend: exceeding the Titan's 25 tons damages the machine, and a too-narrow die can exceed it on surprisingly thin stock.",
+      "href": "/forming/langmuir-titan-25t/#tonnage-limits--do-the-math-first",
+      "seeAlso": ["v-die"]
+    },
+    {
+      "id": "backgauge",
+      "term": "Backgauge",
+      "category": "forming",
+      "definition": "The programmable stop behind the brake that positions the sheet so each bend lands at the right distance from the edge. Programming the backgauge is what makes a multi-bend part repeatable.",
+      "href": "/forming/langmuir-titan-25t/#backgauge-programming"
+    },
+    {
+      "id": "air-bending",
+      "term": "Air bending",
+      "category": "forming",
+      "definition": "Bending by pressing the material partway into the V without bottoming it out, so the angle is set by ram depth. One die set covers many angles, but springback matters more than in bottoming.",
+      "seeAlso": ["v-die", "springback"]
+    },
+    {
+      "id": "grain-direction",
+      "term": "Grain direction",
+      "category": "forming",
+      "definition": "The direction a sheet was rolled. Bending across the grain is much less likely to crack than bending along it — it matters most on aluminum and on tight radii.",
+      "seeAlso": ["inside-bend-radius"]
+    },
+    {
+      "id": "gusset",
+      "term": "Gusset",
+      "category": "forming",
+      "definition": "A triangular plate or bent tab added at a joint to keep it from flexing. Cheap stiffness — the reason most FRC frames survive contact.",
+      "seeAlso": ["flange"]
+    },
+    {
+      "id": "assist-gas",
+      "term": "Assist gas",
+      "category": "beam",
+      "definition": "Gas blown coaxially through the laser nozzle to eject molten material and control the cut edge. On the fiber lasers, the gas choice changes edge quality, dross, and speed — it is not just \"air on.\"",
+      "href": "/lasers/xtool-metalfab/#assist-gas-selection",
+      "seeAlso": ["air-assist", "dross"]
+    },
+    {
+      "id": "air-assist",
+      "term": "Air assist",
+      "category": "beam",
+      "definition": "Compressed air at the CO2 laser nozzle. It blows smoke out of the beam path and suppresses flare-ups — running acrylic or wood without it means scorched edges and a genuine fire risk.",
+      "href": "/lasers/thunder-nova-35/#air-assist",
+      "seeAlso": ["assist-gas"]
+    },
+    {
+      "id": "focus-height",
+      "term": "Focus height",
+      "category": "beam",
+      "definition": "The distance from lens to material that puts the beam's narrowest point where you want it. Off by a couple millimetres and the same settings that cut cleanly yesterday will only scorch today.",
+      "seeAlso": ["kerf"]
+    },
+    {
+      "id": "raster",
+      "term": "Raster",
+      "aka": ["fill", "engrave"],
+      "category": "beam",
+      "definition": "Laser mode that sweeps back and forth line by line to darken or remove an area — how photos and filled logos are engraved. Slow, because it covers every square millimetre.",
+      "seeAlso": ["vector", "score"]
+    },
+    {
+      "id": "vector",
+      "term": "Vector",
+      "category": "beam",
+      "definition": "Laser mode that follows a path rather than filling an area — used for cutting and for outlines. Vastly faster than raster for the same drawing.",
+      "seeAlso": ["raster", "score", "svg"]
+    },
+    {
+      "id": "score",
+      "term": "Score",
+      "category": "beam",
+      "definition": "A vector pass at low enough power to mark the surface without cutting through. Used for fold lines, labels, and alignment marks.",
+      "seeAlso": ["vector", "kiss-cut"]
+    },
+    {
+      "id": "kiss-cut",
+      "term": "Kiss cut",
+      "category": "beam",
+      "definition": "Cutting through the vinyl or sticker face but not the backing paper, so the shape peels off a still-intact sheet. What the Cricut does for die-cut stickers.",
+      "href": "/graphics/vinyl-and-stickers/#die-cut-stickers",
+      "seeAlso": ["weeding", "score"]
+    },
+    {
+      "id": "dross",
+      "term": "Dross",
+      "category": "beam",
+      "definition": "Resolidified metal stuck to the underside of a laser or plasma cut. Some dross wipes off; heavy dross means the wrong power, speed, or assist gas, and it always has to come off before powder coating.",
+      "seeAlso": ["assist-gas", "deburr"]
+    },
+    {
+      "id": "haz",
+      "term": "HAZ",
+      "aka": ["heat-affected zone"],
+      "category": "beam",
+      "definition": "The band of material next to a cut whose properties changed from the heat. Small on a laser, effectively zero on the waterjet — which is why the WAZER is the right tool for hardened or heat-sensitive material.",
+      "href": "/waterjet/wazer-pro/",
+      "seeAlso": ["work-hardening", "garnet"]
+    },
+    {
+      "id": "garnet",
+      "term": "Garnet",
+      "aka": ["abrasive"],
+      "category": "beam",
+      "definition": "The mineral abrasive the WAZER mixes into its water stream — the water is just the delivery method, the garnet does the cutting. It is a consumable, it is heavy, and running out mid-job stops the cut.",
+      "href": "/waterjet/wazer-pro/#consumables--tooling",
+      "seeAlso": ["haz", "taper"]
+    },
+    {
+      "id": "taper",
+      "term": "Taper",
+      "category": "beam",
+      "definition": "A cut edge that isn't perpendicular — wider at the top than the bottom, or the reverse. Normal on the waterjet and worse at high speed; if a part must be square through its thickness, slow the cut.",
+      "seeAlso": ["kerf", "garnet"]
+    },
+    {
+      "id": "lead-in",
+      "term": "Lead-in",
+      "aka": ["pierce point"],
+      "category": "beam",
+      "definition": "A short entry path that starts the cut off the finished edge, so the messy pierce point lands in scrap rather than on your part.",
+      "seeAlso": ["kerf", "nesting"]
+    },
+    {
+      "id": "nesting",
+      "term": "Nesting",
+      "category": "beam",
+      "definition": "Arranging parts on a sheet to waste as little material as possible. Good nesting on a sheet of 6061 is the difference between one sheet and two.",
+      "seeAlso": ["lead-in", "tab"]
+    },
+    {
+      "id": "tab",
+      "term": "Tab",
+      "aka": ["micro-joint"],
+      "category": "beam",
+      "definition": "A tiny uncut bridge left holding a part in the sheet so it can't tip up into the cutting head or drop into the tank. Snapped and filed off after the job.",
+      "seeAlso": ["nesting", "deburr"]
+    },
+    {
+      "id": "interlock",
+      "term": "Interlock",
+      "category": "shop",
+      "definition": "A switch that stops the machine when a lid or door opens. On every laser here, the enclosure plus its interlock *is* the eye protection — which is exactly why defeating one is a bright line, not a shortcut.",
+      "href": "/safety/gloves-and-ppe/#eye-protection",
+      "seeAlso": ["e-stop"]
+    },
+    {
+      "id": "layer-height",
+      "term": "Layer height",
+      "category": "printing",
+      "definition": "How thick each printed layer is. Smaller means finer detail and a longer print; it does not meaningfully increase strength. Our 0.6 mm nozzles run thicker layers than the 0.4 mm machines can.",
+      "href": "/3d-printing/print-settings/",
+      "seeAlso": ["nozzle-diameter", "perimeter"]
+    },
+    {
+      "id": "nozzle-diameter",
+      "term": "Nozzle diameter",
+      "category": "printing",
+      "definition": "The hole the plastic comes out of. It sets the finest feature the printer can resolve and the fattest line it can lay down. Most of our fleet runs 0.6 mm; the H2D and X2D are the 0.4 mm detail machines.",
+      "href": "/3d-printing/bambu-fleet/",
+      "seeAlso": ["layer-height", "hardened-nozzle"]
+    },
+    {
+      "id": "hardened-nozzle",
+      "term": "Hardened nozzle",
+      "category": "printing",
+      "definition": "A steel or ruby-tipped nozzle required for abrasive filaments. Every glass- or carbon-filled material we use — PETG-GF, PPA-GF, PPS-CF — will chew a brass nozzle into an unusable oval within a spool.",
+      "seeAlso": ["nozzle-diameter", "petg-gf"]
+    },
+    {
+      "id": "perimeter",
+      "term": "Perimeter",
+      "aka": ["wall", "shell"],
+      "category": "printing",
+      "definition": "The outlines printed around each layer. Perimeters carry far more load than infill does — adding walls is almost always the right way to strengthen a part, and adding infill almost never is.",
+      "href": "/3d-printing/print-settings/",
+      "seeAlso": ["infill", "layer-height"]
+    },
+    {
+      "id": "infill",
+      "term": "Infill",
+      "category": "printing",
+      "definition": "The internal lattice between the walls. Useful for stiffness and for supporting flat tops; poor value for strength compared to perimeters. Past roughly 40% you are mostly buying print time.",
+      "seeAlso": ["perimeter"]
+    },
+    {
+      "id": "bridging",
+      "term": "Bridging",
+      "category": "printing",
+      "definition": "Printing a straight span across open air between two supported points. Works surprisingly well up to a point; design holes and openings so their tops bridge rather than overhang.",
+      "href": "/3d-printing/print-settings/#overhang--bridging-limits",
+      "seeAlso": ["overhang", "support"]
+    },
+    {
+      "id": "overhang",
+      "term": "Overhang",
+      "category": "printing",
+      "definition": "A surface leaning out past what the layer below can support. Angles up to about 45° from vertical print fine unsupported; past that the plastic droops and needs support or a different orientation.",
+      "seeAlso": ["bridging", "support"]
+    },
+    {
+      "id": "support",
+      "term": "Support",
+      "category": "printing",
+      "definition": "Sacrificial structure printed under overhangs and removed afterward. Every support leaves a scar, so re-orienting the part to avoid supports usually beats tuning them.",
+      "href": "/3d-printing/print-settings/#support-strategy",
+      "seeAlso": ["overhang", "support-interface"]
+    },
+    {
+      "id": "support-interface",
+      "term": "Support interface",
+      "category": "printing",
+      "definition": "The dense top layer of a support where it meets the part — the surface finish underneath depends almost entirely on it. Printing the interface in PLA under an engineering material gives a clean release and a flat face.",
+      "href": "/3d-printing/print-settings/#dual-nozzle-support-strategies",
+      "seeAlso": ["support"]
+    },
+    {
+      "id": "live-z",
+      "term": "Live-Z",
+      "aka": ["first layer offset", "Z offset"],
+      "category": "printing",
+      "definition": "The Prusa's fine adjustment of nozzle height on the first layer. Too high and the print doesn't stick; too low and it gouges the sheet. It is per-machine, and dialling it is a mentor walk-through the first time.",
+      "href": "/3d-printing/prusa-farm/",
+      "seeAlso": ["first-layer", "elephant-foot"]
+    },
+    {
+      "id": "first-layer",
+      "term": "First layer",
+      "category": "printing",
+      "definition": "The layer everything else depends on. Watch it. A good first layer is slightly squished with no gaps between lines; if it's wrong, cancel now rather than 6 hours from now.",
+      "seeAlso": ["live-z", "bed-adhesion"]
+    },
+    {
+      "id": "bed-adhesion",
+      "term": "Bed adhesion",
+      "category": "printing",
+      "definition": "How well the print sticks to the plate. Fixed by a clean plate (soap and water, not just IPA), the right plate for the material, and a correct first layer — rarely by more glue.",
+      "seeAlso": ["first-layer", "warping"]
+    },
+    {
+      "id": "elephant-foot",
+      "term": "Elephant foot",
+      "category": "printing",
+      "definition": "The first couple of layers bulging outward, so the bottom of the part is slightly oversize. Caused by too much first-layer squish or too hot a bed; it will stop a press-fit part from seating flat.",
+      "seeAlso": ["live-z", "first-layer"]
+    },
+    {
+      "id": "warping",
+      "term": "Warping",
+      "category": "printing",
+      "definition": "Corners lifting off the plate as the print cools and contracts. Worst on large flat parts and on high-temperature materials; the fix is an enclosure and a clean plate, not more brim.",
+      "seeAlso": ["bed-adhesion", "annealing"]
+    },
+    {
+      "id": "stringing",
+      "term": "Stringing",
+      "aka": ["oozing"],
+      "category": "printing",
+      "definition": "Fine hairs of plastic strung between parts, from plastic leaking during travel moves. Usually wet filament or too little retraction — dry the spool before touching the retraction settings.",
+      "seeAlso": ["drying", "retraction"]
+    },
+    {
+      "id": "retraction",
+      "term": "Retraction",
+      "category": "printing",
+      "definition": "Pulling filament back slightly before a travel move so the nozzle stops oozing. Too much causes clogs and gaps; it is a tuning setting, not a fix for wet filament.",
+      "seeAlso": ["stringing"]
+    },
+    {
+      "id": "seam",
+      "term": "Seam",
+      "aka": ["Z seam"],
+      "category": "printing",
+      "definition": "The vertical line where each layer's perimeter starts and ends. It's the weakest and ugliest line on the part — orient it away from visible faces and away from where load is applied.",
+      "seeAlso": ["perimeter"]
+    },
+    {
+      "id": "purge-tower",
+      "term": "Purge tower",
+      "aka": ["prime tower", "wipe tower"],
+      "category": "printing",
+      "definition": "A sacrificial block printed alongside a multi-material job so the nozzle can flush out the old colour or material before returning to the part. It is why AMS colour changes cost so much filament.",
+      "seeAlso": ["ams"]
+    },
+    {
+      "id": "ams",
+      "term": "AMS",
+      "aka": ["Automatic Material System"],
+      "category": "printing",
+      "definition": "Bambu's multi-spool feeder, which loads and swaps filaments automatically and keeps them dry. Abrasive and stiff materials — PPS-CF among them — never go through the AMS; they feed externally.",
+      "href": "/3d-printing/bambu-fleet/",
+      "seeAlso": ["purge-tower", "drying"]
+    },
+    {
+      "id": "drying",
+      "term": "Drying",
+      "category": "printing",
+      "definition": "Baking moisture out of filament before printing. Nylon, PPA, PC and TPU absorb water from the air fast enough to matter within a day; the symptoms are popping sounds, stringing, and weak, foamy-looking parts.",
+      "href": "/3d-printing/filament-guide/#storage--drying",
+      "seeAlso": ["stringing", "ppa-gf"]
+    },
+    {
+      "id": "annealing",
+      "term": "Annealing",
+      "category": "printing",
+      "definition": "Heating a finished print to increase crystallinity and strength. Mostly relevant to PPA and nylon parts, and it usually shrinks the part slightly — dimension for it or don't do it.",
+      "seeAlso": ["warping", "ppa-gf"]
+    },
+    {
+      "id": "petg-gf",
+      "term": "PETG-GF",
+      "category": "printing",
+      "definition": "Glass-fibre-filled PETG — the lab's standard on-robot material. Stiffer and far more dimensionally stable than plain PETG, prints without an enclosure, and needs a hardened nozzle. Note the touchscreens label it PETG-CF.",
+      "href": "/3d-printing/filament-guide/",
+      "seeAlso": ["hardened-nozzle", "ppa-gf"]
+    },
+    {
+      "id": "ppa-gf",
+      "term": "PPA-GF",
+      "category": "printing",
+      "definition": "Glass-filled polyphthalamide — a high-temperature nylon for the hottest, most loaded parts we print. Extremely moisture-sensitive, so it prints straight from a dryer, and it wants an enclosure.",
+      "href": "/3d-printing/filament-guide/",
+      "seeAlso": ["drying", "hardened-nozzle", "annealing"]
+    },
+    {
+      "id": "shore-hardness",
+      "term": "Shore hardness",
+      "category": "printing",
+      "definition": "How firm a flexible material is. Shore A is soft (95A TPU is bendy but tough); Shore D is much harder — our 72D TPU is nearly rigid and is the one that survives repeated impact.",
+      "seeAlso": ["petg-gf"]
+    },
+    {
+      "id": "slicer",
+      "term": "Slicer",
+      "category": "printing",
+      "definition": "The program that turns a 3D model into the layer-by-layer toolpath the printer runs. Bambu Studio for the Bambus, PrusaSlicer for the Minis. The model is never what the printer reads — the slicer's output is.",
+      "seeAlso": ["gcode", "three-mf"]
+    },
+    {
+      "id": "gcode",
+      "term": "G-code",
+      "category": "printing",
+      "definition": "The plain-text motion instructions a printer or CNC actually executes. It is machine-specific: G-code sliced for a Mini will not run correctly on an X1C.",
+      "seeAlso": ["slicer", "three-mf"]
+    },
+    {
+      "id": "three-mf",
+      "term": "3MF",
+      "category": "cad",
+      "definition": "A project file that carries the model *plus* its plate layout, per-object settings, and material assignments. Share a 3MF, not an STL, when you want someone to reproduce your print exactly.",
+      "seeAlso": ["stl", "slicer"]
+    },
+    {
+      "id": "stl",
+      "term": "STL",
+      "category": "cad",
+      "definition": "A mesh of triangles approximating a surface. It carries no units, no colour, no features, and no history — fine for printing, useless for machining or editing.",
+      "seeAlso": ["step", "three-mf"]
+    },
+    {
+      "id": "step",
+      "term": "STEP",
+      "aka": [".step", ".stp"],
+      "category": "cad",
+      "definition": "The universal CAD exchange format for real solid geometry — exact curved surfaces, not triangles. This is what you send when someone else needs to machine, measure, or modify the part.",
+      "href": "/overview/onshape-to-part/",
+      "seeAlso": ["stl", "dxf"]
+    },
+    {
+      "id": "dxf",
+      "term": "DXF",
+      "category": "cad",
+      "definition": "A flat 2D vector format — the standard input for the lasers and the waterjet. Export a face or a sheet metal flat pattern as DXF; check units on import, because DXF does not reliably carry them.",
+      "href": "/overview/onshape-to-part/",
+      "seeAlso": ["flat-pattern", "svg", "step"]
+    },
+    {
+      "id": "svg",
+      "term": "SVG",
+      "category": "cad",
+      "definition": "A vector graphics format from the design side rather than the CAD side. Fine for logos, engraving art, and vinyl; not a substitute for DXF on dimensioned parts, because scaling is easy to get wrong.",
+      "seeAlso": ["dxf", "vector"]
+    },
+    {
+      "id": "onshape",
+      "term": "Onshape",
+      "category": "cad",
+      "definition": "The cloud CAD system the team designs in. Everything lives in a browser document with version history, so \"which file is current\" is never a question — but exports are snapshots and go stale the moment the model changes.",
+      "href": "/overview/onshape-to-part/",
+      "seeAlso": ["part-studio", "step"]
+    },
+    {
+      "id": "part-studio",
+      "term": "Part Studio",
+      "category": "cad",
+      "definition": "The Onshape workspace where geometry is modelled. One Part Studio can hold several parts that share sketches — which is how mating parts stay mated when a dimension changes.",
+      "seeAlso": ["onshape", "assembly"]
+    },
+    {
+      "id": "assembly",
+      "term": "Assembly",
+      "category": "cad",
+      "definition": "The Onshape workspace where finished parts are positioned and mated to each other. Assemblies show motion and interference; they are not where you change a part's shape.",
+      "seeAlso": ["onshape", "part-studio"]
+    },
+    {
+      "id": "cam",
+      "term": "CAM",
+      "category": "cad",
+      "definition": "The step between CAD and a machine: choosing tools, speeds, and the paths the machine will follow, then posting it out as machine instructions. Our lasers and waterjet do this inside their own software (LightBurn, WAM, MLaser).",
+      "seeAlso": ["gcode", "toolpath"]
+    },
+    {
+      "id": "toolpath",
+      "term": "Toolpath",
+      "category": "cad",
+      "definition": "The actual route the cutting head travels, including lead-ins, order of operations, and where it lifts. Two identical drawings can cut very differently depending on toolpath.",
+      "seeAlso": ["cam", "lead-in", "nesting"]
+    },
+    {
+      "id": "tpi-thread",
+      "term": "TPI (thread)",
+      "aka": ["threads per inch"],
+      "category": "fasteners",
+      "definition": "The second number in an imperial thread callout: the 32 in #10-32 means 32 threads per inch. Two bolts of the same diameter with different TPI will not interchange.",
+      "seeAlso": ["ten-thirty-two", "quarter-twenty", "tpi-blade"]
+    },
+    {
+      "id": "ten-thirty-two",
+      "term": "#10-32",
+      "category": "fasteners",
+      "definition": "The team's default small fastener: 0.190 in major diameter, 32 threads per inch. Clearance hole about 0.201 in (#7); tap drill #21 (0.159 in). Note the clearance drill for #10-32 is the tap drill for 1/4-20 — check twice.",
+      "href": "/hand-tools/fastener-driving/#frc-common-sizes",
+      "seeAlso": ["tap-drill", "quarter-twenty", "tpi-thread"]
+    },
+    {
+      "id": "quarter-twenty",
+      "term": "1/4-20",
+      "category": "fasteners",
+      "definition": "The team's default larger fastener: 0.250 in diameter, 20 threads per inch. Clearance hole about 0.266 in (17/64); tap drill #7 (0.201 in).",
+      "href": "/hand-tools/fastener-driving/#frc-common-sizes",
+      "seeAlso": ["ten-thirty-two", "tap-drill"]
+    },
+    {
+      "id": "shcs",
+      "term": "SHCS",
+      "aka": ["socket head cap screw"],
+      "category": "fasteners",
+      "definition": "Cylindrical head with a hex socket — the default robot fastener. Strong, compact, and driven with a hex key, so it fits where a screwdriver never would.",
+      "href": "/hand-tools/fastener-driving/",
+      "seeAlso": ["button-head", "flat-head", "counterbore"]
+    },
+    {
+      "id": "button-head",
+      "term": "Button head",
+      "aka": ["BHCS"],
+      "category": "fasteners",
+      "definition": "A low, domed head with a hex socket. Lower profile and friendlier to bump into than an SHCS, but noticeably weaker — not for structural joints.",
+      "seeAlso": ["shcs"]
+    },
+    {
+      "id": "flat-head",
+      "term": "Flat head",
+      "aka": ["FHCS", "countersunk screw"],
+      "category": "fasteners",
+      "definition": "A conical head that sits flush in a countersunk hole. It self-centers as it tightens, which is useful — and means a misplaced countersink will pull the part out of position.",
+      "seeAlso": ["countersink", "shcs"]
+    },
+    {
+      "id": "shoulder-bolt",
+      "term": "Shoulder bolt",
+      "category": "fasteners",
+      "definition": "A bolt with a precision unthreaded section between head and threads. The shoulder is a bearing surface — it's what rollers and pivoting links ride on, not the thread.",
+      "seeAlso": ["shcs", "standoff"]
+    },
+    {
+      "id": "nylock",
+      "term": "Nylock",
+      "aka": ["nyloc", "nylon insert lock nut"],
+      "category": "fasteners",
+      "definition": "A nut with a nylon collar that grips the thread and resists vibration. Reusable a few times, then the collar stops biting. Never use one where it will get hot — nylon and the curing oven don't mix.",
+      "seeAlso": ["threadlocker"]
+    },
+    {
+      "id": "threadlocker",
+      "term": "Threadlocker",
+      "category": "fasteners",
+      "definition": "Anaerobic adhesive that stops fasteners vibrating loose. The shop standard is Vibra-Tite 125 gel. It attacks polycarbonate — never use it on or near a polycarb part.",
+      "href": "/maintenance/schedules/#cleaning--lubrication-reference",
+      "seeAlso": ["nylock", "polycarbonate"]
+    },
+    {
+      "id": "thread-engagement",
+      "term": "Thread engagement",
+      "category": "fasteners",
+      "definition": "How much thread depth is actually holding. Rule of thumb: at least one bolt diameter of engagement in aluminum, more in plastic. Too little strips out; there is no such thing as fixing it with more torque.",
+      "seeAlso": ["tap-drill", "galling"]
+    },
+    {
+      "id": "galling",
+      "term": "Galling",
+      "category": "fasteners",
+      "definition": "Threads cold-welding to each other and seizing solid, mid-tighten. Stainless-on-stainless is the classic offender. Once it starts you cannot back it out — slow down and lubricate instead.",
+      "seeAlso": ["thread-engagement"]
+    },
+    {
+      "id": "rivet",
+      "term": "Blind rivet",
+      "aka": ["pop rivet"],
+      "category": "fasteners",
+      "definition": "A one-sided permanent fastener: the tool pulls a mandrel that flares the far end, then snaps it off. \"Blind\" because you never need access to the back side.",
+      "href": "/portable-power/m12-riveting/",
+      "seeAlso": ["grip-range", "mandrel", "rivnut"]
+    },
+    {
+      "id": "grip-range",
+      "term": "Grip range",
+      "category": "fasteners",
+      "definition": "The total material thickness a rivet is designed to clamp. Too short and it won't set; too long and the joint stays loose. Measure the stack before picking the rivet, not after.",
+      "href": "/portable-power/m12-riveting/#rivet-sizing",
+      "seeAlso": ["rivet"]
+    },
+    {
+      "id": "mandrel",
+      "term": "Mandrel",
+      "category": "fasteners",
+      "definition": "The steel stem a rivet tool pulls to set a rivet, which then breaks off. Spent mandrels collect in the tool and in the bottom of the robot — empty the catcher, and vacuum the frame.",
+      "seeAlso": ["rivet"]
+    },
+    {
+      "id": "rivnut",
+      "term": "Rivnut",
+      "aka": ["nutsert", "rivet nut"],
+      "category": "fasteners",
+      "definition": "A rivet with threads inside it. Sets from one side into sheet or tube and leaves behind a strong threaded hole where the material was too thin to tap.",
+      "href": "/hand-tools/threading-riveting/#rivnut-tools",
+      "seeAlso": ["rivet", "thread-engagement"]
+    },
+    {
+      "id": "standoff",
+      "term": "Standoff",
+      "category": "fasteners",
+      "definition": "A threaded spacer that holds two plates a fixed distance apart. Unlike a plain spacer it has threads, so it carries the fastener rather than just filling the gap.",
+      "seeAlso": ["spacer", "shoulder-bolt"]
+    },
+    {
+      "id": "spacer",
+      "term": "Spacer",
+      "category": "fasteners",
+      "definition": "An unthreaded tube that sets the distance between parts on a bolt. Aluminum and nylon spacers by length live in the small-parts bins.",
+      "href": "/storage/small-parts-bins/",
+      "seeAlso": ["standoff", "shaft-collar"]
+    },
+    {
+      "id": "shaft-collar",
+      "term": "Shaft collar",
+      "category": "fasteners",
+      "definition": "A clamping ring that locks onto a shaft to stop axial movement. Clamp-style collars hold better and mar less than set-screw collars.",
+      "seeAlso": ["spacer", "snap-ring"]
+    },
+    {
+      "id": "snap-ring",
+      "term": "Snap ring",
+      "aka": ["circlip", "retaining ring"],
+      "category": "fasteners",
+      "definition": "A sprung ring that drops into a machined groove to retain a bearing or shaft. Installed and removed only with snap ring pliers — and eye protection, because they launch.",
+      "href": "/hand-tools/clamps-vises/#snap-ring-pliers",
+      "seeAlso": ["shaft-collar"]
+    },
+    {
+      "id": "six-oh-six-one",
+      "term": "6061",
+      "aka": ["6061-T6"],
+      "category": "materials",
+      "definition": "The lab's general-purpose aluminum alloy: strong enough for structure, machines and welds well, bends acceptably. The T6 suffix is its heat treatment. If a drawing just says \"aluminum,\" it means this.",
+      "seeAlso": ["seven-oh-seven-five", "five-oh-five-two"]
+    },
+    {
+      "id": "seven-oh-seven-five",
+      "term": "7075",
+      "category": "materials",
+      "definition": "A much stronger aluminum alloy used where 6061 flexes — gearbox plates, highly loaded brackets. It does not weld, it costs considerably more, and it cracks if you try to bend it tightly.",
+      "seeAlso": ["six-oh-six-one"]
+    },
+    {
+      "id": "five-oh-five-two",
+      "term": "5052",
+      "category": "materials",
+      "definition": "The sheet aluminum alloy for bending. Far more formable than 6061, which will crack on a tight bend — if it's going on the Titan, it should probably be 5052.",
+      "href": "/forming/langmuir-titan-25t/",
+      "seeAlso": ["six-oh-six-one", "inside-bend-radius"]
+    },
+    {
+      "id": "polycarbonate",
+      "term": "Polycarbonate",
+      "aka": ["PC", "Lexan"],
+      "category": "materials",
+      "definition": "A nearly unbreakable clear plastic — the right choice for guards, bumper backing, and anything that gets hit. It scratches easily, it cannot be laser cut (it burns and releases chlorine-free but toxic fumes), and threadlocker and many solvents will craze it.",
+      "seeAlso": ["acrylic", "threadlocker"]
+    },
+    {
+      "id": "acrylic",
+      "term": "Acrylic",
+      "aka": ["PMMA", "Plexiglas"],
+      "category": "materials",
+      "definition": "A clear plastic that laser cuts beautifully with flame-polished edges — and shatters when struck. Use it for displays and light pipes, never for anything structural or impact-loaded.",
+      "href": "/lasers/thunder-nova-35/",
+      "seeAlso": ["polycarbonate"]
+    },
+    {
+      "id": "delrin",
+      "term": "Delrin",
+      "aka": ["acetal", "POM"],
+      "category": "materials",
+      "definition": "A stiff, slippery engineering plastic that machines like a dream and makes excellent bushings and low-friction guides. Nothing sticks to it — including glue and powder coat.",
+      "seeAlso": ["polycarbonate"]
+    },
+    {
+      "id": "awg",
+      "term": "AWG",
+      "aka": ["American Wire Gauge"],
+      "category": "electrical",
+      "definition": "Wire size, where a bigger number means thinner wire. FRC rules tie gauge to breaker size — the wire has to be able to carry what the breaker will allow before it trips.",
+      "href": "/electrical/wire-prep-crimping/#frc-wire-gauge-rules",
+      "seeAlso": ["ferrule", "crimp"]
+    },
+    {
+      "id": "crimp",
+      "term": "Crimp",
+      "category": "electrical",
+      "definition": "A gas-tight mechanical joint formed by deforming a terminal around a wire. A correct crimp is stronger and more vibration-resistant than solder — and a ratcheting crimper is what makes it correct.",
+      "href": "/electrical/wire-prep-crimping/#ratcheting-crimpers",
+      "seeAlso": ["ferrule", "powerpole", "awg"]
+    },
+    {
+      "id": "ferrule",
+      "term": "Ferrule",
+      "category": "electrical",
+      "definition": "A metal sleeve crimped onto stranded wire so it behaves like a solid conductor in a screw terminal. Stops strands splaying out and shorting to the terminal next door.",
+      "seeAlso": ["crimp", "awg"]
+    },
+    {
+      "id": "powerpole",
+      "term": "Powerpole",
+      "category": "electrical",
+      "definition": "Anderson's genderless connector — every housing mates with every other, and the contacts are crimped then pushed in until they click. The FRC standard for battery and high-current connections.",
+      "href": "/electrical/wire-prep-crimping/#anderson-powerpole-connectors",
+      "seeAlso": ["crimp"]
+    },
+    {
+      "id": "tinning",
+      "term": "Tinning",
+      "category": "electrical",
+      "definition": "Pre-coating a wire end or an iron tip with a thin layer of solder. On an iron tip it's maintenance — a tinned tip transfers heat and doesn't oxidize. On wire going into a screw terminal or crimp, it's a mistake: solder cold-flows and the joint loosens.",
+      "href": "/electrical/soldering-test-bench/#soldering-technique",
+      "seeAlso": ["flux", "cold-joint"]
+    },
+    {
+      "id": "flux",
+      "term": "Flux",
+      "category": "electrical",
+      "definition": "Chemical cleaner that strips oxide so solder can wet the metal. Rosin-core solder has flux inside it; extra flux is what rescues a joint that won't take.",
+      "seeAlso": ["tinning", "cold-joint"]
+    },
+    {
+      "id": "cold-joint",
+      "term": "Cold joint",
+      "category": "electrical",
+      "definition": "A solder joint that never fully melted and flowed — dull, lumpy, and electrically unreliable. Caused by too little heat or by moving the joint while it solidified. Reheat it properly rather than adding solder.",
+      "seeAlso": ["flux", "tinning"]
+    },
+    {
+      "id": "continuity",
+      "term": "Continuity",
+      "category": "electrical",
+      "definition": "A multimeter check for whether current can flow between two points — it beeps if they're connected. The first test for any suspected broken wire, and it must be done with power off.",
+      "seeAlso": ["cold-joint"]
+    },
+    {
+      "id": "current-limit",
+      "term": "Current limit",
+      "category": "electrical",
+      "definition": "A bench power supply setting that caps how much current it will deliver. Set it *before* connecting anything — it's what turns a wiring mistake into a supply that quietly refuses instead of a fried board.",
+      "href": "/electrical/soldering-test-bench/#benchtop-dc-power-supply"
+    },
+    {
+      "id": "duty-cycle",
+      "term": "Duty cycle",
+      "category": "electrical",
+      "definition": "The fraction of time something is on. For a motor controller it's how PWM sets speed; for a tool like the heat press or compressor it's how long it may run before it needs to rest.",
+      "seeAlso": []
+    },
+    {
+      "id": "outgassing",
+      "term": "Outgassing",
+      "category": "finishing",
+      "definition": "Gas escaping from a porous or cast part as it heats, blowing bubbles and pinholes through the powder coat. Prevented by pre-baking the part before it's ever coated.",
+      "href": "/finishing/surface-prep/",
+      "seeAlso": ["cure-schedule"]
+    },
+    {
+      "id": "cure-schedule",
+      "term": "Cure schedule",
+      "category": "finishing",
+      "definition": "The time and temperature a powder needs to flow out and cross-link — and the clock starts when the *part* reaches temperature, not when the oven does. Thick steel therefore takes far longer than thin aluminum.",
+      "href": "/finishing/curing-oven/#reading-a-cure-schedule",
+      "seeAlso": ["outgassing", "orange-peel"]
+    },
+    {
+      "id": "electrostatic",
+      "term": "Electrostatic",
+      "category": "finishing",
+      "definition": "The principle the powder gun works on: powder is charged, the part is grounded, and the powder is attracted to the part and clings there until it's cured. No ground, no coating — check the ground clamp first when powder won't stick.",
+      "href": "/finishing/powder-coating/",
+      "seeAlso": ["faraday-cage"]
+    },
+    {
+      "id": "faraday-cage",
+      "term": "Faraday cage effect",
+      "category": "finishing",
+      "definition": "Why powder refuses to enter inside corners, deep pockets, and slots — the charge concentrates on the edges and repels powder from the recess. Fix it with a lower voltage and a slower, closer pass, not more powder.",
+      "seeAlso": ["electrostatic"]
+    },
+    {
+      "id": "orange-peel",
+      "term": "Orange peel",
+      "category": "finishing",
+      "definition": "A dimpled, bumpy cured finish. Usually too thick a coat, sometimes a cure that ran too hot too fast. The cure is prevention — you cannot sand it out without stripping back to bare metal.",
+      "seeAlso": ["cure-schedule"]
+    },
+    {
+      "id": "scotch-brite",
+      "term": "Scotch-Brite",
+      "aka": ["surface conditioning wheel"],
+      "category": "finishing",
+      "definition": "A non-woven abrasive wheel that breaks edges and puts a uniform satin scuff on aluminum without cutting into the part the way a grinding wheel does. The shop's deburring default.",
+      "href": "/cutting/sanders-grinders/",
+      "seeAlso": ["deburr", "scuff"]
+    },
+    {
+      "id": "scuff",
+      "term": "Scuff",
+      "aka": ["key the surface"],
+      "category": "finishing",
+      "definition": "Abrading a smooth surface so coating has texture to grip. Powder will not hold on polished or mill-finish aluminum — it needs a scuff or a blast first.",
+      "href": "/finishing/surface-prep/",
+      "seeAlso": ["scotch-brite", "degrease"]
+    },
+    {
+      "id": "degrease",
+      "term": "Degrease",
+      "category": "finishing",
+      "definition": "Removing oil, cutting fluid, and skin oils before coating. It is the step people skip and the reason coatings fail — after degreasing, the part is handled with nitrile gloves only.",
+      "href": "/finishing/surface-prep/",
+      "seeAlso": ["scuff", "outgassing"]
+    },
+    {
+      "id": "masking",
+      "term": "Masking",
+      "category": "finishing",
+      "definition": "Covering threads, bores, and bearing seats so powder doesn't build up where a tolerance matters. Hi-temp polyester tape and silicone plugs — ordinary masking tape will bake on and stay.",
+      "href": "/finishing/surface-prep/",
+      "seeAlso": ["cure-schedule"]
+    },
+    {
+      "id": "weeding",
+      "term": "Weeding",
+      "category": "finishing",
+      "definition": "Picking the unwanted vinyl off the backing after a cut, leaving only the design. Fine detail and small counters (the middle of an \"O\") are what makes a design hard to weed — design for it.",
+      "href": "/graphics/vinyl-and-stickers/",
+      "seeAlso": ["kiss-cut", "htv"]
+    },
+    {
+      "id": "htv",
+      "term": "HTV",
+      "aka": ["heat transfer vinyl"],
+      "category": "finishing",
+      "definition": "Vinyl with a heat-activated adhesive, pressed onto fabric. It is cut mirrored, because you press it face-down through its carrier sheet.",
+      "href": "/graphics/heat-press/",
+      "seeAlso": ["weeding"]
+    },
+    {
+      "id": "ppe",
+      "term": "PPE",
+      "aka": ["personal protective equipment"],
+      "category": "shop",
+      "definition": "The gear that stands between you and a specific hazard — goggles, hearing protection, gloves where they're required and never where they're banned. Wrong PPE can be worse than none.",
+      "href": "/safety/gloves-and-ppe/",
+      "seeAlso": ["z87", "interlock"]
+    },
+    {
+      "id": "z87",
+      "term": "Z87+",
+      "category": "shop",
+      "definition": "The ANSI impact rating stamped on real eye protection. If eyewear isn't marked Z87, it isn't eye protection — and prescription glasses almost never are.",
+      "href": "/safety/gloves-and-ppe/#eye-protection",
+      "seeAlso": ["ppe"]
+    },
+    {
+      "id": "e-stop",
+      "term": "E-stop",
+      "aka": ["emergency stop"],
+      "category": "shop",
+      "definition": "The big red button that cuts power to a machine immediately. Know where the one on your machine is *before* you start it — hunting for it is not a thing you can do in the moment.",
+      "href": "/safety/emergency/#power-shut-offs",
+      "seeAlso": ["interlock"]
+    },
+    {
+      "id": "pre-flight",
+      "term": "Pre-flight",
+      "category": "shop",
+      "definition": "The short checklist run before starting a machine. It exists because every item on it is something that has actually gone wrong on that machine somewhere.",
+      "seeAlso": ["sign-off", "ppe"]
+    },
+    {
+      "id": "sign-off",
+      "term": "Sign-off",
+      "category": "shop",
+      "definition": "A mentor's confirmation that you've been trained on a specific machine and may run it alone. Sign-offs are per machine — being cleared on the bandsaw says nothing about the lathe.",
+      "seeAlso": ["pre-flight"]
+    },
+    {
+      "id": "pinch-point",
+      "term": "Pinch point",
+      "category": "shop",
+      "definition": "Anywhere two parts close on each other with force — the brake's punch and die, a vise, a press ram. Hands stay outside the pinch line for the whole cycle, not just the start of it.",
+      "seeAlso": ["entanglement"]
+    },
+    {
+      "id": "entanglement",
+      "term": "Entanglement",
+      "category": "shop",
+      "definition": "The hazard behind the no-gloves and tied-hair rules: anything that can wrap around a spinning part will pull what it's attached to in with it. Gloves, sleeves, lanyards, hair, jewelry.",
+      "href": "/safety/gloves-and-ppe/#the-glove-policy",
+      "seeAlso": ["pinch-point", "ppe"]
+    },
+    {
+      "id": "sds",
+      "term": "SDS",
+      "aka": ["safety data sheet", "MSDS"],
+      "category": "shop",
+      "definition": "The manufacturer's hazard sheet for a chemical: what it does to you, what to do about it, and how to store it. Required reading before using an unfamiliar solvent, powder, or adhesive.",
+      "href": "/safety/emergency/"
+    }
+  ]
+}

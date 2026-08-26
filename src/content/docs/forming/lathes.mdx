@@ -11,6 +11,7 @@ import LabGalleryImage from '../../../components/LabGalleryImage.astro';
 import TutorialLink from '../../../components/TutorialLink.astro';
 import DrawerLayoutMap from '../../../components/DrawerLayoutMap.astro';
 import ConsumablesTable from '../../../components/ConsumablesTable.astro';
+import Term from '../../../components/Term.astro';
 
 The Precision Matthews PM-1130V — the **Blue Lathe** — is our manual lathe for shafts, spacers, hubs, and standoffs: anything round, anything hex-bored, anything that needs a bearing seat. Next to it on the machine-shop bench sits the **Grizzly mill/drill** (the one labeled "Mill"), its companion for flats, keyway slots, and precisely located holes. These two machines carry the strictest rules in the lab, because they are the ones that grab.
 
@@ -40,7 +41,7 @@ The Precision Matthews PM-1130V — the **Blue Lathe** — is our manual lathe f
 ## Safety — The Non-Negotiables
 
 <SafetyWarning type="critical" title="The chuck key NEVER stays in the chuck">
-Your hand goes on the chuck key, the key goes in the chuck, you tighten, and the key comes out — one motion, every time. A chuck key left in a chuck becomes a projectile the instant the spindle starts. If you walk away and the key is in the chuck, you lose lathe privileges. No exceptions, no "just for a second."
+Your hand goes on the <Term id="chuck-key">chuck key</Term>, the key goes in the chuck, you tighten, and the key comes out — one motion, every time. A chuck key left in a chuck becomes a projectile the instant the spindle starts. If you walk away and the key is in the chuck, you lose lathe privileges. No exceptions, no "just for a second."
 </SafetyWarning>
 
 <SafetyWarning type="critical" title="No gloves. Tie your hair. Nothing loose.">
@@ -52,7 +53,7 @@ If the spindle is turning, you are standing at the machine with your hand near t
 </SafetyWarning>
 
 - **Safety goggles, not safety glasses.** Lathe chips leave the work sideways and hot, and glasses are open at the sides and top. Goggles seal to your face. Over-glasses goggles are in drawer 13 of the [Orange Toolbox](/storage/toolboxes/#orange-toolbox--metrology-machinist-tooling--ppe) and fit over prescription frames.
-- Clear chips with a **brush or chip hook after the spindle stops** — never fingers, never a rag near rotation, and long stringy chips get broken up, not pulled.
+- Clear chips with a **brush or <Term id="chip-hook">chip hook</Term> after the spindle stops** — never fingers, never a rag near rotation, and long stringy chips get broken up, not pulled.
 - Stock sticking out of the back of the spindle bore more than a couple of diameters must be supported or cut shorter — unsupported bar whips and bends violently.
 - Know where the E-stop is before you start.
 - Measure only with the spindle **stopped**.
@@ -68,7 +69,7 @@ Neither placard carries spindle speeds. Safe RPM depends on the diameter you're 
 
 ## Spindle Speeds
 
-Starting point: **RPM ≈ (4 × SFM) ÷ diameter in inches**. With our carbide insert tooling, use roughly 400–500 SFM for aluminum and ~300 SFM for mild steel; HSS runs about half that.
+Starting point: **RPM ≈ (4 × <Term id="sfm">SFM</Term>) ÷ diameter in inches**. With our <Term id="carbide-insert">carbide insert</Term> tooling, use roughly 400–500 SFM for aluminum and ~300 SFM for mild steel; HSS runs about half that.
 
 | Workpiece diameter | Aluminum (carbide) | Mild steel (carbide) |
 | --- | --- | --- |
@@ -77,7 +78,7 @@ Starting point: **RPM ≈ (4 × SFM) ÷ diameter in inches**. With our carbide i
 | 1.5 in | 1200 RPM | 800 RPM |
 | 2 in | 900 RPM | 600 RPM |
 
-Adjustments that matter: **parting and knurling run at about 1/3 of turning speed**; drilling from the tailstock uses the drill diameter (not the stock diameter) in the formula; interrupted cuts (hex stock!) run slower. Use the tach, not guesswork, and remember the two belt ranges — low range for big diameters and heavy cuts, high range for small-diameter finishing.
+Adjustments that matter: **parting and knurling run at about 1/3 of turning speed**; drilling from the <Term id="tailstock">tailstock</Term> uses the drill diameter (not the stock diameter) in the formula; interrupted cuts (hex stock!) run slower. Use the tach, not guesswork, and remember the two belt ranges — low range for big diameters and heavy cuts, high range for small-diameter finishing.
 
 ## Core Operations
 
@@ -97,7 +98,7 @@ Use the indexable grooving holders for this — **MGEHR1212-1.5** for aluminum a
 
 ### Drilling from the Tailstock
 
-Center-face the stock, start with a **center drill**, then step up through drill sizes to your final diameter. Peck: drill about one diameter deep, back out, clear chips, repeat. Oil in steel. Spare drill chucks and Morse-taper arbors are in **Orange Toolbox drawer 7**; the MT2 live center and the boring/turning tool holders are in **drawer 5**.
+Center-face the stock, start with a **center drill**, then step up through drill sizes to your final diameter. Peck: drill about one diameter deep, back out, clear chips, repeat. Oil in steel. Spare drill chucks and Morse-taper arbors are in **Orange Toolbox drawer 7**; the MT2 <Term id="live-center">live center</Term> and the boring/turning tool holders are in **drawer 5**.
 
 ### Tapping
 
@@ -117,7 +118,7 @@ The lathe runs a **quick-change tool post (QCTP)**: each cutter lives in its own
 
 ### Grooving & Parting — the MGEHR Holders
 
-Parting and grooving run on two dedicated indexable holders, both 12 × 12 mm right-hand external tools that clamp straight into a QCTP block. The number after the dash **is** the insert width, which is also your kerf:
+<Term id="parting">Parting</Term> and grooving run on two dedicated indexable holders, both 12 × 12 mm right-hand external tools that clamp straight into a QCTP block. The number after the dash **is** the insert width, which is also your kerf:
 
 | Holder | Insert | Kerf | Reach for it when |
 | --- | --- | --- | --- |
@@ -134,7 +135,7 @@ Working notes:
 
 ### Setting Tool Height — the Pro Lathe Gage
 
-The Edge Technology Pro Lathe Gage lives in the QCTP drawer and takes the guesswork out of putting a cutter on the spindle axis. It's a bubble level on a bearing-mounted shaft, and it's the fastest honest answer to "is this tool on center?"
+The Edge Technology Pro Lathe Gage lives in the <Term id="qctp">QCTP</Term> drawer and takes the guesswork out of putting a cutter on the spindle axis. It's a bubble level on a bearing-mounted shaft, and it's the fastest honest answer to "is this tool on center?"
 
 1. Clamp the gage's ground shaft in the chuck and let the body hang.
 2. Sit the base flat on the cross slide or compound, square to the spindle axis.

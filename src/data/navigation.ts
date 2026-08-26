@@ -26,9 +26,12 @@ export const navigationMenu: NavCategory[] = [
     align: 'left',
     items: [
       { label: 'Lab Tour & Zones', href: '/overview/lab-tour/', blurb: 'Video walkthrough of every shop zone' },
-      { label: 'Storage Directory', href: '/storage/stacktech-drawers/', blurb: 'Where every tool and part lives' },
+      { label: 'Onshape to Part', href: '/overview/onshape-to-part/', blurb: 'Pick the machine, export the file, get the part' },
+      { label: 'Find Anything', href: '/find/', blurb: 'Search every drawer, bin and shelf in the lab' },
+      { label: 'Shop Glossary', href: '/reference/glossary/', blurb: 'Every term this site uses, defined' },
       { label: 'Safety & PPE', href: '/safety/gloves-and-ppe/', blurb: 'PPE, the glove policy & emergency protocols' },
       { label: 'Maintenance Schedules', href: '/maintenance/schedules/', blurb: 'Opening/closing checklists & machine PM' },
+      { label: 'Tool Inventory', href: '/inventory/tool-list/', blurb: 'Every machine and tool the lab owns' },
       { label: 'Consumables Ledger', href: '/inventory/consumables/', blurb: 'Prices, reorder links & bin locations' },
     ],
   },

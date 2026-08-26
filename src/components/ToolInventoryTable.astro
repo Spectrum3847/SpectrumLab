@@ -1,0 +1,287 @@
+---
+/**
+ * The lab's tool fleet from src/data/tool-inventory.json, grouped by area and
+ * filterable. Pulls vendor/price/manual links through to
+ * tools-procurement.json where a purchase record exists.
+ *
+ * <ToolInventoryTable />           — everything the lab owns
+ * <ToolInventoryTable retired />   — the archive of tools we no longer have
+ */
+import inventory from '../data/tool-inventory.json';
+import procurement from '../data/tools-procurement.json';
+
+interface Props {
+  retired?: boolean;
+}
+const { retired = false } = Astro.props;
+
+const inv = inventory as any;
+const proc = procurement as Record<string, any>;
+
+const TRAINING: Record<string, { label: string; tone: string }> = {
+  green: { label: 'Anyone', tone: 'green' },
+  orientation: { label: 'Orientation', tone: 'amber' },
+  mentor: { label: 'Mentor sign-off', tone: 'red' },
+};
+
+const areaName = (id: string) => inv.areas.find((a: any) => a.id === id)?.name ?? id;
+---
+
+{retired ? (
+  <div class="ti-retired">
+    {inv.retired.map((t: any) => (
+      <article class="ti-gone">
+        <h3 class="ti-gone-name">
+          {t.name}
+          <span class="ti-gone-when">Removed {t.removed}</span>
+        </h3>
+        <p class="ti-gone-area">{areaName(t.area)}</p>
+        <p class="ti-gone-reason">{t.reason}</p>
+        {t.replacedBy && (
+          <p class="ti-gone-next" set:html={t.replacedBy.replace(
+            /\[([^\]]+)\]\(([^)]+)\)/g,
+            '<a href="$2">$1</a>'
+          )} />
+        )}
+        {t.notes && <p class="ti-gone-note">{t.notes}</p>}
+      </article>
+    ))}
+  </div>
+) : (
+  <div class="tool-inventory" data-ti>
+    <div class="ti-bar">
+      <input
+        type="search"
+        class="ti-search"
+        data-ti-search
+        placeholder="Search tools…"
+        aria-label="Search the tool inventory"
+      />
+      <span class="ti-count" data-ti-count>{inv.owned.length} tools</span>
+    </div>
+
+    {inv.areas.map((area: any) => {
+      const tools = inv.owned.filter((t: any) => t.area === area.id);
+      if (tools.length === 0) return null;
+      return (
+        <section class="ti-area" data-ti-area>
+          <h3 class="ti-area-name">{area.name}</h3>
+          <div class="ti-table-wrap">
+            <table class="ti-table">
+              <thead>
+                <tr>
+                  <th>Tool</th>
+                  <th>Where it lives</th>
+                  <th>To use it</th>
+                  <th>Links</th>
+                </tr>
+              </thead>
+              <tbody>
+                {tools.map((t: any) => {
+                  const p = t.procurement ? proc[t.procurement] ?? {} : {};
+                  const badge = TRAINING[t.training] ?? { label: t.training, tone: 'amber' };
+                  return (
+                    <tr data-ti-row data-search={`${t.name} ${t.location ?? ''} ${p.sku ?? ''} ${p.vendor ?? ''}`.toLowerCase()}>
+                      <td>
+                        <a class="ti-name" href={t.page}>{t.name}</a>
+                        {t.count > 1 && <span class="ti-qty">×{t.count}</span>}
+                        {p.sku && <span class="ti-sku">{p.sku}</span>}
+                        {t.notes && <span class="ti-note">{t.notes}</span>}
+                      </td>
+                      <td class="ti-loc">{t.location ?? '—'}</td>
+                      <td>
+                        <span class={`ti-badge ti-${badge.tone}`}>{badge.label}</span>
+                      </td>
+                      <td class="ti-links">
+                        {p.manualUrl && (
+                          <a href={p.manualUrl} target="_blank" rel="noopener noreferrer">Manual ↗</a>
+                        )}
+                        {p.purchaseUrl && (
+                          <a href={p.purchaseUrl} target="_blank" rel="noopener noreferrer">Buy again ↗</a>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      );
+    })}
+
+    <p class="ti-empty" data-ti-empty hidden>No tools match that search.</p>
+  </div>
+)}
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-ti]');
+  if (root) {
+    const search = root.querySelector<HTMLInputElement>('[data-ti-search]');
+    const rows = [...root.querySelectorAll<HTMLElement>('[data-ti-row]')];
+    const areas = [...root.querySelectorAll<HTMLElement>('[data-ti-area]')];
+    const count = root.querySelector<HTMLElement>('[data-ti-count]');
+    const empty = root.querySelector<HTMLElement>('[data-ti-empty]');
+
+    search?.addEventListener('input', () => {
+      const q = (search.value ?? '').toLowerCase().trim();
+      let shown = 0;
+      for (const r of rows) {
+        const hit = !q || (r.dataset.search ?? '').includes(q);
+        r.hidden = !hit;
+        if (hit) shown++;
+      }
+      for (const a of areas) {
+        a.hidden = ![...a.querySelectorAll<HTMLElement>('[data-ti-row]')].some((r) => !r.hidden);
+      }
+      if (count) count.textContent = `${shown} tool${shown === 1 ? '' : 's'}`;
+      if (empty) empty.hidden = shown > 0;
+    });
+  }
+</script>
+
+<style>
+  .ti-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1.25rem 0 1.5rem;
+  }
+  .ti-search {
+    flex: 1 1 auto;
+    padding: 0.55rem 0.85rem;
+    border: 1px solid var(--sl-color-border);
+    border-radius: 0.6rem;
+    background: var(--sl-color-bg);
+    color: var(--sl-color-text);
+    font: inherit;
+    font-size: 0.9rem;
+  }
+  .ti-search:focus { outline: none; border-color: var(--sl-color-accent); }
+  .ti-count {
+    flex-shrink: 0;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--sl-color-gray-3);
+    white-space: nowrap;
+  }
+
+  .ti-area { margin: 2rem 0; }
+  .ti-area-name {
+    margin: 0 0 0.6rem !important;
+    font-size: 1.05rem !important;
+    border-bottom: 2px solid var(--sl-color-accent);
+    padding-bottom: 0.3rem;
+  }
+  .ti-table-wrap { overflow-x: auto; }
+  .ti-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin: 0 !important;
+  }
+  .ti-table th {
+    text-align: left;
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--sl-color-gray-3);
+    padding: 0.4rem 0.6rem;
+    border-bottom: 1px solid var(--sl-color-border);
+    white-space: nowrap;
+  }
+  .ti-table td {
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid var(--sl-color-border);
+    vertical-align: top;
+  }
+  .ti-name { font-weight: 700; }
+  .ti-qty {
+    display: inline-block;
+    margin-left: 0.35rem;
+    padding: 0.05rem 0.4rem;
+    border-radius: 0.3rem;
+    background: var(--sl-color-accent-low);
+    color: var(--sl-color-accent-high);
+    font-size: 0.7rem;
+    font-weight: 800;
+  }
+  .ti-sku,
+  .ti-note {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--sl-color-gray-3);
+    margin-top: 0.1rem;
+  }
+  .ti-loc { color: var(--sl-color-gray-2, var(--sl-color-text)); }
+  .ti-badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.68rem;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+  .ti-green { background: #ECFDF5; color: #047857; }
+  .ti-amber { background: #FFFBEB; color: #B45309; }
+  .ti-red { background: #FEF2F2; color: #B91C1C; }
+  .ti-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+  .ti-empty { margin: 2rem 0; font-size: 0.9rem; color: var(--sl-color-gray-3); }
+
+  /* Retired tools read as an archive, not a table — each one gets a reason and
+     a pointer at whatever replaced it. */
+  .ti-retired {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: 0.85rem;
+    margin: 1.5rem 0;
+  }
+  .ti-gone {
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--sl-color-border);
+    border-radius: 0.7rem;
+    background: var(--sl-color-bg-sidebar);
+    opacity: 0.95;
+  }
+  .ti-gone-name {
+    margin: 0 0 0.15rem !important;
+    font-size: 0.98rem !important;
+    color: var(--sl-color-gray-2, var(--sl-color-text));
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+  }
+  .ti-gone-when {
+    display: block;
+    font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sl-color-gray-3);
+    text-decoration: none;
+  }
+  .ti-gone-area {
+    margin: 0 0 0.5rem !important;
+    font-size: 0.74rem;
+    color: var(--sl-color-gray-3);
+  }
+  .ti-gone-reason,
+  .ti-gone-next {
+    margin: 0 0 0.45rem !important;
+    font-size: 0.84rem;
+    line-height: 1.5;
+  }
+  .ti-gone-note {
+    margin: 0 !important;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--sl-color-gray-3);
+  }
+</style>

@@ -10,8 +10,9 @@ import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
 import ConsumablesTable from '../../../components/ConsumablesTable.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
 import TutorialLink from '../../../components/TutorialLink.astro';
+import Term from '../../../components/Term.astro';
 
-Powder coating is how robot parts get team colors that survive a competition season. Instead of wet paint, an electrostatic gun blows dry powder at the part; the powder carries a high-voltage charge, the part is grounded, and the powder clings to the metal until the [curing oven](/finishing/curing-oven/) melts it into a hard, chip-resistant skin. We spray Prismatic Powders purple and white with an Eastwood HotCoat PCS-250 gun in our DIY booth in the powder room.
+Powder coating is how robot parts get team colors that survive a competition season. Instead of wet paint, an <Term id="electrostatic">electrostatic</Term> gun blows dry powder at the part; the powder carries a high-voltage charge, the part is grounded, and the powder clings to the metal until the [curing oven](/finishing/curing-oven/) melts it into a hard, chip-resistant skin. We spray Prismatic Powders purple and white with an Eastwood HotCoat PCS-250 gun in our DIY booth in the powder room.
 
 <MachineSOP
   specs={{
@@ -66,7 +67,7 @@ Air comes from the shop compressor at 120 PSI and gets regulated **down to 5–1
 
 <ConsumablesTable machine="eastwood-pcs250" />
 
-We buy team colors from [Prismatic Powders](https://www.prismaticpowders.com/) — purple and white. Every Prismatic color has a per-color PDF data sheet with its exact cure schedule; the [curing oven page](/finishing/curing-oven/) explains how to read it. Keep powder bottles **sealed with desiccant** on the powder room shelf — powder absorbs moisture, and damp powder clumps and spits out of the gun. Spare furnace filters for the box fan live in the powder room; swap the filter when it's caked (checked weekly per the [maintenance schedule](/maintenance/schedules/)).
+We buy team colors from [Prismatic Powders](https://www.prismaticpowders.com/) — purple and white. Every Prismatic color has a per-color PDF data sheet with its exact <Term id="cure-schedule">cure schedule</Term>; the [curing oven page](/finishing/curing-oven/) explains how to read it. Keep powder bottles **sealed with desiccant** on the powder room shelf — powder absorbs moisture, and damp powder clumps and spits out of the gun. Spare furnace filters for the box fan live in the powder room; swap the filter when it's caked (checked weekly per the [maintenance schedule](/maintenance/schedules/)).
 
 ## Pre-Flight Checklist
 
@@ -101,7 +102,7 @@ minutes in the oven · hang it above the sink to cool.
 4. **Load the powder cup.** Fill the cup 1/2 to 2/3 full with dry powder and thread it onto the gun. Give it a gentle shake to fluidize — the air feed keeps the powder stirred and flowing while you spray.
 5. **Set the voltage.** **15 kV for small parts** and tight geometry; **25 kV for large flat surfaces** like plates and chassis rails. Higher voltage throws more powder onto big areas but makes corners harder (see step 7).
 6. **Spray in steady passes.** Hold the gun **6–8 inches** from the part, perpendicular to the surface. Move in smooth, overlapping passes like spray paint — start the pass before the part, end it after. You're aiming for a uniform matte dusting, not a thick fuzzy layer. The powder should visibly jump to the part; if it's drifting past instead, check your ground.
-7. **Watch for Faraday cage corners.** Inside corners and recesses repel charged powder — the field lines take the powder to the edges and skip the valley. If a corner won't take powder: **drop to 15 kV**, move in slightly closer, and aim straight into the corner with short bursts. Don't flood it from far away; you'll just build up the edges.
+7. **Watch for <Term id="faraday-cage">Faraday cage</Term> corners.** Inside corners and recesses repel charged powder — the field lines take the powder to the edges and skip the valley. If a corner won't take powder: **drop to 15 kV**, move in slightly closer, and aim straight into the corner with short bursts. Don't flood it from far away; you'll just build up the edges.
 8. **Inspect coverage under the booth LEDs.** Rotate the part (by its hook — not by hand) and look for thin spots, bare edges, and holidays. Touch up now; there is no touching up after cure.
 9. **Straight to the oven — touch nothing.** The powder is held on by static alone. A finger, a sleeve, or a bump against the doorframe wipes it off instantly. Carry the part by its hook or rack to the [curing oven](/finishing/curing-oven/) and hang it without letting it touch anything.
 

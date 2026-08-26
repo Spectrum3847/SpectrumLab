@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="heat gloves required"><circle cx="60" cy="60" r="56" fill="#1D4988"/><g color="#FFFFFF" transform="translate(26.4 26.4) scale(0.7)">
+  <rect x="32" y="16" width="8" height="30" rx="4" fill="currentColor"/>
+  <rect x="42" y="10" width="8" height="36" rx="4" fill="currentColor"/>
+  <rect x="52" y="13" width="8" height="33" rx="4" fill="currentColor"/>
+  <rect x="62" y="21" width="8" height="25" rx="4" fill="currentColor"/>
+  <path d="M32 40 H70 V58 H32 Z" fill="currentColor"/>
+  <line x1="34" y1="52" x2="21" y2="35" stroke="currentColor" stroke-width="11" stroke-linecap="round"/>
+  <path d="M28 60 H74 L80 88 H22 Z" fill="currentColor"/>
+</g></svg>

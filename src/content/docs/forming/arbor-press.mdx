@@ -7,8 +7,9 @@ import MachineSOP from '../../../components/MachineSOP.astro';
 import SafetyWarning from '../../../components/SafetyWarning.astro';
 import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import Term from '../../../components/Term.astro';
 
-The arbor press is the lab's controlled-force tool: a long lever, a rack-and-pinion ram, and your full attention. We use it for two jobs — **pressing bearings** into printed and machined parts, and **broaching** keyways and hex profiles through bored holes. Everything it does could be faked with a hammer, and everything it does is ruined by one.
+The arbor press is the lab's controlled-force tool: a long lever, a rack-and-pinion ram, and your full attention. We use it for two jobs — **pressing bearings** into printed and machined parts, and **broaching** <Term id="keyway">keyways</Term> and hex profiles through bored holes. Everything it does could be faked with a hammer, and everything it does is ruined by one.
 
 <MachineSOP
   specs={{
@@ -35,7 +36,7 @@ If a part won't press with steady one-arm force on the stock handle, something i
 
 - Keep fingers out from under the ram and never between the part and the table. The press doesn't know the difference between a bearing and a fingertip.
 - Support the part flat and square on the table plates; a tilted part shoots sideways under load.
-- Eye protection on — a snapping broach or spring-loaded part throws hardened fragments.
+- Eye protection on — a snapping <Term id="broach">broach</Term> or spring-loaded part throws hardened fragments.
 - Pressing bearings, no gloves needed; see [PPE & the glove policy](/safety/gloves-and-ppe/).
 
 ## Pressing Bearings
@@ -45,7 +46,7 @@ If a part won't press with steady one-arm force on the stock handle, something i
 3. Use a flat pressing plate, a socket, or a machined spacer that contacts the correct race evenly all the way around. Never press on the seal or shield.
 4. Align the bearing square to the bore, take up the slack gently, and check it's starting straight before applying force.
 5. Press with one smooth, steady stroke until it seats. It should feel firm and even — spikes in force mean it's cocked. Back it out and restart rather than powering through.
-6. **Printed parts:** plastic bores flex and relax. Design bores for the press fit your filament actually holds (see [print settings](/3d-printing/print-settings/)), press slowly, and let heat-sensitive plastics (PLA especially) cool between attempts. If the boss cracks, the wall was too thin — redesign, don't glue.
+6. **Printed parts:** plastic bores flex and relax. Design bores for the <Term id="press-fit">press fit</Term> your filament actually holds (see [print settings](/3d-printing/print-settings/)), press slowly, and let heat-sensitive plastics (PLA especially) cool between attempts. If the boss cracks, the wall was too thin — redesign, don't glue.
 
 ## Broaching Keyways & Hex Bores
 

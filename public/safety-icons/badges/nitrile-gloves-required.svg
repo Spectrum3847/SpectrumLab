@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="nitrile gloves required"><circle cx="60" cy="60" r="56" fill="#1D4988"/><g color="#FFFFFF" transform="translate(26.4 26.4) scale(0.7)">
+  <rect x="33" y="18" width="7" height="32" rx="3.5" fill="currentColor"/>
+  <rect x="42.2" y="11" width="7" height="39" rx="3.5" fill="currentColor"/>
+  <rect x="51.4" y="14" width="7" height="36" rx="3.5" fill="currentColor"/>
+  <rect x="60.6" y="23" width="7" height="27" rx="3.5" fill="currentColor"/>
+  <path d="M33 44 H67.6 V64 H33 Z" fill="currentColor"/>
+  <line x1="35" y1="55" x2="24" y2="40" stroke="currentColor" stroke-width="9" stroke-linecap="round"/>
+  <rect x="27" y="68" width="46" height="10" rx="5" fill="currentColor"/>
+</g></svg>
