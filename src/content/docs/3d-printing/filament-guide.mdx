@@ -29,9 +29,12 @@ Work down this list and stop at the first line that matches your part:
   impact instead of cracking, and nothing chemical touches it.
 - **Extreme load or lives somewhere hot?** → **PPA-GF.** Gearbox blocks, 185 °C+ HDT mounts.
   **H2D only**, dried first, mentor sign-off.
+- **Needs more heat or chemical resistance than PPA-GF gives you?** → **PPS-CF.** The hottest,
+  most chemically resistant material in the building. **H2D only**, external spool, mentor
+  sign-off — see [below](#pps-cf--extreme-heat-and-chemical-resistance).
 
 When in doubt: prototype in PLA, ship in PETG-GF. Escalate to PPA-GF only when PETG-GF has
-actually failed or the math says it will.
+actually failed or the math says it will, and PPS-CF only when PPA-GF has actually failed.
 
 <SafetyWarning type="warning" title="PLA melts in a hot car">
 PLA softens around 55 °C. Parts left in a car in Houston, near the powder-coat curing oven, or
@@ -145,6 +148,20 @@ first; PA6-GF is what we settled on. Do not declare it as Bambu PPA-CF; that pro
 non-AMS-compatible (any model) and may get the load refused outright.
 </SafetyWarning>
 
+### PPS-CF — extreme heat and chemical resistance
+
+<FilamentCard id="pps-cf" />
+
+The hottest material in the building: a 310–340 °C nozzle and a 60–90 °C chamber, one rung
+past PPA-GF for jobs that need even more heat or chemical resistance than 185 °C+ HDT gives
+you. **H2D only** — it is the only Bambu hotend in the fleet that clears 300 °C at all, and
+Bambu ships no PPS-CF profile for the X2D or X1Cs at any nozzle size, so there is no clamped-down
+fallback the way there sometimes is elsewhere. **Always feeds from the external spool holder,
+never the AMS** — Bambu itself warns it is brittle enough to snap inside the bent PTFE tube
+above one — and it stays on the **left nozzle** even though it isn't AMS-fed. Drying follows the
+mentor's own external-spool procedure, not the standard AMS-HT cycle. Mentor sign-off required
+every time; treat it as a rarer, hotter sibling of PPA-GF rather than a routine material choice.
+
 ### PLA — prototypes and jigs
 
 <FilamentCard id="pla" />
@@ -211,6 +228,9 @@ produces parts with a fraction of their rated strength.
   decoration, not protection.
 - PPA-GF and the CF nylons stay in a dry box (or the AMS HT, which actively dries) at all times.
   They go straight from drying to the printer.
+- PPS-CF never goes in the AMS HT or any dry box the AMS feeds from — it lives on the external
+  spool holder and follows the mentor's own drying procedure, straight from that dryer to the
+  printer.
 
 **Who must be dried, and how much:**
 
@@ -221,6 +241,7 @@ produces parts with a fraction of their rated strength.
 | 72D TPU | **Required.** 55 °C for 6–8 h before printing. |
 | TPU 95A / TPE | **Required.** 55–65 °C for 6–8 h — wet TPU bubbles and strings badly. |
 | PPA-GF | **Mandatory, every session.** 80 °C for 4–6 h. |
+| PPS-CF | **Mandatory, every session.** 100–140 °C for 8–12 h (box: 120±10 °C for 6–8 h) — the mentor's external-spool procedure, not the AMS-HT cycle. |
 | PA-CF / PPA-CF | **Mandatory, every session.** 80 °C for 12 h. |
 | PC | 80 °C for 8–12 h; hygroscopic. |
 
@@ -267,6 +288,7 @@ its own, because the temperature that would melt it is the one you just left.
 
 | Coming off | Going to | Drop |
 | --- | --- | --- |
+| **PPS-CF** (310–340 °C) | anything else we print | 70–150 °C |
 | **PPA-GF** (310 °C) | anything else we print | 40–120 °C |
 | **PA-CF / PPA-CF** (260–320 °C) | PETG, TPU, or PLA | 40–130 °C |
 | **PC** (260–290 °C) | PETG, TPU, or PLA | 30–70 °C |
@@ -305,7 +327,7 @@ shift. Push the PLA out first, then bring the nozzle up.
 - **Bambu-brand spools come from the Bambu store** (reorder links on each card above). The RFID
   tags auto-configure the AMS and slicer profiles, which removes a whole class of student error.
 - **PETG-GF is the bulk staple** — keep several spools ahead of demand during build season.
-  PPA-GF is special-order and a mentor approves the purchase.
+  PPA-GF and PPS-CF are both special-order, and a mentor approves the purchase.
 - **Finish existing stock before reordering.** Open PETG, TPU 95A, CF nylon, and PC spools get
   used up on the parts described above rather than written off. The
   [Filament Inventory](/inventory/filaments/) lists every spool type we own, so check there

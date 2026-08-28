@@ -76,7 +76,9 @@ of them.
 1. Open **PrusaSlicer** and select the **Original Prusa MINI & MINI+** printer profile, then set
    the nozzle to **0.6 mm** — the default profile assumes 0.4 mm and will under-extrude badly.
 2. Pick a print profile: **0.30 mm SPEED** for most work, **0.20 mm QUALITY** when surface
-   finish matters.
+   finish matters, or the newer **06 Detail** preset (0.16 mm layers, thinner outer wall) for
+   small cosmetic parts — see [Print Settings](/3d-printing/print-settings/#house-presets). None
+   of these are structural; PETG-GF robot parts still use the profile below.
 3. Pick the matching filament profile. PLA and PETG have well-tuned stock profiles; **PETG-GF
    has no stock profile — start from Generic PETG** and raise the nozzle to the top of the
    PETG-GF range. Do not hand-edit temperatures beyond that unless a mentor asks you to.
@@ -201,7 +203,8 @@ Two more from the same deck, worth knowing before you fight a first layer:
 | Batch of 8 identical parts | **Minis** — one per printer beats one big plate |
 | Junior team parts | **Minis** — their home turf |
 | Deadline tonight, needs to print fast | **Bambu** |
-| Fine detail or a thin-walled part | **H2D / X2D** — the only 0.4 mm machines in the lab. The X1Cs are 0.6 mm like the Minis, so they gain you nothing here |
+| Genuinely thin walls or tiny features | **H2D / X2D** — the only 0.4 mm machines in the lab |
+| Cosmetic surface finish on a 0.6 mm machine | **Mini or X1C**, with the **06 Detail** process preset — 0.16 mm layers and a thinner outer wall buy back finish without a 0.4 mm nozzle. Not a structural profile |
 | PPA-GF, CF nylon, PC, or TPU | **Bambu only** |
 | Part bigger than 18 cm | [Bambu](/3d-printing/bambu-fleet/) — up to 350 × 320 × 325 mm on the H2D |
 

@@ -240,7 +240,7 @@ a weak part.
     'Plate': 'Textured PEI, bed 90 °C',
     'Printer': 'H2D only',
   }}
-  notes="Extreme-load gearbox blocks and high-temp mounts. Spool comes straight from 4–6 h at 80 °C. First layer 20–30 mm/s. Mentor sign-off before starting. H2D only: this needs a 310 °C hotend, and the X1Cs and the X2D both cap at 300 °C — a clamped-down profile would run below the temperature the material needs, so neither machine gets one."
+  notes="Extreme-load gearbox blocks and high-temp mounts. Spool comes straight from 4–6 h at 80 °C. First layer 20–30 mm/s. Mentor sign-off before starting. H2D only: this needs a 310 °C hotend, and the X1Cs and the X2D both cap at 300 °C — a clamped-down profile would run below the temperature the material needs, so neither machine gets one. Same process preset also pairs with Spectrum3847 PPS-CF for jobs that need even more heat or chemical resistance than PPA-GF — 310–340 °C, external spool holder only, never the AMS. See the [Filament Guide](/3d-printing/filament-guide/#pps-cf--extreme-heat-and-chemical-resistance)."
 />
 
 <PrintSettingPreset
@@ -256,6 +256,23 @@ a weak part.
     'Printer': 'Any Bambu',
   }}
   notes="Big, low-detail prints — enclosures, covers, anything closer to plate-sized than robot-part-sized. Fewer walls and lighter infill keep print time reasonable on a part that is large everywhere; adaptive cubic rather than gyroid for the same reason — it subdivides, so it runs dense near the surfaces and sparse through the middle, and its straight runs let the printer actually hold the flow cap that gyroid's curves keep it from reaching; the brim is pinned on rather than left to the slicer default, because a large part carries more warping force at its corners than a no-brim setup assumes. Not a fix for a tall, thin part with a small footprint — that geometry wants the Structural PETG-GF preset and still needs a brim of its own; this preset is for parts that are large in every dimension."
+/>
+
+<PrintSettingPreset
+  title="Detail — fine finish, 0.6 mm nozzle only"
+  slicer="Bambu Studio / PrusaSlicer"
+  settings={{
+    'Process preset': '06 Detail',
+    'Layer height': '0.16 mm',
+    'Walls': '3',
+    'Top / bottom layers': '7 / 6',
+    'Infill': '15% gyroid',
+    'Line width': 'Outer wall 0.42 mm (thin, for surface finish) / inner walls 0.66 mm (110%)',
+    'Infill/wall overlap': '15% — tighter than the house 20% default, so witness lines do not show through the thin outer wall',
+    'Speed': 'Small perimeter 40 mm/s, overhang 30 mm/s',
+    'Printer': 'X1C and Prusa Minis today; H2D and X2D once their 0.6 mm high-flow nozzles are installed',
+  }}
+  notes="Small, cosmetic parts where surface finish and dimensional accuracy matter more than strength — not for on-robot parts. This is the one preset on this page written for a 0.6 mm nozzle with no 0.4 mm equivalent: it deliberately trades wall thickness for finish (a 0.42 mm outer wall is thinner than the house 110–120% band everywhere else), so do not reach for it as a structural profile and do not try to convert it the other direction onto the H2D/X2D's 0.4 mm nozzles. Mirrored in PrusaSlicer as its own '06 Detail' profile for the Mini farm."
 />
 
 ## Resources
