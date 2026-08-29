@@ -25,7 +25,7 @@ Answer those and the machine picks itself.
 | --- | --- | --- |
 | Flat sheet metal, up to ~1/4 in | [xTool MetalFab](/lasers/xtool-metalfab/) or [Gweike M3](/lasers/gweike-m3-ultra/) | Fastest route for aluminum and steel plate. Leaves a small <Term id="haz" />. |
 | Flat metal, thick, hardened, or heat-sensitive | [WAZER Pro](/waterjet/wazer-pro/) | No heat at all, so no <Term id="haz" /> — but slow, and edges have <Term id="taper" />. |
-| Flat wood, acrylic, cardboard, leather | [Thunder Nova 35](/lasers/thunder-nova-35/) | CO2. **Never <Term id="polycarbonate" /> or PVC** in any laser. |
+| Flat wood, acrylic, cardboard, leather, <Term id="polycarbonate" /> | [Thunder Nova 35](/lasers/thunder-nova-35/) | CO2. **Never PVC** in any laser. |
 | Flat, then bent into a bracket | Laser or waterjet → [Titan 25T](/forming/langmuir-titan-25t/) | Cut the <Term id="flat-pattern" />, not the folded outline. |
 | Round: shafts, spacers, bosses, bores | [Lathe](/forming/lathes/) | The only machine here that makes a truly concentric bore. |
 | Holes that must land on exact coordinates; tube ends squared | [Mill/Drill](/forming/mill/) | Position from an edge on the X/Y table instead of aiming at a punch mark. |
@@ -38,8 +38,8 @@ Answer those and the machine picks itself.
 
 When two machines could do it, the tiebreakers are: **is a machine free right now**, **which one is somebody signed off on**, and **how much post-processing each leaves you**.
 
-<SafetyWarning type="critical" title="Two materials never go in a laser">
-**Polycarbonate** (Lexan) and **PVC** are banned from every laser in this lab. Polycarbonate does not cut — it burns, chars, and catches fire. PVC releases chlorine gas that damages your lungs and corrodes the machine from the inside out. If a part needs to be polycarbonate, it gets cut on the [WAZER](/waterjet/wazer-pro/), the [bandsaw](/cutting/bandsaws/), or the [table saw](/cutting/table-saw/). This applies no matter how thin the sheet is or how quick the job.
+<SafetyWarning type="critical" title="PVC never goes in a laser">
+**PVC** is banned from every laser in this lab — it releases chlorine gas that damages your lungs and corrodes the machine from the inside out. This applies no matter how thin the sheet is or how quick the job. Polycarbonate is fine on the CO2 lasers; it just needs moderate power/speed and good air assist, same as any other plastic here.
 </SafetyWarning>
 
 ## Fix these in CAD, before you export
