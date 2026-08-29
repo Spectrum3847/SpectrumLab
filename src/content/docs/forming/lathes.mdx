@@ -16,21 +16,9 @@ import Term from '../../../components/Term.astro';
 The Precision Matthews PM-1130V — the **Blue Lathe** — is our manual lathe for shafts, spacers, hubs, and standoffs: anything round, anything hex-bored, anything that needs a bearing seat. Next to it on the machine-shop bench sits the [Grizzly mill/drill](/forming/mill/), its companion for located holes and squared tube ends. These two machines carry the strictest rules in the lab, because they are the ones that grab.
 
 <MachineSOP
-  specs={{
-    'Swing': '11 in',
-    'Between Centers': '30 in',
-    'Spindle Bore': '1.5 in',
-    'Spindle Mount': 'D1-4 camlock',
-    'Speed': '75–2000 RPM, two ranges + tach',
-    'Motor': '1.5 HP, 110V',
-    'Feeds': 'Power longitudinal + cross feed',
-    'Weight': '~670 lb',
-  }}
   ppe={['goggles', 'no-gloves', 'tie-hair', 'closed-shoes']}
   training="Full machine-shop training and mentor sign-off. A mentor stays in the lab whenever the lathe is running."
 />
-
-<ToolProcurementCard tool="pm-1130v" />
 
 <LabGalleryImage
   src="pm-1130v-lathe.jpg"
@@ -65,7 +53,7 @@ The wall placards for the Blue Lathe. Open one and use your browser's Print (or 
 - [Full sheet](/signage/pm-1130v-lathe-safety-sign.html) — fills the page. This is the one that hangs at the machine.
 - [Half sheet](/signage/pm-1130v-lathe-safety-sign-half.html) — the condensed version for a toolbox lid, drawer front, or bench end. It prints in the top half of a Letter sheet with a dashed trim line, so it can go through the copier and be cut down.
 
-Neither placard carries spindle speeds. Safe RPM depends on the diameter you're turning, so a single number per material would be wrong — use the table above.
+Neither placard carries spindle speeds. Safe RPM depends on the diameter you're turning, so a single number per material would be wrong — use the [speed table](#spindle-speeds) below.
 
 ## Spindle Speeds
 
@@ -186,6 +174,23 @@ Wear items for the lathe, with reorder links. Match insert geometry to the marki
 4. Rough to within ~0.010 in of final size, then finish-pass to dimension.
 5. Deburr the part edges with a file (spindle stopped) or at the [deburring wheel](/cutting/sanders-grinders/).
 6. Spindle off, brush chips, part out of the chuck, key out of the chuck.
+
+## Machine Specs
+
+<MachineSOP
+  specs={{
+    'Swing': '11 in',
+    'Between Centers': '30 in',
+    'Spindle Bore': '1.5 in',
+    'Spindle Mount': 'D1-4 camlock',
+    'Speed': '75–2000 RPM, two ranges + tach',
+    'Motor': '1.5 HP, 110V',
+    'Feeds': 'Power longitudinal + cross feed',
+    'Weight': '~670 lb',
+  }}
+/>
+
+<ToolProcurementCard tool="pm-1130v" />
 
 ## Resources
 

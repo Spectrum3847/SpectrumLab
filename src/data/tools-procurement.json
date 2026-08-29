@@ -219,6 +219,17 @@
     "manualUrl": "https://assets.dewalt.com/GLOBALBOM/QU/DWE7491RS/2/Instruction_Manual/EN/N376167_DWE7490.pdf",
     "supportUrl": "https://support.dewalt.com/hc/en-us"
   },
+  "grizzly-mill": {
+    "name": "Grizzly G0704 7\" x 27\" 1 HP Mill/Drill with Stand",
+    "vendor": "Grizzly Industrial",
+    "price": null,
+    "orderDate": null,
+    "purchaseUrl": "https://www.grizzly.com/products/grizzly-7-x-27-1-hp-mill-drill-with-stand/g0704",
+    "sku": "G0704",
+    "productUrl": "https://www.grizzly.com/products/grizzly-7-x-27-1-hp-mill-drill-with-stand/g0704",
+    "manualUrl": "https://cdn0.grizzly.com/manuals/g0704_m.pdf",
+    "supportUrl": "https://www.grizzly.com/customer-service"
+  },
   "grizzly-g0555": {
     "name": "Grizzly G0555-series 14\" Vertical Bandsaw",
     "vendor": "Grizzly Industrial",

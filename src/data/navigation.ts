@@ -46,7 +46,7 @@ export const navigationMenu: NavCategory[] = [
       { label: 'Thunder Nova 35', href: '/lasers/thunder-nova-35/', blurb: '100W CO2 laser — LightBurn workflow' },
       { label: 'Titan 25T Press Brake', href: '/forming/langmuir-titan-25t/', blurb: 'CNC press brake — dies & tonnage' },
       { label: 'PM-1130V Lathe', href: '/forming/lathes/', blurb: 'Manual lathe — turning, parting & QCTP tooling' },
-      { label: 'Grizzly Mill/Drill', href: '/forming/mill/', blurb: 'Located holes & squaring tube ends' },
+      { label: 'Grizzly G0704 Mill/Drill', href: '/forming/mill/', blurb: 'Located holes & squaring tube ends' },
       { label: 'Evolution Saws', href: '/cutting/evolution-saws/', blurb: 'S14MCS & EVOMAX14AL chop saws' },
       { label: 'Powder Coating', href: '/finishing/powder-coating/', blurb: 'Booths, gun SOP & curing oven' },
       { label: 'Electric Tapping Machine', href: '/cutting/tapping-machine/', blurb: '360° tapping arm — collets & clutch' },

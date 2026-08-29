@@ -18,7 +18,7 @@
     { "id": "wazer-pro", "name": "WAZER Pro Desktop Waterjet", "area": "lasers", "page": "/waterjet/wazer-pro/", "procurement": "wazer-pro", "location": "Fab corner", "training": "mentor" },
 
     { "id": "pm-1130v", "name": "Precision Matthews PM-1130V Lathe", "area": "machine-shop", "page": "/forming/lathes/", "procurement": "pm-1130v", "location": "Machine shop, lathe bench", "training": "mentor" },
-    { "id": "grizzly-mill", "name": "Grizzly Mill/Drill", "area": "machine-shop", "page": "/forming/mill/", "location": "Machine shop, beside the lathe", "training": "mentor" },
+    { "id": "grizzly-mill", "name": "Grizzly G0704 Mill/Drill", "area": "machine-shop", "page": "/forming/mill/", "procurement": "grizzly-mill", "location": "Machine shop, beside the lathe", "training": "mentor" },
     { "id": "langmuir-titan-25t", "name": "Langmuir Titan 25T CNC Press Brake", "area": "machine-shop", "page": "/forming/langmuir-titan-25t/", "procurement": "langmuir-titan-25t", "location": "Machine shop, by the doorway", "training": "mentor" },
     { "id": "arbor-press", "name": "Arbor Press", "area": "machine-shop", "page": "/forming/arbor-press/", "procurement": "arbor-press", "location": "Workbench", "training": "orientation" },
     { "id": "mrcm-tapping-machine", "name": "MRCM Electric Tapping Machine", "area": "machine-shop", "page": "/cutting/tapping-machine/", "procurement": "mrcm-tapping-machine", "location": "Drill-and-tap station", "training": "orientation" },
