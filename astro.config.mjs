@@ -132,7 +132,8 @@ export default defineConfig({
           collapsed: true,
           items: [
             { label: 'Langmuir Titan 25T Press Brake', slug: 'forming/langmuir-titan-25t' },
-            { label: 'Lathes', slug: 'forming/lathes' },
+            { label: 'PM-1130V Lathe', slug: 'forming/lathes' },
+            { label: 'Grizzly Mill/Drill', slug: 'forming/mill' },
             { label: 'Arbor Press & Broaching', slug: 'forming/arbor-press' },
           ],
         },
