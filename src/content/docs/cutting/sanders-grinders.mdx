@@ -13,12 +13,6 @@ import Term from '../../../components/Term.astro';
 Every saw cut in this lab ends at one of these machines. The **1 in vertical belt sander** handles inside curves and detail work, the **4 in horizontal belt sander** flattens edges and squares ends, and the bench grinders — including the one fitted with **Scotch-Brite <Term id="deburr">deburring</Term> wheels** — knock the sharp edge off everything before it goes into a robot or a hand. They look like the tamest machines in the shop. They remove fingerprints faster than any of the others.
 
 <MachineSOP
-  specs={{
-    'Vertical Belt': '1 in — detail + inside curves',
-    'Horizontal Belt': '4 in — flats, squaring, chamfers',
-    'Deburring Grinder': 'Scotch-Brite wheels — edge break',
-    'Bench Grinder': 'Stone wheels — steel only',
-  }}
   ppe={['goggles', 'no-gloves', 'tie-hair', 'closed-shoes']}
   training="Mentor demo before first use. Small-parts technique is part of the demo."
 />
@@ -96,5 +90,16 @@ Belts and wheels are wear items — a glazed belt or a loaded wheel is a safety 
 - Power off and let wheels spin down before walking away.
 - Brush dust and swarf off the tables and rests; sweep or vacuum the bench — mixed aluminum/steel dust doesn't go in the recycling bin.
 - Report torn belts, glazed or loaded wheels, and any wheel that vibrates on startup — wheel dressing and replacement is mentor work, tracked on the [maintenance schedule](/maintenance/schedules/).
+
+## Machine Specs
+
+<MachineSOP
+  specs={{
+    'Vertical Belt': '1 in — detail + inside curves',
+    'Horizontal Belt': '4 in — flats, squaring, chamfers',
+    'Deburring Grinder': 'Scotch-Brite wheels — edge break',
+    'Bench Grinder': 'Stone wheels — steel only',
+  }}
+/>
 
 **Related pages:** [Evolution Chop Saw](/cutting/evolution-saws/) · [Bandsaws](/cutting/bandsaws/) · [Drill Press & Bench Shear](/cutting/drill-press-shear/) · [PPE & the glove policy](/safety/gloves-and-ppe/)

@@ -18,17 +18,9 @@ The electronics bench is where custom boards get built, mystery boards get diagn
 The team's irons are PINECIL V2s — small, fast, open-source irons that run IronOS firmware and heat from cold to working temperature in about six seconds.
 
 <MachineSOP
-  specs={{
-    'Iron': 'PINECIL V2 (IronOS firmware)',
-    'Power': 'USB-C PD/QC (12–20V, 3A) or DC5525 barrel (12–24V), up to 88W',
-    'Temp Range': '100–400 °C',
-    'Tips': 'TS100-compatible, interchangeable',
-  }}
   ppe={['goggles']}
   training="General shop orientation; a mentor walkthrough for your first soldering session."
 />
-
-<ToolProcurementCard tool="pinecil" />
 
 <SafetyWarning type="warning" title="The hot end is invisible">
 A soldering iron at 350 °C looks identical to a cold one. Always rack the iron in its stand, never lay it on the bench, and treat every iron as hot until you've checked its screen. Pass irons handle-first.
@@ -79,8 +71,6 @@ Workflow for any device under test:
 
 The Rigol DS1052E is the bench scope: 50 MHz, 2 channels, 1 GSa/s. It's an older workhorse, and it does everything a robot signal needs.
 
-<ToolProcurementCard tool="rigol-ds1052e" />
-
 **Probe basics:**
 
 - Use probes at **10x** for almost everything — higher input impedance, less circuit loading, full voltage range. Set the switch on the probe *and* tell the scope: Channel menu → Probe → 10x. If your measured 5V rail reads 0.5V, the scope thinks the probe is 1x.
@@ -128,6 +118,25 @@ Solder smoke is vaporized <Term id="flux">flux</Term>, and it goes straight up i
     'Scope probe set to 10x on both the probe and the channel menu',
   ]}
 />
+
+## Bench Specs
+
+### PINECIL V2 soldering irons
+
+<MachineSOP
+  specs={{
+    'Iron': 'PINECIL V2 (IronOS firmware)',
+    'Power': 'USB-C PD/QC (12–20V, 3A) or DC5525 barrel (12–24V), up to 88W',
+    'Temp Range': '100–400 °C',
+    'Tips': 'TS100-compatible, interchangeable',
+  }}
+/>
+
+<ToolProcurementCard tool="pinecil" />
+
+### Rigol DS1052E oscilloscope
+
+<ToolProcurementCard tool="rigol-ds1052e" />
 
 ## Resources
 

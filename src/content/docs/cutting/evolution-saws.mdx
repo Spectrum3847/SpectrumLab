@@ -15,23 +15,9 @@ import Term from '../../../components/Term.astro';
 The Evolution S14MCS is our metal-cutting mitering chop saw — the fast way to cut aluminum and steel tube, extrusion, and bar to length with a clean, square (or mitered) end. It **dry cuts**: a slow-turning carbide-toothed blade shears cold chips instead of grinding sparks, so cuts are burr-light and the part stays cool enough to handle soon after. The saw itself stays cool; **the chips do not** — more on that below. Blade choice is by material: the **EVOMAX14ST** 80-tooth cermet-carbide blade for steel, and the **EVOMAX14AL** 100-tooth TCT blade for aluminum. The saw lives on top of the [Orange Toolbox](/storage/toolboxes/#orange-toolbox--metrology-machinist-tooling--ppe) — the wide orange-trimmed US General Pro cabinet labelled *Chopsaw Tools*, whose thirteen drawers hold the shop's measuring instruments and machinist tooling. The 1×30 belt sander shares the same top.
 
 <MachineSOP
-  specs={{
-    'Blade': '14 in, 1 in arbor',
-    'Steel Blade': 'EVOMAX14ST, 80T cermet-carbide',
-    'Aluminum Blade': 'EVOMAX14AL, 100T TCT',
-    'Speed': '~1100 RPM',
-    'Power': '120V, 15A',
-    'Miter': '±46°',
-    'Capacity': '4-3/4 in round at 90°, 4 in at 45°',
-    'Cut Type': 'Dry / cold cut — no coolant',
-  }}
   ppe={['goggles', 'hearing', 'no-gloves', 'closed-shoes']}
   training="Mentor sign-off required before solo use. Blade changes are mentor-supervised until signed off separately."
 />
-
-<ToolProcurementCard tool="evolution-s14mcs" />
-
-<ToolProcurementCard tool="evomax14al" />
 
 <LabGalleryImage
   src="evolution-chop-saw.jpg"
@@ -123,6 +109,29 @@ Deburr the batch together at the [Scotch-Brite wheel](/cutting/sanders-grinders/
 Blades are the consumable. Replace when cuts slow down noticeably, teeth are missing, or steel cuts start throwing sparks (a dry-cut saw making sparks means dead carbide). No other consumables: this saw uses **no lubricant or coolant, ever** — that's the design.
 
 <ConsumablesTable machine="evolution-s14mcs" />
+
+## Machine Specs
+
+<MachineSOP
+  specs={{
+    'Blade': '14 in, 1 in arbor',
+    'Steel Blade': 'EVOMAX14ST, 80T cermet-carbide',
+    'Aluminum Blade': 'EVOMAX14AL, 100T TCT',
+    'Speed': '~1100 RPM',
+    'Power': '120V, 15A',
+    'Miter': '±46°',
+    'Capacity': '4-3/4 in round at 90°, 4 in at 45°',
+    'Cut Type': 'Dry / cold cut — no coolant',
+  }}
+/>
+
+### Saw
+
+<ToolProcurementCard tool="evolution-s14mcs" />
+
+### Aluminum blade
+
+<ToolProcurementCard tool="evomax14al" />
 
 ## Resources
 
