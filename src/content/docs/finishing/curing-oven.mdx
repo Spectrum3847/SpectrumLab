@@ -14,19 +14,9 @@ import Term from '../../../components/Term.astro';
 The Light Armor curing oven is the second half of [powder coating](/finishing/powder-coating/): it melts the electrostatically-clung powder into a smooth, hard finish. It's a hand-built dedicated powder-curing oven — PID temperature controller with a timer, ceramic door seal, and hanging rails inside. It is not a kitchen appliance and nothing edible ever goes in it.
 
 <MachineSOP
-  specs={{
-    'Max Temperature': '450°F',
-    'Typical Cure': '~400°F, 10–20 min at part temp',
-    'Interior': '22" W × 23" D × 60" T',
-    'Power': '240V single-phase, 14A',
-    'Control': 'PID controller + timer',
-    'Door': 'Ceramic seal, hanging rails inside',
-  }}
   ppe={['heat-gloves', 'goggles', 'closed-shoes']}
   training="Finishing sign-off — run your first cure with a mentor"
 />
-
-<ToolProcurementCard tool="light-armor-oven" />
 
 ## Safety
 
@@ -87,6 +77,21 @@ A freshly-cured purple bracket sitting on the bench is a trap for the next perso
 The oven itself burns nothing, but the masking that survives 400 °F does wear out — and it is what stands between a cured part and a coated thread.
 
 <ConsumablesTable machine="light-armor-oven" />
+
+## Machine Specs
+
+<MachineSOP
+  specs={{
+    'Max Temperature': '450°F',
+    'Typical Cure': '~400°F, 10–20 min at part temp',
+    'Interior': '22" W × 23" D × 60" T',
+    'Power': '240V single-phase, 14A',
+    'Control': 'PID controller + timer',
+    'Door': 'Ceramic seal, hanging rails inside',
+  }}
+/>
+
+<ToolProcurementCard tool="light-armor-oven" />
 
 ## Resources
 

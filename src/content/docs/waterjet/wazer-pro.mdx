@@ -15,21 +15,9 @@ import Term from '../../../components/Term.astro';
 The WAZER Pro is our abrasive waterjet: a high-pressure stream of water and 80-mesh <Term id="garnet">garnet</Term> that cuts almost any flat material — aluminum plate, steel, polycarbonate, glass, tile — with no heat, no fumes, and no burned edges. No heat means no <Term id="haz">heat-affected zone</Term>, which is what makes it the right machine for hardened and heat-sensitive stock. It is the go-to machine for robot plate parts and for every material the lasers can't touch.
 
 <MachineSOP
-  specs={{
-    'Cut Area': '12 × 18 in',
-    'Pump': '2.1 kW @ ~7,400 PSI',
-    'Max Aluminum': '1 in',
-    'Max Steel': '3/8 in (10 mm)',
-    'Kerf': '0.044 in',
-    'Abrasive': '80-mesh garnet @ 0.33 lb/min',
-    'Power': '220V / 16.1A',
-    'Continuous Cutting': '90 min'
-  }}
   ppe={['goggles', 'hearing', 'closed-shoes']}
   training="Waterjet sign-off required — run your first cuts with a mentor"
 />
-
-<ToolProcurementCard tool="wazer-pro" />
 
 <LabGalleryImage
   src="wazer-and-blue-toolbox.jpg"
@@ -138,6 +126,23 @@ Used garnet settles in the tank and the machine pumps the spent slurry out to th
 8. **Stay with the machine for the entire cut.** Watch and listen: if the water at the nozzle suddenly runs clear, garnet has stopped flowing — pause immediately and check the hopper and feed line. The machine can cut for 90 minutes continuously, but it never runs unattended.
 9. When the job finishes, wait for the pump to stop before opening the lid.
 10. Fish out your parts and the skeleton. Aluminum offcuts go in the recycling bin next to the machine.
+
+## Machine Specs
+
+<MachineSOP
+  specs={{
+    'Cut Area': '12 × 18 in',
+    'Pump': '2.1 kW @ ~7,400 PSI',
+    'Max Aluminum': '1 in',
+    'Max Steel': '3/8 in (10 mm)',
+    'Kerf': '0.044 in',
+    'Abrasive': '80-mesh garnet @ 0.33 lb/min',
+    'Power': '220V / 16.1A',
+    'Continuous Cutting': '90 min'
+  }}
+/>
+
+<ToolProcurementCard tool="wazer-pro" />
 
 ## Resources
 

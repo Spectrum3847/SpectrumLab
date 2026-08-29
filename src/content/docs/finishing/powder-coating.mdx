@@ -15,19 +15,9 @@ import Term from '../../../components/Term.astro';
 Powder coating is how robot parts get team colors that survive a competition season. Instead of wet paint, an <Term id="electrostatic">electrostatic</Term> gun blows dry powder at the part; the powder carries a high-voltage charge, the part is grounded, and the powder clings to the metal until the [curing oven](/finishing/curing-oven/) melts it into a hard, chip-resistant skin. We spray Prismatic Powders purple and white with an Eastwood HotCoat PCS-250 gun in our DIY booth in the powder room.
 
 <MachineSOP
-  specs={{
-    'Gun': 'Eastwood HotCoat PCS-250',
-    'Voltage': '15 kV / 25 kV selectable',
-    'Air at the Gun': '5–10 PSI',
-    'Shop Air Supply': '120 PSI, regulated down',
-    'Gun Power': '120V outlet',
-    'Team Colors': 'Prismatic purple + white',
-  }}
   ppe={['respirator-recommended', 'goggles', 'gloves', 'closed-shoes', 'tie-hair']}
   training="Finishing sign-off — spray your first parts with a mentor watching"
 />
-
-<ToolProcurementCard tool="eastwood-pcs250" />
 
 ## Safety
 
@@ -113,6 +103,21 @@ The powder only sticks because the gun charges it and the **grounded part** attr
 <SafetyWarning type="tip" title="Recoating a part with existing powder">
 Second coats and already-coated parts spray at **15 kV** — the cured layer insulates the part, and high voltage will back-ionize and crater the finish. Light passes, low voltage, patience.
 </SafetyWarning>
+
+## Machine Specs
+
+<MachineSOP
+  specs={{
+    'Gun': 'Eastwood HotCoat PCS-250',
+    'Voltage': '15 kV / 25 kV selectable',
+    'Air at the Gun': '5–10 PSI',
+    'Shop Air Supply': '120 PSI, regulated down',
+    'Gun Power': '120V outlet',
+    'Team Colors': 'Prismatic purple + white',
+  }}
+/>
+
+<ToolProcurementCard tool="eastwood-pcs250" />
 
 ## Resources
 

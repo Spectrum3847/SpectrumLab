@@ -14,20 +14,9 @@ import Term from '../../../components/Term.astro';
 The Titan 25T is our CNC press brake — the machine that turns flat sheet from the [WAZER](/waterjet/wazer-pro/) and [xTool MetalFab](/lasers/xtool-metalfab/) into brackets, gussets, and bent-sheet-metal robot structure. Dual hydraulic rams with servo sync and glass-scale encoders hold the ram parallel to about two ten-thousandths of an inch, so bends repeat part after part. It is also the single most dangerous machine in the lab if you treat it casually: 25 tons does not notice a hand.
 
 <MachineSOP
-  specs={{
-    'Capacity': '25 tons',
-    'Bend Width': '33 in max',
-    'Ram Drive': 'Dual hydraulic + AC servo sync',
-    'Ram Accuracy': '±0.0002 in (glass scales)',
-    'Control': 'LCD touchscreen — BendControl',
-    'Backgauge': '2-axis CNC',
-    'Activation': 'Foot pedal',
-  }}
   ppe={['goggles', 'closed-shoes', 'tie-hair']}
   training="Mentor sign-off required. First bends are always mentor-supervised, and a mentor approves every new material/thickness combination."
 />
-
-<ToolProcurementCard tool="langmuir-titan-25t" />
 
 <LabGalleryImage
   src="langmuir-titan-press-brake.jpg"
@@ -132,6 +121,22 @@ The brake itself has no true consumables — the punch and die sets below the ma
 4. Announce "bending" so nobody reaches in, then press the pedal smoothly and hold through the stroke.
 5. Release the pedal, let the ram retract fully, then remove the part.
 6. Measure the first part — angle and flange length — before running the rest.
+
+## Machine Specs
+
+<MachineSOP
+  specs={{
+    'Capacity': '25 tons',
+    'Bend Width': '33 in max',
+    'Ram Drive': 'Dual hydraulic + AC servo sync',
+    'Ram Accuracy': '±0.0002 in (glass scales)',
+    'Control': 'LCD touchscreen — BendControl',
+    'Backgauge': '2-axis CNC',
+    'Activation': 'Foot pedal',
+  }}
+/>
+
+<ToolProcurementCard tool="langmuir-titan-25t" />
 
 ## Resources
 
