@@ -8,9 +8,17 @@ import SiteTitle from 'virtual:starlight/components/SiteTitle';
 import Search from 'virtual:starlight/components/Search';
 import SocialIcons from 'virtual:starlight/components/SocialIcons';
 import NavMenu from './NavMenu.astro';
+
+/**
+ * Splash pages (the homepage) render without the docs sidebar, so Starlight
+ * never draws its mobile menu button — leaving those pages with no navigation
+ * at all on a phone. There, the marketing top nav keeps its own hamburger and
+ * slide-out drawer instead of being hidden below the desktop breakpoint.
+ */
+const { hasSidebar } = Astro.locals.starlightRoute;
 ---
 
-<div class="site-header-inner">
+<div class:list={['site-header-inner', { 'no-docs-sidebar': !hasSidebar }]}>
   <div class="brand-wrap">
     <SiteTitle {...Astro.props} />
   </div>
