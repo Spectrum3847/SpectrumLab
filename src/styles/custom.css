@@ -97,14 +97,25 @@ header.header {
 }
 
 /* On narrow screens Starlight's own docs-drawer hamburger (right edge) is the
-   navigation entry point; hide the marketing top-nav to avoid two hamburgers. */
+   navigation entry point; hide the marketing top-nav to avoid two hamburgers.
+   Splash pages (the homepage) have no sidebar and so get no Starlight button —
+   there the top nav stays and shows its own hamburger, which is the only
+   navigation those pages have on a phone. */
 @media (max-width: 1240px) {
-  .top-nav-desktop {
+  .site-header-inner:not(.no-docs-sidebar) .top-nav-desktop {
     display: none !important;
   }
   /* Leave room for Starlight's fixed mobile menu button at inline-end. */
   .site-header-inner {
     padding-inline-end: 4rem;
+  }
+  /* No Starlight button to clear, and our own hamburger sits with the header
+     tools at the inline end. */
+  .site-header-inner.no-docs-sidebar {
+    padding-inline-end: 1.5rem;
+  }
+  .site-header-inner.no-docs-sidebar .header-tools-wrap {
+    margin-inline-start: auto;
   }
 }
 @media (min-width: 50rem) and (max-width: 1240px) {

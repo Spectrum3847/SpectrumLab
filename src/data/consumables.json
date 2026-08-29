@@ -630,6 +630,7 @@
     "location": "Lathe bench + tapping station",
     "machines": [
       "pm-1130v",
+      "grizzly-mill",
       "mrcm-tapping-machine",
       "drill-press"
     ],
@@ -693,6 +694,7 @@
     "location": "Orange Toolbox drawer 5 (lathe accessories)",
     "machines": [
       "pm-1130v",
+      "grizzly-mill",
       "drill-press"
     ],
     "notes": "Start every tailstock hole and every precise drill-press hole with a center drill — it is the difference between a hole on your mark and a hole near it. (list estimate — no receipt on file; update the price when we next order)."
@@ -708,7 +710,8 @@
     "url": "https://www.mcmaster.com/products/way-oil/",
     "location": "Lathe T-Stak — Measuring / Grease drawer",
     "machines": [
-      "pm-1130v"
+      "pm-1130v",
+      "grizzly-mill"
     ],
     "notes": "Wipe the ways and lay down a light film at close. Never blow chips off the ways with compressed air — it drives grit under the film. (list estimate — no receipt on file; update the price when we next order)."
   },
