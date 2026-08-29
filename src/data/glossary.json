@@ -1112,7 +1112,7 @@
       "term": "Polycarbonate",
       "aka": ["PC", "Lexan"],
       "category": "materials",
-      "definition": "A nearly unbreakable clear plastic — the right choice for guards, bumper backing, and anything that gets hit. It scratches easily, it cannot be laser cut (it burns and releases chlorine-free but toxic fumes), and threadlocker and many solvents will craze it.",
+      "definition": "A nearly unbreakable clear plastic — the right choice for guards, bumper backing, and anything that gets hit. It scratches easily, it laser cuts fine on the CO2 lasers, and threadlocker and many solvents will craze it.",
       "seeAlso": ["acrylic", "threadlocker"]
     },
     {
