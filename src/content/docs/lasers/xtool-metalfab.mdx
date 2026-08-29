@@ -14,21 +14,9 @@ import Term from '../../../components/Term.astro';
 The xTool MetalFab is a 1200W fiber laser system — a laser source with cut, weld, and clean modes, paired with the MetalFab CNC Cutter gantry for sheet metal cutting. We use it to cut aluminum and steel sheet fast and clean. It is the most dangerous laser in the lab: **Class 4, and its beam is invisible.**
 
 <MachineSOP
-  specs={{
-    'Laser': '1200W fiber (Class 4)',
-    'Modes': 'Cut / Weld / Clean',
-    'Max Aluminum': '4 mm',
-    'Max Stainless': '5 mm',
-    'Max Carbon Steel': '10 mm',
-    'Max Brass': '3 mm',
-    'Power': '21A+ circuit, 4200W max draw',
-    'System': 'Laser source + CNC Cutter gantry'
-  }}
   ppe={['goggles', 'tie-hair', 'closed-shoes']}
   training="Fiber laser sign-off required. Welding module is a separate, mentor-only sign-off — do not touch the welder without it."
 />
-
-<ToolProcurementCard tool="xtool-metalfab" />
 
 <LabGalleryImage
   src="xtool-metalfab.jpg"
@@ -149,6 +137,23 @@ through each step and the cameras remove the hardest part of setup. Things worth
 
 Materials, aluminum sourcing, workholding, and post-processing are shared with the Gweike — see
 [Fiber Laser Cutting — Materials & Practice](/lasers/fiber-laser-cutting/).
+
+## Machine Specs
+
+<MachineSOP
+  specs={{
+    'Laser': '1200W fiber (Class 4)',
+    'Modes': 'Cut / Weld / Clean',
+    'Max Aluminum': '4 mm',
+    'Max Stainless': '5 mm',
+    'Max Carbon Steel': '10 mm',
+    'Max Brass': '3 mm',
+    'Power': '21A+ circuit, 4200W max draw',
+    'System': 'Laser source + CNC Cutter gantry'
+  }}
+/>
+
+<ToolProcurementCard tool="xtool-metalfab" />
 
 ## Resources
 

@@ -1,0 +1,184 @@
+---
+title: "Grizzly G0704 Mill/Drill"
+description: "The G0704 bench mill/drill next to the Blue Lathe: located holes, squaring tube ends, workholding, speeds, and the rotating-machinery rules."
+---
+
+import MachineSOP from '../../../components/MachineSOP.astro';
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import LabGalleryImage from '../../../components/LabGalleryImage.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
+import TutorialLink from '../../../components/TutorialLink.astro';
+import ConsumablesTable from '../../../components/ConsumablesTable.astro';
+import Term from '../../../components/Term.astro';
+
+The **Grizzly G0704** — the machine labeled **"Mill"** on the machine-shop bench, beside the [Blue Lathe](/forming/lathes/) — is a 1 HP benchtop mill/drill with an X/Y table and an R-8 spindle. We use it for two jobs, and that's on purpose: **holes that have to land exactly where the drawing says**, and **squaring the ends of tube and bar**. Everything else it could theoretically do — pockets, slots, production milling — is a mentor-led job on a machine this size.
+
+<MachineSOP
+  ppe={['goggles', 'no-gloves', 'tie-hair', 'closed-shoes']}
+  training="Machine-shop training and mentor sign-off, same as the lathe. A mentor stays in the lab whenever the mill is running."
+/>
+
+<LabGalleryImage
+  src="grizzly-mill-and-blue-lathe.jpg"
+  alt="Grizzly mill/drill with milling vise next to the blue PM-1130V lathe"
+  caption="The Grizzly mill/drill (labeled Mill) and the Blue Lathe share the machine-shop bench — and the same safety rules."
+/>
+
+## When to Use the Mill (and When Not To)
+
+| You need | Machine |
+| --- | --- |
+| A hole in an exact location, measured from an edge | **The mill** — position with the table handwheels |
+| A tube or bar end square and to length | **The mill** — face it flat |
+| A quick hole where ±1/32 in is fine | [Drill press](/cutting/drill-press-shear/) — faster, more Z clearance |
+| Anything round: shafts, spacers, bores | [Lathe](/forming/lathes/) |
+| A pocket, slot, or flat you've not been shown | **Get a mentor.** Not a solo job |
+| Big holes, hole saws, tall parts | [Drill press](/cutting/drill-press-shear/) — the mill's quill travel is short |
+
+## Safety
+
+Everything on this page is rotating machinery, and the lathe rules apply verbatim.
+
+<SafetyWarning type="critical" title="Every part is clamped. No exceptions.">
+The work goes in the milling vise or gets clamped to the table — never held by hand, never "just leaned against the vise jaw." A cutter that grabs an unclamped part turns it into a spinning projectile with an edge on it. If the part is too awkward to clamp, stop and ask a mentor how to fixture it.
+</SafetyWarning>
+
+<SafetyWarning type="critical" title="No gloves. Tie your hair. Nothing loose.">
+**No gloves, ever**, at the mill. Long hair tied back and tucked, sleeves rolled, no drawstrings, no lanyards, no jewelry, no rings. See the [lab glove policy](/safety/gloves-and-ppe/).
+</SafetyWarning>
+
+<SafetyWarning type="critical" title="Wrenches out — same discipline as the chuck key">
+The drawbar wrench and the drill-<Term id="chuck">chuck</Term> key go in your hand, do their job, and come straight back out before the spindle turns. Nothing stays parked in the spindle. Same rule as the <Term id="chuck-key">chuck key</Term> on the lathe, same consequence.
+</SafetyWarning>
+
+- **Safety goggles, not glasses.** Milling throws chips sideways and hot; glasses are open at the sides. Over-glasses goggles are in drawer 13 of the [Orange Toolbox](/storage/toolboxes/#orange-toolbox--metrology-machinist-tooling--ppe).
+- Never leave the spindle running — if it's turning, you're standing at it.
+- Clear chips with a brush or <Term id="chip-hook">chip hook</Term> **after the spindle stops**. Never fingers, never a rag near rotation, never compressed air (it drives grit into the ways).
+- Measure with the spindle **stopped**, cutter clear of the part.
+- Know where the E-stop is before you start.
+
+## Job 1 — Drilling Located Holes
+
+The reason to walk past the drill press and use this machine: the table moves in X and Y on <Term id="thou">thou</Term>-graduated handwheels, so a hole position is a number you dial in, not a punch mark you aim at.
+
+1. **Clamp the part in the vise**, seated on parallels so the drill exits into clear air, not into the vise or the table. Tap it down solid — a part that rocks on the parallels is not seated.
+2. **Pick a datum.** Touch off the edge of the part with the cutter or an edge finder and treat that corner as zero. Every hole gets dialed from that same zero.
+3. **Always approach a coordinate from one direction.** Handwheels have backlash; if you overshoot, back well off and come in again the same way. Half the "but the dial said 2.000" holes are backlash.
+4. **<Term id="spot-drill">Spot drill</Term> first**, then drill. A spot keeps the drill from walking, which is the whole point of being on this machine.
+5. Set the speed for the drill diameter (see below), feed with the quill, and <Term id="peck-drilling">peck</Term> anything deeper than about two drill diameters — down, retract, clear chips, repeat. <Term id="cutting-fluid">Cutting oil</Term> in steel.
+6. Ease off at breakthrough, spindle off, then unclamp and <Term id="deburr">deburr</Term> both sides.
+
+## Job 2 — Facing Tube & Bar Ends
+
+Chop-saw and bandsaw cuts come off a couple of degrees out of square and a little long. Facing on the mill takes them flat, square, and to a length you can actually measure from.
+
+1. **Square the part in the vise.** The fixed jaw is your reference — clean it and the vise bed, then set the tube against it with a machinist square (Orange Toolbox drawer 2) and clamp. Chips trapped between the jaw and the part will cost you the squareness you came for.
+2. **Support long tube.** Anything hanging out past the vise gets a support or a second clamp — long unsupported tube chatters and marks up.
+3. **Thin walls need backing.** Box tube facing at the corners can pull the wall in. A snug plug or an offcut inside the tube stiffens it; light passes do the rest.
+4. **Take small bites** — a few thou per pass with the end mill, traversing steadily by hand. If you hear chatter, back off the depth first, then the feed.
+5. **Conventional, not climb.** Feed so the cutter pushes against the direction of travel. Manual machines have table backlash and climb milling snatches the work into the cutter.
+6. Check with a square and calipers, spindle stopped. Deburr the inside and outside edges — a faced tube end is sharp.
+
+<SafetyWarning type="tip" title="Face to a mark, not to a number">
+For tube that's going into a welded or bolted assembly, scribe the finished length and creep up on it. It's a lot easier to take another 0.005 in off than to explain a part that's 0.020 in short.
+</SafetyWarning>
+
+## Speeds
+
+Same formula as everywhere else in the shop — **RPM ≈ (4 × <Term id="sfm">SFM</Term>) ÷ cutter diameter in inches** — but here the diameter is the *cutter's*, not the part's. Aluminum runs roughly 200–300 SFM with HSS, mild steel 80–100.
+
+| Cutter / drill diameter | Aluminum | Mild steel |
+| --- | --- | --- |
+| 1/8 in | 2250 RPM (machine max) | 2250 RPM |
+| 1/4 in | 2250 RPM (machine max) | ~1200 RPM |
+| 3/8 in | ~2250 RPM | ~800 RPM |
+| 1/2 in | ~1800 RPM | ~600 RPM |
+| 3/4 in (the cutter limit) | ~1200 RPM, low range | ~400 RPM, low range |
+
+Small cutters fast, big cutters slow, steel slower than aluminum. The G0704 tops out at **2250 RPM** in high range, which is less than a 1/8 in cutter in aluminum really wants — run it wide open and keep the feed light rather than trying to make up the difference with depth of cut. Heavy cuts and larger cutters go in **low range (50–1125 RPM)**, where the torque is. Use the readout, and change belt ranges with the machine **off and unplugged**.
+
+The machine's own limits: **5/8 in is the drilling capacity, 3/4 in the end mill capacity.** Bigger than that is a drill press job or a mentor conversation, not something to sneak up on with a light feed.
+
+## Tooling & Where It Lives
+
+Mill tooling shares the lathe's storage on the machine-shop bench:
+
+- **End mills, drill sets, and center drills** — [Orange Toolbox drawer 5](/storage/toolboxes/#orange-toolbox--metrology-machinist-tooling--ppe) (in tubes, labeled).
+- **Parallels, V-block, machinist squares, dial indicator and magnetic base** — Orange Toolbox drawer 2. This is the setup drawer; the squares and parallels are what make Job 2 come out square.
+- **Drill chucks and Morse-taper arbors** — Orange Toolbox drawer 7.
+- **Drawbar wrenches** stay with the machine.
+- **The spindle is R-8.** Collets, drill chucks and holders have to be R-8 to fit it — check before you buy or borrow one, because MT and R-8 shanks look similar in a drawer and only one of them seats.
+- **Way oil and cutting oil** — the [Lathe T-Stak drawers](/storage/toolboxes/#lathe-t-stak-drawers) under the bench.
+
+Put cutters back in their tubes, not loose in a drawer — an end mill that rattles against its neighbors comes back chipped. Report chipped or dull cutters instead of leaving them for the next person.
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Start the Spindle"
+  items={[
+    'Sign-off current; mentor in the lab',
+    'No gloves, hair tied, sleeves and strings secured, jewelry off',
+    'Part clamped in the vise or to the table, seated on parallels',
+    'Vise bed and jaws wiped clean of chips',
+    'Cutter tight, drawbar wrench and chuck key OUT of the spindle',
+    'Speed set for cutter diameter and material; correct belt range',
+    'Travel checked by hand — cutter clears vise, clamps, and table',
+    'Chip brush, oil, square and calipers within reach; E-stop located',
+  ]}
+/>
+
+## Cleanup & Maintenance
+
+- Spindle off, power off at the machine.
+- Brush chips off the table, vise, and ways into the tray — never compressed air.
+- Wipe the ways and leave a light film of way oil; the mill is on the same [maintenance schedule](/maintenance/schedules/) as the lathe.
+- Cutters back in their tubes, vise handle and wrenches back on the machine, quill returned to rest.
+- Aluminum offcuts to the recycling bin, steel to the scrap bin.
+
+## Consumables
+
+<ConsumablesTable machine="grizzly-mill" />
+
+## Machine Specs
+
+<MachineSOP
+  specs={{
+    'Model': 'Grizzly G0704',
+    'Table': '7-1/16 in × 26-5/8 in',
+    'Travel': '18-7/8 in X · 6-7/8 in Y · 11 in head',
+    'Spindle Taper': 'R-8',
+    'Speed': '50–1125 low / 100–2250 high, variable',
+    'Motor': '1 HP, 110V, single-phase',
+    'Capacity': '5/8 in drill · 3/4 in end mill',
+    'Weight': '~372 lb',
+  }}
+/>
+
+<ToolProcurementCard tool="grizzly-mill" />
+
+## Resources
+
+<TutorialLink
+  title="G0704 Owner's Manual (PDF)"
+  url="https://cdn0.grizzly.com/manuals/g0704_m.pdf"
+  source="pdf"
+  description="Official Grizzly manual — controls, lubrication points, gib adjustment, and the parts breakdown."
+/>
+
+<TutorialLink
+  title="G0704 Product Page"
+  url="https://www.grizzly.com/products/grizzly-7-x-27-1-hp-mill-drill-with-stand/g0704"
+  source="website"
+  description="Full specifications and replacement parts for the 7 in × 27 in, 1 HP mill/drill."
+/>
+
+<TutorialLink
+  title="Grizzly Customer Service"
+  url="https://www.grizzly.com/customer-service"
+  source="website"
+  description="Parts and support, same vendor as the G0555 vertical bandsaw."
+/>
+
+**Related pages:** [PM-1130V Lathe](/forming/lathes/) · [Drill Press & Bench Shear](/cutting/drill-press-shear/) for faster, less fussy holes · [Bandsaws](/cutting/bandsaws/) for cutting stock before facing it · [PPE & the glove policy](/safety/gloves-and-ppe/)

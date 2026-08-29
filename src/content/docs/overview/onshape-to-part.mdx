@@ -1,6 +1,6 @@
 ---
 title: "Onshape to Part"
-description: "The routing guide: how a CAD model becomes a real part — which machine to pick, what to fix before you export, which file format each machine wants, and what happens after the cut."
+description: "The path guide: how a CAD model becomes a real part — which machine to pick, what to fix before you export, which file format each machine wants, and what happens after the cut."
 ---
 
 import Term from '../../../components/Term.astro';
@@ -23,11 +23,12 @@ Answer those and the machine picks itself.
 
 | If the part is… | Make it on | Notes |
 | --- | --- | --- |
-| Flat sheet metal, up to ~1/4 in | [xTool MetalFab](/lasers/xtool-metalfab/) or [Gweike M3](/lasers/gweike-m3-ultra/) | Fastest route for aluminum and steel plate. Leaves a small <Term id="haz" />. |
+| Flat sheet metal, up to ~1/4 in | [xTool MetalFab](/lasers/xtool-metalfab/) or [Gweike M3](/lasers/gweike-m3-ultra/) | Fastest path for aluminum and steel plate. Leaves a small <Term id="haz" />. |
 | Flat metal, thick, hardened, or heat-sensitive | [WAZER Pro](/waterjet/wazer-pro/) | No heat at all, so no <Term id="haz" /> — but slow, and edges have <Term id="taper" />. |
-| Flat wood, acrylic, cardboard, leather, <Term id="polycarbonate" /> | [Thunder Nova 35](/lasers/thunder-nova-35/) | CO2. **Never PVC** in any laser. |
+| Flat wood, acrylic, cardboard, leather, <Term id="polycarbonate" />, polypropylene, MaxComposite | [Thunder Nova 35](/lasers/thunder-nova-35/) | CO2. **Never PVC** in any laser. |
 | Flat, then bent into a bracket | Laser or waterjet → [Titan 25T](/forming/langmuir-titan-25t/) | Cut the <Term id="flat-pattern" />, not the folded outline. |
 | Round: shafts, spacers, bosses, bores | [Lathe](/forming/lathes/) | The only machine here that makes a truly concentric bore. |
+| Holes that must land on exact coordinates; tube ends squared | [Mill/Drill](/forming/mill/) | Position from an edge on the X/Y table instead of aiming at a punch mark. |
 | Tube and extrusion cut to length | [Evolution chop saw](/cutting/evolution-saws/) or [bandsaw](/cutting/bandsaws/) | Use a <Term id="stop-block" /> for repeat cuts. |
 | A hole pattern in existing stock | [Drill press](/cutting/drill-press-shear/) + [tapping machine](/cutting/tapping-machine/) | Print the drawing 1:1 and use it as a layout template. |
 | Complex 3D geometry, low load | [Prusa farm](/3d-printing/prusa-farm/) | <Term id="petg-gf" /> for anything on the robot. |
@@ -43,7 +44,7 @@ When two machines could do it, the tiebreakers are: **is a machine free right no
 
 ## Fix these in CAD, before you export
 
-Most parts that come out wrong were wrong in the model. Five things to check:
+Most parts that come out wrong were wrong in the model. Four things to check:
 
 ### 1. Holes are one of two sizes, and they are not the same size
 
@@ -56,23 +57,19 @@ Every hole is either a <Term id="clearance-fit">clearance hole</Term> (the bolt 
 
 Read that twice: **0.201 in is the clearance hole for #10-32 and the tap drill for 1/4-20.** Model the number, not the fraction, and label it in the drawing.
 
-### 2. Account for <Term id="kerf" />
+### 2. Corners shouldn't be sharp
 
-Lasers and the waterjet remove a real width of material. The machine software offsets for it — but only if you told it the truth about the material. Two parts modelled to touch exactly will come out of the sheet with a gap.
+Anything cut by a rotating tool has a corner radius, so a part designed with a small internal radius is more forgiving to make on any machine and much less likely to crack in service. External corners need fillets too — a sharp outside corner is a cut hazard and a stress riser.
 
-### 3. Inside corners cannot be sharp
-
-Anything cut by a rotating tool has a corner radius. Lasers and the waterjet *can* do sharp internal corners, but a part designed with a small internal radius is more forgiving to make on any machine and much less likely to crack in service.
-
-### 4. If it bends, use sheet metal features
+### 3. If it bends, use sheet metal features
 
 Model bent parts with Onshape's sheet metal tools, not as a folded solid. That gets you a <Term id="flat-pattern" /> with correct <Term id="bend-allowance" />, automatic <Term id="bend-relief" />, and a bend table. Set the <Term id="k-factor" /> to match the material and thickness — and confirm it with a test bend before you cut ten of them.
 
 Also: keep holes away from bend lines. A hole too close to a bend distorts into an oval.
 
-### 5. Pick the alloy on purpose
+### 4. Pick the alloy on purpose
 
-<Term id="six-oh-six-one">6061</Term> for general structure, <Term id="seven-oh-seven-five">7075</Term> where it must not flex, <Term id="five-oh-five-two">5052</Term> for anything that gets bent. Bending 6061 to a tight radius cracks it — that is a design decision, not a brake problem.
+<Term id="five-oh-five-two">5052</Term> is the alloy for anything that gets bent. For flat parts, <Term id="five-oh-five-two">5052</Term>, <Term id="six-oh-six-one">6061</Term>, and <Term id="seven-oh-seven-five">7075</Term> are all fine — strength and stiffness go up in that order. It's okay to use 5052 for flat parts, and we do a good amount. Bending 6061 to a tight radius cracks it — that is a design decision, not a brake problem.
 
 ## Exporting from Onshape
 
@@ -81,18 +78,15 @@ The format depends on what the receiving machine reads, not on what you have ope
 | Going to | Export | How |
 | --- | --- | --- |
 | Lasers, waterjet, Cricut | <Term id="dxf" /> | Right-click the flat face → **Export as DXF/DWG**. For sheet metal, export the **flat pattern**, not the model. |
-| 3D printers | <Term id="three-mf">3MF</Term> or <Term id="stl" /> | Right-click the part → **Export**. 3MF if you want your settings to travel with it. |
+| 3D printers | <Term id="three-mf">3MF</Term>, <Term id="stl" />, or <Term id="step" /> | Right-click the part → **Export**. 3MF if you want your settings to travel with it. STEP works too — our slicers read it directly. |
 | Anyone who needs to modify or machine it | <Term id="step" /> | Right-click the part → **Export → STEP**. |
 | A person at a machine | PDF drawing | Make a Drawing tab, dimension what matters, export PDF. |
 | Engraving art, logos | <Term id="svg" /> | From the graphics tool, not from CAD. |
 
-Three things that go wrong at export:
+Two things that go wrong at export:
 
-- **Units.** DXF does not reliably carry units. Say inches at export, and confirm the part is the size you expect once it's imported — check one known dimension before you cut.
 - **Exporting the folded part instead of the flat pattern.** The outline of a bent bracket is not a shape you can cut.
 - **Exporting a stale version.** An export is a snapshot. Change the model afterward and your DXF is quietly wrong. Re-export after every change, and put the date in the filename.
-
-**Naming convention:** `part-name_material_thickness_YYYY-MM-DD.dxf` — for example `intake-side-plate_5052_0.090_2026-08-25.dxf`. The material and thickness are in the name because the person at the machine needs both, and the date is there so nobody cuts last week's revision.
 
 ## Handing it to the machine
 
@@ -114,7 +108,6 @@ In every case the machine's own software does the <Term id="cam" /> step — ass
   items={[
     'Exported from the current version of the model, today',
     'Flat pattern exported for anything that gets bent — not the folded outline',
-    'Units confirmed after import: one known dimension measured against the drawing',
     'Every hole is deliberately a clearance hole or a tap drill, and labelled',
     'Material and thickness match what the machine profile is set to',
     'Nested on the sheet with lead-ins in scrap, not on a finished edge',

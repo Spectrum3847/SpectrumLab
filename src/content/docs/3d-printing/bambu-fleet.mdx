@@ -71,19 +71,8 @@ teardown. Set the volumetric speed limit in the filament profile before you slic
 ## Bambu 1 & 2 — X1-Carbon
 
 <MachineSOP
-  specs={{
-    'Build Volume': '256 × 256 × 256 mm',
-    'Motion': 'CoreXY, enclosed',
-    'Max Speed': '500 mm/s',
-    'Hotend': '300 °C all-metal',
-    'Nozzle': '0.6 mm hardened steel',
-    'Monitoring': 'Lidar first-layer + AI camera',
-    'AMS': 'Bambu 1: 4-slot AMS + AMS-HT · Bambu 2: AMS-HT only',
-  }}
   training="Basic printer orientation to start prints. Nozzle/hotend swaps and engineering-material jobs require mentor sign-off."
 />
-
-<ToolProcurementCard tool="bambu-x1c" />
 
 The X1Cs are the fleet's reliable middle: enclosed, lidar first-layer inspection, and 0.6 mm
 hardened nozzles that turn parts around fast. They run everything except PPA-GF, which needs more
@@ -93,13 +82,6 @@ plus an AMS-HT, Bambu 2 has only an AMS-HT — so a four-material job has to go 
 ## H2D + AMS Pro & AMS-HT
 
 <MachineSOP
-  specs={{
-    'Build Volume': '350 × 320 × 325 mm',
-    'Nozzles': 'Dual, 0.4 mm hardened steel, up to 320 °C',
-    'Chamber': '65 °C heated',
-    'Max Speed': '1000 mm/s',
-    'AMS': 'AMS Pro on the right nozzle · AMS-HT (active drying) on the left',
-  }}
   training="Printer orientation plus a mentor walk-through before your first dual-material or PPA-GF job."
 />
 
@@ -114,20 +96,9 @@ possible.
 If a part will not fit the H2D, **split it** and bolt or pin the halves — see
 [Print Settings](/3d-printing/print-settings/). We do not have a larger printer.
 
-<ToolProcurementCard tool="bambu-h2d" />
-
 ## X2D
 
 <MachineSOP
-  specs={{
-    'Build Volume (single nozzle)': '256 × 256 × 260 mm',
-    'Build Volume (dual nozzle)': '235.5 × 256 × 256 mm',
-    'Nozzles': 'Dual, 0.4 mm hardened steel',
-    'Enclosure': 'Enclosed, heated chamber',
-    'AMS': 'None yet — an AMS-HT is on order',
-    'Materials': 'Full range excl. PPA-GF and PPS-CF (300 °C hotend ceiling)',
-    'Role': 'Second dual-nozzle machine — PLA-interface supports and general engineering parts',
-  }}
   training="Printer orientation."
 />
 
@@ -144,8 +115,6 @@ width and 4 mm of height — **235.5 × 256 × 256 mm**. A part that just fits i
 can fail to slice once you add a
 [zero-gap PLA support interface](/3d-printing/print-settings/#zero-gap-pla-interface).
 Check the plate preview after you assign the second nozzle, not before.
-
-<ToolProcurementCard tool="bambu-x2d" />
 
 ## Safety
 
@@ -274,6 +243,54 @@ unknown hotend has been fitted, it does not print filled material until it is sw
 - **Clicking extruder / underextrusion on filled materials** — wet filament or worn nozzle. Dry
   the spool first; if it persists, the nozzle is due for replacement (weekly wear check is on
   the maintenance schedule).
+
+## Fleet Specs
+
+### Bambu 1 & 2 — X1-Carbon
+
+<MachineSOP
+  specs={{
+    'Build Volume': '256 × 256 × 256 mm',
+    'Motion': 'CoreXY, enclosed',
+    'Max Speed': '500 mm/s',
+    'Hotend': '300 °C all-metal',
+    'Nozzle': '0.6 mm hardened steel',
+    'Monitoring': 'Lidar first-layer + AI camera',
+    'AMS': 'Bambu 1: 4-slot AMS + AMS-HT · Bambu 2: AMS-HT only',
+  }}
+/>
+
+<ToolProcurementCard tool="bambu-x1c" />
+
+### H2D
+
+<MachineSOP
+  specs={{
+    'Build Volume': '350 × 320 × 325 mm',
+    'Nozzles': 'Dual, 0.4 mm hardened steel, up to 320 °C',
+    'Chamber': '65 °C heated',
+    'Max Speed': '1000 mm/s',
+    'AMS': 'AMS Pro on the right nozzle · AMS-HT (active drying) on the left',
+  }}
+/>
+
+<ToolProcurementCard tool="bambu-h2d" />
+
+### X2D
+
+<MachineSOP
+  specs={{
+    'Build Volume (single nozzle)': '256 × 256 × 260 mm',
+    'Build Volume (dual nozzle)': '235.5 × 256 × 256 mm',
+    'Nozzles': 'Dual, 0.4 mm hardened steel',
+    'Enclosure': 'Enclosed, heated chamber',
+    'AMS': 'None yet — an AMS-HT is on order',
+    'Materials': 'Full range excl. PPA-GF and PPS-CF (300 °C hotend ceiling)',
+    'Role': 'Second dual-nozzle machine — PLA-interface supports and general engineering parts',
+  }}
+/>
+
+<ToolProcurementCard tool="bambu-x2d" />
 
 ## Resources
 

@@ -15,20 +15,9 @@ import Term from '../../../components/Term.astro';
 The DeWalt jobsite table saw (DWE7491RS-class) is our rip-and-crosscut station for **wood and plastics** — field borders, plywood bases, practice-field elements, and crate parts. It lives on a rolling cart so it can move to the work. The table saw injures more people per year than any other tool in a typical shop, and nearly every one of those injuries follows the same script: no <Term id="riving-knife">riving knife</Term>, freehand feeding, or hands where a push stick should be. Our rules exist to break that script.
 
 <MachineSOP
-  specs={{
-    'Blade': '10 in, ~4800 RPM',
-    'Power': '15A, 120V',
-    'Rip Capacity': '32-1/2 in',
-    'Depth of Cut': '3-1/8 in at 90°',
-    'Fence': 'Rack-and-pinion',
-    'Stand': 'Rolling cart',
-    'Materials': 'Wood, plywood, plastics — NO METAL',
-  }}
   ppe={['goggles', 'hearing', 'no-gloves', 'closed-shoes', 'tie-hair']}
   training="Mentor sign-off required before solo use. Dado/specialty setups are mentor-only."
 />
-
-<ToolProcurementCard tool="dewalt-dwe7491rs" />
 
 <LabGalleryImage
   src="benchtop-table-saw-cart.jpg"
@@ -105,6 +94,22 @@ Set the blade so the **teeth just clear the top of the stock** — about a tooth
 ## Consumables
 
 <ConsumablesTable machine="dewalt-dwe7491rs" />
+
+## Machine Specs
+
+<MachineSOP
+  specs={{
+    'Blade': '10 in, ~4800 RPM',
+    'Power': '15A, 120V',
+    'Rip Capacity': '32-1/2 in',
+    'Depth of Cut': '3-1/8 in at 90°',
+    'Fence': 'Rack-and-pinion',
+    'Stand': 'Rolling cart',
+    'Materials': 'Wood, plywood, plastics — NO METAL',
+  }}
+/>
+
+<ToolProcurementCard tool="dewalt-dwe7491rs" />
 
 ## Resources
 
