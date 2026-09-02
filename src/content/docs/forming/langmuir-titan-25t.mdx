@@ -10,6 +10,7 @@ import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
 import TutorialLink from '../../../components/TutorialLink.astro';
 import Term from '../../../components/Term.astro';
+import BendTable from '../../../components/BendTable.astro';
 
 The Titan 25T is our CNC press brake — the machine that turns flat sheet from the [WAZER](/waterjet/wazer-pro/) and [xTool MetalFab](/lasers/xtool-metalfab/) into brackets, gussets, and bent-sheet-metal robot structure. Dual hydraulic rams with servo sync and glass-scale encoders hold the ram parallel to about two ten-thousandths of an inch, so bends repeat part after part. It is also the single most dangerous machine in the lab if you treat it casually: 25 tons does not notice a hand.
 
@@ -44,6 +45,20 @@ During the bend, the <Term id="flange">flange</Term> on your side rotates up —
 - Deburred edges only. Sheared and waterjet edges are sharp; deburr before you handle a part at the brake.
 - If the machine does anything unexpected — noise, drift, error on screen — release the pedal, step back, and get a mentor.
 
+## Bend Table — Punch, K-Factor & Min Flange
+
+Our shop bend table: for each sheet thickness, which die and punch pair to
+use, the K-factor for your CAD flat pattern, and the minimum flange that
+tooling can form. This is the same table that lives on the clipboard at the
+brake and in the [Spectrum Bend Table Google Sheet ↗](https://docs.google.com/spreadsheets/d/16neE8Xj4mMapoWWEOMAHQO82vdAPtH2lYD5wjvWVP74/edit?gid=0#gid=0) — if you find an
+error, fix both.
+
+<BendTable />
+
+<SafetyWarning type="warning" title="K-factors are per tooling pair">
+The K-factor depends on the die opening, radius, and thickness together — don't mix a K-factor from one row with a radius or die from another. Rows marked N/A are combinations that don't work with our tooling: the sheet folds into the V or overloads the punch. Unlisted thicknesses and all 6061 bends still need mentor approval (see tonnage below).
+</SafetyWarning>
+
 ## Tonnage Limits — Do the Math First
 
 The Titan develops 25 tons across a 33 in (2.75 ft) bed. Required force is quoted in **tons per foot of bend length**. The rule-of-thumb values below assume **air bending with a <Term id="v-die">V-die</Term> opening about 8× material thickness**:
@@ -69,8 +84,8 @@ Never exceed the machine rating or the tooling rating — whichever is lower. Th
 
 Punch and die sets live on the shelf **below the machine** (see photo above). Before bending:
 
-1. Pick a V-die opening about **8× the material thickness** (e.g., 1 in V for 1/8 in sheet). Wider V = less tonnage but a larger inside radius and wider minimum flange.
-2. Check the minimum flange length for the die — roughly 0.7× the V opening. A flange shorter than that falls into the V instead of bending.
+1. Pick a V-die opening about **8× the material thickness** (e.g., 1 in V for 1/8 in sheet). Wider V = less tonnage but a larger inside radius and wider minimum flange. The [bend table above](#bend-table-punch-k-factor-min-flange) lists every die we stock and the thicknesses it suits.
+2. Check the minimum flange length for the die — roughly 0.7× the V opening. A flange shorter than that falls into the V instead of bending. Per-die minimums are in the bend table.
 3. Wipe dies clean before installing, seat the punch and die fully, and snug the clamps evenly across the width.
 4. Return tooling to the shelf below the brake when done — lightly oiled, never left loose on the bed.
 

@@ -1,0 +1,298 @@
+{
+  "$comment": "Bend table for the Langmuir Titan 25T press brake, transcribed from the 'Spectrum Bend Table' Google Sheet (docs.google.com/spreadsheets/d/16neE8Xj4mMapoWWEOMAHQO82vdAPtH2lYD5wjvWVP74). Edit the sheet AND this file together — the site reads this file, not the sheet. bendRadius is the inside radius the tooling pair produces (in). kFactor is the flat-pattern K-factor for each thickness + radius pairing. minFlange is the minimum flange (in) the tooling allows for that thickness ('N/A' = not usable at this radius).",
+  "bends": [
+    {
+      "thicknessIn": 0.03,
+      "die": "acute-8mm",
+      "bendRadiusIn": 0.039,
+      "punch": "narrow-acute-30",
+      "kFactor": 0.39,
+      "minFlangeIn": 0.23
+    },
+    {
+      "thicknessIn": 0.04,
+      "die": "acute-8mm",
+      "bendRadiusIn": 0.039,
+      "punch": "standard-acute-30",
+      "kFactor": 0.44,
+      "minFlangeIn": 0.23
+    },
+    {
+      "thicknessIn": 0.063,
+      "die": "acute-8mm",
+      "bendRadiusIn": 0.039,
+      "punch": "heavy-duty-35",
+      "kFactor": 0.37,
+      "minFlangeIn": 0.23
+    },
+    {
+      "thicknessIn": 0.09,
+      "die": "acute-8mm",
+      "bendRadiusIn": 0.039,
+      "punch": "gooseneck-88",
+      "kFactor": 0.36,
+      "minFlangeIn": 0.25
+    },
+    {
+      "thicknessIn": 0.125,
+      "die": "acute-8mm",
+      "bendRadiusIn": 0.039,
+      "punch": "extreme-gooseneck-85",
+      "kFactor": 1.36,
+      "minFlangeIn": "N/A"
+    },
+    {
+      "thicknessIn": 0.03,
+      "die": "acute-16.5mm",
+      "bendRadiusIn": 0.039,
+      "punch": "narrow-acute-30",
+      "kFactor": 0.1,
+      "minFlangeIn": 0.47
+    },
+    {
+      "thicknessIn": 0.04,
+      "die": "acute-16.5mm",
+      "bendRadiusIn": 0.039,
+      "punch": "standard-acute-30",
+      "kFactor": 0.27,
+      "minFlangeIn": 0.47
+    },
+    {
+      "thicknessIn": 0.063,
+      "die": "acute-16.5mm",
+      "bendRadiusIn": 0.039,
+      "punch": "heavy-duty-35",
+      "kFactor": 0.33,
+      "minFlangeIn": 0.47
+    },
+    {
+      "thicknessIn": 0.09,
+      "die": "acute-16.5mm",
+      "bendRadiusIn": 0.039,
+      "punch": "heavy-duty-35",
+      "kFactor": 0.33,
+      "minFlangeIn": 0.47
+    },
+    {
+      "thicknessIn": 0.125,
+      "die": "acute-16.5mm",
+      "bendRadiusIn": 0.039,
+      "punch": "extreme-gooseneck-85",
+      "kFactor": 0.32,
+      "minFlangeIn": 0.48
+    },
+    {
+      "thicknessIn": 0.03,
+      "die": "acute-8mm",
+      "bendRadiusIn": 0.118,
+      "punch": "heavy-duty-35",
+      "kFactor": 0.38,
+      "minFlangeIn": 0.23
+    },
+    {
+      "thicknessIn": 0.04,
+      "die": "acute-8mm",
+      "bendRadiusIn": 0.118,
+      "punch": "heavy-duty-35",
+      "kFactor": 0.4,
+      "minFlangeIn": 0.23
+    },
+    {
+      "thicknessIn": 0.063,
+      "die": "acute-8mm",
+      "bendRadiusIn": 0.118,
+      "punch": "heavy-duty-35",
+      "kFactor": 0.4,
+      "minFlangeIn": 0.23
+    },
+    {
+      "thicknessIn": 0.09,
+      "die": "acute-8mm",
+      "bendRadiusIn": 0.118,
+      "punch": "heavy-duty-35",
+      "kFactor": 1.63,
+      "minFlangeIn": "N/A"
+    },
+    {
+      "thicknessIn": 0.125,
+      "die": "acute-8mm",
+      "bendRadiusIn": 0.118,
+      "punch": "heavy-duty-35",
+      "kFactor": 1.53,
+      "minFlangeIn": "N/A"
+    },
+    {
+      "thicknessIn": 0.03,
+      "die": "acute-16.5mm",
+      "bendRadiusIn": 0.118,
+      "punch": "heavy-duty-35",
+      "kFactor": 0.28,
+      "minFlangeIn": 0.47
+    },
+    {
+      "thicknessIn": 0.04,
+      "die": "acute-16.5mm",
+      "bendRadiusIn": 0.118,
+      "punch": "heavy-duty-35",
+      "kFactor": 0.43,
+      "minFlangeIn": 0.47
+    },
+    {
+      "thicknessIn": 0.063,
+      "die": "acute-16.5mm",
+      "bendRadiusIn": 0.118,
+      "punch": "heavy-duty-35",
+      "kFactor": 0.38,
+      "minFlangeIn": 0.47
+    },
+    {
+      "thicknessIn": 0.09,
+      "die": "acute-16.5mm",
+      "bendRadiusIn": 0.118,
+      "punch": "heavy-duty-35",
+      "kFactor": 0.38,
+      "minFlangeIn": 0.47
+    },
+    {
+      "thicknessIn": 0.125,
+      "die": "acute-16.5mm",
+      "bendRadiusIn": 0.118,
+      "punch": "heavy-duty-35",
+      "kFactor": 0.39,
+      "minFlangeIn": 0.47
+    }
+  ],
+  "punches": [
+    {
+      "id": "narrow-acute-30",
+      "name": "Narrow Acute 30º",
+      "number": "3169",
+      "radiusIn": 0.039,
+      "radiusMm": 1,
+      "maxBendAngleDeg": 30
+    },
+    {
+      "id": "standard-acute-30",
+      "name": "Standard Acute 30º",
+      "number": "9302",
+      "radiusIn": 0.039,
+      "radiusMm": 1,
+      "maxBendAngleDeg": 30
+    },
+    {
+      "id": "heavy-duty-35",
+      "name": "Heavy Duty 35º",
+      "number": "2287",
+      "radiusIn": 0.118,
+      "radiusMm": 3,
+      "maxBendAngleDeg": 35
+    },
+    {
+      "id": "gooseneck-88",
+      "name": "Gooseneck 88º",
+      "number": "8392",
+      "radiusIn": 0.039,
+      "radiusMm": 1,
+      "maxBendAngleDeg": 88
+    },
+    {
+      "id": "extreme-gooseneck-85",
+      "name": "Extreme Gooseneck 85º",
+      "number": "3924",
+      "radiusIn": 0.039,
+      "radiusMm": 1,
+      "maxBendAngleDeg": 85
+    }
+  ],
+  "dies": [
+    {
+      "id": "acute-8mm",
+      "name": "Acute 8mm",
+      "number": "5623",
+      "openingIn": 0.315,
+      "openingMm": 8,
+      "maxBendAngleDeg": 30,
+      "bendRadiusIn": 0.053,
+      "minFlangeIn": 0.053,
+      "ruleOf8In": 0.039375
+    },
+    {
+      "id": "acute-16.5mm",
+      "name": "Acute 16.5mm",
+      "number": "9858",
+      "openingIn": 0.65,
+      "openingMm": 16.5,
+      "maxBendAngleDeg": 30,
+      "bendRadiusIn": 0.108,
+      "minFlangeIn": 0.65,
+      "ruleOf8In": 0.08125
+    },
+    {
+      "id": "acute-26mm",
+      "name": "Acute 26mm",
+      "number": "9355",
+      "openingIn": 1.024,
+      "openingMm": 26,
+      "maxBendAngleDeg": 30,
+      "bendRadiusIn": 0.17,
+      "minFlangeIn": 1.024,
+      "ruleOf8In": 0.128
+    },
+    {
+      "id": "acute-2in",
+      "name": "Acute 2 in",
+      "number": "2288",
+      "openingIn": 1.949,
+      "openingMm": 49.5,
+      "maxBendAngleDeg": 35,
+      "bendRadiusIn": 0.324,
+      "minFlangeIn": 1.949,
+      "ruleOf8In": 0.243625
+    },
+    {
+      "id": "4-way-16mm",
+      "name": "4-way 16mm",
+      "number": "4387",
+      "openingIn": 0.63,
+      "openingMm": 16,
+      "maxBendAngleDeg": 85,
+      "bendRadiusIn": 0.105,
+      "minFlangeIn": 0.63,
+      "ruleOf8In": 0.07875
+    },
+    {
+      "id": "4-way-22mm",
+      "name": "4-way 22mm",
+      "number": "4387",
+      "openingIn": 0.866,
+      "openingMm": 22,
+      "maxBendAngleDeg": 85,
+      "bendRadiusIn": 0.144,
+      "minFlangeIn": 0.866,
+      "ruleOf8In": 0.10825
+    },
+    {
+      "id": "4-way-35mm",
+      "name": "4-way 35mm",
+      "number": "4387",
+      "openingIn": 1.378,
+      "openingMm": 35,
+      "maxBendAngleDeg": 85,
+      "bendRadiusIn": 0.229,
+      "minFlangeIn": 1.378,
+      "ruleOf8In": 0.17225
+    },
+    {
+      "id": "4-way-50mm",
+      "name": "4-way 50mm",
+      "number": "4387",
+      "openingIn": 1.97,
+      "openingMm": 50,
+      "maxBendAngleDeg": 85,
+      "bendRadiusIn": 0.328,
+      "minFlangeIn": 1.97,
+      "ruleOf8In": 0.24625
+    }
+  ],
+  "sourceSheet": "https://docs.google.com/spreadsheets/d/16neE8Xj4mMapoWWEOMAHQO82vdAPtH2lYD5wjvWVP74/edit?gid=0#gid=0"
+}

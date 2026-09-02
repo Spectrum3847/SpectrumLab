@@ -1,0 +1,390 @@
+---
+/**
+ * Bend tables for the Langmuir Titan 25T press brake, from src/data/bend-table.json.
+ *
+ * <BendTable /> renders three tabs:
+ *   - Bend Settings: the thickness × die × radius → punch, K-factor, min flange
+ *     lookup used when planning a bend and typing it into BendControl / CAD.
+ *   - Punches: every punch in the tooling cabinet with number, radius, max angle.
+ *   - Dies: every die with number, opening, radius, min flange, and Rule of 8.
+ *
+ * Filter boxes narrow each tab; thickness and die chips on the Bend Settings
+ * tab make it phone-friendly at the brake. Values are transcribed from the
+ * "Spectrum Bend Table" Google Sheet — keep the two in sync.
+ */
+import bendTable from '../data/bend-table.json';
+
+const { bends, punches, dies, sourceSheet } = bendTable;
+
+// Group bend rows by die so each die renders as its own section with a
+// per-die thickness filter. Order follows the sheet: each die × radius pair.
+const diesInUse = [...new Set(bends.map((b) => b.die))];
+const punchById = new Map(punches.map((p) => [p.id, p]));
+
+const uid = `bt-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div class="bend-table" id={uid} data-bend-table>
+  <div class="bt-tabs" role="tablist" aria-label="Bend table views">
+    <button type="button" class="bt-tab active" role="tab" aria-selected="true" aria-controls={`${uid}-settings`} id={`${uid}-tab-settings`} data-tab="settings">Bend Settings</button>
+    <button type="button" class="bt-tab" role="tab" aria-selected="false" aria-controls={`${uid}-punches`} id={`${uid}-tab-punches`} data-tab="punches">Punches ({punches.length})</button>
+    <button type="button" class="bt-tab" role="tab" aria-selected="false" aria-controls={`${uid}-dies`} id={`${uid}-tab-dies`} data-tab="dies">Dies ({dies.length})</button>
+  </div>
+
+  <!-- ── Bend Settings ─────────────────────────────────────────────── -->
+  <div class="bt-panel" role="tabpanel" id={`${uid}-settings`} aria-labelledby={`${uid}-tab-settings`} data-panel="settings">
+    <p class="bt-hint">
+      Find your sheet thickness + die + desired inside radius, then use the punch,
+      K-factor, and minimum flange it calls out. K-factors feed your CAD flat
+      pattern; the min flange is the shortest flange that tooling can form at
+      that thickness. <strong>N/A</strong> means that combination does not work —
+      the sheet folds into the V or exceeds the punch's tonnage limit.
+    </p>
+    <div class="bt-controls">
+      <input type="search" class="bt-search" placeholder="Filter by thickness, die, punch…" aria-label="Filter bend settings" data-bt-search />
+    </div>
+    {diesInUse.map((dieId) => {
+      const die = dies.find((d) => d.id === dieId);
+      const rows = bends.filter((b) => b.die === dieId);
+      const radii = [...new Set(rows.map((r) => r.bendRadiusIn))];
+      return (
+        <section class="bt-die-group" data-group data-search={`${die?.name ?? ''} ${die?.number ?? ''} ${rows.map((r) => `${r.thicknessIn} ${r.bendRadiusIn} ${r.minFlangeIn}`).join(' ')}`.toLowerCase()}>
+          <h4 class="bt-group-title">
+            {die?.name}
+            <span class="bt-group-sub">die #{die?.number} · {die?.openingIn} in ({die?.openingMm} mm) V</span>
+          </h4>
+          {radii.map((radius) => {
+            const rrows = rows.filter((r) => r.bendRadiusIn === radius);
+            return (
+              <div class="bt-radius-block" data-radius={radius}>
+                <div class="bt-radius-head">
+                  <span class="bt-radius-label">Inside radius {radius} in</span>
+                  <span class="bt-radius-sub">
+                    {radius === 0.039 ? '1 mm radius tooling' : radius === 0.118 ? '3 mm radius tooling' : 'tooling radius'}
+                  </span>
+                </div>
+                <div class="bt-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th scope="col">Thickness</th>
+                        <th scope="col">Punch</th>
+                        <th scope="col">Punch #</th>
+                        <th scope="col">K-factor</th>
+                        <th scope="col">Min Flange</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {rrows.map((r) => {
+                        const punch = punchById.get(r.punch);
+                        const unusable = r.minFlangeIn === 'N/A';
+                        return (
+                          <tr class:list={['bt-row', unusable && 'bt-row-unusable']}>
+                            <td class="bt-thickness">{r.thicknessIn} in</td>
+                            <td>{punch?.name ?? r.punch}</td>
+                            <td><code>{punch?.number ?? '—'}</code></td>
+                            <td class="bt-k">{r.kFactor}</td>
+                            <td>
+                              {unusable ? (
+                                <span class="bt-na">N/A — do not bend</span>
+                              ) : (
+                                `${r.minFlangeIn} in`
+                              )}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            );
+          })}
+        </section>
+      );
+    })}
+  </div>
+
+  <!-- ── Punches ───────────────────────────────────────────────────── -->
+  <div class="bt-panel" role="tabpanel" id={`${uid}-punches`} aria-labelledby={`${uid}-tab-punches`} data-panel="punches" hidden>
+    <p class="bt-hint">
+      All punches in the tooling cabinet. The max bend angle is the sharpest
+      form the punch geometry can reach — goosenecks reach 85–88º but cannot
+      form 90º; the acute punches top out at 30–35º and are for near-flat
+      forms and hems.
+    </p>
+    <div class="bt-controls">
+      <input type="search" class="bt-search" placeholder="Filter punches…" aria-label="Filter punches" data-bt-search />
+    </div>
+    <div class="bt-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Punch</th>
+            <th scope="col">Number</th>
+            <th scope="col">Radius</th>
+            <th scope="col">Radius (mm)</th>
+            <th scope="col">Max Bend Angle</th>
+          </tr>
+        </thead>
+        <tbody>
+          {punches.map((p) => (
+            <tr data-search={`${p.name} ${p.number} ${p.radiusIn} ${p.maxBendAngleDeg}`.toLowerCase()}>
+              <td class="bt-name">{p.name}</td>
+              <td><code>{p.number}</code></td>
+              <td>{p.radiusIn} in</td>
+              <td>{p.radiusMm} mm</td>
+              <td>{p.maxBendAngleDeg}º</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── Dies ──────────────────────────────────────────────────────── -->
+  <div class="bt-panel" role="tabpanel" id={`${uid}-dies`} aria-labelledby={`${uid}-tab-dies`} data-panel="dies" hidden>
+    <p class="bt-hint">
+      All dies in the tooling cabinet. "Rule of 8" is the sheet thickness the
+      die suits under the 8× rule of thumb (V opening ÷ 8). Min flange is the
+      shortest flange the die can form.
+    </p>
+    <div class="bt-controls">
+      <input type="search" class="bt-search" placeholder="Filter dies…" aria-label="Filter dies" data-bt-search />
+    </div>
+    <div class="bt-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Die</th>
+            <th scope="col">Number</th>
+            <th scope="col">Opening</th>
+            <th scope="col">Opening (mm)</th>
+            <th scope="col">Max Bend Angle</th>
+            <th scope="col">Bend Radius</th>
+            <th scope="col">Min Flange</th>
+            <th scope="col">Rule of 8</th>
+          </tr>
+        </thead>
+        <tbody>
+          {dies.map((d) => (
+            <tr data-search={`${d.name} ${d.number} ${d.openingIn} ${d.openingMm} ${d.maxBendAngleDeg} ${d.ruleOf8In}`.toLowerCase()}>
+              <td class="bt-name">{d.name}</td>
+              <td><code>{d.number}</code></td>
+              <td>{d.openingIn} in</td>
+              <td>{d.openingMm} mm</td>
+              <td>{d.maxBendAngleDeg}º</td>
+              <td>{d.bendRadiusIn} in</td>
+              <td>{d.minFlangeIn} in</td>
+              <td>{d.ruleOf8In} in</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <p class="bt-source">
+    Transcribed from the <a href={sourceSheet} target="_blank" rel="noopener noreferrer">Spectrum Bend Table Google Sheet ↗</a> —
+    edit the sheet <em>and</em> this site together; the tables above are generated from <code>src/data/bend-table.json</code>.
+  </p>
+</div>
+
+<style>
+  .bend-table {
+    margin: 1.5rem 0;
+    border: 1px solid var(--sl-color-border);
+    border-radius: 0.85rem;
+    background: var(--sl-color-bg);
+    overflow: hidden;
+  }
+  .bt-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    border-bottom: 1px solid var(--sl-color-border);
+    background: rgb(60, 0, 96);
+  }
+  .bt-tab {
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 700;
+    padding: 0.75rem 1.2rem;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.72);
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: color 0.12s, border-color 0.12s, background 0.12s;
+  }
+  .bt-tab:hover { color: #fff; }
+  .bt-tab.active {
+    color: #fff;
+    border-bottom-color: var(--sl-color-accent);
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .bt-panel { padding: 1rem 1.1rem 1.2rem; }
+  .bt-hint {
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--sl-color-gray-2);
+    margin: 0 0 0.9rem;
+  }
+  .bt-controls { margin-bottom: 0.9rem; }
+  .bt-search {
+    width: 100%;
+    max-width: 26rem;
+    padding: 0.55rem 0.85rem;
+    font: inherit;
+    font-size: 0.9rem;
+    border: 1px solid var(--sl-color-border);
+    border-radius: 0.6rem;
+    background: var(--sl-color-bg);
+    color: var(--sl-color-text);
+  }
+  .bt-search:focus { outline: none; border-color: var(--sl-color-accent); }
+  .bt-wrap { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  th, td {
+    padding: 0.5rem 0.7rem;
+    text-align: left;
+    border-bottom: 1px solid var(--sl-color-border);
+    white-space: nowrap;
+  }
+  thead th {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--sl-color-gray-3);
+    border-bottom-width: 2px;
+  }
+  code {
+    font-size: 0.82rem;
+  }
+  .bt-group-title {
+    font-family: var(--font-heading, 'Outfit', sans-serif);
+    font-size: 1.02rem;
+    font-weight: 800;
+    margin: 1.1rem 0 0.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .bt-group-title:first-of-type { margin-top: 0; }
+  .bt-group-sub {
+    font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--sl-color-gray-3);
+  }
+  .bt-radius-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin: 0.7rem 0 0.3rem;
+  }
+  .bt-radius-label {
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--sl-color-accent);
+  }
+  .bt-radius-sub {
+    font-size: 0.74rem;
+    color: var(--sl-color-gray-3);
+  }
+  .bt-row-unusable td {
+    color: var(--sl-color-gray-3);
+    text-decoration: line-through;
+    text-decoration-color: rgba(185, 28, 28, 0.45);
+  }
+  .bt-row-unusable .bt-thickness,
+  .bt-row-unusable .bt-k {
+    text-decoration: none;
+    color: var(--sl-color-text);
+  }
+  .bt-na {
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #b91c1c;
+  }
+  .bt-thickness { font-weight: 800; }
+  .bt-k { font-family: var(--sl-font-mono, ui-monospace, monospace); }
+  .bt-name { font-weight: 700; }
+  .bt-source {
+    margin: 0;
+    padding: 0.7rem 1.1rem 0.9rem;
+    border-top: 1px dashed var(--sl-color-border);
+    font-size: 0.78rem;
+    color: var(--sl-color-gray-3);
+  }
+  :global(.bt-row-unusable td) { color: var(--sl-color-gray-3); }
+
+  @media print {
+    .bend-table { border: 1px solid #ccc; }
+    .bt-tabs, .bt-controls, .bt-source { display: none !important; }
+    .bt-panel { display: block !important; padding: 0.5rem 0.75rem; }
+    .bt-panel[hidden] { display: block !important; }
+    .bt-search { display: none; }
+    .bt-radius-block, .bt-die-group { break-inside: avoid; }
+  }
+</style>
+
+<script>
+  function initBendTables() {
+    document.querySelectorAll<HTMLElement>('[data-bend-table]').forEach((root) => {
+      if (root.dataset.bound) return;
+      root.dataset.bound = 'true';
+
+      // Tab switching
+      const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('.bt-tab'));
+      const panels = Array.from(root.querySelectorAll<HTMLElement>('.bt-panel'));
+      tabs.forEach((tab) =>
+        tab.addEventListener('click', () => {
+          const key = tab.dataset.tab;
+          tabs.forEach((t) => {
+            const active = t === tab;
+            t.classList.toggle('active', active);
+            t.setAttribute('aria-selected', String(active));
+          });
+          panels.forEach((p) => {
+            p.hidden = p.dataset.panel !== key;
+          });
+        })
+      );
+
+      // Per-panel search filters
+      panels.forEach((panel) => {
+        const search = panel.querySelector<HTMLInputElement>('[data-bt-search]');
+        if (!search) return;
+        const rows = Array.from(panel.querySelectorAll<HTMLTableRowElement>('tbody tr[data-search]'));
+        const groups = Array.from(panel.querySelectorAll<HTMLElement>('[data-group]'));
+        const apply = () => {
+          const q = search.value.toLowerCase().trim();
+          rows.forEach((r) => {
+            r.hidden = q !== '' && !(r.dataset.search ?? '').includes(q);
+          });
+          // Hide die groups whose rows are all filtered out.
+          groups.forEach((g) => {
+            const gRows = Array.from(g.querySelectorAll<HTMLTableRowElement>('tbody tr[data-search]'));
+            g.hidden = gRows.every((r) => r.hidden);
+          });
+        };
+        search.addEventListener('input', apply);
+      });
+    });
+  }
+  document.addEventListener('DOMContentLoaded', initBendTables);
+  document.addEventListener('astro:page-load', initBendTables);
+  initBendTables();
+</script>

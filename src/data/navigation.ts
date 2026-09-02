@@ -44,7 +44,7 @@ export const navigationMenu: NavCategory[] = [
       { label: 'Fiber Laser Materials', href: '/lasers/fiber-laser-cutting/', blurb: 'Which machine, what metal, how to source it' },
       { label: 'Gweike Cloud M3 Ultra', href: '/lasers/gweike-m3-ultra/', blurb: 'Hybrid fiber + CO2 laser system' },
       { label: 'Thunder Nova 35', href: '/lasers/thunder-nova-35/', blurb: '100W CO2 laser — LightBurn workflow' },
-      { label: 'Titan 25T Press Brake', href: '/forming/langmuir-titan-25t/', blurb: 'CNC press brake — dies & tonnage' },
+      { label: 'Titan 25T Press Brake', href: '/forming/langmuir-titan-25t/', blurb: 'CNC press brake — bend table, dies & tonnage' },
       { label: 'PM-1130V Lathe', href: '/forming/lathes/', blurb: 'Manual lathe — turning, parting & QCTP tooling' },
       { label: 'Grizzly G0704 Mill/Drill', href: '/forming/mill/', blurb: 'Located holes & squaring tube ends' },
       { label: 'Evolution Saws', href: '/cutting/evolution-saws/', blurb: 'S14MCS & EVOMAX14AL chop saws' },
