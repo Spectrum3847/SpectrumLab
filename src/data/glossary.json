@@ -376,7 +376,39 @@
       "aka": ["cutoff"],
       "category": "machining",
       "definition": "Cutting a finished piece off the stock with a narrow blade fed straight in. The lathe's most dig-in-prone operation: it needs the tool exactly on center height, minimal overhang, and steady feed.",
-      "seeAlso": ["turning"]
+      "seeAlso": ["turning", "interrupted-cut"]
+    },
+    {
+      "id": "dro",
+      "term": "DRO (digital readout)",
+      "category": "machining",
+      "definition": "A digital scale that reports where the machine's slides actually are, replacing the graduated dials. The Blue Lathe has a 2-axis DRO: X on the cross slide (diameter) and Z on the carriage (length along the work). It reads the position of the tool, not the size of the part — you still establish a zero by touching off, and you still measure the part before you call it done.",
+      "href": "/forming/lathes/#the-dro",
+      "seeAlso": ["caliper", "micrometer"]
+    },
+    {
+      "id": "interrupted-cut",
+      "term": "Interrupted cut",
+      "category": "machining",
+      "definition": "A cut where the tool repeatedly enters and leaves the material instead of staying buried — turning or grooving hex shaft is the everyday example, because the tool is hit by six corners every revolution. Each re-entry is a small impact, so interrupted cuts run slower, want a tough insert rather than a sharp one, and punish any tool that is not locked down and dead on center.",
+      "href": "/forming/lathe-snap-ring-grooves/#hex-is-an-interrupted-cut",
+      "seeAlso": ["across-flats", "parting", "chatter"]
+    },
+    {
+      "id": "chatter",
+      "term": "Chatter",
+      "category": "machining",
+      "definition": "Self-feeding vibration between tool and work that leaves a rippled, washboarded surface and a screaming noise. It means something in the loop is flexing — tool sticking too far out of the holder, work sticking too far out of the chuck, tool off center, or speed too high. Chatter is a stop-and-fix signal, never a push-through-it signal.",
+      "seeAlso": ["interrupted-cut", "parting"]
+    },
+    {
+      "id": "across-flats",
+      "term": "Across flats / across corners",
+      "aka": ["AF", "AC"],
+      "category": "measurement",
+      "definition": "The two ways to measure hex stock. Across flats is the size it is sold as — 1/2 in hex measures 0.500 in flat to flat. Across corners is larger by a factor of 1.1547, so the same bar measures 0.577 in corner to corner. The corner diameter is what the tool actually touches first and what has to clear the chuck and the tool post; the flat dimension is what bearings and gears fit.",
+      "href": "/forming/lathe-snap-ring-grooves/#the-numbers",
+      "seeAlso": ["interrupted-cut", "snap-ring"]
     },
     {
       "id": "kerf",
@@ -415,7 +447,16 @@
       "category": "machining",
       "definition": "A block clamped to the fence at a set distance so every cut comes out the same length without re-measuring. How the chop saw makes twenty identical tube segments.",
       "href": "/cutting/evolution-saws/#repeat-cuts--the-fence-stop-blocks--tape",
-      "seeAlso": ["fence"]
+      "seeAlso": ["fence", "punched-tube"]
+    },
+    {
+      "id": "punched-tube",
+      "term": "Punched tube",
+      "aka": ["MAXTube", "punched tubing"],
+      "category": "materials",
+      "definition": "Aluminum box tube that arrives with a #10 clearance hole pattern already punched on 0.500 in centers — REV MAXTube and WCP punched tubing are the two we buy. Because everything bolts to that pattern, punched tube is cut by indexing off the existing holes rather than by measuring an overall length.",
+      "href": "/cutting/evolution-saws/#cutting-punched-tube--the-indexing-blocks",
+      "seeAlso": ["stop-block"]
     },
     {
       "id": "riving-knife",

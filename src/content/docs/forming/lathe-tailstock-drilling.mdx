@@ -1,0 +1,123 @@
+---
+title: "Tailstock Drilling: Holes, Tap Drills & Counterbores"
+description: "Drilling shaft ends on the PM-1130V: the spot-pilot-final sequence, tap drill and counterbore sizes for FRC hardware, peck depths, drill speeds, and how to hit a depth you can trust."
+---
+
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import ConsumablesTable from '../../../components/ConsumablesTable.astro';
+import Term from '../../../components/Term.astro';
+
+A hole drilled from the <Term id="tailstock">tailstock</Term> is concentric with the shaft because the spindle and the tailstock share an axis — the work spins and the drill stands still. That is something the [drill press](/cutting/drill-press-shear/) physically cannot do, and it is the whole reason we drill shaft ends here: a tapped hole in the end of a hex shaft that is 0.005 in off-axis will pull a gearbox out of alignment.
+
+The jobs this covers are the ones we do constantly — tapping the end of a shaft for a retention bolt, counterboring so a cap screw sits flush, and boring a shaft through for wire routing.
+
+## The sequence, every time
+
+Skipping step one is the most common mistake at this machine and it wastes the most stock.
+
+1. **Spot it.** A <Term id="spot-drill">spot drill</Term> or center drill first, always. A twist drill has a chisel edge at its tip that will not self-center — start it on a bare faced end and it will walk, wobble, and drill a hole that is neither round nor on axis. Spot just deep enough to make a cone the twist drill's point can sit in.
+2. **Pilot, if the final hole is over about 1/4 in.** A pilot drill roughly the width of the final drill's chisel edge removes the load from the part of the drill that cuts worst.
+3. **Drill to final size.** <Term id="peck-drilling">Peck</Term> about one diameter deep, retract fully to clear the chip, repeat. In aluminum a long stringy chip that wraps the drill is a jam waiting to happen; in steel a packed chip is how drills break.
+4. **Counterbore or tap** as needed.
+5. **Deburr** the mouth of the hole.
+
+Oil in steel throughout. In aluminum, oil or a shot of WD-40 keeps the chip from welding to the flutes.
+
+<SafetyWarning type="warning" title="Retract before you clear a chip, and never with your fingers">
+The stringy chip coming off a drill in aluminum is sharp, hot, and still attached to the work. Stop the spindle, then use the <Term id="chip-hook">chip hook</Term> or a brush. A chip pulled by hand while the spindle is turning takes the hand with it.
+</SafetyWarning>
+
+## Sizes for the hardware we actually use
+
+<Term id="tap-drill">Tap drills</Term> are for ~75% thread, which is what we want in aluminum and steel alike — deeper thread engagement buys almost no strength and greatly increases the chance of snapping a tap.
+
+| Thread | Tap drill | Clearance (free fit) | <Term id="counterbore">Counterbore</Term> for SHCS head |
+| --- | --- | --- | --- |
+| #6-32 | #36 (0.1065 in) | #25 (0.1495 in) | 1/4 in |
+| #8-32 | #29 (0.1360 in) | #16 (0.1770 in) | 9/32 in |
+| **#10-32** | **#21 (0.1590 in)** | **#7 (0.2010 in)** | **21/64 in (0.328)** |
+| #10-24 | #25 (0.1495 in) | #7 (0.2010 in) | 21/64 in (0.328) |
+| **1/4-20** | **#7 (0.2010 in)** | **17/64 in (0.2656)** | **13/32 in (0.406)** |
+| M3 × 0.5 | 2.5 mm | 3.4 mm | 6.5 mm |
+| M5 × 0.8 | 4.2 mm | 5.5 mm | 10 mm |
+
+The two bold rows are the robot standard — #10-32 and 1/4-20 cover nearly everything we build. There is a laminated copy of the full tap and drill chart in [Orange Toolbox drawer 13](/storage/toolboxes/#orange-toolbox--metrology-machinist-tooling--ppe).
+
+Note the wall you have left: a 1/4-20 tap drill is 0.201 in, and 1/2 in hex measures 0.500 in across the flats, so a tapped 1/4-20 hole in the end of a 1/2 in shaft leaves about 0.150 in of wall. That is fine. The same hole in 3/8 in hex leaves 0.087 in, which is thin — use #10-32 in 3/8 in shaft unless a mentor says otherwise.
+
+## Depth you can trust
+
+<SafetyWarning type="warning" title="The DRO does not read the tailstock">
+Our 2-axis [DRO](/forming/lathes/#the-dro) covers the cross slide and the carriage — **not the quill**. Drilling depth is read off the tailstock's own graduations, the old-fashioned way. Students who have learned to trust the readout on facing and grooving reach for it here and find nothing.
+</SafetyWarning>
+
+The tailstock quill is graduated, and that scale is how you control depth — but two things trip people up.
+
+**The drill point adds depth.** A standard 118° drill has a conical point whose length is about **0.3 × the drill diameter**. A 1/4 in drill sunk until the full diameter reaches 0.500 in has actually punched its tip to about 0.575 in. For a blind tapped hole, add the point length plus a couple of threads of run-out room, or you will bottom the tap.
+
+**Zero the quill against the work, not the scale.** Advance until the drill tip just touches the faced end, read the quill scale, add your depth, and drill to that number. Reading depth off the scale from wherever the quill happened to be parked is guesswork.
+
+For a run of identical holes, set a physical stop rather than watching the scale each time — a <Term id="shaft-collar">shaft collar</Term> clamped on the quill, or the tailstock's own depth stop if the job allows it. Same principle as the [carriage stop for repeat lengths](/forming/lathe-cut-to-length/#making-a-run-of-them): let the machine hold the number.
+
+## Speeds
+
+Drilling RPM uses the **drill diameter**, not the stock diameter — this is the most common speed error at the lathe. Starting points for HSS drills, capped by the machine's 2000 RPM ceiling:
+
+| Drill | Aluminum | Steel |
+| --- | --- | --- |
+| Center / spot drill | 1200–1500 | 800–1000 |
+| #21 (0.159 in) | 2000 | 1400–1600 |
+| #7 (0.201 in) | 2000 | 1100–1300 |
+| 1/4 in | 1800–2000 | 1000–1100 |
+| 3/8 in | 1400–1600 | 700–800 |
+| 1/2 in | 1000–1200 | 500–600 |
+
+These are starting points. Slower always costs you time; faster costs you drills. If the drill squeals, smokes, or the chip comes off blue, you are too fast or dry — stop, oil it, drop the speed.
+
+## Holding the work
+
+- **A 3-jaw <Term id="chuck">chuck</Term> grips hex shaft properly.** Three jaws land on alternating flats and self-center, so hex is actually easier to hold than round here. Seat it and tighten firmly.
+- **Chuck short.** The shorter the stick-out, the less the work deflects when the drill pushes on it.
+- **Support long stock through the spindle bore.** Anything projecting more than a couple of diameters out the back of the spindle whips — cut it shorter or support it.
+- **Face the end before you spot it.** A saw-cut end is neither square nor flat, and a spot drill on a slanted face still walks.
+
+## Tapping after drilling
+
+Power tapping on the lathe is not a student operation. With the **spindle off**, put the tap in the tailstock chuck (or use a spring center against the tap's center hole) to hold it straight while you turn it by hand with a wrench. The tailstock's job is alignment, not torque.
+
+Back the tap out every half turn or so to break the chip, and use tapping fluid. For a run of many parts, the [electric tapping machine](/cutting/tapping-machine/) by the chop saws is faster and far more forgiving.
+
+## When it goes wrong
+
+| What you see | What it means | What to do |
+| --- | --- | --- |
+| Hole is off-center or oval | Started without spotting, or on an unfaced end | Face, spot, then drill — the part is likely scrap |
+| Drill squeals and smokes | Too fast, or dry | Drop RPM, add oil |
+| Chip is blue | Way too fast, or no oil | Stop before you cook the drill |
+| Drill grabs at breakthrough | Normal — the drill self-feeds as it exits | Ease off the quill feed for the last few thousandths |
+| Long chip wrapping the drill | Not pecking | Retract fully each peck; stop the spindle to clear |
+| Tap started crooked | Not guided by the tailstock | Back it out, restart with the tailstock chuck holding it square |
+| Tap snapped | Too deep, no backing off, or wrong tap drill | Get a mentor — a broken tap in a shaft is a hard extraction |
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Drill from the Tailstock"
+  items={[
+    'End of the work faced square',
+    'Drill size confirmed against the tap/clearance chart — not guessed',
+    'Spot drill or center drill in hand as the first cut',
+    'RPM set from the DRILL diameter, right belt range',
+    'Depth target worked out including the 0.3 x D drill point',
+    'Tailstock locked to the bed; quill extension kept short',
+    'Oil at the machine; chip brush or hook within reach',
+    'CHUCK KEY OUT',
+  ]}
+/>
+
+## Consumables
+
+<ConsumablesTable machine="pm-1130v" />
+
+**Related pages:** [PM-1130V Lathe](/forming/lathes/) for the machine and safety rules · [Cutting Shafts to Exact Length](/forming/lathe-cut-to-length/) · [Snap Ring Grooves](/forming/lathe-snap-ring-grooves/) · [Electric Tapping Machine](/cutting/tapping-machine/) for production tapping · [Drill Press & Bench Shear](/cutting/drill-press-shear/) for holes that do not need to be on axis

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Blue Lathe — Job Cards</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ==========================================================================
+     BLUE LATHE JOB CARDS — three 8.5 x 5.5in cards, one per US-Letter page,
+     printed in the top half with a trim line so they can go through the copier
+     and be cut down. Same Spectrum tokens as the PM-1130V safety placards.
+
+     These are the AT-THE-MACHINE reference: numbers a student cannot hold in
+     their head. Safety lives on the placard, not here — each card assumes the
+     placard is already on the wall beside it.
+     ========================================================================== */
+  :root{
+    --purple-900:#3C0060;
+    --purple-700:#6B1199;
+    --purple-100:#F3E8FF;
+    --purple-hairline:#E4D9F0;
+
+    --danger:#A8121F;
+    --danger-tint:#FBEAEB;
+    --mandatory:#0B4C8C;
+    --mandatory-tint:#E7F1FA;
+    --go:#116B3C;
+    --go-tint:#E6F4EC;
+
+    --ink:#201A29;
+    --steel:#4A4255;
+    --paper:#FFFFFF;
+
+    --font-display:'Outfit', 'Segoe UI', system-ui, sans-serif;
+    --font-body:'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{
+    margin:0;
+    background:#DED4E8;
+    color:var(--ink);
+    font-family:var(--font-body);
+    -webkit-font-smoothing:antialiased;
+  }
+  *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; color-adjust:exact; }
+
+  @page{ size:8.5in 11in; margin:0; }
+
+  .sheet{
+    position:relative;
+    width:8.5in;
+    height:5.5in;
+    margin:0.4in auto;
+    background:var(--paper);
+    box-shadow:0 1.5rem 3rem rgba(60,0,96,0.35);
+    display:grid;
+    grid-template-rows:auto 1fr auto;
+    overflow:hidden;
+  }
+
+  .trim{ display:none; }
+
+  @media print{
+    html,body{ background:#fff; }
+    .sheet{ margin:0; box-shadow:none; page-break-after:always; break-after:page; }
+    .sheet:last-of-type{ page-break-after:auto; break-after:auto; }
+    .no-print{ display:none !important; }
+    .trim{
+      display:block; position:absolute; top:5.5in; left:0;
+      width:8.5in; border-top:1px dashed #9a9a9a;
+    }
+    .trim span{
+      position:absolute; right:0.12in; top:0.04in;
+      font-family:var(--font-body); font-size:7pt; color:#9a9a9a; letter-spacing:0.04em;
+    }
+  }
+
+  .toolbar.no-print{
+    position:fixed; top:0.9rem; right:0.9rem; z-index:10;
+    display:flex; gap:0.7rem; align-items:center;
+  }
+  .toolbar .hint{
+    font-family:var(--font-body); font-size:0.78rem; font-weight:600;
+    color:var(--purple-900); opacity:0.75; max-width:16rem; line-height:1.25;
+  }
+  .toolbar button{
+    font-family:var(--font-body); font-weight:700; font-size:0.85rem;
+    padding:0.6rem 1.1rem; border-radius:0.5rem; border:none; cursor:pointer;
+    background:var(--purple-900); color:#fff;
+    box-shadow:0 4px 14px rgba(60,0,96,0.35);
+  }
+  .toolbar button:hover{ background:var(--purple-700); }
+  .toolbar button:focus-visible{ outline:3px solid #C084FC; outline-offset:2px; }
+
+  /* ==========================================================================
+     HEADER
+     ========================================================================== */
+  .band-header{
+    background:var(--purple-900);
+    background-image:
+      linear-gradient(115deg, rgba(107,17,153,0.55) 0%, transparent 45%),
+      radial-gradient(circle at 96% 0%, rgba(192,132,252,0.30) 0%, transparent 60%);
+    color:#fff;
+    padding:0.15in 0.3in;
+    display:flex; align-items:center; gap:0.2in;
+  }
+  /* The brand logo artwork is dark, which disappears against the purple band.
+     brightness(0) invert(1) flattens it to solid white regardless of source
+     colour — checked on screen and in print preview. */
+  .band-header img.logo{
+    height:0.42in; width:auto; display:block;
+    filter:brightness(0) invert(1) drop-shadow(0 1px 3px rgba(0,0,0,0.35));
+  }
+  .band-header .div{ width:3px; height:0.44in; background:rgba(255,255,255,0.28); flex:none; }
+  .band-header .titles{ flex:1; min-width:0; }
+  .band-header .eyebrow{
+    font-family:var(--font-display); font-weight:700; font-size:0.72rem;
+    letter-spacing:0.09em; text-transform:uppercase; opacity:0.72;
+  }
+  .band-header h1{
+    font-family:var(--font-display); font-weight:800; font-size:1.42rem;
+    margin:0.02in 0 0; line-height:1.05; letter-spacing:-0.01em;
+  }
+  .band-header .cardno{
+    font-family:var(--font-display); font-weight:800; font-size:1.5rem;
+    opacity:0.34; flex:none; letter-spacing:-0.02em;
+  }
+
+  /* ==========================================================================
+     BODY — two columns: the numbers on the left, the sequence on the right.
+     ========================================================================== */
+  /* The right column carries the prose (sequence + callouts) and the left
+     carries compact numeric tables, so the right one needs the extra width —
+     narrowing it makes it wrap and overflow the card. Verify against the
+     footer, NOT scrollHeight: .sheet is overflow:hidden, which clamps
+     scrollHeight to clientHeight and silently reports "fits". */
+  .body{
+    display:grid;
+    grid-template-columns:1fr 1.16fr;
+    gap:0; min-height:0;
+  }
+  .col{ padding:0.16in 0.3in 0.1in; min-width:0; }
+  .col + .col{ border-left:1.5px solid var(--purple-hairline); }
+
+  h2.sec{
+    font-family:var(--font-display); font-weight:800; font-size:0.74rem;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--purple-700);
+    margin:0 0 0.06in;
+  }
+  h2.sec + h2.sec, .gap{ margin-top:0.13in; }
+  /* A section heading straight after a numbered list reads as another list
+     item unless it gets clear air above it. */
+  ol.steps + h2.sec, .callout + h2.sec{ margin-top:0.17in; }
+
+  table{ width:100%; border-collapse:collapse; font-size:0.76rem; }
+  th{
+    text-align:left; font-weight:800; font-size:0.63rem; letter-spacing:0.05em;
+    text-transform:uppercase; color:var(--steel);
+    padding:0.02in 0.06in 0.03in 0; border-bottom:1.5px solid var(--purple-hairline);
+  }
+  td{
+    padding:0.035in 0.06in 0.035in 0; border-bottom:1px solid #EFEAF4;
+    vertical-align:baseline; line-height:1.2;
+  }
+  td.k{ font-weight:700; }
+  td.n{ font-variant-numeric:tabular-nums; font-weight:700; color:var(--purple-900); white-space:nowrap; }
+  tr.hi td{ background:var(--purple-100); }
+  tr:last-child td{ border-bottom:none; }
+
+  ol.steps{ margin:0; padding-left:0.22in; font-size:0.775rem; line-height:1.3; }
+  ol.steps li{ margin-bottom:0.045in; }
+  ol.steps li::marker{ font-weight:800; color:var(--purple-700); }
+  ol.steps b{ font-weight:800; }
+
+  /* Card 03 carries the longest sequence and two callouts. Nudge the step list
+     tighter so it still lands inside 5.5in — checked at 8.5x5.5, do not loosen
+     without re-measuring the card height. */
+  .sheet.tight ol.steps{ font-size:0.75rem; line-height:1.22; }
+  .sheet.tight ol.steps li{ margin-bottom:0.03in; }
+  .sheet.tight .callout{ padding:0.065in 0.095in; }
+  .sheet.tight td{ padding-top:0.028in; padding-bottom:0.028in; }
+
+  .callout{
+    border-radius:0.06in; padding:0.075in 0.1in; font-size:0.735rem; line-height:1.25;
+    display:flex; gap:0.08in; align-items:flex-start;
+  }
+  .callout.stop{ background:var(--danger-tint); border-left:4px solid var(--danger); }
+  .callout.go{ background:var(--go-tint); border-left:4px solid var(--go); }
+  .callout.info{ background:var(--mandatory-tint); border-left:4px solid var(--mandatory); }
+  .callout .lbl{
+    font-family:var(--font-display); font-weight:800; font-size:0.68rem;
+    letter-spacing:0.05em; text-transform:uppercase; flex:none;
+  }
+  .callout.stop .lbl{ color:var(--danger); }
+  .callout.go .lbl{ color:var(--go); }
+  .callout.info .lbl{ color:var(--mandatory); }
+
+  /* ==========================================================================
+     FOOTER — QR back to the full page.
+     ========================================================================== */
+  .band-footer{
+    border-top:1.5px solid var(--purple-hairline);
+    background:#FBF9FD;
+    padding:0.07in 0.3in;
+    display:flex; align-items:center; gap:0.14in;
+  }
+  .band-footer img.qr{ width:0.62in; height:0.62in; display:block; flex:none; }
+  .band-footer .ftext{ flex:1; min-width:0; }
+  .band-footer .ftitle{
+    font-family:var(--font-display); font-weight:800; font-size:0.72rem;
+    letter-spacing:0.05em; text-transform:uppercase; color:var(--purple-900);
+  }
+  .band-footer .furl{
+    font-family:ui-monospace,'Cascadia Mono',Consolas,monospace;
+    font-size:0.7rem; font-weight:600; color:var(--steel); word-break:break-all;
+  }
+  .band-footer .fnote{
+    font-size:0.66rem; color:var(--steel); text-align:right; flex:none; max-width:2.1in; line-height:1.2;
+  }
+</style>
+</head>
+<body>
+
+  <div class="toolbar no-print">
+    <span class="hint">Three cards, one per US Letter page &mdash; trim along the dashed line and hang them at the lathe</span>
+    <button onclick="window.print()">Print / Save as PDF</button>
+  </div>
+
+  <!-- ====================================================================
+       CARD 1 — TAILSTOCK DRILLING
+       ==================================================================== -->
+  <main class="sheet tight">
+    <header class="band-header">
+      <img class="logo" src="/signage/spectrum-logo.svg" alt="Spectrum 3847">
+      <div class="div"></div>
+      <div class="titles">
+        <div class="eyebrow">Blue Lathe &middot; PM-1130V</div>
+        <h1>Tailstock Drilling</h1>
+      </div>
+      <div class="cardno">01</div>
+    </header>
+
+    <div class="body">
+      <div class="col">
+        <h2 class="sec">Tap &amp; clearance drills</h2>
+        <table>
+          <tr><th>Thread</th><th>Tap drill</th><th>Clearance</th><th>C'bore</th></tr>
+          <tr><td class="k">#6-32</td><td class="n">#36</td><td class="n">#25</td><td class="n">1/4</td></tr>
+          <tr><td class="k">#8-32</td><td class="n">#29</td><td class="n">#16</td><td class="n">9/32</td></tr>
+          <tr class="hi"><td class="k">#10-32</td><td class="n">#21</td><td class="n">#7</td><td class="n">21/64</td></tr>
+          <tr><td class="k">#10-24</td><td class="n">#25</td><td class="n">#7</td><td class="n">21/64</td></tr>
+          <tr class="hi"><td class="k">1/4-20</td><td class="n">#7</td><td class="n">17/64</td><td class="n">13/32</td></tr>
+          <tr><td class="k">M3&times;0.5</td><td class="n">2.5 mm</td><td class="n">3.4 mm</td><td class="n">6.5 mm</td></tr>
+          <tr><td class="k">M5&times;0.8</td><td class="n">4.2 mm</td><td class="n">5.5 mm</td><td class="n">10 mm</td></tr>
+        </table>
+        <p style="font-size:0.68rem; color:var(--steel); margin:0.05in 0 0; line-height:1.2;">
+          1/4-20 in 3/8 in hex leaves only <b>0.087 in of wall</b> &mdash; use #10-32 in 3/8 in shaft.
+        </p>
+
+        <h2 class="sec gap">RPM &mdash; use the DRILL diameter</h2>
+        <table>
+          <tr><th>Drill</th><th>Aluminum</th><th>Steel</th></tr>
+          <tr><td class="k">Spot / center</td><td class="n">1200&ndash;1500</td><td class="n">800&ndash;1000</td></tr>
+          <tr><td class="k">#21 &middot; #7</td><td class="n">2000</td><td class="n">1100&ndash;1600</td></tr>
+          <tr><td class="k">1/4 in</td><td class="n">1800&ndash;2000</td><td class="n">1000&ndash;1100</td></tr>
+          <tr><td class="k">3/8 in</td><td class="n">1400&ndash;1600</td><td class="n">700&ndash;800</td></tr>
+          <tr><td class="k">1/2 in</td><td class="n">1000&ndash;1200</td><td class="n">500&ndash;600</td></tr>
+        </table>
+      </div>
+
+      <div class="col">
+        <h2 class="sec">Sequence</h2>
+        <ol class="steps">
+          <li><b>Face the end.</b> A saw cut is not flat and a drill will walk on it.</li>
+          <li><b>Spot drill first &mdash; always.</b> A twist drill cannot start its own hole.</li>
+          <li><b>Pilot</b> if the final hole is over 1/4 in.</li>
+          <li><b>Peck 1 diameter deep</b>, retract fully, clear the chip, repeat.</li>
+          <li><b>Counterbore or tap</b>, then deburr the mouth.</li>
+        </ol>
+
+        <h2 class="sec gap">Depth</h2>
+        <div class="callout info">
+          <span class="lbl">+0.3&times;D</span>
+          <span>A 118&deg; drill point adds about <b>0.3 &times; the drill diameter</b> of extra depth past the full-diameter shoulder. Zero the quill scale by touching the faced end, then add your depth.</span>
+        </div>
+
+        <div class="callout stop gap">
+          <span class="lbl">No DRO</span>
+          <span>The 2-axis DRO reads the cross slide and carriage &mdash; <b>not the quill</b>. Drilling depth comes off the tailstock graduations.</span>
+        </div>
+
+        <div class="callout stop gap">
+          <span class="lbl">Stop</span>
+          <span>Blue chips, squealing, or smoke = too fast or dry. Spindle off, oil it, drop the RPM. Clear chips with the hook, <b>never fingers</b>.</span>
+        </div>
+
+      </div>
+    </div>
+
+    <footer class="band-footer">
+      <img class="qr" src="/signage/qr/lathe-tailstock-drilling.svg" alt="QR code to the tailstock drilling page">
+      <div class="ftext">
+        <div class="ftitle">Full procedure</div>
+        <div class="furl">lab.spectrum3847.org/forming/lathe-tailstock-drilling/</div>
+      </div>
+      <div class="fnote">Safety rules are on the PM-1130V placard. Chuck key out, no gloves, goggles.</div>
+    </footer>
+    <div class="trim"><span>TRIM</span></div>
+  </main>
+
+  <!-- ====================================================================
+       CARD 2 — CUTTING TO EXACT LENGTH
+       ==================================================================== -->
+  <main class="sheet">
+    <header class="band-header">
+      <img class="logo" src="/signage/spectrum-logo.svg" alt="Spectrum 3847">
+      <div class="div"></div>
+      <div class="titles">
+        <div class="eyebrow">Blue Lathe &middot; PM-1130V</div>
+        <h1>Cutting to Exact Length</h1>
+      </div>
+      <div class="cardno">02</div>
+    </header>
+
+    <div class="body">
+      <div class="col">
+        <h2 class="sec">Decide first</h2>
+        <table>
+          <tr><th>Stock</th><th>Method</th></tr>
+          <tr class="hi"><td class="k">3/8 or 1/2 hex</td><td>Chop saw long, then <b>face</b></td></tr>
+          <tr><td class="k">Round over 5/8</td><td>Chop saw, then face</td></tr>
+          <tr><td class="k">Round under 5/8, alum.</td><td>Part off &mdash; MGEHR1212-1.5</td></tr>
+          <tr><td class="k">Round under 5/8, steel</td><td>Part off &mdash; MGEHR1212-2</td></tr>
+        </table>
+
+        <div class="callout stop gap">
+          <span class="lbl">Never</span>
+          <span><b>Do not part off hex shaft.</b> A buried blade in an interrupted cut is the worst dig-in on this machine. Saw it and face it.</span>
+        </div>
+
+        <h2 class="sec gap">RPM</h2>
+        <table>
+          <tr><th>Op</th><th>1/2 alum.</th><th>1/2 steel</th></tr>
+          <tr><td class="k">Facing</td><td class="n">1800&ndash;2000</td><td class="n">1200</td></tr>
+          <tr><td class="k">Parting <span style="font-weight:500">(low range)</span></td><td class="n">~600</td><td class="n">~300</td></tr>
+        </table>
+
+        <div class="callout info gap">
+          <span class="lbl">Kerf</span>
+          <span>1.5 mm blade = <b>0.059 in</b> &middot; 2 mm blade = <b>0.079 in</b>. Add a kerf per part when you size the bar.</span>
+        </div>
+      </div>
+
+      <div class="col">
+        <h2 class="sec">Facing to a dimension &mdash; use Z</h2>
+        <ol class="steps">
+          <li><b>Face one end clean.</b> That end is now the reference.</li>
+          <li><b>Flip</b>, chuck on the faced end, seat it square.</li>
+          <li><b>Face the second end just clean.</b></li>
+          <li><b>Measure overall length</b> with calipers, spindle stopped.</li>
+          <li><b>Zero Z</b> on that freshly faced end. Z now counts length removed &mdash; one-to-one, nothing to halve.</li>
+          <li><b>Face in to Z = &minus;(what you owe),</b> in two bites. Re-measure between them.</li>
+          <li><b>Deburr both ends</b> or nothing will sit flat.</li>
+        </ol>
+
+        <div class="callout info gap">
+          <span class="lbl">X mode</span>
+          <span>Z is length, always one-to-one. <b>X can read radius or diameter</b> &mdash; a factor of two. Leave it in <b>diameter</b> mode.</span>
+        </div>
+
+        <h2 class="sec gap">A run of identical parts</h2>
+        <div class="callout go">
+          <span class="lbl">Setup</span>
+          <span>Cut the batch to one rough length at the <b>chop saw stop block</b> first. Then hold <b>one Z zero</b> for the whole run &mdash; check the first, the last, and one in the middle.</span>
+        </div>
+      </div>
+    </div>
+
+    <footer class="band-footer">
+      <img class="qr" src="/signage/qr/lathe-cut-to-length.svg" alt="QR code to the cutting to length page">
+      <div class="ftext">
+        <div class="ftitle">Full procedure</div>
+        <div class="furl">lab.spectrum3847.org/forming/lathe-cut-to-length/</div>
+      </div>
+      <div class="fnote">If a parting cut chatters, squeals, or grabs &mdash; spindle off, get a mentor.</div>
+    </footer>
+    <div class="trim"><span>TRIM</span></div>
+  </main>
+
+  <!-- ====================================================================
+       CARD 3 — SNAP RING GROOVES
+       ==================================================================== -->
+  <main class="sheet tight">
+    <header class="band-header">
+      <img class="logo" src="/signage/spectrum-logo.svg" alt="Spectrum 3847">
+      <div class="div"></div>
+      <div class="titles">
+        <div class="eyebrow">Blue Lathe &middot; PM-1130V</div>
+        <h1>Snap Ring Grooves</h1>
+      </div>
+      <div class="cardno">03</div>
+    </header>
+
+    <div class="body">
+      <div class="col">
+        <h2 class="sec">Cut to these numbers</h2>
+        <table>
+          <tr><th></th><th>3/8 hex</th><th>1/2 hex</th></tr>
+          <tr><td class="k">Across flats</td><td class="n">0.375</td><td class="n">0.500</td></tr>
+          <tr><td class="k">Across corners</td><td class="n">0.433</td><td class="n">0.577</td></tr>
+          <tr class="hi"><td class="k">Groove diameter</td><td class="n">0.348</td><td class="n">0.468</td></tr>
+          <tr class="hi"><td class="k">Groove width</td><td class="n">0.029</td><td class="n">0.039</td></tr>
+          <tr><td class="k">Ring thickness</td><td class="n">0.025</td><td class="n">0.035</td></tr>
+          <tr><td class="k">Plunge from corner</td><td class="n">0.043</td><td class="n">0.055</td></tr>
+        </table>
+        <p style="font-size:0.68rem; color:var(--steel); margin:0.05in 0 0; line-height:1.2;">
+          McMaster 97633A170 (3/8) &middot; 97633A200 (1/2). Dial to the <b>groove diameter</b> &mdash; caliper it in the groove. Depth numbers depend on where you touched off; diameter does not.
+        </p>
+
+        <h2 class="sec gap">RPM &mdash; low range, interrupted cut</h2>
+        <table>
+          <tr><th>Shaft</th><th>Aluminum</th><th>Steel</th></tr>
+          <tr><td class="k">1/2 in hex</td><td class="n">450&ndash;650</td><td class="n">250&ndash;350</td></tr>
+          <tr><td class="k">3/8 in hex</td><td class="n">600&ndash;800</td><td class="n">300&ndash;450</td></tr>
+        </table>
+      </div>
+
+      <div class="col">
+        <div class="callout stop">
+          <span class="lbl">Tool</span>
+          <span><b>1.0 mm insert for 1/2 in rings &middot; 0.8 mm for 3/8 in.</b> One tool per size, each pre-set in its own block. <b>Never</b> the 1.5 / 2 mm parting inserts &mdash; they leave the ring 0.024&ndash;0.034 in of slop. And never groove-tool a part-off.</span>
+        </div>
+
+        <h2 class="sec gap">Sequence</h2>
+        <ol class="steps">
+          <li><b>Face the end</b> and get the shaft to final length first.</li>
+          <li><b>Chuck short.</b> Minimum stick-out; the 3-jaw grips hex properly.</li>
+          <li><b>Zero Z at the shaft end</b>, then <b>touch off the corner and zero X</b> (diameter mode).</li>
+          <li><b>Move to position on Z, then LOCK THE CARRIAGE.</b> The DRO puts you there; the lock keeps you there.</li>
+          <li><b>Plunge to X = 0.468</b> (0.348 on 3/8). Slow, steady, no dwelling.</li>
+          <li><b>Caliper the groove</b>, spindle stopped. Trust the caliper over the readout.</li>
+          <li><b>Test-fit a real ring.</b> It should snap in, sit flat, not rock.</li>
+          <li><b>Deburr</b> the six corners or the ring will not seat.</li>
+        </ol>
+
+        <div class="callout info gap">
+          <span class="lbl">Center</span>
+          <span>Above center it rubs; below center it digs and <b>snaps the insert</b>. Six corners a revolution leaves no margin &mdash; set height with the Pro Lathe Gage.</span>
+        </div>
+      </div>
+    </div>
+
+    <footer class="band-footer">
+      <img class="qr" src="/signage/qr/lathe-snap-ring-grooves.svg" alt="QR code to the snap ring grooves page">
+      <div class="ftext">
+        <div class="ftitle">Full procedure</div>
+        <div class="furl">lab.spectrum3847.org/forming/lathe-snap-ring-grooves/</div>
+      </div>
+      <div class="fnote">Chatter means something is flexing. Shorten the overhang &mdash; do not push through it.</div>
+    </footer>
+    <div class="trim"><span>TRIM</span></div>
+  </main>
+
+</body>
+</html>

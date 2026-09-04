@@ -133,6 +133,9 @@ export default defineConfig({
           items: [
             { label: 'Langmuir Titan 25T Press Brake', slug: 'forming/langmuir-titan-25t' },
             { label: 'PM-1130V Lathe', slug: 'forming/lathes' },
+            { label: 'Lathe — Tailstock Drilling', slug: 'forming/lathe-tailstock-drilling' },
+            { label: 'Lathe — Cutting to Length', slug: 'forming/lathe-cut-to-length' },
+            { label: 'Lathe — Snap Ring Grooves', slug: 'forming/lathe-snap-ring-grooves' },
             { label: 'Grizzly G0704 Mill/Drill', slug: 'forming/mill' },
             { label: 'Arbor Press & Broaching', slug: 'forming/arbor-press' },
           ],
