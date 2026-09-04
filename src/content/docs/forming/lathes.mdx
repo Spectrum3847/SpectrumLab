@@ -55,6 +55,27 @@ The wall placards for the Blue Lathe. Open one and use your browser's Print (or 
 
 Neither placard carries spindle speeds. Safe RPM depends on the diameter you're turning, so a single number per material would be wrong — use the [speed table](#spindle-speeds) below.
 
+**[Job cards](/signage/lathe-job-cards.html)** — three cut-down cards, one per job, with the sizes and speeds you cannot hold in your head: tap drills and drill RPM, part-off-versus-face, and the snap-ring groove diameters. Print on cardstock, cut on the dashed lines, and hang them on a hook at the machine. Each card carries a QR code back to its full page on this site.
+
+## The DRO
+
+Our PM-1130V is the **2-axis DRO package**, and it is the single thing that makes precise work on this machine teachable. Learn these conventions once and every job on this site assumes them.
+
+| Axis | Reads | Use it for |
+| --- | --- | --- |
+| **X** — cross slide | **Diameter** of the work | Turning to size, [snap ring groove diameter](/forming/lathe-snap-ring-grooves/) |
+| **Z** — carriage | Travel **along** the work | [Facing to length](/forming/lathe-cut-to-length/), groove position from the end |
+
+**Leave X in diameter mode.** The X axis can be switched to read radius instead, which silently halves every number. Diameter mode is what your calipers read, what the micrometer reads, and what the drawing says — so that is the mode this shop uses. If a cut comes out twice as deep as you asked for, this is why.
+
+**The DRO reads the tool, not the part.** It knows where the slides are, not how big your work is. Every job still starts by touching off to set a zero, and still ends by measuring the part. A DRO makes you fast and repeatable; it does not make you right.
+
+<SafetyWarning type="warning" title="The DRO does not read the tailstock">
+Two axes means the cross slide and the carriage. **The tailstock quill is not on the DRO** — drilling depth is still read off the quill's own graduations. See [Tailstock Drilling](/forming/lathe-tailstock-drilling/#depth-you-can-trust).
+</SafetyWarning>
+
+Establish zero at the start of a job and do not disturb it: face the reference end, zero Z there, and every length on the part is then a single number away. For a batch, that zero is good for the whole run as long as each piece seats the same way.
+
 ## Spindle Speeds
 
 Starting point: **RPM ≈ (4 × <Term id="sfm">SFM</Term>) ÷ diameter in inches**. With our <Term id="carbide-insert">carbide insert</Term> tooling, use roughly 400–500 SFM for aluminum and ~300 SFM for mild steel; HSS runs about half that.
@@ -68,25 +89,35 @@ Starting point: **RPM ≈ (4 × <Term id="sfm">SFM</Term>) ÷ diameter in inches
 
 Adjustments that matter: **parting and knurling run at about 1/3 of turning speed**; drilling from the <Term id="tailstock">tailstock</Term> uses the drill diameter (not the stock diameter) in the formula; interrupted cuts (hex stock!) run slower. Use the tach, not guesswork, and remember the two belt ranges — low range for big diameters and heavy cuts, high range for small-diameter finishing.
 
+## The Three Jobs
+
+Nearly everything this lathe does for us is one of three jobs. Each has its own page with the sizes, speeds, setup, and failure modes worked out — read the one you need before you walk up to the machine, and use the matching [job card](#printable-placards) at the lathe as the reminder.
+
+| Job | What it covers | Page |
+| --- | --- | --- |
+| **Drilling from the tailstock** | Concentric holes in shaft ends, tap drills, counterbores, through-bores | [Tailstock Drilling](/forming/lathe-tailstock-drilling/) |
+| **Cutting to exact length** | Parting off, facing to length, runs of identical spacers | [Cutting Shafts to Exact Length](/forming/lathe-cut-to-length/) |
+| **Snap ring grooves** | Retaining-ring grooves in 3/8" and 1/2" hex shaft | [Snap Ring Grooves](/forming/lathe-snap-ring-grooves/) |
+
 ## Core Operations
 
 ### Facing
 
-Square the end of the stock first — every other measurement references it. Tool exactly on center height (a tool above or below center leaves a nub), feed from outside to center with the cross slide, light final pass for finish.
+Square the end of the stock first — every other measurement references it. Tool exactly on center height (a tool above or below center leaves a nub), feed from outside to center with the cross slide, light final pass for finish. Facing to a *dimension* is its own procedure — see [Cutting Shafts to Exact Length](/forming/lathe-cut-to-length/).
 
 ### Turning
 
-Rough in 0.020–0.050 in radius passes for aluminum (half that in steel), sneak up on final diameter with a 0.005 in finish pass. Measure with a micrometer from [Orange Toolbox drawer 10](/storage/toolboxes/#orange-toolbox--metrology-machinist-tooling--ppe), and remember the cross slide dial may read radius, not diameter — verify before trusting it.
+Rough in 0.020–0.050 in radius passes for aluminum (half that in steel), sneak up on final diameter with a 0.005 in finish pass. Work to the **X axis on the [DRO](#the-dro), in diameter mode** — dial in the size you want and cut to it. Confirm with a micrometer from [Orange Toolbox drawer 10](/storage/toolboxes/#orange-toolbox--metrology-machinist-tooling--ppe) before you call the part done.
 
 ### Parting
 
 The operation most likely to bite. Part close to the chuck, tool square and exactly on center, spindle in low range at ~1/3 turning speed, steady feed, cutting oil the whole way. If it chatters or squeals, stop and get a mentor — don't push through. Catch the part in a tray, never in your hand.
 
-Use the indexable grooving holders for this — **MGEHR1212-1.5** for aluminum and small diameters, **MGEHR1212-2** when the narrow blade chatters or you're in steel. Details and insert numbers are in [Grooving & Parting](#grooving--parting--the-mgehr-holders) below.
+Use the indexable grooving holders for this — **MGEHR1212-1.5** for aluminum and small diameters, **MGEHR1212-2** when the narrow blade chatters or you're in steel. Details and insert numbers are in [Grooving & Parting](#grooving--parting--the-mgehr-holders) below. **Hex shaft is never parted off** — it gets bandsawn and faced instead, for the reasons in [Cutting Shafts to Exact Length](/forming/lathe-cut-to-length/#decide-first-part-off-or-saw-and-face).
 
 ### Drilling from the Tailstock
 
-Center-face the stock, start with a **center drill**, then step up through drill sizes to your final diameter. Peck: drill about one diameter deep, back out, clear chips, repeat. Oil in steel. Spare drill chucks and Morse-taper arbors are in **Orange Toolbox drawer 7**; the MT2 <Term id="live-center">live center</Term> and the boring/turning tool holders are in **drawer 5**.
+Center-face the stock, start with a **center drill**, then step up through drill sizes to your final diameter. Peck: drill about one diameter deep, back out, clear chips, repeat. Oil in steel. Spare drill chucks and Morse-taper arbors are in **Orange Toolbox drawer 7**; the MT2 <Term id="live-center">live center</Term> and the boring/turning tool holders are in **drawer 5**. Tap drill sizes, counterbore sizes, and drill speeds are on the [Tailstock Drilling](/forming/lathe-tailstock-drilling/) page.
 
 ### Tapping
 
@@ -120,6 +151,7 @@ Working notes:
 - **Width is not interchangeable.** A 1.5 mm insert in the 2 mm holder will not seat, and vice versa. Match the insert to the number stamped on the holder shank.
 - **Depth is limited.** These are short blades on a 12 mm shank — they'll reach on the order of 3/8 in of depth, so part-off tops out around 5/8–3/4 in diameter. Check the blade's usable reach against your radius *before* you start the cut, not halfway in.
 - **On center or not at all.** A grooving tool above center rubs; below center, the insert digs and snaps. This is the tool that punishes a sloppy height setting hardest — see the gauge below.
+- **Neither of these is a snap-ring tool.** A 1/2 in retaining ring is 0.035 in thick and wants a 0.039 in groove; the 1.5 mm insert cuts 0.059 in. Ring grooves have their own tooling — the **SER1212H16 holders with 0.8 mm and 1.0 mm circlip inserts**, one width per ring size. See [Snap Ring Grooves](/forming/lathe-snap-ring-grooves/#tooling--one-insert-width-per-ring-size).
 
 ### Setting Tool Height — the Pro Lathe Gage
 
@@ -186,6 +218,7 @@ Wear items for the lathe, with reorder links. Match insert geometry to the marki
     'Speed': '75–2000 RPM, two ranges + tach',
     'Motor': '1.5 HP, 110V',
     'Feeds': 'Power longitudinal + cross feed',
+    'Readout': '2-axis DRO — X (diameter), Z (length)',
     'Weight': '~670 lb',
   }}
 />

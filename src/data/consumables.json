@@ -619,6 +619,36 @@
     "notes": "The wider, stiffer parting insert — the one for steel and for anything much over 1/2 in diameter. Every listing we bought these from (ApplianPar holder kit Feb 2023, ApplianPar 10-pack Jun 2022, an eBay 10-pack at $15.18) is now unavailable, but MGMN200-G is a generic ISO-style insert: any reputable seller's -G geometry drops into the MGEHR1212-2 holder. Do not order MGMN200-M or -H without asking a mentor — different chipbreaker, different feed."
   },
   {
+    "id": "circlip-groove-inserts-16er",
+    "name": "Circlip Groove Inserts 16ER — 0.8 mm & 1.0 mm",
+    "category": "Machine Shop",
+    "vendor": "AliExpress (DDUNVCR shop Store)",
+    "price": "$34.41",
+    "unit": "pack of 10, per width",
+    "partNumber": "16ER-IL circlip groove · 0.8 mm and 1.0 mm",
+    "url": "https://www.aliexpress.com/w/wholesale-16ER-circlip-groove-insert.html",
+    "location": "Lathe T-Stak — QCTP Holders & Setup drawer",
+    "machines": [
+      "pm-1130v"
+    ],
+    "notes": "The dedicated retaining-ring groove inserts — one width per ring size. 0.8 mm (0.0315 in) for 3/8 in rings, 1.0 mm (0.0394 in) for 1/2 in rings. Replaces the old practice of cutting ring grooves with the 1.5 mm parting insert, which left five times the axial slop. Ordered 22 Aug 2026, ETA ~11 Sep 2026 (one pack of each width). These are a shallow-groove grind in the 16ER threading-insert format — they are NOT parting tools. See /forming/lathe-snap-ring-grooves/."
+  },
+  {
+    "id": "ser1212h16-holders",
+    "name": "SER1212H16 Insert Holders (circlip grooving)",
+    "category": "Machine Shop",
+    "vendor": "AliExpress (BB Official Store)",
+    "price": "$18.61",
+    "unit": "each — two bought",
+    "partNumber": "SER1212H16 · 12 × 12 mm shank, T15 torx",
+    "url": "https://www.aliexpress.com/w/wholesale-SER1212H16.html",
+    "location": "Lathe T-Stak — QCTP Holders & Setup drawer",
+    "machines": [
+      "pm-1130v"
+    ],
+    "notes": "External right-hand screw-clamp holders for the 16ER circlip groove inserts. Two were bought deliberately so each insert width lives in its own holder and its own pre-set QCTP block — 0.8 mm in one, 1.0 mm in the other, so nobody has to change an insert to change ring size. Same 12 mm shank as the MGEHR holders, so it drops into the same block. Screw clamp, not a spring clamp: it takes the T15 torx key, not the MGEHR L-key. Ordered 22 Aug 2026."
+  },
+  {
     "id": "cutting-oil-dark",
     "name": "Dark Thread-Cutting Oil",
     "category": "Machine Shop",

@@ -1,0 +1,141 @@
+---
+title: "Snap Ring Grooves in 3/8\" and 1/2\" Hex"
+description: "Cutting retaining-ring grooves in hex shaft on the PM-1130V: groove diameters, the right insert width, interrupted-cut speeds, and the carriage-stop setup that makes every shaft identical."
+---
+
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import ConsumablesTable from '../../../components/ConsumablesTable.astro';
+import Term from '../../../components/Term.astro';
+
+Cutting a <Term id="snap-ring">retaining ring</Term> groove into hex shaft is the most exacting job the Blue Lathe does, and it is also the one we do most often — every custom-length shaft in a gearbox needs one. It is exacting for three reasons that have nothing to do with skill: the groove has to land on a **diameter you cannot see**, it has to be a **width you cannot adjust**, and it is an <Term id="interrupted-cut">interrupted cut</Term> that hammers the insert six times a revolution.
+
+Get the setup right and the cut itself takes fifteen seconds. This page is almost entirely about the setup.
+
+## The numbers
+
+These are the dimensions for the external retaining rings we stock in the [Durham cabinet](/storage/small-parts-bins/) — McMaster **97633A170** (3/8 in) and **97633A200** (1/2 in). They are ANSI B27.7 standard sizes, so any 3/8 in or 1/2 in external ring from any supplier wants the same groove.
+
+| | 3/8 in hex | 1/2 in hex |
+| --- | --- | --- |
+| <Term id="across-flats">Across flats</Term> (nominal shaft) | 0.375 in | 0.500 in |
+| Across corners (what the tool hits first) | 0.433 in | 0.577 in |
+| **Groove diameter — cut to this** | **0.348 in** | **0.468 in** |
+| **Groove width** | **0.029 in** | **0.039 in** |
+| Ring thickness | 0.025 in | 0.035 in |
+| Radial plunge, corner to groove bottom | 0.043 in | 0.055 in |
+| Retaining shoulder left at the flats | 0.014 in | 0.016 in |
+
+Two things fall out of that table and both matter.
+
+**You are cutting a round groove in a hex bar.** The groove bottom is a circle at 0.468 in; the bar is 0.577 in at the corners and 0.500 in at the flats. So the tool plunges 0.055 in past the corner, but the shoulder that actually holds the ring is only 0.016 in tall where it meets a flat. That thin shoulder is why groove diameter is not negotiable — cut 0.010 in too deep and you have left 0.006 in of shoulder, and the ring will climb out under load.
+
+**Work to the diameter, not to a depth.** Depth numbers depend on where you happened to touch off. Diameter is absolute: 0.468 in on the **X axis of the [DRO](/forming/lathes/#the-dro) in diameter mode**, confirmed with <Term id="caliper">calipers</Term> in the groove. Check the mode before you cut — X set to radius reads half of what you think, and on a groove this shallow that is a scrapped shaft.
+
+## Tooling — one insert width per ring size
+
+The shop bought dedicated circlip-groove tooling for this job: **two SER1212H16 holders and 16ER circlip inserts in 0.8 mm and 1.0 mm**. One width per ring size, each living permanently in its own holder and its own pre-set QCTP block, so changing ring size means changing *tools*, not changing inserts.
+
+| Ring size | Insert | Groove cut | Ring thickness | Axial float |
+| --- | --- | --- | --- | --- |
+| **3/8 in** | **0.8 mm** | 0.0315 in | 0.025 in | 0.007 in |
+| **1/2 in** | **1.0 mm** | 0.0394 in | 0.035 in | 0.004 in |
+
+Match the tool to the shaft and the fit takes care of itself. The 0.8 mm groove comes out a couple of thousandths over the 0.029 in nominal, which is inside the normal tolerance band — the ring seats and stays put.
+
+<SafetyWarning type="warning" title="Never cut a ring groove with the parting inserts">
+The [MGEHR parting holders](/forming/lathes/#grooving--parting--the-mgehr-holders) carry **1.5 mm (0.059 in)** and **2 mm (0.079 in)** inserts. Cut a 1/2 in ring groove with the 1.5 mm and the ring floats **0.024 in**; a 3/8 in ring in that groove floats 0.034 in — more than the ring's own thickness. That slop is gearbox lash, walking spacers, and a ring that works itself loose over a match. Those are parting tools. The circlip tools are for grooves.
+</SafetyWarning>
+
+<SafetyWarning type="warning" title="And the reverse — these are not parting tools">
+The circlip holders are a shallow-groove grind in the threading-insert format. They cut a ring groove and nothing deeper. Reaching for the narrow tool to part a shaft off will snap the insert and can wreck the holder — part with the MGEHR tools, groove with these.
+</SafetyWarning>
+
+Working notes:
+
+- **Screw clamp, not spring clamp.** The SER holders take a **T15 torx** key, not the L-key the MGEHR blades use. Seat the insert in its pocket and snug the screw — do not gorilla it, the screw is the weakest part of the tool.
+- **Treat them as single-edge.** Unlike the double-ended MGMN parting inserts, do not assume there is a fresh edge on the back. Check the insert before you write one off, and check it before you assume you have a spare.
+- **Both holders keep their height setting.** That is the whole reason two were bought. Set each once with the [Pro Lathe Gage](/forming/lathes/#setting-tool-height--the-pro-lathe-gage) and leave it — never rob one block to feed the other.
+
+<SafetyWarning type="critical" title="On center or the insert snaps">
+A grooving insert above center rubs and burnishes; below center it digs, lifts the work, and shatters. On an interrupted hex cut there is no margin for either. Set height with the [Pro Lathe Gage](/forming/lathes/#setting-tool-height--the-pro-lathe-gage) before the first groove of the session, and leave the grooving tool in its own pre-set QCTP holder so it stays set.
+</SafetyWarning>
+
+## Hex is an interrupted cut
+
+Six corners per revolution hit the insert. At 600 RPM that is 3,600 impacts a minute. Everything about the setup exists to survive that:
+
+- **Short and stiff.** The shaft sticks out of the <Term id="chuck">chuck</Term> the minimum that clears the tool — an inch is plenty for a groove near the end. The insert sticks out of the holder the minimum that reaches groove depth. Every extra inch of overhang multiplies deflection and invites <Term id="chatter">chatter</Term>.
+- **Slow.** Roughly a third of turning speed, and slower still than you would run a groove in round stock.
+- **Steady feed, no dwell.** Feed in continuously by hand at a slow, even rate. Stopping mid-groove with the spindle running lets the insert rub against six corners without cutting, which work-hardens steel and glazes the edge.
+- **The 3-jaw chuck grips hex properly.** Three jaws on six flats self-centers cleanly — this is one of the rare cases where hex stock is easier to hold than round. Seat it against the jaw faces and tighten firmly.
+
+## Speeds
+
+Start at the low end. On an interrupted cut, too slow costs you nothing but time; too fast costs an insert.
+
+| Shaft | 7075 / 6061 aluminum | 4140 / 1045 steel |
+| --- | --- | --- |
+| 1/2 in hex | 450–650 RPM | 250–350 RPM |
+| 3/8 in hex | 600–800 RPM | 300–450 RPM |
+
+Low belt range for all of these. Flood the cut with dark cutting oil in steel and use it in aluminum too — it flushes the chip out of a groove that has nowhere else to send it.
+
+## Cutting the groove
+
+1. **Face the end first.** Every groove position is measured from the end of the shaft, so the end has to be square and at final length before you start. See [Cutting Shafts to Exact Length](/forming/lathe-cut-to-length/).
+2. **Chuck short.** Shaft seated in the 3-jaw, minimum stick-out, <Term id="chuck-key">chuck key</Term> out.
+3. **Zero Z at the end of the shaft.** Bring the insert's left edge up to the faced end and zero the **Z** axis. Groove position is now a single number from the end — no scale, no scribe line, no measuring.
+4. **Touch off the corner and zero X.** Bring the insert in until it just marks the corner diameter. With **X in diameter mode** it now reads 0.577 in on 1/2 in hex (0.433 in on 3/8 in) — so you are cutting to a number you can read, not to a depth you have to compute.
+5. **Move to the groove position on Z, then lock the carriage.** The DRO puts you there; the **carriage lock keeps you there**. The readout will happily show the right number while an unlocked carriage drifts under the plunge load — lock it every time.
+6. **Plunge slowly to X = 0.468 in** (0.348 in for 3/8 in). Steady feed. In steel, back out once at about half depth to clear the chip, then go back in.
+7. **Confirm with calipers, spindle stopped.** Jaws into the groove, read across the bottom. Trust the caliper over the readout for the final call — the DRO tells you where the tool went, not where the material ended up.
+8. **Check with the ring itself.** The real go/no-go is a ring out of the drawer: it should snap in, sit flat, and not rock. A ring that will not seat means the groove is shallow; a ring that spins loosely in the groove means you went deep.
+9. **Deburr.** The groove throws a wire edge at each corner. Knock it off with a file or at the [deburring wheel](/cutting/sanders-grinders/) — spindle stopped — or the ring will not seat flat.
+
+## Cutting more than one
+
+The moment you need four identical shafts, stop measuring each one. Set the job up once and repeat it:
+
+- **Cut the whole batch to the same rough length first**, on the [chop saw with the stop block](/cutting/evolution-saws/#repeat-cuts--the-fence-stop-blocks--tape). Consistent blanks in means consistent parts out.
+- **Keep your X and Z zeros for the entire run.** This is the real speed-up: touch off once on the first shaft, then every following part is the same two numbers. Re-zeroing per part is where variation creeps back in.
+- **Seat every piece the same way** in the chuck, or that shared Z zero is a lie. If the shafts vary in how far they stick out, re-zero Z on each one — it costs about ten seconds and it is cheaper than a scrapped shaft.
+- **Lock the carriage at the groove position** and do not move it between parts.
+- **Check the first part and the last part** with a ring, and spot-check the middle. If the first and last both pass, the ones between them are fine.
+
+For runs of twenty or more, a **spindle-bore stock stop** — a rod through the spindle bore with a <Term id="shaft-collar">shaft collar</Term> on it, set close behind the chuck — makes the seating depth automatic so one Z zero covers the whole batch. Below that batch size it is not worth building. Never use it to feed long bar through the spindle: anything projecting out the back whips.
+
+## When it goes wrong
+
+| What you see | What it means | What to do |
+| --- | --- | --- |
+| Screaming, rippled groove walls | <Term id="chatter">Chatter</Term> — something is flexing | Reduce stick-out (shaft and insert), drop RPM, confirm tool height |
+| Insert chipped a corner off | Too fast for an interrupted cut, or dwelling in the cut | Slow down, feed continuously, flip the insert to its fresh edge |
+| Ring will not snap in | Groove diameter still too large | Take another 0.002 in and re-check with the ring |
+| Ring seats but rocks or rattles | Groove too wide (a parting insert was used) or too deep | Use the circlip tool for that ring size; if too deep, the shaft is scrap |
+| Groove walked off position | Carriage was not locked | Lock the carriage before plunging |
+| Tool digs and lifts the work | Insert below center | Reset height with the Pro Lathe Gage |
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Cut a Ring Groove"
+  items={[
+    'End of the shaft faced square and shaft at final length',
+    'Correct groove diameter written down — 0.468 in for 1/2", 0.348 in for 3/8"',
+    'Right circlip tool picked up — 1.0 mm for 1/2" rings, 0.8 mm for 3/8" rings',
+    'Not the parting tool: 1.5 mm and 2 mm inserts are far too wide for a ring groove',
+    'Tool on center height, verified this session',
+    'Shaft stick-out and insert overhang both minimised',
+    'Low belt range, RPM set for an interrupted cut',
+    'Cutting oil at the machine',
+    'A ring of the right size out of the drawer, ready to test-fit',
+    'CHUCK KEY OUT',
+  ]}
+/>
+
+## Consumables
+
+<ConsumablesTable machine="pm-1130v" />
+
+**Related pages:** [PM-1130V Lathe](/forming/lathes/) for the machine, safety rules, and tool-height setup · [Cutting Shafts to Exact Length](/forming/lathe-cut-to-length/) · [Tailstock Drilling](/forming/lathe-tailstock-drilling/) · [Snap ring pliers](/hand-tools/clamps-vises/#snap-ring-pliers) for installing the ring · [Small Parts Bins](/storage/small-parts-bins/) for the rings themselves

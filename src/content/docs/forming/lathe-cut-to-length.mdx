@@ -1,0 +1,116 @@
+---
+title: "Cutting Shafts to Exact Length"
+description: "Parting and facing on the PM-1130V: when to part off and when to saw-and-face, hitting a length to a few thousandths on the DRO, and making twenty identical spacers."
+---
+
+import SafetyWarning from '../../../components/SafetyWarning.astro';
+import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
+import ConsumablesTable from '../../../components/ConsumablesTable.astro';
+import Term from '../../../components/Term.astro';
+
+"Cut this shaft to 4.250 in" is two different jobs depending on how you get there, and picking the wrong one is how students end up fighting the lathe for twenty minutes on a cut the [chop saw](/cutting/evolution-saws/) would have started in thirty seconds.
+
+The lathe is excellent at **facing to a length**. It is only conditionally good at **parting off**. Learn the difference first.
+
+## Decide first: part off, or saw and face?
+
+<SafetyWarning type="warning" title="Do not part off hex shaft">
+<Term id="parting">Parting</Term> hex stock means plunging a narrow blade into an <Term id="interrupted-cut">interrupted cut</Term> at full depth, all the way to center, with the blade buried and unable to clear chips. It is the single most dig-in-prone thing you can set up on this machine. **Hex shaft gets cut to rough length on the [chop saw](/cutting/evolution-saws/) and faced to final length on the lathe.** No exceptions without a mentor standing at the machine.
+</SafetyWarning>
+
+| Your stock | Method |
+| --- | --- |
+| 3/8" or 1/2" hex shaft, any length | Chop saw ~0.060 in long, then face both ends to length |
+| Round stock over 5/8 in diameter | Chop saw, then face — our grooving blades cannot reach the center |
+| Round stock under 5/8 in, aluminum | Part off is fine — this is what the MGEHR1212-1.5 is for |
+| Round stock under 5/8 in, steel | Part off with the MGEHR1212-2, low range, oil, mentor nearby |
+| A run of identical spacers from bar | Part off, or saw the batch — see [Making a run of them](#making-a-run-of-them) |
+
+### Does this part need the lathe at all?
+
+The [chop saw's fence, stop blocks, and tape](/cutting/evolution-saws/#repeat-cuts--the-fence-stop-blocks--tape) already cut repeated lengths without measuring each piece. Before you queue up the lathe, cut one, measure it, and compare against the tolerance the part **actually** needs — not the tolerance you wish it had.
+
+A spacer that only has to keep two plates apart does not need a faced end. A shaft that seats a bearing and carries a snap ring does. Lathe time is the scarce resource in this shop; spend it on the parts that earn it.
+
+**Punched tube never comes to the lathe.** It is cut by indexing off its own hole pattern with the [.25 in and .5 in indexing blocks](/cutting/evolution-saws/#cutting-punched-tube--the-indexing-blocks), not by cutting to a measured length. Different problem, different procedure.
+
+The blade reach is the hard limit and it is worth internalising: the [MGEHR holders](/forming/lathes/#grooving--parting--the-mgehr-holders) are short blades on a 12 mm shank with roughly 3/8 in of usable depth. Parting works to the center of a 3/4 in bar at the absolute most. Check the reach against your radius *before* you start, not halfway in when the holder body hits the work.
+
+## Facing to an exact length
+
+Our lathe has a **2-axis <Term id="dro">DRO</Term>**, and this is the job it was bought for. Read [The DRO](/forming/lathes/#the-dro) once before your first session — the whole method below rests on the **Z** axis reading carriage travel along the shaft.
+
+1. **Face one end clean.** Light passes, tool on center, feed from the outside toward center. This end is now your reference — every measurement comes off it.
+2. **Flip the part and chuck it on the faced end.** Seat it square against the jaws. If the part is short, seat it against the jaw faces or a stop so it cannot cock.
+3. **Face the second end just clean** — enough to true it, no more. Now both ends are square and you have a known overall length.
+4. **Measure the overall length** with <Term id="caliper">calipers</Term>, spindle stopped. Call it 4.312 in against a target of 4.250 in, so you owe 0.062 in.
+5. **Zero Z on the DRO** with the tool just touching that freshly faced end. Z now counts exactly how much length you are removing — nothing to convert, nothing to halve.
+6. **Face in to Z = −0.062,** in two bites. Go to −0.050, re-measure, then take the last 0.012. Sneaking up is faster than making a second part.
+7. **Deburr both ends.** A faced end throws a sharp lip that will not let a bearing or spacer sit flat.
+
+<SafetyWarning type="warning" title="Z is length. X is diameter — check which mode it is in.">
+Facing uses **Z**, and Z is unambiguous: it reads travel along the shaft, one-to-one. The trap is the **X** axis, which can be set to read either **radius** or **diameter** — a factor of two on every turning cut. Confirm the mode before you trust an X number, and leave the machine in **diameter mode**, because that is what your calipers and every drawing dimension read.
+
+If the DRO is ever down, fall back to the compound set parallel to the spindle axis (0°) — its dial also reads travel along the axis directly.
+</SafetyWarning>
+
+## Parting off, when it is the right call
+
+Parting is the operation most likely to bite. The rules are not style preferences:
+
+- **Part close to the chuck.** Within an inch. Overhang is what turns a parting cut into a dig-in.
+- **Tool square to the work and exactly on center.** A parting blade above center rubs and stalls; below center it dives under the work and snaps. Set it with the [Pro Lathe Gage](/forming/lathes/#setting-tool-height--the-pro-lathe-gage).
+- **Low belt range, about a third of turning speed.** For 1/2 in aluminum that is roughly 600 RPM; for steel, 300.
+- **Steady, continuous feed.** Backing off mid-cut lets the blade rub; stopping lets it work-harden the bottom of the groove. Commit and keep feeding.
+- **Cutting oil the whole way.** The chip has one narrow slot to escape through.
+- **Catch the part.** It drops the instant it separates. A tray or a gloved-off hand cupped *below* the cut, never in the cut path — and never reaching in while the spindle turns.
+- **Add the kerf to your stock.** The 1.5 mm blade takes 0.059 in and the 2 mm takes 0.079 in. Ten spacers off one bar means ten kerfs of lost material.
+
+If it chatters, squeals, or grabs — **stop the spindle and get a mentor.** Pushing through a chattering parting cut is how inserts shatter.
+
+## Making a run of them
+
+Twenty spacers is a different problem from one spacer. Measuring each part is the slow, inconsistent way. Set the job up once instead:
+
+- **Start at the chop saw, not the lathe.** The [fence, stop block and tape](/cutting/evolution-saws/#repeat-cuts--the-fence-stop-blocks--tape) cut the whole batch to one rough length without measuring each piece. Consistent blanks are what make everything downstream repeatable — and for parts whose tolerance the saw already meets, that is the finished part.
+- **Hold one Z zero for the whole run.** Touch off on the first part, then face every following piece to the same Z number. This is the DRO's real payoff on batch work: not the ten seconds per part, but never re-deriving the number.
+- **Seat every piece the same way,** or that shared zero drifts. If protrusion varies, re-zero Z per part.
+- **Write the numbers down.** Tape a note to the machine with the Z target that produced a good part.
+- **Measure the first, the last, and one in the middle.** If those three agree, the run is good.
+
+For runs of twenty or more, a **spindle-bore stock stop** — a rod through the spindle bore with a <Term id="shaft-collar">shaft collar</Term> on it, set close behind the chuck — fixes seating depth so one Z zero covers the batch. Below that, it is a project rather than a payoff. Never use one to feed long bar through the spindle: stock projecting out the back whips.
+
+## Speeds
+
+Facing uses the *largest* diameter you are cutting; parting runs at about a third of turning speed in low range.
+
+| Operation | 1/2 in aluminum | 1/2 in steel |
+| --- | --- | --- |
+| Facing | 1800–2000 RPM | 1200 RPM |
+| Parting | ~600 RPM | ~300 RPM |
+
+Full speed tables and the <Term id="sfm">SFM</Term> formula are on the [main lathe page](/forming/lathes/#spindle-speeds).
+
+## Pre-Flight Checklist
+
+<PreFlightChecklist
+  title="Before You Cut to Length"
+  items={[
+    'Decided: part off, or saw and face? Hex is always saw-and-face',
+    'Checked whether the chop saw alone already meets the tolerance',
+    'Target length written down, and the reference end identified',
+    'DRO Z zeroed on the reference end; X confirmed in diameter mode',
+    'For parting: blade reach checked against the stock radius',
+    'Tool square and on center height',
+    'Correct belt range and RPM — parting is low range, roughly a third of turning speed',
+    'Cutting oil and a catch tray at the machine',
+    'Calipers within reach; measure only with the spindle stopped',
+    'CHUCK KEY OUT',
+  ]}
+/>
+
+## Consumables
+
+<ConsumablesTable machine="pm-1130v" />
+
+**Related pages:** [PM-1130V Lathe](/forming/lathes/) for the machine and safety rules · [Snap Ring Grooves](/forming/lathe-snap-ring-grooves/) — do these after the shaft is at final length · [Tailstock Drilling](/forming/lathe-tailstock-drilling/) · [Evolution Chop Saws](/cutting/evolution-saws/) for rough-cutting stock and batch lengths · [Bandsaws](/cutting/bandsaws/) when the chop saw is wrong for the section
