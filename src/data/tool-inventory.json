@@ -73,6 +73,7 @@
     { "id": "rigol-ds1052e", "name": "Rigol DS1052E Oscilloscope", "area": "electrical", "page": "/electrical/soldering-test-bench/#rigol-ds1052e-oscilloscope", "procurement": "rigol-ds1052e", "location": "Electrical bench", "training": "orientation" },
     { "id": "dc-supply", "name": "Benchtop DC Power Supply", "area": "electrical", "page": "/electrical/soldering-test-bench/#benchtop-dc-power-supply", "location": "Electrical bench", "training": "orientation" },
     { "id": "hydraulic-crimper", "name": "Hydraulic Lug Crimper", "area": "electrical", "page": "/electrical/wire-prep-crimping/#hydraulic-crimper--battery-lugs", "location": "Electrical bench", "training": "orientation" },
+    { "id": "icrimp-iws-0801dts", "name": "iCrimp IWS-0801DTS Bench-Mount Battery Lug Crimper", "area": "electrical", "page": "/electrical/wire-prep-crimping/#bench-mount-lug-crimper--icrimp-iws-0801dts", "procurement": "icrimp-iws-0801dts", "location": "Electrical bench", "training": "orientation" },
     { "id": "coprocessors", "name": "Vision Coprocessors & SBCs", "area": "electrical", "page": "/electrical/coprocessors/", "location": "Electrical bench", "training": "orientation" },
 
     { "id": "stacktech", "name": "StackTech Tool Towers", "count": 3, "area": "infrastructure", "page": "/storage/stacktech-drawers/", "procurement": "stacktech", "location": "Machine shop, rolling", "training": "green" },
