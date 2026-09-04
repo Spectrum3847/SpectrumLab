@@ -8,6 +8,7 @@ import PreFlightChecklist from '../../../components/PreFlightChecklist.astro';
 import LabGalleryImage from '../../../components/LabGalleryImage.astro';
 import TutorialLink from '../../../components/TutorialLink.astro';
 import ConsumablesTable from '../../../components/ConsumablesTable.astro';
+import ToolProcurementCard from '../../../components/ToolProcurementCard.astro';
 import Term from '../../../components/Term.astro';
 
 A robot is only as reliable as its worst <Term id="crimp">crimp</Term>. Robots vibrate, and solder joints crack under vibration — which is why FRC wiring is crimped, not soldered, everywhere it matters. This page covers the tools and the standards: strip clean, crimp with the right tool, and tug-test every single connection.
@@ -59,6 +60,24 @@ Battery leads and main power cables (6 AWG) get lugs set with the hydraulic crim
 5. **Tug test** — brace and pull with real force. The lug should feel like part of the wire.
 6. Slide the heat shrink over the barrel and shrink it with the [heat gun](/portable-power/dewalt-and-pneumatics/#20v-heat-gun--dce530) on low until it's tight and the adhesive just beads at the edge. The shrink covers all exposed barrel — no bare copper.
 7. Inspect: no loose strands at the barrel mouth, no cracks in the crimp, insulation undamaged.
+
+## Bench-Mount Lug Crimper — iCrimp IWS-0801DTS
+
+New in September 2026. A bench-mounted hex crimper for battery-cable lugs, bought to sit alongside the hydraulic crimper rather than replace it.
+
+The difference that matters: it has **five fixed die cavities — 8, 6, 4, 2, and 1 AWG — stamped into the head**, so there is no die to select, swap, or lose. You pick the cavity, you crimp. That makes it the faster and harder-to-get-wrong choice for a batch of same-size lugs, which is most of what battery-lead season looks like. It bolts down to the bench, so it also frees both hands for the cable.
+
+Two things it is *not*: it stops at 1 AWG, so anything larger stays on the hydraulic crimper; and its hex profile is for **non-insulated copper lugs**, not insulated terminals — those still belong in the ratcheting crimpers.
+
+It has a **built-in cable cutter** in the head. Use it for the cable, not for anything else — nicking the shear on a bolt or a zip tie ruins the one cut in the shop that leaves a square, unsplayed 6 AWG end.
+
+The crimping process is otherwise the same as the hydraulic procedure above, and every step of it still applies: heat shrink on **first**, strands fully in the barrel, close the handle through its full stroke until the dies bottom out, tug test hard, then shrink and inspect.
+
+<SafetyWarning type="warning" title="Bolt it down before the first crimp">
+This tool is designed to be fixed to a bench, and the handle is long enough to take real force. Crimping it loose or hand-held lets it skid or tip mid-stroke, which gives a half-formed crimp at best. If it isn't bolted down, don't use it — say something instead.
+</SafetyWarning>
+
+<ToolProcurementCard tool="icrimp-iws-0801dts" />
 
 ## FRC Wire Gauge Rules
 

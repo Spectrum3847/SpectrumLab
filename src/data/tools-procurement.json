@@ -439,5 +439,16 @@
     "manualUrl": null,
     "supportUrl": null,
     "notes": "Replaced the Vevor pneumatic tapping station. Amazon listing was marked Currently unavailable as of Aug 2026 — no live purchase URL to link. Price not captured from the order."
+  },
+  "icrimp-iws-0801dts": {
+    "name": "iCrimp IWS-0801DTS Bench-Mount Battery Lug Crimper",
+    "vendor": "Amazon (Icrimptools)",
+    "price": "$119.99",
+    "orderDate": "September 2026",
+    "purchaseUrl": "https://www.amazon.com/IWISS-Battery-Crimping-Built-Cutter/dp/B08THKJFR9",
+    "sku": "IWS-0801DTS",
+    "productUrl": "https://www.icrimptools.com/products/iwiss-iws-0801dt-hex-crimp-bench-mount-battery-cable-crimper-for-8awg-to-1awg-electrical-non-insulated-cable-lugs",
+    "manualUrl": null,
+    "supportUrl": "https://www.icrimptools.com/pages/contact-us"
   }
 }
